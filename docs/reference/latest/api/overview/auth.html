@@ -1560,7 +1560,7 @@
 
 <ul>
   <li>
-    <p>Basic Authentication</p>
+    <p>Basic Authentication (without a challenge)</p>
   </li>
   <li>
     <p>Token based Authentication</p>
@@ -1576,6 +1576,16 @@ in with each HTTP request as follows:</p>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">--user</span> username:password
         <span class="nt">-i</span> <span class="nt">-X</span> GET <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span>
         http://localhost:3000/api/services/1013
+</code></pre></div></div>
+
+<p>Note: our version of HTTP Basic does NOT send a WWW-Authenticate challenge. Any clients which autodetect HTTP Basic from a server challenge may fail to send the necessary credentials. This can be worked around by either forcing HTTP Basic authentication if possible, or by manually creating the header:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># base64-encode a (ascii or utf-8) string of "username:password", without a trailing newline</span>
+<span class="nv">$ </span><span class="nb">echo</span> <span class="nt">-n</span> <span class="s1">'username:password'</span> | <span class="nb">base64
+</span><span class="nv">dXNlcm5hbWU6cGFzc3dvcmQ</span><span class="o">=</span>
+
+<span class="c"># use it in the header</span>
+<span class="nv">$ </span>wget <span class="nt">-SO-</span> <span class="nt">--header</span> <span class="s1">'Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ='</span> http://localhost:3000/api
 </code></pre></div></div>
 
 <p>However, for multiple REST API calls to the Appliance, it is recommended
