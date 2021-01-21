@@ -5,9 +5,25 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 21 Jan 2021 20:02:01 +0000</pubDate>
-    <lastBuildDate>Thu, 21 Jan 2021 20:02:01 +0000</lastBuildDate>
+    <pubDate>Thu, 21 Jan 2021 21:02:46 +0000</pubDate>
+    <lastBuildDate>Thu, 21 Jan 2021 21:02:46 +0000</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>Announcing Kasparov Beta, Jansa-3, and Ivanchuk-8</title>
+        <description>&lt;p&gt;ManageIQ Kasparov-1-Beta1.1, Jansa-3, and Ivanchuk-8 are now available. These releases include security fixes. Many thanks goes to Dávid Halász (&lt;a href=&quot;https://github.com/skateman&quot;&gt;@skateman&lt;/a&gt;) and the team for finding and fixing these vulnerabilities.  Also, many thanks go to all of the contributors for all of their enhancements and bug fixes.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 18 Jan 2021 17:01:13 +0000</pubDate>
+        <link>http://manageiq.org/blog/2021/01/Announcing-Kasparov-Beta-Jansa-3-And-Ivanchuk-8/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2021/01/Announcing-Kasparov-Beta-Jansa-3-And-Ivanchuk-8/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>Announcing Kasparov Alpha Release</title>
@@ -144,22 +160,6 @@ Here are just some of the things added since the Ivanchuk-4 release:&lt;/p&gt;
         <pubDate>Thu, 11 Jun 2020 19:12:13 +0000</pubDate>
         <link>http://manageiq.org/blog/2020/06/Announcing-Ivanchuk-5/</link>
         <guid isPermaLink="true">http://manageiq.org/blog/2020/06/Announcing-Ivanchuk-5/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Announcing Jansa Beta Release</title>
-        <description>&lt;p&gt;The first beta release of ManageIQ Jansa is here!  It has a bunch of interesting new stuff that you can see in the &lt;a href=&quot;https://github.com/orgs/ManageIQ/projects/13#column-7337345&quot;&gt;roadmap&lt;/a&gt;. When we announced &lt;a href=&quot;https://www.manageiq.org/blog/2020/03/Announcing-Jansa-Alpha/&quot;&gt;Jansa Alpha&lt;/a&gt;, we highlighted Podification and VMware VimBroker Removal.  Today, I want to draw your attention to other enhancements included in the Jansa Beta release.&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 02 Jun 2020 19:12:13 +0000</pubDate>
-        <link>http://manageiq.org/blog/2020/06/Announcing-Jansa-Beta/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2020/06/Announcing-Jansa-Beta/</guid>
         
         <category>releases</category>
         
