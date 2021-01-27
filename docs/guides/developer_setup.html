@@ -476,7 +476,7 @@
     </tr>
     <tr>
       <td>Rails</td>
-      <td>5.1.x</td>
+      <td>6.0.x</td>
     </tr>
     <tr>
       <td>Bundler</td>
@@ -491,88 +491,179 @@
       <td>2.7.x</td>
     </tr>
     <tr>
-      <td>PostgresQL</td>
+      <td>PostgreSQL</td>
       <td>10.x</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="build-requirements">Build Requirements</h2>
+<h2 id="prerequisites">Prerequisites</h2>
 
-<p>If running CentOS 8:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo yum config-manager --set-enabled PowerTools
-sudo dnf copr enable manageiq/ManageIQ-Master
-sudo yum install epel-release
+<p>If running CentOS 8</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum config-manager <span class="nt">--set-enabled</span> PowerTools
+<span class="nb">sudo </span>dnf copr <span class="nb">enable </span>manageiq/ManageIQ-Master
+<span class="nb">sudo </span>yum <span class="nb">install </span>epel-release
 </code></pre></div></div>
 
-<p>In order to compile Ruby, native Gems and native NodeJS modules, GCC and its related utilities are required. Depending on your Linux distribution, package names may vary slightly.</p>
+<p>In order to compile Ruby, install the header files for OpenSSL, readline and zlib.</p>
 
-<ul>
-  <li>Using dnf: <code class="language-plaintext highlighter-rouge">sudo dnf -y install @c-development libffi-devel postgresql-devel libxml2-devel libcurl-devel cmake sqlite-devel python</code></li>
-  <li>Using yum: <code class="language-plaintext highlighter-rouge">sudo yum -y install @development libffi-devel postgresql-devel libxml2-devel libcurl-devel cmake sqlite-devel python</code></li>
-  <li>Using apt: <code class="language-plaintext highlighter-rouge">sudo apt -y install build-essential libffi-dev libpq-dev libxml2-dev libcurl4-openssl-dev cmake libsqlite3-dev python</code></li>
-  <li>Using brew: <code class="language-plaintext highlighter-rouge">brew install cmake</code></li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dnf</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo dnf -y install openssl-devel readline-devel zlib-devel</code></td>
+    </tr>
+    <tr>
+      <td>yum</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo yum -y install openssl-devel readline-devel zlib-devel</code></td>
+    </tr>
+    <tr>
+      <td>apt</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo apt -y install libssl-dev libreadline-dev zlib1g-dev</code></td>
+    </tr>
+    <tr>
+      <td>brew</td>
+      <td><code class="language-plaintext highlighter-rouge">brew install openssl</code></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>To ensure the appropriate extensions are built when Ruby is compiled, install the header files for OpenSSL, readline and zlib.</p>
+<p>In order to compile Ruby, native Gems and native NodeJS modules, other libraries are required.</p>
 
-<ul>
-  <li>Using dnf: <code class="language-plaintext highlighter-rouge">sudo dnf -y install openssl-devel readline-devel zlib-devel</code></li>
-  <li>Using yum: <code class="language-plaintext highlighter-rouge">sudo yum -y install openssl-devel readline-devel zlib-devel</code></li>
-  <li>Using apt: <code class="language-plaintext highlighter-rouge">sudo apt -y install libssl-dev libreadline-dev zlib1g-dev</code></li>
-  <li>Using brew: <code class="language-plaintext highlighter-rouge">brew install openssl</code></li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dnf</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo dnf -y install @c-development libffi-devel postgresql-devel libxml2-devel libcurl-devel cmake sqlite-devel python</code></td>
+    </tr>
+    <tr>
+      <td>yum</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo yum -y install @development libffi-devel postgresql-devel libxml2-devel libcurl-devel cmake sqlite-devel python</code></td>
+    </tr>
+    <tr>
+      <td>apt</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo apt -y install build-essential libffi-dev libpq-dev libxml2-dev libcurl4-openssl-dev cmake libsqlite3-dev python</code></td>
+    </tr>
+    <tr>
+      <td>brew</td>
+      <td><code class="language-plaintext highlighter-rouge">brew install cmake</code></td>
+    </tr>
+  </tbody>
+</table>
 
-<h2 id="service-requirements">Service Requirements</h2>
+<h3 id="prerequisite-services">Prerequisite services</h3>
 
 <p>ManageIQ requires a memcached instance for session caching and a PostgreSQL database for persistent data storage.</p>
 
-<h3 id="containers">Containers</h3>
+<h4 id="memcached">memcached</h4>
 
-<p>Run memcached, exposing port 11211 to the host:</p>
+<h5 id="install">Install</h5>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>podman run <span class="nt">--detach</span> <span class="nt">--publish</span> 11211:11211 memcached
-</code></pre></div></div>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dnf</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo dnf -y install memcached</code></td>
+    </tr>
+    <tr>
+      <td>yum</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo yum -y install memcached</code></td>
+    </tr>
+    <tr>
+      <td>apt</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo apt -y install memcached</code></td>
+    </tr>
+    <tr>
+      <td>brew</td>
+      <td><code class="language-plaintext highlighter-rouge">brew install memcached</code></td>
+    </tr>
+    <tr>
+      <td>containers</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>Run PostgreSQL, exposing port 5432 to the host:</p>
+<h5 id="start-the-service">Start the service</h5>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>podman run <span class="nt">--detach</span> <span class="nt">--publish</span> 5432:5432 <span class="nt">--env</span> <span class="nv">POSTGRES_USER</span><span class="o">=</span>root postgres
-</code></pre></div></div>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>systemd</td>
+      <td><code class="language-plaintext highlighter-rouge">systemctl enable --now memcached</code></td>
+    </tr>
+    <tr>
+      <td>brew</td>
+      <td><code class="language-plaintext highlighter-rouge">brew services start memcached</code></td>
+    </tr>
+    <tr>
+      <td>containers</td>
+      <td><code class="language-plaintext highlighter-rouge">podman run --detach --publish 11211:11211 memcached</code></td>
+    </tr>
+  </tbody>
+</table>
 
-<h3 id="locally">Locally</h3>
+<h4 id="postgresql">PostgreSQL</h4>
 
-<p>Install memcached:</p>
+<h5 id="install-1">Install</h5>
 
-<ul>
-  <li>Using dnf: <code class="language-plaintext highlighter-rouge">sudo dnf -y install memcached</code></li>
-  <li>Using yum: <code class="language-plaintext highlighter-rouge">sudo yum -y install memcached</code></li>
-  <li>Using apt: <code class="language-plaintext highlighter-rouge">sudo apt -y install memcached</code></li>
-  <li>Using brew: <code class="language-plaintext highlighter-rouge">brew install memcached</code></li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dnf</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo dnf -y install postgresql-server</code></td>
+    </tr>
+    <tr>
+      <td>yum</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo yum -y install postgresql-server</code></td>
+    </tr>
+    <tr>
+      <td>apt</td>
+      <td><code class="language-plaintext highlighter-rouge">sudo apt -y install postgresql</code></td>
+    </tr>
+    <tr>
+      <td>brew</td>
+      <td><code class="language-plaintext highlighter-rouge">brew install postgresql</code></td>
+    </tr>
+    <tr>
+      <td>containers</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>Enable and start the service.</p>
-
-<p>Using systemd:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="nt">--now</span> memcached
-</code></pre></div></div>
-
-<p>Using Homebrew:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew services start memcached
-</code></pre></div></div>
-
-<p>Install postgresql:</p>
-
-<ul>
-  <li>Using dnf: <code class="language-plaintext highlighter-rouge">sudo dnf -y install postgresql-server</code></li>
-  <li>Using yum: <code class="language-plaintext highlighter-rouge">sudo yum -y install postgresql-server</code></li>
-  <li>Using apt: <code class="language-plaintext highlighter-rouge">sudo apt -y install postgresql</code></li>
-  <li>Using brew: <code class="language-plaintext highlighter-rouge">brew install postgresql</code></li>
-</ul>
-
-<hr />
-<p><strong>NOTE</strong></p>
+<h6 id="note">NOTE</h6>
 
 <p>CentOS 7 ships PostgreSQL 9.x. In order to use PostgreSQL 10.x, you will need to <a href="https://www.softwarecollections.org/en/docs/">enable Software Collections</a> and install <code class="language-plaintext highlighter-rouge">rh-postgresql10</code>.</p>
 
@@ -580,97 +671,130 @@ sudo yum install epel-release
 <span class="nb">sudo </span>yum <span class="nt">-y</span> <span class="nb">install </span>rh-postgresql10 rh-postgresql10-postgresql-syspaths rh-postgresql10-postgresql-devel rh-postgresql10-postgresql-server-syspaths
 </code></pre></div></div>
 
-<hr />
+<p>CentOS 7 requires the <code class="language-plaintext highlighter-rouge">rh-postgresql10</code> SCL environment in order to compile the <code class="language-plaintext highlighter-rouge">pq</code> gem’s native extensions. Run <code class="language-plaintext highlighter-rouge">bin/setup</code> inside the <code class="language-plaintext highlighter-rouge">scl</code> environment: <code class="language-plaintext highlighter-rouge">scl enable rh-postgresql10 'bin/setup'</code>.</p>
 
-<h4 id="configure-the-cluster">Configure the cluster</h4>
+<h5 id="configure-the-cluster">Configure the cluster</h5>
 
-<p>On Fedora and CentOS, configure a cluster using <code class="language-plaintext highlighter-rouge">postgresql-setup</code>.</p>
+<ul>
+  <li>
+    <p>Fedora / CentOS</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span><span class="nv">PGSETUP_INITDB_OPTIONS</span><span class="o">=</span><span class="s1">'--auth trust --username root --encoding UTF-8 --locale C'</span> postgresql-setup <span class="nt">--initdb</span>
-</code></pre></div></div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span><span class="nv">PGSETUP_INITDB_OPTIONS</span><span class="o">=</span><span class="s1">'--auth trust --username root --encoding UTF-8 --locale C'</span> postgresql-setup <span class="nt">--initdb</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Debian / Ubuntu</p>
 
-<p>On Debian and Ubuntu, configure a cluster using <code class="language-plaintext highlighter-rouge">pg_createcluster</code>.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pg_dropcluster <span class="nt">--stop</span> 10 main
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pg_dropcluster <span class="nt">--stop</span> 10 main
 <span class="nb">sudo </span>pg_createcluster <span class="nt">-e</span> UTF-8 <span class="nt">-l</span> C 10 main <span class="nt">--</span> <span class="nt">--auth</span> trust <span class="nt">--username</span> root
 <span class="nb">sudo </span>pg_ctlcluster 10 main start
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>macOS</p>
 
-<p>On macOS, configure a cluster using <code class="language-plaintext highlighter-rouge">initdb</code> directly.</p>
+    <p><code class="language-plaintext highlighter-rouge">brew</code> will configure the cluster automatically.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> /usr/local/var/postgres
+    <p>If not using brew, you can configure a cluster using <code class="language-plaintext highlighter-rouge">initdb</code> directly.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> /usr/local/var/postgres
 initdb <span class="nt">--auth</span> trust <span class="nt">--username</span> root <span class="nt">--encoding</span> UTF-8 <span class="nt">--locale</span> C /usr/local/var/postgres
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>containers</p>
 
-<p>Enable and start the service.</p>
+    <p>Skip ahead to “Start the service”</p>
+  </li>
+</ul>
 
-<p>Using systemd:</p>
+<h5 id="start-the-service-1">Start the service</h5>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="nt">--now</span> postgresql
-</code></pre></div></div>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>systemd</td>
+      <td><code class="language-plaintext highlighter-rouge">systemctl enable --now postgresql</code></td>
+    </tr>
+    <tr>
+      <td>brew</td>
+      <td><code class="language-plaintext highlighter-rouge">brew services start postgresql</code></td>
+    </tr>
+    <tr>
+      <td>containers</td>
+      <td><code class="language-plaintext highlighter-rouge">podman run --detach --publish 5432:5432 --env POSTGRES_USER=root postgres</code></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>Using Homebrew:</p>
+<h3 id="install-nvm-and-javascript-build-utilities">Install nvm and JavaScript build utilities</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew services start postgresql
-</code></pre></div></div>
+<p>Yarn and NodeJS version 12 or newer are required. If your distribution doesn’t ship NodeJS 12.x, you can install <a href="https://github.com/nvm-sh/nvm">nvm</a> and follow the setup steps (you will need to restart your shell in order to source the nvm initialization environment).</p>
 
-<h2 id="install-nvm-and-javascript-build-utilities">Install nvm and JavaScript build utilities</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvm <span class="nb">install </span>12
 
-<p>Yarn and NodeJS version 10 or newer are required. If your distribution doesn’t ship NodeJS 10.x, you can install <a href="https://github.com/nvm-sh/nvm">nvm</a> and follow the setup steps (you will need to restart your shell in order to source the nvm initialization environment).</p>
+<span class="c"># needed when other versions are installed</span>
+nvm use 12
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvm <span class="nb">install </span>10
+<span class="c"># if the wrong version still gets used in scripts</span>
+nvm <span class="nb">alias </span>default 12
 </code></pre></div></div>
 
 <p>Then install <code class="language-plaintext highlighter-rouge">yarn</code> - you can find the recommended way for your platform at https://classic.yarnpkg.com/en/docs/install, or, if that fails, via npm.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> yarn
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--global</span> yarn
 </code></pre></div></div>
 
-<h2 id="install-ruby-and-bundler">Install Ruby and Bundler</h2>
+<h3 id="install-ruby-and-bundler">Install Ruby and Bundler</h3>
 
 <p>A Ruby version manager is <em>strongly</em> recommended. Use any one of the following:</p>
 
 <ul>
-  <li><a href="https://github.com/rbenv/rbenv">rbenv</a></li>
+  <li><a href="https://github.com/rbenv/rbenv">rbenv</a> + <a href="https://github.com/rbenv/ruby-build#readme">ruby-build</a></li>
+  <li><a href="https://github.com/postmodern/chruby">chruby</a> + <a href="https://github.com/postmodern/ruby-install">ruby-install</a></li>
   <li><a href="http://rvm.io/">rvm</a></li>
-  <li><a href="https://github.com/postmodern/chruby">chruby</a></li>
 </ul>
 
-<p>Using the Ruby version manager, install <code class="language-plaintext highlighter-rouge">ruby</code> &gt;= 2.4.0 and &lt; 2.6.0 and <code class="language-plaintext highlighter-rouge">bundler</code> &gt;= 1.16.</p>
+<p>Using the Ruby version manager, install <code class="language-plaintext highlighter-rouge">ruby</code> &gt;= 2.5.0 and &lt; 2.7.0 and the latest <code class="language-plaintext highlighter-rouge">bundler</code>.</p>
 
-<h2 id="clone-the-project">Clone the project</h2>
+<hr />
+
+<h2 id="clone-manageiq">Clone ManageIQ</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:ManageIQ/manageiq.git
 <span class="nb">cd </span>manageiq
 </code></pre></div></div>
 
-<h2 id="configure-project">Configure Project</h2>
+<h2 id="configure-manageiq">Configure ManageIQ</h2>
 
-<p>A Ruby script called <code class="language-plaintext highlighter-rouge">setup</code> is available to quickly set up the application. This script installs the required Gems, sets up necessary JavaScript libraries, creates and migrates the database, and finally seeds the database with initial content.</p>
+<p>A setup script is available to quickly set up the application. This script installs the required Gems, sets up necessary JavaScript libraries, creates and migrates the database, and finally seeds the database with initial content.</p>
 
-<hr />
-<p><strong>NOTE</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/setup
+</code></pre></div></div>
 
-<p>macOS requires platform specific Gems. Run <code class="language-plaintext highlighter-rouge">bundle config specific_platform true</code> before running <code class="language-plaintext highlighter-rouge">setup</code>.</p>
+<h6 id="note-1">NOTE</h6>
 
-<p>CentOS 7 requires the <code class="language-plaintext highlighter-rouge">rh-postgresql10</code> SCL environment in order to compile the <code class="language-plaintext highlighter-rouge">pq</code> Gem’s native extensions. Run <code class="language-plaintext highlighter-rouge">setup</code> inside the <code class="language-plaintext highlighter-rouge">scl</code> environment: <code class="language-plaintext highlighter-rouge">scl enable rh-postgresql10 'bin/setup'</code>.</p>
+<p>macOS requires platform specific Gems. Run <code class="language-plaintext highlighter-rouge">bundle config specific_platform true</code> before running <code class="language-plaintext highlighter-rouge">bin/setup</code>.</p>
 
 <p>If you’ve run PostgreSQL in a container, be sure to export the <code class="language-plaintext highlighter-rouge">DATABASE_URL</code> variable to connect to the container over TCP instead of a UNIX file socket.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">DATABASE_URL</span><span class="o">=</span><span class="s1">'postgresql://localhost:5432'</span> <span class="c"># optional, only necessary if PostgreSQL is running in a container</span>
 </code></pre></div></div>
 
-<hr />
+<h2 id="start-manageiq">Start ManageIQ</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/setup
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>rails server
 </code></pre></div></div>
 
-<h2 id="start-the-application">Start the Application</h2>
+<p>The web UI should now be available at <code class="language-plaintext highlighter-rouge">http://localhost:3000</code>. The default username is <code class="language-plaintext highlighter-rouge">admin</code> and the default password is <code class="language-plaintext highlighter-rouge">smartvm</code>.  If you can login, then everything is working!  Press Ctrl-C to stop the Rails server.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>rails evm:start
-</code></pre></div></div>
-
-<p>The web UI should now be available at <code class="language-plaintext highlighter-rouge">http://localhost:3000</code>. The default username is <code class="language-plaintext highlighter-rouge">admin</code> and the default password is <code class="language-plaintext highlighter-rouge">smartvm</code>.</p>
+<p>Note that in this runtime mode we are only verifying that the components are installed correctly.  However, individual workers are not running, so actions that require asynchronous handling will appear to hang forever.  To run the application complete with all workers, you can start with <code class="language-plaintext highlighter-rouge">bundle exec rails evm:start</code> and stop with <code class="language-plaintext highlighter-rouge">bundle exec rails evm:stop</code>.  Otherwise, read ahead to learn about running individual workers during development.</p>
 
 <h2 id="further-reading">Further Reading</h2>
 

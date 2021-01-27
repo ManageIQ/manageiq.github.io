@@ -580,60 +580,6 @@ you checked out in the core repo.</p>
 <p>Unfortunately Rails Engines don’t support running <code class="language-plaintext highlighter-rouge">rails console</code> from the root of the plugin. To test your code you
 will have to change the dependency of ManageIQ to point to your local plugin. See above.</p>
 
-<h3 id="migrating-a-pr-from-manageiq">Migrating a PR from ManageIQ</h3>
-
-<p>If you have an open PR on ManageIQ that has not been merged before the split, you can cherry-pick all commits from
-the feature branch into a new branch in the plugin repository.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># get all commit shas that are not yet in master - or just look at https://github.com/ManageIQ/manageiq/pull/&lt;id&gt;</span>
-<span class="nb">cd</span> /path/to/manageiq
-git checkout feature_branch
-git log <span class="si">$(</span>git rev-parse <span class="nt">--abbrev-ref</span> HEAD<span class="si">)</span> <span class="nt">--not</span> refs/heads/master
-
-<span class="c"># add ManageIQ as a remote in your plugin</span>
-<span class="nb">cd</span> /path/to/manageiq-providers-amazon
-git remote add miq /path/to/manageiq
-git fetch miq
-
-<span class="c"># create a new branch in the plugin and cherry-pick commits</span>
-git checkout <span class="nt">-b</span> feature_branch
-git cherry-pick &lt;sha from above&gt;
-<span class="c"># should be a clean cherry-pick if it only changes files that are in the new plugin, if not:</span>
-<span class="c"># git checkout master -- path/to/file # will discard your changes to file</span>
-<span class="c"># git rm path/to/file # will drop the file from the cherry-pick in progress</span>
-<span class="c"># git cherry-pick --continue # will continue the cherry-pick</span>
-<span class="c"># git cherry-pick --abort # will abort</span>
-</code></pre></div></div>
-
-<p>If your PR has a lot of commits or you have a lot of PRs, this script automates it.
-It needs <code class="language-plaintext highlighter-rouge">jq</code> to parse the github API output - <code class="language-plaintext highlighter-rouge">brew install jq</code> or <code class="language-plaintext highlighter-rouge">dnf install jq</code> or <code class="language-plaintext highlighter-rouge">apt install jq</code>.
-Optionally uses <a href="https://hub.github.com/">hub</a> to create the pull request.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PR=123
-COMMITS=`wget -qO- https://api.github.com/repos/ManageIQ/manageiq/pulls/$PR/commits | jq -r .[].sha`
-TITLE=`wget -qO- https://api.github.com/repos/ManageIQ/manageiq/pulls/$PR | jq -r .title`
-DESCRIPTION=`wget -qO- https://api.github.com/repos/ManageIQ/manageiq/pulls/$PR | jq -r .body`
-
-cd manageiq-ui-classic/
-
-git remote add tmp https://github.com/ManageIQ/manageiq.git
-
-git fetch tmp pull/$PR/head
-git checkout -b miq_pr_$PR
-
-echo "Running cherry-pick - if there's a conflict, resolve it, commit, and do git cherry-pick --continue"
-git cherry-pick -x $COMMITS
-
-git push -u origin miq_pr_$PR
-[ -x "`which hub`" ] &amp;&amp; hub pull-request -m "$TITLE"
-
-$DESCRIPTION
-
-(converted from ManageIQ/manageiq#$PR)" || echo "hub not found, not creating PR"
-
-git remote rm tmp
-</code></pre></div></div>
-
 <h3 id="creating-a-new-provider-plugin">Creating a new provider (plugin)</h3>
 
 <p>If you plan to create a cloud manager type provider, you can use this <a href="/docs/guides/plugins/generator">provider generator</a> to scaffold.</p>
