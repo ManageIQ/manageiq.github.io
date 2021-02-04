@@ -821,7 +821,8 @@
 <li class="toc-entry toc-h5"><a href="#resetting-database-replication">Resetting Database Replication</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h4"><a href="#backing-up-and-restoring-a-database">Backing Up and Restoring a Database</a>
+<li class="toc-entry toc-h4"><a href="#backing-up-and-restoring-manageiq-in-a-kubernetes-based-environment-podified">Backing Up and Restoring ManageIQ in a Kubernetes Based Environment (podified)</a></li>
+<li class="toc-entry toc-h4"><a href="#backing-up-and-restoring-a-database-for-an-appliance-based-environment">Backing Up and Restoring a Database for an Appliance Based Environment</a>
 <ul>
 <li class="toc-entry toc-h5"><a href="#running-a-single-database-backup">Running a Single Database Backup</a></li>
 <li class="toc-entry toc-h5"><a href="#restoring-a-database-from-a-backup">Restoring a Database from a Backup</a></li>
@@ -7187,8 +7188,41 @@ field.</p>
   </li>
 </ol>
 
-<h4 id="backing-up-and-restoring-a-database">
-<a class="anchor" href="#backing-up-and-restoring-a-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Backing Up and Restoring a Database</h4>
+<h4 id="backing-up-and-restoring-manageiq-in-a-kubernetes-based-environment-podified">
+<a class="anchor" href="#backing-up-and-restoring-manageiq-in-a-kubernetes-based-environment-podified" aria-hidden="true"><span class="octicon octicon-link"></span></a>Backing Up and Restoring ManageIQ in a Kubernetes Based Environment (podified)</h4>
+
+<p><strong>Prerequisites:</strong></p>
+<ul>
+  <li>Velero and Restic must be installed and working in your cluster. For more information on Velero, see the <a href="https://velero.io/docs/v1.5/">Velero documentation</a>. For more information on Restic, see the <a href="https://restic.readthedocs.io/en/stable/">Restic documentation</a>
+</li>
+</ul>
+
+<p><strong>Note:</strong> The operator adds labels and/or annotations to everything that needs to be backed up. You can easily and quickly backup only what is required. The operator will add annotations for restic volume backups for example, <code class="language-plaintext highlighter-rouge">backup.velero.io/backup-volumes: &lt;volume-label&gt;</code>.</p>
+
+<ol>
+  <li>The backup label key can be configured by adding the following to the CR. The default label is applied if no value is specified for <code class="language-plaintext highlighter-rouge">backupLabelName</code>.
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>...
+spec:
+  ...
+  backupLabelName: &lt;your label name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Create a backup by running the command:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>velero backup create &lt;your backup name&gt; --include-namespaces &lt;your namespace&gt; -l &lt;your label name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>In order to restore a backup, first ensure the ManageIQ CRD exists. Then, restore the backup by running the commands:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>oc new-project &lt;your namespace&gt;
+velero restore create --from-backup &lt;your backup name&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="backing-up-and-restoring-a-database-for-an-appliance-based-environment">
+<a class="anchor" href="#backing-up-and-restoring-a-database-for-an-appliance-based-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Backing Up and Restoring a Database for an Appliance Based Environment</h4>
 
 <h5 id="running-a-single-database-backup">
 <a class="anchor" href="#running-a-single-database-backup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running a Single Database Backup</h5>
