@@ -5,9 +5,25 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 04 Feb 2021 15:15:49 +0000</pubDate>
-    <lastBuildDate>Thu, 04 Feb 2021 15:15:49 +0000</lastBuildDate>
+    <pubDate>Thu, 04 Feb 2021 22:54:17 +0000</pubDate>
+    <lastBuildDate>Thu, 04 Feb 2021 22:54:17 +0000</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>ManageIQ Kasparov GA announcement</title>
+        <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Kasparov&lt;/strong&gt;!  This release is named after the great chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Garry_Kasparov&quot;&gt;Garry Kasparov&lt;/a&gt;.  You can download the Kasparov-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2021/02/manageiq-kasparov-ga-announcement/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2021/02/manageiq-kasparov-ga-announcement/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>Announcing Kasparov Beta, Jansa-3, and Ivanchuk-8</title>
@@ -143,23 +159,6 @@ Here are just some of the things added since the Ivanchuk-5 release:&lt;/p&gt;
         <pubDate>Mon, 27 Jul 2020 19:12:13 +0000</pubDate>
         <link>http://manageiq.org/blog/2020/07/Announcing-Ivanchuk-6/</link>
         <guid isPermaLink="true">http://manageiq.org/blog/2020/07/Announcing-Ivanchuk-6/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Announcing Ivanchuk-5</title>
-        <description>&lt;p&gt;We have built Ivanchuk-5. This release contains bug fixes, UI tweaks, and stabilization.
-Here are just some of the things added since the Ivanchuk-4 release:&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 11 Jun 2020 19:12:13 +0000</pubDate>
-        <link>http://manageiq.org/blog/2020/06/Announcing-Ivanchuk-5/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2020/06/Announcing-Ivanchuk-5/</guid>
         
         <category>releases</category>
         
