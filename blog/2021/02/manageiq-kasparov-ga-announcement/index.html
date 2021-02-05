@@ -137,10 +137,10 @@
     </ul>
   </li>
   <li>
-    <p><strong>Default to systemd-based workers in appliance</strong> - While systemd-based worker were available as a configuration option in previous versions, in this release we changed appliances to use systemd by default.  As such, you can also use the diagnostic tools you may already be familiar with, in order to inspect the health of the systemd processes.</p>
+    <p><strong>Default to systemd-based workers in appliance</strong> - While systemd-based workers were available as a configuration option in previous versions, in this release we changed appliances to use systemd by default.  As such, you can also use the diagnostic tools you may already be familiar with, in order to inspect the health of the systemd processes.</p>
   </li>
   <li>
-    <p><strong>Backup and Restore in podified</strong> - This release adds backup and restore capability for podified deployments when using the <a href="https://velero.io">Velero</a> and Restic(https://restic.net) backup tools.  The operator will label all resources that need backups, allowing Velero to do it’s thing.</p>
+    <p><strong>Backup and Restore in podified</strong> - This release adds backup and restore capability for podified deployments when using the <a href="https://velero.io">Velero</a> and <a href="https://restic.net">Restic</a> backup tools.  The operator will label all resources that need backups, allowing Velero to do its thing.</p>
   </li>
   <li><strong>Support for PostgreSQL 12</strong> - PostgreSQL 12 is now supported as a target database.  While the internal database is still using PostgreSQL 10, if you are using an external database, you can upgrade it to PostgreSQL 12 and it will continue to work with ManageIQ.</li>
 </ul>
