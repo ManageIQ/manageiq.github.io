@@ -674,7 +674,7 @@ then substituted with the context of the <code class="language-plaintext highlig
 
 <p>In the simplest case you can use <code class="language-plaintext highlighter-rouge">N_('bar')</code> saying “do not translate this string” such as:</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">menu_item</span> <span class="o">=</span> <span class="no">Menu</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">N_</span><span class="p">(</span><span class="s1">'Cloud Tennants'</span><span class="p">))</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">menu_item</span> <span class="o">=</span> <span class="no">Menu</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">N_</span><span class="p">(</span><span class="s1">'Cloud Tenants'</span><span class="p">))</span>
 </code></pre></div></div>
 
 <p>and such strings will be caught by the <code class="language-plaintext highlighter-rouge">rake gettext:find</code> task so these strings end up in the catalog.
