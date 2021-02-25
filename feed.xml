@@ -5,9 +5,23 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 25 Feb 2021 15:17:37 +0000</pubDate>
-    <lastBuildDate>Thu, 25 Feb 2021 15:17:37 +0000</lastBuildDate>
+    <pubDate>Thu, 25 Feb 2021 16:36:31 +0000</pubDate>
+    <lastBuildDate>Thu, 25 Feb 2021 16:36:31 +0000</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>ManageIQ at scale at KPN</title>
+        <description>&lt;h1 id=&quot;manageiq-at-scale-at-kpn&quot;&gt;ManageIQ at scale at KPN&lt;/h1&gt;
+
+</description>
+        <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2021/02/manageiq-at-scale-at-kpn/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2021/02/manageiq-at-scale-at-kpn/</guid>
+        
+        <category>collaboration</category>
+        
+        
+      </item>
     
       <item>
         <title>ManageIQ Kasparov GA announcement</title>
@@ -142,23 +156,6 @@ configured for OpenID-Connect authentication when deploying ManageIQ on containe
         <pubDate>Wed, 29 Jul 2020 19:12:13 +0000</pubDate>
         <link>http://manageiq.org/blog/2020/07/Announcing-Jansa-Release-Candidate/</link>
         <guid isPermaLink="true">http://manageiq.org/blog/2020/07/Announcing-Jansa-Release-Candidate/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Announcing Ivanchuk-6</title>
-        <description>&lt;p&gt;ManageIQ Ivanchuk-6 is now available. This release contains bug fixes, UI tweaks, and stabilization.
-Here are just some of the things added since the Ivanchuk-5 release:&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 27 Jul 2020 19:12:13 +0000</pubDate>
-        <link>http://manageiq.org/blog/2020/07/Announcing-Ivanchuk-6/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2020/07/Announcing-Ivanchuk-6/</guid>
         
         <category>releases</category>
         

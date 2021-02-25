@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - ManageIQ at scale at KPN</title>
+  <meta name="description" content="ManageIQ at scale at KPN">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-8de063b063e781c83c3900f2fb42692885edeac0346d54e22467184ccc393942.css">
+  <link rel="canonical" href="http://manageiq.org/blog/2021/02/2021-02-25-manageiq-at-scale-at-kpn/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/blog/2021/02/manageiq-at-scale-at-kpn/">
+      <div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10">
+        <header class="blog_header">
+          <h1>
+            ManageIQ Blog
+          </h1>
+        </header>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-10 blog_main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="page-title" itemprop="name headline">ManageIQ at scale at KPN</h1>
+
+            <div class="post-meta">
+              <time datetime="2021-02-25T00:00:00+00:00" itemprop="datePublished">
+                Feb 25, 2021
+              </time>
+
+              
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                by
+                <i itemprop="name">
+                  Evert Mulder and Ruthger Gubbels
+                </i>
+              </span>
+              
+
+              <ul class="post-tags">
+                
+                <li>
+                  <a href="/blog/tags/collaboration">collaboration</a>
+                </li>
+                
+              </ul>
+            </div>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <h1 id="manageiq-at-scale-at-kpn">ManageIQ at scale at KPN</h1>
+
+<p>Evert Mulder (systems architect) and Ruthger Gubbels (lead software engineer)</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>KPN is a leading telecommunications and IT provider and market leader in the Netherlands. With our fixed and mobile networks for telephony, data and television we serve customers at home and abroad. KPN focuses on both private customers and business users, from small to large. In addition, we offer telecom providers access to our widespread networks. To make these solutions possible, various physical and virtual infrastructure is used by a considerable number of different teams within KPN. To be able to provide these teams the services they need in a timely and standardized manner, KPN started a project in 2017 to offer them a self-service portal with which the teams could create and manage their own infrastructure. A DevOps team was formed to deliver this vision. While reviewing several possibilities, we soon realized that the self-service portal software had to be flexible, customizable and scalable enough to support a large heterogeneous set of infrastructure stacks, services and use cases. We did a successful proof of concept with ManageIQ, in which the option to add existing infrastructure using the provider concept proved to be of great value to us.</p>
+
+<h3 id="current-setup">Current setup</h3>
+
+<p>At KPN we primarily use the VMware vSphere cloud computing platform for virtualization of our on-premise infrastructure. The current setup consists of multiple vCenters spanning several datacenters in the Netherlands. While starting out with a small set of VMs, our ManageIQ implementation now is managing more than 8,000 virtual machines running on 350+ hosts connected to multiple physical networks, using over 4,000 virtual networks. To be able to run ManageIQ at this scale, and satisfy the demand from our organization we have a DevOps ‘portal’ team in place that can create new services, maintain the ManageIQ setup running on OpenShift, and troubleshoot and fix all the kinds of issues that occur. When new features are introduced or bugs are fixed, a new version of the software is rolled out to our testing platform and, once validated, promoted to production quickly using an automated CI/CD pipeline.</p>
+
+<p>Our current ManageIQ setup is built on one region and we have created separate zones for our different providers, so we are able to distribute provider related load over multiple pods. For redundancy, the ManageIQ setup is running active-active on multiple datacenters with an active-passive setup for the Postgres database, that itself runs on a dedicated virtual machine.
+The services that are offered through the self-service portal to the internal customers are often relayed from services provided by other teams. For instance, backup and restore are services that are provided by one team and offered for each virtual machine through the self-service portal, while software defined network services are provided by yet another team and also offered through the portal. We mostly use Ansible playbooks on an AWX/Ansible Tower as an automation engine for this. The teams that provide services that have to be offered through the portal can create and maintain their own Ansible playbooks to deliver their services. This model allows us to scale our service catalog beyond the capabilities of the DevOps portal team.</p>
+
+<h3 id="downstream">Downstream</h3>
+
+<p>Important factors for choosing ManageIQ were the access to the source code and the presence of an active community of programmers contributing to the software. KPN makes use of these community improvements and also itself contributes to the software. In day to day troubleshooting and problem fixing, being able to trace errors and having the ability to read and change the code has proven to be mandatory. But even then, maintaining a downstream version of ManageIQ isn’t an easy task. The code base is large, fairly complex, and not always consistent. There are with periodical big changes in a number of separate repositories. Finding the code you’re looking for isn’t always straightforward, and this is where the help of the ManageIQ community and the development team at Red Hat comes in. Using <a href="https://gitter.im/ManageIQ/manageiq">gitter.im</a> and <a href="https://github.com/ManageIQ">github.com</a>, communicating problems and trying out probable solutions has been very productive. With this help, we were able to implement a number of downstream customizations to our own code base:</p>
+
+<ul>
+  <li>Running multiple Ansible playbooks for 1 request</li>
+  <li>Configure the proxy for VM console per VMware provider</li>
+  <li>Custom resource limits for VM reconfigure</li>
+  <li>Performance improvements for complex service dialogs</li>
+  <li>Custom RBAC filtering because of higher security requirements and performance issues</li>
+  <li>Integration with VMware vrOPS</li>
+  <li>Tooling around development, deployment, and monitoring</li>
+</ul>
+
+<h3 id="upstream">Upstream</h3>
+
+<p>As ManageIQ is an open source software solution and we ourselves take pride in being part of the ManageIQ community, we often check if a new customization we’ve created could be generic enough for other ManageIQ users to be used more widely and if so, upstream our changes to the community. Often, changes make it to the mainstream ManageIQ releases. Some of the additions we’ve made are:</p>
+<ul>
+  <li>Improvement of handling and returning AWX job results</li>
+  <li>Testing and improving the Graph Refresh of the VMware provider added in the Jansa Release</li>
+  <li>A number of bug fixes</li>
+  <li>A VMware NSX-T network provider</li>
+  <li>VM reconfigure options: resizing disks, edit networks</li>
+  <li>VM Console stability issues</li>
+</ul>
+
+<p>Our biggest addition to ManageIQ to date is the network provider for VMware NSX-T, which has been featured in ManageIQ sprint review 136. This network provider was developed by the KPN DevOps team from the ground up, using code examples from the Openstack and Nuage network providers and help from community and Red Hat developers. It was upstreamed in the spring of 2020 and we are very proud it will be part of the upcoming ManageIQ Kasparov Release. Now that KPN is using the VMware NSX-T network provider, our internal teams can speed up changes of the connectivity within their infrastructure using a number of API calls we provide. Changes in a matter of minutes instead of the hoops they normally had to jump through, with multiple forms and/or documents using mail and a processing time of several days or even weeks or months.</p>
+
+<h3 id="challenges">Challenges</h3>
+<p>In the 5 years that we are using and customizing ManageIQ we have had our sheer number of challenges. The size and complexity of the code base, dependency issues, slow performance of the RBAC filter (still is a problem), limitations of the Service Dialogs and the editor, the import, export and deployment of the automation code, dialogs, buttons and other parts for multiple installations (Dev/Test/Acceptance/Production) and of course the rework of customization after major releases.
+For the import, export and deployment of the automation code, dialogs, buttons and other parts we have made changes to the import and export of ManageIQ and the RH consulting scripts to do lookups of relations using the name or description property instead of id’s as id’s are unique for every installation. We also strip out many timestamps and other unnecessary properties cluttering the git differences. We haven’t upstreamed these changes as we don’t know if other ManageIQ users are using the same method of deploying and have similar problems and our solution is incompatible with the existing import/export.</p>
+
+<p>We want to keep up with the minor and major releases of ManageIQ, but having our customs code means that we often have to redo and rewrite it. There have been some big changes in ManageIQ, redesign of the Service Dialogs editor, the Angular and React Javascript frameworks, VMware console proxy and the VMware Inventory Refresh to name a few. On top of that, the transition to OpenShift 3.x and now OpenShift 4.x for Jansa.</p>
+
+<p>We do see that as we are progressing in time and our knowledge of ManageIQ is growing we can pinpoint and solve bugs more quickly and handle more complex changes. We can now see through the many layers, from database via the application code up to the user interface.</p>
+
+<h3 id="future">Future</h3>
+<p>We are living in a time of fast changing IT/TI landscapes and the push to always have faster Time To Market, the need to automate very thing is getting bigger and bigger. And of cause doing it in a secure and uniform manner. Using ManageIQ as the standard gateway to managing resources, will help our internal teams to do just that. For now the ManageIQ at KPN is mostly about our private vSphere cloud with virtual Machines and connecting them, but we have plans to add more services. Bare Metal using PXE, loadbalancers, an S3 storage manager and perhaps even AWS, Microsoft Azure or Google Cloud to join as the public cloud.</p>
+
+<p>We, as the ManageIQ DevOps team at KPN, will be doing our up- and downstream development and the community will go forward to unlocking new abilities, so that in the future we can use ManageIQ at hyperscale.</p>
+
+          </div>
+        </article>
+      </div>
+
+      <div class="col-xs-12 col-sm-2 blog_side">
+          <div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Categories
+  </h3>
+
+  <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/announcements">announcements</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Archive
+  </h3>
+
+  <ul id="blog_archive_menu" class="blog_menu">
+    
+    
+    
+
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2021/index.html">
+        2021
+      </a>
+      
+        <ul class="blog_menu blog_months">
+  
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2021/02/index.html">
+      February
+    </a>
+    
+  </li>
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2021/01/index.html">
+      January
+    </a>
+    
+  </li>
+  
+</ul>
+
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2020/index.html">
+        2020
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2019/index.html">
+        2019
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2018/index.html">
+        2018
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2017/index.html">
+        2017
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2016/index.html">
+        2016
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2015/index.html">
+        2015
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2014/index.html">
+        2014
+      </a>
+      
+    </li>
+    
+  </ul>
+</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/_posts/2021-02-25-manageiq-at-scale-at-kpn.md">
+          <i class="fa fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2021 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>
