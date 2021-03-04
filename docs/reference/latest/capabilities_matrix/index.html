@@ -661,12 +661,12 @@
 <h3 id="infrastructure-providers">
 <a class="anchor" href="#infrastructure-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Infrastructure Providers</h3>
 
-<p>The following table outlines the capabilities of ManageIQ that are known to work for various virtual infrastructure providers.</p>
+<p>The following tables outline the capabilities of ManageIQ that are known to work for various virtual infrastructure providers.</p>
 
 <table>
   <thead>
     <tr>
-      <th>Feature</th>
+      <th>Discovery</th>
       <th>VMware vSphere</th>
       <th>Red Hat Virtualization (RHV)</th>
       <th>Microsoft System Center Virtual Machine Manager (SCVMM)</th>
@@ -675,6 +675,69 @@
   </thead>
   <tbody>
     <tr>
+      <td>Compute Inventory</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅ (Nodes and Services)</td>
+    </tr>
+    <tr>
+      <td>Network Inventory</td>
+      <td>✅</td>
+      <td>✅ (OVN)</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Storage Inventory</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Events</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Metrics</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Forensic Analysis (SmartState)</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅ (Nodes)</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>General Features</th>
+      <th>VMware vSphere</th>
+      <th>Red Hat Virtualization (RHV)</th>
+      <th>Microsoft System Center Virtual Machine Manager (SCVMM)</th>
+      <th>OpenStack Platform (OSP) Director</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Discovery - Provider</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
       <td>Relationship Discovery</td>
       <td>✅</td>
       <td>✅</td>
@@ -682,14 +745,14 @@
       <td>✅</td>
     </tr>
     <tr>
-      <td>VM Drift Comparison</td>
+      <td>Drift Comparison</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
-      <td>❌</td>
+      <td>✅ (Nodes)</td>
     </tr>
     <tr>
-      <td>Track VM Genealogy</td>
+      <td>VM Genealogy</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
@@ -700,21 +763,21 @@
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>VM Event Timelines</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
       <td>❌</td>
     </tr>
     <tr>
-      <td>Capture VM/Instance Event Timelines</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
+      <td>Infrastructure Event Timelines</td>
       <td>❌</td>
-    </tr>
-    <tr>
-      <td>Discovery - Provider</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
       <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>Reporting</td>
@@ -738,16 +801,23 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Remote Console VM Access (see section below)</td>
+      <td>Automation Work Flows</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
     </tr>
     <tr>
-      <td>Snapshot Creation and Removal</td>
-      <td>✅</td>
-      <td>✅</td>
+      <td>Tag Mapping from Provider</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Tag Mapping to Provider</td>
+      <td>❌</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
@@ -760,20 +830,6 @@
     </tr>
     <tr>
       <td>VM Policy Enforcement</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>VM Power Operations</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>VM Retirement</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
@@ -807,6 +863,97 @@
       <td>✅</td>
       <td>❌</td>
     </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operations</th>
+      <th>VMware vSphere</th>
+      <th>Red Hat Virtualization (RHV)</th>
+      <th>Microsoft System Center Virtual Machine Manager (SCVMM)</th>
+      <th>OpenStack Platform (OSP) Director</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VM Remote Console Access (see section below)</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>VM Power Operations</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>VM Provisioning</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>- using PXE</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- using ISO</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- from Template to VM</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- from VM to Template</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- Clone from VM to VM</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- Customize Windows Templates with Sysprep</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- Cloud-init</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>VM Retirement</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
     <tr>
       <td>VM Reconfiguration</td>
       <td>✅</td>
@@ -815,56 +962,21 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Automation Work Flows</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Provision VM using PXE</td>
+      <td>- Disk Addition</td>
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
     <tr>
-      <td>Provision VM using ISO</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Provision from Template to VM</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Provision from VM to Template</td>
+      <td>- Network Interface Add/Remove</td>
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
     <tr>
-      <td>Clone from VM to VM</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Disk Addition to VM</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Network Interface Add/Remove to VM</td>
+      <td>VM Snapshot Creation and Removal</td>
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
@@ -875,147 +987,49 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Provision Host</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Cloud-Init</td>
-      <td>❌</td>
       <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
     </tr>
     <tr>
-      <td>Customize Windows Templates with Sysprep during Provisioning</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
+      <td>Node Operations</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td>OVN Provider</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Nodes Inventory</td>
+      <td>- Add/Remove Node</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
     </tr>
     <tr>
-      <td>OpenStack Services Inventory</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Nodes Drift Comparison</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Nodes Smart State</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Capacity &amp; Utilization</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Capture Infrastructure Event Timelines</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Node Power Operation</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Capacity Planning</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Add/Remove Node</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Scale Down Node</td>
+      <td>- Scale Down Node</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>✅ (Compute nodes only)</td>
     </tr>
     <tr>
-      <td>Scale Up Nodes</td>
+      <td>- Scale Up Nodes</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>✅ (Compute nodes only)</td>
     </tr>
     <tr>
-      <td>Nodes Policy Enforcement</td>
+      <td>- Nodes Policy Enforcement</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
     </tr>
     <tr>
-      <td>Nodes Evacuate</td>
+      <td>- Nodes Evacuate</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
-    </tr>
-    <tr>
-      <td>OpenStack Upgrade</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Tag Mapping from Provider</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Tag Mapping to Provider</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
     </tr>
   </tbody>
 </table>
@@ -1065,12 +1079,12 @@
 <h3 id="cloud-providers">
 <a class="anchor" href="#cloud-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cloud Providers</h3>
 
-<p>The following table outlines the capabilities of ManageIQ that are known to work for various cloud providers.</p>
+<p>The following tables outline the capabilities of ManageIQ that are known to work for various cloud providers.</p>
 
 <table>
   <thead>
     <tr>
-      <th>Feature</th>
+      <th>Discovery</th>
       <th>Amazon Web Services (AWS)</th>
       <th>Microsoft Azure</th>
       <th>Google Cloud Platform (GCP)</th>
@@ -1082,12 +1096,219 @@
   </thead>
   <tbody>
     <tr>
+      <td>Compute Inventory</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>- Key Pairs</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Network Inventory</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>- Cloud Networks</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>- Cloud Subnets</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>- Floating IP Addresses</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>N/A</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- Load Balancers</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- Network Managers</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>- Network Manager Relations</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>- Network Ports</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>- Network Routers</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- Security Groups</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>N/A</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Storage Inventory</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>- Storage Manager</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- Volumes</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Events</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Metrics</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Forensic Analysis (SmartState)</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>General Features</th>
+      <th>Amazon Web Services (AWS)</th>
+      <th>Microsoft Azure</th>
+      <th>Google Cloud Platform (GCP)</th>
+      <th>Red Hat OpenStack Platform (OSP)</th>
+      <th>IBM PowerVC via the OpenStack API</th>
+      <th>IBM Power Systems Virtual Servers</th>
+      <th>Oracle Cloud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Discovery - Provider</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
       <td>Relationship Discovery</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
-      <td>✅</td>
+      <td>❌</td>
       <td>✅</td>
       <td>✅</td>
     </tr>
@@ -1102,7 +1323,7 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Track Instance Genealogy</td>
+      <td>Instance Genealogy</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
@@ -1122,17 +1343,7 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Capture Cloud Layer Timelines</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Capture Instance Event Timelines</td>
+      <td>Instance Event Timelines</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
@@ -1142,43 +1353,13 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Discovery - Provider</td>
+      <td>Cloud Layer Timelines</td>
       <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Disk Addition to Instance</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Key Pairs Inventory</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Key Pairs Management</td>
-      <td>✅</td>
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
       <td>✅</td>
-      <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
     </tr>
     <tr>
@@ -1212,31 +1393,31 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Remote Console Instance Access</td>
+      <td>Automation Work Flows</td>
+      <td>✅</td>
       <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅ (VNC)</td>
-      <td>✅ (NovaLink-managed hosts only)</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Snapshot Creation and Removal</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
+      <td>✅</td>
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
     <tr>
-      <td>Instance Compliance Enforcement</td>
+      <td>Tag Mapping from Provider</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Tag Mapping to Provider</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1252,24 +1433,14 @@
       <td>✅</td>
     </tr>
     <tr>
-      <td>Instance Power Operations</td>
-      <td>✅</td>
-      <td>✅</td>
+      <td>Instance Compliance Enforcement</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
-    </tr>
-    <tr>
-      <td>Instance Retirement</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Alerts - Real Time</td>
@@ -1311,6 +1482,133 @@
       <td>✅</td>
       <td>✅</td>
     </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Amazon Web Services (AWS)</th>
+      <th>Microsoft Azure</th>
+      <th>Google Cloud Platform (GCP)</th>
+      <th>Red Hat OpenStack Platform (OSP)</th>
+      <th>IBM PowerVC via the OpenStack API</th>
+      <th>IBM Power Systems Virtual Servers</th>
+      <th>Oracle Cloud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Instance Remote Console Access</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅ (VNC)</td>
+      <td>✅ (NovaLink-managed hosts only)</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Instance Power Operations</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Instance Provisioning</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- from Image to Instance</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- from Image Snapshot to Instance</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- from Volume to Instance</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- from Volume Snapshot to Instance</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- from Orchestration Template</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- Cloud-init</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>- Sysprep Windows Templates</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>N/A</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Instance Retirement</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
     <tr>
       <td>Instance Reconfiguration</td>
       <td>❌</td>
@@ -1322,22 +1620,12 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Volume Inventory</td>
-      <td>❌</td>
-      <td>❌</td>
+      <td>- Disk Addition</td>
       <td>✅</td>
       <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Volume Creation/Deletion</td>
-      <td>❌</td>
-      <td>❌</td>
       <td>❌</td>
       <td>✅</td>
-      <td>✅</td>
+      <td>❌</td>
       <td>✅</td>
       <td>❌</td>
     </tr>
@@ -1352,24 +1640,24 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Automation Work Flows</td>
-      <td>✅</td>
+      <td>Instance Snapshot Creation and Removal</td>
       <td>❌</td>
-      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
     <tr>
-      <td>Network Manager - Read Only</td>
+      <td>Key Pairs Management</td>
+      <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>✅</td>
       <td>✅</td>
+      <td>✅</td>
       <td>❌</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
     </tr>
     <tr>
       <td>Network Manager - CRUD Actions</td>
@@ -1382,27 +1670,7 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Storage Manager</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Provision from Image to Instance</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Provision from Image Snapshot to Instance</td>
+      <td>- Create/Update/Delete Network</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1412,7 +1680,7 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Provision from Volume to Instance</td>
+      <td>- Create/Update/Delete Subnet</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1422,17 +1690,7 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Provision from Volume Snapshot to Instance</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Orchestration Template Provisioning</td>
+      <td>- Create/Update/Delete Routers</td>
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
@@ -1442,163 +1700,13 @@
       <td>❌</td>
     </tr>
     <tr>
-      <td>Cloud-Init</td>
+      <td>Volume Creation/Deletion</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Sysprep Windows Templates</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>N/A</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Network Manager Relationships</td>
       <td>✅</td>
       <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Relationship Discovery</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Cloud Network Inventory</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Cloud Subnet Inventory</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Network Router Inventory</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Security Groups</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>N/A</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Floating IP Addresses</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>N/A</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Network Ports</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>Load Balancer Inventory</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Create/Update/Delete Network</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Create/Update/Delete Subnet</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Create/Update/Delete Routers</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Tag Mapping from Provider</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>✅</td>
-      <td>✅</td>
-      <td>❌</td>
-      <td>❌</td>
-    </tr>
-    <tr>
-      <td>Tag Mapping to Provider</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
-      <td>❌</td>
       <td>❌</td>
     </tr>
   </tbody>
