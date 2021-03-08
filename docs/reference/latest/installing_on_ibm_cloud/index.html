@@ -616,10 +616,14 @@
  <img src="../images/buckets.png" alt="Figure showing example standard type bucket created." caption="Figure 3. Example Standard type bucket created" caption-side="bottom"></p>
   </li>
   <li>
-    <p>Upload the ManageIQ installation image (file name: <code class="language-plaintext highlighter-rouge">manageiq-openstack-jansa-1.qc2</code>) to your IBM Cloud Object Storage. Select your bucket and click Add Objects to upload the images. For more information, see <a href="https://cloud.ibm.com/docs/services/cloud-object-storage?topic=cloud-object-storage-upload#upload-console">Uploading data by using the console</a>.</p>
+    <p>Rename the ManageIQ installation image file and change the file extension from <code class="language-plaintext highlighter-rouge">.qc2</code> to <code class="language-plaintext highlighter-rouge">.qcow2</code>.
+For example, change from (file name: <code class="language-plaintext highlighter-rouge">manageiq-openstack-kasparov-1.qc2</code>) to (file name: <code class="language-plaintext highlighter-rouge">manageiq-openstack-kasparov-1.qcow2</code>).</p>
+  </li>
+  <li>
+    <p>Upload the ManageIQ installation image (file name: <code class="language-plaintext highlighter-rouge">manageiq-openstack-kasparov-1.qcow2</code>) to your IBM Cloud Object Storage. Select your bucket and click Add Objects to upload the images. For more information, see <a href="https://cloud.ibm.com/docs/services/cloud-object-storage?topic=cloud-object-storage-upload#upload-console">Uploading data by using the console</a>.</p>
 
     <p><strong>Note:</strong> You can use the Aspera high-speed transfer plug-in to upload images larger than 200 MB.<br>
-<img src="../images/upload_images_to_bucket.png" alt="Figure showing example that uses Aspera uploaded file to bucket." caption="Figure 4. Example using Aspera uploaded file to bucket" caption-side="bottom"></p>
+<img src="../images/upload_images_to_bucket_2.png" alt="Figure showing example that uses Aspera uploaded file to bucket." caption="Figure 4. Example using Aspera uploaded file to bucket" caption-side="bottom"></p>
   </li>
   <li>
     <p>From IBM Cloud Identity and Access Management (IAM), create an authorization between the Virtual Private Cloud (VPC) Infrastructure (source service) &gt; Image Service for VPC (resource type) and Cloud Object Storage (target service). For more information, see <a href="https://cloud.ibm.com/docs/iam?topic=iam-serviceauth#serviceauth">Create an authorization</a>.</p>
@@ -664,7 +668,7 @@
 
     <p>h. Click <strong>Import custom image</strong>.</p>
 
-    <p><img src="../images/select_qcow2_image.png" alt="Figure showing example of custom image imported." caption="Figure 9. Example of custom image imported" caption-side="bottom"></p>
+    <p><img src="../images/select_qcow2_image_2.png" alt="Figure showing example of custom image imported." caption="Figure 9. Example of custom image imported" caption-side="bottom"></p>
 
     <p><img src="../images/results_vpc_images.png" alt="Figure showing example of custom image listing after successful image creation." caption="Figure 10. Example of custom image listing after successful image creation" caption-side="bottom"></p>
   </li>
@@ -700,10 +704,10 @@
   </li>
   <li>
     <p>Assign the floating IP address:</p>
-
-    <p><img src="../images/floating_ip_vpc.png" alt="Figure showing example Floating IP address." caption="Figure 16. Example Floating IP address assigned" caption-side="bottom"></p>
   </li>
 </ol>
+
+<p><img src="../images/floating_ip_vpc.png" alt="Figure showing example Floating IP address." caption="Figure 16. Example Floating IP address assigned" caption-side="bottom"></p>
 
 <h3 id="step-b-setting-up-the-manageiq-appliance">
 <a class="anchor" href="#step-b-setting-up-the-manageiq-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step B. Setting up the ManageIQ appliance</h3>
