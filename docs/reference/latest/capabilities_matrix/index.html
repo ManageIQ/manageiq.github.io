@@ -560,6 +560,7 @@
 <li class="toc-entry toc-h3"><a href="#cloud-providers">Cloud Providers</a></li>
 <li class="toc-entry toc-h3"><a href="#container-providers">Container Providers</a></li>
 <li class="toc-entry toc-h3"><a href="#automation-providers">Automation Providers</a></li>
+<li class="toc-entry toc-h3"><a href="#network-providers">Network Providers</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#smart-state-analysis-capabilities">Smart State Analysis Capabilities</a>
@@ -1949,6 +1950,125 @@
       <td>Automate Workflows</td>
       <td>✅</td>
       <td>✅</td>
+      <td>✅</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="network-providers">
+<a class="anchor" href="#network-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Network Providers</h3>
+
+<p>The following tables outline the capabilities of ManageIQ that are known to work for various network providers.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Discovery</th>
+      <th>Nuage</th>
+      <th>VMware NSX-t</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cloud Tenants</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Cloud Networks</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Cloud Subnets</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Security Groups</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Security Policies</td>
+      <td>❌</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Network Services</td>
+      <td>❌</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Floating IPs</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Network Ports</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Network Routers</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Events</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Metrics</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operations</th>
+      <th>Nuage</th>
+      <th>VMware NSX-t</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Create Cloud Network</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Create Cloud Subnet</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Delete Cloud Subnet</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Delete Floating IP</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Create Security Group</td>
+      <td>❌</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Delete Security Group</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Create Security Policy</td>
+      <td>❌</td>
       <td>✅</td>
     </tr>
   </tbody>
