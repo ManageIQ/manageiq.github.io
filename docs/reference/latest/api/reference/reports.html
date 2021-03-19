@@ -1552,16 +1552,26 @@
 <li class="toc-entry toc-h4"><a href="#response">Response:</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h3"><a href="#scheduling-reports">Scheduling Reports</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#example--one-off-report">Example:  “One off” report</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#request-1">Request</a></li>
+<li class="toc-entry toc-h5"><a href="#response-1">Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-entry toc-h3"><a href="#requesting-report-result-downloads">Requesting Report Result Downloads</a>
 <ul>
-<li class="toc-entry toc-h4"><a href="#request-1">Request:</a></li>
-<li class="toc-entry toc-h4"><a href="#response-1">Response:</a></li>
+<li class="toc-entry toc-h4"><a href="#request-2">Request:</a></li>
+<li class="toc-entry toc-h4"><a href="#response-2">Response:</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h3"><a href="#importing-reports">Importing Reports</a>
 <ul>
-<li class="toc-entry toc-h4"><a href="#request-2">Request:</a></li>
-<li class="toc-entry toc-h4"><a href="#response-2">Response:</a></li>
+<li class="toc-entry toc-h4"><a href="#request-3">Request:</a></li>
+<li class="toc-entry toc-h4"><a href="#response-3">Response:</a></li>
 </ul>
 </li>
 </ul>
@@ -1585,6 +1595,9 @@ collections:</p>
   </li>
   <li>
     <p><a href="#running-reports">Running Reports</a></p>
+  </li>
+  <li>
+    <p><a href="#scheduling-reports">Scheduling Reports</a></p>
   </li>
   <li>
     <p><a href="#requesting-result-downloads">Requesting Report Result Downloads</a></p>
@@ -1873,6 +1886,64 @@ specified above as follows:</p>
 }
 </code></pre>
 
+<h3 id="scheduling-reports">
+<a class="anchor" href="#scheduling-reports" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scheduling Reports</h3>
+
+<p>Scheduling a report is done via the <strong>schedule</strong> action on a report resource as follows</p>
+
+<pre><code class="language-data">POST /api/reports/:id
+</code></pre>
+
+<pre><code class="language-data">{
+  "action" : "schedule"
+  "resource": {
+    "send_email": true|false,
+    "start_date": DateTime,
+    "time_zone":  TZ,
+    "interval": {
+      "unit":  "minutely"|"hourly"|"daily"|"weekly"|"monthly"|"once",
+      "value": "once"
+    },
+    ...
+  }
+}
+</code></pre>
+
+<h4 id="example--one-off-report">
+<a class="anchor" href="#example--one-off-report" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example:  “One off” report</h4>
+
+<h5 id="request-1">
+<a class="anchor" href="#request-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request</h5>
+
+<pre><code class="language-data">POST /api/reports/5
+</code></pre>
+
+<pre><code class="language-data">{
+  "action": "schedule",
+  "resource": {
+    "name":        "Chargeback Report Schedule - 2000/01/01",
+    "description": "Chargeback Report 2000 New Year Report",
+    "resource_type": "MiqReport",
+    "start_date": "2000-01-01T00:00:00Z",
+    "time_zone": "UTC",
+    "interval": { "unit": "once" },
+    "enabled": true
+  }
+}
+</code></pre>
+
+<h5 id="response-1">
+<a class="anchor" href="#response-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response</h5>
+
+<pre><code class="language-data">{
+  "success":       true,
+  "message":       "scheduling of report 5",
+  "schedule_id":   "10",
+  "schedule_href": "http://localhost:3000/api/reports/5/schedules/10",
+  "href":          "http://localhost:3000/api/reports/5"
+}
+</code></pre>
+
 <h3 id="requesting-report-result-downloads">
 <a class="anchor" href="#requesting-report-result-downloads" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requesting Report Result Downloads</h3>
 
@@ -1880,8 +1951,8 @@ specified above as follows:</p>
 can be done via the <strong>request_download</strong> action requiring the desired
 <em>result_type</em> as follows:</p>
 
-<h4 id="request-1">
-<a class="anchor" href="#request-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request:</h4>
+<h4 id="request-2">
+<a class="anchor" href="#request-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request:</h4>
 
 <pre><code class="language-data">POST /api/results/22
 </code></pre>
@@ -1895,8 +1966,8 @@ can be done via the <strong>request_download</strong> action requiring the desir
 <p>This triggers an async request of the report and returns an action
 response as follows:</p>
 
-<h4 id="response-1">
-<a class="anchor" href="#response-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response:</h4>
+<h4 id="response-2">
+<a class="anchor" href="#response-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response:</h4>
 
 <pre><code class="language-data">{
   "success": true,
@@ -2026,8 +2097,8 @@ action to the reports collection as follows:</p>
 
 <p>Here’s an example:</p>
 
-<h4 id="request-2">
-<a class="anchor" href="#request-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request:</h4>
+<h4 id="request-3">
+<a class="anchor" href="#request-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request:</h4>
 
 <pre><code class="language-data">POST /api/reports
 </code></pre>
@@ -2049,8 +2120,8 @@ action to the reports collection as follows:</p>
 }
 </code></pre>
 
-<h4 id="response-2">
-<a class="anchor" href="#response-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response:</h4>
+<h4 id="response-3">
+<a class="anchor" href="#response-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response:</h4>
 
 <pre><code class="language-data">{
   "results": [
