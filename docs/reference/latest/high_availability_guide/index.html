@@ -707,11 +707,21 @@ option.</p>
     <p>In the appliance console, configure the following:</p>
 
     <ol>
+      <li>Configure the hostname by selecting <strong>Set Hostname</strong>.</li>
+    </ol>
+
+    <p>For standard ManageIQ installations, a pre-sized database disk is already attached, initialized, encryption key generated, database configured with a region, and the application started.</p>
+
+    <ol>
+      <li>Select <strong>Stop evm server processes</strong>, select <code class="language-plaintext highlighter-rouge">y</code>.</li>
+      <li>Quit from appliance console and <code class="language-plaintext highlighter-rouge">run systemctl disable evmserverd</code> to make this a standalone database server.</li>
+    </ol>
+
+    <p>Alternatively, if you attached a new database disk and have not yet configured the application:</p>
+
+    <ol>
       <li>
-        <p>Configure the hostname by selecting <strong>Set Hostname</strong>.</p>
-      </li>
-      <li>
-        <p>Select <strong>Configure Database</strong>.</p>
+        <p>Select <strong>Configure Application</strong>.</p>
       </li>
       <li>
         <p>Select <strong>Create key</strong> to create the encryption key. You can
@@ -823,7 +833,7 @@ option.</p>
         <p>Configure the hostname by selecting <strong>Set Hostname</strong>.</p>
       </li>
       <li>
-        <p>Select <strong>Configure Database</strong>.</p>
+        <p>Select <strong>Configure Application</strong>.</p>
       </li>
       <li>
         <p>Configure this appliance to use the encryption key from the
@@ -1138,7 +1148,7 @@ option.</p>
         <p>Configure the hostname by selecting <strong>Set Hostname</strong>.</p>
       </li>
       <li>
-        <p>Select <strong>Configure Database</strong>.</p>
+        <p>Select <strong>Configure Application</strong>.</p>
       </li>
       <li>
         <p>Configure this appliance to use the encryption key from the

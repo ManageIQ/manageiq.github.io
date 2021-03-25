@@ -851,7 +851,6 @@
 </ul>
 </li>
 <li class="toc-entry toc-h4"><a href="#adding-a-new-appliance-to-an-existing-region-with-a-non-default-password">Adding a New Appliance to an Existing Region with a Non-default Password</a></li>
-<li class="toc-entry toc-h4"><a href="#configuring-scheduled-database-maintenance">Configuring Scheduled Database Maintenance</a></li>
 <li class="toc-entry toc-h4"><a href="#creating-a-database-dump">Creating a Database Dump</a></li>
 </ul>
 </li>
@@ -6960,7 +6959,7 @@ the data in the database.
     <p>Enter <code class="language-plaintext highlighter-rouge">Y</code> to confirm.</p>
   </li>
   <li>
-    <p>Choose <code class="language-plaintext highlighter-rouge">Configure Database</code>.</p>
+    <p>Choose <code class="language-plaintext highlighter-rouge">Configure Application</code>.</p>
   </li>
   <li>
     <p>Enter a database region number that has not been used in your
@@ -7726,67 +7725,6 @@ configuration file that <code class="language-plaintext highlighter-rouge">evmse
 </code></pre></div>    </div>
   </li>
 </ol>
-
-<h4 id="configuring-scheduled-database-maintenance">
-<a class="anchor" href="#configuring-scheduled-database-maintenance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring Scheduled Database Maintenance</h4>
-
-<p>You can schedule hourly or periodic database maintenance through the
-appliance console. Performing regular PostgreSQL database maintenance
-helps to maintain a more responsive ManageIQ environment.</p>
-
-<p>Hourly database maintenance tasks, such as reindexing, are useful for
-highly active database tables such as metrics, workers, and servers.</p>
-
-<p>You also may want to perform periodic database maintenance to truncate
-empty metrics tables and reorganize the database. Periodic maintenance
-can be configured to run hourly, daily, weekly, or monthly, at a
-specified hour and on a specified day.</p>
-
-<p><strong>Note:</strong></p>
-
-<p>Periodic maintenance can impact appliance performance while it is
-running. Red Hat recommends scheduling periodic maintenance
-infrequently, and at off hours.</p>
-
-<p>To configure hourly and periodic database maintenance:</p>
-
-<ol>
-  <li>
-    <p>Log in to the appliance as the <strong>root</strong> user.</p>
-  </li>
-  <li>
-    <p>Enter <code class="language-plaintext highlighter-rouge">appliance_console</code>, and press <strong>Enter</strong>.</p>
-  </li>
-  <li>
-    <p>Press any key.</p>
-  </li>
-  <li>
-    <p>Select <strong>Configure Database Maintenance</strong> to configure the automatic
-database maintenance schedule through a dialog.</p>
-
-    <ol>
-      <li>
-        <p>For <strong>Configure Hourly Database Maintenance?</strong> Type <code class="language-plaintext highlighter-rouge">y</code> or <code class="language-plaintext highlighter-rouge">n</code>.</p>
-      </li>
-      <li>
-        <p>For <strong>Configure Periodic Database Maintenance?</strong> Type <code class="language-plaintext highlighter-rouge">y</code> or
-<code class="language-plaintext highlighter-rouge">n</code>.</p>
-      </li>
-    </ol>
-  </li>
-</ol>
-
-<p>The next options depend on the periodic database maintenance frequency
-you choose, and are specified using the same dialog. The dialog finishes
-configuration with a <strong>“Database maintenance configuration updated”</strong>
-message when complete.</p>
-
-<p>To reset your database maintenance settings, enter <strong>Configure Database Maintenance</strong> again from the appliance console menu, and confirm that
-you want to unconfigure the settings in the configuration dialog. This
-deletes the current settings.</p>
-
-<p>To configure a new database maintenance schedule, enter the <strong>Configure Database Maintenance</strong> menu item once again and configure the values
-using the dialog.</p>
 
 <h4 id="creating-a-database-dump">
 <a class="anchor" href="#creating-a-database-dump" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a Database Dump</h4>
