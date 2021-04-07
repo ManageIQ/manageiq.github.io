@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-8de063b063e781c83c3900f2fb42692885edeac0346d54e22467184ccc393942.css">
+  <link rel="canonical" href="http://manageiq.org/docs/guides/providers/writing_a_new_provider">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/guides/providers/writing_a_new_provider">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li>
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li class="active">
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<ul class="menu menu-toplevel" id="guides_menu">
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Architecture
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/capacity_and_utilization_collection_explanation.html">
+      Capacity And Utilization Collection Explanation
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/enterprise.html">
+      Enterprise
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/source_code_layout.html">
+      Source Code Layout
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Developer Setup
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/plugins.html">
+      Plugins
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/running_test_suites.html">
+      Running Test Suites
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/debugging.html">
+      Interactive debugging
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      External Auth
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth/configuration.html">
+      Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth/installation.html">
+      Installation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      User Interface
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/patterns.html">
+      UI Patterns
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/plugins.html">
+      UI Plugins
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/register_react_component.html">
+      Shared React Component API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/report_data_api.html">
+      Report Data API
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Providers
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/providers_overview.html">
+      Providers Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/providers_database_architecture.html">
+      Providers Database Architecture
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/amazon_aws_config.html">
+      Amazon AWS Config
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/containers.html">
+      Containers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/openshift.html">
+      Openshift
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/openstack_infra_provider.html">
+      Openstack Infra Provider
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/provisioning/windows_imaging.html">
+      Windows Imaging
+    </a>
+    
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/coding_style_and_standards.html">
+      Coding Style And Standards
+    </a>
+    
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/i18n.html">
+      I18n
+    </a>
+    
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc dev_doc">
+      
+
+      <div class="doc-content">
+        
+        <h2 id="creating-a-new-provider">Creating a new provider</h2>
+
+<p>So your company started using this awesome new cloud platform, Awesome Cloud.  You use ManageIQ for your automation but there isn’t a provider for Awesome Cloud…what to do?</p>
+
+<p>Well luckily writing your own MIQ Provider is easy!  Let’s walk through creating a new cloud provider from scratch together.</p>
+
+<h3 id="generate-the-scaffolding">Generate the scaffolding</h3>
+
+<p>The first step in building a new provider is to create the plugin directory and the scaffolding.  ManageIQ has a built-in provider generator for just this purpose.</p>
+
+<p>If you haven’t yet setup your core repository go through the <a href="../developer_setup">developer setup</a> guide.  After this you should have your own copy of <a href="https://github.com/ManageIQ/manageiq">manageiq</a> ready to go.</p>
+
+<p>From this local clone we can run the provider generator, first lets take a look at the help</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">exec </span>rails generate manageiq:provider <span class="nt">--help</span>
+Usage:
+  rails generate manageiq:provider NAME <span class="o">[</span>options]
+
+Options:
+  <span class="o">[</span><span class="nt">--path</span><span class="o">=</span>PATH]                        <span class="c"># Create plugin at given path</span>
+                                       <span class="c"># Default: plugins</span>
+  <span class="o">[</span><span class="nt">--vcr</span><span class="o">]</span>, <span class="o">[</span><span class="nt">--no-vcr</span><span class="o">]</span>                  <span class="c"># Enable VCR cassettes (Default: --no-vcr)</span>
+  <span class="o">[</span><span class="nt">--scaffolding</span><span class="o">]</span>, <span class="o">[</span><span class="nt">--no-scaffolding</span><span class="o">]</span>  <span class="c"># Generate default class scaffolding (Default: --scaffolding)</span>
+                                       <span class="c"># Default: true</span>
+  <span class="o">[</span><span class="nt">--manager-type</span><span class="o">=</span>MANAGER_TYPE]        <span class="c"># What type of manager to create, required if building scaffolding (Options: automation, cloud, configuration, container, infra, monitoring, network, physical, provisioning, storage)</span>
+
+Runtime options:
+  <span class="nt">-f</span>, <span class="o">[</span><span class="nt">--force</span><span class="o">]</span>                    <span class="c"># Overwrite files that already exist</span>
+  <span class="nt">-p</span>, <span class="o">[</span><span class="nt">--pretend</span><span class="o">]</span>, <span class="o">[</span><span class="nt">--no-pretend</span><span class="o">]</span>  <span class="c"># Run but do not make any changes</span>
+  <span class="nt">-q</span>, <span class="o">[</span><span class="nt">--quiet</span><span class="o">]</span>, <span class="o">[</span><span class="nt">--no-quiet</span><span class="o">]</span>      <span class="c"># Suppress status output</span>
+  <span class="nt">-s</span>, <span class="o">[</span><span class="nt">--skip</span><span class="o">]</span>, <span class="o">[</span><span class="nt">--no-skip</span><span class="o">]</span>        <span class="c"># Skip files that already exist</span>
+
+Description:
+    Create or update ManageIQ provider plugin
+
+Example:
+    rails generate manageiq:provider ManageIQ::Providers::VendorName <span class="nt">--manager-type</span><span class="o">=</span>cloud
+    rails generate manageiq:provider ManageIQ::Providers::VendorName <span class="nt">--manager-type</span><span class="o">=</span>cloud <span class="nt">--path</span> ~/dev
+    rails generate manageiq:provider ManageIQ::Providers::VendorName <span class="nt">--manager-type</span><span class="o">=</span>cloud <span class="nt">--vcr</span>
+    rails generate manageiq:provider ManageIQ::Providers::VendorName <span class="nt">--no-scaffolding</span>
+</code></pre></div></div>
+
+<p>For our purposes here we’re going to want to create a <code class="language-plaintext highlighter-rouge">CloudManager</code> with VCR support and scaffolding.</p>
+
+<p>So lets go ahead and create our provider plugin:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">exec </span>rails generate manageiq:provider ManageIQ::Providers::AwesomeCloud <span class="nt">--manager-type</span><span class="o">=</span>cloud <span class="nt">--vcr</span> <span class="nt">--scaffolding</span>
+
+create  
+   run  git init /home/grare/adam/src/manageiq/manageiq/plugins/manageiq-providers-awesome_cloud from <span class="s2">"."</span>
+Initialized empty Git repository <span class="k">in</span> /home/grare/adam/src/manageiq/manageiq/plugins/manageiq-providers-awesome_cloud/.git/
+create  manageiq-providers-awesome_cloud.gemspec
+create  .codeclimate.yml
+create  .gitignore
+create  .rspec
+create  .rspec_ci
+create  .rubocop.yml
+create  .rubocop_cc.yml
+create  .rubocop_local.yml
+create  .travis.yml
+create  .yamllint
+create  Gemfile
+create  LICENSE.txt
+create  Rakefile
+create  README.md
+create  bin/ci/after_script
+create  bin/rails
+create  bin/setup
+create  bin/update
+create  bundler.d
+create  bundler.d/.keep
+create  config/settings.yml
+create  lib/manageiq-providers-awesome_cloud.rb
+create  lib/manageiq/providers/awesome_cloud/engine.rb
+create  lib/manageiq/providers/awesome_cloud/version.rb
+create  lib/tasks/README.md
+create  lib/tasks_private/spec.rake
+create  locale
+create  locale/.keep
+create  spec/factories
+create  spec/support
+create  spec/spec_helper.rb
+insert  /home/grare/adam/src/manageiq/manageiq/Gemfile
+create  spec/models/manageiq/providers/awesome_cloud
+  gsub  lib/tasks_private/spec.rake
+create  systemd/manageiq-providers-awesome_cloud_cloud_manager_event_catcher@.service
+create  systemd/manageiq-providers-awesome_cloud_cloud_manager_event_catcher.target
+create  systemd/manageiq-providers-awesome_cloud_cloud_manager_refresh@.service
+create  systemd/manageiq-providers-awesome_cloud_cloud_manager_refresh.target
+create  systemd/manageiq-providers-awesome_cloud_cloud_manager_metrics_collector@.service
+create  systemd/manageiq-providers-awesome_cloud_cloud_manager_metrics_collector.target
+create  app/models/manageiq/providers/awesome_cloud/cloud_manager/event_catcher/runner.rb
+create  app/models/manageiq/providers/awesome_cloud/cloud_manager/event_catcher/stream.rb
+create  app/models/manageiq/providers/awesome_cloud/cloud_manager/metrics_collector_worker/runner.rb
+create  app/models/manageiq/providers/awesome_cloud/cloud_manager/refresh_worker/runner.rb
+create  app/models/manageiq/providers/awesome_cloud/cloud_manager/event_catcher.rb
+create  app/models/manageiq/providers/awesome_cloud/cloud_manager/metrics_capture.rb
+create  app/models/manageiq/providers/awesome_cloud/cloud_manager/metrics_collector_worker.rb
+create  app/models/manageiq/providers/awesome_cloud/cloud_manager/refresh_worker.rb
+create  app/models/manageiq/providers/awesome_cloud/cloud_manager/refresher.rb
+create  app/models/manageiq/providers/awesome_cloud/cloud_manager/vm.rb
+create  app/models/manageiq/providers/awesome_cloud/inventory.rb
+create  app/models/manageiq/providers/awesome_cloud/inventory/collector.rb
+create  app/models/manageiq/providers/awesome_cloud/inventory/parser.rb
+create  app/models/manageiq/providers/awesome_cloud/inventory/persister.rb
+create  app/models/manageiq/providers/awesome_cloud/inventory/collector/cloud_manager.rb
+create  app/models/manageiq/providers/awesome_cloud/inventory/parser/cloud_manager.rb
+create  app/models/manageiq/providers/awesome_cloud/inventory/persister/definitions/cloud_collections.rb
+create  app/models/manageiq/providers/awesome_cloud/inventory/persister/cloud_manager.rb
+identical  app/models/manageiq/providers/awesome_cloud/inventory/persister.rb
+create  app/models/manageiq/providers/awesome_cloud/cloud_manager.rb
+insert  .yamllint
+append  spec/spec_helper.rb
+</code></pre></div></div>
+
+<p>That’s a lot of stuff!  We’ll cover all of it in detail later but for now lets take a look at our plugin:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls </span>plugins/
+manageiq-providers-awesome_cloud
+</code></pre></div></div>
+
+<p>The generator also automatically adds your plugin to your local Gemfile:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff
+diff <span class="nt">--git</span> a/Gemfile b/Gemfile
+index b7e6783821..685474c570 100644
+<span class="nt">---</span> a/Gemfile
++++ b/Gemfile
+ <span class="c"># This default is used to automatically require all of our gems in processes that don't specify which bundler groups they want.</span>
+ <span class="c">#</span>
+ <span class="c">### providers</span>
++
++group :awesome_cloud, :manageiq_default <span class="k">do</span>
++  manageiq_plugin <span class="s2">"manageiq-providers-awesome_cloud"</span>
++end
++
+</code></pre></div></div>
+
+<p>This is a bit optimistic since this hasn’t been accepted into the ManageIQ organization yet. :)</p>
+
+<p>To work on this plugin locally you have to tell bundler to look in a different place for your gem (more info in <a href="../developer_setup/plugins">developer_setup/plugins.md</a>)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">'override_gem "manageiq-providers-awesome_cloud", :path =&gt; "../plugins/manageiq-providers-awesome_cloud"'</span> <span class="o">&gt;&gt;</span> bundler.d/override.rb
+<span class="nv">$ </span>bundle update
+</code></pre></div></div>
+
+<p>This tells your core repo where to find your local changes, now lets let your plugin know where your local core repo is:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span> plugins/manageiq-providers-awesome_cloud/spec/manageiq
+<span class="nv">$ </span><span class="nb">cd </span>plugins/manageiq-providers-awesome_cloud
+<span class="nv">$ </span>bin/setup
+</code></pre></div></div>
+
+<p>Lets also take this opportunity to commit the initial code built by the generator before we make any changes:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add <span class="nb">.</span>
+<span class="nv">$ </span>git commit  <span class="nt">-m</span> <span class="s2">"Initial commit"</span>
+</code></pre></div></div>
+
+<p>Now that we have both sides linked up lets verify that everything worked:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rails</span> <span class="n">c</span>
+<span class="o">&gt;&gt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span>
+<span class="o">=&gt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span>
+<span class="o">&gt;&gt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">CloudManager</span>
+<span class="o">=&gt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">CloudManager</span> <span class="p">(</span><span class="n">call</span> <span class="s1">'ManageIQ::Providers::AwesomeCloud::CloudManager.connection'</span> <span class="n">to</span> <span class="n">establish</span> <span class="n">a</span> <span class="n">connection</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Success!  That means that core ManageIQ knows about our new cloud provider.</p>
+
+<p>Now lets get that provider added so we have something to play with:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">ems</span> <span class="o">=</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">CloudManager</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">"My Awesome Cloud"</span><span class="p">,</span> <span class="ss">:zone</span> <span class="o">=&gt;</span> <span class="no">Zone</span><span class="p">.</span><span class="nf">default_zone</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now that we have that done it is time to start filling out our new provider.  The first step is to find the SDK gem for this provider.  If there isn’t a provider SDK for Ruby you have a few options which we’ll cover later.  For now lets assume that Awesome Cloud has a ruby gem called ‘awesome_cloud’.</p>
+
+<h3 id="add-your-providers-sdk-to-the-gemspec">Add your provider’s SDK to the gemspec</h3>
+
+<p>Let’s add this to our provider’s gemspec:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff
+diff <span class="nt">--git</span> a/manageiq-providers-awesome_cloud.gemspec b/manageiq-providers-awesome_cloud.gemspec
+index 6c228c2..91e8e71 100644
+<span class="nt">---</span> a/manageiq-providers-awesome_cloud.gemspec
++++ b/manageiq-providers-awesome_cloud.gemspec
+@@ <span class="nt">-18</span>,6 +18,8 @@ Gem::Specification.new <span class="k">do</span> |spec|
+   spec.executables   <span class="o">=</span> spec.files.grep<span class="o">(</span>%r<span class="o">{</span>^exe/<span class="o">})</span> <span class="o">{</span> |f| File.basename<span class="o">(</span>f<span class="o">)</span> <span class="o">}</span>
+   spec.require_paths <span class="o">=</span> <span class="o">[</span><span class="s2">"lib"</span><span class="o">]</span>
+
++  spec.add_dependency <span class="s2">"awesome_cloud"</span>, <span class="s2">"~&gt; 0.1"</span>
++
+   spec.add_development_dependency <span class="s2">"manageiq-style"</span>
+   spec.add_development_dependency <span class="s2">"simplecov"</span>
+</code></pre></div></div>
+
+<p>Then bundle update to pull in the change</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle update
+</code></pre></div></div>
+
+<p>Now that we have the gem installed we can start to write our connection code.  ManageIQ providers have to expose a <code class="language-plaintext highlighter-rouge">#connect</code> and a <code class="language-plaintext highlighter-rouge">#verify_credentials</code> method on the class and the instance.  The class method is used when adding a provider (when there is no instance record yet) and the instance methods are used after.</p>
+
+<p>Let’s assume that Awesome Cloud requires a region, access_key, and secret_key in order to connect.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">ems</span> <span class="o">=</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">CloudManager</span><span class="p">.</span><span class="nf">first</span>
+<span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">update!</span><span class="p">(</span><span class="ss">:provider_region</span> <span class="o">=&gt;</span> <span class="s2">"us-east-1"</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">update_authentication</span><span class="p">(</span><span class="ss">:default</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:userid</span> <span class="o">=&gt;</span> <span class="s2">"MY-ACCESS-KEY"</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="s2">"MY-SECRET-KEY"</span><span class="p">})</span>
+</code></pre></div></div>
+
+<p>Now let’s add connect methods to our provider.</p>
+
+<h3 id="connecting-and-verifying-credentials">Connecting and verifying credentials</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::CloudManager</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">CloudManager</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">raw_connect</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">,</span> <span class="n">service</span> <span class="o">=</span> <span class="s2">"Compute"</span><span class="p">)</span>
+    <span class="nb">require</span> <span class="s2">"awesome_cloud"</span>
+
+    <span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:access_key</span> <span class="o">=&gt;</span> <span class="n">access_key</span><span class="p">,</span> <span class="ss">:secret_key</span> <span class="o">=&gt;</span> <span class="n">secret_key</span><span class="p">,</span> <span class="ss">:region</span> <span class="o">=&gt;</span> <span class="n">region</span><span class="p">,</span> <span class="ss">:service</span> <span class="o">=&gt;</span> <span class="n">service</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">verify_credentials</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="c1"># NOTE this args hash has a very specific format that we'll get to next</span>
+    <span class="n">region</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">"provider_region"</span><span class="p">]</span>
+    <span class="n">default_endpoint</span> <span class="o">=</span> <span class="n">args</span><span class="p">.</span><span class="nf">dig</span><span class="p">(</span><span class="s2">"authentications"</span><span class="p">,</span> <span class="s2">"default"</span><span class="p">)</span>
+    <span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span> <span class="o">=</span> <span class="n">default_endpoint</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s2">"userid"</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">)</span>
+
+    <span class="n">validate_connection</span><span class="p">(</span><span class="n">raw_connect</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">))</span>
+  <span class="k">end</span>
+
+  <span class="c1"># NOTE: You want to use the same method for validating credentials at the</span>
+  <span class="c1"># class-level and instance-level.  This prevents any potential issues were</span>
+  <span class="c1"># adding a new provider (class-level) might pass verification but after adding</span>
+  <span class="c1"># it (instance-lavel) it fails.</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">validate_connection</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
+    <span class="c1"># Perform a simple and fast operation that verifies the credentials are correct</span>
+    <span class="o">!!</span><span class="n">connection</span><span class="p">.</span><span class="nf">list_regions</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="ss">type: </span><span class="s2">"default"</span><span class="p">,</span> <span class="ss">service: </span><span class="s2">"Compute"</span><span class="p">)</span>
+    <span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span> <span class="o">=</span> <span class="n">auth_user_pwd</span><span class="p">(</span><span class="n">type</span><span class="p">)</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">class</span><span class="p">.</span><span class="nf">raw_connect</span><span class="p">(</span><span class="n">provider_region</span><span class="p">,</span> <span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">,</span> <span class="n">service</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">verify_credentials</span><span class="p">(</span><span class="n">type</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+    <span class="n">with_provider_connection</span><span class="p">(</span><span class="ss">:type</span> <span class="o">=&gt;</span> <span class="n">type</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">connection</span><span class="o">|</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">class</span><span class="p">.</span><span class="nf">validate_connection</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
+    <span class="k">rescue</span> <span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Error</span> <span class="o">=&gt;</span> <span class="n">err</span>
+      <span class="k">raise</span> <span class="no">MiqException</span><span class="o">::</span><span class="no">MiqInvalidCredentialsError</span><span class="p">,</span> <span class="s2">"Invalid credentials: </span><span class="si">#{</span><span class="n">err</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>With these in place we should be able to test our provider that we added to MIQ:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">ems</span> <span class="o">=</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">CloudManager</span><span class="p">.</span><span class="nf">first</span>
+<span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">authentication_check</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="kp">true</span><span class="p">,</span> <span class="s2">""</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="ss">:service</span> <span class="o">=&gt;</span> <span class="s2">"Compute"</span><span class="p">).</span><span class="nf">list_regions</span>
+</code></pre></div></div>
+
+<h3 id="adding-your-provider-from-the-ui">Adding your provider from the UI</h3>
+
+<p>Creating the provider record from a rails console is great for developers but it is much nicer to be able to do this from the UI.  ManageIQ has a very simple way of telling the UI what your provider needs to be able to be added via the UI, <a href="https://data-driven-forms.org/">Data-Driven-Forms</a>.</p>
+
+<p>You basically define what forms you need in a hash in your provider plugin and the ManageIQ UI will display it for you.  If you want a good introduction check out https://data-driven-forms.org/introduction.  For now we’ll just create a basic form that takes a provider region, access key, and secret key.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::CloudManager</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">CloudManager</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">params_for_create</span>
+    <span class="p">{</span>
+      <span class="ss">:fields</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="ss">:component</span>    <span class="o">=&gt;</span> <span class="s2">"select"</span><span class="p">,</span>
+          <span class="ss">:id</span>           <span class="o">=&gt;</span> <span class="s2">"provider_region"</span><span class="p">,</span>
+          <span class="ss">:name</span>         <span class="o">=&gt;</span> <span class="s2">"provider_region"</span><span class="p">,</span>
+          <span class="ss">:label</span>        <span class="o">=&gt;</span> <span class="n">_</span><span class="p">(</span><span class="s2">"Region"</span><span class="p">),</span>
+          <span class="ss">:isRequired</span>   <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+          <span class="ss">:validate</span>     <span class="o">=&gt;</span> <span class="p">[{</span><span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s2">"required"</span><span class="p">}],</span>
+          <span class="ss">:includeEmpty</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+          <span class="ss">:options</span>      <span class="o">=&gt;</span> <span class="n">provider_region_options</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="ss">:component</span> <span class="o">=&gt;</span> <span class="s1">'sub-form'</span><span class="p">,</span>
+          <span class="ss">:name</span>      <span class="o">=&gt;</span> <span class="s1">'endpoints-subform'</span><span class="p">,</span>
+          <span class="ss">:id</span>        <span class="o">=&gt;</span> <span class="s1">'endpoints-subform'</span><span class="p">,</span>
+          <span class="ss">:title</span>     <span class="o">=&gt;</span> <span class="n">_</span><span class="p">(</span><span class="s2">"Endpoints"</span><span class="p">),</span>
+          <span class="ss">:fields</span>    <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="ss">:component</span>              <span class="o">=&gt;</span> <span class="s1">'validate-provider-credentials'</span><span class="p">,</span>
+              <span class="ss">:id</span>                     <span class="o">=&gt;</span> <span class="s1">'authentications.default.valid'</span><span class="p">,</span>
+              <span class="ss">:name</span>                   <span class="o">=&gt;</span> <span class="s1">'authentications.default.valid'</span><span class="p">,</span>
+              <span class="ss">:skipSubmit</span>             <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+              <span class="ss">:isRequired</span>             <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+              <span class="ss">:validationDependencies</span> <span class="o">=&gt;</span> <span class="sx">%w[type zone_id provider_region uid_ems]</span><span class="p">,</span>
+              <span class="ss">:fields</span>                 <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="p">{</span>
+                  <span class="ss">:component</span>  <span class="o">=&gt;</span> <span class="s2">"text-field"</span><span class="p">,</span>
+                  <span class="ss">:id</span>         <span class="o">=&gt;</span> <span class="s2">"authentications.default.userid"</span><span class="p">,</span>
+                  <span class="ss">:name</span>       <span class="o">=&gt;</span> <span class="s2">"authentications.default.userid"</span><span class="p">,</span>
+                  <span class="ss">:label</span>      <span class="o">=&gt;</span> <span class="n">_</span><span class="p">(</span><span class="s2">"Access Key"</span><span class="p">),</span>
+                  <span class="ss">:isRequired</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+                  <span class="ss">:validate</span>   <span class="o">=&gt;</span> <span class="p">[{</span><span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s2">"required"</span><span class="p">}]</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                  <span class="ss">:component</span>      <span class="o">=&gt;</span> <span class="s2">"password-field"</span><span class="p">,</span>
+                  <span class="ss">:rows</span>           <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+                  <span class="ss">:id</span>             <span class="o">=&gt;</span> <span class="s2">"authentications.default.password"</span><span class="p">,</span>
+                  <span class="ss">:name</span>           <span class="o">=&gt;</span> <span class="s2">"authentications.default.password"</span><span class="p">,</span>
+                  <span class="ss">:label</span>          <span class="o">=&gt;</span> <span class="n">_</span><span class="p">(</span><span class="s2">"Secret Key"</span><span class="p">),</span>
+                  <span class="ss">:type</span>           <span class="o">=&gt;</span> <span class="s2">"password"</span><span class="p">,</span>
+                  <span class="ss">:isRequired</span>     <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+                  <span class="ss">:validate</span>       <span class="o">=&gt;</span> <span class="p">[{</span><span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s2">"required"</span><span class="p">}]</span>
+                <span class="p">},</span>
+              <span class="p">]</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="nb">private_class_method</span> <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">provider_region_options</span>
+    <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Regions</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">region</span><span class="o">|</span> <span class="p">{</span><span class="ss">:label</span> <span class="o">=&gt;</span> <span class="n">region</span><span class="p">[</span><span class="ss">:name</span><span class="p">],</span> <span class="ss">:value</span> <span class="o">=&gt;</span> <span class="n">region</span><span class="p">[</span><span class="ss">:name</span><span class="p">]}</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="n">supports</span> <span class="ss">:regions</span>
+  <span class="n">validates</span> <span class="ss">:provider_region</span><span class="p">,</span> <span class="ss">:inclusion</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:in</span> <span class="o">=&gt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Regions</span><span class="p">.</span><span class="nf">names</span><span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module ManageIQ::Providers::AwesomeCloud::Regions
+  REGIONS = {
+    "us-east-1" =&gt; {:name =&gt; "us-east-1", :hostname =&gt; "us-east-1.awesome.cloud"}
+  }.freeze
+
+  def self.regions
+    REGIONS
+  end
+
+  def self.all
+    regions.values
+  end
+
+  def self.names
+    regions.keys
+  end
+end
+</code></pre></div></div>
+
+<p>With that added you should be able to go to the UI, add a cloud provider, and see your new cloud type.  For development typically the best way to test code in the UI is to run a rails server and a simulated generic worker via the terminal.</p>
+
+<p>To do this open two terminals, in the first one run <code class="language-plaintext highlighter-rouge">bundle exec rails s</code> and in the second run <code class="language-plaintext highlighter-rouge">bundle exec rails console</code> and typing <code class="language-plaintext highlighter-rouge">simulate_queue_worker</code>.  Now you can open <code class="language-plaintext highlighter-rouge">localhost:3000</code> in your browser of choice and you should be able to login.</p>
+
+<h3 id="inventory-refresh">Inventory Refresh</h3>
+
+<p>Up to this point our provider doesn’t do a lot, we’ve simply been setting the groundwork for the future.</p>
+
+<p>Inventory Refresh/Discovery is the first significant feature that we’ll be adding.  This process is what synchronizes the cloud inventory (instances, volumes, flavors, images, etc…) with the ManageIQ database (VMDB).  This allows MIQ to show inventory on the UI, expose actions on that inventory, run reports, collect metrics, etc…</p>
+
+<p>Almost every MIQ feature starts out with provider inventory, so lets get started.</p>
+
+<p>Refresh is split up into three main parts: Collection, Parsing, and Persisting.</p>
+
+<ol>
+  <li>
+    <p>Inventory Collection - This is the step where you use the connection to hit the provider API to pull down inventory.  The code for this will be under <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/inventory/collector.rb</code></p>
+  </li>
+  <li>
+    <p>Parsing - This is typically the bulk of the inventory refresh code.  This step translates the inventory data from the native format into the ManageIQ schema.  This code lives in <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/inventory/parser.rb</code></p>
+  </li>
+  <li>
+    <p>Persisting - In this step the parsed data is saved to the database.  Almost all of this is offloaded to core classes but as a provider author you are responsible for enumerating the “inventory collections” that you’ll be saving e.g. flavors/vms/disks.  This will live in <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/inventory/persister.rb</code></p>
+  </li>
+</ol>
+
+<p>For a more in depth overview of how refresh works check out the <a href="refresh">Refresh Documentation</a></p>
+
+<p>For now lets cover a very simple refresh case, collecting flavors, instances, and images.</p>
+
+<p>First let’s declare the collections that we intend to use.  The full set of possible collections can be found in core’s <code class="language-plaintext highlighter-rouge">Inventory::Persister::Builder</code> sub-classes.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::Inventory::Persister</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Inventory</span><span class="o">::</span><span class="no">Persister</span>
+  <span class="c1"># This should already be here from the generator, you just need one empty subclass</span>
+  <span class="c1"># for each child-manager type that your provider has (e.g. NetworkManager and/or StorageManager).</span>
+  <span class="n">require_nested</span> <span class="ss">:CloudManager</span>
+
+  <span class="c1"># Add the list of inventory collections that you want to use here</span>
+  <span class="c1"># In the future if you want to add more inventory like disks or networks you would</span>
+  <span class="c1"># add them to the list here.</span>
+  <span class="k">def</span> <span class="nf">initialize_inventory_collections</span>
+    <span class="n">add_cloud_collection</span><span class="p">(</span><span class="ss">:flavors</span><span class="p">)</span>
+    <span class="n">add_cloud_collection</span><span class="p">(</span><span class="ss">:miq_templates</span><span class="p">)</span>
+    <span class="n">add_cloud_collection</span><span class="p">(</span><span class="ss">:vms</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Once those are declared ManageIQ Core will take care of actually saving everything to the database for you.</p>
+
+<p>Now lets look at collecting inventory.  For that let’s look at :shocked: the collector.</p>
+
+<p>The collector provides an interface for the parser, so each method should fetch and return the relevant inventory.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::Inventory::Collector</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Inventory</span><span class="o">::</span><span class="no">Collector</span>
+  <span class="n">require_nested</span> <span class="ss">:CloudManager</span>
+
+  <span class="k">def</span> <span class="nf">images</span>
+    <span class="n">compute_client</span><span class="p">.</span><span class="nf">get_images</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">instances</span>
+    <span class="n">compute_client</span><span class="p">.</span><span class="nf">get_instances</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">instance_types</span>
+    <span class="n">compute_client</span><span class="p">.</span><span class="nf">get_instance_types</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">compute_client</span>
+    <span class="vi">@compute_client</span> <span class="o">||=</span> <span class="n">manager</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="ss">:service</span> <span class="o">=&gt;</span> <span class="s2">"Compute"</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>And that’s it!  The collector gets a lot more interesting when you add support for targeted refresh but that is for another time.  If you have to manually handle paging you should do that here, if the sdk handles paging automatically via an Enumerator then there’s nothing more needed.</p>
+
+<p>Now we can get started on the parser.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::Inventory::Parser</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Inventory</span><span class="o">::</span><span class="no">Parser</span>
+  <span class="n">require_nested</span> <span class="ss">:CloudManager</span>
+
+  <span class="k">def</span> <span class="nf">parse</span>
+    <span class="n">instance_types</span>
+    <span class="n">images</span>
+    <span class="n">instances</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">instance_types</span>
+    <span class="c1"># Calling collector.instance_types here is what actually issues the API call.</span>
+    <span class="n">collector</span><span class="p">.</span><span class="nf">instance_types</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">instance_type</span><span class="o">|</span>
+      <span class="c1"># At this point "instance_type" will be whatever is returned by your SDK.</span>
+      <span class="c1"># It could be a hash or it could be an object like `AwesomeCloud::Compute::InstanceType`</span>
+
+      <span class="c1"># persister.flavors.build will create an InventoryObject (fancy hash) with all of the</span>
+      <span class="c1"># attributes that you pass in here, and automatically add it to the `persister.flavors`</span>
+      <span class="c1"># inventory collection</span>
+      <span class="n">persister</span><span class="p">.</span><span class="nf">flavors</span><span class="p">.</span><span class="nf">build</span><span class="p">(</span>
+        <span class="c1"># MIQ uses "ems_ref" as the unique reference for an inventory item</span>
+        <span class="c1"># in a provider.  Whatever you use must be guaranteed to not have a duplicate</span>
+        <span class="c1"># in the same provider instance as this value is also used to lookup related</span>
+        <span class="c1"># inventory from other collections.</span>
+        <span class="ss">:ems_ref</span> <span class="o">=&gt;</span> <span class="n">instance_type</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
+        <span class="ss">:name</span>    <span class="o">=&gt;</span> <span class="n">instance_type</span><span class="p">.</span><span class="nf">name</span><span class="p">,</span>
+        <span class="ss">:cpus</span>    <span class="o">=&gt;</span> <span class="n">instance_type</span><span class="p">.</span><span class="nf">n_cpus</span><span class="p">,</span>
+        <span class="ss">:memory</span>  <span class="o">=&gt;</span> <span class="n">instance_type</span><span class="p">.</span><span class="nf">ram</span>
+      <span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">images</span>
+    <span class="n">collector</span><span class="p">.</span><span class="nf">images</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">image</span><span class="o">|</span>
+      <span class="n">persister</span><span class="p">.</span><span class="nf">miq_templates</span><span class="p">.</span><span class="nf">build</span><span class="p">(</span>
+        <span class="ss">:ems_ref</span>         <span class="o">=&gt;</span> <span class="n">image</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
+        <span class="c1"># The uid_ems field if you see it typically indicates a field that can be used</span>
+        <span class="c1"># to identify an inventory item across provider instances.  Most of the time</span>
+        <span class="c1"># for cloud providers this is the same as the ems_ref but not always.</span>
+        <span class="c1"># If your ems_ref looks like an integer ID then it probably isn't unique.</span>
+        <span class="c1"># If it looks like a UUID then it probably is.</span>
+        <span class="ss">:uid_ems</span>         <span class="o">=&gt;</span> <span class="n">image</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
+        <span class="ss">:name</span>            <span class="o">=&gt;</span> <span class="n">image</span><span class="p">.</span><span class="nf">name</span><span class="p">,</span>
+        <span class="ss">:location</span>        <span class="o">=&gt;</span> <span class="s2">"unknown"</span><span class="p">,</span>
+        <span class="ss">:raw_power_state</span> <span class="o">=&gt;</span> <span class="s2">"never"</span><span class="p">,</span>
+        <span class="ss">:template</span>        <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+        <span class="ss">:vendor</span>          <span class="o">=&gt;</span> <span class="s2">"awesome_cloud"</span>
+      <span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">instances</span>
+    <span class="n">collector</span><span class="p">.</span><span class="nf">instances</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">instance</span><span class="o">|</span>
+      <span class="n">persister_vm</span> <span class="o">=</span> <span class="n">persister</span><span class="p">.</span><span class="nf">vms</span><span class="p">.</span><span class="nf">build</span><span class="p">(</span>
+        <span class="ss">:ems_ref</span>         <span class="o">=&gt;</span> <span class="n">instance</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
+        <span class="ss">:uid_ems</span>         <span class="o">=&gt;</span> <span class="n">instance</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
+        <span class="ss">:name</span>            <span class="o">=&gt;</span> <span class="n">instance</span><span class="p">.</span><span class="nf">name</span><span class="p">,</span>
+        <span class="ss">:location</span>        <span class="o">=&gt;</span> <span class="n">instance</span><span class="p">.</span><span class="nf">availability_zone</span><span class="p">,</span>
+        <span class="ss">:raw_power_state</span> <span class="o">=&gt;</span> <span class="n">instance</span><span class="p">.</span><span class="nf">power_state</span><span class="p">,</span>
+        <span class="ss">:vendor</span>          <span class="o">=&gt;</span> <span class="s2">"awesome_cloud"</span><span class="p">,</span>
+        <span class="c1"># This is where things get interesting.  A "Lazy Reference" is our way of</span>
+        <span class="c1"># declaring a relationship to another table.  The result of this lazy_find</span>
+        <span class="c1"># after save_inventory has completed will be a foreign-key to that table</span>
+        <span class="c1">#</span>
+        <span class="c1"># It is critically important that you use this instead of either:</span>
+        <span class="c1"># 1. Direct database query like: Flavor.find_by(:ems_ref =&gt; instance.flavor)</span>
+        <span class="c1">#   because this won't work with flavors that are being created in this refresh</span>
+        <span class="c1"># 2. Using data set in the parser like: persitser.flavors.data.detect { |f| f[:ems_ref] == instance.flavor }</span>
+        <span class="c1">#   because this introduces an ordered dependency (flavors have to be parsed</span>
+        <span class="c1">#   before instances) and it is possible to introduce a dependency cycle and</span>
+        <span class="c1">#   also makes future targeted refresh much harder (where the flavors might not be</span>
+        <span class="c1">#   present in the collected data).</span>
+        <span class="ss">:flavor</span>          <span class="o">=&gt;</span> <span class="n">persister</span><span class="p">.</span><span class="nf">flavors</span><span class="p">.</span><span class="nf">lazy_find</span><span class="p">(</span><span class="n">instance</span><span class="p">.</span><span class="nf">flavor</span><span class="p">)</span>
+      <span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>You’ll have to add your vendor name to the core <code class="language-plaintext highlighter-rouge">VmOrTemplate</code> <code class="language-plaintext highlighter-rouge">VENDOR_TYPES</code> in order for the VMs to be saved.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class VmOrTemplate
+  VENDOR_TYPES = {
+    "awesome_cloud" =&gt; "Awesome Cloud",
+    "unknown"       =&gt; "Unknown"
+  }
+end
+</code></pre></div></div>
+
+<p>Now that we have all of that hooked up lets test it!</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">ems</span> <span class="o">=</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">CloudManager</span><span class="p">.</span><span class="nf">first</span>
+<span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">refresh</span>
+<span class="c1"># Lots of queries</span>
+<span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">vms</span><span class="p">.</span><span class="nf">count</span>
+<span class="o">=&gt;</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">vms</span><span class="p">.</span><span class="nf">first</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;ManageIQ::Providers::AwesomeCloud::CloudManager::Vm id: 131, vendor: "awesome_cloud", format: nil, version: nil, name: "my-first-vm", description: nil, location: "5ae243b0-a45f-4043-b59b-ddbcfd98896a",...</span>
+<span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">vms</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">flavor</span><span class="p">.</span><span class="nf">ems_ref</span>
+<span class="o">=&gt;</span> <span class="s2">"579405c1-8867-4e78-94fd-72ff575e8d0a"</span>
+</code></pre></div></div>
+
+<p>Congrats!  You have successfully refreshed your provider.  By default this will be automatically refreshed every 15 minutes which is the default for providers without an event catcher (more on that later).</p>
+
+<h3 id="next-steps">Next Steps</h3>
+
+<p>That’s a very high level overview of writing a provider.  There is a lot still that you can and should do:</p>
+
+<ul>
+  <li>Fill out what is collected for your existing collections (e.g. get availability zones and disks for VMs)</li>
+  <li>Add more collections like cloud_volumes and cloud_tenants to your CloudManager</li>
+  <li>Add a NetworkManager and start collecting CloudNetworks, CloudSubnets, etc…</li>
+  <li>Add some operations like start/stop/destroy to Vms</li>
+  <li>Add Event and Metrics collection and Targeted Refresh</li>
+  <li>Instance Provisioning</li>
+</ul>
+
+<p>Having VMs in inventory is a great start to using some of the other features of ManageIQ and is usually the point where we will accept a new provider into the ManageIQ organization.</p>
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2021 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>
