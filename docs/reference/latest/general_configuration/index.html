@@ -651,6 +651,7 @@
 <li class="toc-entry toc-h6"><a href="#importing-asset-tags-for-a-virtual-machine-from-a-csv-file">Importing Asset Tags for a Virtual Machine from a CSV File</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h5"><a href="#tag-mapping">Tag Mapping</a></li>
 <li class="toc-entry toc-h5"><a href="#customizing-the-help-menu">Customizing the Help Menu</a></li>
 </ul>
 </li>
@@ -1963,67 +1964,40 @@ login credentials.</p>
 <h3 id="settings">
 <a class="anchor" href="#settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Settings</h3>
 
-<p>The options under the <strong>Settings</strong> area provide a hierarchical view of
-options that allow you to configure global options for the
-infrastructure of your ManageIQ environment. At the top level,
-you have <strong>Settings</strong> including users, LDAP Groups, account roles,
-capacity and utilization collection, tag categories, values, and
-imports, custom variable imports, and license uploads. When you click on
-<strong>Settings</strong> and expand it, you can configure <strong>Analysis Profiles</strong>,
-<strong>Zones</strong>, and <strong>Schedules</strong>.</p>
+<p>The options under the <strong>Settings</strong> area provide a hierarchical view of options that allow you to configure global options for the infrastructure of your ManageIQ environment. At the top level, you have <strong>Settings</strong> including users, LDAP Groups, account roles, capacity and utilization collection, tag categories, values, and imports, custom variable imports, and license uploads. When you click on
+<strong>Settings</strong> and expand it, you can configure <strong>Analysis Profiles</strong>, <strong>Zones</strong>, and <strong>Schedules</strong>.</p>
 
 <p><img src="../images/2041.png" alt="2041"></p>
 
-<p>When you go the <strong>Settings</strong> accordion, you are automatically taken to
-the server list under <strong>Zones</strong>.</p>
+<p>When you go the <strong>Settings</strong> accordion, you are automatically taken to the server list under <strong>Zones</strong>.</p>
 
 <h4 id="regions">
 <a class="anchor" href="#regions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Regions</h4>
 
-<p>Use <strong>Regions</strong> for centralizing data which is collected from public and
-private virtualization environments. A region is ultimately represented
-as a single database for the VMDB. Regions are particularly useful when
-multiple geographical locations need to be managed as they enable all
-the data collection to happen at each particular location and avoid data
-collection traffic across slow links between networks.</p>
+<p>Use <strong>Regions</strong> for centralizing data which is collected from public and private virtualization environments. A region is ultimately represented as a single database for the VMDB. Regions are particularly useful when
+multiple geographical locations need to be managed as they enable all the data collection to happen at each particular location and avoid data collection traffic across slow links between networks.</p>
 
-<p>When multiple regions are being used, each with their own unique ID, a
-master region can be created to centralize the data of all the children
-regions into a single master database. To do this, configure each child
-region to replicate its data to the master region database (Red Hat
-recommends use of region 99). This parent and child region is a
-one-to-many relationship.</p>
+<p>When multiple regions are being used, each with their own unique ID, a master region can be created to centralize the data of all the children regions into a single master database. To do this, configure each child
+region to replicate its data to the master region database (Red Hat recommends use of region 99). This parent and child region is a one-to-many relationship.</p>
 
 <p>Regions can contain multiple zones, which in turn contain appliances.
-Zones are used for further segregating network traffic along with
-enabling failover configurations. Each appliance has the capability to
-be configured for a number of specialized server roles. These roles are
+Zones are used for further segregating network traffic along with enabling failover configurations. Each appliance has the capability to be configured for a number of specialized server roles. These roles are
 limited to the zone containing the appliance they run on.</p>
 
-<p>Only one failover type of each server role can run in a zone. If
-multiple appliances have the same failover role, the extras are used as
-backups that activate only if the primary appliance fails. Non-failover
-server roles can run on multiple appliances simultaneously in a zone, so
-resources can be adjusted according to the workload those roles are
-responsible for.</p>
+<p>Only one failover type of each server role can run in a zone. If multiple appliances have the same failover role, the extras are used as backups that activate only if the primary appliance fails. Non-failover server roles can run on multiple appliances simultaneously in a zone, so resources can be adjusted according to the workload those roles are responsible for.</p>
 
-<p>The following diagram demonstrates an example of the multiple regions
-working together in a ManageIQ environment.</p>
+<p>The following diagram demonstrates an example of the multiple regions working together in a ManageIQ environment.</p>
 
 <p><img src="../images/7151.png" alt="7151"></p>
 
-<p>The Master appliance is located in Chicago and contains a master region
-and a subregion that manages the worker appliances. The Mahwah
-technology center contains a single subregion that manages two zones.
-Likewise the San Diego technology center contains a single subregion
-managing a single zone.</p>
+<p>The Master appliance is located in Chicago and contains a master region and a subregion that manages the worker appliances. The Mahwah technology center contains a single subregion that manages two zones.
+Likewise the San Diego technology center contains a single subregion managing a single zone.</p>
 
 <p><strong>Note:</strong></p>
 
 <ul>
   <li>
-    <p>Replicating a parent region to a higher-level parent is not
-supported.</p>
+    <p>Replicating a parent region to a higher-level parent is not supported.</p>
   </li>
   <li>
     <p>Parent regions can be configured after the child regions are online.</p>
@@ -2033,42 +2007,27 @@ supported.</p>
 <p>The following diagram provides a closer look at a region:
 <img src="../images/7150.png" alt="7150"></p>
 
-<p>In this region, we have several ManageIQ appliances acting as UI
-nodes and worker nodes. These worker nodes execute tasks on the
-providers in your environment. The Region also uses a region database
-that reports to a master database on the main ManageIQ appliance.
-All appliances can connect to the authentication services (Active
-Directory, LDAP, Identity Management), outgoing mail (SMTP), and network
-services (SNMP).</p>
+<p>In this region, we have several ManageIQ appliances acting as UI nodes and worker nodes. These worker nodes execute tasks on the providers in your environment. The Region also uses a region database that reports to a master database on the main ManageIQ appliance.
+All appliances can connect to the authentication services (Active Directory, LDAP, Identity Management), outgoing mail (SMTP), and network services (SNMP).</p>
 
 <h5 id="region-scope">
 <a class="anchor" href="#region-scope" aria-hidden="true"><span class="octicon octicon-link"></span></a>Region Scope</h5>
 
-<p>Regions are used to consolidate data from multiple VMDBs to a central
-database. The database at the top level, the master VMDB, cannot be used
-for operational tasks such as SmartState Analysis or Capacity and
-Utilization data collection. It is intended for use as a reporting
-database that includes all information across multiple subordinate
-regions. The subordinate regions replicate their information to the
-master.</p>
+<p>Regions are used to consolidate data from multiple VMDBs to a central database. The database at the top level, the master VMDB, cannot be used for operational tasks such as SmartState Analysis or Capacity and Utilization data collection. It is intended for use as a reporting
+database that includes all information across multiple subordinate regions. The subordinate regions replicate their information to the master.</p>
 
 <p><strong>Note:</strong></p>
 
-<p>The subordinate regions are not aware of each other from a database
-perspective. You cannot see information from one subordinate region in
-another. The only VMDB with data visibility to all subordinate regions
-is the top level.</p>
+<p>The subordinate regions are not aware of each other from a database perspective. You cannot see information from one subordinate region in another. The only VMDB with data visibility to all subordinate regions is the top level.</p>
 
 <p><strong>Master Regions Scope</strong></p>
 
 <ul>
   <li>
-    <p>Reports all information from all subordinate VMDBs reporting up to
-it.</p>
+    <p>Reports all information from all subordinate VMDBs reporting up to it.</p>
   </li>
   <li>
-    <p>Can perform power operations on virtual machines from subordinate
-regions.</p>
+    <p>Can perform power operations on virtual machines from subordinate regions.</p>
   </li>
   <li>
     <p>Controls its own access control list.</p>
@@ -2079,12 +2038,10 @@ regions.</p>
 
 <ul>
   <li>
-    <p>Each subordinate controls its own access control independent of the
-other regions.</p>
+    <p>Each subordinate controls its own access control independent of the other regions.</p>
   </li>
   <li>
-    <p>Can only do work (such as SmartState Analysis and Capacity and
-Utilization collection) in its own region.</p>
+    <p>Can only do work (such as SmartState Analysis and Capacity and Utilization collection) in its own region.</p>
   </li>
   <li>
     <p>Has no knowledge of the other regions.</p>
@@ -2097,8 +2054,7 @@ Utilization collection) in its own region.</p>
 <h5 id="region-settings">
 <a class="anchor" href="#region-settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Region Settings</h5>
 
-<p>In the <strong>Region</strong> area, set items that apply to your entire
-ManageIQ infrastructure such as users, LDAP Groups, capacity and
+<p>In the <strong>Region</strong> area, set items that apply to your entire ManageIQ infrastructure such as users, LDAP Groups, capacity and
 utilization collection, company tags and tag categories, and licensing.
 Regions are also used for database replication.</p>
 
@@ -2108,33 +2064,22 @@ Regions are also used for database replication.</p>
 <h6 id="capacity-and-utilization-collection-settings">
 <a class="anchor" href="#capacity-and-utilization-collection-settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Capacity and Utilization Collection Settings</h6>
 
-<p>Use <strong>C &amp; U Collection Settings</strong> to select specifically which clusters
-and datastores you want to collect usage data for. By selecting a
-cluster, you are choosing to collect data for all hosts and virtual
-machines that are part of that cluster. You must also have a server with
-the Capacity &amp; Utilization <strong>Coordinator</strong>, <strong>Data Collector</strong>, and
-<strong>Data Processor</strong> roles enabled as well. See Section <strong>Server Control
-Settings</strong>.</p>
+<p>Use <strong>C &amp; U Collection Settings</strong> to select specifically which clusters and datastores you want to collect usage data for. By selecting a cluster, you are choosing to collect data for all hosts and virtual machines that are part of that cluster. You must also have a server with
+the Capacity &amp; Utilization <strong>Coordinator</strong>, <strong>Data Collector</strong>, and <strong>Data Processor</strong> roles enabled as well. See Section <strong>Server Control Settings</strong>.</p>
 
-<p>After a provider has been discovered and its relationships refreshed,
-view the clusters, hosts, and datastores from the settings menu.
-Navigate to <img src="../images/config-gear.png" alt="Configuration"> <strong>Configuration</strong>,
-then click on the menu:Settings[Region &gt; C &amp; U Collection] tab.</p>
+<p>After a provider has been discovered and its relationships refreshed, view the clusters, hosts, and datastores from the settings menu.
+Navigate to <strong>Settings</strong>, then click on <strong>Application Settings</strong>. Click the menu: <strong>Settings</strong> &gt; <strong>Region</strong>, then select the <strong>C &amp; U Collection</strong> tab.</p>
 
 <h6 id="enabling-a-cluster-host-or-datastore-for-capacity-and">
 <a class="anchor" href="#enabling-a-cluster-host-or-datastore-for-capacity-and" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling a Cluster, Host, or Datastore for Capacity and</h6>
 <p>Utilization Collection</p>
 
-<p>To enable a cluster, host, or datastore for Capacity and Utilization
-Collection:</p>
+<p>To enable a cluster, host, or datastore for Capacity and Utilization Collection:</p>
 
 <ol>
+  <li>Click <strong>Settings</strong>, then click on <strong>Application Settings</strong>.</li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>),
-then click on the <strong>Settings</strong> accordion.</p>
-  </li>
-  <li>
-    <p>Select <strong>Region</strong>, then click on the <strong>C &amp; U Collection</strong> tab.</p>
+    <p>Click the <strong>Settings</strong> accordion, then select <strong>Region</strong>, then click on the <strong>C &amp; U Collection</strong> tab.</p>
   </li>
   <li>
     <p>In the <strong>Clusters</strong> area, check all clusters and hosts that you want
@@ -2144,9 +2089,7 @@ to collect data for.</p>
     <p>In the <strong>Datastores</strong> area, check all datastores that you want to
 collect data for.</p>
   </li>
-  <li>
-    <p>Click <strong>Save</strong>.</p>
-  </li>
+  <li>Click <strong>Save</strong>.</li>
 </ol>
 
 <p><strong>Note:</strong></p>
@@ -2172,18 +2115,11 @@ OpenStack Platform or Amazon EC2.</p>
 <a class="anchor" href="#company-tag-categories-and-tags" aria-hidden="true"><span class="octicon octicon-link"></span></a>Company Tag Categories and Tags</h6>
 
 <p>ManageIQ allows you to create your own set of tags and tag
-categories. Use tags to create a customized, searchable index for your
-resources. Depending on your database type, your tags may be case
-sensitive. After creating these values, you can apply them to your
-resources. There are two kinds of tags.</p>
+categories. Use tags to create a customized, searchable index for your resources. Depending on your database type, your tags may be case sensitive. After creating these values, you can apply them to your resources. There are two kinds of tags.</p>
 
 <ul>
   <li>
-    <p><strong>Company tags</strong> which you will see under <strong>My Company Tags</strong> for a
-resource. Create company tags from the settings menu. Navigate to
-<img src="../images/config-gear.png" alt="Configuration"> <strong>Configuration</strong>, then
-click the <strong>Settings</strong> accordion, then menu:Region[My Company
-Tags]. A selection of company tags is provided to you by default as
+    <p><strong>Company tags</strong> which you will see under <strong>My Company Tags</strong> for a resource. Create company tags from the settings menu. Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>. Click the <strong>Settings</strong> accordion, then select the <strong>Region</strong> and click on the <strong>Tags</strong> tab, then <strong>My Company Tags</strong>. A selection of company tags is provided to you by default as
 samples. These can be deleted if you do not need them, but are not
 recreated by ManageIQ.</p>
   </li>
@@ -2198,11 +2134,10 @@ recreated by ManageIQ.</p>
 <p>To create a tag category:</p>
 
 <ol>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>.</li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>, then click on
+    <p>Select the <strong>Tags</strong> tab, then click on
 the <strong>My Company Categories</strong> tab.</p>
   </li>
   <li>
@@ -2250,20 +2185,14 @@ want to group by.</p>
       </li>
     </ul>
   </li>
-  <li>
-    <p>Click <strong>Add</strong>.</p>
-  </li>
+  <li>Click <strong>Add</strong>.</li>
 </ol>
 
-<p>Repeat these steps for each category you need. After you have created
-the category, you can add values to it.</p>
+<p>Repeat these steps for each category you need. After you have created the category, you can add values to it.</p>
 
-<div class="important">
+<p><strong>Important</strong></p>
 
-If no values are created for a category, you are unable to assign a
-value from that category nor be able to filter by that category.
-
-</div>
+<p>If no values are created for a category, you are unable to assign a value from that category nor be able to filter by that category.</p>
 
 <h6 id="deleting-a-tag-category">
 <a class="anchor" href="#deleting-a-tag-category" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deleting a Tag Category</h6>
@@ -2271,20 +2200,17 @@ value from that category nor be able to filter by that category.
 <p>To delete a tag category:</p>
 
 <ol>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>.</li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>, then click on
+    <p>Select the <strong>Tags</strong> tab, then click on
 the <strong>My Company Categories</strong> tab.</p>
   </li>
   <li>
     <p>Click <strong>Delete</strong> under the <strong>Actions</strong> column for the category you
 want to delete.</p>
   </li>
-  <li>
-    <p>Click <strong>OK</strong> to confirm.</p>
-  </li>
+  <li>Click <strong>OK</strong> to confirm.</li>
 </ol>
 
 <p><strong>Note:</strong></p>
@@ -2298,16 +2224,14 @@ tags from the category are unassigned from all resources.</p>
 <p>To create a company tag:</p>
 
 <ol>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>.</li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>, then click on
+    <p>Select the <strong>Tags</strong> tab, then click on
 the <strong>My Company Tags</strong> tab.</p>
   </li>
   <li>
-    <p>In the <strong>Choose a Category</strong> area, select a category from the
-<strong>Category</strong> list.</p>
+    <p>In the <strong>Choose a Category</strong> area, select a category from the <strong>Category</strong> list.</p>
 
     <p><strong>Note:</strong></p>
 
@@ -2324,12 +2248,9 @@ you different results from filtering by ‘linux’ in lower case.</p>
     </ul>
   </li>
   <li>
-    <p>Click <strong>Add</strong> under the <strong>Actions</strong> column, and type a <strong>Name</strong> and
-<strong>Description</strong> for your new value.</p>
+    <p>Click <strong>Add</strong> under the <strong>Actions</strong> column, and type a <strong>Name</strong> and <strong>Description</strong> for your new value.</p>
   </li>
-  <li>
-    <p>Click <strong>Add</strong> once again to add the new entry to the table.</p>
-  </li>
+  <li>Click <strong>Add</strong> once again to add the new entry to the table.</li>
 </ol>
 
 <h6 id="deleting-a-company-tag">
@@ -2338,42 +2259,33 @@ you different results from filtering by ‘linux’ in lower case.</p>
 <p>To delete a company tag:</p>
 
 <ol>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>.</li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>, then click on
+    <p>Select the <strong>Tags</strong> tab, then click on
 the <strong>My Company Tags</strong> tab.</p>
   </li>
   <li>
-    <p>Click <strong>Delete</strong> under the <strong>Actions</strong> column next to the tag to
-delete it.</p>
+    <p>Click <strong>Delete</strong> under the <strong>Actions</strong> column next to the tag to delete it.</p>
 
     <p><strong>Note:</strong></p>
 
-    <p>When you delete a tag, the tag is also deleted from any resource to
-which it was assigned.</p>
+    <p>When you delete a tag, the tag is also deleted from any resource to which it was assigned.</p>
   </li>
-  <li>
-    <p>Click <strong>OK</strong> to confirm.</p>
-  </li>
+  <li>Click <strong>OK</strong> to confirm.</li>
 </ol>
 
 <h6 id="importing-tags-for-virtual-machines">
 <a class="anchor" href="#importing-tags-for-virtual-machines" aria-hidden="true"><span class="octicon octicon-link"></span></a>Importing Tags for Virtual Machines</h6>
 
-<p>You can import a <strong>CSV</strong> file with tag assignments into the VMDB. For
-the import to be successful, be aware of the following:</p>
+<p>You can import a <strong>CSV</strong> file with tag assignments into the VMDB. For the import to be successful, be aware of the following:</p>
 
 <ul>
   <li>
-    <p>The file must be in the following format, with one line for each
-virtual machine. One virtual machine per tag must be on a separate
-line even if you are assigning multiple tags of the same category.</p>
+    <p>The file must be in the following format, with one line for each virtual machine. One virtual machine per tag must be on a separate line even if you are assigning multiple tags of the same category.</p>
   </li>
   <li>
-    <p>You must use the display names of the category and the display name
-for the tag for the import to work.</p>
+    <p>You must use the display names of the category and the display name for the tag for the import to work.</p>
 
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>name,category,entry
@@ -2392,41 +2304,31 @@ rhel6,Department,Support
 <p>To import tags for a virtual machine from a CSV file:</p>
 
 <ol>
+  <li>Make sure the <strong>CSV file</strong> is in the required format.</li>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>.</li>
   <li>
-    <p>Make sure the <strong>CSV file</strong> is in the required format.</p>
-  </li>
-  <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>, then click on
+    <p>Select the <strong>Tags</strong> tab, then click on
 the <strong>Import Tags</strong> tab.</p>
   </li>
   <li>
-    <p>Click <strong>Choose file</strong> to go to the location where the file is
-located.</p>
+    <p>Click <strong>Choose file</strong> to go to the location where the file is located.</p>
   </li>
   <li>
     <p>Click <strong>Upload</strong>.</p>
 
     <p><strong>Note:</strong></p>
 
-    <p>If there are any problems with the file, such as an incorrect column
-name, unknown virtual machine, unknown tag, or multiple values for a
-tag that should have only one, an error message will appear in the
-console for those records.</p>
+    <p>If there are any problems with the file, such as an incorrect column name, unknown virtual machine, unknown tag, or multiple values for a
+tag that should have only one, an error message will appear in the console for those records.</p>
   </li>
-  <li>
-    <p>Click <strong>Apply</strong>.</p>
-  </li>
+  <li>Click <strong>Apply</strong>.</li>
 </ol>
 
 <h6 id="importing-custom-values-for-virtual-machines-and-hosts">
 <a class="anchor" href="#importing-custom-values-for-virtual-machines-and-hosts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Importing Custom Values for Virtual Machines and Hosts</h6>
 
-<p>You can import a <strong>CSV</strong> file with asset tag information into the VMDB
-for a virtual machine or import custom values for hosts. For the import
-to be successful, the file must be in the following format, with one
+<p>You can import a <strong>CSV</strong> file with asset tag information into the VMDB for a virtual machine or import custom values for hosts. For the import to be successful, the file must be in the following format, with one
 line for each virtual machine or host.</p>
 
 <ul>
@@ -2454,10 +2356,7 @@ SQLSrvr,1090430
 Firewall,8230500
 </code></pre></div></div>
 
-<p>For virtual machines, the value for custom_1 will show in the <strong>VM
-Summary</strong> page as the <strong>Custom Identifier</strong> page as the <strong>Custom
-Identifier</strong> in the <strong>Properties</strong> area. All of the custom values will
-show in the <strong>Custom Fields</strong> area.</p>
+<p>For virtual machines, the value for custom_1 will show in the <strong>VM Summary</strong> page as the <strong>Custom Identifier</strong> page as the <strong>Custom Identifier</strong> in the <strong>Properties</strong> area. All of the custom values will show in the <strong>Custom Fields</strong> area.</p>
 
 <p><strong>Host Import Example</strong></p>
 
@@ -2468,8 +2367,7 @@ esxd2.galaxy.local,16199125,16569419
 </code></pre></div></div>
 
 <p>For hosts, the value for custom_1 will show in the <strong>Host Summary</strong>
-page as the <strong>Custom Identifier</strong> in the <strong>Properties</strong> area. All of the
-custom values will show in the <strong>Custom Fields</strong> area.</p>
+page as the <strong>Custom Identifier</strong> in the <strong>Properties</strong> area. All of the custom values will show in the <strong>Custom Fields</strong> area.</p>
 
 <h6 id="importing-asset-tags-for-a-virtual-machine-from-a-csv-file">
 <a class="anchor" href="#importing-asset-tags-for-a-virtual-machine-from-a-csv-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>Importing Asset Tags for a Virtual Machine from a CSV File</h6>
@@ -2477,43 +2375,47 @@ custom values will show in the <strong>Custom Fields</strong> area.</p>
 <p>To import asset tags for a virtual machine from a CSV file</p>
 
 <ol>
-  <li>
-    <p>Make sure the <strong>CSV file</strong> is in the required format.</p>
-  </li>
-  <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>, then click on
-the <strong>Import</strong> tab.</p>
-  </li>
+  <li>Make sure the <strong>CSV file</strong> is in the required format.</li>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>.</li>
+  <li>Select the <strong>Tags</strong> tab, then click on
+the <strong>Import Variables</strong> tab.</li>
   <li>
     <p>Select the type of custom variable you want to import, either
 <strong>Host</strong> or <strong>VM</strong>.</p>
   </li>
   <li>
-    <p>Click <strong>Choose file</strong> to go to the location where the custom
-variable file is located.</p>
+    <p>Click <strong>Choose file</strong> to go to the location where the custom variable file is located.</p>
   </li>
   <li>
     <p>Click <strong>Upload</strong>.</p>
 
     <p><strong>Note:</strong></p>
 
-    <p>If there are any problems with the file, such as an incorrect column
-name, unknown virtual machine or host, a message appears.</p>
+    <p>If there are any problems with the file, such as an incorrect column name, unknown virtual machine or host, a message appears.</p>
   </li>
-  <li>
-    <p>Click <strong>Apply</strong>.</p>
-  </li>
+  <li>Click <strong>Apply</strong>.</li>
+</ol>
+
+<h5 id="tag-mapping">
+<a class="anchor" href="#tag-mapping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tag Mapping</h5>
+
+<p>You can map labels from external providers to tags within ManageIQ.</p>
+
+<ol>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then select the <strong>Region</strong>.</li>
+  <li>Select the <strong>Tags</strong> tab, then click on
+ the <strong>Map Tags</strong> tab.</li>
+  <li>Click <strong>Add</strong> to create a tag map.</li>
+  <li>In the <strong>Choose a resource entity and label</strong>, select the <strong>Entity</strong> and enter a <strong>Resource label</strong>, then enter a <strong>Tag Category</strong>.</li>
+  <li>Click <strong>Add</strong>.</li>
 </ol>
 
 <h5 id="customizing-the-help-menu">
 <a class="anchor" href="#customizing-the-help-menu" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customizing the Help Menu</h5>
 
-<p>ManageIQ allows administrators to customize the help menu. Use
-this feature to define menu labels, URLs and how each window opens for
-users.</p>
+<p>ManageIQ allows administrators to customize the help menu. Use this feature to define menu labels, URLs and how each window opens for users.</p>
 
 <p><strong>Note:</strong></p>
 
@@ -2522,23 +2424,13 @@ users.</p>
 <p>Customize the help menu using the following steps:</p>
 
 <ol>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>.</li>
+  <li>Click on the <strong>Help Menu</strong> tab.</li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Provide custom <strong>Menu item labels</strong> and an associated <strong>URL</strong> for each. Define how each window should open by selecting from the options in the <strong>Open in</strong> menu.</p>
   </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then <strong>Region</strong>.</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Help Menu</strong> tab.</p>
-  </li>
-  <li>
-    <p>Provide custom <strong>Menu item labels</strong> and an associated <strong>URL</strong> for
-each. Define how each window should open by selecting from the
-options in the <strong>Open in</strong> menu.</p>
-  </li>
-  <li>
-    <p>Click <strong>Submit</strong>.</p>
-  </li>
+  <li>Click <strong>Submit</strong>.</li>
 </ol>
 
 <h4 id="profiles">
@@ -2547,8 +2439,7 @@ options in the <strong>Open in</strong> menu.</p>
 <h5 id="creating-an-analysis-profile">
 <a class="anchor" href="#creating-an-analysis-profile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating an Analysis Profile</h5>
 
-<p>You can create an analysis profile by referring to the sample profiles
-provided in the console. You can copy the sample profile or create a new
+<p>You can create an analysis profile by referring to the sample profiles provided in the console. You can copy the sample profile or create a new
 one.</p>
 
 <h5 id="creating-a-host-analysis-profile">
@@ -2557,54 +2448,36 @@ one.</p>
 <p>To create a host analysis profile:</p>
 
 <ol>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Analysis Profiles</strong>.</p>
   </li>
   <li>
-    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Analysis
-Profiles</strong>.</p>
-  </li>
-  <li>
-    <p>Click <img src="../images/1847.png" alt="1847"> (<strong>Configuration</strong>), and <img src="../images/plus_green.png" alt="plus
+    <p>Click <strong>Configuration</strong>, and <img src="../images/plus_green.png" alt="plus
 green"> (<strong>Add Host Analysis Profile</strong>).</p>
   </li>
   <li>
-    <p>In the <strong>Basic Information</strong> area, type in a <strong>Name</strong> and
-<strong>Description</strong> for the analysis profile. <img src="../images/2048.png" alt="2048"></p>
+    <p>In the <strong>Basic Information</strong> area, type in a <strong>Name</strong> and <strong>Description</strong> for the analysis profile. <img src="../images/2048.png" alt="2048"></p>
   </li>
   <li>
-    <p>Click <strong>File</strong> to collect information about a file or group of
-files.</p>
+    <p>Click <strong>File</strong> to collect information about a file or group of files.</p>
   </li>
   <li>
     <p>From the <strong>File Entry</strong> area, click <img src="../images/plus_green.png" alt="plus
-green"> (<strong>Click to add a new entry</strong>) to add
-a file or group of files. <img src="../images/2047.png" alt="2047"></p>
+green"> (<strong>Click to add a new entry</strong>) to add a file or group of files. <img src="../images/2047.png" alt="2047"></p>
 
     <ul>
-      <li>Check <strong>Collect Contents</strong> to not only check for existence, but
-also gather the contents of the file. If you do this, then you
-can use the contents to create policies in ManageIQ
-Control.</li>
+      <li>Check <strong>Collect Contents</strong> to not only check for existence, but also gather the contents of the file. If you do this, then you can use the contents to create policies in ManageIQ Control.</li>
     </ul>
   </li>
   <li>
     <p>Click <strong>Event Log</strong> to specify event log entries to collect.</p>
   </li>
   <li>
-    <p>From the <strong>Event Log Entry</strong> area, click <img src="../images/plus_green.png" alt="plus
-green"> (<strong>Click to add a new entry</strong>) to add
-a type of event log entry. Type in a <strong>Name</strong>. You can type in a
-specific message to find in <strong>Filter Message</strong>. In <strong>Level</strong>, set
-the value for the level of the entry and above. Specify the
-<strong>Source</strong> for the entry. Finally, set the # number of days that
-you want to collect event log entries for. If you set this to 0, it
-will go as far back as there is data available.
+    <p>From the <strong>Event Log Entry</strong> area, click <img src="../images/plus_green.png" alt="plus green"> <strong>Click to add a new entry</strong> to add a type of event log entry. Type in a <strong>Name</strong>. You can type in a specific message to find in <strong>Filter Message</strong>. In <strong>Level</strong>, set the value for the level of the entry and above. Specify the <strong>Source</strong> for the entry. Finally, set the # number of days that you want to collect event log entries for. If you set this to 0, it will go as far back as there is data available.
 <img src="../images/2046.png" alt="2046"></p>
   </li>
-  <li>
-    <p>Click <strong>Add</strong>.</p>
-  </li>
+  <li>Click <strong>Add</strong>.</li>
 </ol>
 
 <h5 id="creating-a-virtual-machine-analysis-profile">
@@ -2613,65 +2486,40 @@ will go as far back as there is data available.
 <p>To create a virtual machine analysis profile:</p>
 
 <ol>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Analysis Profiles</strong>.</p>
   </li>
   <li>
-    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Analysis
-Profiles</strong>.</p>
+    <p>Click <strong>Configuration</strong>, and <img src="../images/plus_green.png" alt="plus green"> <strong>Add VM Analysis Profile</strong>.</p>
   </li>
   <li>
-    <p>Click <img src="../images/1847.png" alt="1847"> (<strong>Configuration</strong>), and <img src="../images/plus_green.png" alt="plus
-green"> (<strong>Add VM Analysis Profile</strong>).</p>
+    <p>In the <strong>Basic Information</strong> area, type in a <strong>Name</strong> and <strong>Description</strong> for the analysis profile. <img src="../images/2050.png" alt="2050"></p>
   </li>
   <li>
-    <p>In the <strong>Basic Information</strong> area, type in a <strong>Name</strong> and
-<strong>Description</strong> for the analysis profile. <img src="../images/2050.png" alt="2050"></p>
-  </li>
-  <li>
-    <p>You begin in the <strong>Category</strong> tab. From the <strong>Category Selection</strong>
-area, check the categories you want to collect information for. This
-is available for virtual machine profiles only.
+    <p>You begin in the <strong>Category</strong> tab. From the <strong>Category Selection</strong> area, check the categories you want to collect information for. This is available for virtual machine profiles only.
 <img src="../images/2051.png" alt="2051"></p>
   </li>
   <li>
-    <p>Click the <strong>File</strong> tab to collect information about a file or group
-of files.</p>
+    <p>Click the <strong>File</strong> tab to collect information about a file or group of files.</p>
   </li>
   <li>
-    <p>From the <strong>File Entry</strong> area, click <img src="../images/plus_green.png" alt="plus
-green"> (<strong>Add this entry</strong>) to add a file or
-group of files, then type a name. For virtual machines, specify the
-file to check for. Check the box under <strong>Collect Contents</strong> if you
-want to collect the file contents as well. The files can be no
-larger than 1 MB. <img src="../images/2052.png" alt="2052"></p>
+    <p>From the <strong>File Entry</strong> area, click <img src="../images/plus_green.png" alt="plus green"> <strong>Add this entry</strong> to add a file or group of files, then type a name. For virtual machines, specify the file to check for. Check the box under <strong>Collect Contents</strong> if you want to collect the file contents as well. The files can be no larger than 1 MB. <img src="../images/2052.png" alt="2052"></p>
   </li>
   <li>
     <p>Click the <strong>Registry</strong> tab to collect information on a registry key.</p>
   </li>
   <li>
-    <p>From the <strong>Registry Entry</strong> area, type your <strong>Registry Key</strong> and
-<strong>Registry Value</strong>. To evaluate whether a registry key exists or
-does not exist on a virtual machine, without providing a value, type
-* in the <strong>Registry Value</strong> field. Then, you do not need to know
-the registry value to collect the keys. This is available for
-virtual machine profiles only. <img src="../images/2052-reg.png" alt="2052 reg"></p>
+    <p>From the <strong>Registry Entry</strong> area, type your <strong>Registry Key</strong> and <strong>Registry Value</strong>. To evaluate whether a registry key exists or does not exist on a virtual machine, without providing a value, type
+* in the <strong>Registry Value</strong> field. Then, you do not need to know the registry value to collect the keys. This is available for virtual machine profiles only. <img src="../images/2052-reg.png" alt="2052 reg"></p>
   </li>
   <li>
     <p>Click <strong>Event Log</strong> to specify event log entries to collect.</p>
   </li>
   <li>
-    <p>From the <strong>Event Log Entry</strong> area, complete the fields to add a type
-of event log entry. You can type in a specific message to find in
-<strong>Filter Message</strong>. In <strong>Level</strong>, set the value for the level of the
-entry and above. Specify the <strong>Source for the entry</strong>. Finally, set
-the # (number) of days that you want to collect event log entries
-for. If you set this to 0, it will go as far back as there is data
-available. <img src="../images/2054.png" alt="2054"></p>
+    <p>From the <strong>Event Log Entry</strong> area, complete the fields to add a type of event log entry. You can type in a specific message to find in <strong>Filter Message</strong>. In <strong>Level</strong>, set the value for the level of the entry and above. Specify the <strong>Source for the entry</strong>. Finally, set the # (number) of days that you want to collect event log entries for. If you set this to 0, it will go as far back as there is data available. <img src="../images/2054.png" alt="2054"></p>
   </li>
-  <li>
-    <p>Click <strong>Add</strong>.</p>
-  </li>
+  <li>Click <strong>Add</strong>.</li>
 </ol>
 
 <h5 id="editing-an-analysis-profile">
@@ -2680,26 +2528,18 @@ available. <img src="../images/2054.png" alt="2054"></p>
 <p>To edit an analysis profile:</p>
 
 <ol>
-  <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Analysis
-Profiles</strong>.</p>
-  </li>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then click <strong>Analysis Profiles</strong>.</li>
   <li>
     <p>Check the analysis profile you want to edit.</p>
   </li>
   <li>
-    <p>Click <img src="../images/1851.png" alt="1851"> (<strong>Edit the selected Analysis
-Profiles</strong>).</p>
+    <p>Click <img src="../images/1851.png" alt="1851"> <strong>Edit the selected Analysis Profiles</strong>.</p>
   </li>
   <li>
     <p>Make any changes.</p>
   </li>
-  <li>
-    <p>Click <strong>Save</strong>.</p>
-  </li>
+  <li>Click <strong>Save</strong>.</li>
 </ol>
 
 <p>The changes are added to the analysis profile. The virtual machines or
@@ -2711,19 +2551,15 @@ hosts must be re-analyzed to collect the new or modified information.</p>
 <p>To copy an analysis profile:</p>
 
 <ol>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Analysis
-Profiles</strong>.</p>
+    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Analysis Profiles</strong>.</p>
   </li>
   <li>
     <p>Check the analysis profile you want to copy.</p>
   </li>
   <li>
-    <p>Click <img src="../images/1859.png" alt="1859"> (<strong>Copy the selected Analysis
-Profiles</strong>).</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1859.png" alt="1859"> <strong>Copy the selected Analysis Profiles</strong>.</p>
   </li>
   <li>
     <p>Type a new <strong>Name</strong> and <strong>Description</strong>.</p>
@@ -2731,57 +2567,39 @@ Profiles</strong>).</p>
   <li>
     <p>Make required changes.</p>
   </li>
-  <li>
-    <p>Click <strong>Add</strong>.</p>
-  </li>
+  <li>Click <strong>Add</strong>.</li>
 </ol>
 
 <h5 id="setting-a-default-analysis-profile">
 <a class="anchor" href="#setting-a-default-analysis-profile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting a Default Analysis Profile</h5>
 
-<p>If you want to set an analysis profile to be used for all virtual
-machines, you can create a default profile.</p>
+<p>If you want to set an analysis profile to be used for all virtual machines, you can create a default profile.</p>
 
 <p>To create a default analysis profile:</p>
 
 <ol>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Analysis
-Profiles</strong>.</p>
+    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Analysis Profiles</strong>.</p>
   </li>
   <li>
     <p>Click on the analysis profile you want to set as the default.</p>
   </li>
   <li>
-    <p>Click <img src="../images/1851.png" alt="1851"> (<strong>Edit the selected Analysis
-Profile</strong>).</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1851.png" alt="1851"> <strong>Edit the selected Analysis Profile</strong>.</p>
   </li>
   <li>
-    <p>For a virtual machine profile, enter <code class="language-plaintext highlighter-rouge">default</code> in lower case in
-<strong>Name</strong>. For a host profile, enter host default. <img src="../images/set_default_analysis_profile.png" alt="set default
-analysis profile"></p>
+    <p>For a virtual machine profile, enter <code class="language-plaintext highlighter-rouge">default</code> in lower case in <strong>Name</strong>. For a host profile, enter <code class="language-plaintext highlighter-rouge">host default</code>. <img src="../images/set_default_analysis_profile.png" alt="set default analysis profile"></p>
   </li>
-  <li>
-    <p>Click <strong>Save</strong>.</p>
-  </li>
+  <li>Click <strong>Save</strong>.</li>
 </ol>
 
 <h4 id="zones">
 <a class="anchor" href="#zones" aria-hidden="true"><span class="octicon octicon-link"></span></a>Zones</h4>
 
-<p>You can organize your ManageIQ Infrastructure into zones to
-configure failover and isolate traffic. A provider that is discovered by
-a server in a specific zone gets monitored and managed in that zone. All
-jobs, such as a SmartState Analysis or VM power operation, dispatched by
-a server in a specific zone can get processed by any ManageIQ
-appliance assigned to that same zone.</p>
+<p>You can organize your ManageIQ Infrastructure into zones to configure failover and isolate traffic. A provider that is discovered by a server in a specific zone gets monitored and managed in that zone. All jobs, such as a SmartState Analysis or VM power operation, dispatched by a server in a specific zone can get processed by any ManageIQ appliance assigned to that same zone.</p>
 
-<p>Zones can be created based on your own environment. You can make zones
-based on geographic location, network location, or function. When first
-started, a new server is put into the default zone.</p>
+<p>Zones can be created based on your own environment. You can make zones based on geographic location, network location, or function. When first started, a new server is put into the default zone.</p>
 
 <p>Suppose you have four ManageIQ appliances with two in the East
 zone, appliances A and B, and two in the West zone, appliances C and D.
@@ -2792,9 +2610,7 @@ Appliance A or B, but not C or D.</p>
 
 <p><strong>Note:</strong></p>
 
-<p>Only users assigned the super administrator role can create zones. There
-must always be at least one zone. The <strong>Default Zone</strong> is provided and
-cannot be deleted.</p>
+<p>Only users assigned the super administrator role can create zones. There must always be at least one zone. The <strong>Default Zone</strong> is provided and cannot be deleted.</p>
 
 <h5 id="creating-a-zone">
 <a class="anchor" href="#creating-a-zone" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a Zone</h5>
@@ -2802,46 +2618,30 @@ cannot be deleted.</p>
 <p>To create a zone:</p>
 
 <ol>
-  <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
   <li>
     <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
   </li>
   <li>
-    <p>Click <img src="../images/1847.png" alt="1847"> (<strong>Configuration</strong>), and <img src="../images/plus_green.png" alt="plus
-green"> (<strong>Add a new Zone</strong>) to create a
-zone.</p>
+    <p>Click <strong>Configuration</strong>, and <img src="../images/plus_green.png" alt="plus green"> <strong>Add a new Zone</strong> to create a zone.</p>
   </li>
   <li>
-    <p>In the <strong>Zone Information</strong> area, type in a <strong>Name</strong> and
-<strong>Description</strong> for the new zone. <img src="../images/2057.png" alt="2057"></p>
+    <p>In the <strong>Zone Information</strong> area, type in a <strong>Name</strong> and <strong>Description</strong> for the new zone. <img src="../images/2057.png" alt="2057"></p>
   </li>
   <li>
-    <p>Use <strong>SmartProxy Server IP</strong> to specify the IP address of the server
-that you want SmartProxies installed in this zone to report to. If
-this is not set, then the IP address of the server that deployed the
-SmartProxy is used. This does not apply to embedded SmartProxies.</p>
+    <p>Use <strong>SmartProxy Server IP</strong> to specify the IP address of the server that you want SmartProxies installed in this zone to report to. If this is not set, then the IP address of the server that deployed the SmartProxy is used. This does not apply to embedded SmartProxies.</p>
   </li>
   <li>
-    <p>Optionally, you can configure <strong>NTP servers</strong> for the entire zone in
-the NTP Servers area. These settings will be used if the NTP servers
-have not been set for the appliance in the menu:Operations[Server]
-page.</p>
+    <p>Optionally, you can configure <strong>NTP servers</strong> for the entire zone in the NTP Servers area. These settings will be used if the NTP servers have not been set for the appliance in the menu: <strong>Operations</strong> &gt; <strong>Server</strong> page.</p>
   </li>
   <li>
-    <p>In the menu:Credentials[Windows Domain] area, type in Windows
-domain credentials to be able to collect running processes from
-Windows virtual machines that are on a domain.
+    <p>In the menu: <strong>Credentials - Windows Domain</strong> area, type in Windows domain credentials to be able to collect running processes from Windows virtual machines that are on a domain.
 <img src="../images/2058.png" alt="2058"></p>
   </li>
   <li>
-    <p>In the <strong>Settings</strong> area, set the number for <strong>Max Active VM
-Scans</strong>. The default is <code class="language-plaintext highlighter-rouge">Unlimited</code>.</p>
+    <p>In the <strong>Settings</strong> area, set the number for <strong>Max Active VM Scans</strong>. The default is <code class="language-plaintext highlighter-rouge">Unlimited</code>.</p>
   </li>
-  <li>
-    <p>Click <strong>Save</strong>.</p>
-  </li>
+  <li>Click <strong>Save</strong>.</li>
 </ol>
 
 <h5 id="deleting-a-zone">
@@ -2850,9 +2650,7 @@ Scans</strong>. The default is <code class="language-plaintext highlighter-rouge
 <p>To delete a zone:</p>
 
 <ol>
-  <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
   <li>
     <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
   </li>
@@ -2864,12 +2662,10 @@ Scans</strong>. The default is <code class="language-plaintext highlighter-rouge
     <p>You cannot delete a zone if there are servers assigned to it.</p>
   </li>
   <li>
-    <p>Click <img src="../images/1847.png" alt="1847"> (<strong>Configuration</strong>), then click
-<img src="../images/gui_delete.png" alt="gui delete"> (<strong>Delete this Zone</strong>).</p>
+    <p>Click <img src="../images/1847.png" alt="1847"> <strong>Configuration</strong>, then click 
+<img src="../images/gui_delete.png" alt="gui delete"> <strong>Delete this Zone</strong>.</p>
   </li>
-  <li>
-    <p>Click <strong>OK</strong> to confirm.</p>
-  </li>
+  <li>Click <strong>OK</strong> to confirm.</li>
 </ol>
 
 <h5 id="editing-a-zone">
@@ -2878,67 +2674,47 @@ Scans</strong>. The default is <code class="language-plaintext highlighter-rouge
 <p>To edit a zone:</p>
 
 <ol>
-  <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
-  </li>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</li>
   <li>
     <p>Click the zone you want to edit.</p>
   </li>
   <li>
-    <p>Click <img src="../images/1847.png" alt="1847"> (<strong>Configuration</strong>), then click
-<img src="../images/1851.png" alt="1851"> (<strong>Edit this Zone</strong>).</p>
+    <p>Click <img src="../images/1847.png" alt="1847"> <strong>Configuration</strong>, then click
+<img src="../images/1851.png" alt="1851"> <strong>Edit this Zone</strong>.</p>
   </li>
   <li>
-    <p>Make the required changes.</p>
+    <p>Complete the required changes.</p>
   </li>
-  <li>
-    <p>Click <strong>Save</strong>.</p>
-  </li>
+  <li>Click <strong>Save</strong>.</li>
 </ol>
 
 <h5 id="adding-smartproxy-affinity-to-a-zone">
 <a class="anchor" href="#adding-smartproxy-affinity-to-a-zone" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding SmartProxy Affinity to a Zone:</h5>
 
-<p>Enable SmartProxy Affinity for zones containing servers with the
-SmartProxy role to run a SmartState Analysis.</p>
+<p>Enable SmartProxy Affinity for zones containing servers with the SmartProxy role to run a SmartState Analysis.</p>
 
 <p>To add SmartProxy Affinity to a zone:</p>
 
 <ol>
-  <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
-  </li>
-  <li>
-    <p>Click the zone in which you want to enable SmartProxy Affinity.</p>
-  </li>
-  <li>
-    <p>Click the <strong>SmartProxy Affinity</strong> tab and click the appropriate
-server.</p>
-  </li>
-  <li>
-    <p>Click <strong>Save</strong>.</p>
-  </li>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</li>
+  <li>Click the zone in which you want to enable SmartProxy Affinity.</li>
+  <li>Click the <strong>SmartProxy Affinity</strong> tab and click the appropriate
+server.</li>
+  <li>Click <strong>Save</strong>.</li>
 </ol>
 
 <h4 id="servers">
 <a class="anchor" href="#servers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Servers</h4>
 
 <p>Server settings enables you to control how each ManageIQ server
-operates including authentication, logging, and email. If you have
-multiple servers in your environment that are reporting to one central
-VMDB, then you can edit some of these settings from the console by
-specifying which server you want to change.</p>
+operates including authentication, logging, and email. If you have multiple servers in your environment that are reporting to one central
+VMDB, then you can edit some of these settings from the console by specifying which server you want to change.</p>
 
 <p><strong>Note:</strong></p>
 
-<p>The server selection options are only available if you have multiple
-servers sharing one VMDB.</p>
+<p>The server selection options are only available if you have multiple servers sharing one VMDB.</p>
 
 <h5 id="changing-server-settings">
 <a class="anchor" href="#changing-server-settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changing Server Settings</h5>
@@ -2946,12 +2722,8 @@ servers sharing one VMDB.</p>
 <p>To change server settings:</p>
 
 <ol>
-  <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
-  </li>
+  <li>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</li>
+  <li>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</li>
   <li>
     <p>Click the zone where the ManageIQ server is located.</p>
   </li>
@@ -2964,9 +2736,7 @@ servers sharing one VMDB.</p>
   <li>
     <p>Make any required changes.</p>
   </li>
-  <li>
-    <p>Click <strong>Save</strong>.</p>
-  </li>
+  <li>Click <strong>Save</strong>.</li>
 </ol>
 
 <h6 id="basic-information-settings-">
@@ -3284,15 +3054,13 @@ must be started manually now.</p>
 
 <ol>
   <li>
-    <p>Access each SNMP processing appliance using their web interfaces</p>
+    <p>Access each SNMP processing appliance using their web interfaces.</p>
   </li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="Configuration"> <strong>Configuration</strong>,
-then click <strong>Settings</strong>.</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
-    <p>Select the zone where the EVM server is located, and select the EVM
-server.</p>
+    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>. Select the zone where the EVM server is located, and select the EVM server.</p>
   </li>
   <li>
     <p>In the <strong>Server Control</strong> area, set the <strong>Notifier</strong> server role
@@ -3307,25 +3075,19 @@ option to <code class="language-plaintext highlighter-rouge">ON</code>.</p>
 
 <ol>
   <li>
-    <p>From the settings menu, select . Click
-<img src="../images/config-gear.png" alt="Configuration"> <strong>Configuration</strong>, then
-click <strong>Diagnostics</strong>.</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong> then click the <strong>Diagnostics</strong> accordion.</p>
   </li>
   <li>
     <p>Select the zone where the EVM server is located.</p>
   </li>
   <li>
-    <p>Click <strong>Roles by Servers</strong> or <strong>Servers by Roles</strong> to view your
-servers.</p>
+    <p>Click <strong>Roles by Servers</strong> or <strong>Servers by Roles</strong> to view your servers.</p>
   </li>
   <li>
-    <p>In the <strong>Status of Roles for Servers</strong> in <strong>Zone Default</strong> Zone
-area, click the role that you want to set the priority for.</p>
+    <p>In the <strong>Status of Roles for Servers</strong> in <strong>Zone Default Zone</strong> area, click the role that you want to set the priority for.</p>
   </li>
   <li>
-    <p>Click <img src="../images/1847.png" alt="1847">(<strong>Configuration</strong>), and
-<img src="../images/2097.png" alt="2097">(<strong>Promote Server</strong>) to make this the
-primary server for this role.</p>
+    <p>Click <strong>Configuration</strong>, and <img src="../images/2097.png" alt="2097"><strong>Promote Server</strong> to make this the primary server for this role.</p>
   </li>
 </ol>
 
@@ -3337,8 +3099,7 @@ emails from.</p>
 
 <p><strong>Note:</strong></p>
 
-<p>To be able to send any emails from the server, you must have the
-Notifier server role enabled. You can test the settings without the role
+<p>To be able to send any emails from the server, you must have the Notifier server role enabled. You can test the settings without the role
 enabled.</p>
 
 <p><img src="../images/outgoingsmtp.png" alt="outgoingsmtp"></p>
@@ -3354,26 +3115,22 @@ enabled.</p>
     <p>Use <strong>Domain</strong> to specify the domain name for the mail server.</p>
   </li>
   <li>
-    <p>Set <strong>Start TLS Automatically</strong> on <code class="language-plaintext highlighter-rouge">ON</code> if the mail server requires
-TLS.</p>
+    <p>Set <strong>Start TLS Automatically</strong> on <code class="language-plaintext highlighter-rouge">ON</code> if the mail server requires TLS.</p>
   </li>
   <li>
     <p>Select the appropriate <strong>SSL Verify Mode</strong>.</p>
   </li>
   <li>
-    <p>Use the <strong>Authentication</strong> drop down to specify if you want to use
-<code class="language-plaintext highlighter-rouge">login</code>, <code class="language-plaintext highlighter-rouge">plain</code>, or no authentication.</p>
+    <p>Use the <strong>Authentication</strong> drop down to specify if you want to use <code class="language-plaintext highlighter-rouge">login</code>, <code class="language-plaintext highlighter-rouge">plain</code>, or no authentication.</p>
   </li>
   <li>
-    <p>Use <strong>User Name</strong> to specify the user name required for login
-authentication.</p>
+    <p>Use <strong>User Name</strong> to specify the user name required for login authentication.</p>
   </li>
   <li>
     <p>Use <strong>Password</strong> to specify the password for login authentication.</p>
   </li>
   <li>
-    <p>Use <strong>From E-mail Address</strong> to set the address you want to send the
-email from.</p>
+    <p>Use <strong>From E-mail Address</strong> to set the address you want to send the email from.</p>
   </li>
   <li>
     <p>Use <strong>Test E-mail Address</strong> if you want to test your email settings.
@@ -3394,14 +3151,10 @@ Click <strong>Verify</strong> to send a test email.</p>
 between the ManageIQ appliance and the SmartProxy. Set
 <strong>Mode</strong> to disabled to use Web services from the SmartProxy to the
 ManageIQ appliance only. When the ManageIQ appliance
-has work for the SmartProxy, the work will be placed in a queue in
-the VMDB. The work will be completed either when the ManageIQ
-appliance is able to contact the SmartProxy or when the next
-SmartProxy heartbeat occurs, whichever comes first.</p>
+has work for the SmartProxy, the work will be placed in a queue in the VMDB. The work will be completed either when the ManageIQ appliance is able to contact the SmartProxy or when the next SmartProxy heartbeat occurs, whichever comes first.</p>
   </li>
   <li>
-    <p>If <strong>Web Services</strong> are enabled, you have the option to use
-<strong>ws-security</strong>.</p>
+    <p>If <strong>Web Services</strong> are enabled, you have the option to use <strong>ws-security</strong>.</p>
   </li>
 </ul>
 
@@ -3434,8 +3187,7 @@ from the <strong>About Product Assistance</strong> area.</p>
 <h5 id="authentication">
 <a class="anchor" href="#authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authentication</h5>
 
-<p>Use the <strong>Authentication</strong> tab to specify how you want users
-authenticated on the console. You can use the VMDB or integrate with
+<p>Use the <strong>Authentication</strong> tab to specify how you want users authenticated on the console. You can use the VMDB or integrate with
 LDAP, LDAPS, Amazon, or an external IPA server.</p>
 
 <h6 id="changing-authentication-settings">
@@ -3445,7 +3197,7 @@ LDAP, LDAPS, Amazon, or an external IPA server.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
@@ -3460,8 +3212,7 @@ LDAP, LDAPS, Amazon, or an external IPA server.</p>
     <p>Click the <strong>Authentication</strong> tab.</p>
   </li>
   <li>
-    <p>Use <strong>Session Timeout</strong> to set the period of inactivity before a
-user is logged out of the console.</p>
+    <p>Use <strong>Session Timeout</strong> to set the period of inactivity before a user is logged out of the console.</p>
   </li>
   <li>
     <p>Set the authentication method in <strong>Mode</strong>.</p>
@@ -3488,7 +3239,7 @@ memory allowed to be used for each type.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
@@ -3506,8 +3257,7 @@ memory allowed to be used for each type.</p>
     <p>Go to the type of worker you have been directed to change.</p>
   </li>
   <li>
-    <p>If applicable, change Count or Memory Threshold using the dropdown
-boxes.</p>
+    <p>If applicable, change Count or Memory Threshold using the dropdown boxes.</p>
   </li>
   <li>
     <p>Click <strong>Save</strong>.</p>
@@ -3517,8 +3267,7 @@ boxes.</p>
 <h5 id="database">
 <a class="anchor" href="#database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Database</h5>
 
-<p>Use the Database page to specify the location of your Virtual Machine
-Database (VMDB) and its login credentials. By default, the type is
+<p>Use the Database page to specify the location of your Virtual Machine Database (VMDB) and its login credentials. By default, the type is
 PostgreSQL on the Server.</p>
 
 <p><strong>Note:</strong></p>
@@ -3533,7 +3282,7 @@ to validate your new settings before restarting the server.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
@@ -3548,15 +3297,12 @@ to validate your new settings before restarting the server.</p>
     <p>Click the <strong>Database</strong> tab.</p>
   </li>
   <li>
-    <p>In the <strong>Database</strong> area, select the <strong>Type</strong> of database. You can
-select from <strong>External Database on another CFME appliance</strong>,
-<strong>External Postgres Database</strong>, and <strong>Internal Database on this CFME
-Appliance</strong>.</p>
+    <p>In the <strong>Database</strong> area, select the <strong>Type</strong> of database. You can select from <strong>External Database on another CFME appliance</strong>,
+<strong>External Postgres Database</strong>, and <strong>Internal Database on this CFME Appliance</strong>.</p>
 
     <ul>
       <li>
-        <p>Use <strong>Hostname</strong> to specify the IP address or hostname of the
-external database server.</p>
+        <p>Use <strong>Hostname</strong> to specify the IP address or hostname of the external database server.</p>
       </li>
       <li>
         <p>Use <strong>Database Name</strong> to specify the name of your VMDB.</p>
@@ -3565,8 +3311,7 @@ external database server.</p>
         <p>Specify the <strong>User Name</strong> to connect to the VMDB.</p>
       </li>
       <li>
-        <p>Use <strong>Password</strong> and <strong>Verify Password</strong> to specify the password
-for the user name.</p>
+        <p>Use <strong>Password</strong> and <strong>Verify Password</strong> to specify the password for the user name.</p>
       </li>
     </ul>
   </li>
@@ -3577,13 +3322,11 @@ for the user name.</p>
     <p>Click <strong>Save</strong>.</p>
   </li>
   <li>
-    <p>Click <strong>OK</strong> to the warning that the server will restart immediately
-after you save the changes.</p>
+    <p>Click <strong>OK</strong> to the warning that the server will restart immediately after you save the changes.</p>
   </li>
 </ol>
 
-<p>During the restart, you are unable to access the server. When the
-restart is complete, the new database settings are in effect.</p>
+<p>During the restart, you are unable to access the server. When the restart is complete, the new database settings are in effect.</p>
 
 <h5 id="customization-and-logos">
 <a class="anchor" href="#customization-and-logos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customization and Logos</h5>
@@ -3591,31 +3334,18 @@ restart is complete, the new database settings are in effect.</p>
 <h6 id="custom-logos">
 <a class="anchor" href="#custom-logos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Logos</h6>
 
-<p>Use <strong>Custom Logos</strong> to display your own logo in the corner of the
-ManageIQ user interface and on the login screen. Use the
-procedures below to upload a custom logo to the user interface, and to
-customize the login background and login panel text on the user
-interface.</p>
+<p>Use <strong>Custom Logos</strong> to display your own logo in the corner of the ManageIQ user interface and on the login screen. Use the procedures below to upload a custom logo to the user interface, and to
+customize the login background and login panel text on the user interface.</p>
 
 <p><strong>Note:</strong></p>
 
 <ul>
   <li>
-    <p>If you have upgraded from an earlier ManageIQ version and
-your custom logo was already in use before migration, although your
-logo image file is still in place in <code class="language-plaintext highlighter-rouge">vmdb/public/upload</code> you may
-have to uncheck and recheck the option to <strong>Use Custom Logo Image</strong>
-to re-enable displaying your custom logo. See
-<a href="#uploading-a-custom-logo-to-the-console">simpara_title</a> for the
-procedure on how to access the <strong>Use Custom Logo Image</strong> option, or
-if you want to upload another custom logo to the user interface and
-customize the login background image and login panel text.</p>
+    <p>If you have upgraded from an earlier ManageIQ version and your custom logo was already in use before migration, although your logo image file is still in place in <code class="language-plaintext highlighter-rouge">vmdb/public/upload</code> you may have to uncheck and recheck the option to <strong>Use Custom Logo Image</strong> to re-enable displaying your custom logo. See <a href="#uploading-a-custom-logo-to-the-console">Uploading a Custom Logo to the User Interface</a> for the procedure on how to access the <strong>Use Custom Logo Image</strong> option, or if you want to upload another custom logo to the user interface and customize the login background image and login panel text.</p>
   </li>
   <li>
-    <p>Additionally, ensure the option to use configuration settings for
-the tenant under <strong>Access Control</strong> is set to <code class="language-plaintext highlighter-rouge">Yes</code>; see
-<a href="#display-custom-settings">simpara_title</a> for the procedure on how
-to set the configuration settings.</p>
+    <p>Additionally, ensure the option to use configuration settings for the tenant under <strong>Access Control</strong> is set to <code class="language-plaintext highlighter-rouge">Yes</code>; see
+<a href="#displaying-the-custom-configuration-settings">Displaying the Custom Configuration Settings</a> for the procedure on how to set the configuration settings.</p>
   </li>
 </ul>
 
@@ -3624,16 +3354,13 @@ to set the configuration settings.</p>
 
 <p><strong>Note:</strong></p>
 
-<p>Make sure the desired logo is accessible from the computer where you are
-running the ManageIQ user interface. The file must be in
-portable network graphics (png) format with dimensions of 350 px x 70
-px.</p>
+<p>Make sure the desired logo is accessible from the computer where you are running the ManageIQ user interface. The file must be in portable network graphics (png) format with dimensions of 350 px x 70 px.</p>
 
 <p>To upload a custom logo to the user interface:</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
@@ -3648,13 +3375,10 @@ px.</p>
     <p>Click the <strong>Custom Logos</strong> tab. <img src="../images/2071.png" alt="2071"></p>
   </li>
   <li>
-    <p>In <strong>Custom Logo Image (Shown on top right of all screens)</strong>, click
-<strong>Choose file</strong> to go to the location where the logo file is
-located.</p>
+    <p>In <strong>Custom Logo Image (Shown on top right of all screens)</strong>, click <strong>Choose file</strong> to go to the location where the logo file is located.</p>
   </li>
   <li>
-    <p>Click <strong>Upload</strong>. The icon is displayed above the file name box, and
-an option is shown to use the logo.</p>
+    <p>Click <strong>Upload</strong>. The icon is displayed above the file name box, and an option is shown to use the logo.</p>
   </li>
   <li>
     <p>Check <strong>Use Custom Logo Image</strong> to add the logo to your user
@@ -3677,15 +3401,13 @@ on how to set the configuration settings.</p>
 
 <p><strong>Note:</strong></p>
 
-<p>Make sure the background image that you want to use is accessible from
-the computer where you are running the user interface. The file must be
-in PNG format with dimensions of 1280 px x 1000 px.</p>
+<p>Make sure the background image that you want to use is accessible from the computer where you are running the user interface. The file must be in PNG format with dimensions of 1280 px x 1000 px.</p>
 
 <p>To customize the login background:</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
@@ -3727,10 +3449,7 @@ image to the login screen of the user interface.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
-  </li>
-  <li>
-    <p>Navigate to menu:Settings[Configuration].</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
@@ -3765,7 +3484,7 @@ ManageIQ user interface and on the login screen:</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click the <strong>Access Control</strong> accordion.</p>
@@ -5071,7 +4790,7 @@ addition, you can schedule compliance checks, and database backups.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Settings</strong> accordion, then click <strong>Schedules</strong>.</p>
@@ -5240,7 +4959,7 @@ space based on transaction log size.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Settings</strong> accordion, then click <strong>Schedules</strong>.</p>
@@ -5321,7 +5040,7 @@ selected time zone.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Settings</strong> accordion, then click <strong>Schedules</strong>.</p>
@@ -5427,10 +5146,9 @@ schedules, including:</p>
 <h3 id="access-control">
 <a class="anchor" href="#access-control" aria-hidden="true"><span class="octicon octicon-link"></span></a>Access Control</h3>
 
-<p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>). Click
+<p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>. Click
 on the <strong>Access Control</strong> accordion to see a hierarchy of the
-configurable items for users, groups, roles, and tenants. You can add
-and modify users, groups, account roles, tenants, and projects.</p>
+configurable items for users, groups, roles, and tenants. You can add and modify users, groups, account roles, tenants, and projects.</p>
 
 <h4 id="creating-a-tenant">
 <a class="anchor" href="#creating-a-tenant" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a Tenant</h4>
@@ -5442,7 +5160,7 @@ objects.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Access Control</strong> accordion, then click <strong>Tenants</strong>.</p>
@@ -5475,7 +5193,7 @@ organization.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Access Control</strong> accordion, then click <strong>Tenants</strong>.</p>
@@ -5512,7 +5230,7 @@ details.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Access Control</strong> accordion, then click <strong>Tenants</strong>.</p>
@@ -5543,7 +5261,7 @@ the quota. <img src="../images/manage-quotas.png" alt="manage quotas"></p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Access Control</strong> accordion, then click <strong>Tenants</strong>.</p>
@@ -5569,7 +5287,7 @@ corresponding value.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Access Control</strong> accordion, then click <strong>Users</strong>.</p>
@@ -5617,7 +5335,7 @@ information or functions of the server.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Access Control</strong> accordion, then click <strong>Users</strong>.</p>
@@ -5657,7 +5375,7 @@ and other settings for the user.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Access Control</strong> accordion, then click <strong>Groups</strong>.</p>
@@ -5759,7 +5477,7 @@ directory service.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Access Control</strong> accordion, then click <strong>Roles</strong>.</p>
@@ -5859,20 +5577,18 @@ detail.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Click <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Access Control</strong> accordion, then click <strong>Roles</strong>.</p>
   </li>
   <li>
-    <p>Click <img src="../images/1847.png" alt="1847"> (Configuration), and <img src="../images/plus_green.png" alt="plus
-green"> (Add a new Role). Alternatively, you
-can copy an existing role to a new role by clicking <strong>Copy this to a
-new Role</strong>.</p>
+    <p>Click <strong>Configuration</strong>, and <img src="../images/plus_green.png" alt="plus
+green"> <strong>Add a new Role</strong>. Alternatively, you can copy an existing role to a new role by clicking <strong>Copy the selected Role to a new Role</strong>.</p>
   </li>
   <li>
     <p>In the <strong>Role Information</strong> area, type a name for the new role. For
-<strong>Access Restriction for Services, VMs, and Templates</strong>, select if
+<strong>Access Restriction for Catalog Items, Orchestration Stacks, Key Pairs, Services, VMs, and Templates</strong>, select if
 you want to limit users with this role to only see resources owned
 by the user or their group, owned by the user, or all resources
 (<strong>None</strong>): <img src="../images/role_info.png" alt="role info"></p>
@@ -5890,62 +5606,40 @@ editing"></p>
 <h3 id="diagnostics">
 <a class="anchor" href="#diagnostics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Diagnostics</h3>
 
-<p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>). Click
-on the <strong>Diagnostics</strong> tab to see the status of the different
-ManageIQ roles and workers for each server, view and collect
-logs, and gather data if there are any gaps in capacity and utilization
-information. The Diagnostics area is designed in a hierarchy.</p>
+<p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>. Click on the <strong>Diagnostics</strong> tab to see the status of the different ManageIQ roles and workers for each server, view and collect logs, and gather data if there are any gaps in capacity and utilization information. The Diagnostics area is designed in a hierarchy.</p>
 
 <ul>
   <li>
-    <p>At the <strong>region</strong> level, you can see replication status, backup the
-VMDB, and run garbage collection on the VMDB.</p>
+    <p>At the <strong>region</strong> level, you can see replication status, backup the VMDB, and run garbage collection on the VMDB.</p>
   </li>
   <li>
-    <p>At the <strong>zone</strong> level, you can see ManageIQ roles by servers
-and servers by roles. In addition, you can set log collection values
-for a specific zone, and collect gap data for capacity and
-utilization.</p>
+    <p>At the <strong>zone</strong> level, you can see ManageIQ roles by servers and servers by roles. In addition, you can set log collection values for a specific zone, and collect gap data for capacity and utilization.</p>
   </li>
   <li>
-    <p>At the <strong>server</strong> level, you can see the workers for each server,
-set log collection values for a specific server, and view current
-logs.</p>
+    <p>At the <strong>server</strong> level, you can see the workers for each server, set log collection values for a specific server, and view current logs.</p>
   </li>
 </ul>
 
 <h4 id="region-diagnostics">
 <a class="anchor" href="#region-diagnostics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Region Diagnostics</h4>
 
-<p>Using the console, you can set the priority of server regional roles,
-review and reset replication, and create backups of your database either
-on demand or on a schedule.</p>
+<p>Using the console, you can set the priority of server regional roles, review and reset replication, and create backups of your database either on demand or on a schedule.</p>
 
-<p>Regions are used primarily to consolidate multiple VMDBs into one master
-VMDB for reporting while zones are used to define functional groups of
-servers. There can be only one region per VMDB, but multiple zones per
-region (or VMDB). Some server roles are aware of each other across
-ManageIQ appliances at the region level. This means that
-redundancy and failover rules apply at the region level. You can also
-set priorities for the server roles that provide failover.</p>
+<p>Regions are used primarily to consolidate multiple VMDBs into one master VMDB for reporting while zones are used to define functional groups of servers. There can be only one region per VMDB, but multiple zones per region (or VMDB). Some server roles are aware of each other across ManageIQ appliances at the region level. This means that redundancy and failover rules apply at the region level. You can also set priorities for the server roles that provide failover.</p>
 
 <h5 id="server-role-priorities">
 <a class="anchor" href="#server-role-priorities" aria-hidden="true"><span class="octicon octicon-link"></span></a>Server Role Priorities</h5>
 
-<p>If you have multiple servers in your environment with duplicate failover
-roles, then you can set the priority of the server role.</p>
+<p>If you have multiple servers in your environment with duplicate failover roles, then you can set the priority of the server role.</p>
 
 <ul>
   <li>
     <p>Only server roles that support failover can be marked as primary.
 These roles only allow one server to be active at a time. These are
-<strong>Notifier</strong>, <strong>Capacity &amp; Utilization Coordinator</strong>, <strong>Event
-Monitor</strong>, <strong>Scheduler</strong>, <strong>Storage Inventory</strong>, and <strong>Provider
-Inventory</strong>.</p>
+<strong>Notifier</strong>, <strong>Capacity &amp; Utilization Coordinator</strong>, <strong>Event Monitor</strong>, <strong>Scheduler</strong>, <strong>Storage Inventory</strong>, and <strong>Provider Inventory</strong>.</p>
   </li>
   <li>
-    <p>All other server roles are additive. The more servers with that role
-in a zone the more work that can be performed.</p>
+    <p>All other server roles are additive. The more servers with that role in a zone the more work that can be performed.</p>
   </li>
 </ul>
 
@@ -6034,7 +5728,7 @@ priorities. Tertiary roles simply show as active in the console.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6076,7 +5770,7 @@ collect capacity and utilization data that may be missing.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6185,7 +5879,7 @@ by Servers</strong> or the <strong>Servers by Roles</strong>.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6239,7 +5933,7 @@ location.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6276,7 +5970,7 @@ server, type in the appropriate settings for the <strong>URI</strong>.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6315,15 +6009,13 @@ need to be repeated for each zone.</p>
 
 <ol>
   <li>
-    <p>Log in to a ManageIQ appliance located in the zone for which
-you want to gather the data.</p>
+    <p>Log in to a ManageIQ appliance located in the zone for which you want to gather the data.</p>
   </li>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
-    <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
-you want to view.</p>
+    <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that you want to view.</p>
   </li>
   <li>
     <p>Click <strong>C &amp; U Gap Collection</strong>.</p>
@@ -6350,18 +6042,13 @@ Red Hat Support.</p>
   </li>
 </ol>
 
-<p>After the gap collection has completed for this zone, repeat these same
-steps for the next zone. You can check for completion by going to the
-clusters page and checking for the capacity and utilization data for the
-time period specified.</p>
+<p>After the gap collection has completed for this zone, repeat these same steps for the next zone. You can check for completion by going to the clusters page and checking for the capacity and utilization data for the time period specified.</p>
 
 <h4 id="server-diagnostics">
 <a class="anchor" href="#server-diagnostics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Server Diagnostics</h4>
 
 <p>Under <strong>Diagnostics</strong> for a server, you can view the status of
-ManageIQ workers running on the server, set log collection
-setting for only that server, and view the server’s current
-ManageIQ and audit logs.</p>
+ManageIQ workers running on the server, set log collection setting for only that server, and view the server’s current ManageIQ and audit logs.</p>
 
 <h5 id="workers-1">
 <a class="anchor" href="#workers-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Workers</h5>
@@ -6433,7 +6120,7 @@ on virtual machines.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6458,7 +6145,7 @@ display</strong>).</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6523,7 +6210,7 @@ server level supersede the ones at the zone level.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6564,7 +6251,7 @@ the settings.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6594,7 +6281,7 @@ ManageIQ console.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6636,7 +6323,7 @@ communication with the SmartProxy and tasks.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6660,7 +6347,7 @@ of the log.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6684,7 +6371,7 @@ you want to view.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6713,7 +6400,7 @@ File</strong>).</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6736,7 +6423,7 @@ you want to view.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6760,11 +6447,10 @@ you want to view.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
-    <p>Click on the Diagnostics accordion, then click the Zone that you
-want to view.</p>
+    <p>Click on the <strong>Diagnostics</strong> accordion, then click the Zone that you want to view.</p>
   </li>
   <li>
     <p>Select the server that you want to view.</p>
@@ -6787,7 +6473,7 @@ File</strong>).</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
@@ -6811,11 +6497,10 @@ of the log.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
-    <p>Click on the Diagnostics accordion, then click the Zone that you
-want to view.</p>
+    <p>Click on the <strong>Diagnostics</strong> accordion, then click the Zone that you want to view.</p>
   </li>
   <li>
     <p>Select the server that you want to view.</p>
@@ -6836,11 +6521,10 @@ Display</strong>).</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
-    <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that
-you want to view.</p>
+    <p>Click on the <strong>Diagnostics</strong> accordion, then click the <strong>Zone</strong> that you want to view.</p>
   </li>
   <li>
     <p>Select the server that you want to view.</p>
@@ -6868,7 +6552,7 @@ connection, and database utilization.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click the <strong>Database</strong> accordion.</p>
@@ -6915,32 +6599,19 @@ Assign each server participating in the region a unique number during
 the regionalization process, then set your subordinate regions to
 replicate to the top region.</p>
 
-<div class="important">
+<p><strong>Important</strong></p>
 
-All ManageIQ databases in a multi-region deployment must use the
-same security key.
-
-</div>
+<p>All ManageIQ databases in a multi-region deployment must use the same security key.</p>
 
 <h5 id="creating-a-region">
 <a class="anchor" href="#creating-a-region" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a Region</h5>
 
-<p>In principle, a region is created when you set up your ManageIQ
-environment on the first appliance for the region. However, you can also
-create a region on an appliance where a database has already been set
-up. This process involves dropping and rebuilding the existing database
-to accommodate the new region number, and takes several minutes to
-complete.</p>
+<p>In principle, a region is created when you set up your ManageIQ environment on the first appliance for the region. However, you can also create a region on an appliance where a database has already been set up. This process involves dropping and rebuilding the existing database to accommodate the new region number, and takes several minutes to complete.</p>
 
-<div class="warning">
+<p><strong>Warning</strong></p>
 
-Performing this procedure destroys any existing data and cannot be
-undone. Back up the existing database before proceeding. By default, new
-appliances are assigned region 0. Do not use this number when creating a
-region because duplicate region numbers can compromise the integrity of
-the data in the database.
-
-</div>
+<p>Performing this procedure destroys any existing data and cannot be
+undone. Back up the existing database before proceeding. By default, new appliances are assigned region 0. Do not use this number when creating a region because duplicate region numbers can compromise the integrity of the data in the database.</p>
 
 <ol>
   <li>
@@ -6987,42 +6658,34 @@ corrupt the data.</p>
 <a class="anchor" href="#configuring-database-replication-and-centralized-administration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring Database Replication and Centralized Administration</h4>
 
 <p>To configure database replication, you must configure one
-ManageIQ instance to act as a global copy, and one or more
-other instances to act as remote copies. This database replication
-relationship can only be configured on ManageIQ instances
-that are of the same version. Configuring database replication in this
-version of ManageIQ automatically enables centralized
+ManageIQ instance to act as a global copy, and one or more other instances to act as remote copies. This database replication relationship can only be configured on ManageIQ instances that are of the same version. Configuring database replication in this version of ManageIQ automatically enables centralized
 administration, eliminating the need for further configuration.
-Centralized administration in ManageIQ supports life cycle
-management operations that can be initiated from the global copy and
-processed and executed on the remote copy.</p>
+Centralized administration in ManageIQ supports life cycle management operations that can be initiated from the global copy and processed and executed on the remote copy.</p>
 
-<div class="important">
+<p><strong>Important</strong></p>
 
-  - You must configure at least one remote copy before you can configure
-    the global copy. Changes to the role of a ManageIQ
-    instance take several minutes to take effect.
-
-  - The region number must be unique on each ManageIQ
-    instance where replication is configured. See [Creating a
-    Region](#creating_a_region) for instructions on how to create a
-    region.
-
-  - Enabling the `EvmRole-user_global_region` role will only provide
-    access to specific operations that can be performed on a global
-    region.
-
-</div>
+<ul>
+  <li>
+    <p>You must configure at least one remote copy before you can configure the global copy. Changes to the role of a ManageIQ instance take several minutes to take effect.</p>
+  </li>
+  <li>
+    <p>The region number must be unique on each ManageIQ instance where replication is configured. See <a href="#creating_a_region">Creating a Region</a> for instructions on how to create a region.</p>
+  </li>
+  <li>
+    <p>Enabling the <code class="language-plaintext highlighter-rouge">EvmRole-user_global_region</code> role will only provide
+access to specific operations that can be performed on a global
+region.</p>
+  </li>
+</ul>
 
 <h5 id="configuring-a-remote-copy">
 <a class="anchor" href="#configuring-a-remote-copy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring a Remote Copy</h5>
 
-<p>Configure a ManageIQ instance to act as a remote copy from which
-data will be replicated to the global copy.</p>
+<p>Configure a ManageIQ instance to act as a remote copy from which data will be replicated to the global copy.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="Configuration"> <strong>Configuration</strong>.</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click the <strong>Settings</strong> accordion.</p>
@@ -7136,7 +6799,7 @@ from the global copy.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click the <strong>Settings</strong> accordion.</p>
@@ -7248,7 +6911,7 @@ this operation.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click the <strong>Diagnostics</strong> accordion and click the <strong>Region</strong> name.</p>
@@ -7518,7 +7181,7 @@ order to reclaim unused space in your VMDB.</p>
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click the <strong>Diagnostics</strong> accordion and click the <strong>Region</strong> name.</p>
