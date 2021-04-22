@@ -631,7 +631,6 @@
 <li class="toc-entry toc-h1"><a href="#using-the-host-comparison-sections">Using the Host Comparison Sections</a></li>
 <li class="toc-entry toc-h1"><a href="#creating-a-host-comparison-report">Creating a Host Comparison Report</a></li>
 <li class="toc-entry toc-h1"><a href="#refreshing-multiple-hosts">Refreshing Multiple Hosts</a></li>
-<li class="toc-entry toc-h1"><a href="#discovering-multiple-hosts">Discovering Multiple Hosts</a></li>
 <li class="toc-entry toc-h1"><a href="#adding-a-single-host">Adding a Single Host</a></li>
 <li class="toc-entry toc-h1"><a href="#editing-hosts">Editing Hosts</a></li>
 <li class="toc-entry toc-h1"><a href="#viewing-a-host">Viewing a Host</a></li>
@@ -1746,37 +1745,6 @@ registered with another host. If this is the case, the host that the
 virtual machine is associated with switches to the new host. If the
 SmartProxy is monitoring a provider, this happens automatically. If not,
 the next refresh of the host addresses this.</p>
-
-<h1 id="discovering-multiple-hosts">
-<a class="anchor" href="#discovering-multiple-hosts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discovering Multiple Hosts</h1>
-
-<p>If not using a provider, use ManageIQ’s Discovery to find hosts
-in your environment within a range of IP addresses.</p>
-
-<ol>
-  <li>
-    <p>Navigate to menu:Compute[Infrastructure &gt; Hosts].</p>
-  </li>
-  <li>
-    <p>Click <img src="../images/1847.png" alt="1847"> (<strong>Configuration</strong>), then click
-<img src="../images/1942.png" alt="1942"> (<strong>Discover items</strong>).</p>
-  </li>
-  <li>
-    <p>Check the types of hosts to discover: <code class="language-plaintext highlighter-rouge">ESX</code> or <code class="language-plaintext highlighter-rouge">IPMI</code>.</p>
-  </li>
-  <li>
-    <p>Type in a range of <strong>IP Addresses</strong>.</p>
-
-    <p><img src="../images/2213.png" alt="2213"></p>
-  </li>
-  <li>
-    <p>Click <strong>Start</strong>.</p>
-  </li>
-</ol>
-
-<p>ManageIQ searches for the supported hosts. When available, the
-new hosts display. They are named by hostname and IP address. To make
-them identifiable, edit the basic information for each host.</p>
 
 <h1 id="adding-a-single-host">
 <a class="anchor" href="#adding-a-single-host" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a Single Host</h1>

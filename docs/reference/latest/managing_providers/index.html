@@ -601,9 +601,7 @@
         
         <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h1"><a href="#managing-providers">Managing Providers</a></li>
-<li class="toc-entry toc-h1"><a href="#infrastructure-providers">Infrastructure Providers</a></li>
-<li class="toc-entry toc-h1"><a href="#discovering-infrastructure-providers">Discovering Infrastructure Providers</a></li>
-<li class="toc-entry toc-h1"><a href="#discovering-physical-infrastucture-providers">Discovering Physical Infrastucture Providers</a>
+<li class="toc-entry toc-h1"><a href="#infrastructure-providers">Infrastructure Providers</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#red-hat-virtualization-providers">Red Hat Virtualization Providers</a></li>
 </ul>
@@ -618,10 +616,6 @@
 <li class="toc-entry toc-h1"><a href="#adding-an-openstack-infrastructure-provider">Adding an OpenStack Infrastructure Provider</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#configuring-the-undercloud-to-store-events">Configuring the Undercloud to Store Events</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h1"><a href="#discovering-openstack-infrastructure-providers">Discovering OpenStack Infrastructure Providers</a>
-<ul>
 <li class="toc-entry toc-h2"><a href="#vmware-vcenter-providers">VMware vCenter Providers</a></li>
 </ul>
 </li>
@@ -913,75 +907,6 @@ display basic information about each provider:</p>
 </table>
 
 <p>Provider authentication status</p>
-
-<h1 id="discovering-infrastructure-providers">
-<a class="anchor" href="#discovering-infrastructure-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discovering Infrastructure Providers</h1>
-
-<p>In addition to individually adding providers, you can also discover
-infrastructure providers in a given subnet range.</p>
-
-<ol>
-  <li>
-    <p>Navigate to menu:Compute[Infrastructure &gt; Providers].</p>
-  </li>
-  <li>
-    <p>Click <img src="../images/1847.png" alt="Configuration"> (<strong>Configuration</strong>), then
-click <img src="../images/1942.png" alt="Discover Infrastructure Providers">
-(<strong>Discover Infrastructure Providers</strong>).</p>
-  </li>
-  <li>
-    <p>Select the infrastructure provider to discover.</p>
-  </li>
-  <li>
-    <p>Provide a <strong>Subnet Range</strong>. Enter the <strong>From Address</strong> and <strong>To
-Address</strong> of the address range.</p>
-  </li>
-  <li>
-    <p>Click <strong>Start</strong>.</p>
-  </li>
-</ol>
-
-<p>The appliance searches for all infrastructure providers in the specified
-subnet range, and adds them to the user interface. However, before you
-can manage providers added via discovery, you must edit each provider
-and specify authentication details.</p>
-
-<h1 id="discovering-physical-infrastucture-providers">
-<a class="anchor" href="#discovering-physical-infrastucture-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discovering Physical Infrastucture Providers</h1>
-
-<p>In addition to discovering virtual infrastructure providers,
-ManageIQ has the ability to discover physical
-infrastructure providers in a given subnet range.</p>
-
-<ol>
-  <li>
-    <p>Navigate to menu:Compute[Physical Infrastructure &gt; Providers].</p>
-  </li>
-  <li>
-    <p>Click <img src="../images/1847.png" alt="Configuration"> (<strong>Configuration</strong>), then
-click <img src="../images/1942.png" alt="Discover Physical Infrastructure
-Providers"> (<strong>Discover Physical Infrastructure
-Providers</strong>).</p>
-  </li>
-  <li>
-    <p>Select the provider in <strong>Discovery Type</strong>.</p>
-  </li>
-  <li>
-    <p>Provide a <strong>Subnet Range</strong>. Enter the <strong>From Address</strong> and <strong>To
-Address</strong> of the address range.</p>
-  </li>
-  <li>
-    <p>Enter a <strong>Port</strong>.</p>
-  </li>
-  <li>
-    <p>Click <strong>Start</strong>.</p>
-  </li>
-</ol>
-
-<p>The appliance searches for all physical infrastructure providers in the
-specified subnet range, and adds them to the user interface. However,
-before you can manage providers added via discovery feature, you must
-edit each provider to enter authentication details.</p>
 
 <h2 id="red-hat-virtualization-providers">
 <a class="anchor" href="#red-hat-virtualization-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Red Hat Virtualization Providers</h2>
@@ -1415,36 +1340,6 @@ and <a href="https://access.redhat.com/documentation/en-us/red_hat_openstack_pla
 Director</a>
 in Red Hat OpenStack Platform <em>Director Installation and Usage</em> for
 related details.</p>
-
-<h1 id="discovering-openstack-infrastructure-providers">
-<a class="anchor" href="#discovering-openstack-infrastructure-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discovering OpenStack Infrastructure Providers</h1>
-
-<p>ManageIQ has the ability to discover OpenStack infrastructure
-providers. In this process, ManageIQ scans a network
-segment and searches for the Bare Metal (Ironic) service which runs on
-port <code class="language-plaintext highlighter-rouge">6385</code> by default. Note that, currently, the discovery does not
-work if the Bare Metal service has been moved to a different port.</p>
-
-<ol>
-  <li>
-    <p>Navigate to menu:Compute[Infrastructure &gt; Providers].</p>
-  </li>
-  <li>
-    <p>Click <img src="../images/1847.png" alt="Configuration"> (<strong>Configuration</strong>), then
-click <img src="../images/1942.png" alt="Discover Infrastructure Providers">
-(<strong>Discover Infrastructure Providers</strong>).</p>
-  </li>
-  <li>
-    <p>Select <strong>OpenStack Infrastructure</strong> under <strong>Discover</strong>.</p>
-  </li>
-  <li>
-    <p>Provide a <strong>Subnet Range</strong>. Enter the <strong>From Address</strong> and <strong>To
-Address</strong> of the address range.</p>
-  </li>
-  <li>
-    <p>Click <strong>Start</strong>.</p>
-  </li>
-</ol>
 
 <h2 id="vmware-vcenter-providers">
 <a class="anchor" href="#vmware-vcenter-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>VMware vCenter Providers</h2>
