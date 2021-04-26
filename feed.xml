@@ -5,9 +5,25 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 26 Apr 2021 12:57:23 +0000</pubDate>
-    <lastBuildDate>Mon, 26 Apr 2021 12:57:23 +0000</lastBuildDate>
+    <pubDate>Mon, 26 Apr 2021 15:44:36 +0000</pubDate>
+    <lastBuildDate>Mon, 26 Apr 2021 15:44:36 +0000</lastBuildDate>
     <generator>Jekyll v3.9.1</generator>
+    
+      <item>
+        <title>Announcing Lasker Beta</title>
+        <description>&lt;p&gt;The first beta release of ManageIQ Lasker is here!  We’ve been working hard and have a lot of new features you can see in the &lt;a href=&quot;https://github.com/orgs/ManageIQ/projects/13#column-11434545&quot;&gt;roadmap&lt;/a&gt;. Here are the major highlights for this new release:&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 26 Apr 2021 13:27:43 +0000</pubDate>
+        <link>http://manageiq.org/blog/2021/04/Announcing-Lasker-Beta/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2021/04/Announcing-Lasker-Beta/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>ManageIQ at scale at KPN</title>
@@ -140,22 +156,6 @@ configured for OpenID-Connect authentication when deploying ManageIQ on containe
         <pubDate>Mon, 17 Aug 2020 13:01:13 +0000</pubDate>
         <link>http://manageiq.org/blog/2020/08/Announcing-Ivanchuk-7-And-Jansa-1-RC2/</link>
         <guid isPermaLink="true">http://manageiq.org/blog/2020/08/Announcing-Ivanchuk-7-And-Jansa-1-RC2/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Announcing Jansa Release Candidate</title>
-        <description>&lt;p&gt;The ManageIQ Jansa release candidate is here!  All the major features in this release are in the &lt;a href=&quot;https://github.com/orgs/ManageIQ/projects/13#column-7337345&quot;&gt;ManageIQ Roadmap in the column named Jansa&lt;/a&gt;. We have fixed numerous issues since we announced &lt;a href=&quot;https://www.manageiq.org/blog/2020/06/Announcing-Jansa-Beta/&quot;&gt;Jansa Beta&lt;/a&gt;.  Below are some last-minute enhancements that made it into the Jansa Release Candidate.&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 29 Jul 2020 19:12:13 +0000</pubDate>
-        <link>http://manageiq.org/blog/2020/07/Announcing-Jansa-Release-Candidate/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2020/07/Announcing-Jansa-Release-Candidate/</guid>
         
         <category>releases</category>
         
