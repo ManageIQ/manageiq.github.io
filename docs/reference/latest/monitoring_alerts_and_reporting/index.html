@@ -4177,19 +4177,6 @@ click <img src="../images/1862.png" alt="Add a New Containers Provider"> (<stron
 specify a zone, it is set to <code class="language-plaintext highlighter-rouge">default</code>.</p>
   </li>
   <li>
-    <p>From the <strong>Alerts</strong> list, select <strong>Prometheus</strong> to enable external
-alerts. Selecting <strong>Prometheus</strong> adds an <strong>Alerts</strong> tab to the lower
-pane to configure the Prometheus service. Alerts are disabled by
-default.</p>
-  </li>
-  <li>
-    <p>From the <strong>Metrics</strong> list, select <strong>Hawkular</strong> or <strong>Prometheus</strong> to
-collect capacity and utilization data, or leave as <strong>Disabled</strong>.
-Selecting <strong>Prometheus</strong> or <strong>Hawkular</strong> adds a <strong>Metrics</strong> tab to
-the lower pane for further configuration. Metrics are disabled by
-default.</p>
-  </li>
-  <li>
     <p>In the <strong>Default</strong> tab, configure the following for the OpenShift
 provider:</p>
 
@@ -4256,10 +4243,12 @@ to the OpenShift Container Platform provider.</p>
     </ol>
   </li>
   <li>
-    <p>For the <strong>Prometheus</strong> alerts service, add the Prometheus alerts
-endpoint in the <strong>Alerts</strong> tab:</p>
+    <p>In the <strong>Alerts</strong> endpoint tab optionally configure the alerts service:</p>
 
     <ol>
+      <li>
+        <p>Select a service type, or leave disabled.  Prometheus alerts are only supported on OCP v3</p>
+      </li>
       <li>
         <p>Select a <strong>Security Protocol</strong> method to specify how to
 authenticate the service:</p>
@@ -4299,10 +4288,12 @@ connect to the alerts service.</p>
     </ol>
   </li>
   <li>
-    <p>If you selected a metrics service, configure the service details in
-the <strong>Metrics</strong> tab:</p>
+    <p>In the <strong>Metrics</strong> endpoint tab optionally configure the metrics service details:</p>
 
     <ol>
+      <li>
+        <p>Select a service type (Prometheus or Hawkular) or leave disabled</p>
+      </li>
       <li>
         <p>Select a <strong>Security Protocol</strong> method to specify how to
 authenticate the service:</p>
@@ -4339,7 +4330,30 @@ insecurely using SSL. (Not recommended)</p>
       </li>
       <li>
         <p>Enter the <strong>Hostname</strong> (or IPv4 or IPv6 address) of the
-provider, or use the <strong>Detect</strong> button to find the hostname.</p>
+metrics service.</p>
+
+        <p>In order to find the hostname you can use the <code class="language-plaintext highlighter-rouge">oc get route</code> command.</p>
+
+        <p>On OCPv4 you can get the Prometheus route by running:</p>
+
+        <p><code class="language-plaintext highlighter-rouge">oc get route prometheus-k8s -n openshift-monitoring</code></p>
+
+        <p>Example:</p>
+        <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>oc get route prometheus-k8s -n openshift-monitoring
+NAME             HOST/PORT                                            PATH             SERVICES  PORT      TERMINATION          WILDCARD
+prometheus-k8s   prometheus-k8s-openshift-monitoring.ocp.example.com  prometheus-k8s   web       reencrypt/Redirect   None
+</code></pre></div>        </div>
+
+        <p>In this example you would use <code class="language-plaintext highlighter-rouge">prometheus-k8s-openshift-monitoring.ocp.example.com</code> as the metrics hostname.</p>
+
+        <p>On OCPv3 you can get the Hawkular route by running:</p>
+
+        <p><code class="language-plaintext highlighter-rouge">oc get route hawkular-metrics -n openshift-infra</code></p>
+
+        <p>Or the Prometheus route:</p>
+
+        <p><code class="language-plaintext highlighter-rouge">oc get route prometheus -n openshift-metrics</code></p>
       </li>
       <li>
         <p>Enter the <strong>API Port</strong> if your Hawkular or Prometheus provider
@@ -4353,7 +4367,7 @@ to the metrics endpoint.</p>
   </li>
   <li>
     <p>Click the <strong>Advanced</strong> tab to add image inspector settings for
-scanning container images on your provider using OpenSCAP.</p>
+ scanning container images on your provider using OpenSCAP.</p>
 
     <p><strong>Note:</strong></p>
 
