@@ -12,7 +12,7 @@
   <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
 
   <link type="text/css" rel="stylesheet" href="/assets/main-8de063b063e781c83c3900f2fb42692885edeac0346d54e22467184ccc393942.css">
-  <link rel="canonical" href="http://manageiq.org/docs/guides/external_auth/index">
+  <link rel="canonical" href="http://manageiq.org/docs/guides/external_auth/ipa">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
   <link href="/assets/images/favicon.ico" rel="shortcut icon">
@@ -58,7 +58,7 @@
 </header>
 
 
-    <main data-url="/docs/guides/external_auth/index">
+    <main data-url="/docs/guides/external_auth/ipa">
       <nav class="doc_tabs">
   <ul>
   <li>
@@ -458,24 +458,192 @@
 
       <div class="doc-content">
         
-        <ul>
-  
+        <h1 id="development-with-an-ipa-server">Development with an IPA server</h1>
+
+<p>This document describes the steps needed to enable External
+Authentication (httpd) on the Appliance against an IPA Server.</p>
+
+<p>Once external authentication is enabled, users will be able
+to login to the Appliance using their IPA Server credentials.
+User accounts will be automatically created on the Appliance
+and relevant information imported from the IPA Server.</p>
+
+<p>To allow IPA server defined users to login to the Appliance,
+they must be members of at least one group on the IPA server
+which needs to be defined in the Appliance under
+<em>Configure-&gt;Configuration-&gt;Access Control-&gt;Groups</em> with the
+appropriate role assigned to that group.</p>
+
+<p>The Appliance comes pre-loaded with the necessary IPA Client
+software to be able to connect to the IPA Server. The software
+is just not configured by default.</p>
+
+<p>Enabling External Authentication is done by first enabling it
+in the Appliance Web UI then via the Appliance Console.
+Disabling External Authentication and returning to Internal
+Database Authentication also needs to be done in both the
+Appliance Web UI and then the Appliance Console.</p>
+
+<hr />
+
+<h3 id="appliance-requirements">Appliance Requirements</h3>
+
+<ul>
   <li>
-    <a href="/docs/guides/external_auth/ipa-configuration">Ipa Configuration</a>
+    <p>For an Appliance to leverage an IPA Server on the network,
+the Appliance <strong>must</strong> have time synchronization enabled.
+This can be done by either configuring NTP in the Appliance UI,
+from <em>Configure-&gt;Configuration-&gt;Zone-&gt;Server-&gt;NTP Settings</em> or by using
+the Virtual Machine’s hosting provider’s Advanced Setting
+to Synchronize Time. Both Appliance and IPA Server must have
+their clocks synchronized otherwise Kerberos and LDAP based
+authentication will fail.</p>
   </li>
-  
   <li>
-    <a href="/docs/guides/external_auth/ipa-installation">Ipa Installation</a>
+    <p>The IPA Server needs to be known by DNS and accessible by name.
+If DNS is not configured accordingly, the hosts files need to be
+updated to reflect both IPA server and the Appliance on
+both virtual machines.</p>
   </li>
-  
-  <li>
-    <a href="/docs/guides/external_auth/ipa">Ipa</a>
+</ul>
+
+<hr />
+
+<h3 id="configuring-appliance-for-external-authentication">Configuring Appliance for External Authentication:</h3>
+
+<ul>
+  <li>Appliance UI
+    <ol>
+      <li>Login to the Appliance via an administrative account</li>
+      <li>Select <em>Configure-&gt;Configuration</em></li>
+      <li>Click on <em>Authentication</em></li>
+      <li>In the Authentication section, set Mode to <strong>External (httpd)</strong></li>
+      <li>In the Role Settings section, select the <em>Get User Groups from
+External Authentication (https)</em></li>
+      <li>Click on <strong>Save</strong></li>
+    </ol>
   </li>
-  
-  <li>
-    <a href="/docs/guides/external_auth/oidc">Oidc</a>
+  <li>Appliance Console
+    <ol>
+      <li>Login via the <strong>admin</strong> Username</li>
+      <li>Summary screen should show <strong>External Auth</strong> as <em>not configured</em>,
+Press any key</li>
+      <li>From the Advanced Setting menu, select the menu item
+<strong>Configure External Authentication (httpd)</strong></li>
+      <li>Enter the Fully qualified Hostname of the IPA Server,
+i.e. <em>ipaserver.test.company.com</em></li>
+      <li>Enter the IPA Server domain, i.e. <em>test.company.com</em></li>
+      <li>Enter the IPA Server Realm, i.e. <em>TEST.COMPANY.COM</em></li>
+      <li>Press enter to select the default IPA Server Principal, i.e. <em>admin</em></li>
+      <li>Enter the Password of the IPA Server Principal</li>
+      <li>Review details, and Enter <strong>y</strong> to proceed.</li>
+    </ol>
+
+    <p><strong>Note:</strong> If any of the following conditions are true, the Configuration will fail:</p>
+
+    <ul>
+      <li>The IPA server is not reachable by its FQDN</li>
+      <li>The IPA Server cannot reach the appliance by its FQDN</li>
+      <li>The time is not synchronized between the Appliance and the IPA Server</li>
+      <li>The IPA server <strong>admin</strong> password specified is incorrect</li>
+    </ul>
   </li>
-  
+</ul>
+
+<hr />
+
+<h3 id="configuring-appliance-back-to-internal-database-authentication">Configuring Appliance back to Internal Database Authentication:</h3>
+
+<ul>
+  <li>Appliance UI
+    <ol>
+      <li>Login to the Appliance via an administrative account</li>
+      <li>Select <em>Configure-&gt;Configuration</em></li>
+      <li>Click on <em>Authentication</em></li>
+      <li>In the Authentication section, set Mode to <strong>Database</strong></li>
+      <li>Click on <strong>Save</strong></li>
+    </ol>
+  </li>
+  <li>Appliance Console
+    <ol>
+      <li>Login via the <strong>admin</strong> Username</li>
+      <li>Summary screen should have <strong>External Auth</strong> showing the fully qualified
+host name of the IPA server, Press any key</li>
+      <li>select the menu item <strong>Configure External Authentication (httpd)</strong></li>
+      <li>Configure External Authentication (httpd) would show the currently
+configured IPA Server Hostname and Domain.</li>
+      <li>Enter <strong>y</strong> to Un-Configure the IPA Client</li>
+      <li>Enter <strong>n</strong> to not proceed with the Re-Configuration.</li>
+    </ol>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="optional-configuration-via-the-appliance-console-cli">Optional Configuration via the Appliance Console CLI</h3>
+
+<p>In addition to using the Appliance Console, External Authentication can be
+optionally configured and un-configured via the Appliance Console Command Line Interface.</p>
+
+<p>Appliance Console CLI command and relevant options include:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/appliance_console_cli <span class="nt">--host</span> &lt;appliance_fqdn&gt;
+                           <span class="nt">--ipaserver</span> &lt;ipa_server_fqdn&gt;
+                           <span class="nt">--ipadomain</span> &lt;domain_of_ipa_server&gt;
+                           <span class="nt">--iparealm</span> &lt;realm_of_ipa_server&gt;
+                           <span class="nt">--ipaprincipal</span> &lt;ipa_server_principal&gt;
+                           <span class="nt">--ipapassword</span> &lt;ipa_server_password&gt;
+                           <span class="nt">--uninstall-ipa</span>
+</code></pre></div></div>
+
+<p>Note:</p>
+
+<ul>
+  <li>specifying --host will update the hostname of the appliance. If this
+step was already performed via the Appliance Console and the necessary updates
+made to /etc/hosts if DNS is not properly configured, the --host option
+can be omitted.</li>
+  <li>--ipadomain will be based on the appliance domain name if not specified.</li>
+  <li>--iparealm will be based on the domain name of the ipaserver if not specified.</li>
+  <li>--ipaprincipal will default to <strong>admin</strong> if not specified.</li>
+</ul>
+
+<h4 id="configuring-external-authentication-example">Configuring External Authentication Example:</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh root@appliance.test.company.com
+appliance# /bin/appliance_console_cli <span class="nt">--host</span> appliance.test.company.com <span class="se">\</span>
+                                      <span class="nt">--ipaserver</span> ipaserver.test.company.com <span class="se">\</span>
+                                      <span class="nt">--ipadomain</span> test.company.com <span class="se">\</span>
+                                      <span class="nt">--iparealm</span> TEST.COMPANY.COM <span class="se">\</span>
+                                      <span class="nt">--ipaprincipal</span> admin <span class="se">\</span>
+                                      <span class="nt">--ipapassword</span> smartvm1
+</code></pre></div></div>
+
+<h4 id="un-configuring-external-authentication-example">Un-Configuring External Authentication Example:</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh root@appliance.test.company.com
+appliance# /bin/appliance_console_cli <span class="nt">--uninstall-ipa</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="manual-configuration">Manual Configuration</h3>
+
+<p>The following Instructions are for informational purposes and describe how to manually install the
+necessary packages and configure the External Authentication (i.e. what is currently done behind
+the scene via the Appliance Console):</p>
+
+<ul>
+  <li>Installing the required packages - <a href="./ipa-installation">Installation</a>
+    <ul>
+      <li>The packages required for enabling External Authentication are
+installed by default on the Appliance so these steps are intended
+to assist when building an appliance from scratch.</li>
+      <li>The installation instructions are targeted for the CentOS 6.x
+based ManageIQ Appliance.</li>
+    </ul>
+  </li>
+  <li>Enabling External Authentication - <a href="./ipa-configuration">Configuration</a></li>
 </ul>
 
       </div>

@@ -12,7 +12,7 @@
   <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
 
   <link type="text/css" rel="stylesheet" href="/assets/main-8de063b063e781c83c3900f2fb42692885edeac0346d54e22467184ccc393942.css">
-  <link rel="canonical" href="http://manageiq.org/docs/guides/external_auth/installation">
+  <link rel="canonical" href="http://manageiq.org/docs/guides/external_auth/realms/index">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
   <link href="/assets/images/favicon.ico" rel="shortcut icon">
@@ -58,7 +58,7 @@
 </header>
 
 
-    <main data-url="/docs/guides/external_auth/installation">
+    <main data-url="/docs/guides/external_auth/realms/index">
       <nav class="doc_tabs">
   <ul>
   <li>
@@ -260,7 +260,7 @@
   
   
   
-  <li class="doc_menu-item active">
+  <li class="doc_menu-item">
     <a href="/docs/guides/external_auth/installation.html">
       Installation
     </a>
@@ -458,38 +458,9 @@
 
       <div class="doc-content">
         
-        <h1 id="external-authentication-software-installation">External Authentication Software Installation</h1>
-
-<p>This document identifies the RPM packages to install on an
-Appliance to be able to use External Authentication (httpd).</p>
-
-<hr />
-<h2 id="rpm-package-installation">RPM Package Installation</h2>
-
-<p>Before installing the IPA Client and necessary modules, define
-the following YUM repository on the CentOS based Appliance:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[adelton-identity_demo]
-name=Copr repo for identity_demo
-baseurl=http://copr-be.cloud.fedoraproject.org/results/adelton/identity_demo/epel-6-$basearch/
-skip_if_unavailable=True
-gpgcheck=0
-enabled=1
-</code></pre></div></div>
-
-<p>Then, proceed with installation of the packages as follows:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum <span class="nb">install </span>c-ares
-yum <span class="nb">install </span>ipa-client
-yum <span class="nb">install </span>sssd-dbus
-yum <span class="nb">install </span>mod_intercept_form_submit mod_authnz_pam mod_lookup_identity
-yum <span class="nb">install </span>mod_lookup_identity-selinux
-</code></pre></div></div>
-
-<p><strong><em>Note</em></strong>:  <em>mod_lookup_identity-selinux</em> is only needed for CentOS 6.5. It will not be needed on CentOS 6.6 and later.</p>
-
-<hr />
-<p>Back to <a href="../external_auth">External Authentication</a></p>
+        <ul>
+  
+</ul>
 
       </div>
     </article>

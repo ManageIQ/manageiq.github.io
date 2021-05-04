@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-8de063b063e781c83c3900f2fb42692885edeac0346d54e22467184ccc393942.css">
+  <link rel="canonical" href="http://manageiq.org/docs/guides/external_auth/oidc">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/guides/external_auth/oidc">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li>
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li class="active">
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<ul class="menu menu-toplevel" id="guides_menu">
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Architecture
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/capacity_and_utilization_collection_explanation.html">
+      Capacity And Utilization Collection Explanation
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/enterprise.html">
+      Enterprise
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/source_code_layout.html">
+      Source Code Layout
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Developer Setup
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/plugins.html">
+      Plugins
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/running_test_suites.html">
+      Running Test Suites
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/debugging.html">
+      Interactive debugging
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      External Auth
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth/configuration.html">
+      Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth/installation.html">
+      Installation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      User Interface
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/patterns.html">
+      UI Patterns
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/plugins.html">
+      UI Plugins
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/register_react_component.html">
+      Shared React Component API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/report_data_api.html">
+      Report Data API
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Providers
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/providers_overview.html">
+      Providers Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/providers_database_architecture.html">
+      Providers Database Architecture
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/amazon_aws_config.html">
+      Amazon AWS Config
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/containers.html">
+      Containers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/openshift.html">
+      Openshift
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/openstack_infra_provider.html">
+      Openstack Infra Provider
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/provisioning/windows_imaging.html">
+      Windows Imaging
+    </a>
+    
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/coding_style_and_standards.html">
+      Coding Style And Standards
+    </a>
+    
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/i18n.html">
+      I18n
+    </a>
+    
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc dev_doc">
+      
+
+      <div class="doc-content">
+        
+        <h1 id="development-with-an-oidc-server">Development with an OIDC server</h1>
+
+<p>This document describes the steps needed to enable External Authentication (httpd),
+running an OIDC server and Apache on a local development setup.</p>
+
+<ol>
+  <li>
+    <p>Ensure you have the <a href="https://github.com/ManageIQ/guides">guides</a> repo cloned locally, then <code class="language-plaintext highlighter-rouge">cd guides/external_auth</code></p>
+  </li>
+  <li>
+    <p>Launch KeyCloak</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">--name</span> keycloak <span class="se">\</span>
+  <span class="nt">-p</span> 8443:8443 <span class="se">\</span>
+  <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/certs:/etc/x509/https <span class="se">\</span>
+  <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/realms:/tmp/realms <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">JAVA_OPTS</span><span class="o">=</span><span class="s2">"-Dkeycloak.profile.feature.scripts=enabled -Dkeycloak.profile.feature.upload_scripts=enabled"</span> <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">KEYCLOAK_IMPORT</span><span class="o">=</span>/tmp/realms/ManageIQ-realm.json <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">KEYCLOAK_USER</span><span class="o">=</span>admin <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">KEYCLOAK_PASSWORD</span><span class="o">=</span>smartvm <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">DB_VENDOR</span><span class="o">=</span>h2 <span class="se">\</span>
+  quay.io/keycloak/keycloak:12.0.4
+</code></pre></div>    </div>
+
+    <p>When it completes startup, go to <code class="language-plaintext highlighter-rouge">https://127.0.0.1.nip.io:8443</code> and login with <code class="language-plaintext highlighter-rouge">admin</code> / <code class="language-plaintext highlighter-rouge">smartvm</code> to verify it’s working. You should see a realm for <code class="language-plaintext highlighter-rouge">ManageIQ</code>.</p>
+  </li>
+  <li>
+    <p>Launch the httpd container</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">--name</span> httpd <span class="se">\</span>
+  <span class="nt">-p</span> 80:80 <span class="se">\</span>
+  <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/oidc-httpd-configs:/etc/httpd/conf.d <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">HTTPD_AUTH_OIDC_CLIENT_ID</span><span class="o">=</span>manageiq-oidc-client <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">HTTPD_AUTH_OIDC_CLIENT_SECRET</span><span class="o">=</span>3167ae6f-762d-49cd-b246-ef8856315957 <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">HTTPD_AUTH_HOST</span><span class="o">=</span>127.0.0.1.nip.io <span class="se">\</span>
+  <span class="nt">--add-host</span><span class="o">=</span>127.0.0.1.nip.io:192.168.65.2 <span class="se">\</span>
+  manageiq/httpd:latest
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Launch ManageIQ</p>
+
+    <p>Run your Rails server as you normally would for development, however, instead of accessing via the browser at <code class="language-plaintext highlighter-rouge">https://localhost:3000</code>, use <code class="language-plaintext highlighter-rouge">http://127.0.0.1.nip.io</code> (notice <code class="language-plaintext highlighter-rouge">http</code> as opposed to <code class="language-plaintext highlighter-rouge">https</code>).</p>
+
+    <p>If ManageIQ is not yet configured for OIDC, do the following:</p>
+
+    <ol>
+      <li>Login as <code class="language-plaintext highlighter-rouge">admin</code> / <code class="language-plaintext highlighter-rouge">smartvm</code></li>
+      <li>Go to <code class="language-plaintext highlighter-rouge">Settings</code> -&gt; <code class="language-plaintext highlighter-rouge">Application Settings</code> -&gt; <code class="language-plaintext highlighter-rouge">Authentication</code></li>
+      <li>
+        <p>Change the following:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th> </th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mode</td>
+              <td><code class="language-plaintext highlighter-rouge">External (httpd)</code></td>
+            </tr>
+            <tr>
+              <td>Enable Single Sign-On</td>
+              <td>checked</td>
+            </tr>
+            <tr>
+              <td>Provider Type</td>
+              <td><code class="language-plaintext highlighter-rouge">Enable OpenID-Connect</code></td>
+            </tr>
+            <tr>
+              <td>Get User Groups from External Authentication (httpd)</td>
+              <td>checked</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>Logout</li>
+      <li>Click <code class="language-plaintext highlighter-rouge">Log In to Corporate System</code></li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="updating-keycloak-data">Updating KeyCloak data</h2>
+
+<h3 id="export-data-from-a-running-keycloak">Export data from a running KeyCloak</h3>
+
+<p>If you’ve made changes in KeyCloak that you’d like to save, leave KeyCloak running and in another terminal run:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-it</span> keycloak /opt/jboss/keycloak/bin/standalone.sh <span class="se">\</span>
+  <span class="nt">-Djboss</span>.socket.binding.port-offset<span class="o">=</span>100 <span class="se">\</span>
+  <span class="nt">-Dkeycloak</span>.migration.action<span class="o">=</span><span class="nb">export</span> <span class="se">\</span>
+  <span class="nt">-Dkeycloak</span>.migration.provider<span class="o">=</span>singleFile <span class="se">\</span>
+  <span class="nt">-Dkeycloak</span>.migration.realmName<span class="o">=</span>ManageIQ <span class="se">\</span>
+  <span class="nt">-Dkeycloak</span>.migration.usersExportStrategy<span class="o">=</span>REALM_FILE <span class="se">\</span>
+  <span class="nt">-Dkeycloak</span>.migration.file<span class="o">=</span>/tmp/realms/ManageIQ-realm.json
+</code></pre></div></div>
+
+<p>When it completes, <code class="language-plaintext highlighter-rouge">Ctrl-C</code> to end the process and the <code class="language-plaintext highlighter-rouge">realms/ManageIQ-realm.json</code> file will be updated.</p>
+
+<h3 id="recreating-keycloak-setup-from-scratch">Recreating KeyCloak setup from scratch</h3>
+
+<ol>
+  <li>
+    <p>Ensure you have a <code class="language-plaintext highlighter-rouge">certs</code> directory and <code class="language-plaintext highlighter-rouge">realms</code> directory</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>certs
+<span class="nb">mkdir </span>realms
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Generate a cert and key</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req <span class="nt">-x509</span> <span class="nt">-newkey</span> rsa:4096 <span class="nt">-keyout</span> certs/tls.key <span class="nt">-out</span> certs/tls.crt <span class="nt">-days</span> 3650 <span class="nt">-nodes</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Launch KeyCloak</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">--name</span> keycloak <span class="se">\</span>
+  <span class="nt">-p</span> 8443:8443 <span class="se">\</span>
+  <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/certs:/etc/x509/https <span class="se">\</span>
+  <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/realms:/tmp/realms <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">KEYCLOAK_USER</span><span class="o">=</span>admin <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">KEYCLOAK_PASSWORD</span><span class="o">=</span>smartvm <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">DB_VENDOR</span><span class="o">=</span>h2 <span class="se">\</span>
+  quay.io/keycloak/keycloak:12.0.4
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Go to <code class="language-plaintext highlighter-rouge">https://127.0.0.1.nip.io:8443</code> and login with <code class="language-plaintext highlighter-rouge">admin</code> / <code class="language-plaintext highlighter-rouge">smartvm</code></p>
+  </li>
+  <li>
+    <p>Create a Realm</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th> </th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td><code class="language-plaintext highlighter-rouge">ManageIQ</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Note</strong>: realm name is case-sensitive in URLs!</p>
+  </li>
+  <li>
+    <p>Create an OIDC Client</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th> </th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Client ID</td>
+          <td><code class="language-plaintext highlighter-rouge">manageiq-oidc-client</code></td>
+        </tr>
+        <tr>
+          <td>Client Protocol</td>
+          <td><code class="language-plaintext highlighter-rouge">openid-connect</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Once created, go to the credentials tab and copy down the generated <code class="language-plaintext highlighter-rouge">Secret</code> value.</p>
+  </li>
+  <li>
+    <p>Configure the OIDC Client</p>
+
+    <ol>
+      <li>
+        <p>Settings</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th> </th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Access Type</td>
+              <td><code class="language-plaintext highlighter-rouge">confidential</code></td>
+            </tr>
+            <tr>
+              <td>Service Accounts Enabled</td>
+              <td><code class="language-plaintext highlighter-rouge">ON</code></td>
+            </tr>
+            <tr>
+              <td>Authorization Enabled</td>
+              <td><code class="language-plaintext highlighter-rouge">ON</code></td>
+            </tr>
+            <tr>
+              <td>Valid Redirect URIs</td>
+              <td><code class="language-plaintext highlighter-rouge">http://127.0.0.1.nip.io/*</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>Mappers -&gt; Create</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th> </th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Name</td>
+              <td><code class="language-plaintext highlighter-rouge">groups</code></td>
+            </tr>
+            <tr>
+              <td>Mapper Type</td>
+              <td><code class="language-plaintext highlighter-rouge">Group Membership</code></td>
+            </tr>
+            <tr>
+              <td>Token Claim Name</td>
+              <td><code class="language-plaintext highlighter-rouge">groups</code></td>
+            </tr>
+            <tr>
+              <td>Full group path</td>
+              <td><code class="language-plaintext highlighter-rouge">OFF</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Create a group</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th> </th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td><code class="language-plaintext highlighter-rouge">EvmGroup-super_administrator</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Create a user</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th> </th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td><code class="language-plaintext highlighter-rouge">user1</code></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><code class="language-plaintext highlighter-rouge">user1@manageiq.org</code></td>
+        </tr>
+        <tr>
+          <td>First Name</td>
+          <td><code class="language-plaintext highlighter-rouge">User</code></td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td><code class="language-plaintext highlighter-rouge">One</code></td>
+        </tr>
+        <tr>
+          <td>Email Verified</td>
+          <td><code class="language-plaintext highlighter-rouge">ON</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Configure the user</p>
+
+    <ol>
+      <li>
+        <p>Credentials</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th> </th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Password</td>
+              <td><code class="language-plaintext highlighter-rouge">smartvm</code></td>
+            </tr>
+            <tr>
+              <td>Password Confirmation</td>
+              <td><code class="language-plaintext highlighter-rouge">smartvm</code></td>
+            </tr>
+            <tr>
+              <td>Temporary</td>
+              <td><code class="language-plaintext highlighter-rouge">OFF</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>Groups</p>
+
+        <p>Put the user into a group by clicking the group, then clicking <code class="language-plaintext highlighter-rouge">Join</code>.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Verify the setup</p>
+
+    <p>Be sure you have your OIDC client secret from step 6. <code class="language-plaintext highlighter-rouge">${client_secret}</code> below is a reference to that value. The client secret value from the current ManageIQ Realm export is <code class="language-plaintext highlighter-rouge">3167ae6f-762d-49cd-b246-ef8856315957</code>.</p>
+
+    <ol>
+      <li>
+        <p>Fetch the configuration</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> <span class="nt">-k</span> https://127.0.0.1.nip.io:8443/auth/realms/ManageIQ/.well-known/openid-configuration | jq
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Get an access token</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">token</span><span class="o">=</span><span class="si">$(</span>curl <span class="nt">-s</span> <span class="nt">-k</span> <span class="nt">-X</span> POST https://127.0.0.1.nip.io:8443/auth/realms/ManageIQ/protocol/openid-connect/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="se">\</span>
+  <span class="nt">-u</span> manageiq-oidc-client:<span class="k">${</span><span class="nv">client_secret</span><span class="k">}</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">username</span><span class="o">=</span>user1 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">password</span><span class="o">=</span>smartvm <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">grant_type</span><span class="o">=</span>password | jq <span class="nt">-r</span> <span class="s2">".access_token"</span><span class="si">)</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Introspect the access token</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> <span class="nt">-k</span> <span class="nt">-X</span> POST https://127.0.0.1.nip.io:8443/auth/realms/ManageIQ/protocol/openid-connect/token/introspect <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="se">\</span>
+  <span class="nt">-u</span> manageiq-oidc-client:<span class="k">${</span><span class="nv">client_secret</span><span class="k">}</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"token=</span><span class="k">${</span><span class="nv">token</span><span class="k">}</span><span class="s2">"</span> | jq
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Export the realm file. If you plan to commit this, be sure to also update the client secret values in this documentation.</p>
+  </li>
+</ol>
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2021 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>
