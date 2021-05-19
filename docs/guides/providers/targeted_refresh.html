@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-8de063b063e781c83c3900f2fb42692885edeac0346d54e22467184ccc393942.css">
+  <link rel="canonical" href="http://manageiq.org/docs/guides/providers/targeted_refresh">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/guides/providers/targeted_refresh">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li>
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li class="active">
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<ul class="menu menu-toplevel" id="guides_menu">
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Architecture
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/capacity_and_utilization_collection_explanation.html">
+      Capacity And Utilization Collection Explanation
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/enterprise.html">
+      Enterprise
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/source_code_layout.html">
+      Source Code Layout
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Developer Setup
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/plugins.html">
+      Plugins
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/running_test_suites.html">
+      Running Test Suites
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/debugging.html">
+      Interactive debugging
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      External Auth
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth/configuration.html">
+      Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth/installation.html">
+      Installation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      User Interface
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/patterns.html">
+      UI Patterns
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/plugins.html">
+      UI Plugins
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/register_react_component.html">
+      Shared React Component API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/report_data_api.html">
+      Report Data API
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Providers
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/providers_overview.html">
+      Providers Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/providers_database_architecture.html">
+      Providers Database Architecture
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/amazon_aws_config.html">
+      Amazon AWS Config
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/containers.html">
+      Containers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/openshift.html">
+      Openshift
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/openstack_infra_provider.html">
+      Openstack Infra Provider
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/provisioning/windows_imaging.html">
+      Windows Imaging
+    </a>
+    
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/coding_style_and_standards.html">
+      Coding Style And Standards
+    </a>
+    
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/i18n.html">
+      I18n
+    </a>
+    
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc dev_doc">
+      
+
+      <div class="doc-content">
+        
+        <h2 id="targeted-refresh">Targeted Refresh</h2>
+
+<p>If you followed the <a href="writing_a_new_provider">Creating a new provider</a> guide then you already have a provider with full refresh working.  Or maybe you’re working on an existing provider that only has full refresh and you’d like to add targeted refresh to it.</p>
+
+<h3 id="what-is-targeted-refresh">What is targeted refresh?</h3>
+
+<p>First we should get some technicalities out of the way.  All refreshes have a target, “full” refresh is when the target is the top-level EMS and “targeted” refresh is when the target is anything else (for example a single VM).</p>
+
+<p>The primary benefit of targeted refresh is speed.</p>
+
+<p>Even a moderately large provider will start to take minutes to collect and save all of the inventory.  Doing this simply to pick up a single new VM is extremely wasteful.  Also only one refresh is able to run at a time due to concurrency concerns.  This means if a full refresh takes 10 minutes and you queue up your refresh request right after it starts, then the “latency” to getting your change into the database could take almost 20 minutes.  By contrast fetching a single resource like a VM and related inventory is extremely fast.</p>
+
+<p>There are two main differences between targeted refresh and full refresh:</p>
+
+<ol>
+  <li>What is collected</li>
+  <li>How inventory is deleted</li>
+</ol>
+
+<p>Targeted refresh only fetches inventory from the provider for the targets requested.  This cuts down on API calls and uses less memory.</p>
+
+<p>As for deletions, the most significant difference with targeted refresh is the “scope”.  A full refresh considers the entire association (e.g.: <code class="language-plaintext highlighter-rouge">ems.vms.all</code>) to be in scope, so if something is in the association but not in the collected inventory it will be deleted.</p>
+
+<p>Targeted refresh requires scope to be limited, otherwise everything besides what you targeted would be deleted.  Most of this is abstracted away from the provider author but it is important to understand the fundamentals.  This is covered in way more detail in the <a href="refresh">Provider Refresh</a> guide.</p>
+
+<h3 id="getting-started">Getting Started</h3>
+
+<p>The first thing to do is to set up the new classes that we need.  We’ll need to add a <code class="language-plaintext highlighter-rouge">TargetCollection</code> class under the <code class="language-plaintext highlighter-rouge">Collector</code> and <code class="language-plaintext highlighter-rouge">Persister</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::Inventory::Collector::TargetCollection</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Inventory</span><span class="o">::</span><span class="no">Collector</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::Inventory::Parser::TargetCollection</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Inventory</span><span class="o">::</span><span class="no">Parser</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::Inventory::Persister::TargetCollection</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Inventory</span><span class="o">::</span><span class="no">Persister</span>
+  <span class="c1"># Indicates that this is a targeted refresh</span>
+  <span class="k">def</span> <span class="nf">targeted?</span>
+    <span class="kp">true</span>
+  <span class="k">end</span>
+
+  <span class="c1"># This tells the Persister what to do with references, specifically this will</span>
+  <span class="c1"># lookup references for inventory objects which aren't in the collection which</span>
+  <span class="c1"># is required for targeted refresh.</span>
+  <span class="k">def</span> <span class="nf">strategy</span>
+    <span class="ss">:local_db_find_missing_references</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>And don’t forget to add <code class="language-plaintext highlighter-rouge">require_nested :TargetCollection</code> to <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/inventory/collector.rb</code>, <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/inventory/parser.rb</code>, and <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/inventory/persister.rb</code></p>
+
+<p>We also have to add a configuration setting to enable/disable targeted refresh in your provider’s <code class="language-plaintext highlighter-rouge">config/settings.yml</code>:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:ems_refresh:
+  :awesome_cloud:
+    :allow_targeted_refresh: true
+</code></pre></div></div>
+
+<p>We should now have all of the scaffolding in place to start implementing the targeted collector.  The goal is that the parser and persister are basically identical in full and targeted refresh and only the collector has to change.</p>
+
+<h3 id="targeted-collection">Targeted Collection</h3>
+
+<p>Now that we have the basics down we can begin writing the targeted collector.  Again this is where the majority of the work will be as long as we’ve done everything correctly.</p>
+
+<p>First we have to override each collection that is defined in the base Collector:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::Inventory::Collector::TargetCollection</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Inventory</span><span class="o">::</span><span class="no">Collector</span>
+  <span class="k">def</span> <span class="nf">images</span>
+    <span class="p">[]</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">instances</span>
+    <span class="p">[]</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">instance_types</span>
+    <span class="p">[]</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>This just ensures that we won’t accidentally go out and fetch the entire collection.</p>
+
+<p>Now we need to parse the targets that are passed in.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::Inventory::Collector::TargetCollection</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Inventory</span><span class="o">::</span><span class="no">Collector</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">_manager</span><span class="p">,</span> <span class="n">_target</span><span class="p">)</span>
+    <span class="k">super</span>
+
+    <span class="n">parse_targets!</span>
+  <span class="k">end</span>
+
+  <span class="o">...</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">parse_targets!</span>
+    <span class="c1"># `target` here is an `InventoryRefresh::TargetCollection`.  This contains two types of targets,</span>
+    <span class="c1"># `InventoryRefresh::Target` which is essentialy an association/manager_ref pair, or an ActiveRecord::Base</span>
+    <span class="c1"># type object like a Vm.</span>
+    <span class="c1">#</span>
+    <span class="c1"># This gives us some flexibility in how we request a resource be refreshed.</span>
+    <span class="n">target</span><span class="p">.</span><span class="nf">targets</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span>
+      <span class="k">case</span> <span class="n">target</span>
+      <span class="k">when</span> <span class="no">MiqTemplate</span>
+        <span class="n">add_target</span><span class="p">(</span><span class="ss">:miq_templates</span><span class="p">,</span> <span class="n">target</span><span class="p">.</span><span class="nf">ems_ref</span><span class="p">)</span>
+      <span class="k">when</span> <span class="no">Vm</span>
+        <span class="n">add_target</span><span class="p">(</span><span class="ss">:vms</span><span class="p">,</span> <span class="n">target</span><span class="p">.</span><span class="nf">ems_ref</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">add_target</span><span class="p">(</span><span class="n">association</span><span class="p">,</span> <span class="n">ems_ref</span><span class="p">)</span>
+    <span class="k">return</span> <span class="k">if</span> <span class="n">ems_ref</span><span class="p">.</span><span class="nf">blank?</span>
+
+    <span class="n">target</span><span class="p">.</span><span class="nf">add_target</span><span class="p">(</span><span class="ss">:association</span> <span class="o">=&gt;</span> <span class="n">association</span><span class="p">,</span> <span class="ss">:manager_ref</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:ems_ref</span> <span class="o">=&gt;</span> <span class="n">ems_ref</span><span class="p">})</span>
+  <span class="k">end</span>
+
+  <span class="c1"># This helps us reference all unique references by collection e.g. all VM targets</span>
+  <span class="k">def</span> <span class="nf">references</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
+    <span class="n">target</span><span class="p">.</span><span class="nf">manager_refs_by_association</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">dig</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="ss">:ems_ref</span><span class="p">)</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">to_a</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">compact</span> <span class="o">||</span> <span class="p">[]</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>That will add the <code class="language-plaintext highlighter-rouge">InventoryRefresh::Target</code> that we can reference in the collector.</p>
+
+<p>Now lets write our <code class="language-plaintext highlighter-rouge">instances</code> collector method:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">instances</span>
+  <span class="vi">@instances</span> <span class="o">||=</span> <span class="k">begin</span>
+    <span class="n">references</span><span class="p">(</span><span class="ss">:vms</span><span class="p">).</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">ems_ref</span><span class="o">|</span>
+      <span class="n">compute_client</span><span class="p">.</span><span class="nf">get_instance</span><span class="p">(</span><span class="n">ems_ref</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>This allows our parser to work exactly the same way, calling <code class="language-plaintext highlighter-rouge">collector.instances</code> returns an array of instance objects to be parsed.  The parser doesn’t even have to know that it is one or two instances versus all of them.</p>
+
+<p>Continue adding targeted methods for the images collection and any others that you wish to be able to target specifically.</p>
+
+<p>It is critical that if your parser depends on other top-level collections (e.g. the instances parser requires that “disks” or “network_ports” be collected from the API) then you <em>must</em> add collector methods for these.  If you don’t then targeted refreshes of new inventory will be incomplete and targeted refreshes of existing inventory will delete those dependent collections.</p>
+
+<h3 id="testing">Testing</h3>
+
+<p>Now let’s test it out.  First we can do a manual test, we can run this test from a rails console:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails c
+ems = ManageIQ::Providers::AwesomeCloud::CloudManager.first
+EmsRefresh.refresh(ems) # Run a full refresh to ensure we are up to date
+vm = ems.vms.first
+EmsRefresh.refresh(vm) # Now we can target individual vms!
+</code></pre></div></div>
+
+<p>You can change something (like the name or description) and confirm that it gets picked up by the targeted refresh.</p>
+
+<p>If you want to target a new vm (e.g. something that isn’t in the database yet) then you can use the <code class="language-plaintext highlighter-rouge">InventoryRefresh::Target</code> notation.  It is a little less convenient to use in quick testing but is better otherwise.</p>
+
+<p>Try creating a new VM in your cloud console and copy its unique reference (just “1234” in this example), then run the following command:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails c
+ems = ManageIQ::Providers::AwesomeCloud::CloudManager.first
+target = InventoryRefresh::Target.new(:manager =&gt; ems, :association =&gt; :vms, :manager_ref =&gt; {:ems_ref =&gt; "1234"})
+EmsRefresh.refresh(target)
+ems.reload
+ems.vms.find_by(:ems_ref =&gt; "1234")
+</code></pre></div></div>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>And that’s all you need to get started!  Targeted refresh is most helpful when paired with an event catcher which we will cover next.</p>
+
+<p>Even without an event catcher you can use this (e.g. in a provisioning workflow after the VM is created) in lieu of the full refresh, as this can greatly reduce the time each provision request takes.</p>
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2021 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

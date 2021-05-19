@@ -548,9 +548,11 @@
         <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h1"><a href="#capabilities-matrix">Capabilities Matrix</a>
 <ul>
-<li class="toc-entry toc-h2"><a href="#web-browsers">Web Browsers</a></li>
+<li class="toc-entry toc-h2"><a href="#platforms-and-browsers">Platforms and Browsers</a></li>
+<li class="toc-entry toc-h2"><a href="#providers">Providers</a></li>
 <li class="toc-entry toc-h2"><a href="#runtime-platforms">Runtime Platforms</a></li>
-<li class="toc-entry toc-h2"><a href="#capabilities">Capabilities</a>
+<li class="toc-entry toc-h2"><a href="#web-browsers">Web Browsers</a></li>
+<li class="toc-entry toc-h2"><a href="#provider-capabilities">Provider Capabilities</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#infrastructure-providers">Infrastructure Providers</a>
 <ul>
@@ -574,6 +576,188 @@
 </li>
 </ul><h1 id="capabilities-matrix">
 <a class="anchor" href="#capabilities-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>Capabilities Matrix</h1>
+
+<h2 id="platforms-and-browsers">
+<a class="anchor" href="#platforms-and-browsers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Platforms and Browsers</h2>
+
+<h2 id="providers">
+<a class="anchor" href="#providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Providers</h2>
+
+<p>The following table lists providers that ManageIQ can manage.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Platform</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#cloud-providers">Amazon Web Services (AWS) EC2</a></td>
+    </tr>
+    <tr>
+      <td><a href="#container-providers">Amazon Web Services (AWS) EKS</a></td>
+    </tr>
+    <tr>
+      <td><a href="#automation-providers">Ansible AWX</a></td>
+    </tr>
+    <tr>
+      <td>Foreman</td>
+    </tr>
+    <tr>
+      <td><a href="#cloud-providers">Google Cloud Platform (GCP)</a></td>
+    </tr>
+    <tr>
+      <td>IBM AutoSDE</td>
+    </tr>
+    <tr>
+      <td><a href="#cloud-providers">IBM Cloud (VPC)</a></td>
+    </tr>
+    <tr>
+      <td>IBM Power Systems Virtual Servers</td>
+    </tr>
+    <tr>
+      <td>
+<a href="#cloud-providers">IBM PowerVC</a> (via the OpenStack API)</td>
+    </tr>
+    <tr>
+      <td>IBM Terraform</td>
+    </tr>
+    <tr>
+      <td><a href="#container-providers">Kubernetes</a></td>
+    </tr>
+    <tr>
+      <td>KubeVirt</td>
+    </tr>
+    <tr>
+      <td>Lenovo xClarity</td>
+    </tr>
+    <tr>
+      <td><a href="#cloud-providers">Microsoft Azure</a></td>
+    </tr>
+    <tr>
+      <td><a href="#cloud-providers">Microsoft Azure Stack</a></td>
+    </tr>
+    <tr>
+      <td><a href="#infrastructure-providers">Microsoft System Center Virtual Machine Manager (SCVMM)</a></td>
+    </tr>
+    <tr>
+      <td><a href="#network-providers">Nuage Networks</a></td>
+    </tr>
+    <tr>
+      <td><a href="#container-providers">OpenShift Container Platform (OCP)</a></td>
+    </tr>
+    <tr>
+      <td><a href="#cloud-providers">OpenStack</a></td>
+    </tr>
+    <tr>
+      <td><a href="#cloud-providers">Oracle Cloud</a></td>
+    </tr>
+    <tr>
+      <td><a href="#infrastructure-providers">oVirt</a></td>
+    </tr>
+    <tr>
+      <td><a href="#automation-providers">Red Hat Ansible Tower</a></td>
+    </tr>
+    <tr>
+      <td><a href="#cloud-providers">Red Hat OpenStack Platform (OSP)</a></td>
+    </tr>
+    <tr>
+      <td>Red Hat Satellite</td>
+    </tr>
+    <tr>
+      <td><a href="#infrastructure-providers">Red Hat Virtualization (RHV)</a></td>
+    </tr>
+    <tr>
+      <td>Redfish</td>
+    </tr>
+    <tr>
+      <td><a href="#cloud-providers">VMware vCloud</a></td>
+    </tr>
+    <tr>
+      <td><a href="#infrastructure-providers">VMware vSphere</a></td>
+    </tr>
+    <tr>
+      <td><a href="#network-providers">VMware NSX-t</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="runtime-platforms">
+<a class="anchor" href="#runtime-platforms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Runtime Platforms</h2>
+
+<p>The following table lists platforms on which ManageIQ can be installed and run from. They can be obtained from the <a href="/download/">downloads page</a>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Platform</th>
+      <th>Form Factor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Web Services (AWS)</td>
+      <td>Appliance</td>
+    </tr>
+    <tr>
+      <td>Docker</td>
+      <td>Monolithic Container</td>
+    </tr>
+    <tr>
+      <td>Google Cloud Platform (GCP)</td>
+      <td>Appliance</td>
+    </tr>
+    <tr>
+      <td>IBM Cloud</td>
+      <td>Appliance</td>
+    </tr>
+    <tr>
+      <td>Kubernetes</td>
+      <td>Podified</td>
+    </tr>
+    <tr>
+      <td>libvirt</td>
+      <td>Appliance</td>
+    </tr>
+    <tr>
+      <td>Microsoft Azure</td>
+      <td>Appliance</td>
+    </tr>
+    <tr>
+      <td>Microsoft System Center Virtual Machine Manager (SCVMM)</td>
+      <td>Appliance</td>
+    </tr>
+    <tr>
+      <td>OpenShift Container Platform (OCP)</td>
+      <td>Podified</td>
+    </tr>
+    <tr>
+      <td>OpenStack</td>
+      <td>Appliance</td>
+    </tr>
+    <tr>
+      <td>oVirt</td>
+      <td>Appliance</td>
+    </tr>
+    <tr>
+      <td>QEmu/KVM</td>
+      <td>Appliance</td>
+    </tr>
+    <tr>
+      <td>Red Hat Virtualization (RHV)</td>
+      <td>Appliance</td>
+    </tr>
+    <tr>
+      <td>Vagrant</td>
+      <td>Appliance</td>
+    </tr>
+    <tr>
+      <td>VMware vSphere</td>
+      <td>Appliance</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="web-browsers">
 <a class="anchor" href="#web-browsers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web Browsers</h2>
@@ -602,60 +786,8 @@
   </tbody>
 </table>
 
-<h2 id="runtime-platforms">
-<a class="anchor" href="#runtime-platforms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Runtime Platforms</h2>
-
-<p>The following table lists platforms on which ManageIQ can be installed and run from.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Platform</th>
-      <th>Appliance or Podified</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Amazon Web Services (AWS)</td>
-      <td>Appliance</td>
-    </tr>
-    <tr>
-      <td>Microsoft Azure</td>
-      <td>Appliance</td>
-    </tr>
-    <tr>
-      <td>Google Cloud Platform (GCP)</td>
-      <td>Appliance</td>
-    </tr>
-    <tr>
-      <td>Microsoft System Center Virtual Machine Manager (SCVMM)</td>
-      <td>Appliance</td>
-    </tr>
-    <tr>
-      <td>Kubernetes</td>
-      <td>Podified</td>
-    </tr>
-    <tr>
-      <td>OpenShift Container Platform (OCP)</td>
-      <td>Podified</td>
-    </tr>
-    <tr>
-      <td>Red Hat OpenStack Platform (OSP)</td>
-      <td>Appliance</td>
-    </tr>
-    <tr>
-      <td>Red Hat Virtualization (RHV)</td>
-      <td>Appliance</td>
-    </tr>
-    <tr>
-      <td>VMware vSphere</td>
-      <td>Appliance</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="capabilities">
-<a class="anchor" href="#capabilities" aria-hidden="true"><span class="octicon octicon-link"></span></a>Capabilities</h2>
+<h2 id="provider-capabilities">
+<a class="anchor" href="#provider-capabilities" aria-hidden="true"><span class="octicon octicon-link"></span></a>Provider Capabilities</h2>
 
 <p>ManageIQ allows you to discover and interact with various providers.  What follows are the capabilities available in various areas for the providers under management.</p>
 
@@ -669,7 +801,7 @@
     <tr>
       <th>Discovery</th>
       <th>VMware vSphere</th>
-      <th>Red Hat Virtualization (RHV)</th>
+      <th>oVirt / Red Hat Virtualization (RHV)</th>
       <th>Microsoft System Center Virtual Machine Manager (SCVMM)</th>
       <th>OpenStack Platform (OSP) Director</th>
     </tr>
@@ -725,7 +857,7 @@
     <tr>
       <th>General Features</th>
       <th>VMware vSphere</th>
-      <th>Red Hat Virtualization (RHV)</th>
+      <th>oVirt / Red Hat Virtualization (RHV)</th>
       <th>Microsoft System Center Virtual Machine Manager (SCVMM)</th>
       <th>OpenStack Platform (OSP) Director</th>
     </tr>
@@ -865,7 +997,7 @@
     <tr>
       <th>Operations</th>
       <th>VMware vSphere</th>
-      <th>Red Hat Virtualization (RHV)</th>
+      <th>oVirt / Red Hat Virtualization (RHV)</th>
       <th>Microsoft System Center Virtual Machine Manager (SCVMM)</th>
       <th>OpenStack Platform (OSP) Director</th>
     </tr>
@@ -1909,7 +2041,7 @@
   <thead>
     <tr>
       <th>Feature</th>
-      <th>Ansible Tower</th>
+      <th>Ansible Tower / AWX</th>
       <th>Embedded Ansible</th>
       <th>Automate Engine</th>
     </tr>
