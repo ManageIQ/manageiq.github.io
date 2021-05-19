@@ -556,6 +556,7 @@
 <li class="toc-entry toc-h3"><a href="#restore-the-backup-into-the-kubernetes-environment">Restore the backup into the kubernetes environment</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#external-postgresql">External postgresql</a></li>
 </ul>
 </li>
 </ul><h1 id="installing-on-kubernetes--openshift">
@@ -763,6 +764,23 @@ Now you will see the node port listed (31871 in this example) as well as the int
 </ol>
 
 <p>Done! The orchestrator will start deploying the rest of the pods required to run the application.</p>
+
+<h2 id="external-postgresql">
+<a class="anchor" href="#external-postgresql" aria-hidden="true"><span class="octicon octicon-link"></span></a>External postgresql</h2>
+
+<p>Running with an external Postgres server is an option, if you want the default internal Postgres you can skip this step. Additionally, if you want to secure the connection, you need to include the optional parameters <code class="language-plaintext highlighter-rouge">sslmode=verify-full</code> and <code class="language-plaintext highlighter-rouge">rootcertificate</code> when you create the secret. To do this, manually create the secret and substitute your values before you create the CR.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ oc create secret generic postgresql-secrets \
+      --from-literal=dbname=vmdb_production \
+      --from-literal=hostname=YOUR_HOSTNAME \
+      --from-literal=port=5432 \
+      --from-literal=password=YOUR_PASSWORD_HERE \
+      --from-literal=username=YOUR_USERNAME_HERE \
+      --from-literal=sslmode=verify-full \ # optional
+      --from-file=rootcertificate=path/to/optional/certificate.pem # optional
+</code></pre></div></div>
+
+<p>Note: If wanted, the secret name is also customizable by setting <code class="language-plaintext highlighter-rouge">databaseSecret</code> in the CR.</p>
 
 
 
