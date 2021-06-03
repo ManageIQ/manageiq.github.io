@@ -5423,6 +5423,37 @@ by default, which display basic information about each provider:</p>
 versions), the OpenShift Container Platform <a href="https://docs.openshift.com/container-platform/4.5/authentication/understanding-and-creating-service-accounts.html">service account</a>
 and <a href="https://docs.openshift.com/container-platform/4.5/authentication/understanding-and-creating-service-accounts.html#service-accounts-granting-roles_understanding-service-accounts">roles</a> required by ManageIQ are installed by default.</p>
 
+<p>For newer versions of OpenShift you have to create a service-account with the proper permissions for ManageIQ.</p>
+
+<ol>
+  <li>Create a namespace for the service account
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>project_name="management-manageiq" # Pick a name for your project
+oc adm new-project $project_name --description="ManageIQ Project"
+</code></pre></div>    </div>
+  </li>
+  <li>Create a service account in that project
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>service_account_name="management-admin"
+oc create serviceaccount $service_account_name -n $project_name
+</code></pre></div>    </div>
+  </li>
+  <li>Create the cluster role
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>echo '{"apiVersion": "v1", "kind": "ClusterRole", "metadata": {"name": "management-manageiq-admin"}, "rules": [{"resources": ["pods/proxy"], "verbs": ["*"]}]}' | oc create -f -
+</code></pre></div>    </div>
+  </li>
+  <li>Apply roles and policies to the service account
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>oc policy add-role-to-user -n $project_name admin -z $service_account_name
+oc policy add-role-to-user -n $project_name management-manageiq-admin -z $service_account_name
+oc adm policy add-cluster-role-to-user cluster-reader system:serviceaccount:$project_name:$service_account_name
+oc adm policy add-scc-to-user privileged system:serviceaccount:$project_name:$service_account_name
+oc adm policy add-cluster-role-to-user self-provisioner system:serviceaccount:$project_name:$service_account_name
+</code></pre></div>    </div>
+  </li>
+</ol>
+
 <p><strong>Note:</strong></p>
 
 <p>See the <a href="https://docs.openshift.com/container-platform/4.5/authentication/using-rbac.html#default-roles_using-rbac">OpenShift Container Platform documentation</a>
@@ -5430,7 +5461,7 @@ for a list of the default roles.</p>
 
 <p>Run the following to obtain the token needed to add an OpenShift Container Platform provider:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># oc sa get-token -n management-infra management-admin
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># oc sa get-token -n $project_name $service_account_name
 eyJhbGciOiJSUzI1NiI...
 </code></pre></div></div>
 
