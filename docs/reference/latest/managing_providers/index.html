@@ -954,73 +954,57 @@ environment, add a Red Hat Virtualization provider to the appliance.</p>
   </li>
   <li>
     <p>Click <strong>Configuration</strong>, then
-click <img src="../images/1862.png" alt="Add a New Infrastructure Provider"> (<strong>Add
-a New Infrastructure Provider</strong>).</p>
-  </li>
-  <li>
-    <p>Enter a <strong>Name</strong> for the provider.</p>
+click <img src="../images/1862.png" alt="Add a New Infrastructure Provider"> <strong>Add a New Infrastructure Provider</strong>.</p>
   </li>
   <li>
     <p>Select <strong>Red Hat Virtualization</strong> from the <strong>Type</strong> list.</p>
   </li>
   <li>
-    <p>Select the appropriate <strong>Zone</strong> for the provider. If you do not
-specify a zone, it is set to <strong>default</strong>.</p>
+    <p>Enter a <strong>Name</strong> for the provider.</p>
+  </li>
+  <li>
+    <p>Select the appropriate <strong>Zone</strong> for the provider. If you do not specify a zone, it is set to <strong>default</strong>.</p>
   </li>
   <li>
     <p>Under <strong>Endpoints</strong> in the <strong>Default</strong> tab, configure the following:</p>
 
     <ul>
       <li>
-        <p>Enter the <strong>Hostname</strong> or IPv4 or IPv6 address of the Red Hat
-Virtualization Manager.</p>
+        <p>Enter the <strong>Hostname</strong> or IPv4 or IPv6 address of the Red Hat Virtualization Manager.</p>
 
         <p><strong>Important:</strong></p>
 
         <p>The <strong>Hostname</strong> must be a unique fully qualified domain name.</p>
       </li>
       <li>
-        <p>Enter the <strong>API Port</strong> if your provider uses a non-standard port
-for access.</p>
-      </li>
-      <li>
-        <p>Select <strong>Yes</strong> or <strong>No</strong> to <strong>Verify TLS Certificates</strong> to
-specify whether to authenticate securely to the provider using
-TLS.</p>
+        <p>Select <strong>Verify</strong> or <strong>Do not verify</strong> for <strong>SSL Verification</strong> to specify whether to authenticate securely to the provider using SSL.</p>
 
         <ul>
-          <li>If you select <strong>Yes</strong> for <strong>Verify TLS Certificates</strong>, you
-can either paste a custom certificate in the <strong>Trusted CA
-Certificates</strong> field in PEM format, or leave the <strong>Trusted
-CA Certificates</strong> field empty if your Red Hat Virtualization
-provider has a trusted Certificate Authority.</li>
+          <li>If you select <strong>Verify</strong> for <strong>SSL Verification</strong>, you can either paste a custom certificate in the <strong>Trusted CA Certificates</strong> field in PEM format, or leave the <strong>Trusted CA Certificates</strong> field empty if your Red Hat Virtualization provider has a trusted Certificate Authority.</li>
         </ul>
       </li>
       <li>
-        <p>Provide the login credentials for the Red Hat Virtualization
-administrative user:</p>
+        <p>Enter the <strong>API Port</strong> if your provider uses a non-standard port for access.</p>
+      </li>
+      <li>
+        <p>Provide the login credentials for the Red Hat Virtualization administrative user:</p>
 
         <ul>
           <li>
-            <p>Enter the user name (formatted as <code class="language-plaintext highlighter-rouge">admin@internal</code>) in the
-<strong>Username</strong> field.</p>
+            <p>Enter the user name (formatted as <code class="language-plaintext highlighter-rouge">admin@internal</code>) in the <strong>Username</strong> field.</p>
           </li>
           <li>
             <p>Enter the password in the <strong>Password</strong> field.</p>
           </li>
           <li>
-            <p>Confirm the password in the <strong>Confirm Password</strong> field.</p>
-          </li>
-          <li>
-            <p>Click <strong>Validate</strong> to confirm ManageIQ can
-connect to the Red Hat Virtualization Manager.</p>
+            <p>Click <strong>Validate</strong> to confirm ManageIQ can connect to the Red Hat Virtualization Manager.</p>
           </li>
         </ul>
       </li>
     </ul>
   </li>
   <li>
-    <p>Under <strong>Endpoints</strong> in the <strong>C &amp; U Database</strong> tab, you can configure capacity and utilization metrics collection by providing login credentials for the ManageIQ user of the Red Hat Virtualization Data Warehouse database. You can also configure this later by editing the provider. Configure the following in the <strong>C &amp; U Database</strong> tab:</p>
+    <p>Under <strong>Endpoints</strong> in the <strong>Metrics</strong> tab, you can configure capacity and utilization metrics collection by providing login credentials for the ManageIQ user of the Red Hat Virtualization Data Warehouse database. You can also configure this later by editing the provider. Configure the following in the <strong>Metrics</strong> tab:</p>
 
     <p><strong>Important</strong></p>
 
@@ -1029,15 +1013,10 @@ collection. See <a href="#enabling-red-hat-virtualization-capacity-and-utilizati
 
     <ul>
       <li>
-        <p>Enter the database hostname or IPv4 or IPv6 address in
-<strong>Hostname</strong>.</p>
+        <p>Enter the database hostname or IPv4 or IPv6 address in <strong>Hostname</strong>.</p>
       </li>
       <li>
-        <p>Enter the <strong>API Port</strong> if your provider uses a non-standard port
-for access.</p>
-      </li>
-      <li>
-        <p>Enter the <strong>Database Name</strong>.</p>
+        <p>Enter the <strong>API Port</strong> if your provider uses a non-standard port for access.</p>
       </li>
       <li>
         <p>Enter the database user name in the <strong>Username</strong> field.</p>
@@ -1046,11 +1025,10 @@ for access.</p>
         <p>Enter the user password in the <strong>Password</strong> field.</p>
       </li>
       <li>
-        <p>Confirm the user password in the <strong>Confirm Password</strong> field.</p>
+        <p>Enter the <strong>Database Name</strong>.</p>
       </li>
       <li>
-        <p>Click <strong>Validate</strong> to confirm ManageIQ can connect
-to the database.</p>
+        <p>Click <strong>Validate</strong> to confirm ManageIQ can connect to the database.</p>
       </li>
     </ul>
   </li>
