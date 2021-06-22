@@ -548,10 +548,13 @@
         <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h1"><a href="#capabilities-matrix">Capabilities Matrix</a>
 <ul>
-<li class="toc-entry toc-h2"><a href="#platforms-and-browsers">Platforms and Browsers</a></li>
-<li class="toc-entry toc-h2"><a href="#providers">Providers</a></li>
-<li class="toc-entry toc-h2"><a href="#runtime-platforms">Runtime Platforms</a></li>
-<li class="toc-entry toc-h2"><a href="#web-browsers">Web Browsers</a></li>
+<li class="toc-entry toc-h2"><a href="#platforms-and-browsers">Platforms and Browsers</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#providers">Providers</a></li>
+<li class="toc-entry toc-h3"><a href="#runtime-platforms">Runtime Platforms</a></li>
+<li class="toc-entry toc-h3"><a href="#web-browsers">Web Browsers</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#provider-capabilities">Provider Capabilities</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#infrastructure-providers">Infrastructure Providers</a>
@@ -563,13 +566,13 @@
 <li class="toc-entry toc-h3"><a href="#container-providers">Container Providers</a></li>
 <li class="toc-entry toc-h3"><a href="#automation-providers">Automation Providers</a></li>
 <li class="toc-entry toc-h3"><a href="#network-providers">Network Providers</a></li>
+<li class="toc-entry toc-h3"><a href="#smart-state-analysis-capabilities">Smart State Analysis Capabilities</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#volume-managers">Volume Managers</a></li>
+<li class="toc-entry toc-h4"><a href="#file-systems">File Systems</a></li>
+<li class="toc-entry toc-h4"><a href="#file-formats">File Formats</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#smart-state-analysis-capabilities">Smart State Analysis Capabilities</a>
-<ul>
-<li class="toc-entry toc-h3"><a href="#volume-managers">Volume Managers</a></li>
-<li class="toc-entry toc-h3"><a href="#file-systems">File Systems</a></li>
-<li class="toc-entry toc-h3"><a href="#file-formats">File Formats</a></li>
 </ul>
 </li>
 </ul>
@@ -580,8 +583,8 @@
 <h2 id="platforms-and-browsers">
 <a class="anchor" href="#platforms-and-browsers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Platforms and Browsers</h2>
 
-<h2 id="providers">
-<a class="anchor" href="#providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Providers</h2>
+<h3 id="providers">
+<a class="anchor" href="#providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Providers</h3>
 
 <p>The following table lists providers that ManageIQ can manage.</p>
 
@@ -611,10 +614,10 @@
       <td>IBM AutoSDE</td>
     </tr>
     <tr>
-      <td><a href="#cloud-providers">IBM Cloud (VPC)</a></td>
+      <td><a href="#cloud-providers">IBM Cloud VPC</a></td>
     </tr>
     <tr>
-      <td>IBM Power Systems Virtual Servers</td>
+      <td><a href="#cloud-providers">IBM Power Systems Virtual Servers (PowerVS)</a></td>
     </tr>
     <tr>
       <td>
@@ -645,9 +648,6 @@
       <td><a href="#network-providers">Nuage Networks</a></td>
     </tr>
     <tr>
-      <td><a href="#container-providers">OpenShift Container Platform (OCP)</a></td>
-    </tr>
-    <tr>
       <td><a href="#cloud-providers">OpenStack</a></td>
     </tr>
     <tr>
@@ -658,6 +658,9 @@
     </tr>
     <tr>
       <td><a href="#automation-providers">Red Hat Ansible Tower</a></td>
+    </tr>
+    <tr>
+      <td><a href="#container-providers">Red Hat OpenShift Container Platform (OCP)</a></td>
     </tr>
     <tr>
       <td><a href="#cloud-providers">Red Hat OpenStack Platform (OSP)</a></td>
@@ -683,8 +686,8 @@
   </tbody>
 </table>
 
-<h2 id="runtime-platforms">
-<a class="anchor" href="#runtime-platforms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Runtime Platforms</h2>
+<h3 id="runtime-platforms">
+<a class="anchor" href="#runtime-platforms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Runtime Platforms</h3>
 
 <p>The following table lists platforms on which ManageIQ can be installed and run from. They can be obtained from the <a href="/download/">downloads page</a>.</p>
 
@@ -759,8 +762,8 @@
   </tbody>
 </table>
 
-<h2 id="web-browsers">
-<a class="anchor" href="#web-browsers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web Browsers</h2>
+<h3 id="web-browsers">
+<a class="anchor" href="#web-browsers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web Browsers</h3>
 
 <p>The following table lists the browsers that are known to work with ManageIQ.</p>
 
@@ -800,10 +803,10 @@
   <thead>
     <tr>
       <th>Discovery</th>
-      <th>VMware vSphere</th>
-      <th>oVirt / Red Hat Virtualization (RHV)</th>
-      <th>Microsoft System Center Virtual Machine Manager (SCVMM)</th>
-      <th>OpenStack Platform (OSP) Director</th>
+      <th>vSphere</th>
+      <th>oVirt / RHV</th>
+      <th>SCVMM</th>
+      <th>OpenStack undercloud</th>
     </tr>
   </thead>
   <tbody>
@@ -856,10 +859,10 @@
   <thead>
     <tr>
       <th>General Features</th>
-      <th>VMware vSphere</th>
-      <th>oVirt / Red Hat Virtualization (RHV)</th>
-      <th>Microsoft System Center Virtual Machine Manager (SCVMM)</th>
-      <th>OpenStack Platform (OSP) Director</th>
+      <th>vSphere</th>
+      <th>oVirt / RHV</th>
+      <th>SCVMM</th>
+      <th>OpenStack undercloud</th>
     </tr>
   </thead>
   <tbody>
@@ -996,10 +999,10 @@
   <thead>
     <tr>
       <th>Operations</th>
-      <th>VMware vSphere</th>
-      <th>oVirt / Red Hat Virtualization (RHV)</th>
-      <th>Microsoft System Center Virtual Machine Manager (SCVMM)</th>
-      <th>OpenStack Platform (OSP) Director</th>
+      <th>vSphere</th>
+      <th>oVirt / RHV</th>
+      <th>SCVMM</th>
+      <th>OpenStack undercloud</th>
     </tr>
   </thead>
   <tbody>
@@ -1172,7 +1175,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>VMware vSphere 6.0</td>
+      <td>vSphere 6.0</td>
       <td>VNC</td>
     </tr>
     <tr>
@@ -1184,7 +1187,7 @@
       <td>WebMKS</td>
     </tr>
     <tr>
-      <td>VMware vSphere 6.5 and higher</td>
+      <td>vSphere 6.5+</td>
       <td>VMRC</td>
     </tr>
     <tr>
@@ -1192,11 +1195,11 @@
       <td>WebMKS</td>
     </tr>
     <tr>
-      <td>Red Hat Virtualization (RHV)</td>
+      <td>RHV</td>
       <td>SPICE</td>
     </tr>
     <tr>
-      <td>Microsoft SCVMM</td>
+      <td>SCVMM</td>
       <td>N/A</td>
     </tr>
   </tbody>
@@ -1211,14 +1214,14 @@
   <thead>
     <tr>
       <th>Discovery</th>
-      <th>Amazon Web Services (AWS)</th>
-      <th>Microsoft Azure</th>
-      <th>Google Cloud Platform (GCP)</th>
-      <th>Red Hat OpenStack Platform (OSP)</th>
-      <th>IBM PowerVC via the OpenStack API</th>
-      <th>IBM Power Systems Virtual Servers</th>
-      <th>IBM Cloud VPC</th>
-      <th>Oracle Cloud</th>
+      <th>AWS</th>
+      <th>Azure</th>
+      <th>GCP</th>
+      <th>OpenStack</th>
+      <th>PowerVC</th>
+      <th>PowerVS</th>
+      <th>IBM VPC</th>
+      <th>Oracle</th>
     </tr>
   </thead>
   <tbody>
@@ -1427,14 +1430,14 @@
   <thead>
     <tr>
       <th>General Features</th>
-      <th>Amazon Web Services (AWS)</th>
-      <th>Microsoft Azure</th>
-      <th>Google Cloud Platform (GCP)</th>
-      <th>Red Hat OpenStack Platform (OSP)</th>
-      <th>IBM PowerVC via the OpenStack API</th>
-      <th>IBM Power Systems Virtual Servers</th>
-      <th>IBM Cloud VPC</th>
-      <th>Oracle Cloud</th>
+      <th>AWS</th>
+      <th>Azure</th>
+      <th>GCP</th>
+      <th>OpenStack</th>
+      <th>PowerVC</th>
+      <th>PowerVS</th>
+      <th>IBM VPC</th>
+      <th>Oracle</th>
     </tr>
   </thead>
   <tbody>
@@ -1621,14 +1624,14 @@
   <thead>
     <tr>
       <th>Operations</th>
-      <th>Amazon Web Services (AWS)</th>
-      <th>Microsoft Azure</th>
-      <th>Google Cloud Platform (GCP)</th>
-      <th>Red Hat OpenStack Platform (OSP)</th>
-      <th>IBM PowerVC via the OpenStack API</th>
-      <th>IBM Power Systems Virtual Servers</th>
-      <th>IBM Cloud VPC</th>
-      <th>Oracle Cloud</th>
+      <th>AWS</th>
+      <th>Azure</th>
+      <th>GCP</th>
+      <th>OpenStack</th>
+      <th>PowerVC</th>
+      <th>PowerVS</th>
+      <th>IBM VPC</th>
+      <th>Oracle</th>
     </tr>
   </thead>
   <tbody>
@@ -1875,10 +1878,10 @@
   <thead>
     <tr>
       <th>Feature</th>
-      <th>OpenShift Container Platform (OCP) 3.11</th>
-      <th>OpenShift Container Platform (OCP) 4.x</th>
+      <th>OpenShift 3.11</th>
+      <th>OpenShift 4.x</th>
       <th>Kubernetes</th>
-      <th>Amazon Elastic Kubernetes Service (EKS)</th>
+      <th>Amazon EKS</th>
     </tr>
   </thead>
   <tbody>
@@ -2090,7 +2093,7 @@
     <tr>
       <th>Discovery</th>
       <th>Nuage</th>
-      <th>VMware NSX-t</th>
+      <th>NSX-t</th>
     </tr>
   </thead>
   <tbody>
@@ -2157,7 +2160,7 @@
     <tr>
       <th>Operations</th>
       <th>Nuage</th>
-      <th>VMware NSX-t</th>
+      <th>NSX-t</th>
     </tr>
   </thead>
   <tbody>
@@ -2199,13 +2202,13 @@
   </tbody>
 </table>
 
-<h2 id="smart-state-analysis-capabilities">
-<a class="anchor" href="#smart-state-analysis-capabilities" aria-hidden="true"><span class="octicon octicon-link"></span></a>Smart State Analysis Capabilities</h2>
+<h3 id="smart-state-analysis-capabilities">
+<a class="anchor" href="#smart-state-analysis-capabilities" aria-hidden="true"><span class="octicon octicon-link"></span></a>Smart State Analysis Capabilities</h3>
 
 <p>ManageIQ allows you to analyze virtual machines and instances on the providers it manages to collect information about the base operating system on those virtual machines or instances, their virtual hardware, installed applications, and other details. This operation is known as SmartState analysis. The sections below outline what ManageIQ can parse.</p>
 
-<h3 id="volume-managers">
-<a class="anchor" href="#volume-managers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Volume Managers</h3>
+<h4 id="volume-managers">
+<a class="anchor" href="#volume-managers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Volume Managers</h4>
 
 <table>
   <thead>
@@ -2229,8 +2232,8 @@
   </tbody>
 </table>
 
-<h3 id="file-systems">
-<a class="anchor" href="#file-systems" aria-hidden="true"><span class="octicon octicon-link"></span></a>File Systems</h3>
+<h4 id="file-systems">
+<a class="anchor" href="#file-systems" aria-hidden="true"><span class="octicon octicon-link"></span></a>File Systems</h4>
 
 <table>
   <thead>
@@ -2289,8 +2292,8 @@
   </tbody>
 </table>
 
-<h3 id="file-formats">
-<a class="anchor" href="#file-formats" aria-hidden="true"><span class="octicon octicon-link"></span></a>File Formats</h3>
+<h4 id="file-formats">
+<a class="anchor" href="#file-formats" aria-hidden="true"><span class="octicon octicon-link"></span></a>File Formats</h4>
 
 <table>
   <thead>

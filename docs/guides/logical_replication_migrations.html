@@ -12,7 +12,7 @@
   <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
 
   <link type="text/css" rel="stylesheet" href="/assets/main-8de063b063e781c83c3900f2fb42692885edeac0346d54e22467184ccc393942.css">
-  <link rel="canonical" href="http://manageiq.org/docs/guides/README">
+  <link rel="canonical" href="http://manageiq.org/docs/guides/logical_replication_migrations">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
   <link href="/assets/images/favicon.ico" rel="shortcut icon">
@@ -58,7 +58,7 @@
 </header>
 
 
-    <main data-url="/docs/guides/README">
+    <main data-url="/docs/guides/logical_replication_migrations">
       <nav class="doc_tabs">
   <ul>
   <li>
@@ -458,63 +458,236 @@
 
       <div class="doc-content">
         
-        <h2 id="manageiq-developer-documentation">ManageIQ Developer Documentation</h2>
+        <h1 id="testing-logical-replication-with-migrations">Testing logical replication with migrations</h1>
 
-<h3 id="setup"><a href="developer_setup">Setup</a></h3>
+<h2 id="introduction">Introduction</h2>
+
+<p>ManageIQ uses logical replication to provide central administrative functions over objects in other
+database regions.  In order to do this, postgresql’s logical replication is used to setup
+publications for specific tables in remote regions and subscriptions for each in the central or
+global region.</p>
+
+<p>Note, this is completely different from HA and failover.  Logical replication provides product
+features such as being able to start or stop a virtual machine centrally regardless of which
+database it resides in.  HA, on the other hand, provides for failover by promoting a backup when a
+primary database fails.</p>
+
+<p>This interconnectedness of multiple databases with publications and subscriptions with ManageIQ
+regions means that the upgrade process is a bit different.  Basically, the global region cannot be
+migrated until all databases it’s subscribing to have been migrated.  Fortunately, this logic
+should be mostly automatic.</p>
+
+<p>This logic is what we’re trying to test and verify.</p>
+
+<h2 id="pre-requisites">Pre-requisites</h2>
+
+<p>This was tested with 3 nightly appliances.  They were setup to be at the Jansa codebase with
+replication. The appliances were then migrated to kasparov.  This document could be used for
+different branches or tags.</p>
+
+<p>The following region numbers were used and will be referenced throughout this document.  Replace
+these values if different numbers are selected:</p>
 <ul>
-  <li><a href="https://github.com/ManageIQ/manageiq-appliance-dev-setup">Development Appliance Setup</a></li>
-  <li><a href="vagrant_developer_vm">Development using a Vagrant VM</a></li>
-  <li><a href="developer_setup/plugins">Plugin development</a> aka working with the split <code class="language-plaintext highlighter-rouge">manageiq*</code> repositories</li>
-  <li><a href="providers/dev-guide">Provider development guide</a></li>
-  <li>Provider setup instructions
+  <li>99 - global</li>
+  <li>1 - remote</li>
+  <li>2 - remote</li>
+</ul>
+
+<p>It is assumed the application will be run in production mode on appliances.  This is the default
+on appliances.  If using a different mode or not appliances, RAILS_ENV will need to be exported:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export RAILS_ENV=production
+</code></pre></div></div>
+
+<h2 id="initial-setup">Initial setup</h2>
+
+<ul>
+  <li>The existing manageiq code from the rpm in /var/www/miq/vmdb was renamed</li>
+  <li>ManageIQ was cloned and checked out at the jansa branch</li>
+  <li>Now, install all rpms required to build compiled gems:</li>
+</ul>
+
+<p>These commands were found in the <a href="https://github.com/ManageIQ/manageiq-rpm_build/blob/ec0fcc85f7d24010278148f4bab83447d18884b5/Dockerfile#L22-L45">rpm_build Dockerfile</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    dnf -y group install "development tools" &amp;&amp; \
+    dnf config-manager --setopt=epel.exclude=*qpid-proton* --setopt=tsflags=nodocs --save &amp;&amp; \
+    dnf -y install \
+      ansible \
+      cmake \
+      copr-cli \
+      glibc-langpack-en \
+      libcurl-devel \
+      libpq-devel \
+      librdkafka \
+      libssh2-devel \
+      libxml2-devel \
+      libxslt-devel \
+      nodejs \
+      openssl-devel \
+      platform-python-devel \
+      postgresql-server \
+      postgresql-server-devel \
+      qpid-proton-c-devel \
+      ruby-devel \
+      rubygem-bundler \
+      wget \
+      sqlite-devel &amp;&amp; \
+    dnf clean all
+</code></pre></div></div>
+
+<h2 id="prepare-for-replication-on-jansa">Prepare for replication on jansa</h2>
+
+<p>The commands below will be run on each appliance and will do the following:</p>
+<ul>
+  <li>Checkout the source version (jansa)</li>
+  <li>Bundle the gem dependencies</li>
+  <li>Initialize the encryption key and default database.yml</li>
+  <li>Setup the region number</li>
+  <li>Seed the database</li>
+</ul>
+
+<p>Note: Setting RAILS_ENV is not required on appliances as they default to production, but is provided
+below for completeness.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+vmdb
+git checkout origin/jansa
+bundle check || bundle update
+mkdir log
+cp -f certs/v2_key.dev certs/v2_key
+cp -f config/database.pg.yml config/database.yml
+bundle exec rake evm:db:region -- --region XXX
+bundle exec rake --trace  db:migrate
+bundle exec rake --trace  db:seed
+</code></pre></div></div>
+
+<p>Substitute XXX for the region number of this appliance:</p>
+<ul>
+  <li>99 - global</li>
+  <li>1 - remote</li>
+  <li>2 - remote</li>
+</ul>
+
+<h2 id="configure-replication-for-jansa">Configure replication for jansa</h2>
+
+<ul>
+  <li>Region 1 and 2:
     <ul>
-      <li><a href="providers/amazon_aws_config">Amazon AWS</a></li>
-      <li><a href="providers/openshift">Openshift</a></li>
-      <li><a href="providers/openstack_infra_provider">Openstack Infra</a></li>
-      <li><a href="developer_setup/debugging">Interactive debugging with Pry-Remote</a></li>
+      <li>These will be remotes, meaning they will “publish” the tables to be replicated:</li>
     </ul>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmdb
+bin/rails r "MiqRegion.replication_type= :remote"
+</code></pre></div>    </div>
   </li>
-  <li><a href="developer_setup/minimal_mode">Running in minimal mode</a></li>
-  <li><a href="developer_setup/running_test_suites">Running the test suites</a></li>
-  <li><a href="providers/kubernetes">Setting up Kubernetes for use with ManageIQ</a></li>
-  <li><a href="logical_replication_migrations">Testing logical replication with migrations</a></li>
+  <li>Region 99 (global):
+    <ul>
+      <li>The commands below will:
+        <ul>
+          <li>Provide the other regions’ connection information</li>
+          <li>Create the subscription for each remote region</li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/rails c
+</code></pre></div>    </div>
+
+    <p>Subsitute the proper values below:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ require 'miq_pglogical'
+host1 = 'x.x.x.x'
+host2 = 'y.y.y.y'
+port = '5432'
+user = 'root'
+password = 'zzz'
+sub1 = PglogicalSubscription.new(:host =&gt; host1, :port =&gt; port, :user =&gt; user, :dbname =&gt; 'vmdb_production', :password =&gt; password)
+sub2 = PglogicalSubscription.new(:host =&gt; host2, :port =&gt; port, :user =&gt; user, :dbname =&gt; 'vmdb_production', :password =&gt; password)
+MiqPglogical.save_global_region([sub1, sub2], [])
+</code></pre></div>    </div>
+  </li>
 </ul>
 
-<h3 id="developer-guidelines">Developer Guidelines</h3>
-<ul>
-  <li><a href="backport_process">Backport Process</a></li>
-  <li><a href="coding_style_and_standards">Coding Style and Standards</a></li>
-  <li><a href="https://github.com/ManageIQ/manageiq-api/blob/master/CONTRIBUTING.md">Contributing to the API</a></li>
-  <li><a href="external_auth">External Authentication (httpd)</a></li>
-  <li><a href="git_utils/README">GIT Helpers</a></li>
-  <li><a href="triage_process">Issue and PR Triage Process</a></li>
-  <li><a href="i18n">Internationalization Guidelines</a></li>
-  <li><a href="mergers_guidelines">Merger Guidlines</a></li>
-  <li><a href="https://github.com/orgs/ManageIQ/projects/13">Project Roadmap</a></li>
-  <li><a href="labels">Repository Labels and Colors</a></li>
-  <li><a href="reviewers_guidelines">Reviewer Guidelines</a></li>
-  <li><a href="sprint_boundaries">Sprint Boundaries</a></li>
-  <li><a href="ui/patterns">UI Patterns</a></li>
-  <li><a href="ui/plugins">UI Plugins</a></li>
-  <li><a href="writing_guides">Updating this Documentation</a></li>
-</ul>
+<p>Now, replication can verified before moving on.</p>
 
-<h3 id="technical-documentation">Technical documentation</h3>
-<ul>
-  <li><a href="architecture">Architecture</a></li>
-  <li><a href="automate_url_open">Opening custom URLs via Custom Buttons and Automate</a></li>
-  <li><a href="ui/report_data_api">Report data API</a></li>
-  <li><a href="/docs/guides/remote_consoles">Remote Consoles</a></li>
-  <li><a href="http://manageiq.org/docs/api">REST API</a></li>
-  <li><a href="/docs/guides/service_ui/skinning">Service UI Skinning</a></li>
-  <li><a href="ui/register_react_component">Shared react component API</a></li>
-  <li><a href="providers/amazon_aws_config">Working with Amazon AWS Config service</a></li>
-</ul>
+<p>On the global:</p>
 
-<h2 id="license">License</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/rails c
+</code></pre></div></div>
 
-<p><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" />
-This work is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User.all.pluck(:id)
+# This should show ids beginning with the 3 region numbers: 99, 1, 2.
+</code></pre></div></div>
+
+<p>Note, it may take a few minutes before these users are replicated.</p>
+
+<h2 id="remove-replication-before-upgrade">Remove replication before upgrade</h2>
+
+<p>Whenever performing an upgrade, logical replication must be disabled on the old version and enabled
+again on the new version.  Often, this is because appliances are replaced and therefore the
+publication and subscription are different.  Even when not replacing appliances, it is still best to
+disable replication on the old version and enable it again on the new version so that the correct
+version of code is adding the publications and subscriptions.</p>
+
+<p>On the global, assuming the remotes are region 1 and 2:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psql -U root vmdb_production -h global_ipaddress -c 'DROP subscription region_1_subscription;'
+psql -U root vmdb_production -h global_ipaddress -c 'DROP subscription region_2_subscription;'
+</code></pre></div></div>
+
+<p>Note:  Dropping the subscription on the global will also delete the replication slot on the remote
+and will do proper cleanup.  The replication slot should not be manually removed.</p>
+
+<h2 id="upgrade-to-kasparov">Upgrade to kasparov</h2>
+
+<p>On region 1, 2, and 99:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmdb
+git checkout origin/kasparov
+bundle check || bundle update
+</code></pre></div></div>
+
+<h2 id="configure-replication-for-kasparov">Configure replication for kasparov</h2>
+
+<p>Follow the same instructions as <a href="#configure-replication-for-jansa">above</a></p>
+
+<h2 id="attempt-migration-from-global">Attempt migration from global</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmdb
+bin/rake db:migrate
+</code></pre></div></div>
+
+<p>Notice that the global will not migrate the database as it is waiting on region 1 to migrate first:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Waiting for remote region 1 to run migration 20200424183342
+</code></pre></div></div>
+
+<p>Leave region 1’s terminal waiting for the other regions to migrate…</p>
+
+<h2 id="migrate-database-to-kasparov-on-region-1">Migrate database to kasparov on region 1</h2>
+
+<p>On region 1:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmdb
+bin/rake db:migrate
+</code></pre></div></div>
+
+<p>Now, region 99 (global) terminal shows:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Waiting for remote region 1 to run migration 20200424183342
+Waiting for remote region 2 to run migration 20200424183342
+</code></pre></div></div>
+
+<p>It is now waiting on region 2 and will not complete yet.</p>
+
+<h2 id="migrate-database-to-kasparov-on-region-2">Migrate database to kasparov on region 2</h2>
+
+<p>On region 2:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmdb
+bin/rake db:migrate
+</code></pre></div></div>
+
+<p>After region 2 migrates, region 99 will immediately migrate.</p>
 
       </div>
     </article>
