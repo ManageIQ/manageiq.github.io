@@ -5,9 +5,41 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 20 Jul 2021 16:43:21 +0000</pubDate>
-    <lastBuildDate>Tue, 20 Jul 2021 16:43:21 +0000</lastBuildDate>
+    <pubDate>Tue, 20 Jul 2021 22:36:35 +0000</pubDate>
+    <lastBuildDate>Tue, 20 Jul 2021 22:36:35 +0000</lastBuildDate>
     <generator>Jekyll v3.9.1</generator>
+    
+      <item>
+        <title>ManageIQ Lasker GA Announcement</title>
+        <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Lasker&lt;/strong&gt;!  This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Emanuel_Lasker&quot;&gt;Emanuel Lasker&lt;/a&gt;.  You can download the Lasker-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2021/07/manageiq-lasker-ga-annoucement/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2021/07/manageiq-lasker-ga-annoucement/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>CVE-2021-32756, Kasparov-2, Jansa-4</title>
+        <description>&lt;p&gt;ManageIQ Kasparov-2 and Jansa-4 are now available. These releases include a security fix, which is also included in the new Lasker-1 GA release. Many thanks goes to Jason Frey (&lt;a href=&quot;https://github.com/Fryguy&quot;&gt;@Fryguy&lt;/a&gt;) and Gregg Tanzillo (&lt;a href=&quot;https://github.com/gtanzillo&quot;&gt;@gtanzillo&lt;/a&gt;) for finding and fixing these vulnerabilities.  Also, many thanks go to all of the contributors for all of their enhancements and bug fixes.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2021/07/cve-2021-32756-kasparov-2-jansa-4/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2021/07/cve-2021-32756-kasparov-2-jansa-4/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>ManageIQ performance results and improvements</title>
@@ -227,35 +259,6 @@ To estimate the size of the metric collection portion of the database, you could
         <category>releases</category>
         
         <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Troubleshooting OpenID-Connect Authentication on Containers</title>
-        <description>&lt;p&gt;The goal of this blog post is to provide a basic understanding of how to troubleshoot ManageIQ 
-configured for OpenID-Connect authentication when deploying ManageIQ on containers.&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
-        <link>http://manageiq.org/blog/2020/09/troubleshooting-containerized-oidc/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2020/09/troubleshooting-containerized-oidc/</guid>
-        
-        <category>tutorials</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Using the API with OpenID-Connect Authentication</title>
-        <description>&lt;p&gt;The goal of this blog post is to provide a basic understanding of how to use the ManageIQ REST API when configured with OpenID-Connect authentication.&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 03 Sep 2020 00:00:00 +0000</pubDate>
-        <link>http://manageiq.org/blog/2020/09/oidc-auth-api-usage/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2020/09/oidc-auth-api-usage/</guid>
-        
-        <category>tutorials</category>
         
         
       </item>
