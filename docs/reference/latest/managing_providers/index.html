@@ -827,6 +827,7 @@
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#adding-an-openshift-container-platform-provider">Adding an OpenShift Container Platform Provider</a></li>
+<li class="toc-entry toc-h1"><a href="#adding-an-azure-kubernetes-service-aks-container-provider">Adding an Azure Kubernetes Service (AKS) Container Provider</a></li>
 <li class="toc-entry toc-h1"><a href="#tagging-containers-providers">Tagging Containers Providers</a></li>
 <li class="toc-entry toc-h1"><a href="#removing-containers-providers">Removing Containers Providers</a></li>
 <li class="toc-entry toc-h1"><a href="#editing-a-containers-provider">Editing a Containers Provider</a></li>
@@ -5770,6 +5771,103 @@ under <code class="language-plaintext highlighter-rouge">ems_kubernetes</code>, 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:image_inspector_registry: registry.access.redhat.com
 :image_inspector_repository: openshift3/image-inspector
 </code></pre></div></div>
+
+<h1 id="adding-an-azure-kubernetes-service-aks-container-provider">
+<a class="anchor" href="#adding-an-azure-kubernetes-service-aks-container-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding an Azure Kubernetes Service (AKS) Container Provider</h1>
+
+<p>After initial installation and creation of a ManageIQ
+environment you can add an Azure Kubernetes Service Container provider.</p>
+
+<p>You will need to retrieve the cluster hostname and the cluster_admin token.</p>
+
+<p>Navigate to your AKS cluster in the Azure Portal (https://portal.azure.com).  In the <code class="language-plaintext highlighter-rouge">Overview</code> tab search for the <code class="language-plaintext highlighter-rouge">API server address</code>.  This is the <code class="language-plaintext highlighter-rouge">hostname</code> that you will need when you create your provider.</p>
+
+<p>Next you need to retrieve your cluster_admin token, click on the <code class="language-plaintext highlighter-rouge">Connect</code> button.  This will open a panel with instructions on running the <code class="language-plaintext highlighter-rouge">az</code> command line utility in <code class="language-plaintext highlighter-rouge">Azure Cloud Shell</code> (you can also run this locally if you have the <code class="language-plaintext highlighter-rouge">az</code> utility installed).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az account set --subscription SUBSCRIPTION_ID
+az aks get-credentials --admin --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
+Merged "CLUSTER_NAME-admin" as current context in ~/.kube/config
+</code></pre></div></div>
+
+<p>Now grab the token for your user out of the <code class="language-plaintext highlighter-rouge">~.kube/config</code> file.  If this is the only cluster configured in your <code class="language-plaintext highlighter-rouge">~/.kube/config</code> then you can simply run:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grep 'token: ' .kube/config
+    token: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
+</code></pre></div></div>
+
+<p>If you already have multiple clusters configured search for your AKS cluster admin user, it will be named <code class="language-plaintext highlighter-rouge">clusterAdmin_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}</code></p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Containers &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+click <img src="../images/1862.png" alt="Add a New Containers Provider"> (<strong>Add a New Containers Provider</strong>).</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Name</strong> for the provider.</p>
+  </li>
+  <li>
+    <p>From the <strong>Type</strong> list, select <strong>Azure Kubernetes Service</strong>.</p>
+  </li>
+  <li>
+    <p>Enter the appropriate <strong>Zone</strong> for the provider. If you do not
+specify a zone, it is set to <code class="language-plaintext highlighter-rouge">default</code>.</p>
+  </li>
+  <li>
+    <p>In the <strong>Default</strong> tab, configure the following for the AKS
+provider:</p>
+
+    <ol>
+      <li>
+        <p>Select a <strong>Security Protocol</strong> method to specify how to
+authenticate the provider:</p>
+
+        <ul>
+          <li>
+            <p><strong>SSL</strong>: Authenticate the provider securely using a trusted
+Certificate Authority. Select this option if the provider
+has a valid SSL certificate and it is signed by a trusted
+Certificate Authority. No further configuration is required
+for this option.</p>
+          </li>
+          <li>
+            <p><strong>SSL trusting custom CA</strong>: Authenticate the provider with a
+self-signed certificate. For this option, copy your
+provider’s CA certificate to the <strong>Trusted CA
+Certificates</strong> box in PEM format.</p>
+          </li>
+          <li>
+            <p><strong>SSL without validation</strong>: Authenticate the provider
+insecurely (not recommended).</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Enter the <strong>Hostname</strong> of the provider that you obtained earlier.</p>
+
+        <p><strong>Important:</strong></p>
+
+        <p>The <strong>Hostname</strong> must use a unique fully qualified domain name.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>API Port</strong> of the provider. The default port is
+<code class="language-plaintext highlighter-rouge">443</code>.</p>
+      </li>
+      <li>
+        <p>Enter the token that you obtained earlier for your provider in the <strong>Token</strong> box.</p>
+      </li>
+      <li>
+        <p>Click <strong>Validate</strong> to confirm that ManageIQ can connect
+to the Azure Kubernetes Service provider.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.
+s</p>
+  </li>
+</ol>
 
 <h1 id="tagging-containers-providers">
 <a class="anchor" href="#tagging-containers-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tagging Containers Providers</h1>
