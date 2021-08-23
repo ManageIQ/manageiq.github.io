@@ -5,9 +5,25 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 23 Aug 2021 17:09:36 +0000</pubDate>
-    <lastBuildDate>Mon, 23 Aug 2021 17:09:36 +0000</lastBuildDate>
+    <pubDate>Mon, 23 Aug 2021 20:02:19 +0000</pubDate>
+    <lastBuildDate>Mon, 23 Aug 2021 20:02:19 +0000</lastBuildDate>
     <generator>Jekyll v3.9.1</generator>
+    
+      <item>
+        <title>Morphy Release Approach</title>
+        <description>&lt;p&gt;We have been working on a number of interesting features.  Typically, the way these get released is that we cut a release branch from the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch and work on stabilizing it to get to a release.  However, at this time we feel the master branch is a bit too fluid to stabilize just yet.  At the same time, there are a number of new features that are less risky and would provide a benefit to the community via an official release.  So, what we have decided to do is to release them in a different way.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 23 Aug 2021 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2021/08/announcing_morphy_approach/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2021/08/announcing_morphy_approach/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>ManageIQ Lasker GA Announcement</title>
@@ -239,22 +255,6 @@ To estimate the size of the metric collection portion of the database, you could
         <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2020/10/Announcing-Jansa-2/</link>
         <guid isPermaLink="true">http://manageiq.org/blog/2020/10/Announcing-Jansa-2/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>ManageIQ Jansa GA announcement</title>
-        <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Jansa&lt;/strong&gt;!  This release is named after Czech chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Vlastimil_Jansa&quot;&gt;Vlastimil Jansa&lt;/a&gt;.  You can download the Jansa-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
-        <link>http://manageiq.org/blog/2020/09/manageiq-jansa-ga-announcement/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2020/09/manageiq-jansa-ga-announcement/</guid>
         
         <category>releases</category>
         
