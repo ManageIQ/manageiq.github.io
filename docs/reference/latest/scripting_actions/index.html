@@ -521,7 +521,7 @@
   
   
   <li class="doc_menu-item">
-    <a href="/docs/api/index.html">
+    <a href="/docs/api">
       ManageIQ REST API
     </a>
     
@@ -849,7 +849,7 @@ Ruby code to execute various operations needed for a Class.</p>
   </li>
 </ul>
 
-<p>ManageIQ contains a set of preconfigured Domains for users:</p>
+<p>ManageIQ contains a preconfigured Domain for users:</p>
 
 <ul>
   <li>
@@ -869,33 +869,17 @@ retirement, methods, email.</p>
 provisioning, retirement, methods, email.</p>
       </li>
       <li>
+        <p><strong>Integration</strong> - Used to interface with systems outside of
+ManageIQ. Use this namespace to integrate
+with additional systems.</p>
+      </li>
+      <li>
         <p><strong>Service</strong> - Service lifecycle from provisioning, retirement,
 methods, email.</p>
       </li>
       <li>
         <p><strong>System</strong> - System contains classes that can provide the start
 points for all ManageIQ Automate activities.</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>RedHat</strong> - Domain containing advanced operations, specifically
-interactions with supported cloud and infrastructure providers. This
-domain is locked with the following Namespaces:</p>
-
-    <ul>
-      <li>
-        <p><strong>Cloud</strong> - Red Hat-supported cloud instance lifecycle from
-provisioning, retirement, methods, email.</p>
-      </li>
-      <li>
-        <p><strong>Infrastructure</strong> - Red Hat-supported cloud instance lifecycle
-from provisioning, retirement, methods, email.</p>
-      </li>
-      <li>
-        <p><strong>Integration</strong> - Used to interface with systems outside of
-ManageIQ. Use this namespace to integrate with additional
-systems.</p>
       </li>
     </ul>
   </li>
@@ -1921,8 +1905,7 @@ dropdown menus:</p>
     <p>Export the datastore so that you have a backup.</p>
   </li>
   <li>
-    <p>Click <img src="../images/reset.png" alt="Reset"> (<strong>Reset all components in the
-following domains: RedHat, ManageIQ</strong>).</p>
+    <p>Click <img src="../images/reset.png" alt="Reset"> (<strong>Reset all components in the built-in domains</strong>).</p>
   </li>
   <li>
     <p>Click <strong>OK</strong>.</p>
