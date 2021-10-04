@@ -575,6 +575,14 @@ you checked out in the core repo.</p>
 <span class="n">override_gem</span> <span class="s1">'manageiq-providers-amazon'</span><span class="p">,</span> <span class="ss">:path</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s1">'../../manageiq-providers-amazon'</span><span class="p">,</span> <span class="n">__dir__</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p>Once path is updated in local_plugins.rb, run bin/update and restart the server. After these changes, once you make any changes in plugin code, changes can be seen by refreshing browser.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/update
+<span class="c"># == Updating manageiq sample app ==</span>
+</code></pre></div></div>
+
+<p>If you plan to change any javsacript files in plugins, please run <code class="language-plaintext highlighter-rouge">bin/webpack --watch --follow</code> in another tab in manageiq-ui-classic repo to see the reflected changes.</p>
+
 <h4 id="rails-console">Rails console</h4>
 
 <p>Unfortunately Rails Engines don’t support running <code class="language-plaintext highlighter-rouge">rails console</code> from the root of the plugin. To test your code you
