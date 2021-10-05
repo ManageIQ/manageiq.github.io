@@ -11,7 +11,20 @@
   <meta name="description" content="">
   <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
 
-  <link type="text/css" rel="stylesheet" href="/assets/main-449f300b687d04a2e9dcdb8c4a6e66dbed7703969a9b64f3f189cef381afd146.css">
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
   <link rel="canonical" href="http://manageiq.org/docs/reference/latest/provisioning_virtual_machines_and_hosts/">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
@@ -51,6 +64,9 @@
   </li>
   <li >
     <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
   </li>
 </ul>
 
@@ -4915,6 +4931,9 @@ exit MIQ_OK</pre>
   </li>
   <li >
     <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
   </li>
 </ul>
 

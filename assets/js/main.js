@@ -186,4 +186,42 @@
     return miq.lightbox = new miq.Lightbox('#lightbox');
   });
 
+  miq.light_theme = "light-theme";
+
+  miq.dark_theme = "dark-theme";
+
+  miq.storage_key = "miq-theme";
+
+  miq.button_selector = "[data-toggle-theme]";
+
+  miq.html_doc = miq.select("html");
+
+  miq.theme_button = miq.select(miq.button_selector);
+
+  miq.set_theme = function(was, now) {
+    miq.html_doc.classList.add(now);
+    miq.html_doc.classList.remove(was);
+    return localStorage.setItem(miq.storage_key, JSON.stringify(now));
+  };
+
+  miq.handle_button_click = function() {
+    var current_theme;
+    current_theme = localStorage.getItem(miq.storage_key);
+    if (current_theme) {
+      if (JSON.parse(current_theme) === miq.light_theme) {
+        return miq.set_theme(miq.light_theme, miq.dark_theme);
+      } else {
+        return miq.set_theme(miq.dark_theme, miq.light_theme);
+      }
+    } else {
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return miq.set_theme(miq.dark_theme, miq.light_theme);
+      } else {
+        return miq.set_theme(miq.light_theme, miq.dark_theme);
+      }
+    }
+  };
+
+  miq.theme_button.addEventListener("click", miq.handle_button_click);
+
 }).call(this);
