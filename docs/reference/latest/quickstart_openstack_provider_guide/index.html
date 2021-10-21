@@ -1878,10 +1878,24 @@ create cloud tenants or tenant object hierarchy from OpenStack.</p>
 <img src="../images/1862.png" alt="1862"> (<strong>Add a New Cloud Provider</strong>).</p>
   </li>
   <li>
+    <p>From the <strong>Type</strong> list, select <strong>OpenStack</strong>.</p>
+  </li>
+  <li>
     <p>Enter a <strong>Name</strong> for the provider.</p>
   </li>
   <li>
-    <p>From the <strong>Type</strong> list, select <strong>OpenStack</strong>.</p>
+    <p>Select the appropriate <strong>Zone</strong> for the provider. By default, the
+zone is set to <strong>default</strong>.</p>
+
+    <p><strong>Note:</strong></p>
+
+    <p>For more information, see the definition of host aggregates and availability zones in <a href="https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/11/html/architecture_guide/components#comp-compute">OpenStack Compute (nova)</a> in the Red Hat OpenStack Platform <em>Architecture Guide</em>.</p>
+  </li>
+  <li>
+    <p>Enter the OpenStack region in <strong>Provider Region</strong>.</p>
+  </li>
+  <li>
+    <p>(Optional) Select an associated <strong>Openstack Infra Provider</strong></p>
   </li>
   <li>
     <p>Select the appropriate <strong>API Version</strong> from the list. The default is
@@ -1923,25 +1937,10 @@ Guide</em>.</li>
 
 <ol>
   <li>
-    <p>Enter a region number in <strong>Region</strong>.</p>
-  </li>
-  <li>
-    <p>Enter the appropriate <strong>Zone</strong> for the provider. If you do not
-specify a zone, it is set to <code class="language-plaintext highlighter-rouge">default</code>.</p>
-  </li>
-  <li>
     <p>(Optional) Enable tenant mapping by toggling the <strong>Tenant Mapping
 Enabled</strong> option to <strong>Yes</strong>. This synchronizes resources and users
 between the OpenStack cloud provider and ManageIQ. By
 default, tenant mapping is disabled.</p>
-  </li>
-  <li>
-    <p>Select the appropriate <strong>Zone</strong> for the provider. By default, the
-zone is set to <strong>default</strong>.</p>
-
-    <p><strong>Note:</strong></p>
-
-    <p>For more information, see the definition of host aggregates and availability zones in <a href="https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/11/html/architecture_guide/components#comp-compute">OpenStack Compute (nova)</a> in the Red Hat OpenStack Platform <em>Architecture Guide</em>.</p>
   </li>
   <li>
     <p>In the <strong>Default</strong> tab, under <strong>Endpoints</strong>, configure the host and authentication details of your OpenStack provider:</p>
