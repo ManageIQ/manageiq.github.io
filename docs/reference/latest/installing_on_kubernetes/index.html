@@ -610,6 +610,12 @@
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#external-postgresql">External postgresql</a></li>
+<li class="toc-entry toc-h2"><a href="#using-tls-to-encrypt-connections-between-pods-inside-the-cluster">Using TLS to encrypt connections between pods inside the cluster:</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#create-a-secret-containing-all-of-the-certificates">Create a secret containing all of the certificates</a></li>
+<li class="toc-entry toc-h3"><a href="#generating-certificates">Generating certificates:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul><h1 id="installing-on-kubernetes--openshift">
@@ -805,6 +811,34 @@ Now you will see the node port listed (31871 in this example) as well as the int
 </code></pre></div></div>
 
 <p>Note: If wanted, the secret name is also customizable by setting <code class="language-plaintext highlighter-rouge">databaseSecret</code> in the CR.</p>
+
+<h2 id="using-tls-to-encrypt-connections-between-pods-inside-the-cluster">
+<a class="anchor" href="#using-tls-to-encrypt-connections-between-pods-inside-the-cluster" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using TLS to encrypt connections between pods inside the cluster:</h2>
+
+<h3 id="create-a-secret-containing-all-of-the-certificates">
+<a class="anchor" href="#create-a-secret-containing-all-of-the-certificates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a secret containing all of the certificates</h3>
+<p>The certificates should all be signed by a CA and that CA certificate should be in uploaded as <code class="language-plaintext highlighter-rouge">root_crt</code> so that it can be used to verify connection validity.  If the secret is named <code class="language-plaintext highlighter-rouge">internal-certificates-secret</code>, no changes are needed in the CR, if you choose a different name, that should be set in the <code class="language-plaintext highlighter-rouge">internalCertificatesSecret</code> field of the manageiq CR.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    oc create secret generic internal-certificates-secret <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">root_crt</span><span class="o">=</span>./certs/root.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">httpd_crt</span><span class="o">=</span>./certs/httpd.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">httpd_key</span><span class="o">=</span>./certs/httpd.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">kafka_crt</span><span class="o">=</span>./certs/kafka.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">kafka_key</span><span class="o">=</span>./certs/kafka.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">memcached_crt</span><span class="o">=</span>./certs/memcached.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">memcached_key</span><span class="o">=</span>./certs/memcached.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">postgresql_crt</span><span class="o">=</span>./certs/postgresql.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">postgresql_key</span><span class="o">=</span>./certs/postgresql.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">api_crt</span><span class="o">=</span>./certs/api.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">api_key</span><span class="o">=</span>./certs/api.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">ui_crt</span><span class="o">=</span>./certs/ui.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">ui_key</span><span class="o">=</span>./certs/ui.key
+</code></pre></div></div>
+
+<h3 id="generating-certificates">
+<a class="anchor" href="#generating-certificates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generating certificates:</h3>
+<p>We need a CA and certificates for each service.  The certificates need to be valid for the internal kubernetes service name (i.e. httpd, postgres, etc.) and the services that are backing the route (ui &amp; api) also need the certificate to include a SAN with the application domain name.  For example, the certificate for the UI needs to be valid for the hostname <code class="language-plaintext highlighter-rouge">ui</code> and also <code class="language-plaintext highlighter-rouge">your_application.apps.example.com</code>.
+If you want a script that will generate these certificates for you, see: https://github.com/ManageIQ/manageiq-pods/blob/master/tools/cert_generator.rb</p>
 
 
 
