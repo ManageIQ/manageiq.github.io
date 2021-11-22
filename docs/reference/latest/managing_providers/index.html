@@ -792,6 +792,7 @@
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#adding-azure-providers">Adding Azure Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#adding-azure-cloud-regions">Adding Azure Cloud Regions</a></li>
 <li class="toc-entry toc-h1"><a href="#disabling-azure-cloud-regions">Disabling Azure Cloud Regions</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#amazon-ec2-providers">Amazon EC2 Providers</a></li>
@@ -811,6 +812,7 @@
 <li class="toc-entry toc-h2"><a href="#creating-cloudwatch-rules-based-on-event-patterns">Creating CloudWatch Rules Based on Event Patterns</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h1"><a href="#adding-amazon-cloud-regions">Adding Amazon Cloud Regions</a></li>
 <li class="toc-entry toc-h1"><a href="#disabling-amazon-cloud-regions">Disabling Amazon Cloud Regions</a></li>
 <li class="toc-entry toc-h1"><a href="#refreshing-cloud-providers">Refreshing Cloud Providers</a></li>
 <li class="toc-entry toc-h1"><a href="#tagging-cloud-providers">Tagging Cloud Providers</a></li>
@@ -4259,6 +4261,46 @@ Key</strong>; click <strong>Validate</strong>.</p>
   </li>
 </ol>
 
+<h1 id="adding-azure-cloud-regions">
+<a class="anchor" href="#adding-azure-cloud-regions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Azure Cloud Regions</h1>
+
+<p>ManageIQ allows administrators to add additional Azure cloud regions on
+the appliance server. You can use this capability to add new regions that have been
+set up since ManageIQ was released.  Once added the region it will be available when
+creating a new Azure provider.</p>
+
+<ol>
+  <li>
+    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Settings</strong> accordion, then click <strong>ManageIQ Region</strong> at the top.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Advanced</strong> tab.</p>
+  </li>
+  <li>
+    <p>Search for <code class="language-plaintext highlighter-rouge">:ems_azure:</code>, and enter the regions you want to add
+under <code class="language-plaintext highlighter-rouge">:additional_regions:</code>.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>Example. To add hypothetical `lunar-base-1` `lunar-base-2` regions:
+
+:ems_azure:
+  :additional_regions:
+    :lunar-base-1:
+      :name: lunar-base-1
+      :description: Lunar Base 1
+    :lunar-base-2:
+      :name: lunar-base-2
+      :description: Lunar Base 2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
 <h1 id="disabling-azure-cloud-regions">
 <a class="anchor" href="#disabling-azure-cloud-regions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disabling Azure Cloud Regions</h1>
 
@@ -4772,6 +4814,48 @@ following code to create a rule based on a custom event pattern:</p>
 </ol>
 
 <p>EC2 can now automatically refresh events in ManageIQ.</p>
+
+<h1 id="adding-amazon-cloud-regions">
+<a class="anchor" href="#adding-amazon-cloud-regions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Amazon Cloud Regions</h1>
+
+<p>ManageIQ allows administrators to add Amazon cloud regions on
+the appliance server. You can use this capability to add new regions that have been
+set up since ManageIQ was released.  Once adding the region it will be
+available when creating a new Amazon EC2 provider.</p>
+
+<ol>
+  <li>
+    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Settings</strong> accordion, then click <strong>ManageIQ Region</strong> at the top.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Advanced</strong> tab.</p>
+  </li>
+  <li>
+    <p>Search for <code class="language-plaintext highlighter-rouge">:ems_amazon:</code>, and enter the regions you want to add
+under <code class="language-plaintext highlighter-rouge">:additional_regions:</code>.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>Example. To add hypothetical `lunar-base-1` `lunar-base-2` regions:
+
+:ems_amazon:
+  :additional_regions:
+    :lunar-base-1:
+      :name: Lunar Base 1
+      :hostname: ec2.lunar-base-1.amazonaws.com
+      :description: Lunar Base 1
+    :lunar-base-2:
+      :name: Lunar Base 2
+      :hostname: ec2.lunar-base-2.amazonaws.com
+      :description: Lunar Base 2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
 
 <h1 id="disabling-amazon-cloud-regions">
 <a class="anchor" href="#disabling-amazon-cloud-regions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disabling Amazon Cloud Regions</h1>
