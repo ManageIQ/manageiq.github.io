@@ -837,6 +837,21 @@
 </li>
 <li class="toc-entry toc-h1"><a href="#ibm-powervc">IBM PowerVC</a></li>
 <li class="toc-entry toc-h1"><a href="#adding-ibm-powervc-providers">Adding IBM PowerVC Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#image-import-workflows">Image Import Workflows</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#ibm-powervc-to-ibm-power-systems-virtual-server">IBM PowerVC to IBM Power Systems Virtual Server</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#preparing-manageiq-hosting-server-required-once">Preparing ManageIQ hosting server (required once):</a></li>
+<li class="toc-entry toc-h3"><a href="#preparing-ibm-powervc-server-required-once">Preparing IBM PowerVC Server (required once):</a></li>
+<li class="toc-entry toc-h3"><a href="#add-a-cloud-object-storage-provider-in-manageiq">Add a Cloud Object Storage provider in ManageIQ:</a></li>
+<li class="toc-entry toc-h3"><a href="#add-an-ibm-power-systems-virual-servers-provider-in-manageiq">Add an IBM Power Systems Virual Servers provider in ManageIQ:</a></li>
+<li class="toc-entry toc-h3"><a href="#add-an-ibm-powervc-provider-in-manageiq">Add an IBM PowerVC provider in ManageIQ:</a></li>
+<li class="toc-entry toc-h3"><a href="#start-the-workflow">Start the workflow</a></li>
+<li class="toc-entry toc-h3"><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-entry toc-h1"><a href="#network-managers">Network Managers</a></li>
 <li class="toc-entry toc-h1"><a href="#adding-or-viewing-network-providers">Adding or Viewing Network Providers</a></li>
 <li class="toc-entry toc-h1"><a href="#refreshing-network-providers">Refreshing Network Providers</a></li>
@@ -865,6 +880,11 @@
 <li class="toc-entry toc-h2"><a href="#openstack-block-storage-managers">OpenStack Block Storage Managers</a></li>
 <li class="toc-entry toc-h2"><a href="#openstack-block-storage-manager-targeted-refresh">OpenStack Block Storage Manager Targeted Refresh</a></li>
 <li class="toc-entry toc-h2"><a href="#openstack-object-storage-managers">OpenStack Object Storage Managers</a></li>
+<li class="toc-entry toc-h2"><a href="#ibm-cloud-object-storage">IBM Cloud Object Storage</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#adding-ibm-cloud-object-storage">Adding IBM Cloud Object Storage:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#viewing-object-stores">Viewing Object Stores</a></li>
@@ -5304,6 +5324,296 @@ connect to the PowerVC provider.</p>
   </li>
 </ol>
 
+<h1 id="image-import-workflows">
+<a class="anchor" href="#image-import-workflows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Image Import Workflows</h1>
+
+<h2 id="ibm-powervc-to-ibm-power-systems-virtual-server">
+<a class="anchor" href="#ibm-powervc-to-ibm-power-systems-virtual-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>IBM PowerVC to IBM Power Systems Virtual Server</h2>
+
+<p>The image import functionality allows you to easily move an image from your on-prem PowerVC environment to an off-prem Power Systems Virtual Server environment using ManageIQ web interface.
+The enablement of the workflow in ManageIQ requires you to perform certain preparations that are described in detail below.</p>
+
+<h3 id="preparing-manageiq-hosting-server-required-once">
+<a class="anchor" href="#preparing-manageiq-hosting-server-required-once" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparing ManageIQ hosting server (required once):</h3>
+
+<p>The following commands are to be run on a server (or in a corresponding docker container) that is dedicated to hosting your ManageIQ instance.</p>
+
+<ol>
+  <li>Install <code class="language-plaintext highlighter-rouge">ansible-runner</code> application using the installation <a href="https://ansible-runner.readthedocs.io/en/stable/install.html">instructions</a>. The application must be available in the the command line
+of the user under which the ManageIQ web-server is running.</li>
+</ol>
+
+<h3 id="preparing-ibm-powervc-server-required-once">
+<a class="anchor" href="#preparing-ibm-powervc-server-required-once" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparing IBM PowerVC Server (required once):</h3>
+<p>The  following commands are to be run on a PowerVC server that is dedicated to supporting the image import workflow.</p>
+
+<ol>
+  <li>
+    <p>Make sure that the IBM PowerVC version you are using is <a href="https://www.ibm.com/docs/it/powervc/1.4.4?topic=installing-power-virtualization-center">1.4.4</a> or higher and is located on a server running either SLES or RHEL family GNU/Linux distribution.</p>
+  </li>
+  <li>
+    <p>Install <code class="language-plaintext highlighter-rouge">python3.X</code>, <code class="language-plaintext highlighter-rouge">pip3</code>, <code class="language-plaintext highlighter-rouge">virtualenv</code> applications as well as the <code class="language-plaintext highlighter-rouge">libselinux-python3</code> library.
+You can achieve this by issuing the following command as a “root” user:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>yum install -y python3 python-pip3 python-virtualenv libselinux-python3 gcc
+</code></pre></div>    </div>
+
+    <p>The standard <code class="language-plaintext highlighter-rouge">python3.X</code> installation will be used in order to run auxiliary scripts, which will
+upload PowerVC (<a href="https://en.wikipedia.org/wiki/Open_Virtualization_Format">OVA</a>) disk images to the <a href="https://www.ibm.com/cloud/object-storage">IBM Cloud Object Storage</a>.
+The <code class="language-plaintext highlighter-rouge">pip3</code> is required in order to install Cloud Object Storage <a href="https://github.com/ibm/ibm-cos-sdk-python">Python SDK</a> and auxiliary packages for proper functioning of the import workflow.
+The role of <code class="language-plaintext highlighter-rouge">virtualenv</code> will be to isolate python package installations that are relevant only to the image import workflow from the
+Python system packages. The <code class="language-plaintext highlighter-rouge">libselinux-python3</code> library is needed for the proper functioning of Ansible’s <code class="language-plaintext highlighter-rouge">copy</code> module, which will
+be used for the copying of auxiliary data between the ManageIQ hosting site and the PowerVC server. Presence
+of <code class="language-plaintext highlighter-rouge">gcc</code> is needed as a dependency of one of the Python packages (<code class="language-plaintext highlighter-rouge">pycryptodome</code>) that will be installed on later steps.</p>
+  </li>
+  <li>
+    <p>Prepare enough local storage for holding transient PowerVC disk images that will be transported into Power Systems Virtual Server
+and deleted from a local storage upon workflow completion. A typical PowerVC image file size can be many GBs.
+As an example, a RHEL 8.3 disk image can be of 20GB size or more. You would therefore require more space
+in your local storage than the mentioned disk image size in order to support the import workflow.
+You would also need enough space to hold Python virtual environment described in the next steps.
+Its size however will be no more than 100MB. Additionally, import session will place auxiliary files into the sessions directory
+during the workflow execution but their collective size will not exceed 5MB. In summary, if you’re attempting to import an image 
+whose size is ‘G’ Gigabytes, then having ‘G+1’ Gigabytes of free space in that directory would be sufficient.</p>
+  </li>
+  <li>
+    <p>Create an empty sessions directory <code class="language-plaintext highlighter-rouge">/home/sessions</code> which will have to be located on the local storage with sufficient space
+as described in previous step.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>mkdir /home/sessions
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The image import workflow will use Ansible via SSH from the ManageIQ server in order to execute commands on the PowerVC server. At this point you need to choose a system user 
+that will be made available to ManageIQ instance for connection to the PowerVC server via SSH. Make sure the user has a read/write access to the <code class="language-plaintext highlighter-rouge">/home/sessions</code> directory.
+The user must also be able to execute <code class="language-plaintext highlighter-rouge">powervc-image</code> application through the command line. We will assume that all further commands in this section are executed using this existing or newly created system user:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>su - your_user
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create a separate virtual Python environment:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>virtualenv --system-site-packages /home/sessions/venv
+</code></pre></div>    </div>
+
+    <p>This environment will hold Python packages that are relevant only to the image import workflow
+and as such will not be available system-wide. Conversely, the <code class="language-plaintext highlighter-rouge">--system-site-packages</code> will indicate to the application that the existing Python system packages are to be made available
+to the virtual environment.</p>
+  </li>
+  <li>
+    <p>Installing packages in the environment requires one to first activate the environment after which
+all the Python package installations via <code class="language-plaintext highlighter-rouge">pip3</code> will become environment relative only. Therefore, activate the newly created Python environment:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>source /home/sessions/venv/bin/activate
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Install Python packages inside the virtual environment using:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>pip3 install pathlib pycryptodome ibm-cos-sdk
+</code></pre></div>    </div>
+
+    <p>The <code class="language-plaintext highlighter-rouge">pathlib</code> is  used for handling file paths. The <code class="language-plaintext highlighter-rouge">pycryptodome</code> is required for
+encrypting/decrypting IBM Cloud connection credentials and the <code class="language-plaintext highlighter-rouge">ibm-cos-sdk</code> represents the IBM Cloud Object Storage Python SDK.</p>
+  </li>
+  <li>
+    <p>Upon completing the Python package installations above you should exit the virtual environment by running:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>deactivate
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Make sure to have a valid PowerVC connection/resource file under <code class="language-plaintext highlighter-rouge">/opt/ibm/powervc/powervcrc</code> (or at your custom location) containing similar definitions:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>export OS_IDENTITY_API_VERSION=3
+export OS_AUTH_URL=https://host:5000/v3/
+export OS_CACERT=/etc/pki/tls/certs/powervc.crt
+export OS_REGION_NAME=RegionOne
+export OS_PROJECT_DOMAIN_NAME=Default
+export OS_PROJECT_NAME=ibm-default
+export OS_TENANT_NAME=$OS_PROJECT_NAME
+export OS_USER_DOMAIN_NAME=Default
+export OS_USERNAME=root
+export OS_PASSWORD=password
+export OS_COMPUTE_API_VERSION=2.46
+export OS_NETWORK_API_VERSION=2.0
+export OS_IMAGE_API_VERSION=2
+export OS_VOLUME_API_VERSION=2
+</code></pre></div>    </div>
+
+    <p><strong>Note:</strong> If you don’t want to specify the password (<code class="language-plaintext highlighter-rouge">OS_PASSWORD</code>) in this file then you will be prompted by the
+PowerVC command line utilities to input it in the interactive mode. This will occur during testing only as the image import
+workflow will make use of the credentials that will be specified when registering PowerVC provider in your ManageIQ instance on later steps.</p>
+  </li>
+  <li>
+    <p>The last step is to test the exporting of PowerVC disk image to the local filesystem. Firstly, execute:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>source /opt/ibm/powervc/powervcrc
+</code></pre></div>    </div>
+
+    <p>This will acquire all the environmental variables required for issuing commands to the corresponding PowerVC instance. Now run the following command:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>powervc-image list
+</code></pre></div>    </div>
+
+    <p>The output should be similar to the one below:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>+----------+--------------------------------------+--------+---------+------+-------------+--------------+-----------+------------+
+| Name     | ID                                   | Status | Volumes | Size | Description | Architecture | OS Distro | Exportable |
++----------+--------------------------------------+--------+---------+------+-------------+--------------+-----------+------------+
+| test-IMG | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | active | 1       | 10   |             | ppc64        | rhel      | True       |
++----------+--------------------------------------+--------+---------+------+-------------+--------------+-----------+------------+
+</code></pre></div>    </div>
+
+    <p>Note the name of the image you would like to export, which will be <code class="language-plaintext highlighter-rouge">test-IMG</code> in our example. Next export the image of your choice:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>powervc-image export -i test-IMG -p /home/sessions/image.ova
+</code></pre></div>    </div>
+
+    <p>It is a time-consuming operation with the runtime taking several minutes to complete depending on the size of exported image.
+  Once the operation completes you should be able to find the exported image under <code class="language-plaintext highlighter-rouge">/home/sessions/image.ova</code>.  At this stage you can remove the exported image thus concluding the test:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>rm /home/sessions/image.ova
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="add-a-cloud-object-storage-provider-in-manageiq">
+<a class="anchor" href="#add-a-cloud-object-storage-provider-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add a Cloud Object Storage provider in ManageIQ:</h3>
+
+<ol>
+  <li>
+    <p>See the corresponding instructions <a href="#storage-managers">here</a>.</p>
+  </li>
+  <li>
+    <p>Create a bucket in your Cloud Object Storage that will hold the transient OVA image files.  <br>
+<img src="../images/new_bucket.png" alt="New Bucket"><br>
+Make sure to choose the region for the bucket that corresponds to the region that you have specified when registering the
+Cloud Object Storage provider.</p>
+  </li>
+</ol>
+
+<h3 id="add-an-ibm-power-systems-virual-servers-provider-in-manageiq">
+<a class="anchor" href="#add-an-ibm-power-systems-virual-servers-provider-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add an IBM Power Systems Virual Servers provider in ManageIQ:</h3>
+
+<ol>
+  <li>See the corresponding instructions <a href="#ibm-power-systems-virtual-servers-providers">here</a>.</li>
+</ol>
+
+<h3 id="add-an-ibm-powervc-provider-in-manageiq">
+<a class="anchor" href="#add-an-ibm-powervc-provider-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add an IBM PowerVC provider in ManageIQ:</h3>
+
+<ol>
+  <li>
+    <p>See the corresponding instructions <a href="#ibm-powervc">here</a>.</p>
+  </li>
+  <li>
+    <p>Specify the image import related parameters on the PowerVC registration form. <br>
+  <img src="../images/pvc_import_method.png" alt="pvc_reg"></p>
+  </li>
+</ol>
+
+<ul>
+  <li>
+    <p>Enter the SSH username for access to the PowerVC server. It corresponds to the user on your PowerVC server that is dedicated to
+running image import related commands via Ansible as described in previous section.</p>
+  </li>
+  <li>
+    <p>Select the authentication method: Password / Private key</p>
+  </li>
+  <li>
+    <p>If password method is chosen then enter the corresponding SSH password.<br>
+<img src="../images/pvc_import_pass.png" alt="pvc_reg"></p>
+  </li>
+  <li>
+    <p>If private key method is chosen then enter the private key and the private key passphrase (if present).<br>
+<img src="../images/pvc_import_pkey.png" alt="pvc_reg"></p>
+  </li>
+  <li>
+    <p>(optional) Specify custom location of the resource file on the PowerVC server:<br>
+ <img src="../images/pvc_rcfile.png" alt="pvc_reg"></p>
+  </li>
+</ul>
+
+<h3 id="start-the-workflow">
+<a class="anchor" href="#start-the-workflow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Start the workflow</h3>
+<p>The workflow operates by exporting the image as an OVA file onto a PowerVC local storage, uploading it to the Cloud Object Storage bucket and then transferring it into Power Systems Virtual Servers image registry. In order to initiate the workflow:</p>
+
+<ol>
+  <li>
+    <p>Queue the refreshing of all the above mentioned (cloud and storage) providers and wait for the operations to complete.
+<img src="../images/refresh_providers.png" alt="Import Image Button Screenshot"></p>
+  </li>
+  <li>
+    <p>Navigate to the Power Virtual Servers provider added above. <img src="../images/import_button.png" alt="Import Image Button Screenshot"></p>
+  </li>
+  <li>
+    <p>Click on the <code class="language-plaintext highlighter-rouge">Import Image</code> button after which an import form will appear.</p>
+  </li>
+  <li>
+    <p>Choose the PowerVC provider added above as a source provider.</p>
+  </li>
+  <li>
+    <p>Choose the image you would like to import.</p>
+  </li>
+  <li>
+    <p>Choose the Cloud Object Storage provider added above.</p>
+  </li>
+  <li>
+    <p>Choose the transient bucket created above.</p>
+  </li>
+  <li>
+    <p>Choose target disk type for the image being imported.</p>
+  </li>
+  <li>
+    <p>Check the corresponding box if you wish to keep the OVA file in the cloud bucket upon workflow completion.</p>
+  </li>
+  <li>
+    <p>Click on the <code class="language-plaintext highlighter-rouge">Import</code> button initiating the workflow.<br>
+  <img src="../images/pvc_pvs_import_form.png" alt="Import Image Button Screenshot"></p>
+  </li>
+  <li>
+    <p>The workflow can take an hour or more depending on the image size, bucket location,
+Power Systems Virtual Server and PowerVC internal load.</p>
+  </li>
+  <li>
+    <p>Watch for the current status of the workflow under <code class="language-plaintext highlighter-rouge">Settings -&gt; Tasks -&gt; All Tasks</code>.<br>
+  <img src="../images/miq_import_task.png" alt="Workflow Form Screenshot"></p>
+  </li>
+  <li>
+    <p>Initiate the refreshing of the Power Virtual Servers provider upon workflow completion and
+wait for the newly imported image to appear.</p>
+  </li>
+</ol>
+
+<h3 id="troubleshooting">
+<a class="anchor" href="#troubleshooting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Troubleshooting</h3>
+
+<ul>
+  <li>
+    <p>If the ManageIQ UI shows no detailed error description then make sure to check the latest logs in <code class="language-plaintext highlighter-rouge">&lt;ManageIQ&gt;/log/evm.log</code> on a server that hosts your ManageIQ instance.</p>
+  </li>
+  <li>
+    <p>If  <code class="language-plaintext highlighter-rouge">ManageIQ</code> server is terminated during the workflow execution then certain residual objects will 
+have to be removed manually. These are potentially the session directory on the PowerVC server under <code class="language-plaintext highlighter-rouge">/home/sessions</code>, the already uploaded OVA 
+image file in the Cloud Object Storage bucket or its parts as explained <a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-large-objects">here</a> (see <code class="language-plaintext highlighter-rouge">Abort incomplete multipart uploads</code>).</p>
+  </li>
+</ul>
+
 <h1 id="network-managers">
 <a class="anchor" href="#network-managers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Network Managers</h1>
 
@@ -6627,6 +6937,83 @@ must first add an OpenStack cloud provider to your ManageIQ
 appliance and enable events. The Object Storage service will be
 automatically discovered by ManageIQ and added to the <strong>Storage Managers</strong> list in ManageIQ. See
 <a href="../managing_providers/cloud_providers#adding_openstack_cloud_providers">Adding OpenStack Providers</a> for instructions on adding a cloud provider and enabling events.</p>
+
+<h2 id="ibm-cloud-object-storage">
+<a class="anchor" href="#ibm-cloud-object-storage" aria-hidden="true"><span class="octicon octicon-link"></span></a>IBM Cloud Object Storage</h2>
+<p><a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage">IBM Cloud Object Storage</a> is a highly available, durable, and secure platform for storing unstructured data. 
+Unstructured data (sometimes called binary or “blob” data) refers to data that is not highly structured in the 
+manner of a database. Object storage is the most efficient way to store PDFs, media files, database backups, 
+disk images, or even large structured datasets.</p>
+
+<p>The files that are uploaded into IBM Cloud Object Storage are called objects. They are organized into buckets that serve 
+as containers for objects, and which can be configured independently from one another in terms of locations, resiliency, 
+billing rates, security, and object lifecycle.</p>
+
+<h3 id="adding-ibm-cloud-object-storage">
+<a class="anchor" href="#adding-ibm-cloud-object-storage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding IBM Cloud Object Storage:</h3>
+
+<p>The Cloud Object Storage provider in ManageIQ is region centric. When registering this provider a given region must be chosen
+such that only buckets and objects of that region will be available / visible to the provider user in ManageIQ.
+For a list of supported regions please refer to this <a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#endpoints-region">page</a>.</p>
+
+<ol>
+  <li>
+    <p><a href="https://cloud.ibm.com/objectstorage/create">Create</a> new Cloud Object Storage instance in IBM Cloud Console.</p>
+  </li>
+  <li>
+    <p>Create access credentials by navigating to <strong>Service Credentials -&gt; New Credential</strong> in your new instance.<br>
+<img src="../images/new_cos_creds.png" alt="Import Image Button Screenshot">    <br>
+Make sure to choose the <strong>Manager</strong> role and to enable <strong>Include HMAC Credential</strong> option.</p>
+  </li>
+  <li>
+    <p>Next navigate to <code class="language-plaintext highlighter-rouge">Manage -&gt; Access (IAM) -&gt; Service IDs</code>, find your newly created credential and edit it.
+<img src="../images/cos_access_policies.png" alt="pvc_reg"></p>
+  </li>
+  <li>
+    <p>Select <code class="language-plaintext highlighter-rouge">Viewer</code> checkbox under <code class="language-plaintext highlighter-rouge">Platform Access</code> group and press <code class="language-plaintext highlighter-rouge">Add</code>.<br>
+<img src="../images/cos_viewer.png" alt="pvc_reg"></p>
+  </li>
+  <li>
+    <p>Browse to ManageIQ menu <strong>Storage &gt; Managers</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then click
+ <img src="../images/1862.png" alt="1862"> (<strong>Add a New Storage Provider</strong>).</p>
+  </li>
+  <li>
+    <p>From the <strong>Type</strong> list, select <strong>IBM Cloud Object Storage</strong>.</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Name</strong> for the storage manager.</p>
+  </li>
+  <li>
+    <p>Set <strong>default</strong> as a value for the <strong>Zone</strong></p>
+  </li>
+  <li>
+    <p>Enter the desired region in the corresponding <strong>Region</strong> field. As explained above
+your provider will be region-specific.</p>
+  </li>
+  <li>
+    <p>Specify the <strong>Resource Instance Id</strong>, which you can find as the value of the <code class="language-plaintext highlighter-rouge">resource_instance_id</code> item of the credentials.</p>
+  </li>
+  <li>
+    <p><strong>Endpoint</strong> depends on the region you have chosen to connect your provider to. For more explanation and the listing of the endpoints please refer to this <a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#endpoints-region">page</a>.
+If your region is e.g. <code class="language-plaintext highlighter-rouge">us-south</code> then the public endpoint for it would be <code class="language-plaintext highlighter-rouge">https://s3.us-south.cloud-object-storage.appdomain.cloud</code>.</p>
+  </li>
+  <li>
+    <p>Specify the <strong>Apikey</strong>, which you can find as the value of the <code class="language-plaintext highlighter-rouge">apikey</code> item of the credentials.</p>
+  </li>
+  <li>
+    <p>Specify the <strong>Access Key</strong>, which you can find as the value of the <code class="language-plaintext highlighter-rouge">cos_hmac_keys -&gt; access_key_id</code> item of the credentials.</p>
+  </li>
+  <li>
+    <p>Specify the <strong>Secret Key</strong>, which you can find as the value of the <code class="language-plaintext highlighter-rouge">cos_hmac_keys -&gt; secret_access_key</code> item of the credentials.</p>
+  </li>
+  <li>
+    <p>Once you have inputted the above values press on <strong>Validate</strong> button and wait for the validation to complete. 
+Upon successful validation the <strong>Add</strong> button will be enabled, clicking on which will add the new provider.</p>
+  </li>
+</ol>
 
 <h1 id="viewing-object-stores">
 <a class="anchor" href="#viewing-object-stores" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Object Stores</h1>

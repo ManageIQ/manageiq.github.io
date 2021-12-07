@@ -574,22 +574,11 @@
     <span class="n">target</span><span class="p">.</span><span class="nf">targets</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span>
       <span class="k">case</span> <span class="n">target</span>
       <span class="k">when</span> <span class="no">MiqTemplate</span>
-        <span class="n">add_target</span><span class="p">(</span><span class="ss">:miq_templates</span><span class="p">,</span> <span class="n">target</span><span class="p">.</span><span class="nf">ems_ref</span><span class="p">)</span>
+        <span class="n">add_target!</span><span class="p">(</span><span class="ss">:miq_templates</span><span class="p">,</span> <span class="n">target</span><span class="p">.</span><span class="nf">ems_ref</span><span class="p">)</span>
       <span class="k">when</span> <span class="no">Vm</span>
-        <span class="n">add_target</span><span class="p">(</span><span class="ss">:vms</span><span class="p">,</span> <span class="n">target</span><span class="p">.</span><span class="nf">ems_ref</span><span class="p">)</span>
+        <span class="n">add_target!</span><span class="p">(</span><span class="ss">:vms</span><span class="p">,</span> <span class="n">target</span><span class="p">.</span><span class="nf">ems_ref</span><span class="p">)</span>
       <span class="k">end</span>
     <span class="k">end</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">add_target</span><span class="p">(</span><span class="n">association</span><span class="p">,</span> <span class="n">ems_ref</span><span class="p">)</span>
-    <span class="k">return</span> <span class="k">if</span> <span class="n">ems_ref</span><span class="p">.</span><span class="nf">blank?</span>
-
-    <span class="n">target</span><span class="p">.</span><span class="nf">add_target</span><span class="p">(</span><span class="ss">:association</span> <span class="o">=&gt;</span> <span class="n">association</span><span class="p">,</span> <span class="ss">:manager_ref</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:ems_ref</span> <span class="o">=&gt;</span> <span class="n">ems_ref</span><span class="p">})</span>
-  <span class="k">end</span>
-
-  <span class="c1"># This helps us reference all unique references by collection e.g. all VM targets</span>
-  <span class="k">def</span> <span class="nf">references</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
-    <span class="n">target</span><span class="p">.</span><span class="nf">manager_refs_by_association</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">dig</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="ss">:ems_ref</span><span class="p">)</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">to_a</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">compact</span> <span class="o">||</span> <span class="p">[]</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div></div>
