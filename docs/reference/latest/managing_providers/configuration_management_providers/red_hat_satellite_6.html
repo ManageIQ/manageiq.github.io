@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/managing_providers/configuration_management_providers/red_hat_satellite_6.html">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/latest/managing_providers/configuration_management_providers/red_hat_satellite_6">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li class="active">
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<div class="doc_menu-heading">
+  Latest
+</div>
+
+<ul class="menu menu-toplevel" id=ref_menu_latest>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Installation
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/installing_on_aws/index.html">
+      Amazon Web Services (AWS)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/installing_on_kubernetes/index.html">
+      Kubernetes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/installing_on_ibm_cloud/index.html">
+      IBM Cloud
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/installing_on_microsoft_azure/index.html">
+      Microsoft Azure
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/installing_on_google_compute_engine/index.html">
+      Google Compute Engine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/installing_on_vmware_vsphere/index.html">
+      VMware vSphere
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/installing_on_red_hat_enterprise_linux_openstack_platform/index.html">
+      Red Hat Enterprise OpenStack Platform
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/installing_on_red_hat_virtualization/index.html">
+      Red Hat Enterprise Virtualization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/installing_on_scvmm/index.html">
+      Microsoft System Center Virtual Machine Manager (SCVMM)
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Upgrading
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/upgrading_appliances/index.html">
+      Appliances
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Configuration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/deployment_planning_guide/index.html">
+      Deployment Planning Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/general_configuration/index.html">
+      General Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/high_availability_guide/index.html">
+      High Availability Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/appliance_hardening_guide/index.html">
+      Appliance Hardening Guide
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Administration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/monitoring_alerts_and_reporting/index.html">
+      Monitoring, Alerts, and Reporting
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/policies_and_profiles_guide/index.html">
+      Policies and Profiles Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_infrastructure_and_inventory/index.html">
+      Managing Infrastructure and Inventory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/index.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/infrastructure_providers/red_hat_virtualization_providers.md">
+      Red Hat Virtualization Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/infrastructure_providers/openstack_infrastructure_providers.md">
+      OpenStack Infrastructure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/infrastructure_providers/vmware_vcenter_providers.md">
+      VMware vCenter Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/infrastructure_providers/microsoft_scvmm_providers.md">
+      Microsoft SCVMM Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/configuration_management_providers/ibm_terraform_provider.md">
+      IBM Terraform Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/configuration_management_providers/red_hat_satellite_6.md">
+      Red Hat Satellite 6 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/cloud_providers/azure_providers.md">
+      Azure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/cloud_providers/amazon_ec2_providers.md">
+      Amazon EC2 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/cloud_providers/google_compute_engine_providers.md">
+      Google Compute Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/cloud_providersibm_cloud_vpc_providers/.md">
+      IBM Cloud VPC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/cloud_providers/ibm_power_systems_virtual_servers_providers.md">
+      IBM Power Systems Virtual Servers Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/cloud_providers/ibm_power_vc_providers.md">
+      IBM PowerVC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/cloud_providers/openstack_providers.md">
+      OpenStack Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/container_providers/azure_kubernetes_providers.md">
+      Azure Kubernetes Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/container_providers/red_hat_openshift_providers.md">
+      Red Hat OpenShift Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/container_providers/ibm_cloud_kubernetes_service_providers.md">
+      IBM Cloud Kubernetes Service Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/container_providers/oracle_kubernetes_engine_providers.md">
+      Oracle Kubernetes Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/container_providers/vmware_tanzu_providers.md">
+      VMware Tanzu Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/storage_providers/amazon_ebs_managers.md">
+      Amazon Elastic Block Store Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/storage_providers/openstack_block_storage_managers.md">
+      OpenStack Block Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/storage_providers/openstack_object_storage_managers.md">
+      OpenStack Object Storage Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/provisioning_virtual_machines_and_hosts/index.html">
+      Provisioning Virtual Machines and Hosts
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/scripting_actions/index.html">
+      Scripting Actions in ManageIQ
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Authentication
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/auth/active_directory.html">
+      Active Directory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/auth/ipa_2fa.html">
+      2-Factor-Authentication with IPA
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/auth/ipa_ad_trust.html">
+      IPA/AD Trust
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/auth/ldap.html">
+      LDAP
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/auth/saml.html">
+      SAML
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/auth/openid_connect.html">
+      OpenID-Connect
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Integration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+      AWS CloudFormation and OpenStack Heat
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/integration_with_servicenow/index.html">
+      ServiceNow
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Reference
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/capabilities_matrix/index.html">
+      Capabilities Matrix
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/api">
+      ManageIQ REST API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/methods_available_for_automation/index.html">
+      Methods Available for Automation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc user_doc">
+      
+
+      <div class="doc-content">
+        
+        <div class="doc-versions">
+          <span class="label">Versions: </span>
+          
+        </div>
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#red-hat-satellite-6">Red Hat Satellite 6</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#defining-the-workflow">Defining the Workflow</a></li>
+<li class="toc-entry toc-h2"><a href="#defining-the-hostgroup-hierarchy">Defining the Hostgroup Hierarchy</a></li>
+<li class="toc-entry toc-h2"><a href="#adding-a-satellite-6-provider">Adding a Satellite 6 Provider</a></li>
+<li class="toc-entry toc-h2"><a href="#triggering-a-refresh-of-a-satellite-6-provider">Triggering a Refresh of a Satellite 6 Provider</a></li>
+<li class="toc-entry toc-h2"><a href="#displaying-red-hat-satellite-6-contents">Displaying Red Hat Satellite 6 Contents</a></li>
+<li class="toc-entry toc-h2"><a href="#reprovisioning-a-bare-metal-host">Reprovisioning a Bare Metal Host</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#tagging-a-bare-metal-host">Tagging a Bare Metal Host</a></li>
+</ul><h1 id="red-hat-satellite-6">
+<a class="anchor" href="#red-hat-satellite-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Red Hat Satellite 6</h1>
+
+<p>Satellite 6 is a subscription and system management tool that provides a
+way to provision hosts (both virtual and bare metal) and configure them
+using a set of Puppet modules. ManageIQ provides functionality to
+integrate with a Red Hat Satellite 6 server and take advantage of its
+features. This includes:</p>
+
+<ul>
+  <li>
+    <p>Monitoring the inventory of your Red Hat Satellite 6 server,
+including independent hosts and hosts provisioned using hostgroups.</p>
+  </li>
+  <li>
+    <p>Reprovisioning existing bare metal system hosts to new host groups.</p>
+  </li>
+  <li>
+    <p>Applying ManageIQ policy tags to hosts.</p>
+  </li>
+</ul>
+
+<div class="important">
+
+ManageIQ only reprovisions existing systems in a Red Hat
+Satellite 6 environment. Provisioning systems from Red Hat Satellite 6’s
+bare metal discovery service is planned for a future release.
+
+</div>
+
+<h2 id="defining-the-workflow">
+<a class="anchor" href="#defining-the-workflow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Defining the Workflow</h2>
+
+<p>This section uses the following workflow:</p>
+
+<ol>
+  <li>
+    <p>Add Red Hat Satellite 6 server details to ManageIQ.</p>
+  </li>
+  <li>
+    <p>Refresh the state of your Red Hat Satellite 6 provider in
+ManageIQ.</p>
+  </li>
+  <li>
+    <p>Select an existing bare metal host from Red Hat Satellite 6 for
+reprovisioning.</p>
+  </li>
+  <li>
+    <p>Apply policy tags to Red Hat Satellite 6 hosts.</p>
+  </li>
+</ol>
+
+<h2 id="defining-the-hostgroup-hierarchy">
+<a class="anchor" href="#defining-the-hostgroup-hierarchy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Defining the Hostgroup Hierarchy</h2>
+
+<p>ManageIQ displays the Red Hat Satellite 6 infrastructure in a
+host group and host relationship. A host group defines a set of default
+values that hosts inherit when placed in that group. Hosts can belong to
+only one host group, but host groups can be nested in hierarchies. You
+can create a <strong>“base”</strong> or <strong>“parent”</strong> host group that represents all
+hosts in your organization, and then create nested or <strong>“child”</strong> host
+groups under that parent to provide specific settings.</p>
+
+<h2 id="adding-a-satellite-6-provider">
+<a class="anchor" href="#adding-a-satellite-6-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a Satellite 6 Provider</h2>
+
+<p>To start provisioning bare metal machines, you need at least one Red Hat
+Satelllite 6 provider added to ManageIQ.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Configuration &gt; Management</strong>.</p>
+  </li>
+  <li>
+    <p>Select menu: <strong>Configuration &gt; Add a new Provider</strong>.</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Name</strong> for the provider.</p>
+  </li>
+  <li>
+    <p>Enter a <strong>URL</strong> for the provider. This is the root URL for the
+Satellite 6 server and can be either an IP address or a hostname.
+For example, <code class="language-plaintext highlighter-rouge">http://satellite6.example.com</code>.</p>
+  </li>
+  <li>
+    <p>Select <strong>Verify Peer Certificate</strong> to use encrypted communication
+with the provider. This requires the <strong>SSL certificates</strong> from your
+Red Hat Satellite 6 provider.</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Username</strong> for a user on the provider. Ideally, this would
+be a user in Satellite 6 with administrative access.</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Password</strong>, and then enter it again in <strong>Confirm
+Password</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Validate</strong> to test your connection with the Red Hat
+Satellite 6 server.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong> to confirm your settings and save the provider.</p>
+  </li>
+</ol>
+
+<p>ManageIQ saves the Satellite 6 provider in its database and
+triggers a refresh of resources detected in the provider.</p>
+
+<h2 id="triggering-a-refresh-of-a-satellite-6-provider">
+<a class="anchor" href="#triggering-a-refresh-of-a-satellite-6-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Triggering a Refresh of a Satellite 6 Provider</h2>
+
+<p>Your Satellite 6 provider can still create new hosts independently of
+ManageIQ. Your ManageIQ appliance detects these changes
+after an automatic refresh period. However, you can trigger a manual
+refresh to avoid waiting for the automatic refresh.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Configuration[Management].</p>
+  </li>
+  <li>
+    <p>Select your Red Hat Satellite 6 provider using the checkbox, and
+click menu:Configuration[Refresh Relationships and Power States].
+This triggers the refresh.</p>
+  </li>
+  <li>
+    <p>When the refresh is complete, select the Red Hat Satellite 6
+provider to check the updated list of hosts groups in the provider.</p>
+  </li>
+</ol>
+
+<h2 id="displaying-red-hat-satellite-6-contents">
+<a class="anchor" href="#displaying-red-hat-satellite-6-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Displaying Red Hat Satellite 6 Contents</h2>
+
+<p>ManageIQ provides two methods for viewing the contents of a Red
+Hat Satellite 6 provider:</p>
+
+<ul>
+  <li>
+    <p><strong>Providers</strong> - This presents the Red Hat Satellite 6 contents as a
+hierarchy of host groups belonging to a provider, and then
+individual hosts belonging to each provider.</p>
+  </li>
+  <li>
+    <p><strong>Configured Systems</strong> - This presents a list of all hosts on your
+Red Hat Satellite 6 server. This also provides a method to apply
+predefined filters to organized specific machines.</p>
+  </li>
+</ul>
+
+<p>Change between these two views using the accordion menu on the left of
+the user interface.</p>
+
+<h2 id="reprovisioning-a-bare-metal-host">
+<a class="anchor" href="#reprovisioning-a-bare-metal-host" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reprovisioning a Bare Metal Host</h2>
+
+<p>This procedure provides an example of reprovisioning an existing bare
+metal system into a new hostgroup. For this example, your Red Hat
+Satellite 6 environment requires the following:</p>
+
+<ul>
+  <li>
+    <p>An existing bare metal system stored as a host object in your Red
+Hat Satellite 6 server. This system can be one of the following:</p>
+
+    <ul>
+      <li>
+        <p>A standalone system previously provisioned without a host group.</p>
+      </li>
+      <li>
+        <p>A system previously provisioned using a host group.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>A target host group. This host group contains the system
+configuration to apply to the host when reprovisioning it. This
+includes:</p>
+
+    <ul>
+      <li>
+        <p>A new operating system installation, including a new partition
+table.</p>
+      </li>
+      <li>
+        <p>A new networking configuration that the Red Hat Satellite 6
+server defines and manages.</p>
+      </li>
+      <li>
+        <p>Registration to any Red Hat subscriptions and repositories
+assigned to the host group.</p>
+      </li>
+      <li>
+        <p>Application of any Puppet modules assigned to the host group.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<!-- end list -->
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Configuration &gt; Management</strong>.</p>
+  </li>
+  <li>
+    <p>Select <strong>Configured Systems</strong> from the accordion menu on the left.
+This displays the system list.</p>
+  </li>
+  <li>
+    <p>Select one or more hosts to reprovision.</p>
+  </li>
+  <li>
+    <p>Select menu:Lifecycle[Provision Configured Systems].</p>
+  </li>
+  <li>
+    <p>Under the <strong>Request</strong> tab, enter the following details:</p>
+
+    <ol>
+      <li>
+        <p><strong>E-Mail address</strong></p>
+      </li>
+      <li>
+        <p><strong>First Name</strong></p>
+      </li>
+      <li>
+        <p><strong>Last Name</strong></p>
+      </li>
+      <li>
+        <p>This form also contains optional fields for users to enter a
+plain text <strong>Note</strong> to inform ManageIQ administrators of
+any special details, and a field to provide a manager’s name in
+case administrators require approval from a user’s manager.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Select the <strong>Purpose</strong> tab and select any ManageIQ policy
+tags that apply to the system.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Catalog</strong> tab. This screen displays the list of chosen
+machines to reprovision and their current details. Select a <strong>target
+host group</strong> from the <strong>Configuration Profile</strong> list.
+ManageIQ communicates with Red Hat Satellite to apply the
+configuration from this host group to the selected host and
+reprovision the system.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Customize</strong> tab. This screen displays some customizable
+fields for the selected system. You can change the <strong>Root Password</strong>
+or change the <strong>Hostname</strong> and <strong>IP Address</strong>. Note that these
+fields are optional, because the host group in Red Hat Satellite 6
+contains this information. The fields here will override the
+settings from the host group.</p>
+
+    <div class="important">
+
+Provisioning bare metal systems still requires access to the network
+that Red Hat Satellite 6 manages. This is because Red Hat Satellite
+controls PXE booting, kickstarts, and Puppet configuration for bare
+metal systems. Ensure the IP address you enter in ManageIQ
+can access a DHCP service that Red Hat Satellite 6 provides either
+through the main server or through a Red Hat Satellite 6 Capsule
+server.
+
+</div>
+  </li>
+  <li>
+    <p>Select the <strong>Customize</strong> tab. This screen allows you to either
+launch the provisioning process immediately on approval or using a
+schedule. Click <strong>Schedule</strong> to show the date and time fields used
+to schedule the provisioning.</p>
+  </li>
+  <li>
+    <p>Click <strong>Submit</strong>.</p>
+  </li>
+</ol>
+
+<p>Depending on the request settings on your ManageIQ appliance,
+this provisioning request might require approval from an administrator.
+If not, the provisioning request launches depending on your choice for
+the schedule.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>Previously provisioned hosts might require manual selection of PXE boot
+from the boot menu, otherwise they might boot to hard disk and not
+reprovision.</p>
+
+<h1 id="tagging-a-bare-metal-host">
+<a class="anchor" href="#tagging-a-bare-metal-host" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tagging a Bare Metal Host</h1>
+
+<p>ManageIQ can also control policy settings of bare metal systems
+from Red Hat Satellite 6 through tagging. Tagging attaches levels of
+metadata to help define the policy rules required for a set of systems.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Configuration[Management].</p>
+  </li>
+  <li>
+    <p>Select <strong>Configured Systems</strong> from the accordion menu on the left.
+This displays the system list.</p>
+  </li>
+  <li>
+    <p>Select one or more hosts to tag.</p>
+  </li>
+  <li>
+    <p>Select menu:Policy[Edit Tags].</p>
+  </li>
+  <li>
+    <p>Under <strong>Tag Assignment</strong>, select a tag from <strong>Select a customer tag
+to assign</strong> and then choose a value from <strong>Select a value to
+assign</strong>. For example, you can tag this system as located in Chicago
+by selecting <code class="language-plaintext highlighter-rouge">Location</code> as the tag and <code class="language-plaintext highlighter-rouge">Chicago</code> as the value. Once
+selected, the user interface automatically adds this tag and value
+to the table below.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<p>The bare metal system is now configured with a set of policy tags.</p>
+
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2021 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>
