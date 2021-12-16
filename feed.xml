@@ -5,9 +5,25 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 16 Dec 2021 14:44:16 +0000</pubDate>
-    <lastBuildDate>Thu, 16 Dec 2021 14:44:16 +0000</lastBuildDate>
+    <pubDate>Thu, 16 Dec 2021 14:59:59 +0000</pubDate>
+    <lastBuildDate>Thu, 16 Dec 2021 14:59:59 +0000</lastBuildDate>
     <generator>Jekyll v3.9.1</generator>
+    
+      <item>
+        <title>Announcing Morphy Beta</title>
+        <description>&lt;p&gt;The first beta release of ManageIQ Morphy is here!  We’ve been working hard and have a lot of new features you can see in the &lt;a href=&quot;https://github.com/orgs/ManageIQ/projects/13#column-15656536&quot;&gt;roadmap&lt;/a&gt;. Here are the major highlights for this new release:&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2021/12/Announcing-Morphy-Beta/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2021/12/Announcing-Morphy-Beta/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>Morphy Release Approach</title>
@@ -239,22 +255,6 @@ To estimate the size of the metric collection portion of the database, you could
         <pubDate>Fri, 04 Dec 2020 09:19:13 +0000</pubDate>
         <link>http://manageiq.org/blog/2020/12/Announcing-Kasparov-Alpha/</link>
         <guid isPermaLink="true">http://manageiq.org/blog/2020/12/Announcing-Kasparov-Alpha/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Announcing Jansa-2</title>
-        <description>&lt;p&gt;ManageIQ Jansa-2 is now available. This release is primarily a stabilization release and contains a number of bug fixes and performance fixes.&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
-        <link>http://manageiq.org/blog/2020/10/Announcing-Jansa-2/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2020/10/Announcing-Jansa-2/</guid>
         
         <category>releases</category>
         
