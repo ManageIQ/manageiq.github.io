@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ManageIQ - ManageIQ Blog</title>
-  <meta name="description" content="">
+  <title>ManageIQ - RbVmomi Maintenance</title>
+  <meta name="description" content="I have the pleasure of announcing that the ManageIQ community has forked and will be maintaining the RbVmomi gem as rbvmomi2.  RbVmomi is a Ruby SDK for the ...">
   <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
 
   <script>
@@ -25,7 +25,7 @@
   </script>
 
   <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
-  <link rel="canonical" href="http://manageiq.org/blog/">
+  <link rel="canonical" href="http://manageiq.org/blog/2021/12/2021-12-21-rbvmomi-maintenance/">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
   <link href="/assets/images/favicon.ico" rel="shortcut icon">
@@ -74,9 +74,9 @@
 </header>
 
 
-    <main data-url="/blog/page29/">
+    <main data-url="/blog/2021/12/rbvmomi-maintenance/">
       <div class="blog">
-  <div class="container blog_container">
+  <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10">
         <header class="blog_header">
@@ -86,328 +86,64 @@
         </header>
       </div>
     </div>
-    <div class="row">  
+    <div class="row"> 
       <div class="col-xs-12 col-sm-10 blog_main">
-        
-        <article class="post_excerpt">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
           <header class="post-header">
-            <h1><a href="/blog/2014/07/integration-with-travis/">Integration with Travis CI</a></h1>
+            <h1 class="page-title" itemprop="name headline">RbVmomi Maintenance</h1>
+
             <div class="post-meta">
-              <time datetime="2014-07-08T14:55:00+00:00" itemprop="datePublished">
-                Jul 8, 2014
+              <time datetime="2021-12-21T00:00:00+00:00" itemprop="datePublished">
+                Dec 21, 2021
               </time>
+
+              
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                by
+                <i itemprop="name">
+                  agrare
+                </i>
+              </span>
+              
+
+              <ul class="post-tags">
+                
+                <li>
+                  <a href="/blog/tags/collaboration">collaboration</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/announcements">announcements</a>
+                </li>
+                
+              </ul>
             </div>
           </header>
-          <div class="post-content">
-            <p>When we originally open-sourced ManageIQ, the <a href="https://github.com/ManageIQ/manageiq">ManageIQ GitHub
-Repo</a> was integrated with <a href="https://codeclimate.com/github/ManageIQ/manageiq">Code
-Climate</a>.  Integrating with
-Code Climate allowed the developer community to find code with too much
-complexity and/or duplication and refactor it.</p>
 
-<p>This week, we integrated the <a href="https://github.com/ManageIQ/manageiq">ManageIQ GitHub
-Repo</a> with <a href="https://travis-ci.org/ManageIQ/manageiq">Travis
-CI</a>, the continuous integration
-service.  This service runs on each GitHub pull request to ensure that no new
-code is breaking existing tests (i.e. no regression).  If the pull request does
-cause a regression, the core maintainers of the ManageIQ project will not merge
-it until this is resolved.</p>
+          <div class="post-content" itemprop="articleBody">
+            <p>I have the pleasure of announcing that the <a href="https://www.manageiq.org/community/">ManageIQ community</a> has forked and will be maintaining the RbVmomi gem as rbvmomi2.  RbVmomi is a Ruby SDK for the <a href="https://code.vmware.com/apis/1131/vsphere">VMware vSphere Web Services API</a> which allows users to manage their virtual infrastructure.</p>
 
-<p>So, keep creating pull requests to make ManageIQ better, but make sure that they
-do not break any tests!</p>
+<p>Up until this point RbVmomi has been managed by VMware as a community supported project, but due to a lack of Ruby maintainers it has since been archived <a href="https://github.com/vmware-archive/rbvmomi/commit/fb3caa94264827c27f00a7369090bd2421b82524">[ref]</a>.</p>
+
+<p>The ManageIQ community is picking up where VMware left off and will be providing security updates, bug fixes, and updates for new versions of VMware vSphere in a timely manner.</p>
+
+<p>Initially the gem maintainers will be <a href="https://github.com/agrare">Adam Grare</a> and <a href="https://github.com/Fryguy">Jason Frey</a>.  The ManageIQ project has been using RbVmomi for its VMware vSphere provider <a href="https://github.com/ManageIQ/manageiq-providers-vmware">manageiq-providers-vmware</a> for years. Jason is a staple of the Ruby and Rails communities, and Adam has been an active contributor to RbVmomi since 2016.</p>
+
+<p>The gem is available from rubygems at https://rubygems.org/gems/rbvmomi2. If you are currently using RbVmomi you will need to update your Gemfile or gemspec and replace <code class="language-plaintext highlighter-rouge">rbvmomi</code> with <code class="language-plaintext highlighter-rouge">rbvmomi2</code>.</p>
+
+<p>The new repository is https://github.com/ManageIQ/rbvmomi2; as always we encourage the community to open issues and contribute code and ideas.  If you are interested in contributing, check out https://github.com/ManageIQ/rbvmomi/blob/master/CONTRIBUTING.md and open an <a href="https://github.com/ManageIQ/rbvmomi/issues/new/choose">Issue</a> or <a href="https://github.com/ManageIQ/rbvmomi/compare">Pull Request</a>, or just discuss something in the <a href="https://gitter.im/vmware/rbvmomi">RbVmomi Gitter room</a>.</p>
+
+<p>If you’re new to ManageIQ, welcome!  Come check out https://manageiq.org, see the <a href="https://github.com/ManageIQ">source code</a> and chat with us in the <a href="https://gitter.im/ManageIQ/manageiq">ManageIQ Gitter room</a> !</p>
 
 <p>Thanks,
-chessbyte</p>
+ManageIQ Team</p>
 
           </div>
         </article>
-        
-        <article class="post_excerpt">
-          <header class="post-header">
-            <h1><a href="/blog/2014/06/third-tenet-of-open-source/">The Third Tenet of Open Source</a></h1>
-            <div class="post-meta">
-              <time datetime="2014-06-18T16:30:00+00:00" itemprop="datePublished">
-                Jun 18, 2014
-              </time>
-            </div>
-          </header>
-          <div class="post-content">
-            <p>Here’s a great <a href="http://tentenet.net/2014/06/19/the-third-tenet-of-open-source-open-source-requires-commitment-welcome-manageiq/">introduction written by Bryan Che</a>, a Red Hat cloud strategy guy, on why we released ManageIQ as an open source project, as well as a look at the cloud management landscape. Cloud management is currently a nice car with four flat tires, and all four of them with different sizes, colors, and recommended pressure.</p>
-
-
-          </div>
-        </article>
-        
-        <article class="post_excerpt">
-          <header class="post-header">
-            <h1><a href="/blog/2014/06/manageiq-is-here/">ManageIQ is here!</a></h1>
-            <div class="post-meta">
-              <time datetime="2014-06-18T14:55:00+00:00" itemprop="datePublished">
-                Jun 18, 2014
-              </time>
-            </div>
-          </header>
-          <div class="post-content">
-            <p>The wait is over—ManageIQ is now open source!</p>
-
-
-          </div>
-        </article>
-        
-        <article class="post_excerpt">
-          <header class="post-header">
-            <h1><a href="/blog/2014/05/openstack-summit-roundup/">OpenStack Summit Roundup</a></h1>
-            <div class="post-meta">
-              <time datetime="2014-05-13T14:20:00+00:00" itemprop="datePublished">
-                May 13, 2014
-              </time>
-            </div>
-          </header>
-          <div class="post-content">
-            <p>As I mentioned in the <a href="/blog/2014/05/welcome-to-the-manageiq-community/">previous blog post</a>,
-it’s a great day to be in the cloud. Yesterday marked our announcement
-at the OpenStack Summit, and the reaction was pretty swift and positive.
-There is pent-up demand for software that lets others take control of
-their clouds and virtualization environments.</p>
-
-
-          </div>
-        </article>
-        
-        <article class="post_excerpt">
-          <header class="post-header">
-            <h1><a href="/blog/2014/05/welcome-to-the-manageiq-community/">Welcome to the ManageIQ Community!</a></h1>
-            <div class="post-meta">
-              <time datetime="2014-05-12T09:05:00+00:00" itemprop="datePublished">
-                May 12, 2014
-              </time>
-            </div>
-          </header>
-          <div class="post-content">
-            <p>We are gearing up for an open source release in the coming weeks, and
-you’re probably curious what all the fuss is about. What you’ll find
-here is some introductory information and ways to sign up for news and,
-eventually, pre-release code as we get closer to the project launch.
-<a href="http://www.redhat.com/about/news/press-archive/2014/5/red-hat-announces-manageiq-community-for-open-source-cloud-management">Read Red Hat’s press release</a>
-– it will give you the background information you need.</p>
-
-
-          </div>
-        </article>
-        
-        <nav class="pagination-container">
-  <ul class="pagination">
-    <li>
-      
-        <a href="/blog/page28/" class="previous">&laquo;</a>
-      
-    </li>
-    
-      
-        <li>
-          <a href="/blog/">1</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page2/">2</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page3/">3</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page4/">4</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page5/">5</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page6/">6</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page7/">7</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page8/">8</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page9/">9</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page10/">10</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page11/">11</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page12/">12</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page13/">13</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page14/">14</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page15/">15</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page16/">16</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page17/">17</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page18/">18</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page19/">19</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page20/">20</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page21/">21</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page22/">22</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page23/">23</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page24/">24</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page25/">25</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page26/">26</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page27/">27</a>
-        </li>
-      
-    
-      
-        <li>
-          <a href="/blog/page28/">28</a>
-        </li>
-      
-    
-      
-        <li class="active">
-          <a href="#">29</a>
-        </li>
-      
-    
-    <li>
-      
-        <span class="next ">&raquo;</span>
-      
-    </li>
-  </ul>
-</nav>
-
-<nav class="pager-container">
-  <ul class="pager">
-    
-    <li class="previous">
-      <a href="/blog/page28/">
-        <span aria-hidden="true">&larr;</span> Newer
-      </a>
-    </li>
-    
-
-    
-    <li class="next disabled">
-      <a href="javascript:;">
-        Older <span aria-hidden="true">&rarr;</span>
-      </a>
-    </li>
-    
-  </ul>
-</nav>
-
       </div>
+
       <div class="col-xs-12 col-sm-2 blog_side">
-        <div class="blog_side-group">
+          <div class="blog_side-group">
   <h3 class="blog_side-heading">
     Categories
   </h3>
@@ -583,6 +319,7 @@ eventually, pre-release code as we get closer to the project launch.
 </div>
 
       </div>
+
     </div>
   </div>
 </div>
@@ -650,7 +387,7 @@ eventually, pre-release code as we get closer to the project launch.
       </li>
       
       <li>
-        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/blog/page29/index.html">
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/_posts/2021-12-21-rbvmomi-maintenance.md">
           <i class="fa fa-pencil"></i>
           Edit this page
         </a>

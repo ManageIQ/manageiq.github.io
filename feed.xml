@@ -5,9 +5,25 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 21 Dec 2021 15:04:07 +0000</pubDate>
-    <lastBuildDate>Tue, 21 Dec 2021 15:04:07 +0000</lastBuildDate>
+    <pubDate>Tue, 21 Dec 2021 17:22:16 +0000</pubDate>
+    <lastBuildDate>Tue, 21 Dec 2021 17:22:16 +0000</lastBuildDate>
     <generator>Jekyll v3.9.1</generator>
+    
+      <item>
+        <title>RbVmomi Maintenance</title>
+        <description>&lt;p&gt;I have the pleasure of announcing that the &lt;a href=&quot;https://www.manageiq.org/community/&quot;&gt;ManageIQ community&lt;/a&gt; has forked and will be maintaining the RbVmomi gem as rbvmomi2.  RbVmomi is a Ruby SDK for the &lt;a href=&quot;https://code.vmware.com/apis/1131/vsphere&quot;&gt;VMware vSphere Web Services API&lt;/a&gt; which allows users to manage their virtual infrastructure.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2021/12/rbvmomi-maintenance/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2021/12/rbvmomi-maintenance/</guid>
+        
+        <category>collaboration</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>Announcing Morphy Beta</title>
@@ -239,22 +255,6 @@ To estimate the size of the metric collection portion of the database, you could
         <pubDate>Mon, 18 Jan 2021 17:01:13 +0000</pubDate>
         <link>http://manageiq.org/blog/2021/01/Announcing-Kasparov-Beta-Jansa-3-And-Ivanchuk-8/</link>
         <guid isPermaLink="true">http://manageiq.org/blog/2021/01/Announcing-Kasparov-Beta-Jansa-3-And-Ivanchuk-8/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Announcing Kasparov Alpha Release</title>
-        <description>&lt;p&gt;The first alpha release of ManageIQ Kasparov is here!  It has a bunch of interesting new stuff that you can see in the &lt;a href=&quot;https://github.com/orgs/ManageIQ/projects/13#column-8431168&quot;&gt;roadmap&lt;/a&gt;. Here are the major highlights for this new release:&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 04 Dec 2020 09:19:13 +0000</pubDate>
-        <link>http://manageiq.org/blog/2020/12/Announcing-Kasparov-Alpha/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2020/12/Announcing-Kasparov-Alpha/</guid>
         
         <category>releases</category>
         
