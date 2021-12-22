@@ -1590,6 +1590,31 @@
 <li class="toc-entry toc-h4"><a href="#request-3">Request:</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h3"><a href="#reconfigure-a-vm---add-a-network-adapter">Reconfigure a VM - Add a Network Adapter</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#request-4">Request:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#reconfigure-a-vm---remove-a-network-adapter">Reconfigure a VM - Remove a Network Adapter</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#request-5">Request:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#reconfigure-a-vm---modify-a-network-adapter">Reconfigure a VM - Modify a Network Adapter</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#request-6">Request:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#reconfigure-a-vm---connect-a-cd-rom">Reconfigure a VM - Connect a CD-ROM</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#request-7">Request:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#reconfigure-a-vm---disconnect-a-cd-rom">Reconfigure a VM - Disconnect a CD-ROM</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#request-8">Request:</a></li>
+</ul>
+</li>
 </ul><h3 id="reconfigure-a-vm---set-memory-and-cpus">
 <a class="anchor" href="#reconfigure-a-vm---set-memory-and-cpus" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reconfigure a VM - Set Memory and CPUs</h3>
 
@@ -1735,6 +1760,126 @@ Delete backing is optional and defaults to true.</p>
 
 <p>You can retrieve the disk_name from the disk’s <code class="language-plaintext highlighter-rouge">filename</code> property
 Decreasing a disk’s size is not supported</p>
+
+<h3 id="reconfigure-a-vm---add-a-network-adapter">
+<a class="anchor" href="#reconfigure-a-vm---add-a-network-adapter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reconfigure a VM - Add a Network Adapter</h3>
+
+<h4 id="request-4">
+<a class="anchor" href="#request-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /api/requests
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm_reconfigure"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"src_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"2"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"network_adapter_add"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VM Network"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="reconfigure-a-vm---remove-a-network-adapter">
+<a class="anchor" href="#reconfigure-a-vm---remove-a-network-adapter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reconfigure a VM - Remove a Network Adapter</h3>
+
+<h4 id="request-5">
+<a class="anchor" href="#request-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /api/requests
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm_reconfigure"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"src_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"2"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"network_adapter_remove"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Network Adapter 1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="reconfigure-a-vm---modify-a-network-adapter">
+<a class="anchor" href="#reconfigure-a-vm---modify-a-network-adapter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reconfigure a VM - Modify a Network Adapter</h3>
+
+<h4 id="request-6">
+<a class="anchor" href="#request-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /api/requests
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm_reconfigure"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"src_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"2"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"network_adapter_edit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Network Adapter 1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VM Network 2"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="reconfigure-a-vm---connect-a-cd-rom">
+<a class="anchor" href="#reconfigure-a-vm---connect-a-cd-rom" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reconfigure a VM - Connect a CD-ROM</h3>
+
+<h4 id="request-7">
+<a class="anchor" href="#request-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /api/requests
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm_reconfigure"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"src_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"2"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"cdrom_connect"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"device_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CD/DVD drive 1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"storage_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file.iso"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="reconfigure-a-vm---disconnect-a-cd-rom">
+<a class="anchor" href="#reconfigure-a-vm---disconnect-a-cd-rom" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reconfigure a VM - Disconnect a CD-ROM</h3>
+
+<h4 id="request-8">
+<a class="anchor" href="#request-8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /api/requests
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm_reconfigure"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"src_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"2"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"cdrom_disconnect"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"device_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CD/DVD drive 1"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
 
       </div>
