@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/docs/guides/providers/create_operation">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/guides/providers/create_operation">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li>
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li class="active">
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<ul class="menu menu-toplevel" id="guides_menu">
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Architecture
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/capacity_and_utilization_collection_explanation.html">
+      Capacity And Utilization Collection Explanation
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/enterprise.html">
+      Enterprise
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/source_code_layout.html">
+      Source Code Layout
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Developer Setup
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/plugins.html">
+      Plugins
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/running_test_suites.html">
+      Running Test Suites
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/developer_setup/debugging.html">
+      Interactive debugging
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      External Auth
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth/configuration.html">
+      Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/external_auth/installation.html">
+      Installation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      User Interface
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/patterns.html">
+      UI Patterns
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/plugins.html">
+      UI Plugins
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/register_react_component.html">
+      Shared React Component API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/ui/report_data_api.html">
+      Report Data API
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-parent">
+    
+    <a href="#">
+      Providers
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/providers_overview.html">
+      Providers Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/architecture/providers_database_architecture.html">
+      Providers Database Architecture
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/amazon_aws_config.html">
+      Amazon AWS Config
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/containers.html">
+      Containers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/openshift.html">
+      Openshift
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/guides/providers/openstack_infra_provider.html">
+      Openstack Infra Provider
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/provisioning/windows_imaging.html">
+      Windows Imaging
+    </a>
+    
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/coding_style_and_standards.html">
+      Coding Style And Standards
+    </a>
+    
+    
+  </li>
+
+  
+  
+  
+  <li>
+    
+    <a href="/docs/guides/i18n.html">
+      I18n
+    </a>
+    
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc dev_doc">
+      
+
+      <div class="doc-content">
+        
+        <h1 id="guide-for-adding-a-new-button">Guide for adding a “new” button</h1>
+<p>You need to already have an application record and a GUI controller that implements a GUI list view (including templates).
+This guide will tell you how to add a button to the list view that creates new instances of the item your application record represents.<br />
+In this guide we will implement the actual creation of the record in an EMS provider.<br />
+If creation of your items doesn’t require interaction with an EMS API, you can adjust the process described here to implement it in manageiq core instead.</p>
+
+<p>The guide assumes that</p>
+<ul>
+  <li>Your application-record is in <code class="language-plaintext highlighter-rouge">app/models/your_item.rb</code></li>
+  <li>Your application-record belongs to an EMS. Usually its instances appear in MIQ by being refreshed from the EMS.</li>
+  <li>Your UI controller is in <code class="language-plaintext highlighter-rouge">plugins/manageiq-ui-classic/app/controllers/your_item_controller.rb</code></li>
+  <li>Your provider is in <code class="language-plaintext highlighter-rouge">plugins/manageiq-providers-your_provider</code></li>
+  <li>A menu for your item’s list view is in <code class="language-plaintext highlighter-rouge">plugins/manageiq-ui-classic/app/heplers/application_helpers/toolbar/your_items_center.rb</code></li>
+  <li>You have an application record in <code class="language-plaintext highlighter-rouge">plugins/manageiq-providers-your_provider/app/models/manageiq/providers/your-provider/your_item.rb</code>.</li>
+</ul>
+
+<p>You will work with the following repositories.</p>
+<ul>
+  <li>manageiq</li>
+  <li>manageiq-ui-classic</li>
+  <li>manageiq-api</li>
+  <li>manageiq-providers-your_provider (if you implement the creation in an EMS)</li>
+</ul>
+
+<h2 id="application-record">Application Record</h2>
+<h3 id="base-application-record">Base Application Record</h3>
+<p>Make sure that the base application-record in <code class="language-plaintext highlighter-rouge">app/models/your_item.rb</code> has</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">self.create_your_item</code></li>
+  <li><code class="language-plaintext highlighter-rouge">self.raw_create_your_item</code></li>
+  <li><code class="language-plaintext highlighter-rouge">self.create_your_item_queue</code></li>
+</ul>
+
+<p>If these aren’t present, add these methods to the base class by copying them from some other model in <code class="language-plaintext highlighter-rouge">app/models/</code>.<br />
+Adjust as needed to fit your item.</p>
+
+<h3 id="provider-application-record">Provider Application Record</h3>
+<p>Make sure that your application-record in <code class="language-plaintext highlighter-rouge">plugins/manageiq-providers-your_provider/app/models/manageiq/providers/your-provider/your_item.rb</code> extend <code class="language-plaintext highlighter-rouge">app/models/your_item.rb</code> with Rails STI.</p>
+
+<p>In the application-record in your provider, you need to add two entries.</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">supports :create</code></li>
+  <li><code class="language-plaintext highlighter-rouge">def self.raw_create_your_item(ext_management_system, options = {})</code></li>
+</ol>
+
+<p>The method <code class="language-plaintext highlighter-rouge">self.raw_create_your_item</code> performs the actual work of creating.\<br />
+The options hash will contain what you get from your JS form.<br />
+In this method you need to call your EMS’s API to create a real-world instance of your item.<br />
+You need to check if the request went through OK. If not, you need to throw an exception.
+If the request went OK, you will want to schedule a refresh so that the change will be reflected in MIQ DB.</p>
+
+<h2 id="adding-support-for-the-new-operation">Adding support for the new operation</h2>
+<p>In <code class="language-plaintext highlighter-rouge">app/models/ext_management_system.rb</code> add <code class="language-plaintext highlighter-rouge">supports_attribute :supports_create_your_item, :child_model =&gt; "YourItem"</code>.</p>
+
+<h2 id="toolbar-button">Toolbar Button</h2>
+<h4 id="add-button-to-the-menu">Add button to the menu</h4>
+<p>Find the menu file in <code class="language-plaintext highlighter-rouge">plugins/manageiq-ui-classic/app/heplers/application_helpers/toolbar/your_items_center.rb</code>.<br />
+Add a button into the menu for creating your items. The button needs to be called <code class="language-plaintext highlighter-rouge">:your_item_new</code>. You can copy a <code class="language-plaintext highlighter-rouge">..._new</code> button from another menu and adjust to fit your item.</p>
+
+<p><strong>Note</strong> Usually we only add “new” button into the list view page and not into a detailed view.<br />
+If you want to also add a “new” button inside you textual summary page you need to do modification to <code class="language-plaintext highlighter-rouge">plugins/manageiq-ui-classic/app/heplers/application_helpers/toolbar/your_item_center.rb</code>. But this is not part of this guide.</p>
+
+<h4 id="add-button-class">Add button class</h4>
+<p>Create a button class to handle “new” operation. 
+It needs to be in <code class="language-plaintext highlighter-rouge">manageiq-ui-classic/app/helpers/application_helper/button/your_item_new.rb</code>. You can copy another button and adjust it.</p>
+
+<h2 id="js-form">JS Form</h2>
+<p>You need to create a form-folder in <code class="language-plaintext highlighter-rouge">manageiq-ui-classic/app/javascript/components/your-item-form/</code>. With <code class="language-plaintext highlighter-rouge">index.jsx</code> and <code class="language-plaintext highlighter-rouge">your-item-form.schema.js</code>.
+You can copy from another form and adjust as needed.</p>
+
+<p>Here you determine the GUI form the user will see when creating a new instance of your item. I won’t go into the details of it in this guide.<br />
+When developing, it’s safest to start with a minial form just to see that it’s working.</p>
+
+<p>Note that the fields on your form will constitute the <code class="language-plaintext highlighter-rouge">options</code> argument for your <code class="language-plaintext highlighter-rouge">self.raw_create_your_item</code> method.</p>
+
+<p>After you add your form, you need to register it in <code class="language-plaintext highlighter-rouge">component-definitions-common.js</code>.</p>
+
+<h2 id="the-ui-controller">The UI Controller</h2>
+<p>In your controller in <code class="language-plaintext highlighter-rouge">plugins/manageiq-ui-classic/app/controllers/your_item_controller.rb</code> you need to add the <code class="language-plaintext highlighter-rouge">new</code> method.<br />
+You can copy it from another controller and adjust as needed.</p>
+
+<p>Another thing you need in your controller is a method called <code class="language-plaintext highlighter-rouge">specific_buttons(pressed)</code>. If you don’t have it already, copy it from another controller.<br />
+The method consists of a <code class="language-plaintext highlighter-rouge">case</code>.<br />
+Add the following <code class="language-plaintext highlighter-rouge">when</code> to the case. If you have just copied the method from another controller you can remove all other <code class="language-plaintext highlighter-rouge">when</code>s.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">when</span> <span class="s1">'your_item_new'</span>
+  <span class="n">javascript_redirect</span><span class="p">(</span><span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'new'</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="haml-template-for-new-operation">haml template for ‘new’ operation</h2>
+<p>Create <code class="language-plaintext highlighter-rouge">new.html.haml</code> under <code class="language-plaintext highlighter-rouge">plugins/manageiq-ui-classic/app/views/your_item/</code>. You can copy it from another item and adjust as needed.
+Make sure to point at your JS Form which you defined above <code class="language-plaintext highlighter-rouge">react 'YourItemForm'</code></p>
+
+<h2 id="ui-routes">UI routes</h2>
+<p>In <code class="language-plaintext highlighter-rouge">manageiq-ui-classic/config/routes.rb</code>, you need to find the section for your_item. Then you need to make sure there’s <code class="language-plaintext highlighter-rouge">new</code> in the get section, and <code class="language-plaintext highlighter-rouge">button</code> in the post section.</p>
+
+<h2 id="product-feature">Product Feature</h2>
+<p>Find your item’s product feature list in <code class="language-plaintext highlighter-rouge">manageiq/db/fixtures/miq_product_features.yml</code>. 
+Make sure that it has a section for ‘add’, as below</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="s">:name: Your Item</span>   
+  <span class="s">...</span>
+  <span class="s">- :name: Modify</span>
+    <span class="s">:children:</span>    
+    <span class="s">- :name: Add</span>
+      <span class="s">:description: Add A Your Item</span>
+      <span class="s">:feature_type: admin</span>
+      <span class="s">:identifier: your_item_new</span>
+</code></pre></div></div>
+
+<h2 id="api-controller">API Controller</h2>
+<p>If there isn’t one, create a controller for your item in <code class="language-plaintext highlighter-rouge">manageiq-api/app/controllers/api/your_items_controller.rb</code>. You can copy one of the existing controllers and adjust to your item.</p>
+
+<p>Make sure that there is a <code class="language-plaintext highlighter-rouge">create_resource</code> method in the api controller. If not, copy if from some other controller and adjust to fit your item.<br />
+This method is supposed to call the method<code class="language-plaintext highlighter-rouge">create_your_item_queue</code> on the base application-record.<br />
+An API controller with a good example of <code class="language-plaintext highlighter-rouge">create_resource</code> method is <code class="language-plaintext highlighter-rouge">auth_key_pairs_controller.rb</code>, so you can copy-paste from there and adjust as needed.</p>
+
+<h2 id="api-routes">API Routes</h2>
+<p>You need to have appropriate routes in <code class="language-plaintext highlighter-rouge">manageiq-api/api.yml</code>.\</p>
+
+<p>If you are adding a new controller, you’ll need to add a new entry for <code class="language-plaintext highlighter-rouge">:your_items:</code> in <code class="language-plaintext highlighter-rouge">manageiq-api/api.yml/collections</code>. You can copy from one of the existing routes and adjust.\</p>
+
+<p>Make sure the hash for your routes contains the following:</p>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">verbs</code> section needs to contains both <code class="language-plaintext highlighter-rouge">Get</code> and <code class="language-plaintext highlighter-rouge">Post</code>. For example, you could write <code class="language-plaintext highlighter-rouge">:verbs: *gp</code>\</li>
+  <li>Under the <code class="language-plaintext highlighter-rouge">collection_actions</code> section, make sure you have
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s">:collection_actions:</span>
+    <span class="s">:post:</span>
+    <span class="s">- :name: create</span>
+      <span class="s">:identifier: your_item_new</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="api-controller-specs">API Controller Specs</h3>
+<p>The spec file needs to be in <code class="language-plaintext highlighter-rouge">plugins/manageiq-api/spec/requests/your_items_spec.rb</code>.<br />
+If a spec file doesn’t exist for the api-controller, such as when you have just created a new api-controller, create a new one.</p>
+
+<p>Add the following tests to the spec file. You can copy-paste them from other specs and adjust to your item.</p>
+
+<ol>
+  <li>Good path where a POST succeeds in creating a new item.
+Make sure to use <code class="language-plaintext highlighter-rouge">api_basic_authorize(collection_action_identifier(:host_initiator_groups, :create))</code> in the test.</li>
+  <li>A create request without a valid ems-id should fail.</li>
+  <li>A create request for a user without an appropriate role should fail.
+We test this by repeating item #1, but calling <code class="language-plaintext highlighter-rouge">api_basic_authorize</code> without any arguments</li>
+  <li>A create request for models that doesn’t have <code class="language-plaintext highlighter-rouge">supports :create</code> should fail. You can use <code class="language-plaintext highlighter-rouge">stub_supports</code> for this.</li>
+</ol>
+
+<h2 id="specific-ems-support">Specific EMS support</h2>
+<p>If you need to have support for buttons in the menu for a specific ems, for example in case you are entering the list view page from a specific ems dashboard make sure the following are set correctly:</p>
+<ol>
+  <li>In app/helpers/application_helper/toolbar_chooser.rb make sure your_item is set in two places inside <code class="language-plaintext highlighter-rouge">center_toolbar_filename_classic</code> function</li>
+  <li><code class="language-plaintext highlighter-rouge">plugins/manageiq-ui-classic/app/views/your_item/new.html.haml</code> should pass <code class="language-plaintext highlighter-rouge">storageManagerId</code> to JS Form. Make sure <code class="language-plaintext highlighter-rouge">new.html.haml</code>, <code class="language-plaintext highlighter-rouge">index.jsx</code> and <code class="language-plaintext highlighter-rouge">your-item-form.schema.js</code> are set correctly to handle the <code class="language-plaintext highlighter-rouge">storageManagerId</code>.</li>
+</ol>
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2022 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>
