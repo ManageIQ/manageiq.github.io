@@ -998,6 +998,9 @@
       <td><a href="#cloud-providers">IBM Cloud VPC</a></td>
     </tr>
     <tr>
+      <td><a href="#infrastructure-providers">IBM Power HMC</a></td>
+    </tr>
+    <tr>
       <td><a href="#cloud-providers">IBM Power Systems Virtual Servers (PowerVS)</a></td>
     </tr>
     <tr>
@@ -1187,6 +1190,7 @@
       <th>oVirt / RHV</th>
       <th>SCVMM</th>
       <th>OpenStack undercloud</th>
+      <th>IBM Power HMC</th>
     </tr>
   </thead>
   <tbody>
@@ -1196,6 +1200,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>✅ (Nodes and Services)</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>Network Inventory</td>
@@ -1203,6 +1208,7 @@
       <td>✅ (OVN)</td>
       <td>❌</td>
       <td>❌</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>Storage Inventory</td>
@@ -1210,9 +1216,11 @@
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Events</td>
+      <td>✅</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
@@ -1224,6 +1232,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Forensic Analysis (SmartState)</td>
@@ -1231,6 +1240,7 @@
       <td>✅</td>
       <td>❌</td>
       <td>✅ (Nodes)</td>
+      <td>❌</td>
     </tr>
   </tbody>
 </table>
@@ -1243,11 +1253,13 @@
       <th>oVirt / RHV</th>
       <th>SCVMM</th>
       <th>OpenStack undercloud</th>
+      <th>IBM Power HMC</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Relationship Discovery</td>
+      <td>✅</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
@@ -1259,6 +1271,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>✅ (Nodes)</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>VM Genealogy</td>
@@ -1266,6 +1279,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Capacity &amp; Utilization</td>
@@ -1273,6 +1287,7 @@
       <td>✅</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>VM Event Timelines</td>
@@ -1280,6 +1295,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>Infrastructure Event Timelines</td>
@@ -1287,9 +1303,11 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Reporting</td>
+      <td>✅</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
@@ -1301,6 +1319,7 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Chargeback by Allocation</td>
@@ -1308,11 +1327,13 @@
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Chargeback by Usage</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
@@ -1322,9 +1343,11 @@
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Tag Mapping from Provider</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1336,12 +1359,14 @@
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>VM Compliance Enforcement</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
     </tr>
     <tr>
@@ -1350,10 +1375,12 @@
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Alerts - Real Time</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1364,11 +1391,13 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Alerts - VM Reconfigured</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
@@ -1377,6 +1406,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
     </tr>
   </tbody>
@@ -1390,6 +1420,7 @@
       <th>oVirt / RHV</th>
       <th>SCVMM</th>
       <th>OpenStack undercloud</th>
+      <th>IBM Power HMC</th>
     </tr>
   </thead>
   <tbody>
@@ -1399,6 +1430,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>VM Power Operations</td>
@@ -1406,9 +1438,11 @@
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>VM Provisioning</td>
+      <td> </td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -1420,11 +1454,13 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- using ISO</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
@@ -1434,6 +1470,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- from VM to Template</td>
@@ -1441,10 +1478,12 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>- Clone from VM to VM</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1455,11 +1494,13 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Cloud-init</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
@@ -1469,11 +1510,13 @@
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>VM Reconfiguration</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
@@ -1483,11 +1526,13 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Network Interface Add/Remove</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
@@ -1497,6 +1542,7 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Host Power Operations</td>
@@ -1504,9 +1550,11 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Node Operations</td>
+      <td> </td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -1518,6 +1566,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Scale Down Node</td>
@@ -1525,6 +1574,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅ (Compute nodes only)</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Scale Up Nodes</td>
@@ -1532,6 +1582,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅ (Compute nodes only)</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Nodes Policy Enforcement</td>
@@ -1539,6 +1590,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Nodes Evacuate</td>
@@ -1546,6 +1598,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
   </tbody>
 </table>
