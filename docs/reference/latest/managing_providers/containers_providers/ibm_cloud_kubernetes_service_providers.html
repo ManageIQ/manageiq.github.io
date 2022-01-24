@@ -902,7 +902,11 @@
         </div>
         
         <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h1"><a href="#ibm-cloud-kubernetes-service-iks-container-provider">IBM Cloud Kubernetes Service (IKS) Container Provider</a></li>
+<li class="toc-entry toc-h1"><a href="#ibm-cloud-kubernetes-service-iks-container-provider">IBM Cloud Kubernetes Service (IKS) Container Provider</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#configuring-metrics-collection-for-ibm-cloud-kubernetes-service-iks-provider">Configuring Metrics Collection for IBM Cloud Kubernetes Service (IKS) Provider</a></li>
+</ul>
+</li>
 </ul><h1 id="ibm-cloud-kubernetes-service-iks-container-provider">
 <a class="anchor" href="#ibm-cloud-kubernetes-service-iks-container-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>IBM Cloud Kubernetes Service (IKS) Container Provider</h1>
 
@@ -967,6 +971,74 @@ to the IBM Cloud Kubernetes Service.</p>
   <li>
     <p>Click <strong>Add</strong>.</p>
   </li>
+</ol>
+
+<h2 id="configuring-metrics-collection-for-ibm-cloud-kubernetes-service-iks-provider">
+<a class="anchor" href="#configuring-metrics-collection-for-ibm-cloud-kubernetes-service-iks-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring Metrics Collection for IBM Cloud Kubernetes Service (IKS) Provider</h2>
+
+<ol>
+  <li>
+    <p>On IBM Cloud, create an <code class="language-plaintext highlighter-rouge">IBM Cloud Monitoring</code> service instance</p>
+  </li>
+  <li>
+    <p>Log in to IBM Cloud CLI i.e. <code class="language-plaintext highlighter-rouge">ibmcloud login -sso</code></p>
+  </li>
+  <li>
+    <p>Use the following command to retrieve the monitoring instance ID: <code class="language-plaintext highlighter-rouge">ibmcloud resource service-instance &lt;INSTANCE_NAME&gt; --output json | jq -r '.[].guid'</code></p>
+  </li>
+</ol>
+
+<p>Refer to the following table to determine the hostname for the <code class="language-plaintext highlighter-rouge">IBM Cloud Monitoring</code> service instance:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Region</th>
+      <th>Hostname</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>US South</td>
+      <td><code class="language-plaintext highlighter-rouge">us-south.monitoring.cloud.ibm.com</code></td>
+    </tr>
+    <tr>
+      <td>EU DE</td>
+      <td><code class="language-plaintext highlighter-rouge">eu-de.monitoring.cloud.ibm.com</code></td>
+    </tr>
+    <tr>
+      <td>EU GB</td>
+      <td><code class="language-plaintext highlighter-rouge">eu-gb.monitoring.cloud.ibm.com</code></td>
+    </tr>
+    <tr>
+      <td>JP OSA</td>
+      <td><code class="language-plaintext highlighter-rouge">jp-osa.monitoring.cloud.ibm.com</code></td>
+    </tr>
+    <tr>
+      <td>JP TOK</td>
+      <td><code class="language-plaintext highlighter-rouge">jp-tok.monitoring.cloud.ibm.com</code></td>
+    </tr>
+    <tr>
+      <td>US East</td>
+      <td><code class="language-plaintext highlighter-rouge">us-east.monitoring.cloud.ibm.com</code></td>
+    </tr>
+    <tr>
+      <td>AU SYD</td>
+      <td><code class="language-plaintext highlighter-rouge">au-syd.monitoring.cloud.ibm.com</code></td>
+    </tr>
+    <tr>
+      <td>CA TOR</td>
+      <td><code class="language-plaintext highlighter-rouge">ca-tor.monitoring.cloud.ibm.com</code></td>
+    </tr>
+    <tr>
+      <td>BR SAO</td>
+      <td><code class="language-plaintext highlighter-rouge">br-sao.monitoring.cloud.ibm.com</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<ol>
+  <li>Enter the <strong>Hostname</strong> and <strong>Monitoring Instance ID</strong> under the <strong>Metrics</strong> tab when creating the IKS provider</li>
 </ol>
 
 
