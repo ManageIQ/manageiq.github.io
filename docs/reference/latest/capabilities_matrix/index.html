@@ -1013,7 +1013,7 @@
       <td><a href="#container-providers">Kubernetes</a></td>
     </tr>
     <tr>
-      <td>KubeVirt</td>
+      <td><a href="#infrastructure-providers">KubeVirt</a></td>
     </tr>
     <tr>
       <td>Lenovo xClarity</td>
@@ -1191,6 +1191,7 @@
       <th>SCVMM</th>
       <th>OpenStack undercloud</th>
       <th>IBM Power HMC</th>
+      <th>KubeVirt</th>
     </tr>
   </thead>
   <tbody>
@@ -1201,6 +1202,7 @@
       <td>✅</td>
       <td>✅ (Nodes and Services)</td>
       <td>✅</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>Network Inventory</td>
@@ -1209,6 +1211,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Storage Inventory</td>
@@ -1217,6 +1220,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>Events</td>
@@ -1225,6 +1229,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Metrics</td>
@@ -1233,6 +1238,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Forensic Analysis (SmartState)</td>
@@ -1240,6 +1246,7 @@
       <td>✅</td>
       <td>❌</td>
       <td>✅ (Nodes)</td>
+      <td>❌</td>
       <td>❌</td>
     </tr>
   </tbody>
@@ -1254,11 +1261,13 @@
       <th>SCVMM</th>
       <th>OpenStack undercloud</th>
       <th>IBM Power HMC</th>
+      <th>KubeVirt</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Relationship Discovery</td>
+      <td>✅</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
@@ -1272,6 +1281,7 @@
       <td>✅</td>
       <td>✅ (Nodes)</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>VM Genealogy</td>
@@ -1280,6 +1290,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>Capacity &amp; Utilization</td>
@@ -1287,6 +1298,7 @@
       <td>✅</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
     </tr>
     <tr>
@@ -1296,6 +1308,7 @@
       <td>✅</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Infrastructure Event Timelines</td>
@@ -1304,9 +1317,11 @@
       <td>❌</td>
       <td>✅</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Reporting</td>
+      <td>✅</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
@@ -1320,6 +1335,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Chargeback by Allocation</td>
@@ -1328,11 +1344,13 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Chargeback by Usage</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1344,9 +1362,11 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Tag Mapping from Provider</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1360,12 +1380,14 @@
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>VM Compliance Enforcement</td>
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
@@ -1376,10 +1398,12 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Alerts - Real Time</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1392,11 +1416,13 @@
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Alerts - VM Reconfigured</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1406,6 +1432,7 @@
       <td>✅</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
@@ -1421,6 +1448,7 @@
       <th>SCVMM</th>
       <th>OpenStack undercloud</th>
       <th>IBM Power HMC</th>
+      <th>KubeVirt</th>
     </tr>
   </thead>
   <tbody>
@@ -1431,6 +1459,7 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>VM Power Operations</td>
@@ -1439,9 +1468,11 @@
       <td>✅</td>
       <td>❌</td>
       <td>✅</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>VM Provisioning</td>
+      <td> </td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -1455,11 +1486,13 @@
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- using ISO</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1471,6 +1504,7 @@
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>- from VM to Template</td>
@@ -1479,10 +1513,12 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Clone from VM to VM</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1495,11 +1531,13 @@
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Cloud-init</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1511,11 +1549,13 @@
       <td>✅</td>
       <td>❌</td>
       <td>✅</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>VM Reconfiguration</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1527,11 +1567,13 @@
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Network Interface Add/Remove</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
@@ -1543,6 +1585,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Host Power Operations</td>
@@ -1550,6 +1593,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
     </tr>
     <tr>
@@ -1559,6 +1603,7 @@
       <td> </td>
       <td> </td>
       <td> </td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Add/Remove Node</td>
@@ -1566,6 +1611,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
     </tr>
     <tr>
@@ -1575,6 +1621,7 @@
       <td>❌</td>
       <td>✅ (Compute nodes only)</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Scale Up Nodes</td>
@@ -1582,6 +1629,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅ (Compute nodes only)</td>
+      <td>❌</td>
       <td>❌</td>
     </tr>
     <tr>
@@ -1591,6 +1639,7 @@
       <td>❌</td>
       <td>✅</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>- Nodes Evacuate</td>
@@ -1598,6 +1647,7 @@
       <td>❌</td>
       <td>❌</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
     </tr>
   </tbody>
@@ -1641,6 +1691,10 @@
     <tr>
       <td>SCVMM</td>
       <td>N/A</td>
+    </tr>
+    <tr>
+      <td>KubeVirt</td>
+      <td>SPICE</td>
     </tr>
   </tbody>
 </table>
