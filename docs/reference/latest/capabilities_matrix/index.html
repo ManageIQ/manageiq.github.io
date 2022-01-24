@@ -947,6 +947,7 @@
 <li class="toc-entry toc-h3"><a href="#container-providers">Container Providers</a></li>
 <li class="toc-entry toc-h3"><a href="#automation-providers">Automation Providers</a></li>
 <li class="toc-entry toc-h3"><a href="#network-providers">Network Providers</a></li>
+<li class="toc-entry toc-h3"><a href="#physical-infrastructure-providers">Physical Infrastructure Providers</a></li>
 <li class="toc-entry toc-h3"><a href="#smart-state-analysis-capabilities">Smart State Analysis Capabilities</a>
 <ul>
 <li class="toc-entry toc-h4"><a href="#volume-managers">Volume Managers</a></li>
@@ -1016,7 +1017,7 @@
       <td><a href="#infrastructure-providers">KubeVirt</a></td>
     </tr>
     <tr>
-      <td>Lenovo xClarity</td>
+      <td><a href="#physical-infrastructure-providers">Lenovo xClarity</a></td>
     </tr>
     <tr>
       <td><a href="#cloud-providers">Microsoft Azure</a></td>
@@ -1055,7 +1056,7 @@
       <td><a href="#infrastructure-providers">Red Hat Virtualization (RHV)</a></td>
     </tr>
     <tr>
-      <td>Redfish</td>
+      <td><a href="#physical-infrastructure-providers">Redfish</a></td>
     </tr>
     <tr>
       <td><a href="#cloud-providers">VMware vCloud</a></td>
@@ -2824,6 +2825,85 @@
     <tr>
       <td>Create Security Policy</td>
       <td>❌</td>
+      <td>✅</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="physical-infrastructure-providers">
+<a class="anchor" href="#physical-infrastructure-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Physical Infrastructure Providers</h3>
+
+<p>The following tables outline the capabilities of ManageIQ that are known to work for various physical infrastructure providers.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Discovery</th>
+      <th>Lenovo XClarity</th>
+      <th>Redfish</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Chassis</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Racks</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Physical Servers</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Physical Storages</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Physical Switches</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Events</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Metrics</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operations</th>
+      <th>Lenovo XClarity</th>
+      <th>Redfish</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PXE Provisioning</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Server Firmware Upgrade</td>
+      <td>❌</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Server Power Operations</td>
+      <td>✅</td>
       <td>✅</td>
     </tr>
   </tbody>
