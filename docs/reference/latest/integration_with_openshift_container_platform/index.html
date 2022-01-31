@@ -1555,8 +1555,51 @@ to the metrics endpoint.</p>
     </ol>
   </li>
   <li>
+    <p>In the <strong>Virtualization</strong> endpoint tab optionally configure the virtualization service details:</p>
+
+    <ol>
+      <li>
+        <p>Select a service type (KubeVirt) or leave disabled</p>
+      </li>
+      <li>
+        <p>Select a <strong>Security Protocol</strong> method to specify how to
+authenticate the service:</p>
+
+        <ul>
+          <li>
+            <p><strong>SSL</strong>: Authenticate the provider securely using a trusted
+Certificate Authority. Select this option if the provider
+has a valid SSL certificate and it is signed by a trusted
+Certificate Authority. No further configuration is required
+for this option.</p>
+          </li>
+          <li>
+            <p><strong>SSL trusting custom CA</strong>: Authenticate the provider with a
+self-signed certificate. For this option, copy your
+provider’s CA certificate to the <strong>Trusted CA
+Certificates</strong> box in PEM format.</p>
+          </li>
+          <li>
+            <p><strong>SSL without validation</strong>: Authenticate the provider
+insecurely using SSL. (Not recommended)</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Enter the <strong>Hostname</strong> (or IPv4 or IPv6 address) of the
+virtualization service.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>API Port</strong> of your virtualization service. The default port is <code class="language-plaintext highlighter-rouge">443</code>.</p>
+      </li>
+      <li>
+        <p>Enter a token for your provider in the <strong>Token</strong> box.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
     <p>Click the <strong>Advanced</strong> tab to add image inspector settings for
- scanning container images on your provider using OpenSCAP.</p>
+scanning container images on your provider using OpenSCAP.</p>
 
     <p><strong>Note:</strong></p>
 
