@@ -940,6 +940,11 @@
 <li class="toc-entry toc-h1"><a href="#installing-on-kubernetes--openshift">Installing on Kubernetes / Openshift</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#preparing-the-kubernetes-namespace">Preparing the Kubernetes namespace</a></li>
+<li class="toc-entry toc-h2"><a href="#new-installation">New Installation</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#create-the-custom-resource">Create the Custom Resource</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#migrating-from-appliances">Migrating from Appliances</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#notes">Notes</a></li>
@@ -989,6 +994,18 @@
 </code></pre></div>    </div>
   </li>
 </ol>
+
+<h2 id="new-installation">
+<a class="anchor" href="#new-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>New Installation</h2>
+
+<h3 id="create-the-custom-resource">
+<a class="anchor" href="#create-the-custom-resource" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create the Custom Resource</h3>
+<p>Make any necessary changes (i.e applicationDomain) that apply to your environment then create the CR (Custom Resource).
+The operator will take action to deploy the application based on the information in the CR.
+It may take several minutes for the database to be initialized and the workers to enter a ready state.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ oc create -f deploy/crds/manageiq.org_v1alpha1_manageiq_cr.yaml
+</code></pre></div></div>
 
 <h2 id="migrating-from-appliances">
 <a class="anchor" href="#migrating-from-appliances" aria-hidden="true"><span class="octicon octicon-link"></span></a>Migrating from Appliances</h2>
