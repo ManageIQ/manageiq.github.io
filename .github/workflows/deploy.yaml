@@ -1,0 +1,30 @@
+name: Build
+on:
+  repository_dispatch:
+    types: [deploy]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      JEKYLL_ENV: production
+      MIQ_ENV: production
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PAYLOAD_REF: ${{ github.event.client_payload.ref }}
+      PAYLOAD_SHA: ${{ github.event.client_payload.sha }}
+      PAYLOAD_REPOSITORY: ${{ github.event.client_payload.repository }}
+      PAYLOAD_COMMIT_MESSAGE: ${{ github.event.client_payload.commit_message }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.5'
+          bundler-cache: true
+      - name: Get manageiq.org repo
+        run: git clone https://github.com/ManageIQ/manageiq.org
+      - name: Build
+        run: cd manageiq.org & exe/miq build all
+      - name: Set COMMIT_MESSAGE
+        run: parse_commit_message.rb >> $GITHUB_ENV
+      - name: Deploy
+        run: deploy.sh
