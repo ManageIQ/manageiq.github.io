@@ -629,10 +629,10 @@ then substituted with the context of the <code class="language-plaintext highlig
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 
-<p>block being collected during string extraction by <code class="language-plaintext highlighter-rouge">gulp gettext-extract</code>. Correctly, the <code class="language-plaintext highlighter-rouge">translate</code> directive should be placed inside the <code class="language-plaintext highlighter-rouge">span</code> element.</p>
+<p>block being collected during string extraction by <code class="language-plaintext highlighter-rouge">yarn run gettext:extract</code>. Correctly, the <code class="language-plaintext highlighter-rouge">translate</code> directive should be placed inside the <code class="language-plaintext highlighter-rouge">span</code> element.</p>
 
 <ul>
-  <li><strong>Don’t use dynamic content inside <code class="language-plaintext highlighter-rouge">__()</code></strong>. For example, the following javascript code won’t be collected correctly by <code class="language-plaintext highlighter-rouge">gulp gettext-extract</code>.</li>
+  <li><strong>Don’t use dynamic content inside <code class="language-plaintext highlighter-rouge">__()</code></strong>. For example, the following javascript code won’t be collected correctly by <code class="language-plaintext highlighter-rouge">yarn run gettext:extract</code>.</li>
 </ul>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">s</span> <span class="o">=</span> <span class="nx">__</span><span class="p">(</span><span class="nx">sprintf</span><span class="p">(</span><span class="dl">"</span><span class="s2">My name is %s.</span><span class="dl">"</span><span class="p">,</span> <span class="nx">me</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
@@ -644,7 +644,7 @@ then substituted with the context of the <code class="language-plaintext highlig
 </code></pre></div></div>
 
 <ul>
-  <li><strong>Don’t apply the <code class="language-plaintext highlighter-rouge">translate</code> filter on a dynamic content</strong>. The string inside would not be correctly extracted during string collection. For example the following won’t be collected correctly by <code class="language-plaintext highlighter-rouge">gulp gettext-extract</code>.</li>
+  <li><strong>Don’t apply the <code class="language-plaintext highlighter-rouge">translate</code> filter on a dynamic content</strong>. The string inside would not be correctly extracted during string collection. For example the following won’t be collected correctly by <code class="language-plaintext highlighter-rouge">yarn run gettext:extract</code>.</li>
 </ul>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;span&gt;</span>
@@ -870,7 +870,7 @@ app/javascript/packs/bootstrap-datepicker-languages.js # optionally, if the file
 </ul>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>client
-<span class="nv">$ </span>gulp gettext-extract
+<span class="nv">$ </span>yarn run gettext:extract
 </code></pre></div></div>
 
 <ul>
@@ -891,14 +891,7 @@ app/javascript/packs/bootstrap-datepicker-languages.js # optionally, if the file
   <li>Convert the translated .po catalogs into .json files:</li>
 </ul>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gulp gettext-compile
-</code></pre></div></div>
-
-<ul>
-  <li>Update locale names:</li>
-</ul>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gulp available-languages
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>yarn run gettext:compile
 </code></pre></div></div>
 
 <ul>
