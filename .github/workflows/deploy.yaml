@@ -23,7 +23,7 @@ jobs:
       - name: Get manageiq.org repo
         run: git clone https://github.com/ManageIQ/manageiq.org
       - name: Build
-        run: cd manageiq.org & exe/miq build all
+        run: cd manageiq.org && exe/miq build all
       - name: Set COMMIT_MESSAGE
         run: create_commit_message.rb >> $GITHUB_ENV
       - name: Deploy
