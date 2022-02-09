@@ -25,6 +25,6 @@ jobs:
       - name: Build
         run: cd manageiq.org & exe/miq build all
       - name: Set COMMIT_MESSAGE
-        run: parse_commit_message.rb >> $GITHUB_ENV
+        run: create_commit_message.rb >> $GITHUB_ENV
       - name: Deploy
         run: deploy.sh
