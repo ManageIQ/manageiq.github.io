@@ -9,7 +9,7 @@ jobs:
       JEKYLL_ENV: production
       MIQ_ENV: production
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      PAYLOAD_REF: ${{ github.event.client_payload.ref }}
+      PAYLOAD_REF_NAME: ${{ github.event.client_payload.ref_name }}
       PAYLOAD_SHA: ${{ github.event.client_payload.sha }}
       PAYLOAD_REPOSITORY: ${{ github.event.client_payload.repository }}
       PAYLOAD_PR_NUMBER: ${{ github.event.client_payload.pr_number }}
@@ -23,8 +23,9 @@ jobs:
       - name: Get manageiq.org repo
         run: git clone https://github.com/ManageIQ/manageiq.org
       - name: Build
-        run: cd manageiq.org && exe/miq build all
-      - name: Set COMMIT_MESSAGE
-        run: create_commit_message.rb >> $GITHUB_ENV
+        run: |
+          cd manageiq.org
+          bundle install
+          exe/miq build all
       - name: Deploy
         run: deploy.sh
