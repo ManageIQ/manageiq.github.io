@@ -28,4 +28,4 @@ jobs:
           bundle install
           exe/miq build all
       - name: Deploy
-        run: deploy.sh
+        run: bin/deploy
