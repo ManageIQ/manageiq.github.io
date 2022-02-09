@@ -12,7 +12,7 @@ jobs:
       PAYLOAD_REF: ${{ github.event.client_payload.ref }}
       PAYLOAD_SHA: ${{ github.event.client_payload.sha }}
       PAYLOAD_REPOSITORY: ${{ github.event.client_payload.repository }}
-      PAYLOAD_COMMIT_MESSAGE: ${{ github.event.client_payload.commit_message }}
+      PAYLOAD_PR_NUMBER: ${{ github.event.client_payload.pr_number }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
