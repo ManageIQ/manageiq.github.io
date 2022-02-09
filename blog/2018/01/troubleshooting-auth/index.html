@@ -559,11 +559,11 @@ TLS_CACERT      /etc/openldap/certs/cacert.pem
 by ManageIQ authentication are correctly provided by the underlying technology.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>dbus-send <span class="se">\</span>
-  <span class="nt">--print-reply</span> <span class="se">\</span>
-  <span class="nt">--system</span> <span class="se">\</span>
-  <span class="nt">--dest</span><span class="o">=</span>org.freedesktop.sssd.infopipe /org/freedesktop/sssd/infopipe org.freedesktop.sssd.infopipe.GetUserAttr <span class="se">\</span>
+<span class="go">  --print-reply \
+  --system \
+  --dest=org.freedesktop.sssd.infopipe /org/freedesktop/sssd/infopipe org.freedesktop.sssd.infopipe.GetUserAttr \
   string:mshiffrin array:string:mail,givenname,sn,displayname,domainname
-</code></pre></div></div>
+</span></code></pre></div></div>
 
 <p>The output from the above <strong><em>dbus-send / GetUserAttr</em></strong> command should look similar to the following:</p>
 
@@ -609,11 +609,11 @@ by ManageIQ authentication are correctly provided by the underlying technology.<
 <p>This <strong><em>dbus-send / GetUserGroups</em></strong> command can be used to confirm all of the user’s groups are correctly provided by the underlying technology.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>dbus-send <span class="se">\</span>
-  <span class="nt">--print-reply</span> <span class="se">\</span>
-  <span class="nt">--system</span> <span class="se">\</span>
-  <span class="nt">--dest</span><span class="o">=</span>org.freedesktop.sssd.infopipe /org/freedesktop/sssd/infopipe org.freedesktop.sssd.infopipe.GetUserGroups <span class="se">\</span>
+<span class="go">  --print-reply \
+  --system \
+  --dest=org.freedesktop.sssd.infopipe /org/freedesktop/sssd/infopipe org.freedesktop.sssd.infopipe.GetUserGroups \
   string:mshiffrin
-</code></pre></div></div>
+</span></code></pre></div></div>
 
 <p>The output from the above <strong><em>dbus-send / GetUserAttr</em></strong> command should look similar to the following:</p>
 
