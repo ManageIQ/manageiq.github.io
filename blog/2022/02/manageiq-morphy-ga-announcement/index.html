@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - ManageIQ Morphy GA Announcement</title>
+  <meta name="description" content="On behalf of the ManageIQ team, I’m happy to announce the release of ManageIQ Morphy!  This release is named after the chess grandmaster Paul Morphy.  You ca...">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/blog/2022/02/2022-02-14-manageiq-morphy-ga-announcement/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/blog/2022/02/manageiq-morphy-ga-announcement/">
+      <div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10">
+        <header class="blog_header">
+          <h1>
+            ManageIQ Blog
+          </h1>
+        </header>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-10 blog_main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="page-title" itemprop="name headline">ManageIQ Morphy GA Announcement</h1>
+
+            <div class="post-meta">
+              <time datetime="2022-02-14T00:00:00+00:00" itemprop="datePublished">
+                Feb 14, 2022
+              </time>
+
+              
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                by
+                <i itemprop="name">
+                  chessbyte
+                </i>
+              </span>
+              
+
+              <ul class="post-tags">
+                
+                <li>
+                  <a href="/blog/tags/releases">releases</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/announcements">announcements</a>
+                </li>
+                
+              </ul>
+            </div>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <p>On behalf of the ManageIQ team, I’m happy to announce the release of <strong>ManageIQ Morphy</strong>!  This release is named after the chess grandmaster <a href="https://en.wikipedia.org/wiki/Paul_Morphy">Paul Morphy</a>.  You can download the Morphy-1 release on our <a href="/download">downloads page</a>.</p>
+
+<p>Here are the highlights of the <a href="https://github.com/orgs/ManageIQ/projects/13#column-15656536">Morphy release</a>:</p>
+
+<ul>
+  <li>Providers
+    <ul>
+      <li>Create IBM PowerVC Provider <a href="https://github.com/ManageIQ/manageiq/issues/21098">[#21098]</a></li>
+      <li>IBM Cloud VPC Provider Enhancements <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/issues/146">[#146]</a></li>
+      <li>IBM Cloud PowerVS Provider Enhancements <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/issues/269">[#269]</a></li>
+      <li>Support Oracle Cloud <a href="https://github.com/ManageIQ/manageiq-providers-oracle_cloud/issues/2">[#2]</a></li>
+      <li>Kyndryl AutoSDE Provider Enhancements <a href="https://github.com/ManageIQ/manageiq-providers-autosde/issues/82">[#82]</a></li>
+      <li>Support Oracle Kubernetes Engine (OKE) <a href="https://github.com/ManageIQ/manageiq-providers-oracle_cloud/issues/31">[#31]</a></li>
+      <li>Support Azure Kubernetes Service (AKS) <a href="https://github.com/ManageIQ/manageiq-providers-azure/issues/442">[#442]</a></li>
+      <li>Support Google Kubernetes Engine (GKE) <a href="https://github.com/ManageIQ/manageiq-providers-google/issues/180">[#180]</a></li>
+      <li>Support IBM Cloud Kubernetes Service (IKS) <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/issues/149">[#149]</a></li>
+      <li>Add support for Cloud Databases <a href="https://github.com/ManageIQ/manageiq/issues/20221">[#20221]</a></li>
+      <li>Pull in support for vSphere 7.0U3 <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/759">[#759]</a></li>
+    </ul>
+  </li>
+  <li>Core
+    <ul>
+      <li>[EmbeddedAnsible] Configurable <code class="language-plaintext highlighter-rouge">verify_ssl</code> for git repositories <a href="https://github.com/ManageIQ/manageiq/issues/20732">[#20732]</a></li>
+      <li>Gracefully handle non-superuser setting up replication <a href="https://github.com/ManageIQ/manageiq/pull/21372">[#21372]</a></li>
+      <li>Faster migrations <a href="https://github.com/ManageIQ/manageiq/pull/21259">[#21259]</a></li>
+    </ul>
+  </li>
+  <li>API
+    <ul>
+      <li>API Interface Changes <a href="https://github.com/ManageIQ/manageiq-api/issues/1067">[#1067]</a></li>
+      <li>Throttle API requests <a href="https://github.com/ManageIQ/manageiq/issues/20955">[#20955]</a></li>
+    </ul>
+  </li>
+  <li>UI
+    <ul>
+      <li>Automation/Configuration menu reorganization <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/7657">[#7657]</a></li>
+      <li>Add provider connection status errors to provider dashboard <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/7709">[#7709]</a></li>
+      <li>Forms Conversion to React <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/7989">[#7989]</a></li>
+    </ul>
+  </li>
+  <li>Build
+    <ul>
+      <li>[Podified] Upgrades: handle updates to CRs with new CRD settings <a href="https://github.com/ManageIQ/manageiq-pods/issues/676">[#676]</a></li>
+      <li>Move from CentOS 8 to CentOS Stream <a href="https://github.com/ManageIQ/manageiq-appliance-build/issues/459">[#459]</a></li>
+      <li>Dependent containers should store a manifest of the git SHA and date <a href="https://github.com/ManageIQ/manageiq-pods/issues/699">[#699]</a></li>
+    </ul>
+  </li>
+  <li>Developer
+    <ul>
+      <li>Support running logical replication locally for easier development <a href="https://github.com/ManageIQ/manageiq/issues/21299">[#21299]</a></li>
+      <li>Make provider secrets pluggable <a href="https://github.com/ManageIQ/manageiq/issues/21157">[#21157]</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>There are many more changes that would be impossible to detail in a single blog post.  Many thanks goes to all of the community members for their contributions!  We are already well underway on the next release of ManageIQ - Najdorf.  If you’re interested in getting involved, check out our <a href="/roadmap">roadmap</a>, check out our <a href="/community">community page</a>, ask questions in our <a href="http://talk.manageiq.org">talk forum</a>, or chat with us in <a href="https://gitter.im/ManageIQ/manageiq">Gitter</a>.  We look forward to hearing from you!</p>
+
+          </div>
+        </article>
+      </div>
+
+      <div class="col-xs-12 col-sm-2 blog_side">
+          <div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Categories
+  </h3>
+
+  <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/announcements">announcements</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Archive
+  </h3>
+
+  <ul id="blog_archive_menu" class="blog_menu">
+    
+    
+    
+
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2022/index.html">
+        2022
+      </a>
+      
+        <ul class="blog_menu blog_months">
+  
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/02/index.html">
+      February
+    </a>
+    
+  </li>
+  
+</ul>
+
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2021/index.html">
+        2021
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2020/index.html">
+        2020
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2019/index.html">
+        2019
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2018/index.html">
+        2018
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2017/index.html">
+        2017
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2016/index.html">
+        2016
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2015/index.html">
+        2015
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2014/index.html">
+        2014
+      </a>
+      
+    </li>
+    
+  </ul>
+</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/_posts/2022-02-14-manageiq-morphy-ga-announcement.md">
+          <i class="fa fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2022 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

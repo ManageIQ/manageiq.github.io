@@ -5,9 +5,25 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 14 Feb 2022 22:36:40 +0000</pubDate>
-    <lastBuildDate>Mon, 14 Feb 2022 22:36:40 +0000</lastBuildDate>
+    <pubDate>Tue, 15 Feb 2022 20:57:05 +0000</pubDate>
+    <lastBuildDate>Tue, 15 Feb 2022 20:57:05 +0000</lastBuildDate>
     <generator>Jekyll v3.9.1</generator>
+    
+      <item>
+        <title>ManageIQ Morphy GA Announcement</title>
+        <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Morphy&lt;/strong&gt;!  This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Paul_Morphy&quot;&gt;Paul Morphy&lt;/a&gt;.  You can download the Morphy-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 14 Feb 2022 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2022/02/manageiq-morphy-ga-announcement/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2022/02/manageiq-morphy-ga-announcement/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>RbVmomi Maintenance</title>
@@ -239,22 +255,6 @@ To estimate the size of the metric collection portion of the database, you could
         <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2021/02/manageiq-kasparov-ga-announcement/</link>
         <guid isPermaLink="true">http://manageiq.org/blog/2021/02/manageiq-kasparov-ga-announcement/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Announcing Kasparov Beta, Jansa-3, and Ivanchuk-8</title>
-        <description>&lt;p&gt;ManageIQ Kasparov-1-Beta1.1, Jansa-3, and Ivanchuk-8 are now available. These releases include security fixes. Many thanks goes to Dávid Halász (&lt;a href=&quot;https://github.com/skateman&quot;&gt;@skateman&lt;/a&gt;) and the team for finding and fixing these vulnerabilities.  Also, many thanks go to all of the contributors for all of their enhancements and bug fixes.&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 18 Jan 2021 17:01:13 +0000</pubDate>
-        <link>http://manageiq.org/blog/2021/01/Announcing-Kasparov-Beta-Jansa-3-And-Ivanchuk-8/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2021/01/Announcing-Kasparov-Beta-Jansa-3-And-Ivanchuk-8/</guid>
         
         <category>releases</category>
         
