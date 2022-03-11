@@ -1007,6 +1007,7 @@
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#configuring-metrics-collection-for-the-ibm-cloud-vpc-provider">Configuring Metrics Collection for the IBM Cloud VPC Provider</a></li>
+<li class="toc-entry toc-h1"><a href="#configuring-event-handling-for-the-ibm-cloud-vpc-provider">Configuring Event Handling for the IBM Cloud VPC Provider</a></li>
 </ul><h1 id="ibm-cloud-vpc-providers">
 <a class="anchor" href="#ibm-cloud-vpc-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>IBM Cloud VPC Providers</h1>
 
@@ -1076,6 +1077,27 @@
     <p>Use the following command: <code class="language-plaintext highlighter-rouge">ibmcloud resource service-instance &lt;INSTANCE_NAME&gt; --output json | jq -r '.[].guid'</code></p>
   </li>
 </ol>
+
+<h1 id="configuring-event-handling-for-the-ibm-cloud-vpc-provider">
+<a class="anchor" href="#configuring-event-handling-for-the-ibm-cloud-vpc-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring Event Handling for the IBM Cloud VPC Provider</h1>
+
+<ol>
+  <li>
+    <p>On IBM Cloud, create an IBM Cloud Activity Tracker service instance
+<strong>Note:</strong> Export API will be used therefore <code class="language-plaintext highlighter-rouge">Lite</code> plan cannot be used</p>
+  </li>
+  <li>
+    <p>Open the dashboard for the instance and navigate to <code class="language-plaintext highlighter-rouge">Settings -&gt; Organization -&gt; API Keys</code></p>
+  </li>
+  <li>
+    <p>Copy the service key or generate a new one</p>
+  </li>
+  <li>
+    <p>On ManageIQ, when creating an IBM Cloud VPC provider, place the service key in the field under the <code class="language-plaintext highlighter-rouge">Events</code> tab on the provider creation form</p>
+  </li>
+</ol>
+
+<p>For further information, see https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-service_keys</p>
 
 
       </div>
