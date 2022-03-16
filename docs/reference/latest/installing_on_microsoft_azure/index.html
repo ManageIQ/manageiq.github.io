@@ -1494,7 +1494,7 @@ minutes. Note: Enter <code class="language-plaintext highlighter-rouge">az stora
 storage containers.</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>$ az storage blob upload --account-name &lt;storage-account-name&gt; --container-name &lt;container-name&gt; --type page --file &lt;path-to-vhd&gt; --name &lt;image-name&gt;.vhd
+<div class="highlight"><pre class="highlight"><code>$ az storage blob upload --account-name &lt;storage-account-name&gt; --container-name &lt;storage-container-name&gt; --type page --file &lt;path-to-vhd&gt; --name &lt;image-name&gt;.vhd
 
 Example:
 
@@ -1523,7 +1523,7 @@ $ az storage blob url -c azrhelclistcont -n example.vhd
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>Example:
 
-$ az image create -n &lt;image-name&gt; -g &lt;miq-appliance-group&gt; --os-type &lt;linux&gt; --source &lt;https://miqstorageaccount.blob.core.windows.net/miqstoragecontainer/example.vhd&gt;
+$ az image create -n &lt;image-name&gt; -g &lt;appliance-group-name&gt; --os-type &lt;linux&gt; --source &lt;https://storage-account-name.blob.core.windows.net/storage-container-name/example.vhd&gt;
 </code></pre></div>    </div>
   </li>
   <li>
@@ -1537,11 +1537,11 @@ are created.</p>
 
 Example:
 
-az vm create --resource-group azrhelclirsgrp --location southcentralus --use-unmanaged-disk --name miq-appliance-1 --storage-account azrhelclistact --os-type linux --admin-username clouduser --generate-ssh-keys --image https://azrhelclistact.blob.core.windows.net/azrhelclistcont/example.vhd
+az vm create --resource-group azrhelclirsgrp --location southcentralus --use-unmanaged-disk --name my-appliance-1 --storage-account azrhelclistact --os-type linux --admin-username clouduser --generate-ssh-keys --image https://azrhelclistact.blob.core.windows.net/azrhelclistcont/example.vhd
 
 {
   "fqdns": "",
-  "id": "/subscriptions//resourceGroups/azrhelclirsgrp/providers/Microsoft.Compute/virtualMachines/miq-appliance-1",
+  "id": "/subscriptions//resourceGroups/azrhelclirsgrp/providers/Microsoft.Compute/virtualMachines/my-appliance-1",
   "location": "southcentralus",
   "macAddress": "00-0X-XX-XX-XX-XX",
   "powerState": "VM running",
