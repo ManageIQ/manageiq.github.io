@@ -1298,20 +1298,18 @@ documentation</a>.</p>
 <a class="anchor" href="#configuring-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring ManageIQ</h2>
 
 <p>After installing ManageIQ and running it for the first
-time, you must perform some basic configuration. To configure
-ManageIQ, you must at a minimum:</p>
+time, you must perform some basic configuration. You must complete these steps:</p>
 
 <ol>
   <li>
-    <p>Add a disk to the infrastructure hosting your appliance.</p>
+    <p>Add a disk to the infrastructure that is hosting your appliance.</p>
   </li>
   <li>
     <p>Configure the database.</p>
   </li>
 </ol>
 
-<p>Configure the ManageIQ appliance using the internal
-appliance console.</p>
+<p>Configure the appliance by using the internal appliance console.</p>
 
 <h3 id="accessing-the-appliance-console">
 <a class="anchor" href="#accessing-the-appliance-console" aria-hidden="true"><span class="octicon octicon-link"></span></a>Accessing the Appliance Console</h3>
@@ -1361,128 +1359,6 @@ options for database configuration:</p>
   </li>
 </ul>
 
-<div class="important">
-
-### Configuring an Internal Database
-
-Before installing an internal database, add a disk to the infrastructure
-hosting your appliance. See the documentation specific to your
-infrastructure for instructions for adding a disk. As a storage disk
-usually cannot be added while a virtual machine is running, Red Hat
-recommends adding the disk before starting the appliance.
-ManageIQ only supports installing of an internal VMDB on blank
-disks; installation will fail if the disks are not blank.
-
-</div>
-
-<ol>
-  <li>
-    <p>Start the appliance and open a terminal console.</p>
-  </li>
-  <li>
-    <p>Enter the <code class="language-plaintext highlighter-rouge">appliance_console</code> command. The ManageIQ appliance
-summary screen displays.</p>
-  </li>
-  <li>
-    <p>Press <strong>Enter</strong> to manually configure settings.</p>
-  </li>
-  <li>
-    <p>Select <strong>Configure Application</strong> from the menu.</p>
-  </li>
-  <li>
-    <p>You are prompted to create or fetch an encryption key.</p>
-
-    <ul>
-      <li>
-        <p>If this is the first ManageIQ appliance, choose <strong>Create
-key</strong>.</p>
-      </li>
-      <li>
-        <p>If this is not the first ManageIQ appliance, choose
-<strong>Fetch key from remote machine</strong> to fetch the key from the
-first appliance. For worker and multi-region setups, use this
-option to copy key from another appliance.</p>
-
-        <p><strong>Note:</strong></p>
-
-        <p>All ManageIQ appliances in a multi-region
-deployment must use the same key.</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Choose <strong>Create Internal Database</strong> for the database location.</p>
-  </li>
-  <li>
-    <p>Choose a disk for the database. This can be either a disk you
-attached previously, or a partition on the current disk.</p>
-
-    <div class="important">
-
-Red Hat recommends using a separate disk for the database.
-
-</div>
-
-    <p>If there is an unpartitioned disk attached to the virtual machine,
-the dialog will show options similar to the following:</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>1) /dev/vdb: 20480
-2) Don't partition the disk
-</code></pre></div>    </div>
-
-    <ul>
-      <li>
-        <p>Enter <strong>1</strong> to choose <code class="language-plaintext highlighter-rouge">/dev/vdb</code> for the database location. This
-option creates a logical volume using this device and mounts the
-volume to the appliance in a location appropriate for storing
-the database. The default location is <code class="language-plaintext highlighter-rouge">/var/lib/pgsql</code>, which
-can be found in the environment variable
-<code class="language-plaintext highlighter-rouge">$APPLIANCE_PG_MOUNT_POINT</code>.</p>
-      </li>
-      <li>
-        <p>Enter <strong>2</strong> to continue without partitioning the disk. A second
-prompt will confirm this choice. Selecting this option results
-in using the root filesystem for the data directory (not advised
-in most cases).</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Enter <strong>Y</strong> or <strong>N</strong> for <strong>Should this appliance run as a standalone
-database server?</strong></p>
-
-    <ul>
-      <li>
-        <p>Select <strong>Y</strong> to configure the appliance as a database-only
-appliance. As a result, the appliance is configured as a basic
-PostgreSQL server, without a user interface.</p>
-      </li>
-      <li>
-        <p>Select <strong>N</strong> to configure the appliance with the full
-administrative user interface.</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>When prompted, enter a unique number to create a new region.</p>
-
-    <div class="important">
-
-Creating a new region destroys any existing data on the chosen
-database.
-
-</div>
-  </li>
-  <li>
-    <p>Create and confirm a password for the database.</p>
-  </li>
-</ol>
-
-<p>ManageIQ then configures the internal database. This takes a few
-minutes. After the database is created and initialized, you can log in
-to ManageIQ.</p>
-
 <h4 id="configuring-an-external-database">
 <a class="anchor" href="#configuring-an-external-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring an External Database</h4>
 
@@ -1497,8 +1373,7 @@ database.</p>
 <p>The <code class="language-plaintext highlighter-rouge">postgresql.conf</code> file used with ManageIQ databases requires
 specific settings for correct operation. For example, it must correctly
 reclaim table space, control session timeouts, and format the PostgreSQL
-server log for improved system support. Due to these requirements, Red
-Hat recommends that external ManageIQ databases use a
+server log for improved system support. It is recommended that external databases use a
 <code class="language-plaintext highlighter-rouge">postgresql.conf</code> file based on the standard file used by the
 ManageIQ appliance.</p>
 
@@ -1513,7 +1388,7 @@ necessary to alter the <code class="language-plaintext highlighter-rouge">max_co
 
 <ul>
   <li>
-    <p>ManageIQ requires PostgreSQL version 9.5.</p>
+    <p>ManageIQ requires PostgreSQL version 10.</p>
   </li>
   <li>
     <p>Because the <code class="language-plaintext highlighter-rouge">postgresql.conf</code> file controls the operation of all
@@ -1536,26 +1411,6 @@ summary screen displays.</p>
   </li>
   <li>
     <p>Select <strong>Configure Application</strong> from the menu.</p>
-  </li>
-  <li>
-    <p>You are prompted to create or fetch a security key.</p>
-
-    <ul>
-      <li>
-        <p>If this is the first ManageIQ appliance, choose <strong>Create
-key</strong>.</p>
-      </li>
-      <li>
-        <p>If this is not the first ManageIQ appliance, choose
-<strong>Fetch key from remote machine</strong> to fetch the key from the
-first appliance.</p>
-
-        <p><strong>Note:</strong></p>
-
-        <p>All ManageIQ appliances in a multi-region
-deployment must use the same key.</p>
-      </li>
-    </ul>
   </li>
   <li>
     <p>Choose <strong>Create Region in External Database</strong> for the database location.</p>
