@@ -1094,8 +1094,10 @@
 <li class="toc-entry toc-h3"><a href="#preparing-manageiq-hosting-server-required-once">Preparing ManageIQ hosting server (required once):</a></li>
 <li class="toc-entry toc-h3"><a href="#preparing-ibm-powervc-server-required-once">Preparing IBM PowerVC Server (required once):</a></li>
 <li class="toc-entry toc-h3"><a href="#add-a-cloud-object-storage-provider-in-manageiq">Add a Cloud Object Storage provider in ManageIQ:</a></li>
-<li class="toc-entry toc-h3"><a href="#add-an-ibm-power-systems-virual-servers-provider-in-manageiq">Add an IBM Power Systems Virual Servers provider in ManageIQ:</a></li>
+<li class="toc-entry toc-h3"><a href="#add-an-ibm-power-systems-virtual-server-provider-in-manageiq">Add an IBM Power Systems Virtual Server provider in ManageIQ:</a></li>
 <li class="toc-entry toc-h3"><a href="#add-an-ibm-powervc-provider-in-manageiq">Add an IBM PowerVC provider in ManageIQ:</a></li>
+<li class="toc-entry toc-h3"><a href="#grant-image-import-permissions-in-manageiq">Grant Image Import Permissions in ManageIQ:</a></li>
+<li class="toc-entry toc-h3"><a href="#enable-embedded-ansible-in-manageiq">Enable Embedded Ansible in ManageIQ:</a></li>
 <li class="toc-entry toc-h3"><a href="#start-the-workflow">Start the workflow</a></li>
 <li class="toc-entry toc-h3"><a href="#troubleshooting">Troubleshooting</a></li>
 </ul>
@@ -3178,7 +3180,7 @@ of the user under which the ManageIQ web-server is running.</li>
 
 <ol>
   <li>
-    <p>Make sure that the IBM PowerVC version you are using is <a href="https://www.ibm.com/docs/it/powervc/1.4.4?topic=installing-power-virtualization-center">1.4.4</a> or higher and is located on a server running either SLES or RHEL family GNU/Linux distribution.</p>
+    <p>Make sure that the minimal IBM PowerVC version you are using is <a href="https://www.ibm.com/docs/it/powervc/1.4.4?topic=installing-power-virtualization-center">1.4.4</a>.</p>
   </li>
   <li>
     <p>Install <code class="language-plaintext highlighter-rouge">python3.X</code>, <code class="language-plaintext highlighter-rouge">pip3</code>, <code class="language-plaintext highlighter-rouge">virtualenv</code> applications as well as the <code class="language-plaintext highlighter-rouge">libselinux-python3</code> library.
@@ -3189,7 +3191,7 @@ You can achieve this by issuing the following command as a “root” user:</p>
 </code></pre></div>    </div>
 
     <p>The standard <code class="language-plaintext highlighter-rouge">python3.X</code> installation will be used in order to run auxiliary scripts, which will
-upload PowerVC (<a href="https://en.wikipedia.org/wiki/Open_Virtualization_Format">OVA</a>) disk images to the <a href="https://www.ibm.com/cloud/object-storage">IBM Cloud Object Storage</a>.
+upload PowerVC disk images (in Open Virtualization Format) to the <a href="https://www.ibm.com/cloud/object-storage">IBM Cloud Object Storage</a>.
 The <code class="language-plaintext highlighter-rouge">pip3</code> is required in order to install Cloud Object Storage <a href="https://github.com/ibm/ibm-cos-sdk-python">Python SDK</a> and auxiliary packages for proper functioning of the import workflow.
 The role of <code class="language-plaintext highlighter-rouge">virtualenv</code> will be to isolate python package installations that are relevant only to the image import workflow from the
 Python system packages. The <code class="language-plaintext highlighter-rouge">libselinux-python3</code> library is needed for the proper functioning of Ansible’s <code class="language-plaintext highlighter-rouge">copy</code> module, which will
@@ -3208,7 +3210,9 @@ whose size is ‘G’ Gigabytes, then having ‘G+1’ Gigabytes of free space i
   </li>
   <li>
     <p>Create an empty sessions directory <code class="language-plaintext highlighter-rouge">/home/sessions</code> which will have to be located on the local storage with sufficient space
-as described in previous step.</p>
+as described in the previous step. In addition, make sure that already existing <code class="language-plaintext highlighter-rouge">/var/opt/ibm/powervc/imgstaging</code> directory also 
+has at least G+1 Gigabytes of free storage as described in previous paragraph since IBM PowerVC internally uses it as a temporary 
+staging area during export of images to the local filesystem.</p>
 
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>mkdir /home/sessions
@@ -3217,7 +3221,8 @@ as described in previous step.</p>
   <li>
     <p>The image import workflow will use Ansible via SSH from the ManageIQ server in order to execute commands on the PowerVC server. At this point you need to choose a system user 
 that will be made available to ManageIQ instance for connection to the PowerVC server via SSH. Make sure the user has a read/write access to the <code class="language-plaintext highlighter-rouge">/home/sessions</code> directory.
-The user must also be able to execute <code class="language-plaintext highlighter-rouge">powervc-image</code> application through the command line. We will assume that all further commands in this section are executed using this existing or newly created system user:</p>
+The user must also be able to execute <code class="language-plaintext highlighter-rouge">powervc-image</code> application through the command line. In general, a good security practice would be 
+to permit user only as much as it is required to run the import workflow. We will assume that all further commands in this section are executed using this existing or newly created system user:</p>
 
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>su - your_user
@@ -3260,7 +3265,8 @@ encrypting/decrypting IBM Cloud connection credentials and the <code class="lang
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Make sure to have a valid PowerVC connection/resource file under <code class="language-plaintext highlighter-rouge">/opt/ibm/powervc/powervcrc</code> (or at your custom location) containing similar definitions:</p>
+    <p>Make sure to have a valid PowerVC connection/resource file under <code class="language-plaintext highlighter-rouge">/opt/ibm/powervc/powervcrc</code> (or at your custom location) containing similar definitions
+(the values below represent an example and not a suggestion for usage).</p>
 
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>export OS_IDENTITY_API_VERSION=3
@@ -3278,10 +3284,6 @@ export OS_NETWORK_API_VERSION=2.0
 export OS_IMAGE_API_VERSION=2
 export OS_VOLUME_API_VERSION=2
 </code></pre></div>    </div>
-
-    <p><strong>Note:</strong> If you don’t want to specify the password (<code class="language-plaintext highlighter-rouge">OS_PASSWORD</code>) in this file then you will be prompted by the
-PowerVC command line utilities to input it in the interactive mode. This will occur during testing only as the image import
-workflow will make use of the credentials that will be specified when registering PowerVC provider in your ManageIQ instance on later steps.</p>
   </li>
   <li>
     <p>The last step is to test the exporting of PowerVC disk image to the local filesystem. Firstly, execute:</p>
@@ -3302,7 +3304,7 @@ workflow will make use of the credentials that will be specified when registerin
 <div class="highlight"><pre class="highlight"><code>+----------+--------------------------------------+--------+---------+------+-------------+--------------+-----------+------------+
 | Name     | ID                                   | Status | Volumes | Size | Description | Architecture | OS Distro | Exportable |
 +----------+--------------------------------------+--------+---------+------+-------------+--------------+-----------+------------+
-| test-IMG | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | active | 1       | 10   |             | ppc64        | rhel      | True       |
+| test-IMG | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | active | 1       | 20   |             | ppc64        | rhel      | True       |
 +----------+--------------------------------------+--------+---------+------+-------------+--------------+-----------+------------+
 </code></pre></div>    </div>
 
@@ -3326,21 +3328,26 @@ workflow will make use of the credentials that will be specified when registerin
 
 <ol>
   <li>
-    <p>See the corresponding instructions <a href="#storage-managers">here</a>.</p>
+    <p>See the corresponding instructions <a href="storage_providers/ibm_cloud_object_storage_managers">here</a>.</p>
   </li>
   <li>
     <p>Create a bucket in your Cloud Object Storage that will hold the transient OVA image files.  <br>
-<img src="../images/new_bucket.png" alt="New Bucket"><br>
-Make sure to choose the region for the bucket that corresponds to the region that you have specified when registering the
+<img src="../images/new_bucket.png" alt="New Bucket"></p>
+
+    <p>Make sure to choose the region for the bucket that <strong>corresponds</strong> to the region that you have specified when registering the
 Cloud Object Storage provider.</p>
+
+    <p><strong>NOTE</strong>: The “root” user as well as the workflow dedicated user of the PowerVC server from step <a href="#preparing-ibm-powervc-server-required-once">5</a> 
+would both be able to decrypt the Cloud Object Storage’s credentials during the execution of the import workflow and therefore make sure to take 
+this into consideration in your security setup.</p>
   </li>
 </ol>
 
-<h3 id="add-an-ibm-power-systems-virual-servers-provider-in-manageiq">
-<a class="anchor" href="#add-an-ibm-power-systems-virual-servers-provider-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add an IBM Power Systems Virual Servers provider in ManageIQ:</h3>
+<h3 id="add-an-ibm-power-systems-virtual-server-provider-in-manageiq">
+<a class="anchor" href="#add-an-ibm-power-systems-virtual-server-provider-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add an IBM Power Systems Virtual Server provider in ManageIQ:</h3>
 
 <ol>
-  <li>See the corresponding instructions <a href="#ibm-power-systems-virtual-servers-providers">here</a>.</li>
+  <li>See the corresponding instructions <a href="cloud_providers/ibm_power_systems_virtual_servers_providers">here</a>.</li>
 </ol>
 
 <h3 id="add-an-ibm-powervc-provider-in-manageiq">
@@ -3348,39 +3355,44 @@ Cloud Object Storage provider.</p>
 
 <ol>
   <li>
-    <p>See the corresponding instructions <a href="#ibm-powervc">here</a>.</p>
+    <p>See the corresponding instructions <a href="cloud_providers/ibm_power_vc_providers">here</a>.</p>
   </li>
   <li>
-    <p>Specify the image import related parameters on the PowerVC registration form. <br>
-  <img src="../images/pvc_import_method.png" alt="pvc_reg"></p>
+    <p>Specify the image import related parameters on the PowerVC registration form.</p>
   </li>
 </ol>
 
 <ul>
   <li>
     <p>Enter the SSH username for access to the PowerVC server. It corresponds to the user on your PowerVC server that is dedicated to
-running image import related commands via Ansible as described in previous section.</p>
+running image import related commands via Ansible as described in <a href="#preparing-ibm-powervc-server-required-once">5</a>.</p>
   </li>
   <li>
-    <p>Select the authentication method: Password / Private key</p>
-  </li>
-  <li>
-    <p>If password method is chosen then enter the corresponding SSH password.<br>
-<img src="../images/pvc_import_pass.png" alt="pvc_reg"></p>
-  </li>
-  <li>
-    <p>If private key method is chosen then enter the private key and the private key passphrase (if present).<br>
+    <p>Enter the private key and the private key passphrase (if present).<br>
 <img src="../images/pvc_import_pkey.png" alt="pvc_reg"></p>
-  </li>
-  <li>
-    <p>(optional) Specify custom location of the resource file on the PowerVC server:<br>
- <img src="../images/pvc_rcfile.png" alt="pvc_reg"></p>
   </li>
 </ul>
 
+<h3 id="grant-image-import-permissions-in-manageiq">
+<a class="anchor" href="#grant-image-import-permissions-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grant Image Import Permissions in ManageIQ:</h3>
+
+<p>User performing image import needs a corresponding permission in ManageIQ in order
+to perform this operation. For granting permissions, log-in through an administrative account and navigate 
+to <code class="language-plaintext highlighter-rouge">Settings -&gt; Application Settings -&gt; Access Control</code>. Make sure the user of your choice has permissions for 
+<code class="language-plaintext highlighter-rouge">Import Cloud Template</code> action through the user’s corresponding group and role.
+ <img src="../images/import_access_control.png" alt="import_access_control"></p>
+
+<h3 id="enable-embedded-ansible-in-manageiq">
+<a class="anchor" href="#enable-embedded-ansible-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enable Embedded Ansible in ManageIQ:</h3>
+
+<p>Currently the workflow event is queued as Embedded Ansible playbook upon request submission and as such the corresponding functionality has to be enabled
+in ManageIQ by navigating to: <code class="language-plaintext highlighter-rouge">Settings -&gt; Application Settings -&gt; Settings</code></p>
+
+<p><img src="../images/import_emb_ansible.png" alt="Enable Embedded Ansible"></p>
+
 <h3 id="start-the-workflow">
 <a class="anchor" href="#start-the-workflow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Start the workflow</h3>
-<p>The workflow operates by exporting the image as an OVA file onto a PowerVC local storage, uploading it to the Cloud Object Storage bucket and then transferring it into Power Systems Virtual Servers image registry. In order to initiate the workflow:</p>
+<p>The workflow operates by exporting the image as an OVA file onto a PowerVC local storage, uploading it to the Cloud Object Storage bucket and then transferring it into Power Systems Virtual Server image registry. In order to initiate the workflow:</p>
 
 <ol>
   <li>
@@ -3388,7 +3400,8 @@ running image import related commands via Ansible as described in previous secti
 <img src="../images/refresh_providers.png" alt="Import Image Button Screenshot"></p>
   </li>
   <li>
-    <p>Navigate to the Power Virtual Servers provider added above. <img src="../images/import_button.png" alt="Import Image Button Screenshot"></p>
+    <p>Navigate to the Power Systems Virtual Server provider added above.  <br>
+<img src="../images/import_button.png" alt="Import Image Button Screenshot"></p>
   </li>
   <li>
     <p>Click on the <code class="language-plaintext highlighter-rouge">Import Image</code> button after which an import form will appear.</p>
@@ -3409,6 +3422,9 @@ running image import related commands via Ansible as described in previous secti
     <p>Choose target disk type for the image being imported.</p>
   </li>
   <li>
+    <p>Choose the timeout value for your request (default is 3 hours).</p>
+  </li>
+  <li>
     <p>Check the corresponding box if you wish to keep the OVA file in the cloud bucket upon workflow completion.</p>
   </li>
   <li>
@@ -3424,7 +3440,7 @@ Power Systems Virtual Server and PowerVC internal load.</p>
   <img src="../images/miq_import_task.png" alt="Workflow Form Screenshot"></p>
   </li>
   <li>
-    <p>Initiate the refreshing of the Power Virtual Servers provider upon workflow completion and
+    <p>Initiate the refreshing of the Power Systems Virtual Server provider upon workflow completion and
 wait for the newly imported image to appear.</p>
   </li>
 </ol>
@@ -3440,6 +3456,10 @@ wait for the newly imported image to appear.</p>
     <p>If  <code class="language-plaintext highlighter-rouge">ManageIQ</code> server is terminated during the workflow execution then certain residual objects will 
 have to be removed manually. These are potentially the session directory on the PowerVC server under <code class="language-plaintext highlighter-rouge">/home/sessions</code>, the already uploaded OVA 
 image file in the Cloud Object Storage bucket or its parts as explained <a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-large-objects">here</a> (see <code class="language-plaintext highlighter-rouge">Abort incomplete multipart uploads</code>).</p>
+  </li>
+  <li>
+    <p>Currently only one import workflow for a given PowerVC &lt;–&gt; Power Systems Virtual Server pair is allowed. Any newly submitted import workflow, where at least one of the instances in the pair is involved with some other
+import workflow request, will be queued until the latter completes. You would need to cancel such already executing workflow in order to force immediate execution of the newly submitted one.</p>
   </li>
 </ul>
 
