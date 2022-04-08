@@ -1144,8 +1144,8 @@ Container Platform cluster.</p>
 <strong>openshift-infra</strong> project:</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>$ oadm policy add-role-to-user \
-    edit system:serviceaccount:openshift-infra:metrics-deployer
+<div class="highlight"><pre class="highlight"><code>$ oc adm policy add-role-to-user \
+edit system:serviceaccount:openshift-infra:metrics-deployer
 </code></pre></div>    </div>
   </li>
   <li>
@@ -1154,8 +1154,8 @@ grant it <strong>cluster-reader</strong> permission to the <strong>openshift-inf
 project:</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>$ oadm policy add-cluster-role-to-user \
-    cluster-reader system:serviceaccount:openshift-infra:heapster
+<div class="highlight"><pre class="highlight"><code>oc adm policy add-cluster-role-to-user \
+cluster-reader system:serviceaccount:openshift-infra:heapster
 </code></pre></div>    </div>
   </li>
 </ol>
