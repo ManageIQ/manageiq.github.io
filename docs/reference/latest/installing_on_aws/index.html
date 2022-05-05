@@ -1082,18 +1082,14 @@
   <li>
     <p>4 vCPUs.</p>
   </li>
-</ul>
-
-<h4 id="amazon-ec2-requirements">
+  <li>Check that there are inbound rules to access ports 443, 22, and 80.
+    <h4 id="amazon-ec2-requirements">
 <a class="anchor" href="#amazon-ec2-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Amazon EC2 Requirements</h4>
-
-<ul>
+  </li>
   <li>
     <p>An Amazon S3 bucket to store the disk image that will be imported to AWS as a snapshot.</p>
   </li>
-  <li>
-    <p>A VM import service role (IAM role) named <code class="language-plaintext highlighter-rouge">vmimport</code>.</p>
-  </li>
+  <li>A VM import service role (IAM role) named <code class="language-plaintext highlighter-rouge">vmimport</code>.</li>
 </ul>
 
 <p>For information on creating an Amazon S3 bucket and a VM Import Service Role, see the <a href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html">Amazon EC2
