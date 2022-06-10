@@ -2198,7 +2198,7 @@ database (ovirt_engine_history) is located. Usually, this is the RHV-M server.</
 
     <div class="important">
 
- For RHV 4.2, the PostgreSQL database is delivered as a software collection in version 9.5 and must be enabled first. Therefore, to run the following psql commands, you need to enable the *rh-postgresql95* collection and load into the current shell prompt by using the source command:
+ For RHV 4.2 and 4.3, the PostgreSQL database is delivered as a software collection in version 9.5 and must be enabled first. Therefore, to run the following psql commands, you need to enable the *rh-postgresql95* collection and load into the current shell prompt by using the source command:
 
  $ source /opt/rh/rh-postgresql95/enable
 
@@ -2208,7 +2208,7 @@ database (ovirt_engine_history) is located. Usually, this is the RHV-M server.</
     <p>Create the user for ManageIQ to be granted read-only access to the history database:</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> $ psql -U postgres -c "CREATE ROLE cfme WITH LOGIN ENCRYPTED PASSWORD '[password]';" -d ovirt_engine_history
+<div class="highlight"><pre class="highlight"><code> $ psql -U postgres -c "CREATE ROLE example_role_name WITH LOGIN ENCRYPTED PASSWORD '[password]';" -d ovirt_engine_history
 </code></pre></div>    </div>
   </li>
   <li>
@@ -2216,21 +2216,21 @@ database (ovirt_engine_history) is located. Usually, this is the RHV-M server.</
  database:</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> $ psql -U postgres -c "GRANT CONNECT ON DATABASE ovirt_engine_history TO cfme;"
+<div class="highlight"><pre class="highlight"><code> $ psql -U postgres -c "GRANT CONNECT ON DATABASE ovirt_engine_history TO example_role_name;"
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Grant the newly created user usage of the public schema:</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> $ psql -U postgres -c "GRANT USAGE ON SCHEMA public TO cfme;" ovirt_engine_history
+<div class="highlight"><pre class="highlight"><code> $ psql -U postgres -c "GRANT USAGE ON SCHEMA public TO example_role_name;" ovirt_engine_history
 </code></pre></div>    </div>
   </li>
   <li>
     <p>Generate the rest of the permissions that will be granted to the newly created user and save them to a file:</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> $ psql -U postgres -c "SELECT 'GRANT SELECT ON ' || relname || ' TO cfme;' FROM pg_class JOIN pg_namespace ON pg_namespace.oid = pg_class.relnamespace WHERE nspname = 'public' AND relkind IN ('r', 'v', 'S');" --pset=tuples_only=on  ovirt_engine_history &gt; grant.sql
+<div class="highlight"><pre class="highlight"><code> $ psql -U postgres -c "SELECT 'GRANT SELECT ON ' || relname || ' TO example_role_name;' FROM pg_class JOIN pg_namespace ON pg_namespace.oid = pg_class.relnamespace WHERE nspname = 'public' AND relkind IN ('r', 'v', 'S');" --pset=tuples_only=on  ovirt_engine_history &gt; grant.sql
 </code></pre></div>    </div>
   </li>
   <li>
@@ -2266,7 +2266,7 @@ database (ovirt_engine_history) is located. Usually, this is the RHV-M server.</
 
     <ol>
       <li>
-        <p>For RHV 4.0 and RHV 4.1, update the following line in
+        <p>For RHV 4.0, 4.1, and 4.4 update the following line in
  <code class="language-plaintext highlighter-rouge">/var/lib/pgsql/data/pg_hba.conf</code>:</p>
 
         <div class="language-plaintext highlighter-rouge">
@@ -2274,7 +2274,7 @@ database (ovirt_engine_history) is located. Usually, this is the RHV-M server.</
 </code></pre></div>        </div>
       </li>
       <li>
-        <p>For RHV 4.2, update the following line in
+        <p>For RHV 4.2 and 4.3, update the following line in
  <code class="language-plaintext highlighter-rouge">/var/opt/rh/rh-postgresql95/lib/pgsql/data/pg_hba.conf</code>:</p>
 
         <div class="language-plaintext highlighter-rouge">
@@ -2288,14 +2288,14 @@ database (ovirt_engine_history) is located. Usually, this is the RHV-M server.</
 
     <ol>
       <li>
-        <p>For RHV 4.0 and RHV 4.1, ensure the <code class="language-plaintext highlighter-rouge">listen_addresses</code> line in <code class="language-plaintext highlighter-rouge">/var/lib/pgsql/data/postgresql.conf</code> matches the following example:</p>
+        <p>For RHV 4.0, 4.1, and 4.4 ensure the <code class="language-plaintext highlighter-rouge">listen_addresses</code> line in <code class="language-plaintext highlighter-rouge">/var/lib/pgsql/data/postgresql.conf</code> matches the following example:</p>
 
         <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> listen_addresses  =  '*'
 </code></pre></div>        </div>
       </li>
       <li>
-        <p>For RHV 4.2, ensure the <code class="language-plaintext highlighter-rouge">listen_addresses</code> line in
+        <p>For RHV 4.2 and 4.3, ensure the <code class="language-plaintext highlighter-rouge">listen_addresses</code> line in
  <code class="language-plaintext highlighter-rouge">/var/opt/rh/rh-postgresql95/lib/pgsql/data/postgresql.conf</code> matches the following example:</p>
 
         <div class="language-plaintext highlighter-rouge">
@@ -2309,14 +2309,14 @@ database (ovirt_engine_history) is located. Usually, this is the RHV-M server.</
 
     <ol>
       <li>
-        <p>For RHV 4.0 and RHV 4.1:</p>
+        <p>For RHV 4.0, 4.1, and 4.4:</p>
 
         <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> # systemctl reload postgresql
 </code></pre></div>        </div>
       </li>
       <li>
-        <p>For RHV 4.2:</p>
+        <p>For RHV 4.2 and 4.3:</p>
 
         <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> # systemctl reload rh-postgresql95-postgresql
