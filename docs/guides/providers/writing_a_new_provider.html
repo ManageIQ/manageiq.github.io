@@ -495,6 +495,7 @@ Usage:
 Options:
   <span class="o">[</span><span class="nt">--path</span><span class="o">=</span>PATH]                        <span class="c"># Create plugin at given path</span>
                                        <span class="c"># Default: plugins</span>
+  <span class="o">[</span><span class="nt">--js</span><span class="o">]</span>, <span class="o">[</span><span class="nt">--no-js</span><span class="o">]</span>                    <span class="c"># Enable JavaScript in the plugin</span>
   <span class="o">[</span><span class="nt">--vcr</span><span class="o">]</span>, <span class="o">[</span><span class="nt">--no-vcr</span><span class="o">]</span>                  <span class="c"># Enable VCR cassettes (Default: --no-vcr)</span>
   <span class="o">[</span><span class="nt">--scaffolding</span><span class="o">]</span>, <span class="o">[</span><span class="nt">--no-scaffolding</span><span class="o">]</span>  <span class="c"># Generate default class scaffolding (Default: --scaffolding)</span>
                                        <span class="c"># Default: true</span>
@@ -513,13 +514,14 @@ Example:
     rails generate manageiq:provider ManageIQ::Providers::VendorName <span class="nt">--manager-type</span><span class="o">=</span>cloud
     rails generate manageiq:provider ManageIQ::Providers::VendorName <span class="nt">--manager-type</span><span class="o">=</span>cloud <span class="nt">--path</span> ~/dev
     rails generate manageiq:provider ManageIQ::Providers::VendorName <span class="nt">--manager-type</span><span class="o">=</span>cloud <span class="nt">--vcr</span>
+    rails generate manageiq:provider ManageIQ::Providers::VendorName <span class="nt">--manager-type</span><span class="o">=</span>cloud <span class="nt">--vcr</span> <span class="nt">--js</span>
     rails generate manageiq:provider ManageIQ::Providers::VendorName <span class="nt">--no-scaffolding</span>
 </code></pre></div></div>
 
-<p>For our purposes here we’re going to want to create a <code class="language-plaintext highlighter-rouge">CloudManager</code> with VCR support and scaffolding.</p>
+<p>For our purposes here we’re going to want to create a <code class="language-plaintext highlighter-rouge">CloudManager</code> with VCR support, provider specific JavaScript, and scaffolding.</p>
 
 <p>So lets go ahead and create our provider plugin:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">exec </span>rails generate manageiq:provider ManageIQ::Providers::AwesomeCloud <span class="nt">--manager-type</span><span class="o">=</span>cloud <span class="nt">--vcr</span> <span class="nt">--scaffolding</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">exec </span>rails generate manageiq:provider ManageIQ::Providers::AwesomeCloud <span class="nt">--manager-type</span><span class="o">=</span>cloud <span class="nt">--vcr</span> <span class="nt">--js</span> <span class="nt">--scaffolding</span>
 
 create  
    run  git init /home/grare/adam/src/manageiq/manageiq/plugins/manageiq-providers-awesome_cloud from <span class="s2">"."</span>
@@ -555,6 +557,11 @@ create  locale/.keep
 create  spec/factories
 create  spec/support
 create  spec/spec_helper.rb
+insert  .gitignore
+create  .yarnrc.yml
+create  .yarn/releases/yarn-3.0.2.cjs
+create  package.json
+create  yarn.lock
 insert  /home/grare/adam/src/manageiq/manageiq/Gemfile
 create  spec/models/manageiq/providers/awesome_cloud
   gsub  lib/tasks_private/spec.rake
