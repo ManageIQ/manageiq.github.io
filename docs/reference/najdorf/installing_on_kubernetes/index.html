@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/installing_on_kubernetes/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/najdorf/installing_on_kubernetes/index">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li class="active">
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<div class="doc_menu-heading">
+  Najdorf
+</div>
+
+<ul class="menu menu-toplevel" id=ref_menu_najdorf>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Installation
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_aws/index.html">
+      Amazon Web Services (AWS)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item active">
+    <a href="/docs/reference/najdorf/installing_on_kubernetes/index.html">
+      Kubernetes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_ibm_cloud/index.html">
+      IBM Cloud
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_microsoft_azure/index.html">
+      Microsoft Azure
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_google_compute_engine/index.html">
+      Google Compute Engine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_vmware_vsphere/index.html">
+      VMware vSphere
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_red_hat_enterprise_linux_openstack_platform/index.html">
+      Red Hat Enterprise OpenStack Platform
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_red_hat_virtualization/index.html">
+      Red Hat Enterprise Virtualization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_scvmm/index.html">
+      Microsoft System Center Virtual Machine Manager (SCVMM)
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Upgrading
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/upgrading_appliances/index.html">
+      Appliances
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Configuration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/deployment_planning_guide/index.html">
+      Deployment Planning Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/general_configuration/index.html">
+      General Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/high_availability_guide/index.html">
+      High Availability Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/appliance_hardening_guide/index.html">
+      Appliance Hardening Guide
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Administration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/monitoring_alerts_and_reporting/index.html">
+      Monitoring, Alerts, and Reporting
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/policies_and_profiles_guide/index.html">
+      Policies and Profiles Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_infrastructure_and_inventory/index.html">
+      Managing Infrastructure and Inventory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/index.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Infrastructure Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/infrastructure_providers/red_hat_virtualization_providers.html">
+      Red Hat Virtualization Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/infrastructure_providers/openstack_infrastructure_providers.html">
+      OpenStack Infrastructure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/infrastructure_providers/vmware_vcenter_providers.html">
+      VMware vCenter Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/infrastructure_providers/microsoft_scvmm_providers.html">
+      Microsoft SCVMM Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/infrastructure_providers/ibm_power_hmc_providers.html">
+      IBM Power HMC Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Configuration Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/configuration_management_providers/ibm_terraform_provider.html">
+      IBM Terraform Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/configuration_management_providers/red_hat_satellite_6.html">
+      Red Hat Satellite 6 Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Cloud Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/azure_providers.html">
+      Azure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/amazon_ec2_providers.html">
+      Amazon EC2 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/google_compute_engine_providers.html">
+      Google Compute Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/ibm_cloud_vpc_providers.html">
+      IBM Cloud VPC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/ibm_power_systems_virtual_servers_providers.html">
+      IBM Power Systems Virtual Servers Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/ibm_power_vc_providers.html">
+      IBM PowerVC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/openstack_providers.html">
+      OpenStack Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Container Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/containers_providers/azure_kubernetes_providers.html">
+      Azure Kubernetes Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/containers_providers/red_hat_openshift_providers.html">
+      Red Hat OpenShift Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/containers_providers/ibm_cloud_kubernetes_service_providers.html">
+      IBM Cloud Kubernetes Service Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/containers_providers/oracle_kubernetes_engine_providers.html">
+      Oracle Kubernetes Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/containers_providers/vmware_tanzu_providers.html">
+      VMware Tanzu Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Storage Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/storage_providers/amazon_ebs_managers.html">
+      Amazon Elastic Block Store Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/storage_providers/openstack_block_storage_managers.html">
+      OpenStack Block Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/storage_providers/openstack_object_storage_managers.html">
+      OpenStack Object Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/storage_providers/ibm_cloud_object_storage_managers.html">
+      IBM Cloud Object Storage Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/provisioning_virtual_machines_and_hosts/index.html">
+      Provisioning Virtual Machines and Hosts
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/scripting_actions/index.html">
+      Scripting Actions in ManageIQ
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Authentication
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/active_directory.html">
+      Active Directory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/ipa_2fa.html">
+      2-Factor-Authentication with IPA
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/ipa_ad_trust.html">
+      IPA/AD Trust
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/ldap.html">
+      LDAP
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/saml.html">
+      SAML
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/openid_connect.html">
+      OpenID-Connect
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Integration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+      AWS CloudFormation and OpenStack Heat
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/integration_with_servicenow/index.html">
+      ServiceNow
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Reference
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/capabilities_matrix/index.html">
+      Capabilities Matrix
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/api">
+      ManageIQ REST API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/methods_available_for_automation/index.html">
+      Methods Available for Automation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc user_doc">
+      
+
+      <div class="doc-content">
+        
+        <div class="doc-versions">
+          <span class="label">Versions: </span>
+          
+            <span>
+              <a href="/docs/reference/latest/installing_on_kubernetes/index.html">
+                Latest
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span class="active" >
+              <a href="/docs/reference/najdorf/installing_on_kubernetes/index.html">
+                Najdorf
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/morphy/installing_on_kubernetes/index.html">
+                Morphy
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/lasker/installing_on_kubernetes/index.html">
+                Lasker
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/kasparov/installing_on_kubernetes/index.html">
+                Kasparov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Jansa
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Ivanchuk
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Hammer
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Gaprindashvili
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Fine
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Euwe
+              </a>
+            </span>
+            
+          
+        </div>
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#installing-on-kubernetes--openshift">Installing on Kubernetes / Openshift</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#preparing-the-kubernetes-namespace">Preparing the Kubernetes namespace</a></li>
+<li class="toc-entry toc-h2"><a href="#new-installation">New Installation</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#create-the-custom-resource">Create the Custom Resource</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#migrating-from-appliances">Migrating from Appliances</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#notes">Notes</a></li>
+<li class="toc-entry toc-h3"><a href="#collect-data-from-the-appliance">Collect data from the appliance</a></li>
+<li class="toc-entry toc-h3"><a href="#restore-the-backup-into-the-kubernetes-environment">Restore the backup into the kubernetes environment</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#external-postgresql">External postgresql</a></li>
+<li class="toc-entry toc-h2"><a href="#using-tls-to-encrypt-connections-between-pods-inside-the-cluster">Using TLS to encrypt connections between pods inside the cluster:</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#create-a-secret-containing-all-of-the-certificates">Create a secret containing all of the certificates</a></li>
+<li class="toc-entry toc-h3"><a href="#generating-certificates">Generating certificates:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h1 id="installing-on-kubernetes--openshift">
+<a class="anchor" href="#installing-on-kubernetes--openshift" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing on Kubernetes / Openshift</h1>
+
+<h2 id="preparing-the-kubernetes-namespace">
+<a class="anchor" href="#preparing-the-kubernetes-namespace" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparing the Kubernetes namespace</h2>
+<p>The deploy directory referenced below can be found <a href="https://github.com/ManageIQ/manageiq-pods/tree/master/manageiq-operator/deploy">here</a></p>
+
+<ol>
+  <li>
+    <p>Search for the Custom Resource Definition (CRD) and create it if it doesn’t already exist.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ oc get crds | grep manageiqs.manageiq.org
+ $ oc create -f deploy/crds/manageiq.org_manageiqs_crd.yaml
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Set up RBAC.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ oc create -f deploy/role.yaml
+ $ oc create -f deploy/role_binding.yaml
+ $ oc create -f deploy/service_account.yaml
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Deploy the operator in your namespace.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ oc create -f deploy/operator.yaml
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="new-installation">
+<a class="anchor" href="#new-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>New Installation</h2>
+
+<h3 id="create-the-custom-resource">
+<a class="anchor" href="#create-the-custom-resource" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create the Custom Resource</h3>
+<p>Make any necessary changes (i.e applicationDomain) that apply to your environment then create the CR (Custom Resource).
+The operator will take action to deploy the application based on the information in the CR.
+It may take several minutes for the database to be initialized and the workers to enter a ready state.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ oc create -f deploy/crds/manageiq.org_v1alpha1_manageiq_cr.yaml
+</code></pre></div></div>
+
+<h2 id="migrating-from-appliances">
+<a class="anchor" href="#migrating-from-appliances" aria-hidden="true"><span class="octicon octicon-link"></span></a>Migrating from Appliances</h2>
+
+<h3 id="notes">
+<a class="anchor" href="#notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes</h3>
+
+<ul>
+  <li>
+    <p>Multi-server / multi-zone:
+Current architecture in podified limits us to running a single server and zone in a Kubernetes namespace.
+Therefore, when migrating from a multi-appliance and/or multi-zone appliance architecture, you will need to choose a single server to assume the identity of.
+This server should have the UI and web service roles enabled before taking the database backup to ensure that those workers will start when deployed in the podified environment.
+All desired roles and settings will need to be configured on this server.</p>
+  </li>
+  <li>
+    <p>Multi-region:
+Multi-region deployments are slightly more complicated in a podified environment since postgres isn’t as easily exposed outside the project / cluster.
+If all of the region databases are running outside of the cluster or all of the remote region databases are running outside of the cluster and the global database is in the cluster, everything is configured in the same way as appliances.
+If the global region database is migrated from an appliance to a pod, the replication subscriptions will need to be recreated.
+If any of the remote region databases are running in the cluster, the <code class="language-plaintext highlighter-rouge">postgresql</code> service for those databases will need to be exposed using a <a href="https://kubernetes.io/docs/concepts/services-networking/service/#nodeport">node port</a>.
+To publish the postgresql service on a node port, patch the service using <code class="language-plaintext highlighter-rouge">$ kubectl patch service/postgresql --patch '{"spec": {"type": "NodePort"}}'</code>.
+Now you will see the node port listed (31871 in this example) as well as the internal service port (5432).  This node port can be used along with the IP address of any node in the cluster to access the postgresql service.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  $ oc get service/postgresql
+  NAME         TYPE       CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
+  postgresql   NodePort   192.0.2.1    &lt;none&gt;        5432:31871/TCP   2m
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="collect-data-from-the-appliance">
+<a class="anchor" href="#collect-data-from-the-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collect data from the appliance</h3>
+<ol>
+  <li>
+    <p>Take a backup of the database</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ pg_dump -Fc -d vmdb_production &gt; /root/pg_dump
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Export the encryption key and Base64 encode it for the Kubernetes Secret.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ vmdb &amp;&amp; rails r "puts Base64.encode64(ManageIQ::Password.v2_key.to_s)"
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Get the region number</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ vmdb &amp;&amp; rails r "puts MiqRegion.my_region.region"
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Get the GUID of the server that you want to run as.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ vmdb &amp;&amp; cat GUID
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="restore-the-backup-into-the-kubernetes-environment">
+<a class="anchor" href="#restore-the-backup-into-the-kubernetes-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Restore the backup into the kubernetes environment</h3>
+<ol>
+  <li>
+    <p>Create a YAML file defining the Custom Resource (CR). Minimally you’ll need the following:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> apiVersion: manageiq.org/v1alpha1
+ kind: ManageIQ
+ metadata:
+   name: &lt;friendly name for you CR instance&gt;
+ spec:
+   applicationDomain: &lt;your application domain name&gt;
+   databaseRegion: &lt;region number from the appliance above&gt;
+   serverGuid: &lt;GUID value from appliance above&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create the CR in your namespace. Once created, the operator will create several additional resources and start deploying the app.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ oc create -f &lt;file name from above&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Edit the app secret inserting the encryption key from the appliance. Replace the “encryption-key” value with the value we exported from the appliance above.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ oc edit secret app-secrets
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Temporarily hijack the orchestrator by adding the following to the deployment:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ kubectl patch deployment orchestrator -p '{"spec":{"template":{"spec":{"containers":[{"name":"orchestrator","command":["sleep", "1d"]}]}}}}'
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Shell into the orchestrator container:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ oc rsh deploy/orchestrator
+
+ $ cd /var/www/miq/vmdb
+ $ source ./container_env
+ $ DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rake db:drop db:create
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">oc rsh</code> into the database pod and restore the database backup</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ cd /var/lib/pgsql
+ # --- download your backup here ---
+ $ pg_restore -v -d vmdb_production &lt;your_backup_file&gt;
+ $ rm -f &lt;your_backup_file&gt;
+ $ exit
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Back in orchestrator pod from step 5:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ rake db:migrate
+ $ exit
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Delete the orchestrator deployment to remove the command override that we added above:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ kubectl delete deployment orchestrator
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Done! The orchestrator will start deploying the rest of the pods required to run the application.</p>
+
+<h2 id="external-postgresql">
+<a class="anchor" href="#external-postgresql" aria-hidden="true"><span class="octicon octicon-link"></span></a>External postgresql</h2>
+
+<p>Running with an external Postgres server is an option, if you want the default internal Postgres you can skip this step. Additionally, if you want to secure the connection, you need to include the optional parameters <code class="language-plaintext highlighter-rouge">sslmode=verify-full</code> and <code class="language-plaintext highlighter-rouge">rootcertificate</code> when you create the secret. To do this, manually create the secret and substitute your values before you create the CR.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ oc create secret generic postgresql-secrets \
+      --from-literal=dbname=vmdb_production \
+      --from-literal=hostname=YOUR_HOSTNAME \
+      --from-literal=port=5432 \
+      --from-literal=password=YOUR_PASSWORD_HERE \
+      --from-literal=username=YOUR_USERNAME_HERE \
+      --from-literal=sslmode=verify-full \ # optional
+      --from-file=rootcertificate=path/to/optional/certificate.pem # optional
+</code></pre></div></div>
+
+<p>Note: If wanted, the secret name is also customizable by setting <code class="language-plaintext highlighter-rouge">databaseSecret</code> in the CR.</p>
+
+<h2 id="using-tls-to-encrypt-connections-between-pods-inside-the-cluster">
+<a class="anchor" href="#using-tls-to-encrypt-connections-between-pods-inside-the-cluster" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using TLS to encrypt connections between pods inside the cluster:</h2>
+
+<h3 id="create-a-secret-containing-all-of-the-certificates">
+<a class="anchor" href="#create-a-secret-containing-all-of-the-certificates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a secret containing all of the certificates</h3>
+<p>The certificates should all be signed by a CA and that CA certificate should be in uploaded as <code class="language-plaintext highlighter-rouge">root_crt</code> so that it can be used to verify connection validity.  If the secret is named <code class="language-plaintext highlighter-rouge">internal-certificates-secret</code>, no changes are needed in the CR, if you choose a different name, that should be set in the <code class="language-plaintext highlighter-rouge">internalCertificatesSecret</code> field of the manageiq CR.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    oc create secret generic internal-certificates-secret <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">root_crt</span><span class="o">=</span>./certs/root.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">httpd_crt</span><span class="o">=</span>./certs/httpd.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">httpd_key</span><span class="o">=</span>./certs/httpd.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">kafka_crt</span><span class="o">=</span>./certs/kafka.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">kafka_key</span><span class="o">=</span>./certs/kafka.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">memcached_crt</span><span class="o">=</span>./certs/memcached.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">memcached_key</span><span class="o">=</span>./certs/memcached.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">postgresql_crt</span><span class="o">=</span>./certs/postgresql.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">postgresql_key</span><span class="o">=</span>./certs/postgresql.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">api_crt</span><span class="o">=</span>./certs/api.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">api_key</span><span class="o">=</span>./certs/api.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">ui_crt</span><span class="o">=</span>./certs/ui.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">ui_key</span><span class="o">=</span>./certs/ui.key
+</code></pre></div></div>
+
+<h3 id="generating-certificates">
+<a class="anchor" href="#generating-certificates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generating certificates:</h3>
+<p>We need a CA and certificates for each service.  The certificates need to be valid for the internal kubernetes service name (i.e. httpd, postgres, etc.) and the services that are backing the route (ui &amp; api) also need the certificate to include a SAN with the application domain name.  For example, the certificate for the UI needs to be valid for the hostname <code class="language-plaintext highlighter-rouge">ui</code> and also <code class="language-plaintext highlighter-rouge">your_application.apps.example.com</code>.
+If you want a script that will generate these certificates for you, see: https://github.com/ManageIQ/manageiq-pods/blob/master/tools/cert_generator.rb</p>
+
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2022 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

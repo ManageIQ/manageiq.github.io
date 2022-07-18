@@ -5,9 +5,25 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Jul 2022 15:51:22 +0000</pubDate>
-    <lastBuildDate>Wed, 13 Jul 2022 15:51:22 +0000</lastBuildDate>
+    <pubDate>Mon, 18 Jul 2022 20:54:34 +0000</pubDate>
+    <lastBuildDate>Mon, 18 Jul 2022 20:54:34 +0000</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
+    
+      <item>
+        <title>ManageIQ Najdorf GA Announcement</title>
+        <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Najdorf&lt;/strong&gt;!  This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Miguel_Najdorf&quot;&gt;Miguel Najdorf&lt;/a&gt;.  You can download the Najdorf-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 18 Jul 2022 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2022/07/manageiq-najdorf-ga-announcement/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2022/07/manageiq-najdorf-ga-announcement/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>ManageIQ Morphy GA Announcement</title>
@@ -243,22 +259,6 @@ To estimate the size of the metric collection portion of the database, you could
         <guid isPermaLink="true">http://manageiq.org/blog/2021/02/manageiq-at-scale-at-kpn/</guid>
         
         <category>collaboration</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>ManageIQ Kasparov GA announcement</title>
-        <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Kasparov&lt;/strong&gt;!  This release is named after the great chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Garry_Kasparov&quot;&gt;Garry Kasparov&lt;/a&gt;.  You can download the Kasparov-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
-        <link>http://manageiq.org/blog/2021/02/manageiq-kasparov-ga-announcement/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2021/02/manageiq-kasparov-ga-announcement/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
         
         
       </item>

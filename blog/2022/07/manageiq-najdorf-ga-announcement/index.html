@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - ManageIQ Najdorf GA Announcement</title>
+  <meta name="description" content="On behalf of the ManageIQ team, I’m happy to announce the release of ManageIQ Najdorf!  This release is named after the chess grandmaster Miguel Najdorf.  Yo...">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/blog/2022/07/2022-07-18-manageiq-najdorf-ga-announcement/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/blog/2022/07/manageiq-najdorf-ga-announcement/">
+      <div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10">
+        <header class="blog_header">
+          <h1>
+            ManageIQ Blog
+          </h1>
+        </header>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-10 blog_main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="page-title" itemprop="name headline">ManageIQ Najdorf GA Announcement</h1>
+
+            <div class="post-meta">
+              <time datetime="2022-07-18T00:00:00+00:00" itemprop="datePublished">
+                Jul 18, 2022
+              </time>
+
+              
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                by
+                <i itemprop="name">
+                  Fryguy
+                </i>
+              </span>
+              
+
+              <ul class="post-tags">
+                
+                <li>
+                  <a href="/blog/tags/releases">releases</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/announcements">announcements</a>
+                </li>
+                
+              </ul>
+            </div>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <p>On behalf of the ManageIQ team, I’m happy to announce the release of <strong>ManageIQ Najdorf</strong>!  This release is named after the chess grandmaster <a href="https://en.wikipedia.org/wiki/Miguel_Najdorf">Miguel Najdorf</a>.  You can download the Najdorf-1 release on our <a href="/download">downloads page</a>.</p>
+
+<p>Here are the highlights of the <a href="https://github.com/orgs/ManageIQ/projects/13#column-12963689">Najdorf release</a>:</p>
+
+<ul>
+  <li>New Providers
+    <ul>
+      <li><a href="https://www.ibm.com/docs/en/power8/8335-GTA?topic=HW4M4/p8hat/p8hat_partitioningwithanhmc.htm">IBM Power HMC</a> provider <a href="https://github.com/ManageIQ/manageiq/pull/21475">[#21475]</a></li>
+      <li><a href="https://www.ibm.com/products/cloud-infrastructure-center">IBM Cloud Infrastructure Center (CIC)</a> provider <a href="https://github.com/ManageIQ/manageiq/pull/21631">[#21631]</a></li>
+      <li><a href="https://intersight.com">Cisco Intersight</a> provider <a href="https://github.com/ManageIQ/manageiq/issues/21715">[#21715]</a></li>
+      <li><a href="https://tanzu.vmware.com/kubernetes-grid">VMware Tanzu Kubernetes Grid (TKG)</a> provider <a href="https://github.com/ManageIQ/manageiq-providers-vmware/issues/703">[#703]</a></li>
+    </ul>
+  </li>
+  <li>Provider Enhancements
+    <ul>
+      <li>IBM Cloud <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/issues/263">[#263]</a>
+        <ul>
+          <li>Expanded network inventory collection (public gateways, VPN gateways, load balancers, ACLs, security group rules)</li>
+          <li>Support to modify/resize VM <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/300">[#300]</a></li>
+          <li>Metrics collection <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/308">[#308]</a></li>
+          <li>Catalog service provisioning <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/362">[#362]</a></li>
+          <li>Create/Delete cloud databases <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/364">[#364]</a>, <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/366">[#366]</a></li>
+          <li>Add metrics collection support for IKS <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/issues/314">[#314]</a></li>
+        </ul>
+      </li>
+      <li>IBM Power HMC <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/issues/8">[#8]</a>
+        <ul>
+          <li>Expanded inventory collection (templates, storages)</li>
+          <li>Expanded network inventory collection (networks, virtual switches, virtual lans, ethernet adapters, logical ports)</li>
+          <li>Metrics collection <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/41">[#41]</a></li>
+          <li>Targeted refresh <a href="https://github.com/ManageIQ/manageiq-content/pull/692">[#692]</a></li>
+          <li>Template provisioning <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/26">[#26]</a></li>
+        </ul>
+      </li>
+      <li>IBM Power Virtual Servers <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/issues/147">[#147]</a>
+        <ul>
+          <li>IBM Cloud ObjectStorage provider <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/159">[#159]</a></li>
+          <li>PowerVC -&gt; PowerVS cross cloud-provider image import <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/issues/180">[#180]</a></li>
+          <li>Event collection <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/279">[#279]</a></li>
+          <li>Expanded inventory collection for snapshots <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/313">[#313]</a></li>
+          <li>Snapshot operations <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/325">[#325]</a></li>
+        </ul>
+      </li>
+      <li>IBM PowerVC <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/issues/27">[#27]</a>
+        <ul>
+          <li>Expanded inventory collection for advanced settings <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/28">[#28]</a></li>
+          <li>OOtB reports <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/36">[#36]</a></li>
+        </ul>
+      </li>
+      <li>Kyndryl AutoSDE <a href="https://github.com/ManageIQ/manageiq-providers-autosde/issues/83">[#83]</a>
+        <ul>
+          <li>Targeted refresh <a href="https://github.com/ManageIQ/manageiq-providers-autosde/issues/107">[#107]</a></li>
+          <li>Support for fibre channel WWPN candidates <a href="https://github.com/ManageIQ/manageiq-providers-autosde/issues/92">[#92]</a></li>
+          <li>Add Host Initiator Groups <a href="https://github.com/ManageIQ/manageiq-providers-autosde/issues/93">[#93]</a></li>
+        </ul>
+      </li>
+      <li>VMware
+        <ul>
+          <li>Add SSL options for Verify / CA certificates <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/737">[#737]</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Core
+    <ul>
+      <li>Cross cloud-provider image import <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/issues/180">[#180]</a></li>
+      <li>Allow the addition of standalone object storage managers <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/7675">[#7675]</a></li>
+    </ul>
+  </li>
+  <li>API
+    <ul>
+      <li>Localization of OPTIONS calls <a href="https://github.com/ManageIQ/manageiq-api/pull/1043">[#1043]</a></li>
+      <li>Add endpoints for cloud_subnets <a href="https://github.com/ManageIQ/manageiq-api/pull/1025">[#1025]</a></li>
+      <li>Add LAN tags subcollction <a href="https://github.com/ManageIQ/manageiq-api/issues/1018">[#1018]</a></li>
+    </ul>
+  </li>
+  <li>Build
+    <ul>
+      <li>[Podified] Allow SSL/TLS communication between pods <a href="https://github.com/ManageIQ/manageiq-pods/issues/724">[#724]</a></li>
+      <li>Run the application as a non root user <a href="https://github.com/ManageIQ/manageiq/issues/20394">[#20394]</a></li>
+      <li>Update containers to latest ubi8 <a href="https://github.com/ManageIQ/manageiq/issues/21725">[#21725]</a></li>
+    </ul>
+  </li>
+  <li>Major Bugs
+    <ul>
+      <li>Error out orphaned miqtask executed by processes/pods that no longer exist <a href="https://github.com/ManageIQ/manageiq/issues/21175">[#21175]</a></li>
+    </ul>
+  </li>
+  <li>Developer
+    <ul>
+      <li>[UI] Update to NodeJS 14 <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/7930">[#7930]</a></li>
+      <li>[UI] Replace patternfly-react with carbon-react <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/7844">[#7844]</a></li>
+      <li>[UI] Continued work on removal of angular code <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/8299">[#8299]</a></li>
+      <li>[UI] Continued work on converting forms to react <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/8010">[#8010]</a></li>
+      <li>[UI] Continued work on converting HAML tables to React Carbon tables <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/7986">[#7986]</a></li>
+      <li>Replace Hakiri with Whitesource <a href="https://github.com/ManageIQ/manageiq/issues/21660">[#21660]</a></li>
+    </ul>
+  </li>
+  <li>Removals
+    <ul>
+      <li>Remove v2v plugin <a href="https://github.com/ManageIQ/manageiq/issues/21379">[#21379]</a></li>
+      <li>Remove cockpit console support <a href="https://github.com/ManageIQ/manageiq/issues/21378">[#21378]</a></li>
+      <li>Remove database backups from UI (moved to appliance console) <a href="https://github.com/ManageIQ/manageiq/issues/21100">[#21100]</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>There are many more changes that would be impossible to detail in a single blog post.  Many thanks goes to all of the community members for their contributions!  We are already well underway on the next release of ManageIQ - Oparin.  If you’re interested in getting involved, check out our <a href="/roadmap">roadmap</a>, check out our <a href="/community">community page</a>, ask questions in our <a href="https://github.com/ManageIQ/manageiq/discussions">discussions forum</a>, or chat with us in <a href="https://gitter.im/ManageIQ/manageiq">Gitter</a>.  We look forward to hearing from you!</p>
+
+          </div>
+        </article>
+      </div>
+
+      <div class="col-xs-12 col-sm-2 blog_side">
+          <div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Categories
+  </h3>
+
+  <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/announcements">announcements</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Archive
+  </h3>
+
+  <ul id="blog_archive_menu" class="blog_menu">
+    
+    
+    
+
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2022/index.html">
+        2022
+      </a>
+      
+        <ul class="blog_menu blog_months">
+  
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/07/index.html">
+      July
+    </a>
+    
+  </li>
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/02/index.html">
+      February
+    </a>
+    
+  </li>
+  
+</ul>
+
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2021/index.html">
+        2021
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2020/index.html">
+        2020
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2019/index.html">
+        2019
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2018/index.html">
+        2018
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2017/index.html">
+        2017
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2016/index.html">
+        2016
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2015/index.html">
+        2015
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2014/index.html">
+        2014
+      </a>
+      
+    </li>
+    
+  </ul>
+</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/_posts/2022-07-18-manageiq-najdorf-ga-announcement.md">
+          <i class="fa fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2022 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

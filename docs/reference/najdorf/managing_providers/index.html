@@ -1,0 +1,4348 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/managing_providers/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/najdorf/managing_providers/index">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li class="active">
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<div class="doc_menu-heading">
+  Najdorf
+</div>
+
+<ul class="menu menu-toplevel" id=ref_menu_najdorf>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Installation
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_aws/index.html">
+      Amazon Web Services (AWS)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_kubernetes/index.html">
+      Kubernetes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_ibm_cloud/index.html">
+      IBM Cloud
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_microsoft_azure/index.html">
+      Microsoft Azure
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_google_compute_engine/index.html">
+      Google Compute Engine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_vmware_vsphere/index.html">
+      VMware vSphere
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_red_hat_enterprise_linux_openstack_platform/index.html">
+      Red Hat Enterprise OpenStack Platform
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_red_hat_virtualization/index.html">
+      Red Hat Enterprise Virtualization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/installing_on_scvmm/index.html">
+      Microsoft System Center Virtual Machine Manager (SCVMM)
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Upgrading
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/upgrading_appliances/index.html">
+      Appliances
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Configuration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/deployment_planning_guide/index.html">
+      Deployment Planning Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/general_configuration/index.html">
+      General Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/high_availability_guide/index.html">
+      High Availability Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/appliance_hardening_guide/index.html">
+      Appliance Hardening Guide
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Administration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/monitoring_alerts_and_reporting/index.html">
+      Monitoring, Alerts, and Reporting
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/policies_and_profiles_guide/index.html">
+      Policies and Profiles Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_infrastructure_and_inventory/index.html">
+      Managing Infrastructure and Inventory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item active">
+    <a href="/docs/reference/najdorf/managing_providers/index.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Infrastructure Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/infrastructure_providers/red_hat_virtualization_providers.html">
+      Red Hat Virtualization Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/infrastructure_providers/openstack_infrastructure_providers.html">
+      OpenStack Infrastructure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/infrastructure_providers/vmware_vcenter_providers.html">
+      VMware vCenter Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/infrastructure_providers/microsoft_scvmm_providers.html">
+      Microsoft SCVMM Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/infrastructure_providers/ibm_power_hmc_providers.html">
+      IBM Power HMC Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Configuration Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/configuration_management_providers/ibm_terraform_provider.html">
+      IBM Terraform Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/configuration_management_providers/red_hat_satellite_6.html">
+      Red Hat Satellite 6 Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Cloud Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/azure_providers.html">
+      Azure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/amazon_ec2_providers.html">
+      Amazon EC2 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/google_compute_engine_providers.html">
+      Google Compute Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/ibm_cloud_vpc_providers.html">
+      IBM Cloud VPC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/ibm_power_systems_virtual_servers_providers.html">
+      IBM Power Systems Virtual Servers Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/ibm_power_vc_providers.html">
+      IBM PowerVC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/cloud_providers/openstack_providers.html">
+      OpenStack Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Container Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/containers_providers/azure_kubernetes_providers.html">
+      Azure Kubernetes Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/containers_providers/red_hat_openshift_providers.html">
+      Red Hat OpenShift Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/containers_providers/ibm_cloud_kubernetes_service_providers.html">
+      IBM Cloud Kubernetes Service Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/containers_providers/oracle_kubernetes_engine_providers.html">
+      Oracle Kubernetes Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/containers_providers/vmware_tanzu_providers.html">
+      VMware Tanzu Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Storage Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/storage_providers/amazon_ebs_managers.html">
+      Amazon Elastic Block Store Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/storage_providers/openstack_block_storage_managers.html">
+      OpenStack Block Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/storage_providers/openstack_object_storage_managers.html">
+      OpenStack Object Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/managing_providers/storage_providers/ibm_cloud_object_storage_managers.html">
+      IBM Cloud Object Storage Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/provisioning_virtual_machines_and_hosts/index.html">
+      Provisioning Virtual Machines and Hosts
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/scripting_actions/index.html">
+      Scripting Actions in ManageIQ
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Authentication
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/active_directory.html">
+      Active Directory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/ipa_2fa.html">
+      2-Factor-Authentication with IPA
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/ipa_ad_trust.html">
+      IPA/AD Trust
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/ldap.html">
+      LDAP
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/saml.html">
+      SAML
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/auth/openid_connect.html">
+      OpenID-Connect
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Integration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+      AWS CloudFormation and OpenStack Heat
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/integration_with_servicenow/index.html">
+      ServiceNow
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Reference
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/capabilities_matrix/index.html">
+      Capabilities Matrix
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/api">
+      ManageIQ REST API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/najdorf/methods_available_for_automation/index.html">
+      Methods Available for Automation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc user_doc">
+      
+
+      <div class="doc-content">
+        
+        <div class="doc-versions">
+          <span class="label">Versions: </span>
+          
+            <span>
+              <a href="/docs/reference/latest/managing_providers/index.html">
+                Latest
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span class="active" >
+              <a href="/docs/reference/najdorf/managing_providers/index.html">
+                Najdorf
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/morphy/managing_providers/index.html">
+                Morphy
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/lasker/managing_providers/index.html">
+                Lasker
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/kasparov/managing_providers/index.html">
+                Kasparov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/jansa/managing_providers/index.html">
+                Jansa
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/ivanchuk/doc-Managing_Providers/miq/index.html">
+                Ivanchuk
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/hammer/doc-Managing_Providers/miq/index.html">
+                Hammer
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/gaprindashvili/doc-Managing_Providers/miq/index.html">
+                Gaprindashvili
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/fine/doc-Managing_Providers/miq/index.html">
+                Fine
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/euwe/doc-Managing_Providers/miq/index.html">
+                Euwe
+              </a>
+            </span>
+            
+          
+        </div>
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#managing-providers">Managing Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#infrastructure-providers">Infrastructure Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#refreshing-providers">Refreshing Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#tagging-multiple-providers">Tagging Multiple Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#viewing-a-provider">Viewing a Provider</a></li>
+<li class="toc-entry toc-h1"><a href="#removing-a-provider">Removing a Provider</a></li>
+<li class="toc-entry toc-h1"><a href="#viewing-the-provider-timeline">Viewing the Provider Timeline</a></li>
+<li class="toc-entry toc-h1"><a href="#viewing-hosts-and-clusters">Viewing Hosts and Clusters</a></li>
+<li class="toc-entry toc-h1"><a href="#viewing-virtual-machines-and-templates">Viewing Virtual Machines and Templates</a></li>
+<li class="toc-entry toc-h1"><a href="#configuration-management-providers">Configuration Management Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#automation-management-providers">Automation Management Providers</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#ansible">Ansible</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#enabling-the-embedded-ansible-server-role">Enabling the Embedded Ansible Server Role</a></li>
+<li class="toc-entry toc-h3"><a href="#verifying-the-embedded-ansible-worker-state">Verifying the Embedded Ansible Worker State</a></li>
+<li class="toc-entry toc-h3"><a href="#adding-a-playbook-repository">Adding a Playbook Repository</a></li>
+<li class="toc-entry toc-h3"><a href="#refreshing-repositories">Refreshing Repositories</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#credentials">Credentials</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#adding-credentials">Adding Credentials</a></li>
+<li class="toc-entry toc-h2"><a href="#credential-types">Credential Types</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#machine">Machine</a></li>
+<li class="toc-entry toc-h3"><a href="#network">Network</a></li>
+<li class="toc-entry toc-h3"><a href="#scm">SCM</a></li>
+<li class="toc-entry toc-h3"><a href="#amazon">Amazon</a></li>
+<li class="toc-entry toc-h3"><a href="#azure-classic-deprecated">Azure Classic (deprecated)</a></li>
+<li class="toc-entry toc-h3"><a href="#azure">Azure</a></li>
+<li class="toc-entry toc-h3"><a href="#openstack">OpenStack</a></li>
+<li class="toc-entry toc-h3"><a href="#rackspace">Rackspace</a></li>
+<li class="toc-entry toc-h3"><a href="#red-hat-virtualization">Red Hat Virtualization</a></li>
+<li class="toc-entry toc-h3"><a href="#satellite-6">Satellite 6</a></li>
+<li class="toc-entry toc-h3"><a href="#vmware">VMware</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#tagging-ansible-playbooks-repositories-and-credentials">Tagging Ansible Playbooks, Repositories, and Credentials</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#adding-tags-to-ansible-playbooks">Adding Tags to Ansible Playbooks</a></li>
+<li class="toc-entry toc-h2"><a href="#adding-tags-to-ansible-repositories">Adding Tags to Ansible Repositories</a></li>
+<li class="toc-entry toc-h2"><a href="#adding-tags-to-ansible-credentials">Adding Tags to Ansible Credentials</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#optimizing-ansible-playbooks-for-manageiq">Optimizing Ansible Playbooks for ManageIQ</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#installing-roles-on-an-embedded-ansible-appliance">Installing Roles on an Embedded Ansible Appliance</a></li>
+<li class="toc-entry toc-h2"><a href="#ansible-service-linking">Ansible Service Linking</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#example-linking-a-virtual-machine-to-a-service">Example: Linking a virtual machine to a service</a></li>
+<li class="toc-entry toc-h3"><a href="#modifying-the-automate-workspace-using-the-manageiq-automate-role">Modifying the Automate Workspace Using the manageiq-automate Role.</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#role-variables">Role Variables</a></li>
+<li class="toc-entry toc-h4"><a href="#example-playbook">Example Playbook</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#callbacks-in-multiple-appliance-environments">Callbacks in Multiple Appliance Environments</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#ansible-tower">Ansible Tower</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#working-with-an-ansible-tower-provider">Working with an Ansible Tower Provider</a></li>
+<li class="toc-entry toc-h4"><a href="#adding-an-ansible-tower-provider">Adding an Ansible Tower Provider</a></li>
+<li class="toc-entry toc-h4"><a href="#refreshing-an-ansible-tower-provider">Refreshing an Ansible Tower Provider</a></li>
+<li class="toc-entry toc-h4"><a href="#viewing-ansible-tower-providers-and-inventory">Viewing Ansible Tower Providers and Inventory</a></li>
+<li class="toc-entry toc-h4"><a href="#viewing-ansible-tower-configured-systems">Viewing Ansible Tower Configured Systems</a></li>
+<li class="toc-entry toc-h4"><a href="#executing-an-ansible-tower-job-or-workflow-template-from-a-service-catalog">Executing an Ansible Tower Job or Workflow Template from a Service Catalog</a></li>
+<li class="toc-entry toc-h4"><a href="#executing-an-ansible-tower-job-using-a-custom-automate-button">Executing an Ansible Tower Job Using a Custom Automate Button</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#cloud-providers">Cloud Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#refreshing-cloud-providers">Refreshing Cloud Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#tagging-cloud-providers">Tagging Cloud Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#removing-cloud-providers">Removing Cloud Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#editing-a-cloud-provider">Editing a Cloud Provider</a></li>
+<li class="toc-entry toc-h1"><a href="#viewing-a-cloud-providers-timeline">Viewing a Cloud Provider’s Timeline</a></li>
+<li class="toc-entry toc-h1"><a href="#physical-infrastructure-providers">Physical Infrastructure Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#image-import-workflows">Image Import Workflows</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#ibm-powervc-to-ibm-power-systems-virtual-server">IBM PowerVC to IBM Power Systems Virtual Server</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#preparing-manageiq-hosting-server-required-once">Preparing ManageIQ hosting server (required once):</a></li>
+<li class="toc-entry toc-h3"><a href="#preparing-ibm-powervc-server-required-once">Preparing IBM PowerVC Server (required once):</a></li>
+<li class="toc-entry toc-h3"><a href="#add-a-cloud-object-storage-provider-in-manageiq">Add a Cloud Object Storage provider in ManageIQ:</a></li>
+<li class="toc-entry toc-h3"><a href="#add-an-ibm-power-systems-virtual-server-provider-in-manageiq">Add an IBM Power Systems Virtual Server provider in ManageIQ:</a></li>
+<li class="toc-entry toc-h3"><a href="#add-an-ibm-powervc-provider-in-manageiq">Add an IBM PowerVC provider in ManageIQ:</a></li>
+<li class="toc-entry toc-h3"><a href="#grant-image-import-permissions-in-manageiq">Grant Image Import Permissions in ManageIQ:</a></li>
+<li class="toc-entry toc-h3"><a href="#enable-embedded-ansible-in-manageiq">Enable Embedded Ansible in ManageIQ:</a></li>
+<li class="toc-entry toc-h3"><a href="#start-the-workflow">Start the workflow</a></li>
+<li class="toc-entry toc-h3"><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#network-managers">Network Managers</a></li>
+<li class="toc-entry toc-h1"><a href="#adding-or-viewing-network-providers">Adding or Viewing Network Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#refreshing-network-providers">Refreshing Network Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#tagging-network-providers">Tagging Network Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#removing-network-providers">Removing Network Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#viewing-a-network-providers-timeline">Viewing a Network Provider’s Timeline</a></li>
+<li class="toc-entry toc-h1"><a href="#using-the-topology-widget-for-network-providers">Using the Topology Widget for Network Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#containers-providers">Containers Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#tagging-containers-providers">Tagging Containers Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#removing-containers-providers">Removing Containers Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#editing-a-containers-provider">Editing a Containers Provider</a></li>
+<li class="toc-entry toc-h1"><a href="#hiding-environment-variables-for-containers-providers">Hiding Environment Variables for Containers Providers</a></li>
+<li class="toc-entry toc-h1"><a href="#viewing-a-containers-providers-timeline">Viewing a Containers Provider’s Timeline</a></li>
+<li class="toc-entry toc-h1"><a href="#storage-managers">Storage Managers</a></li>
+<li class="toc-entry toc-h1"><a href="#appendix">Appendix</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#using-a-self-signed-ca-certificate">Using a Self-Signed CA Certificate</a></li>
+</ul>
+</li>
+</ul><h1 id="managing-providers">
+<a class="anchor" href="#managing-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Managing Providers</h1>
+
+<p>ManageIQ can manage a variety of external environments, known as providers and managers. A provider or manager is any system that ManageIQ integrates with for the purpose of collecting data and performing operations.</p>
+
+<p>In ManageIQ, a <em>provider</em> is an external virtualization, cloud, or containers environment that manages multiple virtual machines
+or instances residing on multiple hosts. One example is Red Hat Virtualization, a platform that manages multiple hosts and virtual machines.</p>
+
+<p>In ManageIQ, a <em>manager</em> is an external management environment that manages more than one type of resource. One example of a manager is OpenStack, which manages infrastructure, cloud, network, and storage resources.</p>
+
+<p>This guide covers working with providers and managers in
+ManageIQ, which include:</p>
+
+<ul>
+  <li>
+    <p>Infrastructure providers</p>
+  </li>
+  <li>
+    <p>Configuration management providers</p>
+  </li>
+  <li>
+    <p>Automation management providers</p>
+  </li>
+  <li>
+    <p>Cloud providers</p>
+  </li>
+  <li>
+    <p>Physical infrastructure providers</p>
+  </li>
+  <li>
+    <p>Networking management providers</p>
+  </li>
+  <li>
+    <p>Container providers</p>
+  </li>
+  <li>
+    <p>Storage managers</p>
+  </li>
+</ul>
+
+<p>For information on working with the resources contained by a provider or manager, see <a href="../managing_infrastructure_and_inventory/index.html">Managing Infrastructure and Inventory</a>.</p>
+
+<h1 id="infrastructure-providers">
+<a class="anchor" href="#infrastructure-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Infrastructure Providers</h1>
+
+<p>In ManageIQ, an infrastructure provider is a virtual
+infrastructure environment that you can add to a ManageIQ
+appliance to manage and interact with the resources in that environment.
+This chapter describes the different types of infrastructure providers
+that you can add to ManageIQ, and how to manage them.
+Infrastructure providers can be either discovered automatically by
+ManageIQ, or added individually.</p>
+
+<p>The web interface uses virtual thumbnails to represent infrastructure
+providers. Each thumbnail contains four quadrants by default, which
+display basic information about each provider:</p>
+
+<p><img src="../images/2189.png" alt="2189"></p>
+
+<ol>
+  <li>
+    <p>Number of hosts</p>
+  </li>
+  <li>
+    <p>Management system software</p>
+  </li>
+  <li>
+    <p>Currently unused</p>
+  </li>
+  <li>
+    <p>Authentication status</p>
+  </li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th>Icon</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="../images/2190.png" alt="2190"></td>
+      <td>Validated: Valid authentication credentials have been added.</td>
+    </tr>
+    <tr>
+      <td><img src="../images/2191.png" alt="2191"></td>
+      <td>Invalid: Authentication credentials are invalid.</td>
+    </tr>
+    <tr>
+      <td><img src="../images/2192.png" alt="2192"></td>
+      <td>Unknown: Authentication status is unknown or no credentials have been entered.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For information on managing specific infrastructure providers see the following.</p>
+
+<ul>
+  <li>
+    <p><a href="./infrastructure_providers/red_hat_virtualization_providers.html">Red Hat Virtualization Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./infrastructure_providers/openstack_infrastructure_providers.html">OpenStack Infrastructure Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./infrastructure_providers/vmware_vcenter_providers.html">VMware vCenter Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./infrastructure_providers/microsoft_scvmm_providers.html">Microsoft SCVMM Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./infrastructure_providers/ibm_power_hmc_providers.html">IBM Power HMC</a></p>
+  </li>
+  <li>
+    <p><a href="./infrastructure_providers/kubevirt_providers.html">Kubevirt</a></p>
+  </li>
+</ul>
+
+<h1 id="refreshing-providers">
+<a class="anchor" href="#refreshing-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing Providers</h1>
+
+<p>Refresh a provider to find other resources related to it. Use
+<strong>Refresh</strong> after initial discovery to get the latest data about the
+provider and the virtual machines it can access. Ensure the provider has
+credentials to do this. If the providers were added using <strong>Discovery</strong>,
+add credentials using <img src="../images/1851.png" alt="Edit Selected Infrastructure
+Provider"> (<strong>Edit Selected Infrastructure Provider</strong>).</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Infrastructure &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Select the providers to refresh.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, and then
+<img src="../images/2003.png" alt="Refresh Relationships and Power States">
+(<strong>Refresh Relationships and Power States</strong>).</p>
+  </li>
+  <li>
+    <p>Click <strong>OK</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="tagging-multiple-providers">
+<a class="anchor" href="#tagging-multiple-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tagging Multiple Providers</h1>
+
+<p>Apply tags to all providers to categorize them together at the same
+time.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Infrastructure[Providers].</p>
+  </li>
+  <li>
+    <p>Check the providers to tag.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1941.png" alt="Policy"> (<strong>Policy</strong>), and then <img src="../images/2158.png" alt="Edit
+Tags"> (<strong>Edit Tags</strong>).</p>
+  </li>
+  <li>
+    <p>In the <strong>Tag Assignment</strong> area, select a customer tag to assign from
+the first list, then select a value to assign from the second list.</p>
+
+    <p><img src="../images/2194.png" alt="2194"></p>
+  </li>
+  <li>
+    <p>Select more tags as required; click (<strong>Save</strong>).</p>
+  </li>
+</ol>
+
+<h1 id="viewing-a-provider">
+<a class="anchor" href="#viewing-a-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing a Provider</h1>
+
+<p>From a list of providers, you can review a specific provider by clicking
+on it. This displays various options to access provider information.</p>
+
+<p>There are two methods of viewing an infrastructure provider’s details:
+the summary screen (default) and the dashboard screen. Use the summary
+<img src="../images/summary.png" alt="summary"> and dashboard
+<img src="../images/dashboard.png" alt="dashboard"> buttons to toggle between views.</p>
+
+<p>Both the summary and dashboard screens contain a taskbar with
+<strong>Reload</strong>, <strong>Configuration</strong>, <strong>Policy</strong>, <strong>Monitoring</strong>, and
+<strong>Authentication</strong> buttons to manage the selected provider.</p>
+
+<p><strong>Provider Summary Screen.</strong></p>
+
+<p><img src="../images/providers-summary-screen.png" alt="providers summary screen"></p>
+
+<p>The provider summary screen displays information about the provider in
+table format.</p>
+
+<ul>
+  <li>
+    <p>Provider accordion: Displays details about the provider’s
+<strong>Properties</strong> and <strong>Relationships</strong> on the sidebar. Click to expand
+these lists.</p>
+  </li>
+  <li>
+    <p>Provider summary: Displays a provider’s <strong>Properties</strong>, <strong>Status</strong>,
+<strong>Relationships</strong>, and <strong>Smart Management</strong>. Click on an item in the
+<strong>Relationships</strong> table to see more information about that entity.</p>
+  </li>
+</ul>
+
+<p><strong>Provider Dashboard Screen.</strong></p>
+
+<p><img src="../images/providers-summary-dashboard.png" alt="providers summary dashboard"></p>
+
+<p>From the dashboard, you can view:</p>
+
+<ul>
+  <li>
+    <p>Number of clusters, hosts, virtual machines, templates, datastores,
+resource pools, and other entities on the provider. Click on an
+entity to see more information about that item.</p>
+  </li>
+  <li>
+    <p>Aggregate utilization for CPU, memory, and storage</p>
+  </li>
+  <li>
+    <p>Network I/O statistics</p>
+  </li>
+  <li>
+    <p>Trends for hosts and virtual machines discovered</p>
+  </li>
+</ul>
+
+<p>To view the dashboard:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Infrastructure &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Click the infrastructure provider to view.</p>
+  </li>
+  <li>
+    <p>To access the dashboard view, click
+<img src="../images/dashboard.png" alt="dashboard"> (<strong>Dashboard view</strong>).</p>
+  </li>
+</ol>
+
+<p>To return to the summary view, click <img src="../images/summary.png" alt="summary">
+(<strong>Summary view</strong>).</p>
+
+<h1 id="removing-a-provider">
+<a class="anchor" href="#removing-a-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Removing a Provider</h1>
+
+<p>If a provider has been decommissioned or requires some troubleshooting,
+it might require deletion from the VMDB.</p>
+
+<p>Deleting a provider removes the account information from ManageIQ
+console. You will no longer be able to view any associated history
+including chargeback reports generated for the deleted provider.
+Additionally, if ManageIQ is the database of record, deleting
+providers would become a major problem for the other systems relying on
+it for accurate and consistent billing information. Review all the
+dependencies carefully before deleting a provider.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Compute[Infrastructure &gt; Providers].</p>
+  </li>
+  <li>
+    <p>Select the check box for the provider to delete.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1847.png" alt="Configuration"> (<strong>Configuration</strong>), then
+<img src="../images/2098.png" alt="Remove Infrastructure Providers from the VMDB">
+(<strong>Remove Infrastructure Providers from the VMDB</strong>).</p>
+  </li>
+  <li>
+    <p>Click (<strong>OK</strong>).</p>
+  </li>
+</ol>
+
+<h1 id="viewing-the-provider-timeline">
+<a class="anchor" href="#viewing-the-provider-timeline" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing the Provider Timeline</h1>
+
+<p>View the timeline of events for the virtual machines registered to a
+provider.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Compute[Infrastructure &gt; Providers].</p>
+  </li>
+  <li>
+    <p>Click a provider.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1994.png" alt="Monitoring"> (<strong>Monitoring</strong>), and then
+<img src="../images/1995.png" alt="Timelines"> (<strong>Timelines</strong>)from the taskbar, or
+from the provider accordion, click menu:Properties[Timeline].</p>
+  </li>
+  <li>
+    <p>From <strong>Options</strong>, customize the period of time to display and the
+types of events to see.</p>
+
+    <p><img src="../images/provider-timeline.png" alt="provider timeline"></p>
+
+    <ul>
+      <li>
+        <p>Use <strong>Show</strong> to select regular Management Events or Policy
+Events.</p>
+      </li>
+      <li>
+        <p>Use the <strong>Interval</strong> dropdown to select hourly or daily data
+points.</p>
+      </li>
+      <li>
+        <p>Use <strong>Date</strong> to type the date for the timeline to display.</p>
+      </li>
+      <li>
+        <p>If you select to view a daily timeline, use <strong>Show</strong> to set how
+many days back to go. The maximum history is 31 days.</p>
+      </li>
+      <li>
+        <p>The three <strong>Event Groups</strong> lists allow you to select different
+groups of events to display. Each has its own color.</p>
+      </li>
+      <li>
+        <p>From the <strong>Level</strong> list, select a <strong>Summary</strong> event, or a
+<strong>Detail</strong> list of events. For example, the detail level of a
+<strong>Power On</strong> event might include the power on request, the
+starting event, and the actual <strong>Power On</strong> event. If you select
+<strong>Summary</strong>, only the Power On event displays in the timeline.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h1 id="viewing-hosts-and-clusters">
+<a class="anchor" href="#viewing-hosts-and-clusters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Hosts and Clusters</h1>
+
+<p>Access a tree view of the hosts and clusters for a provider from the
+<strong>Provider Summary</strong>.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Compute[Infrastructure &gt; Providers].</p>
+  </li>
+  <li>
+    <p>Click the provider to view the hosts and clusters.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Relationships</strong> accordion, then click <strong>Hosts &amp;
+Clusters</strong>.</p>
+  </li>
+</ol>
+
+<p><img src="../images/hostsandclusters.png" alt="hostsandclusters"></p>
+
+<h1 id="viewing-virtual-machines-and-templates">
+<a class="anchor" href="#viewing-virtual-machines-and-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Virtual Machines and Templates</h1>
+
+<p>Access a tree view of the virtual machines and templates for a provider
+from the <strong>Provider Summary</strong>.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Compute[Infrastructure &gt; Providers].</p>
+  </li>
+  <li>
+    <p>Click the provider to view the virtual machines and templates.</p>
+  </li>
+  <li>
+    <p>From accordion menu, click <strong>Relationships</strong>, then click <strong>VMs &amp;
+Templates</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="configuration-management-providers">
+<a class="anchor" href="#configuration-management-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration Management Providers</h1>
+
+<p>In ManageIQ, a configuration management provider is a
+systems management product that you can add to a ManageIQ
+appliance to manage the lifecycle of your resources. Configuration
+management providers are useful for uniformly applying changes and
+updates across providers, and for recording and reporting status and
+change activity. They can also help eliminate the confusion and error
+brought about by the existence of different providers.</p>
+
+<p>This chapter describes the different types of configuration management
+providers available to ManageIQ, and how to manage them.
+Configuration management providers must be added individually to
+ManageIQ.</p>
+
+<ul>
+  <li>
+    <p><a href="./configuration_management_providers/ibm_terraform_provider.html">IBM Terraform provider</a></p>
+  </li>
+  <li>
+    <p><a href="./configuration_management_providers/red_hat_satellite_6.html">Red Hat Satellite 6</a></p>
+  </li>
+</ul>
+
+<h1 id="automation-management-providers">
+<a class="anchor" href="#automation-management-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Automation Management Providers</h1>
+
+<p>In ManageIQ, an automation management provider is a management
+tool that integrates with ManageIQ to simplify automation
+operations for your resources. This chapter describes the automation
+management providers that you can use with ManageIQ, and how to
+work with them.</p>
+
+<p>ManageIQ provides automation management features through the
+following:</p>
+
+<p><strong>Automate</strong> enables real-time, bi-directional process integration. This
+provides you with a method to implement adaptive automation for
+management events and administrative or operational activities.</p>
+
+<p><strong>Ansible</strong> integration delivers out-of-the-box support for backing
+service, alert and policy actions using Ansible playbooks. Sync your
+existing playbook repositories with ManageIQ, add
+credentials to access providers, and create service catalog items for
+actions ranging from creating and retiring VMs, updating security
+software, or adding additional disks when space runs low.</p>
+
+<p><strong>Ansible Tower</strong> is a management tool integrated with
+ManageIQ, designed to help automate infrastructure
+operations utilizing existing Ansible Tower providers in your inventory.
+ManageIQ allows you to execute Ansible Tower jobs using
+service catalogs and Automate. Using Ansible Tower, you can schedule
+Ansible playbook runs and monitor current and historical results,
+allowing for troubleshooting or identification of issues before they
+occur.</p>
+
+<h2 id="ansible">
+<a class="anchor" href="#ansible" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ansible</h2>
+
+<p>Ansible integrates with ManageIQ to provide automation solutions,
+using playbooks, for Service, Policy and Alert actions. Ansible
+playbooks consist of series of <em>plays</em> or tasks that define automation
+across a set of hosts, known as the inventory.</p>
+
+<p>Ranging from simple to complex tasks, Ansible playbooks can support
+cloud management:</p>
+
+<ul>
+  <li>
+    <p><strong>Services</strong> - allow a playbook to back a ManageIQ
+service catalog item.</p>
+  </li>
+  <li>
+    <p><strong>Control Actions</strong> - ManageIQ policies can execute
+playbooks as actions based on events from providers.</p>
+  </li>
+  <li>
+    <p><strong>Control Alerts</strong> - set a playbook to launch prompted by a
+ManageIQ alert.</p>
+  </li>
+</ul>
+
+<p>Ansible is built into ManageIQ so there is nothing to
+install. The basic workflow when using Ansible in ManageIQ is as
+follows:</p>
+
+<ol>
+  <li>
+    <p>Enable the <strong>Embedded Ansible</strong> server role.</p>
+  </li>
+  <li>
+    <p>Add a source control repository that contains your playbooks.</p>
+  </li>
+  <li>
+    <p>Establish credentials with your inventory.</p>
+  </li>
+  <li>
+    <p>Back your services, alerts and policies using available playbooks.</p>
+  </li>
+</ol>
+
+<h3 id="enabling-the-embedded-ansible-server-role">
+<a class="anchor" href="#enabling-the-embedded-ansible-server-role" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling the Embedded Ansible Server Role</h3>
+
+<p>In ManageIQ, the <strong>Embedded Ansible</strong> role is disabled by
+default. Enable this server role to utilize Ansible Automation Inside.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>Configure your ManageIQ appliance network identity (hostname/IP address) before enabling the Embedded Ansible server role.
+Restart the <code class="language-plaintext highlighter-rouge">evmserverd</code> service on the appliance with the enabled Embedded Ansible server role after making any changes to the hostname or IP address.</p>
+
+<ol>
+  <li>
+    <p>Browse to the settings menu, then <strong>Configuration</strong> →
+<strong>Settings</strong>.</p>
+  </li>
+  <li>
+    <p>Select the desired server under <strong>Zones</strong>.</p>
+  </li>
+  <li>
+    <p>Set the <strong>Server Role</strong> for <strong>Embedded Ansible</strong> to <strong>On</strong>.</p>
+  </li>
+</ol>
+
+<h3 id="verifying-the-embedded-ansible-worker-state">
+<a class="anchor" href="#verifying-the-embedded-ansible-worker-state" aria-hidden="true"><span class="octicon octicon-link"></span></a>Verifying the Embedded Ansible Worker State</h3>
+
+<p>Verify that the Embedded Ansible worker has started to utilize its
+features.</p>
+
+<ol>
+  <li>
+    <p>Browse to the settings menu, then <strong>Configuration</strong> →
+<strong>Diagnostics</strong> and click on the desired server.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Workers</strong> tab.</p>
+  </li>
+</ol>
+
+<p>A table of all workers and current status will appear from which you can
+confirm the state of your embedded Ansible worker.</p>
+
+<h3 id="adding-a-playbook-repository">
+<a class="anchor" href="#adding-a-playbook-repository" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a Playbook Repository</h3>
+
+<p>Add a repository so that ManageIQ can discover and make available
+your playbooks.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Ansible &gt; Repositories</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+  <li>
+    <p>Provide a Repository Name in the <strong>Name</strong> field.</p>
+  </li>
+  <li>
+    <p>Add a description for the repository in the <strong>Description</strong> field.</p>
+  </li>
+  <li>
+    <p>Select an <strong>SCM Type</strong> from the drop-down menu.</p>
+  </li>
+  <li>
+    <p>Add a <strong>URL</strong> or IP Address for the repository.</p>
+  </li>
+  <li>
+    <p>Select the appropriate <strong>SCM Credentials</strong> from the drop-down menu.</p>
+  </li>
+  <li>
+    <p>Provide a branch name in the <strong>SCM Branch</strong> field.</p>
+  </li>
+  <li>
+    <p>Check the appropriate box for any <strong>SCM Update Options</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<p>Once you have synced a repository, its playbooks will become available
+to ManageIQ.</p>
+
+<h3 id="refreshing-repositories">
+<a class="anchor" href="#refreshing-repositories" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing Repositories</h3>
+
+<p>ManageIQ allows you to refresh a targeted playbook repository or
+all repositories in your inventory to ensure your playbooks are current.</p>
+
+<p>Refresh a targeted repository:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Ansible &gt; Repositories</strong>.</p>
+  </li>
+  <li>
+    <p>Click on a repository.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+<img src="../images/2003.png" alt="Refresh this Repository"> (<strong>Refresh this
+Repository</strong>).</p>
+  </li>
+</ol>
+
+<p>Alternately, you can refresh some or all repositories from the list
+view:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Ansible &gt; Repositories</strong>.</p>
+  </li>
+  <li>
+    <p>Check those repositories to refresh. Click <strong>Check All</strong> to select
+all repositories.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+<img src="../images/2003.png" alt="Refresh Selected Ansible Repositories">
+(<strong>Refresh Selected Ansible Repositories</strong>).</p>
+  </li>
+</ol>
+
+<h1 id="credentials">
+<a class="anchor" href="#credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credentials</h1>
+
+<p>Credentials are utilized by ManageIQ for authentication when
+running Ansible playbooks against machines, synchronizing with inventory
+sources, and importing project content from a version control system.</p>
+
+<h2 id="adding-credentials">
+<a class="anchor" href="#adding-credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Credentials</h2>
+
+<p>ManageIQ can store credentials used by playbooks. Credentials
+saved in ManageIQ are matched and executed with a playbook
+when run.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Ansible &gt; Credentials</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+<img src="../images/1862.png" alt="Add a New Credential"> (<strong>Add a New
+Credential</strong>).</p>
+  </li>
+  <li>
+    <p>Provide a <strong>Name</strong> for the credential.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Credential Type</strong>. Additional fields will appear
+depending on the type chosen.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<h2 id="credential-types">
+<a class="anchor" href="#credential-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credential Types</h2>
+
+<p>Each credential type used by ManageIQ is detailed in the
+following sections.</p>
+
+<h3 id="machine">
+<a class="anchor" href="#machine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Machine</h3>
+
+<p>Machine credentials enable ManageIQ to invoke Ansible on
+hosts under your management. Just like using Ansible on the command
+line, you can specify the SSH username, optionally provide a password,
+an SSH key, or a key password. They define SSH and user-level privilege
+escalation access for playbooks, and are used when running playbooks on
+a remote host.</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to be used for SSH authentication.</p>
+  </li>
+  <li>
+    <p><strong>Password</strong>: The actual password to be used for SSH authentication.</p>
+  </li>
+  <li>
+    <p><strong>SSH Private Key</strong>: Copy or drag-and-drop the SSH private key for
+the machine credential.</p>
+  </li>
+  <li>
+    <p><strong>Private Key Passphrase</strong>: If the SSH Private Key used is protected
+by a password, you can configure a Key Password for the private key.</p>
+  </li>
+  <li>
+    <p><strong>Privilege Escalation</strong>: Specifies the type of escalation privilege
+to assign to specific users. Options include <strong>sudo</strong>, <strong>su</strong>,
+<strong>pbrun</strong>, <strong>pfexec</strong>.</p>
+  </li>
+  <li>
+    <p><strong>Privilege Escalation Username</strong>: Enter the username to use with
+escalation privileges on the remote system.</p>
+  </li>
+  <li>
+    <p><strong>Privilege Escalation Password</strong>: Enter the actual password to be
+used to authenticate the user via the selected privilege escalation
+type on the remote system.</p>
+  </li>
+  <li>
+    <p><strong>Vault Password</strong>: Ansible Vault credentials have only the <strong>Vault
+Password</strong> attribute that may be configured.</p>
+  </li>
+</ul>
+
+<p><strong>Note:</strong></p>
+
+<p>For more information on Ansible Vault, see <a href="http://docs.ansible.com/ansible/latest/playbooks_vault.html">Using Vault in playbooks</a>.</p>
+
+<h3 id="network">
+<a class="anchor" href="#network" aria-hidden="true"><span class="octicon octicon-link"></span></a>Network</h3>
+
+<p>Network credentials are used by Ansible networking modules to connect to
+and manage networking devices.</p>
+
+<p>Network credentials have several attributes that may be configured:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to use in conjunction with the network
+device.</p>
+  </li>
+  <li>
+    <p><strong>Password</strong>: The password to use in conjunction with the network
+device.</p>
+  </li>
+  <li>
+    <p><strong>Authorize</strong>: Select this from the Options field to add an
+Authorize password which signs the RSA key with a password.</p>
+  </li>
+  <li>
+    <p><strong>Authorize password</strong>: If <strong>Authorize</strong> is checked, enter a
+password in the <strong>Authorize Password</strong> field.</p>
+  </li>
+  <li>
+    <p><strong>SSH Key</strong>: Copy or drag-and-drop the actual SSH Private Key to be
+used to authenticate the user to the network via SSH.</p>
+  </li>
+  <li>
+    <p><strong>Private key passphrase</strong>: The actual passphrase for the private
+key to be used to authenticate the user to the network via SSH.</p>
+  </li>
+</ul>
+
+<h3 id="scm">
+<a class="anchor" href="#scm" aria-hidden="true"><span class="octicon octicon-link"></span></a>SCM</h3>
+
+<p>SCM (source control) credentials are used with Projects to clone and
+update local source code repositories from a remote revision control
+system such as Git, Subversion, or Mercurial.</p>
+
+<p>Source Control credentials have several attributes that may be
+configured:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to use in conjunction with the source
+control system.</p>
+  </li>
+  <li>
+    <p><strong>Password</strong>: The password to use in conjunction with the source
+control system.</p>
+  </li>
+  <li>
+    <p><strong>Private key passphrase</strong>: If the SSH private key used is protected
+by a passphrase, you may configure a key passphrase for the private
+key.</p>
+  </li>
+  <li>
+    <p><strong>Private Key</strong>: Copy or drag-and-drop the actual SSH Private Key to
+be used to authenticate the user to the source control system via
+SSH.</p>
+  </li>
+</ul>
+
+<h3 id="amazon">
+<a class="anchor" href="#amazon" aria-hidden="true"><span class="octicon octicon-link"></span></a>Amazon</h3>
+
+<p>Selecting this credential type enables synchronization of cloud
+inventory with Amazon Web Services.</p>
+
+<ul>
+  <li>
+    <p><strong>Access Key</strong>: User credentials that allow for programmatic calls
+to Amazon Web Services.</p>
+  </li>
+  <li>
+    <p><strong>Secret Key</strong>: The secret key that corresponds to the user access
+key.</p>
+  </li>
+  <li>
+    <p><strong>STS Token</strong>: Token generated by Amazon Web Services Security Token
+Service.</p>
+  </li>
+</ul>
+
+<h3 id="azure-classic-deprecated">
+<a class="anchor" href="#azure-classic-deprecated" aria-hidden="true"><span class="octicon octicon-link"></span></a>Azure Classic (deprecated)</h3>
+
+<p>Selecting this credential type enables synchronization of cloud
+inventory with Microsoft Windows Azure Classic.</p>
+
+<p>Microsoft Azure credentials have several attributes to configure:</p>
+
+<ul>
+  <li>
+    <p><strong>Subscription ID</strong>: The Subscription UUID for the Microsoft Azure
+Classic account.</p>
+  </li>
+  <li>
+    <p><strong>Management Certificate</strong>: The PEM file that corresponds to the
+certificate you uploaded in the Microsoft Azure Classic console.</p>
+  </li>
+</ul>
+
+<h3 id="azure">
+<a class="anchor" href="#azure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Azure</h3>
+
+<p>Selecting this credential type enables synchronization of cloud
+inventory with Microsoft Azure.</p>
+
+<p>Microsoft Azure credentials have several attributes to configure:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to use to connect to the Microsoft Azure
+account.</p>
+  </li>
+  <li>
+    <p><strong>Password</strong>: The password to use to connect to the Microsoft Azure
+account.</p>
+  </li>
+  <li>
+    <p><strong>Subscription ID</strong>: The Subscription UUID for the Microsoft Azure
+account.</p>
+  </li>
+  <li>
+    <p><strong>Tenant ID</strong>: The Tenant ID for the Microsoft Azure account.</p>
+  </li>
+  <li>
+    <p><strong>Client Secret</strong>: The Client Secret for the Microsoft Azure
+account.</p>
+  </li>
+  <li>
+    <p><strong>Client ID</strong>: The Client ID for the Microsoft Azure account.</p>
+  </li>
+</ul>
+
+<h3 id="openstack">
+<a class="anchor" href="#openstack" aria-hidden="true"><span class="octicon octicon-link"></span></a>OpenStack</h3>
+
+<p>Selecting this credential type enables synchronization of cloud
+inventory with Red Hat OpenStack Platform.</p>
+
+<p>OpenStack credentials have several attributes that may be configured:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to use to connect to OpenStack.</p>
+  </li>
+  <li>
+    <p><strong>Password (API Key)</strong>: The password or API key to use to connect to
+OpenStack.</p>
+  </li>
+  <li>
+    <p><strong>Host (Authentication URL)</strong>: The host to be used for
+authentication.</p>
+  </li>
+  <li>
+    <p><strong>Project (Tenant Name)</strong>: The Tenant name or Tenant ID used for
+OpenStack. This value is usually the same as the username.</p>
+  </li>
+  <li>
+    <p><strong>Domain name</strong>: The FQDN to be used to connect to OpenStack.</p>
+  </li>
+</ul>
+
+<h3 id="rackspace">
+<a class="anchor" href="#rackspace" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rackspace</h3>
+
+<p>Selecting this credential type enables synchronization of cloud
+inventory with Rackspace.</p>
+
+<p>Rackspace credentials have the following attributes that may be
+configured:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to use to connect to vCenter.</p>
+  </li>
+  <li>
+    <p><strong>API Key</strong>: The public key related to the administrator ID.</p>
+  </li>
+</ul>
+
+<h3 id="red-hat-virtualization">
+<a class="anchor" href="#red-hat-virtualization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Red Hat Virtualization</h3>
+
+<p>Selecting this credential type enables synchronization of cloud
+inventory with Red Hat Virtualization.</p>
+
+<p>Red Hat Virtualization credentials have several attributes that may be
+configured:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to use to connect to Red Hat
+Virtualization.</p>
+  </li>
+  <li>
+    <p><strong>Password</strong>: The password to use to connect to Red Hat
+Virtualization.</p>
+  </li>
+  <li>
+    <p><strong>Host (Authentication URL)</strong>: The host to be used for
+authentication.</p>
+
+    <div class="important">
+
+  - Enter in **Host** the Red Hat Virtualization provider URL,
+    followed by the path `/ovirt_engine/api`. Example:
+    `https://your.rhv.com/ovirt_engine/api`
+
+  - See [Ansible Roles](https://access.redhat.com/documentation/en-us/red_hat_virtualization/4.1/html/administration_guide/chap-automating_rhv_configuration_using_ansible#Ansible_Roles)
+    for more information on Ansible Roles available for Red Hat
+    Virtualization.
+
+</div>
+  </li>
+</ul>
+
+<h3 id="satellite-6">
+<a class="anchor" href="#satellite-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Satellite 6</h3>
+
+<p>Selecting this credential type enables synchronization of cloud
+inventory with Red Hat Satellite 6.</p>
+
+<p>Satellite credentials have several attributes that may be configured:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to use to connect to Satellite 6.</p>
+  </li>
+  <li>
+    <p><strong>Password</strong>: The password to use to connect to Satellite 6.</p>
+  </li>
+  <li>
+    <p><strong>Satellite 6 Host</strong>: The Satellite 6 URL or IP address to connect
+to.</p>
+  </li>
+</ul>
+
+<h3 id="vmware">
+<a class="anchor" href="#vmware" aria-hidden="true"><span class="octicon octicon-link"></span></a>VMware</h3>
+
+<p>Selecting this credential type enables synchronization of inventory with
+VMware vCenter.</p>
+
+<p><strong>Important:</strong></p>
+
+<p>If both ManageIQ and a VMware provider are located in the same IPv6-only network, use a DNS-resolvable hostname for the VMware provider in the <strong>vCenter Host</strong> field when adding credentials.</p>
+
+<p>VMware credentials have several attributes that may be configured:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to use to connect to vCenter.</p>
+  </li>
+  <li>
+    <p><strong>Password</strong>: The password to use to connect to vCenter.</p>
+  </li>
+  <li>
+    <p><strong>vCenter Host</strong>: The vCenter hostname or IP address to connect to.</p>
+  </li>
+</ul>
+
+<p><strong>Note:</strong></p>
+
+<p>If the VMware guest tools are not running on the instance, VMware inventory sync may not return an IP address for that instance.</p>
+
+<h1 id="tagging-ansible-playbooks-repositories-and-credentials">
+<a class="anchor" href="#tagging-ansible-playbooks-repositories-and-credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tagging Ansible Playbooks, Repositories, and Credentials</h1>
+
+<p>Apply tags to Ansible playbooks, repositories, and credentials to
+categorize them. Tagging enables administrators to limit users to view
+those Ansible elements that have been enabled for that set of user
+permissions.</p>
+
+<h2 id="adding-tags-to-ansible-playbooks">
+<a class="anchor" href="#adding-tags-to-ansible-playbooks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Tags to Ansible Playbooks</h2>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Automate[Ansible &gt; Playbooks].</p>
+  </li>
+  <li>
+    <p>Select the checkboxes for the Ansible playbooks to tag.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1941.png" alt="Policy"> (<strong>Policy</strong>), and then <img src="../images/1851.png" alt="Edit
+Tags"> (<strong>Edit Tags</strong>).</p>
+  </li>
+  <li>
+    <p>Select a customer tag to assign from the first list.</p>
+
+    <p><img src="../images/2219.png" alt="2219"></p>
+  </li>
+  <li>
+    <p>Select a value to assign from the second list.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h2 id="adding-tags-to-ansible-repositories">
+<a class="anchor" href="#adding-tags-to-ansible-repositories" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Tags to Ansible Repositories</h2>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Automate[Ansible &gt; Repositories].</p>
+  </li>
+  <li>
+    <p>Select the checkboxes for the Ansible repositories to tag.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1941.png" alt="Policy"> (<strong>Policy</strong>), and then <img src="../images/1851.png" alt="Edit
+Tags"> (<strong>Edit Tags</strong>).</p>
+  </li>
+  <li>
+    <p>Select a customer tag to assign from the first list.</p>
+
+    <p><img src="../images/2219.png" alt="2219"></p>
+  </li>
+  <li>
+    <p>Select a value to assign from the second list.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h2 id="adding-tags-to-ansible-credentials">
+<a class="anchor" href="#adding-tags-to-ansible-credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Tags to Ansible Credentials</h2>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Automate[Ansible &gt; credentials].</p>
+  </li>
+  <li>
+    <p>Select the checkboxes for the Ansible credentials to tag.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1941.png" alt="Policy"> (<strong>Policy</strong>), and then <img src="../images/1851.png" alt="Edit
+Tags"> (<strong>Edit Tags</strong>).</p>
+  </li>
+  <li>
+    <p>Select a customer tag to assign from the first list.</p>
+
+    <p><img src="../images/2219.png" alt="2219"></p>
+  </li>
+  <li>
+    <p>Select a value to assign from the second list.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="optimizing-ansible-playbooks-for-manageiq">
+<a class="anchor" href="#optimizing-ansible-playbooks-for-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optimizing Ansible Playbooks for ManageIQ</h1>
+
+<p>Ansible is a simple model-driven configuration management, multi-node
+deployment, and remote-task execution system. When designing playbooks
+for use with ManageIQ it is helpful to utilize solutions
+within the playbook itself to ensure optimal implementation of
+playbook-backed services or automated processes.</p>
+
+<p>This section is intended to complement the existing documentation on
+Ansible playbooks and guide administrators through optimizing playbooks
+for use with ManageIQ.</p>
+
+<h2 id="installing-roles-on-an-embedded-ansible-appliance">
+<a class="anchor" href="#installing-roles-on-an-embedded-ansible-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing Roles on an Embedded Ansible Appliance</h2>
+
+<p>Roles are ways of automatically loading certain variable files, tasks,
+and handlers based on a known file structure. Grouping content by roles
+also allows easy sharing of roles with other users. Install roles on a
+ManageIQ appliance with the Embedded Ansible server role
+activated to optimize playbooks.</p>
+
+<p>When using this role in a playbook on a ManageIQ
+appliance, add an empty <code class="language-plaintext highlighter-rouge">roles</code> directory at the root of the playbook.
+In the <code class="language-plaintext highlighter-rouge">roles</code> directory, include a <code class="language-plaintext highlighter-rouge">requirements.yml</code> file with the
+following contents:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+- src: &lt;ansible-galaxy-role&gt;
+</code></pre></div></div>
+
+<p>ManageIQ will automatically install the role once it sees
+the <code class="language-plaintext highlighter-rouge">requirements.yml</code> file in the playbook.</p>
+
+<h2 id="ansible-service-linking">
+<a class="anchor" href="#ansible-service-linking" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ansible Service Linking</h2>
+
+<p>ManageIQ provides a module allowing inventoried resources such as
+virtual machines created using Ansible playbooks to link back to the
+services used to generate them. During service ordering of a playbook
+the <code class="language-plaintext highlighter-rouge">add_provider_vms</code> module will allow the playbook to connect back to
+the worker appliance and identify the provider resources it was
+responsible for generating. Once linked, the newly generated resources
+are available to ManageIQ’s life cycle management
+features.</p>
+
+<p>Linking VMs back to the service that created it requires implementing
+the following tasks in the playbook used for provisioning:</p>
+
+<ol>
+  <li>
+    <p>Create a resource and register it.</p>
+  </li>
+  <li>
+    <p>Link the service using the <code class="language-plaintext highlighter-rouge">add_provider_vms</code> method to the newly
+created resource.</p>
+  </li>
+</ol>
+
+<h3 id="example-linking-a-virtual-machine-to-a-service">
+<a class="anchor" href="#example-linking-a-virtual-machine-to-a-service" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example: Linking a virtual machine to a service</h3>
+
+<p>In the following playbook task examples, a virtual machine is deployed
+to Amazon EC2 and linked back to the service. Examples are provided for
+linking the resource to its service by both an <em>href slug</em> and as an
+object.</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+  <li>
+    <p>This example utilizes the `syncrou.manageiq-vmdb` role. This role allows ManageIQ users to modify and/or change VMDB objects using an Ansible playbook. For information on implementing and utilizing roles when writing Ansible playbooks for ManageIQ, see <a href="https://access.redhat.com/documentation/en-us/red_hat_virtualization/4.1/html/administration_guide/chap-Automating_RHV_Configuration_using_Ansible#Installing_Ansible_Roles">Installing Ansible Roles</a>.</p>
+  </li>
+  <li>
+    <p>For more information on Ansible Galaxy and roles, see the <a href="http://docs.ansible.com/ansible/latest/galaxy.html">Ansible Galaxy documentation</a>.</p>
+  </li>
+  <li>
+    <p>Note the provider ID in order to successfully link to the service.</p>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>Create and register the resource.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>- name: Create Ec2 Instance
+  ec2:
+    key_name: ""
+    instance_tags: {Name: ""}
+    group_id: ""
+    instance_type: ""
+    region: ""
+    image: ""
+    wait: yes
+    count: 1
+    vpc_subnet_id: ""
+    assign_public_ip: yes
+  register: ec2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Call the <code class="language-plaintext highlighter-rouge">add_provider_vms</code> method as an action to link to the
+service via an <em>href slug</em> or an object.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>- name: Service Linking via an href slug
+  manageiq_vmdb:
+    href: "href_slug::services/80"
+    action: add_provider_vms
+    data:
+      uid_ems:
+        - ""
+      provider:
+        id: 24
+
+- name: Service Linking via an object
+  manageiq_vmdb:
+    vmdb: ""
+    action: add_provider_vms
+    data:
+      uid_ems:
+        - ""
+      provider:
+        id: 24
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="modifying-the-automate-workspace-using-the-manageiq-automate-role">
+<a class="anchor" href="#modifying-the-automate-workspace-using-the-manageiq-automate-role" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modifying the Automate Workspace Using the <code class="language-plaintext highlighter-rouge">manageiq-automate</code> Role.</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">manageiq-automate</code> role allows users of ManageIQ Automate to
+modify and add to the automate workspace via an Ansible playbook.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>When using this role in a playbook on a ManageIQ appliance with
+Embedded Ansible activated, add an empty <code class="language-plaintext highlighter-rouge">roles</code> directory at the root
+of the playbook. In the <code class="language-plaintext highlighter-rouge">roles</code> directory, include a <code class="language-plaintext highlighter-rouge">requirements.yml</code>
+file with the following contents:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+- src: syncrou.manageiq-automate
+</code></pre></div></div>
+
+<p>ManageIQ will automatically install the role once it sees
+the <code class="language-plaintext highlighter-rouge">requirements.yml</code> file in the playbook.</p>
+
+<h4 id="role-variables">
+<a class="anchor" href="#role-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Role Variables</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">manageiq_automate</code> role employs the following variables when
+implemented in a playbook run on a ManageIQ appliance.
+Variables are defined in <code class="language-plaintext highlighter-rouge">defaults/main.yml</code> and <code class="language-plaintext highlighter-rouge">vars/main.yml</code>.</p>
+
+<p><em>auto_commit</em>: By default is set to <code class="language-plaintext highlighter-rouge">True</code>. If set to False it will not
+auto commit back to ManageIQ each call to a <code class="language-plaintext highlighter-rouge">set_</code> method
+in the <code class="language-plaintext highlighter-rouge">manageiq_automate</code> module.</p>
+
+<p><em>manageiq_validate_certs</em>: By default is set to <code class="language-plaintext highlighter-rouge">True</code>. If passed in
+via <em>extra_vars</em> or assigned in the playbook variables then the lookup
+will allow self-signed certificates to be used when using SSL REST API
+connection URLs.</p>
+
+<h4 id="example-playbook">
+<a class="anchor" href="#example-playbook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example Playbook</h4>
+
+<p>The example below utilizes the <code class="language-plaintext highlighter-rouge">manageiq-automate</code> role. Using variable
+substitution, playbook tasks retrieve method parameters which are then
+used to modify object attributes. A final task uses the <code class="language-plaintext highlighter-rouge">set_retry</code>
+module to update the retry interval.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- name: Siphon Method Parameters into an object
+  hosts: localhost
+  connection: local
+  vars:
+  - auto_commit: True
+  - object: root
+  - interval: 600
+
+  gather_facts: False
+  roles:
+  - syncrou.manageiq-automate
+
+  tasks:
+    - name: "Get the list of Method Parameters"
+      manageiq_automate:
+        workspace: ""
+        get_method_parameters: yes
+      register: method_params
+
+    - name: "Set attributes"
+      manageiq_automate:
+        workspace: ""
+        set_attributes:
+          object: ""
+          attributes: ""
+
+    - name: Set Retry
+      manageiq_automate:
+        workspace: ""
+        set_retry:
+          interval: ""
+</code></pre></div></div>
+
+<h2 id="callbacks-in-multiple-appliance-environments">
+<a class="anchor" href="#callbacks-in-multiple-appliance-environments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Callbacks in Multiple Appliance Environments</h2>
+
+<p>In a ManageIQ multiple appliance environment, enable the Embedded
+Ansible server role on a dedicated ManageIQ appliance. Add
+<code class="language-plaintext highlighter-rouge">store_session:sql</code> to Ansible playbooks to ensure successful callbacks
+to ManageIQ appliances in a multiple appliance
+environment.</p>
+
+<h3 id="ansible-tower">
+<a class="anchor" href="#ansible-tower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ansible Tower</h3>
+
+<p>Ansible Tower is a management tool integrated with ManageIQ,
+designed to help automate infrastructure operations. ManageIQ
+allows you to execute Ansible Tower jobs or workflows using service
+catalogs and Automate. No custom configuration or Ruby scripting is
+needed in ManageIQ, as configuration is done in Ansible
+Tower using playbooks.</p>
+
+<p>You can use the large library of existing Ansible playbooks as
+ManageIQ state machines to automate tasks such as
+deployments, backups, package updates, and maintenance in your
+ManageIQ environment. This can be particularly useful for quickly
+applying changes across large environments with many virtual machines or
+instances.</p>
+
+<p>Using Ansible Tower, you can schedule Ansible playbook runs and monitor
+current and historical results, allowing for troubleshooting or
+identification of issues before they occur.</p>
+
+<p>ManageIQ supports Ansible Tower API v2 provider
+integration.</p>
+
+<h4 id="working-with-an-ansible-tower-provider">
+<a class="anchor" href="#working-with-an-ansible-tower-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Working with an Ansible Tower Provider</h4>
+
+<p>The basic workflow when using ManageIQ with an Ansible Tower
+provider is as follows:</p>
+
+<ol>
+  <li>
+    <p>Create an Ansible playbook which performs a specific task.</p>
+  </li>
+  <li>
+    <p>A new Ansible Tower job template is created from the playbook (or
+workflow template created from disparate jobs), which is then
+retrieved by ManageIQ.</p>
+  </li>
+  <li>
+    <p>From the Ansible Tower job or workflow template, create a new
+catalog item in ManageIQ, optionally with a service
+dialog that allows the user to enter parameters if needed.</p>
+  </li>
+  <li>
+    <p>The user orders the service from the ManageIQ user
+interface, and fills out any additional arguments (for example,
+limiting the task to run on a specific set of virtual machines).</p>
+  </li>
+  <li>
+    <p>The job or workflow executes.</p>
+  </li>
+</ol>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+  <li>
+    <p>For more information on Ansible playbooks, see the <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks.html">Ansible playbook documentation</a>.</p>
+  </li>
+  <li>
+    <p>For more information on worklows, see
+<a href="https://docs.ansible.com/ansible-tower/latest/html/userguide/workflows.html">Workflows</a>
+in the Ansible Tower <em>User Guide</em>.</p>
+  </li>
+</ul>
+
+<h4 id="adding-an-ansible-tower-provider">
+<a class="anchor" href="#adding-an-ansible-tower-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding an Ansible Tower Provider</h4>
+
+<p>To access your Ansible Tower inventory from ManageIQ, you must
+add Ansible Tower as a provider.</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+  <li>
+    <p>Ensure <strong>ENABLE HTTP BASIC AUTH</strong> is set to <strong>On</strong> in the Ansible
+Tower configuration settings before adding the provider. See <a href="https://docs.ansible.com/ansible-tower/latest/html/administration/configure_tower_in_tower.html">Tower
+Configuration</a>
+in the Ansible Tower <em>Administration Guide</em>.</p>
+  </li>
+  <li>
+    <p>A trailing slash is <strong>not</strong> required at the end of the Ansible Tower
+provider URL. Adding the trailing slash to the provider URL may
+result in a validation error.</p>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong> and click on the <strong>Providers</strong> accordion tab.</p>
+  </li>
+  <li>
+    <p>Under <strong>Configuration</strong>, click
+<img src="../images/1862.png" alt="Add a new Provider"> <strong>Add a new Provider</strong>.</p>
+  </li>
+  <li>
+    <p>In the <strong>Add a new Provider</strong> area:</p>
+
+    <p><img src="../images/add-ansible-tower-provider.png" alt="Add_Ansible_Provider"></p>
+
+    <ol>
+      <li>
+        <p>Enter a <strong>Name</strong> for the new provider.</p>
+      </li>
+      <li>
+        <p>Add a <strong>Zone</strong> for the provider.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>URL</strong> location or IP address to the Ansible Tower server. Add a trailing slash to the end of the Ansible Tower provider URL.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Select the <strong>Verify Peer Certificate</strong> checkbox if desired.</p>
+  </li>
+  <li>
+    <p>In the <strong>Credentials</strong> area, provide the <strong>Username</strong> and
+<strong>Password</strong>, and <strong>Confirm Password</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Validate</strong> to verify credentials.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<p>After adding the Ansible Tower provider, refresh its relationships and power states in order to view the current inventory.</p>
+
+<h4 id="refreshing-an-ansible-tower-provider">
+<a class="anchor" href="#refreshing-an-ansible-tower-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing an Ansible Tower Provider</h4>
+
+<p>Refresh relationships of all items related to an existing Ansible Tower configuration management provider including inventory, hosts, virtual machines, and clusters.</p>
+
+<p>You can refresh inventory from ManageIQ, or by enabling the
+<strong>Update on Launch</strong> option for inventory groups in Ansible Tower. The
+<strong>Update on Launch</strong> option allows Ansible Tower to automatically update inventory using a dynamic inventory script before launching an Ansible Tower job from a playbook. See the <a href="http://docs.ansible.com/ansible-tower/index.html">Ansible Tower documentation</a> for more information.</p>
+
+<p><strong>Important</strong></p>
+
+<p>It can take a long time to retrieve information from providers containing many virtual machines or instances. The Ansible Tower dynamic inventory script can be modified to limit updates to specific items and
+reduce refresh time.</p>
+
+<p>To refresh an Ansible Tower provider’s inventory in ManageIQ:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong> and click the <strong>Providers</strong> accordion tab.</p>
+  </li>
+  <li>
+    <p>Select the checkboxes for the Ansible Tower providers to refresh under <strong>All Ansible Tower Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, and
+then <img src="../images/2003.png" alt="Refresh Relationships and Power States">
+(<strong>Refresh Relationships and Power States</strong>).</p>
+  </li>
+  <li>
+    <p>Click <strong>OK</strong>.</p>
+  </li>
+</ol>
+
+<p>ManageIQ then queries the Ansible Tower API and obtains an
+inventory of all available hosts, job and workflow templates.</p>
+
+<h4 id="viewing-ansible-tower-providers-and-inventory">
+<a class="anchor" href="#viewing-ansible-tower-providers-and-inventory" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Ansible Tower Providers and Inventory</h4>
+
+<p>ManageIQ automatically updates its inventory from Ansible Tower.
+This includes system groups (known as Inventories in Ansible Tower),
+basic information about individual systems, and available Ansible Tower
+job or workflow templates to be executed from the service catalog or
+Automate.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>To view and access Ansible Tower inventories and job or workflow templates in ManageIQ, you must first create them in Ansible Tower.</p>
+
+<p>To view a list of Ansible Tower providers and inventory:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong>.</p>
+  </li>
+  <li>
+    <p>select the <strong>Providers</strong> accordion menu to display a list of <strong>All Ansible Tower Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Select your Ansible Tower provider to expand and list the inventory groups on that Ansible Tower system. The inventory groups can be expanded to view the systems contained within each group, as well as configuration details for these systems.</p>
+  </li>
+</ol>
+
+<p>Similarly, all discovered job and workflow templates are accessed under the provider by expanding the menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong> and click the <strong>Templates</strong> accordion menu.</p>
+
+<h4 id="viewing-ansible-tower-configured-systems">
+<a class="anchor" href="#viewing-ansible-tower-configured-systems" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Ansible Tower Configured Systems</h4>
+
+<p>To view the systems in your Ansible Tower inventory:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong> and click <strong>Configured Systems</strong>.</p>
+  </li>
+  <li>
+    <p>Under <strong>All Ansible Tower Configured Systems</strong>, select <strong>Ansible Tower Configured Systems</strong> to display a list.</p>
+  </li>
+</ol>
+
+<h4 id="executing-an-ansible-tower-job-or-workflow-template-from-a-service-catalog">
+<a class="anchor" href="#executing-an-ansible-tower-job-or-workflow-template-from-a-service-catalog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Executing an Ansible Tower Job or Workflow Template from a Service Catalog</h4>
+
+<p>You can execute an Ansible Tower playbook from ManageIQ by creating a service catalog item from an Ansible Tower job or workflow template.</p>
+
+<p><strong>Important:</strong></p>
+
+<p>You must first create the job or workflow template in Ansible Tower. The job or workflow templates are automatically discovered by ManageIQ when refreshing your Ansible Tower provider’s inventory.</p>
+
+<p>First, create a catalog:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and click <strong>Catalog Items</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+<img src="../images/1862.png" alt="Add a New Catalog"> (<strong>Add a New Catalog</strong>)</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Name</strong> and <strong>Description</strong> for the catalog.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<p>Then, create an Ansible Tower service catalog item:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong>, then click the <strong>Templates</strong> according menu.</p>
+  </li>
+  <li>
+    <p>Click <strong>Ansible Tower Templates</strong> and select an Ansible Tower job or workflow template.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+<img src="../images/1862.png" alt="Create Service Dialog from Template"> (<strong>Create Service Dialog from this Template</strong>).</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Service Dialog Name</strong> (for example,
+<em>ansible_tower_job</em>)and click <strong>Save</strong>.</p>
+  </li>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and click <strong>Catalog Items</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+<img src="../images/1862.png" alt="Add a New Catalog Item"> (<strong>Add a New Catalog Item</strong>) to create a new catalog item with the following details, at minimum:</p>
+
+    <ul>
+      <li>
+        <p>For <strong>Catalog Item type</strong>, select <strong>Ansible Tower</strong>.</p>
+      </li>
+      <li>
+        <p>Enter a <strong>Name</strong> for the service catalog item.</p>
+      </li>
+      <li>
+        <p>Select <strong>Display in Catalog</strong>.</p>
+      </li>
+      <li>
+        <p>In <strong>Catalog</strong>, select the catalog you created previously.</p>
+      </li>
+      <li>
+        <p>In <strong>Dialog</strong>, select the service dialog you created previously
+(in this example, <em>ansible_tower_job</em>). To ask the user to enter extra information when running the task, <strong>Service Dialog</strong> must be selected. A dialog is required if <strong>Display in Catalog</strong> is chosen.</p>
+      </li>
+      <li>
+        <p>In <strong>Provider</strong>, select your Ansible Tower provider. This brings up the <strong>Ansible Tower Template</strong> option and configures the
+<strong>Provisioning Entry Point State Machine</strong> automatically.</p>
+      </li>
+      <li>
+        <p>Add configuration information for <strong>Reconfigure Entry Point</strong> and <strong>Retirement Entry Point</strong> as applicable.</p>
+      </li>
+      <li>
+        <p>Select your desired <strong>Ansible Tower Template</strong> from the list.
+Generally, this is the Ansible Tower job or workflow template previously used to create the service dialog.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>. The catalog item you created will appear in the <strong>All Service Catalog Items</strong> list.</p>
+  </li>
+</ol>
+
+<p>To execute the Ansible Tower job:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Service &gt; Catalogs</strong> and click on <strong>Service Catalogs</strong> then click <strong>Ansible Tower catalog</strong>.</p>
+
+    <p><img src="../images/order_at_catalog_item.png" alt="order at catalog item"></p>
+  </li>
+  <li>
+    <p>Click <strong>Order</strong> for the catalog item.</p>
+  </li>
+  <li>
+    <p>Enter any variables requested and click <strong>Submit</strong>.</p>
+  </li>
+</ol>
+
+<p>ManageIQ takes you to the <strong>Requests</strong> queue page and show the
+status of the job.</p>
+
+<p>The service item’s details can be viewed in menu: <strong>Services &gt; My Services</strong> in ManageIQ.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>Instead of running a single job at a time, multiple service catalog items can also be grouped together as a catalog bundle to create one deployment with multiple job templates. See <a href="../provisioning_virtual_machines_and_hosts/index.html#catalogs-and-services">Catalogs and Services</a> in <em>Provisioning Virtual Machines and Hosts</em> for more information.</p>
+
+<h4 id="executing-an-ansible-tower-job-using-a-custom-automate-button">
+<a class="anchor" href="#executing-an-ansible-tower-job-using-a-custom-automate-button" aria-hidden="true"><span class="octicon octicon-link"></span></a>Executing an Ansible Tower Job Using a Custom Automate Button</h4>
+
+<p>ManageIQ can execute Ansible Tower jobs on virtual machines or
+instances using custom buttons in Automate.</p>
+
+<p>Ansible Tower jobs can either be non-customizable, which do not require any extra configuration from the user, or alternatively, they can allow the user to specify a parameter (for example, a package name to install). In Ansible Tower jobs containing a dialog, ManageIQ accepts additional information from the user and adds it to the appropriate API call in Automate, and then sends it into Ansible Tower.</p>
+
+<p><strong>Prerequisites.</strong></p>
+
+<p>Before creating an Automate button to execute an Ansible Tower job, the following must be configured:</p>
+
+<ul>
+  <li>
+    <p>An Ansible playbook in Ansible Tower. See the <a href="https://docs.ansible.com/">Ansible Tower documentation</a> for instructions.</p>
+  </li>
+  <li>
+    <p>Ansible Tower must be able to reach virtual machines or instances deployed by ManageIQ at the IP level.</p>
+  </li>
+  <li>
+    <p>The virtual machine template must have the Ansible Tower environment’s public SSH key injected. For cloud instances, <code class="language-plaintext highlighter-rouge">cloud-init</code> can be used and the public SSH key can be passed without rebuilding the image.</p>
+  </li>
+  <li>
+    <p>Any dynamic inventory scripts used must be configured to return the virtual machine names exactly as they are stored in ManageIQ, without the UUID appended.</p>
+  </li>
+</ul>
+
+<p><strong>Executing an Ansible Tower Job using a Custom Automate Button.</strong></p>
+
+<p>To configure a custom button to execute an Ansible Tower job on a virtual machine or instance, first create the button:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Automate &gt; Customization</strong>.</p>
+  </li>
+  <li>
+    <p>Click the <strong>Buttons</strong> accordion menu.</p>
+  </li>
+  <li>
+    <p>Click menu: <strong>VM and Instance</strong> &gt; <strong>Unassigned Buttons</strong>. This configures the button to run on virtual machines or instances.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then click
+<img src="../images/1862.png" alt="1862"> (<strong>Add a new Button</strong>).</p>
+
+    <ul>
+      <li>
+        <p>In the <strong>Adding a new Button</strong> screen, configure the <strong>Action</strong> parameters as desired. <strong>Dialog</strong> can be left blank if the playbook does not require extra variables. To ask the user to enter extra information when running the task, <strong>Service Dialog</strong> must be selected.</p>
+      </li>
+      <li>
+        <p>Configure <strong>Object Details</strong> fields with the following request details:</p>
+
+        <ul>
+          <li>
+            <p>For <strong>System/Process</strong>, select <strong>Request</strong>.</p>
+          </li>
+          <li>
+            <p>For <strong>Message</strong>, enter <strong>create</strong>.</p>
+          </li>
+          <li>
+            <p>For <strong>Request</strong>, enter <strong>Ansible_Tower_Job</strong>.</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Configure <strong>Attribute/Value Pairs</strong> with the following
+parameters:</p>
+
+        <ul>
+          <li>
+<strong>job_template_name</strong> is the Ansible Tower job template
+name to associate with the button. The
+<strong>job_template_name</strong> field is mandatory; other parameters
+are provided by the Tower job dialog.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Configure <strong>Visibility</strong> to all users, or limit visibility by
+role as desired.</p>
+
+        <p><img src="../images/add_button.png" alt="add button"></p>
+      </li>
+      <li>
+        <p>Click <strong>Add</strong>.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>If you do not have an existing button group to assign the new button to, create a new button group:</p>
+
+<ol>
+  <li>
+    <p>From menu: <strong>Automation &gt; Automate &gt; Customization</strong>, browse to menu: <strong>Buttons</strong> and click <strong>VM and Instance &gt; Add a new Button Group</strong>, and configure the following:</p>
+
+    <ul>
+      <li>
+        <p>Configure <strong>Basic Info</strong> as desired. For example, name the button group <code class="language-plaintext highlighter-rouge">VM Actions</code>.</p>
+      </li>
+      <li>
+        <p>In <strong>Assign Buttons</strong>, select the button you just created from
+the <strong>Unassigned</strong> list and click <img src="../images/1876.png" alt="1876"> to
+assign it to <strong>Selected</strong>.</p>
+
+        <p><img src="../images/create_button_group.png" alt="create button group"></p>
+      </li>
+      <li>
+        <p>Click <strong>Add</strong>.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>To assign the button to an existing button group:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Buttons &gt; VM and Instance &gt; VM Actions &gt; Edit this Button Group</strong>.</p>
+  </li>
+  <li>
+    <p>In <strong>Assign Buttons</strong>, select the button you just created from the <strong>Unassigned</strong> list and click <img src="../images/1876.png" alt="1876"> to assign it to <strong>Selected</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<p>To use the button to run an Ansible Tower job on a virtual machine:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Infrastructure &gt; Virtual Machines</strong>.</p>
+  </li>
+  <li>
+    <p>Select the virtual machine to run the Ansible Tower job template on.</p>
+  </li>
+  <li>
+    <p>Click the <strong>VM Actions</strong> button to show the button you created, and
+click the button from the list to run the Ansible Tower job
+template.</p>
+
+    <p><img src="../images/run_update_button.png" alt="run update button"></p>
+  </li>
+  <li>
+    <p>Click <strong>Submit</strong> to execute the job.</p>
+  </li>
+</ol>
+
+<p>ManageIQ then confirms the job has been executed.</p>
+
+<p>If you selected a service dialog to run when creating the button,
+ManageIQ will then prompt you to enter variables to complete the
+task. After entering your desired parameters, ManageIQ takes you
+to the <strong>Requests</strong> page.</p>
+
+<p>The service item’s details can be viewed in menu: <strong>Services &gt; My Services</strong> in ManageIQ.</p>
+
+<h1 id="cloud-providers">
+<a class="anchor" href="#cloud-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cloud Providers</h1>
+
+<p>In ManageIQ, a cloud provider is a cloud computing
+environment that you can add to a ManageIQ appliance to
+manage and interact with the resources in that environment. This chapter
+describes the different types of cloud providers that you can add to
+ManageIQ, and how to manage them. Most cloud providers are
+added individually to ManageIQ. Additionally, Amazon EC2
+and Azure cloud providers can be discovered automatically by
+ManageIQ.</p>
+
+<p>The web interface uses virtual thumbnails to represent cloud providers.
+Each thumbnail contains four quadrants by default, which display basic
+information about each provider:</p>
+
+<p><img src="../images/cloudthumbnail.png" alt="cloudthumbnail"></p>
+
+<ol>
+  <li>
+    <p>Number of instances</p>
+  </li>
+  <li>
+    <p>Management system software</p>
+  </li>
+  <li>
+    <p>Number of images</p>
+  </li>
+  <li>
+    <p>Authentication status</p>
+  </li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th>Icon</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="../images/2190.png" alt="2190"></td>
+      <td>Validated: Valid authentication credentials have been added.</td>
+    </tr>
+    <tr>
+      <td><img src="../images/2191.png" alt="2191"></td>
+      <td>Invalid: Authentication credentials are invalid.</td>
+    </tr>
+    <tr>
+      <td><img src="../images/2192.png" alt="2192"></td>
+      <td>Unknown: Authentication status is unknown or no credentials have been entered.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Provider authentication status</p>
+
+<h1 id="refreshing-cloud-providers">
+<a class="anchor" href="#refreshing-cloud-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing Cloud Providers</h1>
+
+<p>Refresh a cloud provider to find other resources related to it. Ensure
+the chosen cloud providers have the correct credentials before
+refreshing.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Clouds &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Select the checkboxes for the cloud providers to refresh.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, and
+then <img src="../images/2003.png" alt="Refresh Relationships and Power States">
+(<strong>Refresh Relationships and Power States</strong>).</p>
+  </li>
+  <li>
+    <p>Click <strong>OK</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="tagging-cloud-providers">
+<a class="anchor" href="#tagging-cloud-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tagging Cloud Providers</h1>
+
+<p>Apply tags to all cloud providers to categorize them together at the
+same time.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Compute[Clouds &gt; Providers].</p>
+  </li>
+  <li>
+    <p>Select the checkboxes for the Cloud Providers to tag.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1941.png" alt="Policy"> (<strong>Policy</strong>), and then <img src="../images/1851.png" alt="Edit
+Tags"> (<strong>Edit Tags</strong>).</p>
+  </li>
+  <li>
+    <p>Select a customer tag to assign from the first list.</p>
+
+    <p><img src="../images/2219.png" alt="2219"></p>
+  </li>
+  <li>
+    <p>Select a value to assign from the second list.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="removing-cloud-providers">
+<a class="anchor" href="#removing-cloud-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Removing Cloud Providers</h1>
+
+<p>A cloud provider might require removal from the VMDB if it is no longer
+in use.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Clouds &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Check the cloud providers to remove.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, and
+then <img src="../images/2098.png" alt="Remove Cloud Providers from the VMDB">
+(<strong>Remove Cloud Providers from the VMDB</strong>).</p>
+  </li>
+  <li>
+    <p>Click <strong>OK</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="editing-a-cloud-provider">
+<a class="anchor" href="#editing-a-cloud-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editing a Cloud Provider</h1>
+
+<p>Edit information about a provider such as the name, IP address, and
+login credentials.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>The <strong>Type</strong> value is unchangeable.</p>
+
+<p>To use a different cloud provider, create a new one.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Clouds &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Click the cloud provider to edit.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, and
+then <img src="../images/1851.png" alt="Edit Selected Cloud Provider"> <strong>(Edit
+Selected Cloud Provider)</strong>.</p>
+  </li>
+  <li>
+    <p>Edit the <strong>Basic Information</strong>. This varies depending on the
+<strong>Type</strong> of provider.</p>
+  </li>
+  <li>
+    <p>Fill out the <strong>Credentials</strong> by typing in a <strong>Username</strong>,
+<strong>Password</strong>, and a verification of this password (<strong>Confirm
+Password</strong>).</p>
+
+    <ul>
+      <li>
+        <p>If selecting <strong>Amazon EC2</strong>, generate an <strong>Access Key</strong> in the
+<strong>Security Credentials</strong> of your Amazon AWS account. The
+<strong>Access Key ID</strong> acts as your <strong>User ID</strong>, and your <strong>Secret
+Access Key</strong> acts as your <strong>Password</strong>.</p>
+      </li>
+      <li>
+        <p>If selecting <strong>OpenStack</strong>, use the <code class="language-plaintext highlighter-rouge">Keystone User ID</code> and
+<code class="language-plaintext highlighter-rouge">Password</code> for your login credentials.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>If editing an OpenStack provider, use the <strong>AMQP</strong> subtab to provide
+credentials required for the Advanced Message Queuing Protocol
+service on your OpenStack Nova component.</p>
+  </li>
+  <li>
+    <p>Click <strong>Validate</strong> and wait for notification of successful
+validation.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="viewing-a-cloud-providers-timeline">
+<a class="anchor" href="#viewing-a-cloud-providers-timeline" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing a Cloud Provider’s Timeline</h1>
+
+<p>View the timeline of events for instances registered to a cloud
+provider.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Compute[Clouds &gt; Providers].</p>
+  </li>
+  <li>
+    <p>Click the desired cloud provider for viewing the timeline.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1994.png" alt="Monitoring"> (<strong>Monitoring</strong>), and then
+<img src="../images/1995.png" alt="Timelines"> (<strong>Timelines</strong>).</p>
+  </li>
+  <li>
+    <p>From <strong>Options</strong>, customize the period of time to display and the
+types of events to see.</p>
+
+    <ul>
+      <li>
+        <p>Use <strong>Show</strong> to select regular Management Events or Policy
+Events.</p>
+      </li>
+      <li>
+        <p>Use the <strong>Type</strong> list to select hourly or daily data points.</p>
+      </li>
+      <li>
+        <p>Use <strong>Date</strong> to type the date for the timeline to display.</p>
+      </li>
+      <li>
+        <p>If you select to view a daily timeline, use <strong>Show</strong> to set how
+many days back to go. The maximum history is 31 days.</p>
+      </li>
+      <li>
+        <p>The three <strong>Event Groups</strong> list allow you to select different
+groups of events to display. Each has its own color.</p>
+      </li>
+      <li>
+        <p>From the <strong>Level</strong> list, select a <strong>Summary</strong> event, or a
+<strong>Detail</strong> list of events.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>
+    <p><a href="./cloud_providers/azure_providers.html">Azure Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./cloud_providers/amazon_ec2_providers.html">Amazon EC2 Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./cloud_providers/google_compute_engine_providers.html">Google Compute Engine Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./cloud_providers/ibm_cloud_vpc_providers.html">IBM Cloud VPC Provider</a></p>
+  </li>
+  <li>
+    <p><a href="./cloud_providers/ibm_power_systems_virtual_servers_providers.html">IBM Power Systems Virtual Servers Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./cloud_providers/ibm_power_vc_providers.html">IBM PowerVC Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./cloud_providers/openstack_providers.html">OpenStack Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./cloud_providers/oracle_cloud_providers.html">Oracle Cloud Providers</a></p>
+  </li>
+</ul>
+
+<h1 id="physical-infrastructure-providers">
+<a class="anchor" href="#physical-infrastructure-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Physical Infrastructure Providers</h1>
+
+<p>In ManageIQ, a physical infrastructure provider is a
+management console used to manage physical inventory such as physical servers,
+chassis, racks, and physical networking/storage devices.</p>
+
+<p>ManageIQ supports the following types of physical infrastructure providers:</p>
+
+<ul>
+  <li>
+    <p>Lenovo XClarity</p>
+  </li>
+  <li>
+    <p>Redfish</p>
+  </li>
+</ul>
+
+<h1 id="image-import-workflows">
+<a class="anchor" href="#image-import-workflows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Image Import Workflows</h1>
+
+<h2 id="ibm-powervc-to-ibm-power-systems-virtual-server">
+<a class="anchor" href="#ibm-powervc-to-ibm-power-systems-virtual-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>IBM PowerVC to IBM Power Systems Virtual Server</h2>
+
+<p>The image import functionality allows you to easily move an image from your on-prem PowerVC environment to an off-prem Power Systems Virtual Server environment using ManageIQ web interface.
+The enablement of the workflow in ManageIQ requires you to perform certain preparations that are described in detail below.</p>
+
+<h3 id="preparing-manageiq-hosting-server-required-once">
+<a class="anchor" href="#preparing-manageiq-hosting-server-required-once" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparing ManageIQ hosting server (required once):</h3>
+
+<p>The following commands are to be run on a server (or in a corresponding docker container) that is dedicated to hosting your ManageIQ instance.</p>
+
+<ol>
+  <li>Install <code class="language-plaintext highlighter-rouge">ansible-runner</code> application using the installation <a href="https://ansible-runner.readthedocs.io/en/stable/install.html">instructions</a>. The application must be available in the the command line
+of the user under which the ManageIQ web-server is running.</li>
+</ol>
+
+<h3 id="preparing-ibm-powervc-server-required-once">
+<a class="anchor" href="#preparing-ibm-powervc-server-required-once" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparing IBM PowerVC Server (required once):</h3>
+<p>The  following commands are to be run on a PowerVC server that is dedicated to supporting the image import workflow.</p>
+
+<ol>
+  <li>
+    <p>Make sure that the minimal IBM PowerVC version you are using is <a href="https://www.ibm.com/docs/it/powervc/1.4.4?topic=installing-power-virtualization-center">1.4.4</a>.</p>
+  </li>
+  <li>
+    <p>Install <code class="language-plaintext highlighter-rouge">python3.X</code>, <code class="language-plaintext highlighter-rouge">pip3</code>, <code class="language-plaintext highlighter-rouge">virtualenv</code> applications as well as the <code class="language-plaintext highlighter-rouge">libselinux-python3</code> library.
+You can achieve this by issuing the following command as a “root” user:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>yum install -y python3 python-pip3 python-virtualenv libselinux-python3 gcc
+</code></pre></div>    </div>
+
+    <p>The standard <code class="language-plaintext highlighter-rouge">python3.X</code> installation will be used in order to run auxiliary scripts, which will
+upload PowerVC disk images (in Open Virtualization Format) to the <a href="https://www.ibm.com/cloud/object-storage">IBM Cloud Object Storage</a>.
+The <code class="language-plaintext highlighter-rouge">pip3</code> is required in order to install Cloud Object Storage <a href="https://github.com/ibm/ibm-cos-sdk-python">Python SDK</a> and auxiliary packages for proper functioning of the import workflow.
+The role of <code class="language-plaintext highlighter-rouge">virtualenv</code> will be to isolate python package installations that are relevant only to the image import workflow from the
+Python system packages. The <code class="language-plaintext highlighter-rouge">libselinux-python3</code> library is needed for the proper functioning of Ansible’s <code class="language-plaintext highlighter-rouge">copy</code> module, which will
+be used for the copying of auxiliary data between the ManageIQ hosting site and the PowerVC server. Presence
+of <code class="language-plaintext highlighter-rouge">gcc</code> is needed as a dependency of one of the Python packages (<code class="language-plaintext highlighter-rouge">pycryptodome</code>) that will be installed on later steps.</p>
+  </li>
+  <li>
+    <p>Prepare enough local storage for holding transient PowerVC disk images that will be transported into Power Systems Virtual Server
+and deleted from a local storage upon workflow completion. A typical PowerVC image file size can be many GBs.
+As an example, a RHEL 8.3 disk image can be of 20GB size or more. You would therefore require more space
+in your local storage than the mentioned disk image size in order to support the import workflow.
+You would also need enough space to hold Python virtual environment described in the next steps.
+Its size however will be no more than 100MB. Additionally, import session will place auxiliary files into the sessions directory
+during the workflow execution but their collective size will not exceed 5MB. In summary, if you’re attempting to import an image 
+whose size is ‘G’ Gigabytes, then having ‘G+1’ Gigabytes of free space in that directory would be sufficient.</p>
+  </li>
+  <li>
+    <p>Create an empty sessions directory <code class="language-plaintext highlighter-rouge">/home/sessions</code> which will have to be located on the local storage with sufficient space
+as described in the previous step. In addition, make sure that already existing <code class="language-plaintext highlighter-rouge">/var/opt/ibm/powervc/imgstaging</code> directory also 
+has at least G+1 Gigabytes of free storage as described in previous paragraph since IBM PowerVC internally uses it as a temporary 
+staging area during export of images to the local filesystem.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>mkdir /home/sessions
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The image import workflow will use Ansible via SSH from the ManageIQ server in order to execute commands on the PowerVC server. At this point you need to choose a system user 
+that will be made available to ManageIQ instance for connection to the PowerVC server via SSH. Make sure the user has a read/write access to the <code class="language-plaintext highlighter-rouge">/home/sessions</code> directory.
+The user must also be able to execute <code class="language-plaintext highlighter-rouge">powervc-image</code> application through the command line. In general, a good security practice would be 
+to permit user only as much as it is required to run the import workflow. We will assume that all further commands in this section are executed using this existing or newly created system user:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>su - your_user
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create a separate virtual Python environment:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>virtualenv --system-site-packages /home/sessions/venv
+</code></pre></div>    </div>
+
+    <p>This environment will hold Python packages that are relevant only to the image import workflow
+and as such will not be available system-wide. Conversely, the <code class="language-plaintext highlighter-rouge">--system-site-packages</code> will indicate to the application that the existing Python system packages are to be made available
+to the virtual environment.</p>
+  </li>
+  <li>
+    <p>Installing packages in the environment requires one to first activate the environment after which
+all the Python package installations via <code class="language-plaintext highlighter-rouge">pip3</code> will become environment relative only. Therefore, activate the newly created Python environment:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>source /home/sessions/venv/bin/activate
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Install Python packages inside the virtual environment using:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>pip3 install pathlib pycryptodome ibm-cos-sdk
+</code></pre></div>    </div>
+
+    <p>The <code class="language-plaintext highlighter-rouge">pathlib</code> is  used for handling file paths. The <code class="language-plaintext highlighter-rouge">pycryptodome</code> is required for
+encrypting/decrypting IBM Cloud connection credentials and the <code class="language-plaintext highlighter-rouge">ibm-cos-sdk</code> represents the IBM Cloud Object Storage Python SDK.</p>
+  </li>
+  <li>
+    <p>Upon completing the Python package installations above you should exit the virtual environment by running:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>deactivate
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Make sure to have a valid PowerVC connection/resource file under <code class="language-plaintext highlighter-rouge">/opt/ibm/powervc/powervcrc</code> (or at your custom location) containing similar definitions
+(the values below represent an example and not a suggestion for usage).</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>export OS_IDENTITY_API_VERSION=3
+export OS_AUTH_URL=https://host:5000/v3/
+export OS_CACERT=/etc/pki/tls/certs/powervc.crt
+export OS_REGION_NAME=RegionOne
+export OS_PROJECT_DOMAIN_NAME=Default
+export OS_PROJECT_NAME=ibm-default
+export OS_TENANT_NAME=$OS_PROJECT_NAME
+export OS_USER_DOMAIN_NAME=Default
+export OS_USERNAME=root
+export OS_PASSWORD=password
+export OS_COMPUTE_API_VERSION=2.46
+export OS_NETWORK_API_VERSION=2.0
+export OS_IMAGE_API_VERSION=2
+export OS_VOLUME_API_VERSION=2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The last step is to test the exporting of PowerVC disk image to the local filesystem. Firstly, execute:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>source /opt/ibm/powervc/powervcrc
+</code></pre></div>    </div>
+
+    <p>This will acquire all the environmental variables required for issuing commands to the corresponding PowerVC instance. Now run the following command:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>powervc-image list
+</code></pre></div>    </div>
+
+    <p>The output should be similar to the one below:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>+----------+--------------------------------------+--------+---------+------+-------------+--------------+-----------+------------+
+| Name     | ID                                   | Status | Volumes | Size | Description | Architecture | OS Distro | Exportable |
++----------+--------------------------------------+--------+---------+------+-------------+--------------+-----------+------------+
+| test-IMG | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | active | 1       | 20   |             | ppc64        | rhel      | True       |
++----------+--------------------------------------+--------+---------+------+-------------+--------------+-----------+------------+
+</code></pre></div>    </div>
+
+    <p>Note the name of the image you would like to export, which will be <code class="language-plaintext highlighter-rouge">test-IMG</code> in our example. Next export the image of your choice:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>powervc-image export -i test-IMG -p /home/sessions/image.ova
+</code></pre></div>    </div>
+
+    <p>It is a time-consuming operation with the runtime taking several minutes to complete depending on the size of exported image.
+  Once the operation completes you should be able to find the exported image under <code class="language-plaintext highlighter-rouge">/home/sessions/image.ova</code>.  At this stage you can remove the exported image thus concluding the test:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>rm /home/sessions/image.ova
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="add-a-cloud-object-storage-provider-in-manageiq">
+<a class="anchor" href="#add-a-cloud-object-storage-provider-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add a Cloud Object Storage provider in ManageIQ:</h3>
+
+<ol>
+  <li>
+    <p>See the corresponding instructions <a href="storage_providers/ibm_cloud_object_storage_managers">here</a>.</p>
+  </li>
+  <li>
+    <p>Create a bucket in your Cloud Object Storage that will hold the transient OVA image files.  <br>
+<img src="../images/new_bucket.png" alt="New Bucket"></p>
+
+    <p>Make sure to choose the region for the bucket that <strong>corresponds</strong> to the region that you have specified when registering the
+Cloud Object Storage provider.</p>
+
+    <p><strong>NOTE</strong>: The “root” user as well as the workflow dedicated user of the PowerVC server from step <a href="#preparing-ibm-powervc-server-required-once">5</a> 
+would both be able to decrypt the Cloud Object Storage’s credentials during the execution of the import workflow and therefore make sure to take 
+this into consideration in your security setup.</p>
+  </li>
+</ol>
+
+<h3 id="add-an-ibm-power-systems-virtual-server-provider-in-manageiq">
+<a class="anchor" href="#add-an-ibm-power-systems-virtual-server-provider-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add an IBM Power Systems Virtual Server provider in ManageIQ:</h3>
+
+<ol>
+  <li>See the corresponding instructions <a href="cloud_providers/ibm_power_systems_virtual_servers_providers">here</a>.</li>
+</ol>
+
+<h3 id="add-an-ibm-powervc-provider-in-manageiq">
+<a class="anchor" href="#add-an-ibm-powervc-provider-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add an IBM PowerVC provider in ManageIQ:</h3>
+
+<ol>
+  <li>
+    <p>See the corresponding instructions <a href="cloud_providers/ibm_power_vc_providers">here</a>.</p>
+  </li>
+  <li>
+    <p>Specify the image import related parameters on the PowerVC registration form.</p>
+  </li>
+</ol>
+
+<ul>
+  <li>
+    <p>Enter the SSH username for access to the PowerVC server. It corresponds to the user on your PowerVC server that is dedicated to
+running image import related commands via Ansible as described in <a href="#preparing-ibm-powervc-server-required-once">5</a>.</p>
+  </li>
+  <li>
+    <p>Enter the private key and the private key passphrase (if present).<br>
+<img src="../images/pvc_import_pkey.png" alt="pvc_reg"></p>
+  </li>
+</ul>
+
+<h3 id="grant-image-import-permissions-in-manageiq">
+<a class="anchor" href="#grant-image-import-permissions-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grant Image Import Permissions in ManageIQ:</h3>
+
+<p>User performing image import needs a corresponding permission in ManageIQ in order
+to perform this operation. For granting permissions, log-in through an administrative account and navigate 
+to <code class="language-plaintext highlighter-rouge">Settings -&gt; Application Settings -&gt; Access Control</code>. Make sure the user of your choice has permissions for 
+<code class="language-plaintext highlighter-rouge">Import Cloud Template</code> action through the user’s corresponding group and role.
+ <img src="../images/import_access_control.png" alt="import_access_control"></p>
+
+<h3 id="enable-embedded-ansible-in-manageiq">
+<a class="anchor" href="#enable-embedded-ansible-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enable Embedded Ansible in ManageIQ:</h3>
+
+<p>Currently the workflow event is queued as Embedded Ansible playbook upon request submission and as such the corresponding functionality has to be enabled
+in ManageIQ by navigating to: <code class="language-plaintext highlighter-rouge">Settings -&gt; Application Settings -&gt; Settings</code></p>
+
+<p><img src="../images/import_emb_ansible.png" alt="Enable Embedded Ansible"></p>
+
+<h3 id="start-the-workflow">
+<a class="anchor" href="#start-the-workflow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Start the workflow</h3>
+<p>The workflow operates by exporting the image as an OVA file onto a PowerVC local storage, uploading it to the Cloud Object Storage bucket and then transferring it into Power Systems Virtual Server image registry. In order to initiate the workflow:</p>
+
+<ol>
+  <li>
+    <p>Queue the refreshing of all the above mentioned (cloud and storage) providers and wait for the operations to complete.
+<img src="../images/refresh_providers.png" alt="Import Image Button Screenshot"></p>
+  </li>
+  <li>
+    <p>Navigate to the Power Systems Virtual Server provider added above.  <br>
+<img src="../images/import_button.png" alt="Import Image Button Screenshot"></p>
+  </li>
+  <li>
+    <p>Click on the <code class="language-plaintext highlighter-rouge">Import Image</code> button after which an import form will appear.</p>
+  </li>
+  <li>
+    <p>Choose the PowerVC provider added above as a source provider.</p>
+  </li>
+  <li>
+    <p>Choose the image you would like to import.</p>
+  </li>
+  <li>
+    <p>Choose the Cloud Object Storage provider added above.</p>
+  </li>
+  <li>
+    <p>Choose the transient bucket created above.</p>
+  </li>
+  <li>
+    <p>Choose target disk type for the image being imported.</p>
+  </li>
+  <li>
+    <p>Choose the timeout value for your request (default is 3 hours).</p>
+  </li>
+  <li>
+    <p>Check the corresponding box if you wish to keep the OVA file in the cloud bucket upon workflow completion.</p>
+  </li>
+  <li>
+    <p>Click on the <code class="language-plaintext highlighter-rouge">Import</code> button initiating the workflow.<br>
+  <img src="../images/pvc_pvs_import_form.png" alt="Import Image Button Screenshot"></p>
+  </li>
+  <li>
+    <p>The workflow can take an hour or more depending on the image size, bucket location,
+Power Systems Virtual Server and PowerVC internal load.</p>
+  </li>
+  <li>
+    <p>Watch for the current status of the workflow under <code class="language-plaintext highlighter-rouge">Settings -&gt; Tasks -&gt; All Tasks</code>.<br>
+  <img src="../images/miq_import_task.png" alt="Workflow Form Screenshot"></p>
+  </li>
+  <li>
+    <p>Initiate the refreshing of the Power Systems Virtual Server provider upon workflow completion and
+wait for the newly imported image to appear.</p>
+  </li>
+</ol>
+
+<h3 id="troubleshooting">
+<a class="anchor" href="#troubleshooting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Troubleshooting</h3>
+
+<ul>
+  <li>
+    <p>If the ManageIQ UI shows no detailed error description then make sure to check the latest logs in <code class="language-plaintext highlighter-rouge">&lt;ManageIQ&gt;/log/evm.log</code> on a server that hosts your ManageIQ instance.</p>
+  </li>
+  <li>
+    <p>If  <code class="language-plaintext highlighter-rouge">ManageIQ</code> server is terminated during the workflow execution then certain residual objects will 
+have to be removed manually. These are potentially the session directory on the PowerVC server under <code class="language-plaintext highlighter-rouge">/home/sessions</code>, the already uploaded OVA 
+image file in the Cloud Object Storage bucket or its parts as explained <a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-large-objects">here</a> (see <code class="language-plaintext highlighter-rouge">Abort incomplete multipart uploads</code>).</p>
+  </li>
+  <li>
+    <p>Currently only one import workflow for a given PowerVC &lt;–&gt; Power Systems Virtual Server pair is allowed. Any newly submitted import workflow, where at least one of the instances in the pair is involved with some other
+import workflow request, will be queued until the latter completes. You would need to cancel such already executing workflow in order to force immediate execution of the newly submitted one.</p>
+  </li>
+</ul>
+
+<h1 id="network-managers">
+<a class="anchor" href="#network-managers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Network Managers</h1>
+
+<p>In ManageIQ, a network manager is an inventory of networking
+entities on existing cloud and infrastructure providers managed by your
+ManageIQ appliance.</p>
+
+<p>This provider type exposes software-defined networking (SDN) providers
+including <em>OpenStack Network (Neutron)</em>, <em>Azure Network</em>, and <em>Amazon
+EC2 Network</em>, which enables software-defined networking inventory
+collection. The OpenStack Network provider collects inventory of
+floating IPs from OpenStack so that IPs can be allocated without
+querying OpenStack database every time. Also, it refreshes all Neutron
+data from both OpenStack and OpenStack Infrastructure, and extracts the
+Neutron logic to a shared place. Note that management via the network
+providers configuration is currently disabled.</p>
+
+<p>This chapter describes the different types of network managers available
+to ManageIQ, and how to manage them. Network managers are
+discovered automatically by ManageIQ from other connected
+providers.</p>
+
+<h1 id="adding-or-viewing-network-providers">
+<a class="anchor" href="#adding-or-viewing-network-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding or Viewing Network Providers</h1>
+
+<p><strong>Note:</strong></p>
+
+<p>All supported network providers — OpenStack Network, Azure Network, and
+Amazon EC2 Network, are added or removed automatically upon adding or
+removing the respective cloud provider.</p>
+
+<p>Viewing network providers:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Networks &gt; Providers</strong> to see a list of all network
+providers, along with information such as <em>Name</em>, <em>Type</em>, <em>EVM
+Zone</em>, <em>Number of Instances</em>, <em>Subnets</em>, and <em>Region</em>.</p>
+  </li>
+  <li>
+    <p>Click on a provider from the list to view its summary screen.</p>
+  </li>
+</ol>
+
+<p>Network providers summary:</p>
+
+<p>The summary screen includes tables containing information on
+<em>Properties</em>, <em>Status</em>, <em>Relationships</em>, <em>Overview</em>, and <em>Smart
+Management</em>. Click on rows in the <em>Relationship</em> and <em>Overview</em> tables
+to see detailed information for individual entities.</p>
+
+<p>Accordion tabs in the sidebar provide access to <strong>Properties</strong> and
+<strong>Relationships</strong> details.</p>
+
+<p>Click on <strong>Reload</strong>, <strong>Configuration</strong>, <strong>Policy</strong>, and <strong>Monitoring</strong>
+actions in the taskbar to manage the selected provider.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>Alternatively, click on a cloud provider to see the cloud provider details and its relationships such as Network Manager, Tenants, Instances among others. In Relationships, click Network Manager to see
+information about the network provider, and its relationship with the cloud provider, on the summary page.</p>
+
+<h1 id="refreshing-network-providers">
+<a class="anchor" href="#refreshing-network-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing Network Providers</h1>
+
+<p>Refresh a network provider to find other resources related to it. Ensure
+the selected network providers have the correct credentials before
+refreshing.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Networks &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Select the network providers to refresh.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, and
+then <img src="../images/2003.png" alt="Refresh Relationships and Power States">
+(<strong>Refresh Relationships and Power States</strong>).</p>
+  </li>
+  <li>
+    <p>Click <strong>OK</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="tagging-network-providers">
+<a class="anchor" href="#tagging-network-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tagging Network Providers</h1>
+
+<p>Apply tags to network providers to categorize them together at the same
+time.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Networks[Providers].</p>
+  </li>
+  <li>
+    <p>Select the network providers to tag.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1941.png" alt="Policy"> (<strong>Policy</strong>), and then <img src="../images/2158.png" alt="Edit
+Tags"> (<strong>Edit Tags</strong>).</p>
+  </li>
+  <li>
+    <p><strong>Select a customer tag to assign</strong> from the first list.</p>
+  </li>
+  <li>
+    <p>Select a value to assign from the second list.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="removing-network-providers">
+<a class="anchor" href="#removing-network-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Removing Network Providers</h1>
+
+<p>Although network providers are added or removed automatically upon
+adding or removing the respective cloud provider, you can manually
+remove a network provider if it is no longer in use. This will remove
+the network provider from the VMDB and any relationship with the cloud
+provider.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Networks &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Click the network provider to remove.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, and
+then <img src="../images/2098.png" alt="Remove this Network Provider from the VMDB">
+(<strong>Remove this Network Provider from the VMDB</strong>).</p>
+  </li>
+  <li>
+    <p>Click <strong>OK</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="viewing-a-network-providers-timeline">
+<a class="anchor" href="#viewing-a-network-providers-timeline" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing a Network Provider’s Timeline</h1>
+
+<p>View the timeline of events for instances registered to a network
+provider.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Networks[Providers].</p>
+  </li>
+  <li>
+    <p>Click the network provider you want to monitor the timeline for.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1994.png" alt="Monitoring"> (<strong>Monitoring</strong>), and then
+<img src="../images/1995.png" alt="Timelines"> (<strong>Timelines</strong>).</p>
+  </li>
+  <li>
+    <p>From <strong>Options</strong>, select the event type and interval, and customize
+the period of time to display and the types of events to see.</p>
+
+    <ul>
+      <li>
+        <p>Select <em>Management Events</em> or <em>Policy Events</em> from the <strong>Show</strong>
+list.</p>
+      </li>
+      <li>
+        <p>Select an <strong>Interval</strong> between <em>Hourly</em> and <em>Daily</em>.</p>
+      </li>
+      <li>
+        <p>Select <strong>Date</strong>.</p>
+      </li>
+      <li>
+        <p>If you selected <em>Daily</em> for <strong>Interval</strong>, set the number of days
+in the past to see the event timeline for. The maximum is <em>31
+days back</em>.</p>
+      </li>
+      <li>
+        <p>Select <strong>Summary</strong> or <strong>Detail</strong> for <strong>Level</strong>.</p>
+      </li>
+      <li>
+        <p>Select the required <strong>Event Groups</strong> from the lists you want to
+monitor the timeline for.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>You can also assign policy profiles to network providers, or remove
+them. The method for doing so is similar to that of any normal policy
+profile.</p>
+
+<h1 id="using-the-topology-widget-for-network-providers">
+<a class="anchor" href="#using-the-topology-widget-for-network-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using the Topology Widget for Network Providers</h1>
+
+<p>The <strong>Topology</strong> widget is an interactive topology graph, showing the
+status and relationships between the different entities of the network
+providers that ManageIQ has access to.</p>
+
+<p>The topology graph includes cloud subnets, virtual machines, security
+groups, floating IP addresses, cloud networks, network routers, cloud
+tenants, and tags within the overall network provider environment.</p>
+
+<p>Each entity in the graph displays a color indication of its status:
+green indicates an active entity, while red indicates inactivity or an
+issue.</p>
+
+<p><img src="../images/network_topology.png" alt="network topology"></p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Networks &gt; Topology</strong>.</p>
+  </li>
+  <li>
+    <p>Click the desired network provider for viewing the provider summary.</p>
+  </li>
+</ol>
+
+<p>Alternatively, you can open the topology widget from the provider
+summary page by clicking <strong>Topology</strong> under <strong>Overview</strong>.</p>
+
+<ul>
+  <li>
+    <p>Hovering over any individual graph element will display a summary of
+details for the individual element.</p>
+  </li>
+  <li>
+    <p>Double-click an entity in the graph to browse to its summary page.</p>
+  </li>
+  <li>
+    <p>Drag elements to reposition the graph.</p>
+  </li>
+  <li>
+    <p>Click the symbols in the legend at the top of the graph to show or
+hide entities.</p>
+  </li>
+  <li>
+    <p>Click the <strong>Display Names</strong> checkbox to show or hide entity names.</p>
+  </li>
+  <li>
+    <p>Click <strong>Refresh</strong> to refresh the display of the network provider
+entities.</p>
+  </li>
+  <li>
+    <p>Enter a search term in the <strong>Search</strong> box to locate an entity by
+full or partial name.</p>
+  </li>
+</ul>
+
+<h1 id="containers-providers">
+<a class="anchor" href="#containers-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Containers Providers</h1>
+
+<p>A containers provider is a service that manages container resources, that can be added to the ManageIQ appliance.</p>
+
+<p>ManageIQ can connect to OpenShift Container Platform containers providers and manage them similarly to infrastructure and cloud providers. This allows you to gain control over different aspects of your containers environment and answer questions such as:</p>
+
+<ul>
+  <li>
+    <p>How many containers exist in my environment?</p>
+  </li>
+  <li>
+    <p>Does a specific node have enough resources?</p>
+  </li>
+  <li>
+    <p>How many distinct images are used?</p>
+  </li>
+  <li>
+    <p>Which image registries are used?</p>
+  </li>
+</ul>
+
+<p>When ManageIQ connects to a container’s environment, it collects information on different areas of the environment:</p>
+
+<ul>
+  <li>
+    <p>Entities such as pods, nodes, or services.</p>
+  </li>
+  <li>
+    <p>Basic relationships between the entities, for example: Which services are serving which pods?</p>
+  </li>
+  <li>
+    <p>Advanced insight into relationships, for example: Which two different containers are using the same image?</p>
+  </li>
+  <li>
+    <p>Additional information, such as events, projects, routes, and metrics.</p>
+  </li>
+</ul>
+
+<p>You can manage policies for containers entities by adding tags. All containers entities except volumes can be tagged.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>This chapter provides details on managing containers providers. For details on working with the resources within a container environment, see <a href="../managing_infrastructure_and_inventory/index.html#container-entities">Container Entities</a> in <em>Managing Infrastructure and Inventory</em>.</p>
+
+<p>The ManageIQ user interface uses virtual thumbnails to represent containers providers. Each thumbnail contains four quadrants
+by default, which display basic information about each provider:</p>
+
+<p><img src="../images/cp-quad-icon.png" alt="cp quad icon"></p>
+
+<ol>
+  <li>
+    <p>Number of nodes</p>
+  </li>
+  <li>
+    <p>Container provider software</p>
+  </li>
+  <li>
+    <p>Power state</p>
+  </li>
+  <li>
+    <p>Authentication status</p>
+  </li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th>Icon</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="../images/2190.png" alt="2190"></td>
+      <td>Validated: Valid authentication credentials have been added.</td>
+    </tr>
+    <tr>
+      <td><img src="../images/2191.png" alt="2191"></td>
+      <td>Invalid: Authentication credentials are invalid.</td>
+    </tr>
+    <tr>
+      <td><img src="../images/2192.png" alt="2192"></td>
+      <td>Unknown: Authentication status is unknown or no credentials have been entered.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Containers provider authentication status</p>
+
+<h1 id="tagging-containers-providers">
+<a class="anchor" href="#tagging-containers-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tagging Containers Providers</h1>
+
+<p>Apply tags to all containers providers to categorize them together at
+the same time.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Compute[Containers &gt; Providers].</p>
+  </li>
+  <li>
+    <p>Select the checkboxes for the containers providers to tag.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1941.png" alt="Policy"> (<strong>Policy</strong>), and then <img src="../images/1851.png" alt="Edit
+Tags">(<strong>Edit Tags</strong>).</p>
+  </li>
+  <li>
+    <p>Select a tag to assign from the drop-down menu.</p>
+
+    <p><img src="../images/2219.png" alt="2219"></p>
+  </li>
+  <li>
+    <p>Select a value to assign.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="removing-containers-providers">
+<a class="anchor" href="#removing-containers-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Removing Containers Providers</h1>
+
+<p>You may want to remove a containers provider from the VMDB if the
+provider is no longer in use.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Containers &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Select the checkboxes for the containers providers to remove.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, and
+then <img src="../images/2098.png" alt="Remove Containers Providers from the VMDB">
+(<strong>Remove Containers Providers from Inventory</strong>).</p>
+  </li>
+  <li>
+    <p>Click <strong>OK</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="editing-a-containers-provider">
+<a class="anchor" href="#editing-a-containers-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editing a Containers Provider</h1>
+
+<p>Edit information about a provider such as the name, hostname, IP address or port, and credentials as required. If you have just upgraded your ManageIQ environment from an older version, edit the provider to specify the authentication method the provider uses to connect to ManageIQ.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Containers &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Click the containers provider to edit.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, and then <img src="../images/1851.png" alt="Edit Selected Containers Provider"> (<strong>Edit Selected Containers Provider</strong>).</p>
+  </li>
+  <li>
+    <p>Edit the <strong>Name</strong> if required.</p>
+
+    <p><strong>Note:</strong></p>
+
+    <p>The <strong>Type</strong> value is unchangeable.</p>
+  </li>
+  <li>
+    <p>Under <strong>Endpoints</strong> in the <strong>Default</strong> tab, edit the following as required:</p>
+
+    <ol>
+      <li>
+        <p>Select a <strong>Security Protocol</strong> method to specify how to authenticate the provider:</p>
+
+        <ul>
+          <li>
+            <p><strong>SSL</strong>: Authenticate the provider securely using a trusted Certificate Authority. Select this option if the provider has a valid SSL certificate and it is signed by a trusted Certificate Authority. No further configuration is required for this option.</p>
+          </li>
+          <li>
+            <p><strong>SSL trusting custom CA</strong>: Authenticate the provider with a self-signed certificate. For this option, copy your provider’s CA certificate to the <strong>Trusted CA Certificates</strong> box in PEM format.</p>
+
+            <p><strong>Note:</strong></p>
+
+            <p>You can obtain your OpenShift Container Platform provider’s CA certificate for all endpoints (default, metrics, alerts)
+from <code class="language-plaintext highlighter-rouge">/etc/origin/master/ca.crt</code>. Paste the output (a block of text starting with <code class="language-plaintext highlighter-rouge">-----BEGIN CERTIFICATE-----</code>) into
+the <strong>Trusted CA Certificates</strong> field.</p>
+          </li>
+          <li>
+            <p><strong>SSL without validation</strong>: Authenticate the provider insecurely (not recommended).</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Enter the <strong>Hostname</strong> (or IPv4 or IPv6 address) of the provider.</p>
+
+        <p><strong>Important:</strong></p>
+
+        <p>The <strong>Hostname</strong> must use a unique fully qualified domain name.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>API Port</strong> of the provider. The default port is <code class="language-plaintext highlighter-rouge">8443</code>.</p>
+      </li>
+      <li>
+        <p>Enter a token for your provider in the <strong>Token</strong> box.</p>
+
+        <p><strong>Note:</strong></p>
+
+        <p>To obtain a token for your provider, run the <code class="language-plaintext highlighter-rouge">oc get secret</code> command on your provider; see <a href="../managing_providers/index.html#obtaining-an-openshift-container-platform-management-token">Obtaining an OpenShift Container Platform Management Token</a>.</p>
+
+        <p>For example:</p>
+
+        <p># oc get secret –namespace management-infra
+management-admin-token-8ixxs –template=’’ | base64 –decode</p>
+      </li>
+      <li>
+        <p>Click <strong>Validate</strong> to confirm that ManageIQ can connect to the OpenShift Container Platform provider.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Under <strong>Endpoints</strong> in the <strong>Metrics</strong> tab, configure the following for gathering capacity and utilization metrics for Hawkular or Prometheus based on the selection:</p>
+
+    <ol>
+      <li>
+        <p>Select a <strong>Security Protocol</strong> method to specify how to authenticate the provider:</p>
+
+        <ul>
+          <li>
+            <p><strong>SSL</strong>: Authenticate the provider securely using a trusted Certificate Authority. Select this option if the provider has a valid SSL certificate and it is signed by a trusted
+Certificate Authority. No further configuration is required for this option.</p>
+          </li>
+          <li>
+            <p><strong>SSL trusting custom CA</strong>: Authenticate the provider with a self-signed certificate. For this option, copy your provider’s CA certificate to the <strong>Trusted CA Certificates</strong> box in PEM format.</p>
+          </li>
+          <li>
+            <p><strong>SSL without validation</strong>: Authenticate the provider insecurely using SSL. (Not recommended)</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Enter the <strong>Hostname</strong> (or IPv4 or IPv6 address) of the provider.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>API Port</strong> if your provider uses a non-standard port for access. The default port is <code class="language-plaintext highlighter-rouge">443</code>.</p>
+      </li>
+      <li>
+        <p>Click <strong>Validate</strong> to confirm that ManageIQ can connect to the endpoint.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Under <strong>Endpoints</strong> in the <strong>Alerts</strong> tab, configure the following for Prometheus alerting from the cluster.</p>
+
+    <ul>
+      <li>
+        <p><strong>SSL</strong>: Authenticate the provider securely using a trusted Certificate Authority. Select this option if the provider has a valid SSL certificate and it is signed by a trusted Certificate Authority. No further configuration is required for this option.</p>
+      </li>
+      <li>
+        <p><strong>SSL trusting custom CA</strong>: Authenticate the provider with a self-signed certificate. For this option, copy your provider’s CA certificate to the <strong>Trusted CA Certificates</strong> box in PEM format.</p>
+      </li>
+      <li>
+        <p><strong>SSL without validation</strong>: Authenticate the provider insecurely using SSL. (Not recommended)</p>
+
+        <ol>
+          <li>
+            <p>Enter the <strong>Hostname</strong> (or IPv4 or IPv6 address) of the provider.</p>
+          </li>
+          <li>
+            <p>Enter the <strong>API Port</strong> if your provider uses a non-standard port for access. The default port is <code class="language-plaintext highlighter-rouge">443</code>.</p>
+          </li>
+          <li>
+            <p>Click <strong>Validate</strong> to confirm that ManageIQ can connect to the endpoint.</p>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="hiding-environment-variables-for-containers-providers">
+<a class="anchor" href="#hiding-environment-variables-for-containers-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hiding Environment Variables for Containers Providers</h1>
+
+<p>You can restrict users from viewing container provider environment
+variables by configuring user roles.</p>
+
+<p>This is useful as the environment variables panel can expose sensitive
+information, such as passwords, that you may not want certain users to
+view.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>The default user roles in ManageIQ are read-only. To customize a role’s settings, create a new role or a copy of an existing
+role.</p>
+
+<p>You can view role information and the product features the role can access (marked by a checkmark) by clicking on any role in <strong>Access Control</strong>. Expand the categories under <strong>Product Features</strong> to see further detail.</p>
+
+<p>To configure user access to container environment variables:</p>
+
+<ol>
+  <li>
+    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+  </li>
+  <li>
+    <p>Click the <strong>Access Control</strong> accordion, then click <strong>Roles</strong>.</p>
+  </li>
+  <li>
+    <p>Select a existing custom role from the <strong>Access Control Roles</strong> list, and click <img src="../images/1847.png" alt="1847"> (<strong>Configuration</strong>), then <img src="../images/1851.png" alt="1851"> (<strong>Edit the selected Role</strong>).</p>
+
+    <p>Alternatively, to create a new custom role, select a role from the <strong>Access Control Roles</strong> list, and click <img src="../images/1847.png" alt="1847"> (<strong>Configuration</strong>), then <img src="../images/1851.png" alt="1851"> (<strong>Copy this Role to a new Role</strong>).</p>
+  </li>
+  <li>
+    <p>Edit the name for the role if desired.</p>
+  </li>
+  <li>
+    <p>For <strong>Access Restriction for Services, VMs, and Templates</strong>, select if you want to limit users with this role to only see resources owned by the user or their group, owned by the user, or all resources (<strong>None</strong>).</p>
+  </li>
+  <li>
+    <p>Expand the <strong>Product Features (Editing)</strong> tree options to show menu:Everything[Compute &gt; Containers &gt; Containers Explorer &gt; All
+Containers &gt; View Containers].</p>
+  </li>
+  <li>
+    <p>Clear the <strong>Environment Variables</strong> checkbox to restrict the user role from viewing container environment variables.</p>
+
+    <p><img src="../images/restrict_env_vars.png" alt="restrict env vars"></p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<p>For more information about user roles, see <a href="../general_configuration/index.html#roles">Roles</a> in <em>General Configuration</em>.</p>
+
+<h1 id="viewing-a-containers-providers-timeline">
+<a class="anchor" href="#viewing-a-containers-providers-timeline" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing a Containers Provider’s Timeline</h1>
+
+<p>View the timeline of events for instances registered to a containers
+provider.</p>
+
+<ol>
+  <li>
+    <p>Navigate to menu:Compute[Containers &gt; Providers].</p>
+  </li>
+  <li>
+    <p>Click the desired containers provider for viewing the timeline.</p>
+  </li>
+  <li>
+    <p>Click <img src="../images/1994.png" alt="Monitoring"> (<strong>Monitoring</strong>), and then
+<img src="../images/1995.png" alt="Timelines"> (<strong>Timelines</strong>).</p>
+  </li>
+  <li>
+    <p>From <strong>Options</strong>, customize the period of time to display and the
+types of events to see.</p>
+
+    <ul>
+      <li>
+        <p>Use <strong>Show</strong> to select regular Management Events or Policy
+Events.</p>
+      </li>
+      <li>
+        <p>Use the <strong>Interval</strong> dropdown to select hourly or daily data
+points.</p>
+      </li>
+      <li>
+        <p>Use <strong>Date</strong> to type the date for the timeline to display.</p>
+      </li>
+      <li>
+        <p>If you select to view a daily timeline, use <strong>Show</strong> to set how
+many days back to go. The maximum history is 31 days.</p>
+      </li>
+      <li>
+        <p>From the <strong>Level</strong> dropdown, select a <strong>Summary</strong> event, or a
+<strong>Detail</strong> list of events.</p>
+      </li>
+      <li>
+        <p>The three <strong>Event Groups</strong> dropdowns allow you to select
+different groups of events to display. Each has its own color.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>Click on an item for more detailed information.</p>
+
+<ul>
+  <li>
+    <p><a href="./containers_providers/azure_kubernetes_providers.html">Azure Kubernetes Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./containers_providers/red_hat_openshift_providers.html">Red Hat OpenShift Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./containers_providers/ibm_cloud_kubernetes_service_providers.html">IBM Cloud Kubernetes Service Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./containers_providers/oracle_kubernetes_engine_providers.html">Oracle Kubernetes Engine Providers</a></p>
+  </li>
+  <li>
+    <p><a href="./containers_providers/vmware_tanzu_providers.html">VMware Tanzu Providers</a></p>
+  </li>
+</ul>
+
+<h1 id="storage-managers">
+<a class="anchor" href="#storage-managers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Storage Managers</h1>
+
+<p>In ManageIQ, a storage manager is a service providing storage
+resources that you can manage from a ManageIQ appliance. This
+chapter describes the different types of storage managers used by
+ManageIQ, and how they are added to ManageIQ.</p>
+
+<p>There are three types of storage managers currently available to
+ManageIQ:</p>
+
+<ul>
+  <li>
+    <p><a href="./storage_providers/amazon_ebs_managers.html">Amazon Elastic Block Store Managers</a></p>
+  </li>
+  <li>
+    <p><a href="./storage_providers/openstack_block_storage_managers.html">OpenStack Block Storage Managers</a></p>
+  </li>
+  <li>
+    <p><a href="./storage_providers/openstack_object_storage_managers.html">OpenStack Object Storage Managers</a></p>
+  </li>
+  <li>
+    <p><a href="./storage_providers/ibm_cloud_object_storage_managers.html">IBM Cloud Object Storage Managers</a></p>
+  </li>
+</ul>
+
+<h1 id="appendix">
+<a class="anchor" href="#appendix" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appendix</h1>
+
+<h2 id="using-a-self-signed-ca-certificate">
+<a class="anchor" href="#using-a-self-signed-ca-certificate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using a Self-Signed CA Certificate</h2>
+
+<p>Adding a self-signed Certificate Authority (CA) certificate for SSL authentication requires more configuration on OpenStack Platform and Microsoft System Center Virtual Machine Manager (SCVMM) providers.</p>
+
+<p><strong>Note</strong>: This procedure is not required for OpenShift Container Platform, or Red Hat Virtualization, which have the option to select <strong>SSL trusting custom CA</strong> as a <strong>Security Protocol</strong> in the user interface. These steps are needed only for providers without this option in the user interface.</p>
+
+<p>Before adding the provider, configure the following:</p>
+
+<ol>
+  <li>
+    <p>Copy your provider’s CA certificate in PEM format to <code class="language-plaintext highlighter-rouge">/etc/pki/ca-trust/source/anchors/</code> on your ManageIQ appliance.</p>
+  </li>
+  <li>
+    <p>Update the trust settings on the appliance:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> # update-ca-trust
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Restart the EVM processes on the server:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> # rake evm:restart
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>The CA certificate is added to the appliance, and you can add the provider to ManageIQ.</p>
+
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2022 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>
