@@ -736,6 +736,34 @@
   <li class="menu-parent">
     
     <a href="#">
+      Troubleshooting
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/troubleshooting/index.html">
+      Troubleshooting
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
       Authentication
     </a>
     
@@ -1080,7 +1108,7 @@ Cmdlet</a>.</p>
 </ol>
 
 <p>If PowerShell returns an error, search for <code class="language-plaintext highlighter-rouge">log_dos_error_results</code> in
-the <code class="language-plaintext highlighter-rouge">evm.log</code> and <code class="language-plaintext highlighter-rouge">scvmm.log</code> files for information.</p>
+<code class="language-plaintext highlighter-rouge">journalctl -t evm -t scvmm</code> or <code class="language-plaintext highlighter-rouge">oc logs</code> for information.</p>
 
 <h2 id="adding-a-microsoft-scvmm-provider">
 <a class="anchor" href="#adding-a-microsoft-scvmm-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a Microsoft SCVMM Provider</h2>

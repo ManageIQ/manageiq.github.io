@@ -736,6 +736,34 @@
   <li class="menu-parent">
     
     <a href="#">
+      Troubleshooting
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/troubleshooting/index.html">
+      Troubleshooting
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
       Authentication
     </a>
     
@@ -3462,7 +3490,7 @@ wait for the newly imported image to appear.</p>
 
 <ul>
   <li>
-    <p>If the ManageIQ UI shows no detailed error description then make sure to check the latest logs in <code class="language-plaintext highlighter-rouge">&lt;ManageIQ&gt;/log/evm.log</code> on a server that hosts your ManageIQ instance.</p>
+    <p>If the ManageIQ UI shows no detailed error description then make sure to check the latest logs with <code class="language-plaintext highlighter-rouge">journalctl -t evm</code> or <code class="language-plaintext highlighter-rouge">oc logs</code> on a server or pod that hosts your ManageIQ instance.</p>
   </li>
   <li>
     <p>If  <code class="language-plaintext highlighter-rouge">ManageIQ</code> server is terminated during the workflow execution then certain residual objects will 
