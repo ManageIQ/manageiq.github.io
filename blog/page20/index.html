@@ -53,21 +53,22 @@
     </header>
 
     <ul class="site_nav">
-  <li >
+  <li>
     <a href="/download/">Download</a>
   </li>
-  <li >
+  <li>
     <a href="/docs/">Documentation</a>
   </li>
-  <li >
+  <li>
     <a href="/community/">Community</a>
   </li>
   <li class="active">
     <a href="/blog/">Blog</a>
   </li>
   <li>
-    <button class="fa theme-toggle" data-toggle-theme></i>
-  </li>
+    <button class="fa theme-toggle" data-toggle-theme>
+  </button>
+</li>
 </ul>
 
   </div>
@@ -91,19 +92,15 @@
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2016/10/last-week-in-manage-iq-swift-vcloud-pg-upgrade-and-euwe-beta/">Last Week in ManageIQ: Swift, vCloud, PG upgrades, and the Euwe beta</a></h1>
+            <h1><a href="/blog/2017/03/marching-ahead-embedded-ansible/">Last Week in ManageIQ: March-ing ahead with the embedded Ansible integration</a></h1>
             <div class="post-meta">
-              <time datetime="2016-10-03T00:00:00+00:00" itemprop="datePublished">
-                Oct 3, 2016
+              <time datetime="2017-03-13T01:33:30+00:00" itemprop="datePublished">
+                Mar 13, 2017
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>Hi everyone! This is <a href="https://github.com/Fryguy">Jason</a>, bringing you this
-week’s <em>Last Week in ManageIQ</em>. This past week was the final development week
-before the upcoming beta release of the Euwe branch! After the beta release, we
-will start on many weeks of stabilization, so keep on the lookout for lots of
-bug fixes in the coming weeks.</p>
+            <p><a href="https://github.com/lgalis">Laura</a> here bringing you this week’s edition of Last Week in ManageIQ!</p>
 
 
           </div>
@@ -111,15 +108,24 @@ bug fixes in the coming weeks.</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2016/09/last-week-in-manage-iq-builders-basecontrollers-bugs-backend-booting/">Last Week in ManageIQ: Builders, BaseControllers, bugs, backend changes, and booting of comments!</a></h1>
+            <h1><a href="/blog/2017/03/deletions-and-dragons/">Last Week in ManageIQ: Deletions and Dragons</a></h1>
             <div class="post-meta">
-              <time datetime="2016-09-26T00:00:00+00:00" itemprop="datePublished">
-                Sep 26, 2016
+              <time datetime="2017-03-07T00:00:00+00:00" itemprop="datePublished">
+                Mar 7, 2017
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>After <a href="https://github.com/d-m-u">Drew’s</a> wonderful ‘A’ <a href="http://manageiq.org/blog/2016/09/last-week-in-manageiq-absence-atomic-providers/">blog</a>, I, <a href="http://github.com/eclarizio">Erik</a>, will be guiding you through the ‘B’ blog! There were a lot of fun and exciting changes so lets get started!</p>
+            <h2 id="the-players">The Players</h2>
+<p><a href="https://github.com/jntullo">Jamlamin Tarmikos</a>: Male Human Dwarven Defender Str 12 Int 15 Wis 18 Dex 12 Con 16 Cha 17<br>
+<a href="https://github.com/imtayadeway">Thernda Strifelaugher</a>: Female Halfling Dwarven Defender Str 15 Int 15 Wis 13 Dex 13 Con 6 Cha 11<br>
+<a href="https://github.com/juliancheal">Janmorel</a>: Male Half-Orc Loremaster Str 7 Int 15 Wis 12 Dex 7 Con 3 Cha 12<br>
+<a href="https://github.com/carbonin">Nerisstina Cupshigh</a>: Female Gnome Paladin Str 14 Int 15 Wis 10 Dex 8 Con 13 Cha 9<br>
+<a href="https://github.com/kbrock">Krisnys Bearcharger</a>: Female Elf Shadowdancer Str 4 Int 15 Wis 8 Dex 10 Con 5 Cha 19<br>
+<a href="https://github.com/eclarizio">Eillyassa Chorster</a>: Female Gnome Ranger Str 15 Int 15 Wis 3 Dex 3 Con 13 Cha 3<br>
+<a href="https://github.com/Fryguy">Jannys Falconsflight</a>: Female Half-Orc Paladin Str 6 Int 15 Wis 5 Dex 7 Con 11 Cha 4<br>
+<a href="https://github.com/jrafanie">Janella Silentall</a>: Female Half-Orc Dwarven Defender Str 11 Int 15 Wis 8 Dex 18 Con 11 Cha 13<br>
+<a href="https://github.com/himdel">Magnys Gladomain</a>: Female Elf Rogue Str 10 Int 15 Wis 13 Dex 10 Con 9 Cha 15</p>
 
 
           </div>
@@ -127,15 +133,15 @@ bug fixes in the coming weeks.</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2016/09/last-week-in-manageiq-absence-atomic-providers/">Last Week in ManageIQ: An Afresh Absence of Atomic Providers</a></h1>
+            <h1><a href="/blog/2017/03/Announcing-Euwe-2/">Announcing Euwe-2</a></h1>
             <div class="post-meta">
-              <time datetime="2016-09-19T00:00:00+00:00" itemprop="datePublished">
-                Sep 19, 2016
+              <time datetime="2017-03-06T08:35:39+00:00" itemprop="datePublished">
+                Mar 6, 2017
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>Thanks for tuning in today for the topical Last Week in ManageIQ! Drew Uhlmann here with you to limn marked mint MIQ metamorphoses.</p>
+            <p>We’ve just built Euwe-2. This release contains a security fix, bug fixes, numerous UI tweaks, and stabilization.</p>
 
 
           </div>
@@ -143,15 +149,15 @@ bug fixes in the coming weeks.</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2016/09/sprint-46-review-september-14-2016/">Sprint 46 review - September 14, 2016</a></h1>
+            <h1><a href="/blog/2017/03/sprint-55-review-march-1-2017/">Sprint 55 review - March 1, 2017</a></h1>
             <div class="post-meta">
-              <time datetime="2016-09-16T13:00:46+00:00" itemprop="datePublished">
-                Sep 16, 2016
+              <time datetime="2017-03-03T00:00:00+00:00" itemprop="datePublished">
+                Mar 3, 2017
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>There is a ManageIQ Sprint review every 3 weeks, and everyone in the community is welcome to participate. To join our Sprint review meeting, please use this <a href="https://bluejeans.com/5927041376/">Bluejeans link</a>.</p>
+            <p>Welcome once again to a sprint review recap. This time we are looking at Sprint 55, which produced a total of 495 pull requests across <a href="https://github.com/manageiq">all the ManageIQ repos</a>. <img class="emoji" title=":fist:" alt=":fist:" src="https://github.githubassets.com/images/icons/emoji/unicode/270a.png" height="20" width="20"><img class="emoji" title=":fist:" alt=":fist:" src="https://github.githubassets.com/images/icons/emoji/unicode/270a.png" height="20" width="20"> We used to see similar numbers in 3-week sprints last year! Even though we haven’t done an official comparison, PR counts seem to be drifting up in many repos, including the <a href="https://github.com/manageiq/manageiq">main repo</a> (with 144 PRs this sprint) which has been split into many parts. With 2 more new repos (font-fabulous and manageiq-api-mock) this sprint, it seems that while the repo-splits caused some initial disruption, the outcome allowed for more velocity per repository.</p>
 
 
           </div>
@@ -159,15 +165,15 @@ bug fixes in the coming weeks.</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2016/09/last-week-in-manageiq-bootstrap-tree/">Last Week in ManageIQ: Bootstrap Tree is Here</a></h1>
+            <h1><a href="/blog/2017/02/embedding-ansible-additions/">Last Week in ManageIQ: Embedding Ansible Additions</a></h1>
             <div class="post-meta">
-              <time datetime="2016-09-12T00:00:00+00:00" itemprop="datePublished">
-                Sep 12, 2016
+              <time datetime="2017-02-28T00:00:00+00:00" itemprop="datePublished">
+                Feb 28, 2017
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>Brno office sends its regards once again. I, <a href="https://github.com/ZitaNemeckova">Zita</a> will tell you more about last week’s news in ManageIQ codebase :)</p>
+            <p>Greetings everyone! <a href="https://github.com/jjlangholtz">Josh</a> here with yet another weekly update! <img class="emoji" title=":tada:" alt=":tada:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png" height="20" width="20"></p>
 
 
           </div>
@@ -175,15 +181,15 @@ bug fixes in the coming weeks.</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2016/09/sprint-45-review-august-24-2016/">Sprint 45 review - August 24, 2016</a></h1>
+            <h1><a href="/blog/2017/02/februarys-final-weeks-work/">Last Week in ManageIQ - February's Final Week's Work</a></h1>
             <div class="post-meta">
-              <time datetime="2016-09-09T13:14:06+00:00" itemprop="datePublished">
-                Sep 9, 2016
+              <time datetime="2017-02-21T00:00:00+00:00" itemprop="datePublished">
+                Feb 21, 2017
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>There is a ManageIQ Sprint review every 3 weeks, and everyone in the community is welcome to participate. To join our Sprint review meeting, please use this <a href="https://bluejeans.com/5927041376/">Bluejeans link</a>.</p>
+            <p>Woah first last week of February for 2017, this is <img class="emoji" title=":taco:" alt=":taco:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f32e.png" height="20" width="20"><img class="emoji" title=":dancer:" alt=":dancer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f483.png" height="20" width="20"> <strong>huge</strong>. <em>Almost</em> as <img class="emoji" title=":taco:" alt=":taco:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f32e.png" height="20" width="20"><img class="emoji" title=":dancer:" alt=":dancer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f483.png" height="20" width="20"> huge as the LQIMIQ low down prepared for you by your friendly neighbourhood developer <a href="https://github.com/allenbw">Allen</a>!  So without further ado lets <img class="emoji" title=":woman_juggling:" alt=":woman_juggling:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f939-2640.png" height="20" width="20">!</p>
 
 
           </div>
@@ -191,15 +197,15 @@ bug fixes in the coming weeks.</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2016/09/last-week-in-manageiq-api-refactor-observables/">Last Week in ManageIQ: API refactor, Observables and more!</a></h1>
+            <h1><a href="/blog/2017/02/sprint-54-review-february-15-2017/">Sprint 54 review - February 15, 2017</a></h1>
             <div class="post-meta">
-              <time datetime="2016-09-05T00:00:00+00:00" itemprop="datePublished">
-                Sep 5, 2016
+              <time datetime="2017-02-17T00:00:00+00:00" itemprop="datePublished">
+                Feb 17, 2017
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>Greetings from sunny Brno, <a href="https://github.com/himdel">Happy Martin</a> here, from the UI team :).</p>
+            <p>Welcome to the Sprint 54 review recap! For this sprint, we had 126 pull requests in the <a href="https://github.com/manageiq/manageiq">main ManageIQ repo</a>, with a good mix of enhancements, bugs, cleanup and more. The <a href="https://github.com/manageiq/manageiq-ui-classic">Classic UI</a> repo contributed 80 more PRs, with <a href="https://github.com/manageiq/integration_tests">Integration tests</a> following closely at 77 PRs. Grand total across <a href="https://github.com/manageiq">all repos</a> is 462. As we keep splitting out repos from the monolith (which is looking less like one every sprint), the majority of the work will be going outside of the main repo.</p>
 
 
           </div>
@@ -207,15 +213,15 @@ bug fixes in the coming weeks.</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2016/08/last-week-in-miq-speedups-chargebacks/">Last Week in ManageIQ: Speedups, Chargebacks, Toolbars, and more!</a></h1>
+            <h1><a href="/blog/2017/02/integrating-cloudforms-and-servicenow-an-introduction/">Integrating CloudForms and ServiceNow- An Introduction</a></h1>
             <div class="post-meta">
-              <time datetime="2016-08-29T00:00:00+00:00" itemprop="datePublished">
-                Aug 29, 2016
+              <time datetime="2017-02-16T00:00:00+00:00" itemprop="datePublished">
+                Feb 16, 2017
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p><a href="https://github.com/jntullo">Jillian</a> here to guide you through another edition of Last Week in ManageIQ. Let’s get this show on the road and explore what we’ve accomplished last week!</p>
+            <p>I was presenting the CloudForms service catalog and self service capabilities to a customer, when the head of operations says: “This looks great, but there is no way we are going to use this. The tool we use for everything from service desk to request tracking to service management is ServiceNow. Can you integrate your service catalog into ServiceNow?”</p>
 
 
           </div>
@@ -223,15 +229,15 @@ bug fixes in the coming weeks.</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2016/08/Announcing-Darga-3/">Announcing Darga-3</a></h1>
+            <h1><a href="/blog/2017/02/love-is-in-the-PRs/">Last Week in ManageIQ: Love is in the PRs</a></h1>
             <div class="post-meta">
-              <time datetime="2016-08-22T14:35:39+00:00" itemprop="datePublished">
-                Aug 22, 2016
+              <time datetime="2017-02-14T00:00:00+00:00" itemprop="datePublished">
+                Feb 14, 2017
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>We’ve just built Darga-3. This release contains bug fixes, numerous UI tweaks, and stabilization.</p>
+            <p>Happy Valentine’s Day! <a href="https://github.com/jntullo">Jillian</a> here to walk you through the love given to PRs this past week. In the spirit of the holiday, and before you devour lots of <img class="emoji" title=":chocolate_bar:" alt=":chocolate_bar:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f36b.png" height="20" width="20">, let’s take a look at those PRs with <img class="emoji" title=":heart:" alt=":heart:" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" height="20" width="20">!</p>
 
 
           </div>
@@ -239,15 +245,15 @@ bug fixes in the coming weeks.</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2016/08/last-week-in-manageiq-the-azure-nice-errors-and-gems/">Last Week in ManageIQ: The Azure, nice errors, and gems</a></h1>
+            <h1><a href="/blog/2017/02/ansible-and-api-and-stuff/">Last Week in ManageIQ: API &amp; Ansible &amp; Stuff</a></h1>
             <div class="post-meta">
-              <time datetime="2016-08-22T07:30:00+00:00" itemprop="datePublished">
-                Aug 22, 2016
+              <time datetime="2017-02-06T02:00:14+00:00" itemprop="datePublished">
+                Feb 6, 2017
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>What ho! Welcome to another jolly edition of Last Week in ManageIQ. <a href="https://juliancheal.co.uk">Julian</a> here, hailing from the Providers team. Let’s put the kettle on and take a look over what’s happened this last week in ManageIQ.</p>
+            <p>Hi all! <a href="https://github.com/djberg96">Daniel Berger</a> here from the Providers team. This is my first Last Week in ManageIQ post, where I try to distill the week’s highlights of ManageIQ development into a nice, digestable format.</p>
 
 
           </div>
@@ -257,7 +263,7 @@ bug fixes in the coming weeks.</p>
   <ul class="pagination">
     <li>
       
-        <a href="/blog/page19/" class="previous">&laquo;</a>
+        <a href="/blog/page19/" class="previous">«</a>
       
     </li>
     
@@ -435,9 +441,39 @@ bug fixes in the coming weeks.</p>
         </li>
       
     
+      
+        <li>
+          <a href="/blog/page30/">30</a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="/blog/page31/">31</a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="/blog/page32/">32</a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="/blog/page33/">33</a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="/blog/page34/">34</a>
+        </li>
+      
+    
     <li>
       
-        <a href="/blog/page21/" class="next">&raquo;</a>
+        <a href="/blog/page21/" class="next">»</a>
       
     </li>
   </ul>
@@ -448,7 +484,7 @@ bug fixes in the coming weeks.</p>
     
     <li class="previous">
       <a href="/blog/page19/">
-        <span aria-hidden="true">&larr;</span> Newer
+        <span aria-hidden="true">←</span> Newer
       </a>
     </li>
     
@@ -456,7 +492,7 @@ bug fixes in the coming weeks.</p>
     
     <li class="next">
       <a href="/blog/page21/">
-        Older <span aria-hidden="true">&rarr;</span>
+        Older <span aria-hidden="true">→</span>
       </a>
     </li>
     
@@ -471,6 +507,58 @@ bug fixes in the coming weeks.</p>
   </h3>
 
   <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,">cloudforms,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware,">vmware,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev,">rhev,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/kvm,">kvm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cluster,">cluster,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm,">vm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore,">datastore,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf2,">cf2,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf3,">cf3,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cfme,%E2%80%AFXML,%E2%80%AFXML">cfme, XML, XML</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/format">format</a>
+    </li>
     
     <li class="blog_menu-tag">
       <a href="/blog/tags/announcements">announcements</a>
@@ -493,7 +581,83 @@ bug fixes in the coming weeks.</p>
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/uncategorized">uncategorized</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate,%E2%80%AFcloud">automate, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/formations,%E2%80%AFcloud">formations, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/forms,%E2%80%AFheat,%E2%80%AFopenstack,%E2%80%AFscale">forms, heat, openstack, scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms">cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate">automate</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible">ansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansiblecloudformsansible">ansiblecloudformsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible,">ansible,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control,">control,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsmanagement">cloudformsmanagement</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms%E2%80%AFslack">cloudformscloudforms slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,%E2%80%AFcustom,">cloudforms, custom,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/button,%E2%80%AFoperations,%E2%80%AFrdp,%E2%80%AFssh">button, operations, rdp, ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/container">container</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,%E2%80%AFcontainer,%E2%80%AFkubernetes,%E2%80%AFmanagement,%E2%80%AFopenshift,%E2%80%AFoperations">cloudforms, container, kubernetes, management, openshift, operations</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -505,7 +669,167 @@ bug fixes in the coming weeks.</p>
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,%E2%80%AFcontainer,%E2%80%AFcontainers,%E2%80%AFmanagement,%E2%80%AFopenshift">cloudforms, container, containers, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,%E2%80%AFcontainer,%E2%80%AFmanagement,%E2%80%AFopenshift">cloudforms, container, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,%E2%80%AFcompliance,%E2%80%AFcontainer,%E2%80%AFmanagement,%E2%80%AFopenscap,%E2%80%AFsecurity">cloudforms, compliance, container, management, openscap, security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,%E2%80%AFcontainer,%E2%80%AFmanagement,%E2%80%AFopenshift,%E2%80%AFoperations">cloudforms, container, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate,%E2%80%AFbest">automate, best</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/practices%E2%80%AFcloudforms">practices cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning,">provisioning,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Services">Services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/architecture,%E2%80%AFcloudforms,cmdb,%E2%80%AFintegration,%E2%80%AFservicenow,%E2%80%AFucmdb">architecture, cloudforms,cmdb, integration, servicenow, ucmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,%E2%80%AFgithub,%E2%80%AFmanageiq,%E2%80%AFpull">cloudforms, github, manageiq, pull</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/request,%E2%80%AFvmware">request, vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsDeploymentansible">AnsibleCloudFormsDeploymentansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/appliance">appliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Automation,">Automation,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Azure,">Azure,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/microsoft,">microsoft,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service,">self-service,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow,">servicenow,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower,">tower,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/internal">internal</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws,%E2%80%AFcloudforms,%E2%80%AFseries">aws, cloudforms, series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws,">aws,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws,%E2%80%AFcfme,">aws, cfme,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate,%E2%80%AFcfme,%E2%80%AFcloudforms,%E2%80%AFmethods">automate, cfme, cloudforms, methods</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsansible">AnsibleCloudFormsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,%E2%80%AFosp,rhv">cloudforms, osp,rhv</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate,">automate,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms">cloudformscloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api,%E2%80%AFcloudforms,%E2%80%AFrest">api, cloudforms, rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api">api</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsuxdcloudforms%E2%80%AFuxd">cloudformsuxdcloudforms uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/none">none</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -609,6 +933,13 @@ bug fixes in the coming weeks.</p>
       
     </li>
     
+    <li class="blog_menu-year">
+      <a href="/blog/2013/index.html">
+        2013
+      </a>
+      
+    </li>
+    
   </ul>
 </div>
 
@@ -624,21 +955,22 @@ bug fixes in the coming weeks.</p>
     <div class="footer-group">
       <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
       <ul class="site_nav">
-  <li >
+  <li>
     <a href="/download/">Download</a>
   </li>
-  <li >
+  <li>
     <a href="/docs/">Documentation</a>
   </li>
-  <li >
+  <li>
     <a href="/community/">Community</a>
   </li>
   <li class="active">
     <a href="/blog/">Blog</a>
   </li>
   <li>
-    <button class="fa theme-toggle" data-toggle-theme></i>
-  </li>
+    <button class="fa theme-toggle" data-toggle-theme>
+  </button>
+</li>
 </ul>
 
     </div>
@@ -654,7 +986,7 @@ bug fixes in the coming weeks.</p>
       <li>
         <a href="https://gitter.im/ManageIQ/manageiq">
           <i class="fa fa-gitter">
-            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <svg viewbox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
     <desc>Created with Sketch.</desc>
     <defs></defs>
@@ -692,7 +1024,7 @@ bug fixes in the coming weeks.</p>
   <div class="footer-row" id="footer_bottom">
     <div class="footer-legal">
       <span class="copyright">
-        &copy; 2022 ManageIQ.
+        © 2022 ManageIQ.
       </span>
       <span>
         <a href="http://community.redhat.com/software/" target="_blank">

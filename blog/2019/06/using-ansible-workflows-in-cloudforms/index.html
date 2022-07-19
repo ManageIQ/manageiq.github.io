@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - Using Ansible workflows in CloudForms</title>
+  <meta name="description" content="Ansible continues to grow and is the strategic automation engine for Red Hat’s business. Having a solid and constantly improving integration with Ansible is ...">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/blog/2022/07/2019-06-04-using-ansible-workflows-in-cloudforms/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/blog/2019/06/using-ansible-workflows-in-cloudforms/">
+      <div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10">
+        <header class="blog_header">
+          <h1>
+            ManageIQ Blog
+          </h1>
+        </header>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-10 blog_main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="page-title" itemprop="name headline">Using Ansible workflows in CloudForms</h1>
+
+            <div class="post-meta">
+              <time datetime="2019-06-04T00:00:00+00:00" itemprop="datePublished">
+                Jun 4, 2019
+              </time>
+
+              
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                by
+                <i itemprop="name">
+                  Conristian Jung
+                </i>
+              </span>
+              
+
+              <ul class="post-tags">
+                
+                <li>
+                  <a href="/blog/tags/ansible">ansible</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/cloudforms">cloudforms</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/ansible,">ansible,</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/cloudforms">cloudforms</a>
+                </li>
+                
+              </ul>
+            </div>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <p>Ansible continues to grow and is the strategic automation engine for Red Hat’s business. Having a solid and constantly improving integration with Ansible is key for CloudForms’ future success.</p>
+
+<p>Ansible Tower Workflows are widely used in by the industry to orchestrate and govern interactions between different playbooks. CloudForms has been able to run Ansible Tower Jobs since its 4.1 release. Starting with CloudForms 4.7, we will expand this support and will be able to utilize Workflows from the Service Catalog.</p>
+
+<h2 id="setup">Setup</h2>
+
+<p>CloudForms is using the concept of Providers, to integrate with other systems. Each Provider integration takes care of building and maintaining an up to date inventory, executing operational tasks, listening to events, and some also support features like Metric Collection or more.</p>
+
+<p>The existing Ansible Tower Provider was extended to include existing Workflows into the inventory. If an Ansible Tower Provider was already configured, CloudForms will automatically add the Workflows to its inventory, after the Upgrade to 4.7 was successfully rolled out. Instructions on how to upgrade CloudForms to 4.7, can be found in the [Migrating to Red Hat CloudForms 4.7] (<a href="https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.7/html/migrating_to_red_hat_cloudforms_4.7/index">https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.7/html/migrating_to_red_hat_cloudforms_4.7/index</a>) guide.</p>
+
+<p>Adding a new Ansible Tower Provider is very simple. Navigate to “Automation”, “Ansible Tower”, “Explorer” and click on “Configuration”, “Add a new Provider”.</p>
+
+<p>Workflows have been introduced with Ansible Tower 3.1. Instructions on how to create and use Workflows can be found in the [Ansible Tower Documentation] (<a href="https://docs.ansible.com/ansible-tower/latest/html/userguide/workflow_templates.html">https://docs.ansible.com/ansible-tower/latest/html/userguide/workflow_templates.html</a>).</p>
+
+<h2 id="ansible-tower-workflows">Ansible Tower Workflows</h2>
+
+<p>After the inventory was updated in CloudForms, Ansible Tower Workflows can be found in “Automation”, “Ansible Tower”, “Explorer” and by clicking on “Templates”.</p>
+
+<p>The new “Type” column will help to separate Workflows from regular Jobs. After clicking on a Workflow, a Detail page will give additional information.</p>
+
+<h2 id="service-dialogs-and-catalogs">Service Dialogs and Catalogs</h2>
+
+<p>From this page, a Service Dialog for the currently selected Workflow can be automatically generated. The Service Dialog will automatically be populated with all extra_var and survey fields. To verify the result or customize the Service Dialog to make it more user-friendly, navigate to “Automation”, “Automate”, “Customization” and “Service Dialogs” in the accordion on the left.</p>
+
+<p>NOTE: Ansible Tower Workflows do not support the “limit” parameter. Since different Jobs in a Workflow can potentially point to different inventories, a “limit” might break a Workflow and is therefore currently not support.</p>
+
+<p>When creating a Service Catalog item select the Ansible Tower Provider and from the list of the “Ansible Tower Templates” the appropriate Workflow. Note the new section “Workflow Templates” at the end of the drop-down list.</p>
+
+<p>Instructions on how to build a Service Catalog with some examples to get you started, have already been provided in the post Service Catalogs and the User Self-Service Portal.</p>
+
+<h2 id="job-output">Job Output</h2>
+
+<p>With the embedded Ansible capabilities of CloudForms it was already possible to get the output of a Job in the “My Services”, “Jobs” tab. Starting with CloudForms 4.7, this will also work for Jobs running on Ansible Tower.</p>
+
+<p>After ordering a Service Catalog Item which is using an Ansible Tower Job Template, a new “My Service” Object is created (Navigate to “Services”, “My Services” to find them). Click on the just created object to see some metadata of the Job. Click on the “Jobs” tab to get more details, including start and runtime and the Job output.</p>
+
+<p>The Job Output can be found on the bottom of the Jobs page.</p>
+
+<h2 id="workflows-variables-and-limits">Workflows, variables and limits</h2>
+
+<p>Since Workflows are a features CloudForms inherits from Ansible Tower, there are some concepts which have to be kept in mind as well.</p>
+
+<h2 id="extra-variables-and-surveys">Extra Variables and Surveys</h2>
+
+<p>Ansible allows the use of variables, which can be defined in many different ways, including the Playbook itself, a role, the environment or in Ansible Tower. Ansible Tower can use Surveys to build a form asking for those variable values when running a Job. When using CloudForms’ Service Catalog features combined with Ansible Tower, a Service Dialog can be created to build an intuitive and user-friendly interface.</p>
+
+<p>When running an Ansible Tower Workflow, all Extra Variables are sent to all subsequent Jobs. For example, if a Workflow has three Jobs (job1, job2, job3) and there are three variables (var1, var2, var3), all three variables are sent to all jobs. It is possible to set a variable to be used in a specific job only.</p>
+
+<p>While this is not really a problem, it’s something to keep in mind, for example by avoiding duplicate variable names in multiple Jobs.</p>
+
+<h2 id="limits">Limits</h2>
+
+<p>To run an Ansible Playbook, an inventory has to be used to tell Ansible which endpoints to use and how to access them. Sometimes an Ansible Playbook only has to run on a subset of the inventory. Limits allow the user to use the same inventory but filter out a subgroup of systems.</p>
+
+<p>CloudForms is using this feature when running an Ansible Playbook from a button assigned to a Virtual Machine.</p>
+
+<p>Ansible Tower Workflows do not support the “limit” option though. Potentially a workflow can have many Jobs with different inventories (e.g. run a sub job on the storage, a sub job on the network and a sub job on some servers, each using different inventories). A limit parameter would potentially break this Workflow (e.g. if the limit would be a specific Virtual Machine, the network and storage jobs would fail).</p>
+
+          </div>
+        </article>
+      </div>
+
+      <div class="col-xs-12 col-sm-2 blog_side">
+          <div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Categories
+  </h3>
+
+  <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,">cloudforms,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware,">vmware,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev,">rhev,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/kvm,">kvm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cluster,">cluster,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm,">vm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore,">datastore,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf2,">cf2,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf3,">cf3,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cfme, XML, XML">cfme, XML, XML</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/format">format</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/announcements">announcements</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uncategorized">uncategorized</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cloud">automate, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/formations, cloud">formations, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/forms, heat, openstack, scale">forms, heat, openstack, scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms">cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate">automate</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible">ansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansiblecloudformsansible">ansiblecloudformsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible,">ansible,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control,">control,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsmanagement">cloudformsmanagement</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms slack">cloudformscloudforms slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, custom,">cloudforms, custom,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/button, operations, rdp, ssh">button, operations, rdp, ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/container">container</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, kubernetes, management, openshift, operations">cloudforms, container, kubernetes, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, containers, management, openshift">cloudforms, container, containers, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift">cloudforms, container, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, compliance, container, management, openscap, security">cloudforms, compliance, container, management, openscap, security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift, operations">cloudforms, container, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, best">automate, best</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/practices cloudforms">practices cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning,">provisioning,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Services">Services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/architecture, cloudforms,cmdb, integration, servicenow, ucmdb">architecture, cloudforms,cmdb, integration, servicenow, ucmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, github, manageiq, pull">cloudforms, github, manageiq, pull</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/request, vmware">request, vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsDeploymentansible">AnsibleCloudFormsDeploymentansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/appliance">appliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Automation,">Automation,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Azure,">Azure,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/microsoft,">microsoft,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service,">self-service,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow,">servicenow,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower,">tower,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/internal">internal</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cloudforms, series">aws, cloudforms, series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws,">aws,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cfme,">aws, cfme,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cfme, cloudforms, methods">automate, cfme, cloudforms, methods</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsansible">AnsibleCloudFormsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, osp,rhv">cloudforms, osp,rhv</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate,">automate,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms">cloudformscloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api, cloudforms, rest">api, cloudforms, rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api">api</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsuxdcloudforms uxd">cloudformsuxdcloudforms uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/none">none</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Archive
+  </h3>
+
+  <ul id="blog_archive_menu" class="blog_menu">
+    
+    
+    
+
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2022/index.html">
+        2022
+      </a>
+      
+        <ul class="blog_menu blog_months">
+  
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/07/index.html">
+      July
+    </a>
+    
+  </li>
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/02/index.html">
+      February
+    </a>
+    
+  </li>
+  
+</ul>
+
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2021/index.html">
+        2021
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2020/index.html">
+        2020
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2019/index.html">
+        2019
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2018/index.html">
+        2018
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2017/index.html">
+        2017
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2016/index.html">
+        2016
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2015/index.html">
+        2015
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2014/index.html">
+        2014
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2013/index.html">
+        2013
+      </a>
+      
+    </li>
+    
+  </ul>
+</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/_posts/2019-06-04-using-ansible-workflows-in-cloudforms.md">
+          <i class="fa fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2022 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

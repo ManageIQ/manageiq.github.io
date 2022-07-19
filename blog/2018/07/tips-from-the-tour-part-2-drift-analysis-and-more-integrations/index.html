@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - Tips from the tour part 2 - Drift analysis and more integrations</title>
+  <meta name="description" content="This is a follow up on our series Infrastructure Tour Italy. In this part we will show Ansible Tower, Drift Analysis and OpenShift Integration">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/blog/2022/07/2018-07-16-tips-from-the-tour-part-2-drift-analysis-and-more-integrations/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/blog/2018/07/tips-from-the-tour-part-2-drift-analysis-and-more-integrations/">
+      <div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10">
+        <header class="blog_header">
+          <h1>
+            ManageIQ Blog
+          </h1>
+        </header>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-10 blog_main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="page-title" itemprop="name headline">Tips from the tour part 2 - Drift analysis and more integrations</h1>
+
+            <div class="post-meta">
+              <time datetime="2018-07-16T00:00:00+00:00" itemprop="datePublished">
+                Jul 16, 2018
+              </time>
+
+              
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                by
+                <i itemprop="name">
+                  Rinaldo Bergamini and Michele Naldini
+                </i>
+              </span>
+              
+
+              <ul class="post-tags">
+                
+                <li>
+                  <a href="/blog/tags/cloudforms">cloudforms</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/cloudforms">cloudforms</a>
+                </li>
+                
+              </ul>
+            </div>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <p>This is a follow up on our series Infrastructure Tour Italy. In this part we will show Ansible Tower, Drift Analysis and OpenShift Integration</p>
+
+<h2 id="integration-with-ansible-tower">Integration with Ansible Tower</h2>
+
+<p>Integration with Ansible Tower was configured to show the ability to enrich the use of playbooks developed and managed on Ansible Tower extending their usage on Cloudforms inventory. Launching playbooks on existing VMs in Cloudforms allowed us to install software with the press of a button, the example we used leveraged the wordpress installation playbook available at:</p>
+
+<p>(<a href="https://github.com/ansible/ansible-examples/tree/master/wordpress-nginx_rhel7">https://github.com/ansible/ansible-examples/tree/master/wordpress-nginx_rhel7</a>)</p>
+
+<p>on the public repository: (<a href="https://github.com/ansible/ansible-examples">https://github.com/ansible/ansible-examples</a>).
+  
+A CloudForms Inventory was configured on Ansible Tower with CloudForms admin credentials to get the managed nodes then Tower templates must be configured with the Prompt on Execution flag enabled for the Limit (to allow CF to limit the scope of the playbooks on select hosts) and for the Extra Variables, this is critical for the integration to work!
+  
+We performed a SmartState analysis on a VM with a plain RHEL installed to get the configuration before the playbook execution.</p>
+
+<p>We run the playbook (Install WordPress) with the button on the CloudForms page and track the job in Tower:</p>
+
+<p>A job is triggered on our managed node part of the CloudForms inventory, as you can see in the Ansible Tower screenshot next. Please notice the Limit and Inventory:</p>
+
+<p>After the successful execution of the playbook we can use the browser to access the managed node and see WordPress has been installed and requires our input for the configuration.</p>
+
+<p>We showed another button that runs a playbook written by my colleague Michele Naldini that registers the host for Red Hat Insights. It’s available at: (<a href="https://github.com/MikeNald/ansible-tower-examples">https://github.com/MikeNald/ansible-tower-examples</a>)</p>
+
+<p>This is a good example of the integration with Ansible, the Dialog to enter variables after the press of the button on the VM page, is automatically created with the boxes and text entries analyzing the playbook, saving a lot of time and errors. The same feature is available for OpenStack Heat and AWS CloudFormation templates.
+ </p>
+<h2 id="drift-analysis">Drift analysis</h2>
+
+<p>SmartState Analysis allows introspection on a given VM, retrieving key information like Software installed, versions, users, configuration or even files.</p>
+
+<p>A SmartState analysis of the VM has been performed before and after the WordPress playbook run.</p>
+
+<p>Using the Drift Analysis feature we compared the VMs configurations and highlighted the differences on packages:</p>
+
+<p>Triangle icons in the picture highlight the packages that changed, as you can see the php-fpm package was missing and is now installed. Versions and releases are reported too.</p>
+
+<p>SmartState analysis can be scheduled to run so we can track all the configuration changes of Linux and Windows VMs on their whole lifecycle.</p>
+
+<h2 id="integration-with-red-hat-openshift-container-platform">Integration with Red Hat OpenShift Container Platform</h2>
+
+<p>Adding OpenShift requires the rules and token to access API and get events from hawkular as reported here:</p>
+
+<p>(<a href="https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.6/html/managing_providers/containers_providers">https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.6/html/managing_providers/containers_providers</a>)</p>
+
+<p>Since we were using one of the latest OpenShift Container Platform (OCP) releases all the required service account and roles required by Red Hat CloudForms are installed by default.</p>
+
+<p>We just had to retrieve the management-admin token on the console with the following command on the OCP master node:  
+  
+oc sa get-token -n management-infra management-admin
+  
+The token must be provided when the provider is added in the configuration screen both for the credentials and metric (Hawkular) tab.
+  
+The topology view of a OCP project is one of the coolest visual features and allows to have a view of our CI/CD demo project including Pods, Replication controllers, Services, Routes, Nodes and allows to have a 10k view of what’s going on in a project or on a OCP cluster.</p>
+
+<p>CloudForms also allows to aggregate metrics of pods showing cores, memory, network IO metrics to understand overall data related to projects and use the data as a base for the chargeback feature:</p>
+
+<p>We also demoed the ability to perform massive openSCAP analysis of container images to assess the status of our infrastructure.  
+  
+Container analysis works by analyzing the target container image starting a manageiq-scan pod in the namespace management-infra. The namespace is dedicated on OCP and doesn’t impact production. Here’s the output of the command oc get pods –all-namespaces while the analysis is running:</p>
+
+<p>When the scan is completed the pod is deleted and results are uploaded in the CloudForms DB. SmartState reports all the software packages and versions in the container image and OpenSCAP Failed Rules, drill down information is available and an extensive openSCAP HTML Report is available too:</p>
+
+<p>A custom CloudForms Report (see downloads above) has been created to show the overall compliance status of the whole IT environment and published on the dashboard:</p>
+
+<p>Thanks to Nick Catling for the help in preparing the demo.
+  
+Resources
+(<a href="https://cloudformsblog.redhat.com/2016/08/22/getting-started-with-managing-vmware-with-red-hat-cloudforms/">https://cloudformsblog.redhat.com/2016/08/22/getting-started-with-managing-vmware-with-red-hat-cloudforms/</a>)</p>
+
+<p>(<a href="https://pemcg.gitbooks.io/mastering-automation-in-cloudforms-4-1-and-manage/content/running_an_ansible_tower_job_from_a_button/chapter.html">https://pemcg.gitbooks.io/mastering-automation-in-cloudforms-4-1-and-manage/content/running_an_ansible_tower_job_from_a_button/chapter.html</a>)</p>
+
+<p>(<a href="https://cloudformsblog.redhat.com/2016/07/29/ansible-tower-provider-in-cloudforms/">https://cloudformsblog.redhat.com/2016/07/29/ansible-tower-provider-in-cloudforms/</a>)</p>
+
+<p>(<a href="https://cloudformsblog.redhat.com/2016/08/05/launch-ansible-job-from-cloudforms-vm-button/">https://cloudformsblog.redhat.com/2016/08/05/launch-ansible-job-from-cloudforms-vm-button/</a>)</p>
+
+<p>(<a href="https://www.redhat.com/it/blog/red-hat-cloudforms-and-ansible-tower-real-world">https://www.redhat.com/it/blog/red-hat-cloudforms-and-ansible-tower-real-world</a>)</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>CloudForms is a great Hybrid Management tool that handles multiple providers and provides Single Pane of Glass for your IT Assets, giving you the tool and the information you need to improve </p>
+
+          </div>
+        </article>
+      </div>
+
+      <div class="col-xs-12 col-sm-2 blog_side">
+          <div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Categories
+  </h3>
+
+  <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,">cloudforms,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware,">vmware,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev,">rhev,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/kvm,">kvm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cluster,">cluster,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm,">vm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore,">datastore,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf2,">cf2,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf3,">cf3,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cfme, XML, XML">cfme, XML, XML</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/format">format</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/announcements">announcements</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uncategorized">uncategorized</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cloud">automate, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/formations, cloud">formations, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/forms, heat, openstack, scale">forms, heat, openstack, scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms">cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate">automate</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible">ansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansiblecloudformsansible">ansiblecloudformsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible,">ansible,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control,">control,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsmanagement">cloudformsmanagement</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms slack">cloudformscloudforms slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, custom,">cloudforms, custom,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/button, operations, rdp, ssh">button, operations, rdp, ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/container">container</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, kubernetes, management, openshift, operations">cloudforms, container, kubernetes, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, containers, management, openshift">cloudforms, container, containers, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift">cloudforms, container, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, compliance, container, management, openscap, security">cloudforms, compliance, container, management, openscap, security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift, operations">cloudforms, container, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, best">automate, best</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/practices cloudforms">practices cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning,">provisioning,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Services">Services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/architecture, cloudforms,cmdb, integration, servicenow, ucmdb">architecture, cloudforms,cmdb, integration, servicenow, ucmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, github, manageiq, pull">cloudforms, github, manageiq, pull</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/request, vmware">request, vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsDeploymentansible">AnsibleCloudFormsDeploymentansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/appliance">appliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Automation,">Automation,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Azure,">Azure,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/microsoft,">microsoft,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service,">self-service,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow,">servicenow,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower,">tower,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/internal">internal</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cloudforms, series">aws, cloudforms, series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws,">aws,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cfme,">aws, cfme,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cfme, cloudforms, methods">automate, cfme, cloudforms, methods</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsansible">AnsibleCloudFormsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, osp,rhv">cloudforms, osp,rhv</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate,">automate,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms">cloudformscloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api, cloudforms, rest">api, cloudforms, rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api">api</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsuxdcloudforms uxd">cloudformsuxdcloudforms uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/none">none</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Archive
+  </h3>
+
+  <ul id="blog_archive_menu" class="blog_menu">
+    
+    
+    
+
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2022/index.html">
+        2022
+      </a>
+      
+        <ul class="blog_menu blog_months">
+  
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/07/index.html">
+      July
+    </a>
+    
+  </li>
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/02/index.html">
+      February
+    </a>
+    
+  </li>
+  
+</ul>
+
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2021/index.html">
+        2021
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2020/index.html">
+        2020
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2019/index.html">
+        2019
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2018/index.html">
+        2018
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2017/index.html">
+        2017
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2016/index.html">
+        2016
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2015/index.html">
+        2015
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2014/index.html">
+        2014
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2013/index.html">
+        2013
+      </a>
+      
+    </li>
+    
+  </ul>
+</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/_posts/2018-07-16-tips-from-the-tour-part-2-drift-analysis-and-more-integrations.md">
+          <i class="fa fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2022 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

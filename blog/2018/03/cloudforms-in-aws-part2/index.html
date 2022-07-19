@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - CloudForms in AWS part 2</title>
+  <meta name="description" content="This part of the CloudForms in AWS blog series will walk you through how to make sure that CloudForms reaches its full potential in AWS.">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/blog/2022/07/2018-03-27-cloudforms-in-aws-part2/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/blog/2018/03/cloudforms-in-aws-part2/">
+      <div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10">
+        <header class="blog_header">
+          <h1>
+            ManageIQ Blog
+          </h1>
+        </header>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-10 blog_main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="page-title" itemprop="name headline">CloudForms in AWS part 2</h1>
+
+            <div class="post-meta">
+              <time datetime="2018-03-27T00:00:00+00:00" itemprop="datePublished">
+                Mar 27, 2018
+              </time>
+
+              
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                by
+                <i itemprop="name">
+                  Laurent Domb
+                </i>
+              </span>
+              
+
+              <ul class="post-tags">
+                
+                <li>
+                  <a href="/blog/tags/aws">aws</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/cloudforms">cloudforms</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/aws, cloudforms, series">aws, cloudforms, series</a>
+                </li>
+                
+              </ul>
+            </div>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <p>This part of the CloudForms in AWS blog series will walk you through how to make sure that CloudForms reaches its full potential in AWS.</p>
+
+<p>IMPORTANT: If you want SmartState analysis to work you need to register your AWS account with the cloud access program. Use the link below to enable cloud access:</p>
+
+<p>(<a href="https://engage.redhat.com/forms/cloud-access-registration">https://engage.redhat.com/forms/cloud-access-registration</a>)</p>
+
+<p>Once you’ve registered and got confirmation you will see the RHEL-Atomic_7.4_HVM_GA-20180104-x86_64-1-Access2-GP2 AMI under the “Private images” tab</p>
+
+<p>Before we configure CloudForms we need go to the AWS console and perform some configurations. First create the SNS topic for AWSConfig so that CloudForms can subscribe to messages. SNS stands for simple notification service. It enables CloudForms to subscribe to a topic which contains information about configuration change of AWS resources.</p>
+
+<p>Once created you will something similar to the below:</p>
+
+<p>Next, create an AWS S3 bucket to store logs of AWS Config and CloudTrail (api logs).</p>
+
+<p>Enable AWS Config and make sure to choose the created S3 bucket as well as the SNS topic we created above.</p>
+
+<p>To get events via CloudWatch and CloudTrail we will need to configure a new trail in CloudTrail. In CloudTrail create a new Trail with the following information. As you can see we can also reuse the previously created S3 bucket to store the logs.</p>
+
+<p>The last step to get events properly delivered through SNS. Therefore we need to create a new CloudWatch event rule.</p>
+
+<p>If you’ve done everything correctly, CloudForms will automatically create a new SQS queue named manageiq-awsconfig-queue which pulls data from the SNS AWSConfig_topic:</p>
+
+<p>INFO – : MIQ(ManageIQ::Providers::Amazon::CloudManager::EventCatcher::Stream#) Amazon SQS Queue manageiq-awsconfig-queue-5f61a1e9-6555-4f06-9c37-f3e6b7539a86 does not exist; creating queue</p>
+
+<p>INFO – : MIQ(ManageIQ::Providers::Amazon::CloudManager::EventCatcher::Stream#) Subscribing Queue https:// sqs.us-east-1.amazonaws.com/XXXXXXXXXXX/manageiq-awsconfig-queue-5f61a1e9-6555-4f06-9c37-f3e6b7539a86 to arn:aws:sns:us-east-1:XXXXXXXXX:AWSConfig_topic</p>
+
+<p>INFO – : MIQ(ManageIQ::Providers::Amazon::CloudManager::EventCatcher::Stream#) Created Amazon SQS Queue manageiq-awsconfig-queue-5f61a1e9-6555-4f06-9c37-f3e6b7539a86 and subscribed to AWSConfig_topic</p>
+
+<p>Also, you can test the for incoming events by stopping and starting an instance. This should be caught by the event catcher</p>
+
+<p>INFO – : MIQ(ManageIQ::Providers::Amazon::CloudManager::EventCatcher::Stream#) Found SNS Message with message type AWS_API_CALL_StartInstances coming from</p>
+
+<p>INFO – : MIQ(ManageIQ::Providers::Amazon::CloudManager::EventCatcher::Stream#) Parsed event from SNS Message AWS_API_CALL_StartInstances coming from</p>
+
+<p>Next and this is kind of optional. The new smart state analysis in CloudForms is supposed to create the correct roles, policies and instance profiles for you. I prefer to create the policy myself for two main reasons.</p>
+
+<ol>
+  <li>I know exactly what is happening</li>
+  <li>When having CloudForms create the policies you might run into a race condition and CloudForms will complain about “No agent is set up to process requests: Value (smartstate) for parameter iamInstanceProfile.name is invalid. Invalid IAM Instance Profile name”</li>
+</ol>
+
+<p>Create a trust policy for the role smartstate. Name the file ec2trustpolicy.json</p>
+
+<p>{</p>
+
+<p> ”Version”: ”2012-10-17”,</p>
+
+<p> ”Statement”: {</p>
+
+<p>   ”Effect”: ”Allow”,</p>
+
+<p>   ”Principal”: {“Service”: ”ec2.amazonaws.com”},</p>
+
+<p>   ”Action”: ”sts:AssumeRole”</p>
+
+<p> }</p>
+
+<p>}</p>
+
+<p>Go ahead and create the role smartstate</p>
+
+<p>[ec2-user@ip-172-31-14-85 ~]$ aws iam create-role –role-name smartstate –assume-role-policy-document file://ec2trustpolicy.json</p>
+
+<p>We now create a custom policy which we will assign to the smartstate role.</p>
+
+<p>[ec2-user@ip-172-31-14-85 ~]$cat ssa_cfme_policy.json</p>
+
+<p>{</p>
+
+<p>   ”Version”: ”2012-10-17”,</p>
+
+<p>   ”Statement”: [</p>
+
+<p>       {</p>
+
+<p>           ”Effect”: ”Allow”,</p>
+
+<p>           ”Action”: [</p>
+
+<p>               ”ec2:*”,</p>
+
+<p>               ”s3:*”,</p>
+
+<p>               ”sqs:*”</p>
+
+<p>           ],</p>
+
+<p>           ”Resource”: [</p>
+
+<p>               ”*”</p>
+
+<p>           ]</p>
+
+<p>       }</p>
+
+<p>   ]</p>
+
+<p>}</p>
+
+<p>Add the policy to the role smartstate</p>
+
+<p> [ec2-user@ip-172-31-14-85 ~]$ aws iam put-role-policy –role-name smartstate –policy-name cfmepermissions –policy-document file://ssa_cfme_policy.json</p>
+
+<p>The next step is to create the instance profile. This is needed that the smartstate instance is allowed to perform actions against s3,sqs and ec2</p>
+
+<p>[ec2-user@ip-172-31-14-85 ~]$ aws iam create-instance-profile –instance-profile-name smartstate</p>
+
+<p>[ec2-user@ip-172-31-14-85 ~]$ aws iam add-role-to-instance-profile –instance-profile-name smartstate –role-name smartstate</p>
+
+<p>Finally, you can now login to CloudForms.
+On the top right corner go and click configure:</p>
+
+<p>Turn on the smartproxy under roles. We will need that for the smart state analysis</p>
+
+<p>Next click on the advanced tab on the right. Now, this is SUPER important! The OOTB configuration is not going to work. Search for agent_ami_login_user and change the value from ec2-user to cloud-user. It should look like this:</p>
+
+<p>This is the user CloudForms will login with when it will initiate a SmartState analysis.</p>
+
+<p>Finally let’s add the AWS provider. You should be familiar with what access and secret keys you need to add. Important, CloudForms will need at least poweruser access.</p>
+
+<p>Next hit validate on save. Don’t bother filling out the “SmartState Docker” tab as it doesn’t do anything if you fill it out at the same time.</p>
+
+<p>Once saved go edit the provider again. Now go to the SmartState Docker tab. I am wondering who named these fields and the comment below. Would have been better to say “Use registry.access.redhat.com credentials or RHN credentials required to perform ….“. What you need is your RHN credentials. These are needed so that you can pull the smartstate image from the redhat docker registry.</p>
+
+<p>Hit save and you´re done.</p>
+
+<p>You have now configured everything to perform a SmartState analysis in AWS.</p>
+
+<p>Go to your AWS provider and click on an instance. Under the instance configurations tab click</p>
+
+<p>You can then go to the top right corner and click on Configuration -&gt; tasks. You should see something like this</p>
+
+<p>When everything is finished you will see</p>
+
+<p>The next post is going to be for the geeks under us. It will explain what is going on under the hood when smart state happens.</p>
+
+<p>You can check the previous one as well [here] (<a href="https://www.redhat.com/en/blog#more-2351">https://www.redhat.com/en/blog#more-2351</a>)</p>
+
+          </div>
+        </article>
+      </div>
+
+      <div class="col-xs-12 col-sm-2 blog_side">
+          <div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Categories
+  </h3>
+
+  <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,">cloudforms,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware,">vmware,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev,">rhev,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/kvm,">kvm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cluster,">cluster,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm,">vm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore,">datastore,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf2,">cf2,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf3,">cf3,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cfme, XML, XML">cfme, XML, XML</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/format">format</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/announcements">announcements</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uncategorized">uncategorized</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cloud">automate, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/formations, cloud">formations, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/forms, heat, openstack, scale">forms, heat, openstack, scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms">cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate">automate</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible">ansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansiblecloudformsansible">ansiblecloudformsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible,">ansible,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control,">control,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsmanagement">cloudformsmanagement</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms slack">cloudformscloudforms slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, custom,">cloudforms, custom,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/button, operations, rdp, ssh">button, operations, rdp, ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/container">container</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, kubernetes, management, openshift, operations">cloudforms, container, kubernetes, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, containers, management, openshift">cloudforms, container, containers, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift">cloudforms, container, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, compliance, container, management, openscap, security">cloudforms, compliance, container, management, openscap, security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift, operations">cloudforms, container, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, best">automate, best</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/practices cloudforms">practices cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning,">provisioning,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Services">Services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/architecture, cloudforms,cmdb, integration, servicenow, ucmdb">architecture, cloudforms,cmdb, integration, servicenow, ucmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, github, manageiq, pull">cloudforms, github, manageiq, pull</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/request, vmware">request, vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsDeploymentansible">AnsibleCloudFormsDeploymentansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/appliance">appliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Automation,">Automation,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Azure,">Azure,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/microsoft,">microsoft,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service,">self-service,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow,">servicenow,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower,">tower,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/internal">internal</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cloudforms, series">aws, cloudforms, series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws,">aws,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cfme,">aws, cfme,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cfme, cloudforms, methods">automate, cfme, cloudforms, methods</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsansible">AnsibleCloudFormsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, osp,rhv">cloudforms, osp,rhv</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate,">automate,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms">cloudformscloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api, cloudforms, rest">api, cloudforms, rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api">api</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsuxdcloudforms uxd">cloudformsuxdcloudforms uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/none">none</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Archive
+  </h3>
+
+  <ul id="blog_archive_menu" class="blog_menu">
+    
+    
+    
+
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2022/index.html">
+        2022
+      </a>
+      
+        <ul class="blog_menu blog_months">
+  
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/07/index.html">
+      July
+    </a>
+    
+  </li>
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/02/index.html">
+      February
+    </a>
+    
+  </li>
+  
+</ul>
+
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2021/index.html">
+        2021
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2020/index.html">
+        2020
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2019/index.html">
+        2019
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2018/index.html">
+        2018
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2017/index.html">
+        2017
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2016/index.html">
+        2016
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2015/index.html">
+        2015
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2014/index.html">
+        2014
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2013/index.html">
+        2013
+      </a>
+      
+    </li>
+    
+  </ul>
+</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/_posts/2018-03-27-cloudforms-in-aws-part2.md">
+          <i class="fa fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2022 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

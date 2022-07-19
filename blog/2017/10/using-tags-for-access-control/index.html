@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - Using Tags for Access Control</title>
+  <meta name="description" content="Most systems use Access Control Lists (ACL’s) to manage user’s access to objects. Common examples are ACL’s for file systems, LDAP, Web Servers and many more...">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/blog/2022/07/2016-10-13-using-tags-for-access-control/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/blog/2017/10/using-tags-for-access-control/">
+      <div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10">
+        <header class="blog_header">
+          <h1>
+            ManageIQ Blog
+          </h1>
+        </header>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-10 blog_main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="page-title" itemprop="name headline">Using Tags for Access Control</h1>
+
+            <div class="post-meta">
+              <time datetime="2017-10-13T00:00:00+00:00" itemprop="datePublished">
+                Oct 13, 2017
+              </time>
+
+              
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                by
+                <i itemprop="name">
+                  Christian Jung
+                </i>
+              </span>
+              
+
+              <ul class="post-tags">
+                
+                <li>
+                  <a href="/blog/tags/cloudforms">cloudforms</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/automate">automate</a>
+                </li>
+                
+              </ul>
+            </div>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <p>Most systems use Access Control Lists (ACL’s) to manage user’s access to objects. Common examples are ACL’s for file systems, LDAP, Web Servers and many more. Anyone who has had to create ACL rules and maintain them knows how complicated this can be. To make access control easy again, CloudForms uses tags. If the group a user belongs to has the same tag as the accessed object, access is granted, if not, access is denied.</p>
+
+<p>This sounds simple and straightforward, but there are a couple of things to know about tags which make them very powerful, but also a bit tricky.</p>
+
+<p>Let’s start with a basic explanation of common objects in CloudForms:</p>
+
+<ul>
+  <li>
+    <p>Users: users can be created in the internal database or retrieved from external authentication. Meta data, including the full name, email address, password (in the case of database authentication) and relationship to one or more groups, is associated to the user.</p>
+  </li>
+  <li>
+    <p>Groups: every user is a member of one or more groups. Groups are used to define the scope or visibility of a user. For example, a member of the “Engineering Department” group can be granted access to all virtual machines (VMs) owned by the engineering department. Or a member of the group “Operations” could be granted access to all VMs running in the production environment.</p>
+  </li>
+  <li>
+    <p>Roles: every group is associated to exactly one role, which describes the privileges granted to that group. Roles are used to define which actions a user is allowed to perform. For example, an “Operator” role could include permissions to start or stop VMs, re-configure them, etc. A “Self Service” role could allow a user to order new VMs and manage them.</p>
+  </li>
+</ul>
+
+<p>The combination of groups and roles defines which actions are allowed and on which objects. An “Operator” role in the “Engineering Department” group would have the same privileges as an “Operator” role in the “Finance Department” group because they share the same role, but they would see different objects because they are not in the same group.</p>
+
+<p>Let’s discuss a couple of examples to get familiar with this model.</p>
+
+<h2 id="setting-the-stage">Setting the Stage</h2>
+
+<p>As an administrator, navigate to Settings &gt; Configuration and click on “Access Control” in the pane on the left, and then click on “Roles”. Add a new role by clicking on Configuration &gt; Add a New Role and name it “Self Service”. Granting privileges to the role is very nicely implemented. The tree on the right represents all of the menus and actions a user can perform in the UI. Enabling (checking) a feature grants the privilege to the role. By drilling down into sub folders, very fine grained permissions can be granted (e.g. power on, but not power off).</p>
+
+<p>For the purpose of this demo, a role with full access to “Cloud Intel”, “Services”, “Compute”, “Settings” and “Access Rules for all Virtual Machines” – but no other privileges – is created.</p>
+
+<h2 id="example-group-engineering">Example Group “Engineering”</h2>
+
+<p>In the next step, a group called “Engineering” is created. All members of this group will have the “Self Service” role assigned, which was created in the previous step. For now, we skip tags and filters and keep them all unchecked.</p>
+
+<h2 id="example-user-joe-doe">Example User “Joe Doe”</h2>
+
+<p>In the last step a user “Joe Doe” is created. This will be a local user (stored in the database) and is a member of the “Engineering” group.</p>
+
+<h2 id="results">Results</h2>
+
+<p>If Joe Doe logs into the web interface and navigates to Providers &gt; Hosts &gt; Virtual Machines or Providers &gt; Hosts &gt; Service Catalogs he will see all of the existing objects. This should not be a surprise, because he is assigned to a group which doesn’t have any restrictions on visibility.</p>
+
+<h2 id="granting-access-to-individual-objects">Granting Access to Individual Objects</h2>
+
+<p>For our next step, we want to restrict Joe Doe’s visibility to only those VMs associated to the Engineering Department. To accomplish this, we will restrict Joe Doe to only see objects tagged as Department/Engineering. But first, we will learn a little bit about tags and tag categories.</p>
+
+<h2 id="tags-and-tag-categories">Tags and Tag Categories</h2>
+
+<p>Tags are any string that you would like to describe a particular characteristic of an object. The best tags are clearly descriptive and easy for other users to understand. For example, Engineering and Finance are clearly descriptive and easy to understand tags that describe the part of the organization to which a user or VM belongs. Tag categories are groupings of related tags. For example, Engineering and Finance belong to the Department tag category. Using tag categories you can group related tags together.</p>
+
+<p>CloudForms comes with a default set of tags and tag categories that you can use, or you can create your own custom taxonomy of tags. In this way, tags are very flexible. For this demonstration, we are going to work with the default set of tags and tag categories.</p>
+
+<h2 id="assigning-a-tag-to-an-object">Assigning a Tag to an Object</h2>
+
+<p>Navigate to the “Engineering” group, edit it and select the Department/Engineering tag.</p>
+
+<p>When changing groups, roles or tenants, the user doesn’t need to logout and login again. Changes to groups and roles are reflected immediately in CloudForms, even if the user is already logged in. If Joe now navigates to view VMs, only those VMs tagged with Department/Engineering will be shown. In this case, none!</p>
+
+<h2 id="first-gotcha">First Gotcha</h2>
+
+<p>You might have noticed, after setting the Department/Engineering tag for the group, no objects are showing up in the UI. The scope for the group, and hence the user, was just limited to objects which are tagged as Department/Engineering – and no objects have been tagged so far. We now need to tag all objects which should be visible for the user. An object, like a VM, can be tagged by using the Policy &gt; Edit Tags menu. After tagging a VM and navigating to the VM list, the VM will show up in the user interface.</p>
+
+<p>This process works the same way for all other objects. If Joe Doe should be able to order a specific item from the service catalog, the item or bundle has to be tagged with the Department/Engineering tag to make it visible.</p>
+
+<h2 id="working-with-multiple-tags">Working with Multiple Tags</h2>
+
+<p>If a VM or other object has to be visible to multiple groups, we can add all the necessary tags to the object. For instance, adding the Department/Finance tag to a VM, makes the VM available to members of the “Finance Department” group, which also has that tag.
+Tags within the same tag category are processed as logical OR relationships. That is, if at least one tag of the group matches with at least one tag of the object, access is granted. For example, if a user is in a group with the Department/Engineering or Department/Finance tag, they will see the object. Users which are in a group with neither the Department/Engineering or Department/Finance tag, will not see the object. This also applies, if the object isn’t tagged with any tag – which means, nobody will see it.</p>
+
+<h2 id="second-gotcha">Second Gotcha</h2>
+
+<p>Tag restrictions also apply to Super Administrators! If you restrict the visibility of a Super Administrator by assigning them tags, they will no longer see those objects which do not have matching tags! Since Super Administrators can always fix tag assignments or remove the tags for their group, they can restore full visibility, but it’s probably best to make sure you never limit Super Administrators.</p>
+
+<h2 id="working-with-multiple-tag-categories">Working with Multiple Tag Categories</h2>
+
+<p>When working in more complex environments, multiple tag categories must be used. For example, in addition to separating VMs by departments, tags can be used to separate VMs in different stages of deployment (Development, QA, Production). However, as soon as multiple tag categories are introduced, things get a bit more complicated.</p>
+
+<h2 id="third-gotcha">Third Gotcha</h2>
+
+<p>When using multiple tag categories, there is a logical AND between tags in multiple categories. This is probably best explained with an example. CloudForms comes with a default tag category called Environment with tags like Development and Production.</p>
+
+<p>If the “Engineering” group, of which Joe Doe is a member, gets the additional tag Environment/Development, Joe will only see objects which have the Department/Engineering tag and the Environment/Development tag.  A VM tagged as Department/Engineering and Environment/Production will be hidden from Joe.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Object Tags</th>
+      <th>Group Tags</th>
+      <th>Visible?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Department/Engineering</td>
+      <td>Department/Engineering</td>
+      <td>Yes, Tags match.</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>Department/Engineering</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>AND</td>
+      <td>Department/Engineering</td>
+      <td>Yes. At least one tag in the same category matches.</td>
+    </tr>
+    <tr>
+      <td>Department/Finance</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>Department/Engineering</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>AND</td>
+      <td>Department/Engineering</td>
+      <td>No. Tags from multiple categories, so both must match.</td>
+    </tr>
+    <tr>
+      <td>Environment/Development</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>Department/Engineering</td>
+      <td>Department/Engineering</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>AND</td>
+      <td>AND</td>
+      <td>No. Tags from multiple categories, so both must match.</td>
+    </tr>
+    <tr>
+      <td>Environment/Production</td>
+      <td>Environment/Development</td>
+      <td> </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>Department/Engineering</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>AND</td>
+      <td>Department/Engineering</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Environment/Development</td>
+      <td>AND</td>
+      <td>Yes. At least one tag in each tag category matches.</td>
+    </tr>
+    <tr>
+      <td>AND</td>
+      <td>Environment/Development</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Environment/Production</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This is very important and often causes confusion. As soon as you start tagging objects with tags from different tag categories, the logical AND comes into play!</p>
+
+<h2 id="conclusion-think-before-you-tag">Conclusion: Think Before You Tag</h2>
+
+<p>There are a few rules we try to follow when we plan tagging:</p>
+
+<ul>
+  <li>
+    <p>Don’t use tags for information which is already available as an attribute for the object. For example, tagging all Windows VMs as Operating System Windows is in most cases not a good idea. Since this information is already stored in an VM attribute, you can use a filter to find all of the Windows VMs.</p>
+  </li>
+  <li>
+    <p>Try to minimize the number of tags and tag categories. Having a large number of categories and tags makes things more complicated.</p>
+  </li>
+  <li>
+    <p>Think before you add a new tag or tag category. Besides increasing the number of tags or tag categories, you will have to tag all of the objects already in CloudForms.</p>
+  </li>
+  <li>
+    <p>Try to use auto tagging where possible. Instead of manually tagging objects, write Automate code to do this for you or make use of the CloudForms REST API.</p>
+  </li>
+</ul>
+
+<p>Tags are a very simple and yet powerful way to manage access control lists. Used properly, they can provide greater flexibility and manageability in CloudForms. For more information on tags and access control, see the following resources:</p>
+
+<p>[Creating and Using Tags in Red Hat CloudForms] (<a href="https://access.redhat.com/articles/421423">https://access.redhat.com/articles/421423</a>)
+[Planning your CloudForms tagging taxonomy] (<a href="https://www.youtube.com/watch?v=C5nBexDu2ug">https://www.youtube.com/watch?v=C5nBexDu2ug</a>)</p>
+
+          </div>
+        </article>
+      </div>
+
+      <div class="col-xs-12 col-sm-2 blog_side">
+          <div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Categories
+  </h3>
+
+  <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,">cloudforms,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware,">vmware,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev,">rhev,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/kvm,">kvm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cluster,">cluster,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm,">vm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore,">datastore,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf2,">cf2,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf3,">cf3,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cfme, XML, XML">cfme, XML, XML</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/format">format</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/announcements">announcements</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uncategorized">uncategorized</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cloud">automate, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/formations, cloud">formations, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/forms, heat, openstack, scale">forms, heat, openstack, scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms">cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate">automate</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible">ansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansiblecloudformsansible">ansiblecloudformsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible,">ansible,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control,">control,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsmanagement">cloudformsmanagement</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms slack">cloudformscloudforms slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, custom,">cloudforms, custom,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/button, operations, rdp, ssh">button, operations, rdp, ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/container">container</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, kubernetes, management, openshift, operations">cloudforms, container, kubernetes, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, containers, management, openshift">cloudforms, container, containers, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift">cloudforms, container, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, compliance, container, management, openscap, security">cloudforms, compliance, container, management, openscap, security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift, operations">cloudforms, container, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, best">automate, best</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/practices cloudforms">practices cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning,">provisioning,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Services">Services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/architecture, cloudforms,cmdb, integration, servicenow, ucmdb">architecture, cloudforms,cmdb, integration, servicenow, ucmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, github, manageiq, pull">cloudforms, github, manageiq, pull</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/request, vmware">request, vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsDeploymentansible">AnsibleCloudFormsDeploymentansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/appliance">appliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Automation,">Automation,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Azure,">Azure,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/microsoft,">microsoft,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service,">self-service,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow,">servicenow,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower,">tower,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/internal">internal</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cloudforms, series">aws, cloudforms, series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws,">aws,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cfme,">aws, cfme,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cfme, cloudforms, methods">automate, cfme, cloudforms, methods</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsansible">AnsibleCloudFormsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, osp,rhv">cloudforms, osp,rhv</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate,">automate,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms">cloudformscloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api, cloudforms, rest">api, cloudforms, rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api">api</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsuxdcloudforms uxd">cloudformsuxdcloudforms uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/none">none</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Archive
+  </h3>
+
+  <ul id="blog_archive_menu" class="blog_menu">
+    
+    
+    
+
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2022/index.html">
+        2022
+      </a>
+      
+        <ul class="blog_menu blog_months">
+  
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/07/index.html">
+      July
+    </a>
+    
+  </li>
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/02/index.html">
+      February
+    </a>
+    
+  </li>
+  
+</ul>
+
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2021/index.html">
+        2021
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2020/index.html">
+        2020
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2019/index.html">
+        2019
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2018/index.html">
+        2018
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2017/index.html">
+        2017
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2016/index.html">
+        2016
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2015/index.html">
+        2015
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2014/index.html">
+        2014
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2013/index.html">
+        2013
+      </a>
+      
+    </li>
+    
+  </ul>
+</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/_posts/2016-10-13-using-tags-for-access-control.md">
+          <i class="fa fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2022 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

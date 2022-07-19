@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - Tips from the tour part 3 - Automating complex processes with Ansible</title>
+  <meta name="description" content="Introduction">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/blog/2022/07/2018-09-10-tips-from-the-tour-part-3-automating-complex-processes-with-ansible/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/blog/2018/09/tips-from-the-tour-part-3-automating-complex-processes-with-ansible/">
+      <div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10">
+        <header class="blog_header">
+          <h1>
+            ManageIQ Blog
+          </h1>
+        </header>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-10 blog_main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="page-title" itemprop="name headline">Tips from the tour part 3 - Automating complex processes with Ansible</h1>
+
+            <div class="post-meta">
+              <time datetime="2018-09-10T00:00:00+00:00" itemprop="datePublished">
+                Sep 10, 2018
+              </time>
+
+              
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                by
+                <i itemprop="name">
+                  Michele Naldini and Vistor Estival Lopez
+                </i>
+              </span>
+              
+
+              <ul class="post-tags">
+                
+                <li>
+                  <a href="/blog/tags/cloudforms">cloudforms</a>
+                </li>
+                
+              </ul>
+            </div>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <h2 id="introduction">Introduction</h2>
+
+<p>Red Hat held an event on the infrastructure part of our portfolio in Milan and Rome on April 17th and 19th, 2018. Part of the demos presented was focused on the Automation topic managed with Red Hat Ansible and Red Hat Ansible Tower:
+  
+The event information and agenda is available at:
+(<a href="https://www.redhat.com/en/events/infrastructure-tour-milan-2018">https://www.redhat.com/en/events/infrastructure-tour-milan-2018</a>)
+(<a href="https://www.redhat.com/en/events/infrastructure-tour-rome-2018">https://www.redhat.com/en/events/infrastructure-tour-rome-2018</a>)
+  
+This is the third part of the series of articles written by my colleague Rinaldo Bergamini you can find them here and here.</p>
+
+<p>In this part, I would like to show you how you can Automate “everything” with Red Hat Ansible and Ansible Tower.</p>
+
+<p>At that time Ansible Tower demo was configured literally in a manual way. That means I had to:</p>
+
+<ul>
+  <li>Choose a cloud provider</li>
+  <li>Define IAM users</li>
+  <li>Define Networks and Storage details</li>
+  <li>Create Instances for Tower and servers for my use cases</li>
+  <li>
+    <p>Install and Configure Tower
+  
+We showed to the audience several use cases:</p>
+  </li>
+  <li>Application deployment [PROVISIONING] </li>
+  <li>Application configuration [CONFIGURATION MANAGEMENT]</li>
+  <li>Infrastructure Day 2 Operations [ORCHESTRATION] </li>
+  <li>Proactive &amp; Automatic Analysis w/ Insights [SECURITY]</li>
+  <li>Security Content/Vulnerability Assessment &amp; Remediation [SECURITY]
+  
+After the event as you can imagine, I used the same demo to show to our customers how Ansible can help them due to three of it’s main core values:  it’s SIMPLE,  it’s POWERFUL, it’s AGENT LESS</li>
+</ul>
+
+<p>After few days in my mind comes a new idea: my demo needs to be fully automated!</p>
+
+<p>In the [past] (<a href="https://developers.redhat.com/blog/2017/11/02/build-software-defined-data-center-red-hat-cloudforms-openstack-2/">https://developers.redhat.com/blog/2017/11/02/build-software-defined-data-center-red-hat-cloudforms-openstack-2/</a>) I have done something similar in an OpenStack/Cloudforms environment using Heat.</p>
+
+<p>I did the same but using a public cloud provider and the power of Ansible</p>
+
+<p>What do I mean? I want to start building AUTOMATICALLY the whole environment from scratch in order to:  
+ </p>
+<ol>
+  <li>Show an end-to-end deployment of multiple servers/services</li>
+  <li>Quickly reproduce the demo if needed</li>
+  <li>Track changes → ansible playbook are YAML based files so we can track changes on git</li>
+  <li>Rebuild old demo environment using the latest version  (demo was based on Tower 3.2.3 version. Now we are at 3.2.6) </li>
+  <li>Avoid to re-invent the wheel every time we need a demo environment</li>
+  <li>Use this effort as a baseline for new use cases</li>
+  <li>Write this follow-up post for who have joined us during the event 😉
+  
+I think we can call this approach as Automation 3 or Cubed Automation
+  
+We want to “Automate” the setup of the “Automation” environment “Automating” several tasks</li>
+</ol>
+
+<p>Let’s start understanding what the main folder contains and how the playbook was designed… </p>
+
+<p>Folder structure</p>
+
+<p>In the main dir there are:  
+ </p>
+<ol>
+  <li>setup.ini file [1] where basically we need to configure some basic stuff in order to configure the environment. There are 3 sections:   [tower], [rhsm], [gce], and we have to write down on the [tower]section,  the version we want to install, the tower’s admin password (tower_password variable), etc.</li>
+</ol>
+
+<p>We need also to declare our Red Hat Customer Portal user in order to register our instances to the Red Hat Portal under the [rhsm] section. The password is not a clear text password, instead, the playbook will use vault. You can refer to [this document] (<a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_vault.html">https://docs.ansible.com/ansible/latest/user_guide/playbooks_vault.html</a>) in order to correctly encrypt your password encoding it inside the playbook yaml file.As prerequisites on GCE side, we have to:</p>
+
+<ul>
+  <li>create two service accounts:
+    <ul>
+      <li>the first one called service_account_instance_creation@xxxxx which will be used to create instances on GCE. You need also to download it in JSON format and use it as credentials</li>
+    </ul>
+  </li>
+</ul>
+
+<p>(parameter service_account_instance_creation_credentials)</p>
+
+<ul>
+  <li>the second one called tower-service-account which needs to be download as .p12
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>you need to extract the private key from .p12 file with the command:  cat xxxxxxx.p12</td>
+              <td>openssl pkcs12 -nodes -nocerts -passin pass:notasecret</td>
+              <td>openssl rsa &gt; privateKey.pem.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>This keyfile will be used in the future (playbook enhancement) by Tower to authenticate Tower to GCP and use the dynamic inventory feature  (not available right now)
+[1] setup.ini file </li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>Inventory File where you need to put the hosts being part of the inventory you’ll manage with Ansible. Those hosts will be created  by our playbook</li>
+  <li>Gce_createinstances  main playbook file that will execute some tasks and role.</li>
+  <li>License is the tower license file that will be loaded to Tower using a POST to it’s APIs</li>
+  <li>README basic prerequisites and guidelines</li>
+  <li>Roles folders used by the main playbook to organize playbooks and tasks by their own scope
+  
+I don’t want to explain all the playbooks/roles/tasks in details. </li>
+</ol>
+
+<p>DISCLAIMER: At the time of writing the git repo is private. As soon as possible I’ll release it as Open Source of course and then feel free to contribute with pull request!
+  
+Now let’s watch this short video where you can see how we can set up the whole environment (tower included) in less than 30 minutes </p>
+
+<p>At the end of the entire playbook run the whole environment is up and running in 28 minutes! [2]
+  
+[2] ansible output</p>
+
+<p>Now let’s log in to Ansible Tower to quickly highlights the configuration performed
+  
+The role Tower has configured our Tower environment executing the setup, loading the license file and creating admin user using a mix of APIs call and ansible tower modules.</p>
+
+<p>Then the role tower_uc_setup has created for us the skeleton for our automation building 4 projects, 4 inventory, 7 hosts, some groups and a lot of pre-configured job_templates and workflow identified by an id and a prefix inside the template name
+  
+Tower homepage</p>
+
+<p>Configured hosts</p>
+
+<p>First of all, we want to use a preconfigured job template called “UC-1 [Provisioning] – WebServers + Haproxy + Nagios “  in order to install our web servers (httpd1/httpd2), a load balancer (haproxy) and a monitoring system (nagios)
+  
+“UC-1 [Provisioning] – WebServers + Haproxy + Nagios “ Job Template</p>
+
+<p>Executing it  will configure everything in 11 minutes</p>
+
+<p>Index.html showed calling httpd1 server</p>
+
+<p>Nagios configured with hostgroups and services</p>
+
+<p>In addition, the Haproxy server will balance the two web servers in a round robin fashion.</p>
+
+<p>Of course during the demo setup (runtime)  we could also execute the template using the available module [tower_job_launch] (<a href="https://docs.ansible.com/ansible/2.6/modules/tower_job_launch_module.">https://docs.ansible.com/ansible/2.6/modules/tower_job_launch_module.</a>) but in this case I would like to show how quickly this template can avoid spending your time on repetitive and boring tasks executing it manually from the Tower UI
+  
+I have also configured other templates able to:</p>
+
+<ul>
+  <li>Exclude a web server from a load balancer</li>
+  <li>Execute a custom command on a server</li>
+  <li>Re-include web server from Load Balancer</li>
+  <li>Unmonitor the web server from Nagios</li>
+  <li>Re-monitor the web server from Nagios</li>
+  <li>Rolling updates for all the project servers
+  
+All the playbooks used in this demo as job templates are available here  
+  
+(<a href="https://github.com/MikeNald/ansible-tower-examples">https://github.com/MikeNald/ansible-tower-examples</a>)</li>
+</ul>
+
+<p>After the first run of the gce_createinstances playbook they will be available inside Tower</p>
+
+<p>The setup will also configure an entire workflow able to  
+ </p>
+<ul>
+  <li>Exclude web server from LB → in case of success → temporary disable monitoring → in case of success → run command on server → always →</li>
+</ul>
+
+<p>re-include it into monitoring → always re-include web server on LB
+  
+The workflow includes also a survey asking the end user for a target host and command to be executed </p>
+
+<p>This is just an example of what Tower can do … here the full list of available use cases addressed by this Demo with several kinds of playbooks, workflows, survey, etc</p>
+
+<p>For instance, I have configured an Openscap scan of a rhel system, create a remediation profile for it, build a report and fix the findings using job_template number 16, 17 and 18</p>
+
+<p>Then I have configured a workflow to execute those playbooks in a consistent way.
+  
+The result is a rhel server where the Standard System Security Profile (ssg-rhel7-ds.xml) was used as a baseline and applied to the system.</p>
+
+<p>The report is loaded on git repo automatically by the playbook “UC-8 [Security] – Openscap Security Scan “ and can be viewed [here] (<a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/MikeNald/ansible-tower-examples/master/security/report/rhel-scap-scan-xccdf-report.html">https://htmlpreview.github.io/?https://raw.githubusercontent.com/MikeNald/ansible-tower-examples/master/security/report/rhel-scap-scan-xccdf-report.html</a>)</p>
+
+<p>Another example is the fully automated [Insight Integration] (<a href="https://docs.ansible.com/ansible-tower/latest/html/userguide/insights.html">https://docs.ansible.com/ansible-tower/latest/html/userguide/insights.html</a>) in order to proactively resolve possible wrong configurations or security issues on systems executing pre-configured ansible playbooks made available from Insights.
+  
+Resources:
+  
+(<a href="https://github.com/MikeNald/ansible-tower-examples">https://github.com/MikeNald/ansible-tower-examples</a>)
+(<a href="https://docs.ansible.com/ansible-tower/">https://docs.ansible.com/ansible-tower/</a>)
+(<a href="https://docs.ansible.com/ansible/latest/modules/list_of_all_modules.html">https://docs.ansible.com/ansible/latest/modules/list_of_all_modules.html</a>)
+(<a href="https://docs.ansible.com/ansible-tower/latest/html/userguide/insights.html">https://docs.ansible.com/ansible-tower/latest/html/userguide/insights.html</a>)
+ </p>
+<h2 id="conclusion">Conclusion</h2>
+<p>  
+This post would like to show you how much Ansible is powerful, simple and integrated with a broad ecosystem.</p>
+
+<p>More than 1.600 modules are available, an entire galaxy ((<a href="https://galaxy.ansible.com/">https://galaxy.ansible.com/</a>)) of re-usable roles is ready without needs to install plugins or agent on remote systems resulting in a quick adoption of the solution and avoiding an overhead to your systems without increasing surface attack!</p>
+
+<p>What are you waiting for?  Now you can perform your own AUTOMATION </p>
+
+          </div>
+        </article>
+      </div>
+
+      <div class="col-xs-12 col-sm-2 blog_side">
+          <div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Categories
+  </h3>
+
+  <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,">cloudforms,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware,">vmware,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev,">rhev,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/kvm,">kvm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cluster,">cluster,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm,">vm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore,">datastore,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf2,">cf2,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf3,">cf3,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cfme, XML, XML">cfme, XML, XML</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/format">format</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/announcements">announcements</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uncategorized">uncategorized</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cloud">automate, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/formations, cloud">formations, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/forms, heat, openstack, scale">forms, heat, openstack, scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms">cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate">automate</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible">ansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansiblecloudformsansible">ansiblecloudformsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible,">ansible,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control,">control,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsmanagement">cloudformsmanagement</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms slack">cloudformscloudforms slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, custom,">cloudforms, custom,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/button, operations, rdp, ssh">button, operations, rdp, ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/container">container</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, kubernetes, management, openshift, operations">cloudforms, container, kubernetes, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, containers, management, openshift">cloudforms, container, containers, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift">cloudforms, container, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, compliance, container, management, openscap, security">cloudforms, compliance, container, management, openscap, security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift, operations">cloudforms, container, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, best">automate, best</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/practices cloudforms">practices cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning,">provisioning,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Services">Services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/architecture, cloudforms,cmdb, integration, servicenow, ucmdb">architecture, cloudforms,cmdb, integration, servicenow, ucmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, github, manageiq, pull">cloudforms, github, manageiq, pull</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/request, vmware">request, vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsDeploymentansible">AnsibleCloudFormsDeploymentansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/appliance">appliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Automation,">Automation,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Azure,">Azure,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/microsoft,">microsoft,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service,">self-service,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow,">servicenow,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower,">tower,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/internal">internal</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cloudforms, series">aws, cloudforms, series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws,">aws,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cfme,">aws, cfme,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cfme, cloudforms, methods">automate, cfme, cloudforms, methods</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsansible">AnsibleCloudFormsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, osp,rhv">cloudforms, osp,rhv</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate,">automate,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms">cloudformscloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api, cloudforms, rest">api, cloudforms, rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api">api</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsuxdcloudforms uxd">cloudformsuxdcloudforms uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/none">none</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Archive
+  </h3>
+
+  <ul id="blog_archive_menu" class="blog_menu">
+    
+    
+    
+
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2022/index.html">
+        2022
+      </a>
+      
+        <ul class="blog_menu blog_months">
+  
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/07/index.html">
+      July
+    </a>
+    
+  </li>
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/02/index.html">
+      February
+    </a>
+    
+  </li>
+  
+</ul>
+
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2021/index.html">
+        2021
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2020/index.html">
+        2020
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2019/index.html">
+        2019
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2018/index.html">
+        2018
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2017/index.html">
+        2017
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2016/index.html">
+        2016
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2015/index.html">
+        2015
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2014/index.html">
+        2014
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2013/index.html">
+        2013
+      </a>
+      
+    </li>
+    
+  </ul>
+</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/_posts/2018-09-10-tips-from-the-tour-part-3-automating-complex-processes-with-ansible.md">
+          <i class="fa fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2022 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - CloudForms on AWS Part 1 (Series)</title>
+  <meta name="description" content="Ever wondered what CloudForms can do for you in AWS? The next few blog posts will walk you through step by step how to upload the CloudForms image to AWS, ho...">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/blog/2022/07/2018-03-22-cloudforms-on-aws-part-1-series/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/blog/2018/03/cloudforms-on-aws-part-1-series/">
+      <div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10">
+        <header class="blog_header">
+          <h1>
+            ManageIQ Blog
+          </h1>
+        </header>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-10 blog_main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="page-title" itemprop="name headline">CloudForms on AWS Part 1 (Series)</h1>
+
+            <div class="post-meta">
+              <time datetime="2018-03-22T00:00:00+00:00" itemprop="datePublished">
+                Mar 22, 2018
+              </time>
+
+              
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                by
+                <i itemprop="name">
+                  Laurent Domb
+                </i>
+              </span>
+              
+
+              <ul class="post-tags">
+                
+                <li>
+                  <a href="/blog/tags/aws">aws</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/cloudforms">cloudforms</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/aws, cloudforms, series">aws, cloudforms, series</a>
+                </li>
+                
+              </ul>
+            </div>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <p>Ever wondered what CloudForms can do for you in AWS? The next few blog posts will walk you through step by step how to upload the CloudForms image to AWS, how to assign the correct policies and roles and how to configure it correctly so it can discover your environment. Part 1 is dedicated to the import and configuration of the CloudForms image.</p>
+
+<p>With the release of CloudForms 4.6 you also have the ability to scan instances in AWS. These blog series will show you how this can be achieved:</p>
+
+<p>First, go to the AWS console and launch a free tier Amazon AMI. We are doing this because it already has the aws cli tools installed.</p>
+
+<p>In the ec2 web console attach the admin IAM role for this instance (you can delete the instance after setup)</p>
+
+<p>This will open the following window.</p>
+
+<p>Assign the admin role and apply.</p>
+
+<p>Your instance should be up by now. Go and ssh into it (don’t worry my private key was a one time key).</p>
+
+<p>ssh -i “ldombprivate.pem” ec2-user@ec2-54-160-180-77.compute-1.amazonaws.com</p>
+
+<p>The next step will be to configure the cli for the correct region. As we assigned an IAM role you won’t need to add any credentials.</p>
+
+<p>[ec2-user@ip-172-31-14-85 ~]$ aws configure</p>
+
+<p>AWS Access Key ID [None]:</p>
+
+<p>AWS Secret Access Key [None]:</p>
+
+<p>Default region name [None]: us-east-1</p>
+
+<p>Default output format [None]:</p>
+
+<p>Login to the Red Hat Portal and get the Amazon VHD</p>
+
+<p>wget “https:// access.cdn.redhat.com//content/origin/files/sha256/18/18d7f11b2163f4cd894f4683394d9723102342a73212c68e97461469788b72e9/cfme-ec2-5.9.0.22-1.x86<em>64.vhd_auth</em>=1520802709_a5f94e34e15f6b286e4a129392c06c44]” -O cfme-ec2-5.9.0.22-1.x86_64.vhd</p>
+
+<p>The next step is to create an S3 bucket where we can upload the VHD to later be converted into an AMI</p>
+
+<p>[ec2-user@ip-172-31-14-85 ~]$ aws s3 mb s3://awscfme59</p>
+
+<p>Before we copy any file it’s important to understand that S3 does not have a private endpoint. Thus you would copy the vhd via the internet. If you want to speed things up you can go to your VPC and create an s3 endpoint or a private link. This will speed up the upload of the VHD to the s3 bucket.</p>
+
+<p>Lets copy the cfme-ec2-5.9.0.22-1.x86_64.vhd to the s3 bucket. If you enabled the endpoint you should see speeds like the following:</p>
+
+<p>Once completed you will see the following:</p>
+
+<p>[ec2-user@ip-172-31-14-85 ~]$ aws s3 cp cfme-ec2-5.9.0.22-1.x86_64.vhd s3://awscfme59/</p>
+
+<p>upload: ./cfme-ec2-5.9.0.22-1.x86_64.vhd to s3://awscfme59/cfme-ec2-5.9.0.22-1.x86_64.vhd</p>
+
+<p>If you have never imported a VM in AWS you will need to add the following VM import trust policy. Create a file named vm-import.json with the following content:</p>
+
+<p>{
+ “Version”: “2012-10-17”,
+ “Statement”: [
+ {
+ “Effect”: “Allow”,
+ “Principal”: { “Service”: “vmie.amazonaws.com” },
+ “Action”: “sts:AssumeRole”,
+ “Condition”: {
+ “StringEquals”:{
+ “sts:Externalid”: “vmimport”
+ }
+ }
+ }
+ ]
+}</p>
+
+<p>Go ahead and create the trust policy for the role vmimport:</p>
+
+<p>[ec2-user@ip-172-31-16-233 ~]$ aws iam create-role –role-name vmimport –assume-role-policy-document file://vm-import.json</p>
+
+<p>{</p>
+
+<p>“Role”: {
+“AssumeRolePolicyDocument”: {
+“Version”: “2012-10-17”,
+“Statement”: [
+{
+“Action”: “sts:AssumeRole”,
+“Effect”: “Allow”,
+“Condition”: {
+“StringEquals”: {
+“sts:Externalid”: “vmimport”
+}
+},
+“Principal”: {
+“Service”: “vmie.amazonaws.com”
+}
+}
+]
+},
+“RoleId”: “AROAJZLT6IXHOKY3S4OE2”,
+“CreateDate”: “2018-03-09T22:46:31.581Z”,
+“RoleName”: “vmimport”,
+“Path”: “/”,
+“Arn”: “arn:aws:iam::XXXXXXXXX:role/vmimport”
+}
+}</p>
+
+<p>Next, we will need to add the role policy to allow s3 to list the buckets as well as create the snapshot, convert and register the CloudForms AMI. Create a file named role-policy.json</p>
+
+<p>{
+“Version”:”2012-10-17”,
+“Statement”:[
+{
+“Effect”:”Allow”,
+“Action”:[
+“s3:GetBucketLocation”,
+“s3:GetObject”,
+“s3:ListBucket”
+],
+“Resource”:[
+“arn:aws:s3:::awscfme59”,
+“arn:aws:s3:::awscfme59/*”
+]
+},
+{</p>
+
+<p>“Effect”:”Allow”,
+“Action”:[
+“ec2:ModifySnapshotAttribute”,
+“ec2:CopySnapshot”,
+“ec2:RegisterImage”,
+“ec2:Describe<em>”
+],
+“Resource”:”</em>”
+}
+]
+}</p>
+
+<p>Create the role policy for vmimport
+[ec2-user@ip-172-31-16-233 ~]$ aws iam put-role-policy –role-name vmimport –policy-name vmimport –policy-document file://role-policy.json</p>
+
+<p>Before we can import the file we need to create one last file named container.json</p>
+
+<p>[
+ {
+ “Description”: “cfme5922”,
+ “Format”: “vhd”,
+ “UserBucket”: {
+ “S3Bucket”: “awscfme59”,
+“S3Key”: “cfme-ec2-5.9.0.22-1.x86_64.vhd”
+ }
+ }
+]
+Import CloudForms into your AWS account.
+[ec2-user@ip-172-31-16-233 ~]$ aws ec2 import-image –description “CFME 5.9.0.22” –disk-containers file://container.json –region us-east-1
+{
+ “Status”: “active”,
+ “Description”: “CFME 5.9.0.22”,
+ “SnapshotDetails”: [
+ {
+ “UserBucket”: {
+ “S3Bucket”: “awscfme59”,
+ “S3Key”: “cfme-ec2-5.9.0.22-1.x86_64.vhd”
+ },
+ “DiskImageSize”: 0.0,
+ “Format”: “VHD”
+ }
+ ],
+ “Progress”: “2”,
+ “StatusMessage”: “pending”,
+ “ImportTaskId”: “import-ami-ffut8pit”
+}</p>
+
+<p>The StatusMessage will go from pending to converting to updating, booting, preparing AMI.</p>
+
+<p>You can view the status by executing the following command.</p>
+
+<p>[ec2-user@ip-172-31-16-233 ~]$ aws ec2 describe-import-image-tasks –import-task-ids import-ami-ffut8pit
+{
+ “ImportImageTasks”: [
+ {
+ “Status”: “active”,
+ “LicenseType”: “BYOL”,
+ “Description”: “CFME 5.9.0.22”,
+ “Platform”: “Linux”,
+ “Architecture”: “x86_64”,
+ “SnapshotDetails”: [
+ {
+ “DeviceName”: “/dev/sda1”,
+ “Description”: “cfme5922”,
+ “Format”: “VHD”,
+ “DiskImageSize”: 3071064576.0,
+ “SnapshotId”: “snap-0d03e300d77484906”,
+ “UserBucket”: {
+ “S3Bucket”: “awscfme59”,
+ “S3Key”: “cfme-ec2-5.9.0.22-1.x86_64.vhd”
+ }
+ }
+ ],
+ “Progress”: “85”,
+ “StatusMessage”: “preparing ami”,
+ “ImportTaskId”: “import-ami-ffut8pit
+“
+ }
+ ]
+}</p>
+
+<p>When the task import is finished you will see the field “ImageId“: “ami-140fc869”, in the task output.</p>
+
+<p>[ec2-user@ip-172-31-14-85 ~]$ aws ec2 describe-import-image-tasks –import-task-ids import-ami-ffut8pit
+{
+ “ImportImageTasks”: [
+ {
+ “Status”: “completed”,
+ “LicenseType”: “BYOL”,
+ “Description”: “CFME 5.9.0.22”,
+ “ImageId”: “ami-140fc869”,
+ “Platform”: “Linux”,
+ “Architecture”: “x86_64”,
+ “SnapshotDetails”: [
+ {
+ “DeviceName”: “/dev/sda1”,
+ “Description”: “cfme5922”,
+ “Format”: “VHD”,
+ “DiskImageSize”: 3071064576.0,
+ “SnapshotId”: “snap-099c934a3bfe52a16”,
+ “UserBucket”: {
+ “S3Bucket”: “awscfme59”,
+ “S3Key”: “cfme-ec2-5.9.0.22-1.x86_64.vhd”
+ }
+ }
+ ],
+ “ImportTaskId”: “import-ami-ffut8pit”
+ }
+ ]
+}</p>
+
+<p>The AMI will have a cryptic name which is not very readable. So let’s change the name</p>
+
+<p>[ec2-user@ip-172-31-14-85 ~]$ aws ec2 copy-image –source-image-id ami-140fc869 –source-region us-east-1 –region us-east-1 –name “cfme_5922”
+{
+“ImageId”: “ami-ec04c391”
+}</p>
+
+<p>Let’s go an cleanup so we don’t have to pay for aws resources we don’t need.</p>
+
+<p>[ec2-user@ip-172-31-16-233 ~]$ aws ec2 deregister-image –image-id ami-140fc869</p>
+
+<p>You can also delete the file we uploaded to s3 to save costs</p>
+
+<p>[ec2-user@ip-172-31-16-233 ~]$ aws s3 rm s3://awscfme59/cfme-ec2-5.9.0.22-1.x86_64.vhd</p>
+
+<p>delete: s3://awscfme59/cfme-ec2-5.9.0.22-1.x86_64.vhd</p>
+
+<p>And remove the bucket as well</p>
+
+<p>[ec2-user@ip-172-31-16-233 ~]$ aws s3 rb s3://awscfme59 –force</p>
+
+<p>remove_bucket: awscfme59</p>
+
+<p>Go back to your AWS console and click on my AMI. You should now see your new CloudForms AMI ready to launch.</p>
+
+<p>Once the AMI is done copying you will see the status to available. You are now ready to launch the CFME instance. As an instance type a t2.xlarge should be enough. This is the most cost-effective instance you can get for CFME. Please follow the [installation guide] (<a href="https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.6/html-single/installing_red_hat_cloudforms_on_amazon_elastic_compute_cloud_amazon_ec2/index#Configuring-cloudforms">https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.6/html-single/installing_red_hat_cloudforms_on_amazon_elastic_compute_cloud_amazon_ec2/index#Configuring-cloudforms</a>) for the initial setup once the appliance is imported. The next post will explain how to add the AWS provider correctly and what roles and AWS service will need to be enabled for a Smart State Analysis to work.</p>
+
+          </div>
+        </article>
+      </div>
+
+      <div class="col-xs-12 col-sm-2 blog_side">
+          <div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Categories
+  </h3>
+
+  <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,">cloudforms,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware,">vmware,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev,">rhev,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/kvm,">kvm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cluster,">cluster,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm,">vm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore,">datastore,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf2,">cf2,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf3,">cf3,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cfme, XML, XML">cfme, XML, XML</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/format">format</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/announcements">announcements</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uncategorized">uncategorized</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cloud">automate, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/formations, cloud">formations, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/forms, heat, openstack, scale">forms, heat, openstack, scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms">cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate">automate</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible">ansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansiblecloudformsansible">ansiblecloudformsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible,">ansible,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control,">control,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsmanagement">cloudformsmanagement</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms slack">cloudformscloudforms slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, custom,">cloudforms, custom,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/button, operations, rdp, ssh">button, operations, rdp, ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/container">container</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, kubernetes, management, openshift, operations">cloudforms, container, kubernetes, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, containers, management, openshift">cloudforms, container, containers, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift">cloudforms, container, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, compliance, container, management, openscap, security">cloudforms, compliance, container, management, openscap, security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift, operations">cloudforms, container, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, best">automate, best</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/practices cloudforms">practices cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning,">provisioning,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Services">Services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/architecture, cloudforms,cmdb, integration, servicenow, ucmdb">architecture, cloudforms,cmdb, integration, servicenow, ucmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, github, manageiq, pull">cloudforms, github, manageiq, pull</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/request, vmware">request, vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsDeploymentansible">AnsibleCloudFormsDeploymentansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/appliance">appliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Automation,">Automation,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Azure,">Azure,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/microsoft,">microsoft,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service,">self-service,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow,">servicenow,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower,">tower,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/internal">internal</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cloudforms, series">aws, cloudforms, series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws,">aws,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cfme,">aws, cfme,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cfme, cloudforms, methods">automate, cfme, cloudforms, methods</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsansible">AnsibleCloudFormsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, osp,rhv">cloudforms, osp,rhv</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate,">automate,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms">cloudformscloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api, cloudforms, rest">api, cloudforms, rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api">api</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsuxdcloudforms uxd">cloudformsuxdcloudforms uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/none">none</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Archive
+  </h3>
+
+  <ul id="blog_archive_menu" class="blog_menu">
+    
+    
+    
+
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2022/index.html">
+        2022
+      </a>
+      
+        <ul class="blog_menu blog_months">
+  
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/07/index.html">
+      July
+    </a>
+    
+  </li>
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2022/02/index.html">
+      February
+    </a>
+    
+  </li>
+  
+</ul>
+
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2021/index.html">
+        2021
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2020/index.html">
+        2020
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2019/index.html">
+        2019
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2018/index.html">
+        2018
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2017/index.html">
+        2017
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2016/index.html">
+        2016
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2015/index.html">
+        2015
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2014/index.html">
+        2014
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2013/index.html">
+        2013
+      </a>
+      
+    </li>
+    
+  </ul>
+</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/_posts/2018-03-22-cloudforms-on-aws-part-1-series.md">
+          <i class="fa fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2022 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

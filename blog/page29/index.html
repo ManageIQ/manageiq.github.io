@@ -91,15 +91,30 @@
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2014/08/planning-the-b-release/">Planning the "B" Release</a></h1>
+            <h1><a href="/blog/2015/06/all-about-botvinnik-at-11am-edt-today-june-9/">All About Botvinnik at 11am EDT Today - June 9</a></h1>
             <div class="post-meta">
-              <time datetime="2014-08-15T16:50:00+00:00" itemprop="datePublished">
-                Aug 15, 2014
+              <time datetime="2015-06-09T12:16:07+00:00" itemprop="datePublished">
+                Jun 9, 2015
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>Now that the <a href="http://manageiq.org/download/">Anand release</a> is almost out the door, it’s the right time to turn our attention to the next release. Since we’re going alphabetically by chess world champions, we have a few <a href="http://simple.wikipedia.org/wiki/List_of_World_Chess_Champions">choices</a>:</p>
+            <p>This is a quick reminder that the <a href="http://manageiq-release.eventbrite.com/">All About Botvinnik webinar</a> starts at 8am PDT/11am EDT/15:00 UTC today (June 9). You can attend the webinar through our <a href="https://bluejeans.com/755275134">bluejeans.com link</a>.</p>
+
+          </div>
+        </article>
+        
+        <article class="post_excerpt">
+          <header class="post-header">
+            <h1><a href="/blog/2015/06/ui-login-button-fails-after-git-pull/">UI login button fails after git pull</a></h1>
+            <div class="post-meta">
+              <time datetime="2015-06-05T14:10:00+00:00" itemprop="datePublished">
+                Jun 5, 2015
+              </time>
+            </div>
+          </header>
+          <div class="post-content">
+            <p>If you run <code class="language-plaintext highlighter-rouge">git pull</code> on your ManageIQ appliance to pull down updates, restart and find that you can’t login in the web UI as the buttons are unresponsive, it’s likely you’re running in production mode, some assets were added or changed and haven’t been precompiled.</p>
 
 
           </div>
@@ -107,81 +122,15 @@
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2014/08/anand-release-candidate/">Anand Release Candidate</a></h1>
+            <h1><a href="/blog/2015/06/all-about-botvinnik-webinar-june-9/">All About Botvinnik Webinar - June 9</a></h1>
             <div class="post-meta">
-              <time datetime="2014-08-08T13:00:00+00:00" itemprop="datePublished">
-                Aug 8, 2014
+              <time datetime="2015-06-03T13:20:53+00:00" itemprop="datePublished">
+                Jun 3, 2015
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>Things have been rolling along here at the ManageIQ community, and we’re proud
-to announce that the first release candidate is now ready. The first release for
-ManageIQ is called “Anand”, named after world champion chess player <a href="http://en.wikipedia.org/wiki/Viswanathan_Anand">Viswanathan
-Anand</a>.</p>
-
-<p>To download a release candidate build of Anand, proceed to the
-<a href="http://manageiq.org/download/">download page</a>.
-To get the source for Anand, see the
-<a href="https://github.com/ManageiQ/manageiq/tree/anand">tagged GitHub repo</a>.</p>
-
-<p>To get an idea of what is included in Anand, see the
-<a href="http://manageiq.org/documentation/development/past_sprints/">results of the previous sprint</a>.
-To see what is coming next, take a look at the
-<a href="http://manageiq.org/documentation/development/roadmap/">roadmap</a>.</p>
-
-<p>Enjoy! Remember, if you find any issues, please
-<a href="https://github.com/ManageIQ/manageiq/issues">report them</a>.</p>
-
-<p>-JM</p>
-
-          </div>
-        </article>
-        
-        <article class="post_excerpt">
-          <header class="post-header">
-            <h1><a href="/blog/2014/07/integration-with-travis/">Integration with Travis CI</a></h1>
-            <div class="post-meta">
-              <time datetime="2014-07-08T14:55:00+00:00" itemprop="datePublished">
-                Jul 8, 2014
-              </time>
-            </div>
-          </header>
-          <div class="post-content">
-            <p>When we originally open-sourced ManageIQ, the <a href="https://github.com/ManageIQ/manageiq">ManageIQ GitHub
-Repo</a> was integrated with <a href="https://codeclimate.com/github/ManageIQ/manageiq">Code
-Climate</a>.  Integrating with
-Code Climate allowed the developer community to find code with too much
-complexity and/or duplication and refactor it.</p>
-
-<p>This week, we integrated the <a href="https://github.com/ManageIQ/manageiq">ManageIQ GitHub
-Repo</a> with <a href="https://travis-ci.org/ManageIQ/manageiq">Travis
-CI</a>, the continuous integration
-service.  This service runs on each GitHub pull request to ensure that no new
-code is breaking existing tests (i.e. no regression).  If the pull request does
-cause a regression, the core maintainers of the ManageIQ project will not merge
-it until this is resolved.</p>
-
-<p>So, keep creating pull requests to make ManageIQ better, but make sure that they
-do not break any tests!</p>
-
-<p>Thanks,
-chessbyte</p>
-
-          </div>
-        </article>
-        
-        <article class="post_excerpt">
-          <header class="post-header">
-            <h1><a href="/blog/2014/06/third-tenet-of-open-source/">The Third Tenet of Open Source</a></h1>
-            <div class="post-meta">
-              <time datetime="2014-06-18T16:30:00+00:00" itemprop="datePublished">
-                Jun 18, 2014
-              </time>
-            </div>
-          </header>
-          <div class="post-content">
-            <p>Here’s a great <a href="http://tentenet.net/2014/06/19/the-third-tenet-of-open-source-open-source-requires-commitment-welcome-manageiq/">introduction written by Bryan Che</a>, a Red Hat cloud strategy guy, on why we released ManageIQ as an open source project, as well as a look at the cloud management landscape. Cloud management is currently a nice car with four flat tires, and all four of them with different sizes, colors, and recommended pressure.</p>
+            <p><a href="https://manageiq-release.eventbrite.com/">RSVP for the Botvinnik webinar!</a></p>
 
 
           </div>
@@ -189,15 +138,15 @@ chessbyte</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2014/06/manageiq-is-here/">ManageIQ is here!</a></h1>
+            <h1><a href="/blog/2015/06/sprint-24-report-june-3/">Sprint 24 Report - June 3</a></h1>
             <div class="post-meta">
-              <time datetime="2014-06-18T14:55:00+00:00" itemprop="datePublished">
-                Jun 18, 2014
+              <time datetime="2015-06-03T12:57:25+00:00" itemprop="datePublished">
+                Jun 3, 2015
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>The wait is over—ManageIQ is now open source!</p>
+            <p>Every three weeks, we discuss our sprint reports, and you can participate in this process.</p>
 
 
           </div>
@@ -205,19 +154,15 @@ chessbyte</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2014/05/openstack-summit-roundup/">OpenStack Summit Roundup</a></h1>
+            <h1><a href="/blog/2015/05/sprint-23-report-may-13/">Sprint 23 Report - May 13</a></h1>
             <div class="post-meta">
-              <time datetime="2014-05-13T14:20:00+00:00" itemprop="datePublished">
-                May 13, 2014
+              <time datetime="2015-05-12T21:53:41+00:00" itemprop="datePublished">
+                May 12, 2015
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>As I mentioned in the <a href="/blog/2014/05/welcome-to-the-manageiq-community/">previous blog post</a>,
-it’s a great day to be in the cloud. Yesterday marked our announcement
-at the OpenStack Summit, and the reaction was pretty swift and positive.
-There is pent-up demand for software that lets others take control of
-their clouds and virtualization environments.</p>
+            <p>Every three weeks, we discuss our sprint reports, and you can participate in this process, as well as take a look at our handiwork with a <a href="http://releases.manageiq.org/">compiled image from this sprint</a>.</p>
 
 
           </div>
@@ -225,20 +170,79 @@ their clouds and virtualization environments.</p>
         
         <article class="post_excerpt">
           <header class="post-header">
-            <h1><a href="/blog/2014/05/welcome-to-the-manageiq-community/">Welcome to the ManageIQ Community!</a></h1>
+            <h1><a href="/blog/2015/05/additions-to-planet-manageiq/">Additions to Planet ManageIQ</a></h1>
             <div class="post-meta">
-              <time datetime="2014-05-12T09:05:00+00:00" itemprop="datePublished">
-                May 12, 2014
+              <time datetime="2015-05-08T13:30:54+00:00" itemprop="datePublished">
+                May 8, 2015
               </time>
             </div>
           </header>
           <div class="post-content">
-            <p>We are gearing up for an open source release in the coming weeks, and
-you’re probably curious what all the fuss is about. What you’ll find
-here is some introductory information and ways to sign up for news and,
-eventually, pre-release code as we get closer to the project launch.
-<a href="http://www.redhat.com/about/news/press-archive/2014/5/red-hat-announces-manageiq-community-for-open-source-cloud-management">Read Red Hat’s press release</a>
-– it will give you the background information you need.</p>
+            <p>If you’ve been visiting <a href="http://planet.manageiq.org/">Planet ManageIQ</a> recently, you know we’ve made some additions:</p>
+
+
+          </div>
+        </article>
+        
+        <article class="post_excerpt">
+          <header class="post-header">
+            <h1><a href="/blog/2015/05/botvinnik-rc3-is-here/">Botvinnik RC3 is here</a></h1>
+            <div class="post-meta">
+              <time datetime="2015-05-07T15:21:21+00:00" itemprop="datePublished">
+                May 7, 2015
+              </time>
+            </div>
+          </header>
+          <div class="post-content">
+            <p>The next Botvinnik release candidate, RC3, is now ready for <a href="/download/devel/">download</a>. Either use the site’s <a href="/download/devel/">download workflow</a> or pick what you want from the <a href="http://releases.manageiq.org/">list of available images</a>. Report issues in this thread and link to the <a href="https://github.com/manageiq/manageiq/issues">GitHub issue URL</a>.</p>
+
+
+          </div>
+        </article>
+        
+        <article class="post_excerpt">
+          <header class="post-header">
+            <h1><a href="/blog/2015/04/agenda-for-manageiq-user-day-at-openstack-summit/">Agenda for ManageIQ User Day at OpenStack Summit</a></h1>
+            <div class="post-meta">
+              <time datetime="2015-04-30T19:51:53+00:00" itemprop="datePublished">
+                Apr 30, 2015
+              </time>
+            </div>
+          </header>
+          <div class="post-content">
+            <p>As I mentioned in a <a href="/blog/2015/04/manageiq-at-openstack-summit/">previous blog post</a>, we are having a <a href="http://miq-oss-cday.eventbrite.com/">day to ourselves</a> on Wednesday, May 20 at the upcoming <a href="https://www.openstack.org/summit/vancouver-2015/">OpenStack Summit</a> in beautiful Vancouver, British Columbia.</p>
+
+
+          </div>
+        </article>
+        
+        <article class="post_excerpt">
+          <header class="post-header">
+            <h1><a href="/blog/2015/04/manageiq-community-sprints-now-with-trello/">ManageIQ Community Sprints - Now with Trello </a></h1>
+            <div class="post-meta">
+              <time datetime="2015-04-29T20:06:49+00:00" itemprop="datePublished">
+                Apr 29, 2015
+              </time>
+            </div>
+          </header>
+          <div class="post-content">
+            <p>If you’ve been participating in our <a href="/blog/2015/03/sprint-21-report-march-31-2015/">sprint reports</a>, you’ve no doubt found them to be an excellent way to stay apprised of feature progress in ManageIQ. I’m happy to announce that our community activities are now part of the 3-week sprints and included in the sprint reports.</p>
+
+
+          </div>
+        </article>
+        
+        <article class="post_excerpt">
+          <header class="post-header">
+            <h1><a href="/blog/2015/04/manageiq-at-openstack-summit/">ManageIQ at OpenStack Summit</a></h1>
+            <div class="post-meta">
+              <time datetime="2015-04-28T17:11:47+00:00" itemprop="datePublished">
+                Apr 28, 2015
+              </time>
+            </div>
+          </header>
+          <div class="post-content">
+            <p>I’m pleased to announce that the <a href="http://manageiq.org/">ManageIQ</a> project will have a big showing at the upcoming <a href="https://www.openstack.org/summit/">OpenStack Summit</a> in Vancouver, British Columbia. Here are the activities we have on tap:</p>
 
 
           </div>
@@ -426,9 +430,39 @@ eventually, pre-release code as we get closer to the project launch.
         </li>
       
     
+      
+        <li>
+          <a href="/blog/page30/">30</a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="/blog/page31/">31</a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="/blog/page32/">32</a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="/blog/page33/">33</a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="/blog/page34/">34</a>
+        </li>
+      
+    
     <li>
       
-        <span class="next ">&raquo;</span>
+        <a href="/blog/page30/" class="next">&raquo;</a>
       
     </li>
   </ul>
@@ -445,8 +479,8 @@ eventually, pre-release code as we get closer to the project launch.
     
 
     
-    <li class="next disabled">
-      <a href="javascript:;">
+    <li class="next">
+      <a href="/blog/page30/">
         Older <span aria-hidden="true">&rarr;</span>
       </a>
     </li>
@@ -462,6 +496,58 @@ eventually, pre-release code as we get closer to the project launch.
   </h3>
 
   <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms,">cloudforms,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware,">vmware,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev,">rhev,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/kvm,">kvm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cluster,">cluster,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm,">vm,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore,">datastore,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf2,">cf2,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cf3,">cf3,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cfme, XML, XML">cfme, XML, XML</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/format">format</a>
+    </li>
     
     <li class="blog_menu-tag">
       <a href="/blog/tags/announcements">announcements</a>
@@ -484,7 +570,83 @@ eventually, pre-release code as we get closer to the project launch.
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/uncategorized">uncategorized</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cloud">automate, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/formations, cloud">formations, cloud</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/forms, heat, openstack, scale">forms, heat, openstack, scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms">cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate">automate</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible">ansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansiblecloudformsansible">ansiblecloudformsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible,">ansible,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control,">control,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsmanagement">cloudformsmanagement</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms slack">cloudformscloudforms slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, custom,">cloudforms, custom,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/button, operations, rdp, ssh">button, operations, rdp, ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/container">container</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, kubernetes, management, openshift, operations">cloudforms, container, kubernetes, management, openshift, operations</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -496,7 +658,167 @@ eventually, pre-release code as we get closer to the project launch.
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, containers, management, openshift">cloudforms, container, containers, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift">cloudforms, container, management, openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, compliance, container, management, openscap, security">cloudforms, compliance, container, management, openscap, security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, container, management, openshift, operations">cloudforms, container, management, openshift, operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, best">automate, best</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/practices cloudforms">practices cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning,">provisioning,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Services">Services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/architecture, cloudforms,cmdb, integration, servicenow, ucmdb">architecture, cloudforms,cmdb, integration, servicenow, ucmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, github, manageiq, pull">cloudforms, github, manageiq, pull</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/request, vmware">request, vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsDeploymentansible">AnsibleCloudFormsDeploymentansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/appliance">appliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Automation,">Automation,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/Azure,">Azure,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/microsoft,">microsoft,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service,">self-service,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow,">servicenow,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower,">tower,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/internal">internal</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cloudforms, series">aws, cloudforms, series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws,">aws,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws, cfme,">aws, cfme,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate, cfme, cloudforms, methods">automate, cfme, cloudforms, methods</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/AnsibleCloudFormsansible">AnsibleCloudFormsansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms, osp,rhv">cloudforms, osp,rhv</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate,">automate,</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformscloudforms">cloudformscloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api, cloudforms, rest">api, cloudforms, rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api">api</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformsuxdcloudforms uxd">cloudformsuxdcloudforms uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/none">none</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -596,6 +918,13 @@ eventually, pre-release code as we get closer to the project launch.
     <li class="blog_menu-year">
       <a href="/blog/2014/index.html">
         2014
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2013/index.html">
+        2013
       </a>
       
     </li>
