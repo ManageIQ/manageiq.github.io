@@ -123,7 +123,7 @@
 
 <h2 id="slack-webhook-and-ruby-gem">Slack Webhook and Ruby Gem</h2>
 
-<p>In order to post messages to Slack, we first need a [webhook] (<a href="https://api.slack.com/messaging/webhooks">https://api.slack.com/messaging/webhooks</a>) and the associated access token, which is created via a [Slack Button] (<a href="https://api.slack.com/docs/slack-button)">https://api.slack.com/docs/slack-button)</a>. During this process, the CloudForms-bot user account will be given the proper permissions to post messages. Next, we need client side code to interface to Slack. In this case, there is the [slack-ruby-client] (<a href="https://rubygems.org/gems/slack-ruby-client">https://rubygems.org/gems/slack-ruby-client</a>) which will need to be installed on the appliance, along with any prerequisites. \</p>
+<p>In order to post messages to Slack, we first need a <a href="https://api.slack.com/messaging/webhooks">webhook</a> and the associated access token, which is created via a [Slack Button](<a href="https://api.slack.com/docs/slack-button)">https://api.slack.com/docs/slack-button)</a>. During this process, the CloudForms-bot user account will be given the proper permissions to post messages. Next, we need client side code to interface to Slack. In this case, there is the [slack-ruby-client] (<a href="https://rubygems.org/gems/slack-ruby-client">https://rubygems.org/gems/slack-ruby-client</a>) which will need to be installed on the appliance, along with any prerequisites. \</p>
 
 <p>#gem install slack-ruby-client</p>
 
@@ -138,7 +138,7 @@ data = event_stream.full_data</p>
 p data[:timestamp]
 p data[:message]</p>
 
-<p>Configuring CloudForms to post an event to Slack involves writing up a short ruby method to interface with Slack and then connecting that method to the events we would like posted. The channel we are posting to is defined in the calling method. Here is an [example method] (<a href="https://github.com/supernoodz/CloudForms/blob/master/Automate/Integration/Slack/Methods.class/__methods__/post_emsevent.rb">https://github.com/supernoodz/CloudForms/blob/master/Automate/Integration/Slack/Methods.class/__methods__/post_emsevent.rb</a>) used to connect CloudForms to Slack.</p>
+<p>Configuring CloudForms to post an event to Slack involves writing up a short ruby method to interface with Slack and then connecting that method to the events we would like posted. The channel we are posting to is defined in the calling method. Here is an <a href="https://github.com/supernoodz/CloudForms/blob/master/Automate/Integration/Slack/Methods.class/__methods__/post_emsevent.rb">example method</a> used to connect CloudForms to Slack.</p>
 
 <p>Next, we need to call this method whenever an event is triggered. To do this, we update the schema to invoke it for all events. In Automate explorer, navigate to the ‘Kubernetes’ Class, edit the Schema and add a relationship value to call the new method, ‘rel1’ in the example below.</p>
 
