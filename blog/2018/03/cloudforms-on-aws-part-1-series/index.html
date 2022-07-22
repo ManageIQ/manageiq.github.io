@@ -127,7 +127,7 @@
           <div class="post-content" itemprop="articleBody">
             <p>Ever wondered what CloudForms can do for you in AWS? The next few blog posts will walk you through step by step how to upload the CloudForms image to AWS, how to assign the correct policies and roles and how to configure it correctly so it can discover your environment. Part 1 is dedicated to the import and configuration of the CloudForms image.</p>
 
-<p>With the release of CloudForms 4.6 you also have the ability to scan instances in AWS. These blog series will show you how this can be achieved:</p>
+<p>With the release of CloudForms 4.6 you also have the ability to scan instances in AWS. These blog series will show you how this can be achieved:</p>
 
 <p>First, go to the AWS console and launch a free tier Amazon AMI. We are doing this because it already has the aws cli tools installed.</p>
 
@@ -163,7 +163,7 @@
 
 <p>Before we copy any file it’s important to understand that S3 does not have a private endpoint. Thus you would copy the vhd via the internet. If you want to speed things up you can go to your VPC and create an s3 endpoint or a private link. This will speed up the upload of the VHD to the s3 bucket.</p>
 
-<p>Lets copy the cfme-ec2-5.9.0.22-1.x86_64.vhd to the s3 bucket. If you enabled the endpoint you should see speeds like the following:</p>
+<p>Lets copy the cfme-ec2-5.9.0.22-1.x86_64.vhd to the s3 bucket. If you enabled the endpoint you should see speeds like the following:</p>
 
 <p>Once completed you will see the following:</p>
 
@@ -171,7 +171,7 @@
 
 <p>upload: ./cfme-ec2-5.9.0.22-1.x86_64.vhd to s3://awscfme59/cfme-ec2-5.9.0.22-1.x86_64.vhd</p>
 
-<p>If you have never imported a VM in AWS you will need to add the following VM import trust policy. Create a file named vm-import.json with the following content:</p>
+<p>If you have never imported a VM in AWS you will need to add the following VM import trust policy. Create a file named vm-import.json with the following content:</p>
 
 <p>{
  “Version”: “2012-10-17”,
@@ -221,7 +221,7 @@
 }
 }</p>
 
-<p>Next, we will need to add the role policy to allow s3 to list the buckets as well as create the snapshot, convert and register the CloudForms AMI. Create a file named role-policy.json</p>
+<p>Next, we will need to add the role policy to allow s3 to list the buckets as well as create the snapshot, convert and register the CloudForms AMI. Create a file named role-policy.json</p>
 
 <p>{
 “Version”:”2012-10-17”,
@@ -252,7 +252,7 @@
 ]
 }</p>
 
-<p>Create the role policy for vmimport
+<p>Create the role policy for vmimport
 [ec2-user@ip-172-31-16-233 ~]$ aws iam put-role-policy –role-name vmimport –policy-name vmimport –policy-document file://role-policy.json</p>
 
 <p>Before we can import the file we need to create one last file named container.json</p>
@@ -287,7 +287,7 @@ Import CloudForms into your AWS account.
  “ImportTaskId”: “import-ami-ffut8pit”
 }</p>
 
-<p>The StatusMessage will go from pending to converting to updating, booting, preparing AMI.</p>
+<p>The StatusMessage will go from pending to converting to updating, booting, preparing AMI.</p>
 
 <p>You can view the status by executing the following command.</p>
 
@@ -321,7 +321,7 @@ Import CloudForms into your AWS account.
  ]
 }</p>
 
-<p>When the task import is finished you will see the field “ImageId“: “ami-140fc869”, in the task output.</p>
+<p>When the task import is finished you will see the field “ImageId“: “ami-140fc869”, in the task output.</p>
 
 <p>[ec2-user@ip-172-31-14-85 ~]$ aws ec2 describe-import-image-tasks –import-task-ids import-ami-ffut8pit
 {
@@ -376,7 +376,7 @@ Import CloudForms into your AWS account.
 
 <p>Go back to your AWS console and click on my AMI. You should now see your new CloudForms AMI ready to launch.</p>
 
-<p>Once the AMI is done copying you will see the status to available. You are now ready to launch the CFME instance. As an instance type a t2.xlarge should be enough. This is the most cost-effective instance you can get for CFME. Please follow the <a href="https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.6/html-single/installing_red_hat_cloudforms_on_amazon_elastic_compute_cloud_amazon_ec2/index#Configuring-cloudforms">installation guide</a> for the initial setup once the appliance is imported. The next post will explain how to add the AWS provider correctly and what roles and AWS service will need to be enabled for a Smart State Analysis to work.</p>
+<p>Once the AMI is done copying you will see the status to available. You are now ready to launch the CFME instance. As an instance type a t2.xlarge should be enough. This is the most cost-effective instance you can get for CFME. Please follow the <a href="https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.6/html-single/installing_red_hat_cloudforms_on_amazon_elastic_compute_cloud_amazon_ec2/index#Configuring-cloudforms">installation guide</a> for the initial setup once the appliance is imported. The next post will explain how to add the AWS provider correctly and what roles and AWS service will need to be enabled for a Smart State Analysis to work.</p>
 
           </div>
         </article>
@@ -391,87 +391,7 @@ Import CloudForms into your AWS account.
   <ul id="blog_tag_menu" class="blog_menu">
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/external">external</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/operations">operations</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudforms">cloudforms</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vmware">vmware</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhev">rhev</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kvm">kvm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cluster">cluster</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vm">vm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/datastore">datastore</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/XML">XML</a>
-    </li>
-    
-    <li class="blog_menu-tag">
       <a href="/blog/tags/announcements">announcements</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/events">events</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/collaboration">collaboration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/releases">releases</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/sprints">sprints</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/automate">automate</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudformation">cloudformation</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/heat">heat</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openstack">openstack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/scale">scale</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -479,111 +399,7 @@ Import CloudForms into your AWS account.
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/control">control</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/policy">policy</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/management">management</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/servicenow">servicenow</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/slack">slack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/custom-buttons">custom-buttons</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rdp">rdp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/ssh">ssh</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/container">container</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kubernetes">kubernetes</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openshift">openshift</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/developers">developers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/tutorials">tutorials</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/containers">containers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/compliance">compliance</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openscap">openscap</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/security">security</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/best-practices">best-practices</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/provisioning">provisioning</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/services">services</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/architecture">architecture</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cmdb">cmdb</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/integration">integration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/show">show</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/github">github</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/manageiq">manageiq</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/pull-request">pull-request</a>
+      <a href="/blog/tags/api">api</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -591,11 +407,11 @@ Import CloudForms into your AWS account.
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/configuration">configuration</a>
+      <a href="/blog/tags/architecture">architecture</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/deployment">deployment</a>
+      <a href="/blog/tags/automate">automate</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -603,27 +419,87 @@ Import CloudForms into your AWS account.
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/azure">azure</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/microsoft">microsoft</a>
+      <a href="/blog/tags/best-practices">best-practices</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/self-service">self-service</a>
+      <a href="/blog/tags/cloudformation">cloudformation</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/tower">tower</a>
+      <a href="/blog/tags/cloudforms">cloudforms</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/workflows">workflows</a>
+      <a href="/blog/tags/cluster">cluster</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/ruby">ruby</a>
+      <a href="/blog/tags/cmdb">cmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/compliance">compliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/containers">containers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control">control</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/custom-buttons">custom-buttons</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore">datastore</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/github">github</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/heat">heat</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/integration">integration</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -631,11 +507,23 @@ Import CloudForms into your AWS account.
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/aws">aws</a>
+      <a href="/blog/tags/kubernetes">kubernetes</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/series">series</a>
+      <a href="/blog/tags/kvm">kvm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/manageiq">manageiq</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -643,23 +531,7 @@ Import CloudForms into your AWS account.
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/osp">osp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhv">rhv</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/api">api</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rest">rest</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/uxd">uxd</a>
+      <a href="/blog/tags/microsoft">microsoft</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -667,7 +539,123 @@ Import CloudForms into your AWS account.
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/openscap">openscap</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openshift">openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/pull-request">pull-request</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rdp">rdp</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rest">rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev">rhev</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/scale">scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/security">security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service">self-service</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/services">services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/slack">slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ssh">ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower">tower</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uxd">uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm">vm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware">vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/XML">XML</a>
     </li>
     
   </ul>

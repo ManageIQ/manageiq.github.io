@@ -131,31 +131,32 @@
 
 <p>REST stands for Representational State Transfer. REST is a web standard based architecture and uses HTTP protocol for data communication. It revolves around resources where every component is a resource and is accessed by a common interface using HTTP standards method.</p>
 
-<p>Red Hat CloudForms provides APIs to integrate external systems and initiate provisioning via CloudForms. In CloudForms, REST can be accessed by adding “/api” prefix to the URL.
-  
-https:// IP or hostname of appliance/api/</p>
+<p>Red Hat CloudForms provides APIs to integrate external systems and initiate provisioning via CloudForms. In CloudForms, REST can be accessed by adding “/api” prefix to the URL.</p>
+
+<p>https:// IP or hostname of appliance/api/</p>
 
 <h2 id="how-to-play">How to play</h2>
 
-<p>In order to work with REST APIs, there are various REST API client tools  :</p>
+<p>In order to work with REST APIs, there are various REST API client tools  :</p>
 
 <ul>
   <li>
-    <p>Internet Browser : Put a REST API call into the browser Address Bar</p>
+    <p>Internet Browser : Put a REST API call into the browser Address Bar</p>
   </li>
   <li>
-    <p>CURL :  Command line tool for HTTP client
-  
-curl -k -u username:password -X GET “Accept: application/json” https:// IP or hostname of appliance/api/</p>
+    <p>CURL :  Command line tool for HTTP client</p>
   </li>
-  <li>
-    <p>Insomnia : A powerful REST API client with cookie management, code generation, authentication for Linux, Mac and Window etc.</p>
-  </li>
+</ul>
+
+<p>curl -k -u username:password -X GET “Accept: application/json” https:// IP or hostname of appliance/api/</p>
+
+<ul>
+  <li>Insomnia : A powerful REST API client with cookie management, code generation, authentication for Linux, Mac and Window etc.</li>
 </ul>
 
 <h2 id="http-methods">HTTP Methods</h2>
 
-<p>Red Hat CloudForms API uses JSON (Javascript Object Notation Format) for data exchange format.  JSON is a commonly used format for data exchange and storing. The primary or most commonly used HTTP verbs are POST, GET, PUT, PATCH, OPTIONS, HEAD and DELETE. These correspond to create, read, update, delete (or CRUD) operations respectively. </p>
+<p>Red Hat CloudForms API uses JSON (Javascript Object Notation Format) for data exchange format.  JSON is a commonly used format for data exchange and storing. The primary or most commonly used HTTP verbs are POST, GET, PUT, PATCH, OPTIONS, HEAD and DELETE. These correspond to create, read, update, delete (or CRUD) operations respectively.</p>
 
 <table>
   <thead>
@@ -168,7 +169,7 @@ curl -k -u username:password -X GET “Accept: application/json” https:// IP o
   <tbody>
     <tr>
       <td>GET</td>
-      <td>Return a specific resource </td>
+      <td>Return a specific resource</td>
       <td>curl -k -u user:password -X GET “Accept:application/json”</td>
     </tr>
     <tr>
@@ -183,13 +184,13 @@ curl -k -u username:password -X GET “Accept: application/json” https:// IP o
     </tr>
     <tr>
       <td>PUT</td>
-      <td>Update or replace a resource</td>
+      <td>Update or replace a resource</td>
       <td>curl -k –user username:password -i -X PUT -H “Accept: application/json” -d ‘{ “name” : “updated service name” }’</td>
     </tr>
     <tr>
       <td>DELETE</td>
       <td>Delete a resource</td>
-      <td>curl -k –user user:password -i -X DELETE -H “Accept: application/json” </td>
+      <td>curl -k –user user:password -i -X DELETE -H “Accept: application/json”</td>
     </tr>
     <tr>
       <td>OPTIONS</td>
@@ -208,7 +209,7 @@ curl -k -u username:password -X GET “Accept: application/json” https:// IP o
     </tr>
     <tr>
       <td>PATCH</td>
-      <td>Update or modify a resource </td>
+      <td>Update or modify a resource</td>
       <td>curl -k –user username:password -i -X PATCH -H “Accept: application/json” -d ‘[{ “action”: “edit”, “path”: “name”, “value”: “A</td>
     </tr>
     <tr>
@@ -226,37 +227,37 @@ curl -k -u username:password -X GET “Accept: application/json” https:// IP o
 
 <h2 id="updating-resources">Updating resources</h2>
 
-<p>As shown in the above table, there are a couple of ways to update attributes in a resource. You can update a resource with PUT or PATCH method. Now, the question is When to use PUT and When PATCH?
-  
-For Example</p>
+<p>As shown in the above table, there are a couple of ways to update attributes in a resource. You can update a resource with PUT or PATCH method. Now, the question is When to use PUT and When PATCH?</p>
+
+<p>For Example</p>
 
 <p>“When a client needs to replace an existing Resource entirely, they can use PUT. When they’re doing a partial update, they can use HTTP PATCH.”</p>
 
-<p>For instance, when updating a single field of the Resource, sending the complete Resource representation might be cumbersome and utilizes a lot of unnecessary bandwidth. In such cases, the semantics of PATCH make a lot more sense.
-  
-How to authenticate REST APIs
-REST APIs authentication can be done by two ways :
- </p>
+<p>For instance, when updating a single field of the Resource, sending the complete Resource representation might be cumbersome and utilizes a lot of unnecessary bandwidth. In such cases, the semantics of PATCH make a lot more sense.</p>
+
+<p>How to authenticate REST APIs
+REST APIs authentication can be done by two ways :</p>
+
 <ul>
   <li>
-    <p>Basic Authentication : The most simple way to deal with authentication is to use HTTP basic authentication in which the username and password credentials are passed with each HTTP request.</p>
+    <p>Basic Authentication : The most simple way to deal with authentication is to use HTTP basic authentication in which the username and password credentials are passed with each HTTP request.</p>
   </li>
   <li>
-    <p>Token Based Authentication: For multiple API calls to the appliance, it is recommended to use this approach. In this approach, client requests a token for the username and password. Then the token is used instead of username and password for each API call.  
-  
-Acquiring a Token :</p>
+    <p>Token Based Authentication: For multiple API calls to the appliance, it is recommended to use this approach. In this approach, client requests a token for the username and password. Then the token is used instead of username and password for each API call.</p>
   </li>
 </ul>
 
+<p>Acquiring a Token :</p>
+
 <p>Request:</p>
 
-<p> curl -k -u user:password -X GET “Accept: application/json” [https://IP/api/auth]</p>
+<p>curl -k -u user:password -X GET “Accept: application/json” [https://IP/api/auth]</p>
 
 <p>Response:</p>
 
-<p>{“auth_token”:”4cb1fb32508350796caf32c12808fee2”,”token_ttl”:600,”expires_on”:”2017-12-01T11:25:06Z”}
-  
-Query with Token</p>
+<p>{“auth_token”:”4cb1fb32508350796caf32c12808fee2”,”token_ttl”:600,”expires_on”:”2017-12-01T11:25:06Z”}</p>
+
+<p>Query with Token</p>
 
 <p>curl -k -i -X GET “Accept: application/json” -H “X-Auth-Token: “token” https:// IP/api/hosts</p>
 
@@ -264,36 +265,36 @@ Query with Token</p>
 
 <p>curl -k -i -X DELETE -H “Accept: application/json” -H “X-Auth-Token: 21fe54dd14dc89c219d62f651497a54” https:// IP/api/auth</p>
 
-<p>Moreover, the duration of token is about 10 minutes and we can change/modify the duration from CloudForms operational portal by navigating to Configuration -&gt; Server -&gt; Advanced -&gt; api: -&gt; token_ttl</p>
+<p>Moreover, the duration of token is about 10 minutes and we can change/modify the duration from CloudForms operational portal by navigating to Configuration -&gt; Server -&gt; Advanced -&gt; api: -&gt; token_ttl</p>
 
 <h2 id="query-specification">Query Specification</h2>
 
-<p>Query specification identifies the controls available when querying collections. While querying, we can specify control attributes in the GET URL as value paris. There are three main techniques comes under query specifications. Let’s take a look on them.
-  
-Paging : In this capability, there are two attributes available as offset and limit. Offset means first item to return and limit means the number of items to return.</p>
+<p>Query specification identifies the controls available when querying collections. While querying, we can specify control attributes in the GET URL as value paris. There are three main techniques comes under query specifications. Let’s take a look on them.</p>
 
-<p>Sorting: In sorting, we can sort the attributes by order , options and attributes. For example: by specifying “sort_by=atr1,atr2” , “sort_order=asc or des”</p>
+<p>Paging : In this capability, there are two attributes available as offset and limit. Offset means first item to return and limit means the number of items to return.</p>
 
-<p>Filtering:  This helps user to filter the data according to the use case. The syntax for filters is :</p>
+<p>Sorting: In sorting, we can sort the attributes by order , options and attributes. For example: by specifying “sort_by=atr1,atr2” , “sort_order=asc or des”</p>
+
+<p>Filtering:  This helps user to filter the data according to the use case. The syntax for filters is :</p>
 
 <p>filter[]=attribute op value
-where op means operators  
- </p>
+where op means operators</p>
+
 <h2 id="return-codes">Return Codes</h2>
 
-<p>Success :  200 : OK, 201 : Created, 202 : Accepted, 204 : No content
-  
-Client Errors: 400 : Bad Request, 401 : Unauthorized, 403 : Forbidden, 404 : Not Found, 415 : Unsupported Media Type
-  
-Server Errors: 500 : Internal Server error
- </p>
-<h2 id="troubleshooting">Troubleshooting </h2>
+<p>Success :  200 : OK, 201 : Created, 202 : Accepted, 204 : No content</p>
 
-<p>A good place to troubleshoot is to look into standard log files under /var/www/miq/vmdb/log on the CloudForms appliance. All the api related logs are recorded under /var/www/miq/vmdb/log/api.log. In order to dig deeper, changing the level of log is much recommended. You can change the log level by navigating to Configuration → Server → Advanced → :level_api: debug.</p>
+<p>Client Errors: 400 : Bad Request, 401 : Unauthorized, 403 : Forbidden, 404 : Not Found, 415 : Unsupported Media Type</p>
+
+<p>Server Errors: 500 : Internal Server error</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>A good place to troubleshoot is to look into standard log files under /var/www/miq/vmdb/log on the CloudForms appliance. All the api related logs are recorded under /var/www/miq/vmdb/log/api.log. In order to dig deeper, changing the level of log is much recommended. You can change the log level by navigating to Configuration → Server → Advanced → :level_api: debug.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>I hope after reading this article you will get basic understanding about how CloudForms can be managed via REST API’s. You can find the full Rest API <a href="https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.6/html/red_hat_cloudforms_rest_api/index">documentation</a> here.</p>
+<p>I hope after reading this article you will get basic understanding about how CloudForms can be managed via REST API’s. You can find the full Rest API <a href="https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.6/html/red_hat_cloudforms_rest_api/index">documentation</a> here.</p>
 
           </div>
         </article>
@@ -308,87 +309,7 @@ Server Errors: 500 : Internal Server error
   <ul id="blog_tag_menu" class="blog_menu">
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/external">external</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/operations">operations</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudforms">cloudforms</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vmware">vmware</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhev">rhev</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kvm">kvm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cluster">cluster</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vm">vm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/datastore">datastore</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/XML">XML</a>
-    </li>
-    
-    <li class="blog_menu-tag">
       <a href="/blog/tags/announcements">announcements</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/events">events</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/collaboration">collaboration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/releases">releases</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/sprints">sprints</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/automate">automate</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudformation">cloudformation</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/heat">heat</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openstack">openstack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/scale">scale</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -396,111 +317,7 @@ Server Errors: 500 : Internal Server error
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/control">control</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/policy">policy</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/management">management</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/servicenow">servicenow</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/slack">slack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/custom-buttons">custom-buttons</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rdp">rdp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/ssh">ssh</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/container">container</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kubernetes">kubernetes</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openshift">openshift</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/developers">developers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/tutorials">tutorials</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/containers">containers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/compliance">compliance</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openscap">openscap</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/security">security</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/best-practices">best-practices</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/provisioning">provisioning</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/services">services</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/architecture">architecture</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cmdb">cmdb</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/integration">integration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/show">show</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/github">github</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/manageiq">manageiq</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/pull-request">pull-request</a>
+      <a href="/blog/tags/api">api</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -508,11 +325,11 @@ Server Errors: 500 : Internal Server error
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/configuration">configuration</a>
+      <a href="/blog/tags/architecture">architecture</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/deployment">deployment</a>
+      <a href="/blog/tags/automate">automate</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -520,27 +337,87 @@ Server Errors: 500 : Internal Server error
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/azure">azure</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/microsoft">microsoft</a>
+      <a href="/blog/tags/best-practices">best-practices</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/self-service">self-service</a>
+      <a href="/blog/tags/cloudformation">cloudformation</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/tower">tower</a>
+      <a href="/blog/tags/cloudforms">cloudforms</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/workflows">workflows</a>
+      <a href="/blog/tags/cluster">cluster</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/ruby">ruby</a>
+      <a href="/blog/tags/cmdb">cmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/compliance">compliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/containers">containers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control">control</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/custom-buttons">custom-buttons</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore">datastore</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/github">github</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/heat">heat</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/integration">integration</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -548,11 +425,23 @@ Server Errors: 500 : Internal Server error
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/aws">aws</a>
+      <a href="/blog/tags/kubernetes">kubernetes</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/series">series</a>
+      <a href="/blog/tags/kvm">kvm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/manageiq">manageiq</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -560,23 +449,7 @@ Server Errors: 500 : Internal Server error
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/osp">osp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhv">rhv</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/api">api</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rest">rest</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/uxd">uxd</a>
+      <a href="/blog/tags/microsoft">microsoft</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -584,7 +457,123 @@ Server Errors: 500 : Internal Server error
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/openscap">openscap</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openshift">openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/pull-request">pull-request</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rdp">rdp</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rest">rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev">rhev</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/scale">scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/security">security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service">self-service</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/services">services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/slack">slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ssh">ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower">tower</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uxd">uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm">vm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware">vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/XML">XML</a>
     </li>
     
   </ul>

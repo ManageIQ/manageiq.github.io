@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>ManageIQ - Tips from the tour part 2 - Drift analysis and more integrations</title>
-  <meta name="description" content="This is a follow up on our series Infrastructure Tour Italy. In this part we will show Ansible Tower, Drift Analysis and OpenShift Integration">
+  <meta name="description" content="This is a follow up on our series Infrastructure Tour Italy. In this part we will show Ansible Tower, Drift Analysis and OpenShift Integration">
   <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
 
   <script>
@@ -117,7 +117,7 @@
           </header>
 
           <div class="post-content" itemprop="articleBody">
-            <p>This is a follow up on our series Infrastructure Tour Italy. In this part we will show Ansible Tower, Drift Analysis and OpenShift Integration</p>
+            <p>This is a follow up on our series Infrastructure Tour Italy. In this part we will show Ansible Tower, Drift Analysis and OpenShift Integration</p>
 
 <h2 id="integration-with-ansible-tower">Integration with Ansible Tower</h2>
 
@@ -125,11 +125,11 @@
 
 <p>(<a href="https://github.com/ansible/ansible-examples/tree/master/wordpress-nginx_rhel7">https://github.com/ansible/ansible-examples/tree/master/wordpress-nginx_rhel7</a>)</p>
 
-<p>on the public repository: (<a href="https://github.com/ansible/ansible-examples">https://github.com/ansible/ansible-examples</a>).
-  
-A CloudForms Inventory was configured on Ansible Tower with CloudForms admin credentials to get the managed nodes then Tower templates must be configured with the Prompt on Execution flag enabled for the Limit (to allow CF to limit the scope of the playbooks on select hosts) and for the Extra Variables, this is critical for the integration to work!
-  
-We performed a SmartState analysis on a VM with a plain RHEL installed to get the configuration before the playbook execution.</p>
+<p>on the public repository: (<a href="https://github.com/ansible/ansible-examples">https://github.com/ansible/ansible-examples</a>).</p>
+
+<p>A CloudForms Inventory was configured on Ansible Tower with CloudForms admin credentials to get the managed nodes then Tower templates must be configured with the Prompt on Execution flag enabled for the Limit (to allow CF to limit the scope of the playbooks on select hosts) and for the Extra Variables, this is critical for the integration to work!</p>
+
+<p>We performed a SmartState analysis on a VM with a plain RHEL installed to get the configuration before the playbook execution.</p>
 
 <p>We run the playbook (Install WordPress) with the button on the CloudForms page and track the job in Tower:</p>
 
@@ -137,10 +137,10 @@ We performed a SmartState analysis on a VM with a plain RHEL installed to get th
 
 <p>After the successful execution of the playbook we can use the browser to access the managed node and see WordPress has been installed and requires our input for the configuration.</p>
 
-<p>We showed another button that runs a playbook written by my colleague Michele Naldini that registers the host for Red Hat Insights. It’s available at: (<a href="https://github.com/MikeNald/ansible-tower-examples">https://github.com/MikeNald/ansible-tower-examples</a>)</p>
+<p>We showed another button that runs a playbook written by my colleague Michele Naldini that registers the host for Red Hat Insights. It’s available at: (<a href="https://github.com/MikeNald/ansible-tower-examples">https://github.com/MikeNald/ansible-tower-examples</a>)</p>
 
-<p>This is a good example of the integration with Ansible, the Dialog to enter variables after the press of the button on the VM page, is automatically created with the boxes and text entries analyzing the playbook, saving a lot of time and errors. The same feature is available for OpenStack Heat and AWS CloudFormation templates.
- </p>
+<p>This is a good example of the integration with Ansible, the Dialog to enter variables after the press of the button on the VM page, is automatically created with the boxes and text entries analyzing the playbook, saving a lot of time and errors. The same feature is available for OpenStack Heat and AWS CloudFormation templates.</p>
+
 <h2 id="drift-analysis">Drift analysis</h2>
 
 <p>SmartState Analysis allows introspection on a given VM, retrieving key information like Software installed, versions, users, configuration or even files.</p>
@@ -149,7 +149,7 @@ We performed a SmartState analysis on a VM with a plain RHEL installed to get th
 
 <p>Using the Drift Analysis feature we compared the VMs configurations and highlighted the differences on packages:</p>
 
-<p>Triangle icons in the picture highlight the packages that changed, as you can see the php-fpm package was missing and is now installed. Versions and releases are reported too.</p>
+<p>Triangle icons in the picture highlight the packages that changed, as you can see the php-fpm package was missing and is now installed. Versions and releases are reported too.</p>
 
 <p>SmartState analysis can be scheduled to run so we can track all the configuration changes of Linux and Windows VMs on their whole lifecycle.</p>
 
@@ -161,27 +161,27 @@ We performed a SmartState analysis on a VM with a plain RHEL installed to get th
 
 <p>Since we were using one of the latest OpenShift Container Platform (OCP) releases all the required service account and roles required by Red Hat CloudForms are installed by default.</p>
 
-<p>We just had to retrieve the management-admin token on the console with the following command on the OCP master node:  
-  
-oc sa get-token -n management-infra management-admin
-  
-The token must be provided when the provider is added in the configuration screen both for the credentials and metric (Hawkular) tab.
-  
-The topology view of a OCP project is one of the coolest visual features and allows to have a view of our CI/CD demo project including Pods, Replication controllers, Services, Routes, Nodes and allows to have a 10k view of what’s going on in a project or on a OCP cluster.</p>
+<p>We just had to retrieve the management-admin token on the console with the following command on the OCP master node:</p>
+
+<p>oc sa get-token -n management-infra management-admin</p>
+
+<p>The token must be provided when the provider is added in the configuration screen both for the credentials and metric (Hawkular) tab.</p>
+
+<p>The topology view of a OCP project is one of the coolest visual features and allows to have a view of our CI/CD demo project including Pods, Replication controllers, Services, Routes, Nodes and allows to have a 10k view of what’s going on in a project or on a OCP cluster.</p>
 
 <p>CloudForms also allows to aggregate metrics of pods showing cores, memory, network IO metrics to understand overall data related to projects and use the data as a base for the chargeback feature:</p>
 
-<p>We also demoed the ability to perform massive openSCAP analysis of container images to assess the status of our infrastructure.  
-  
-Container analysis works by analyzing the target container image starting a manageiq-scan pod in the namespace management-infra. The namespace is dedicated on OCP and doesn’t impact production. Here’s the output of the command oc get pods –all-namespaces while the analysis is running:</p>
+<p>We also demoed the ability to perform massive openSCAP analysis of container images to assess the status of our infrastructure.</p>
+
+<p>Container analysis works by analyzing the target container image starting a manageiq-scan pod in the namespace management-infra. The namespace is dedicated on OCP and doesn’t impact production. Here’s the output of the command oc get pods –all-namespaces while the analysis is running:</p>
 
 <p>When the scan is completed the pod is deleted and results are uploaded in the CloudForms DB. SmartState reports all the software packages and versions in the container image and OpenSCAP Failed Rules, drill down information is available and an extensive openSCAP HTML Report is available too:</p>
 
 <p>A custom CloudForms Report (see downloads above) has been created to show the overall compliance status of the whole IT environment and published on the dashboard:</p>
 
-<p>Thanks to Nick Catling for the help in preparing the demo.
-  
-Resources
+<p>Thanks to Nick Catling for the help in preparing the demo.</p>
+
+<p>Resources
 (<a href="https://cloudformsblog.redhat.com/2016/08/22/getting-started-with-managing-vmware-with-red-hat-cloudforms/">https://cloudformsblog.redhat.com/2016/08/22/getting-started-with-managing-vmware-with-red-hat-cloudforms/</a>)</p>
 
 <p>(<a href="https://pemcg.gitbooks.io/mastering-automation-in-cloudforms-4-1-and-manage/content/running_an_ansible_tower_job_from_a_button/chapter.html">https://pemcg.gitbooks.io/mastering-automation-in-cloudforms-4-1-and-manage/content/running_an_ansible_tower_job_from_a_button/chapter.html</a>)</p>
@@ -194,7 +194,7 @@ Resources
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>CloudForms is a great Hybrid Management tool that handles multiple providers and provides Single Pane of Glass for your IT Assets, giving you the tool and the information you need to improve </p>
+<p>CloudForms is a great Hybrid Management tool that handles multiple providers and provides Single Pane of Glass for your IT Assets, giving you the tool and the information you need to improve</p>
 
           </div>
         </article>
@@ -209,87 +209,7 @@ Resources
   <ul id="blog_tag_menu" class="blog_menu">
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/external">external</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/operations">operations</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudforms">cloudforms</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vmware">vmware</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhev">rhev</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kvm">kvm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cluster">cluster</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vm">vm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/datastore">datastore</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/XML">XML</a>
-    </li>
-    
-    <li class="blog_menu-tag">
       <a href="/blog/tags/announcements">announcements</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/events">events</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/collaboration">collaboration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/releases">releases</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/sprints">sprints</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/automate">automate</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudformation">cloudformation</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/heat">heat</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openstack">openstack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/scale">scale</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -297,111 +217,7 @@ Resources
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/control">control</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/policy">policy</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/management">management</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/servicenow">servicenow</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/slack">slack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/custom-buttons">custom-buttons</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rdp">rdp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/ssh">ssh</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/container">container</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kubernetes">kubernetes</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openshift">openshift</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/developers">developers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/tutorials">tutorials</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/containers">containers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/compliance">compliance</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openscap">openscap</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/security">security</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/best-practices">best-practices</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/provisioning">provisioning</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/services">services</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/architecture">architecture</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cmdb">cmdb</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/integration">integration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/show">show</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/github">github</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/manageiq">manageiq</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/pull-request">pull-request</a>
+      <a href="/blog/tags/api">api</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -409,11 +225,11 @@ Resources
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/configuration">configuration</a>
+      <a href="/blog/tags/architecture">architecture</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/deployment">deployment</a>
+      <a href="/blog/tags/automate">automate</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -421,27 +237,87 @@ Resources
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/azure">azure</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/microsoft">microsoft</a>
+      <a href="/blog/tags/best-practices">best-practices</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/self-service">self-service</a>
+      <a href="/blog/tags/cloudformation">cloudformation</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/tower">tower</a>
+      <a href="/blog/tags/cloudforms">cloudforms</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/workflows">workflows</a>
+      <a href="/blog/tags/cluster">cluster</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/ruby">ruby</a>
+      <a href="/blog/tags/cmdb">cmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/compliance">compliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/containers">containers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control">control</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/custom-buttons">custom-buttons</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore">datastore</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/github">github</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/heat">heat</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/integration">integration</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -449,11 +325,23 @@ Resources
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/aws">aws</a>
+      <a href="/blog/tags/kubernetes">kubernetes</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/series">series</a>
+      <a href="/blog/tags/kvm">kvm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/manageiq">manageiq</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -461,23 +349,7 @@ Resources
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/osp">osp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhv">rhv</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/api">api</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rest">rest</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/uxd">uxd</a>
+      <a href="/blog/tags/microsoft">microsoft</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -485,7 +357,123 @@ Resources
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/openscap">openscap</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openshift">openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/pull-request">pull-request</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rdp">rdp</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rest">rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev">rhev</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/scale">scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/security">security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service">self-service</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/services">services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/slack">slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ssh">ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower">tower</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uxd">uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm">vm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware">vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/XML">XML</a>
     </li>
     
   </ul>

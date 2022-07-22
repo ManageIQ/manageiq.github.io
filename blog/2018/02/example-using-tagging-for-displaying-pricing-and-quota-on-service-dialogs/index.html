@@ -129,31 +129,31 @@
 
 <p>This article describes a possible solution which consists in adding a tab to the service dialog to display required information to the end-user.</p>
 
-<p>You can create a tab for that: the ‘Service Costs’ which contains a number of dynamic elements that retrieve tags from your tenant and service template and calculates the quota status.  
+<p>You can create a tab for that: the ‘Service Costs’ which contains a number of dynamic elements that retrieve tags from your tenant and service template and calculates the quota status.<br />
 Upon ordering, the Service state machine is updated to call a method that updates the remaining budget tag(s) on the tenant. \</p>
 
-<p>In the state pre3 we have connected to an instance/method called “set_your_budget”. Each time a service is ordered the price of that service is deducted from the existing remaining balance tag on the tenant for the user ordering the service.
- </p>
+<p>In the state pre3 we have connected to an instance/method called “set_your_budget”. Each time a service is ordered the price of that service is deducted from the existing remaining balance tag on the tenant for the user ordering the service.</p>
+
 <h2 id="service-dialog-automation">Service Dialog Automation</h2>
 
 <p>The methods behind the service dialog are as follows;</p>
 
 <ul>
-  <li>Cost_of_this_service – This method obtains the cost of the service from a tag assigned to the service.</li>
+  <li>Cost_of_this_service – This method obtains the cost of the service from a tag assigned to the service.</li>
 </ul>
 
 <p>Example Tag: cost_of_this_service_10000 or cost_of_this_service_10</p>
 
 <ul>
-  <li>Remaining_budget_after_this_service – This method calculates the subtracting of the cost_of_this_service from the your_budget value.</li>
-  <li>Set_your_budget – Called from the state machine to maintain the state of the tags assigned at the tenant for the user ordering the service. Only one tag should exist and will contain the value for the remaining budget.</li>
+  <li>Remaining_budget_after_this_service – This method calculates the subtracting of the cost_of_this_service from the your_budget value.</li>
+  <li>Set_your_budget – Called from the state machine to maintain the state of the tags assigned at the tenant for the user ordering the service. Only one tag should exist and will contain the value for the remaining budget.</li>
 </ul>
 
 <p>Example Tag : mycompany_budget_9500 or mycompany_budget_10000</p>
 
 <ul>
-  <li>Your_budget –  Returns the remaining budget from the tag assigned at the tenant level.</li>
-  <li>Status – Returns the status message.</li>
+  <li>Your_budget –  Returns the remaining budget from the tag assigned at the tenant level.</li>
+  <li>Status – Returns the status message.</li>
 </ul>
 
 <p>Or</p>
@@ -161,22 +161,21 @@ Upon ordering, the Service state machine is updated to call a method that update
 <p>There are two tags required to be set for the system to work,</p>
 
 <ul>
-  <li>cost_of_this_service_&lt; sum&gt; – This tag you assign to the service template, you can have many of these covering different costs for many services, but only one can exist on any one service at any time. The sum is the cost of that service.</li>
-  <li>&lt; companyname&gt;<em>budget</em>&lt; sum&gt; – This tag is the tenant budget, it works by company name that is set in the appliance. Only one tag can exist on any one tenant at any time. The sum is the STARTING budget for the tenant. The solution will dynamically create more tags with the same company prefix, and control the assignment of the tags to the tenant when services are ordered. The budget sum decreases each time a service is ordered by the cost of the service being ordered.
- 
-    <h2 id="implementation">Implementation</h2>
-  </li>
+  <li>cost_of_this_service_&lt; sum&gt; – This tag you assign to the service template, you can have many of these covering different costs for many services, but only one can exist on any one service at any time. The sum is the cost of that service.</li>
+  <li>&lt; companyname&gt;<em>budget</em>&lt; sum&gt; – This tag is the tenant budget, it works by company name that is set in the appliance. Only one tag can exist on any one tenant at any time. The sum is the STARTING budget for the tenant. The solution will dynamically create more tags with the same company prefix, and control the assignment of the tags to the tenant when services are ordered. The budget sum decreases each time a service is ordered by the cost of the service being ordered.</li>
 </ul>
 
-<p>Materials and instructions required to implement this solution are available <a href="https://github.com/jonnyfiveiq/CloudFORMSNOW/tree/master/Billing_Sample">here</a>.</p>
+<h2 id="implementation">Implementation</h2>
+
+<p>Materials and instructions required to implement this solution are available <a href="https://github.com/jonnyfiveiq/CloudFORMSNOW/tree/master/Billing_Sample">here</a>.</p>
 
 <p>Step 0 – Red Hat Consulting Scripts (pre-requirement)</p>
 
-<p>The Red Hat Consulting import/export scripts will be used in this example. They can be installed on the appliance following instructions on (<a href="https://github.com/rhtconsulting/cfme-rhconsulting-scripts">https://github.com/rhtconsulting/cfme-rhconsulting-scripts</a>)</p>
+<p>The Red Hat Consulting import/export scripts will be used in this example. They can be installed on the appliance following instructions on (<a href="https://github.com/rhtconsulting/cfme-rhconsulting-scripts">https://github.com/rhtconsulting/cfme-rhconsulting-scripts</a>)</p>
 
 <p>Step 1 – Clone the Materials</p>
 
-<p>git clone (<a href="https://github.com/jonnyfiveiq/CloudFORMSNOW.git">https://github.com/jonnyfiveiq/CloudFORMSNOW.git</a>)</p>
+<p>git clone (<a href="https://github.com/jonnyfiveiq/CloudFORMSNOW.git">https://github.com/jonnyfiveiq/CloudFORMSNOW.git</a>)</p>
 
 <p>Step 2 – Import the Tags</p>
 
@@ -184,7 +183,7 @@ Upon ordering, the Service state machine is updated to call a method that update
 
 <p>Step 3 – Import the Sample Dialog</p>
 
-<p>miqimport service_dialogs CloudFORMSNOW/Billing_Sample/dialogs/Billing_Example.yml </p>
+<p>miqimport service_dialogs CloudFORMSNOW/Billing_Sample/dialogs/Billing_Example.yml</p>
 
 <p>Step 4 – Import the Automate domain</p>
 
@@ -215,7 +214,7 @@ Select the Service Item “Generic Sample Billing” and tag it with “cost_of_
   <li>Tag name &amp; value = redhat_budget_10000</li>
 </ul>
 
-<p>Select your TENANT and tag it with “mycompany_budget_10000”</p>
+<p>Select your TENANT and tag it with “mycompany_budget_10000”</p>
 
 <p>And with the tag assigned.</p>
 
@@ -227,24 +226,24 @@ Select the Service Item “Generic Sample Billing” and tag it with “cost_of_
 
 <p>Service Costs</p>
 
-<p>Cost of this Service – Show the cost assigned to the service item.</p>
+<p>Cost of this Service – Show the cost assigned to the service item.</p>
 
 <p>Quota</p>
 
-<p>Current Budget – Shows the Current Budget. If this is the first time Billing is being ran, then the value will be the tag you assigned at the tenant.</p>
+<p>Current Budget – Shows the Current Budget. If this is the first time Billing is being ran, then the value will be the tag you assigned at the tenant.</p>
 
-<p>Remaining Budget – Is the Current budget minus the service cost.</p>
+<p>Remaining Budget – Is the Current budget minus the service cost.</p>
 
 <p>Message</p>
 
-<p>Status –  Plain English text to show status of quota.
-Note: This service item example will not deploy anything, but run the generic state machine and return a success.  
- </p>
+<p>Status –  Plain English text to show status of quota.
+Note: This service item example will not deploy anything, but run the generic state machine and return a success.</p>
+
 <h2 id="debugging-examples">Debugging examples</h2>
 
 <p>In the Automation log on the appliance that is processing the request, you will find the following output from the “set_your_budget” method.</p>
 
-<p>It shows the Tenant name, along with the currently assigned tag and what it will be changing it too. </p>
+<p>It shows the Tenant name, along with the currently assigned tag and what it will be changing it too.</p>
 
 <p>(&lt;)AEMethod set_your_budget&gt;  STARTED /Billing/Dialogs/DynamicElements/set_your_budget</p>
 
@@ -284,87 +283,7 @@ Note: This service item example will not deploy anything, but run the generic st
   <ul id="blog_tag_menu" class="blog_menu">
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/external">external</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/operations">operations</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudforms">cloudforms</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vmware">vmware</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhev">rhev</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kvm">kvm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cluster">cluster</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vm">vm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/datastore">datastore</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/XML">XML</a>
-    </li>
-    
-    <li class="blog_menu-tag">
       <a href="/blog/tags/announcements">announcements</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/events">events</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/collaboration">collaboration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/releases">releases</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/sprints">sprints</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/automate">automate</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudformation">cloudformation</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/heat">heat</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openstack">openstack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/scale">scale</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -372,111 +291,7 @@ Note: This service item example will not deploy anything, but run the generic st
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/control">control</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/policy">policy</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/management">management</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/servicenow">servicenow</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/slack">slack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/custom-buttons">custom-buttons</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rdp">rdp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/ssh">ssh</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/container">container</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kubernetes">kubernetes</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openshift">openshift</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/developers">developers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/tutorials">tutorials</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/containers">containers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/compliance">compliance</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openscap">openscap</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/security">security</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/best-practices">best-practices</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/provisioning">provisioning</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/services">services</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/architecture">architecture</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cmdb">cmdb</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/integration">integration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/show">show</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/github">github</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/manageiq">manageiq</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/pull-request">pull-request</a>
+      <a href="/blog/tags/api">api</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -484,11 +299,11 @@ Note: This service item example will not deploy anything, but run the generic st
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/configuration">configuration</a>
+      <a href="/blog/tags/architecture">architecture</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/deployment">deployment</a>
+      <a href="/blog/tags/automate">automate</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -496,27 +311,87 @@ Note: This service item example will not deploy anything, but run the generic st
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/azure">azure</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/microsoft">microsoft</a>
+      <a href="/blog/tags/best-practices">best-practices</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/self-service">self-service</a>
+      <a href="/blog/tags/cloudformation">cloudformation</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/tower">tower</a>
+      <a href="/blog/tags/cloudforms">cloudforms</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/workflows">workflows</a>
+      <a href="/blog/tags/cluster">cluster</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/ruby">ruby</a>
+      <a href="/blog/tags/cmdb">cmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/compliance">compliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/containers">containers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control">control</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/custom-buttons">custom-buttons</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore">datastore</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/github">github</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/heat">heat</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/integration">integration</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -524,11 +399,23 @@ Note: This service item example will not deploy anything, but run the generic st
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/aws">aws</a>
+      <a href="/blog/tags/kubernetes">kubernetes</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/series">series</a>
+      <a href="/blog/tags/kvm">kvm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/manageiq">manageiq</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -536,23 +423,7 @@ Note: This service item example will not deploy anything, but run the generic st
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/osp">osp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhv">rhv</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/api">api</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rest">rest</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/uxd">uxd</a>
+      <a href="/blog/tags/microsoft">microsoft</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -560,7 +431,123 @@ Note: This service item example will not deploy anything, but run the generic st
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/openscap">openscap</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openshift">openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/pull-request">pull-request</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rdp">rdp</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rest">rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev">rhev</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/scale">scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/security">security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service">self-service</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/services">services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/slack">slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ssh">ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower">tower</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uxd">uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm">vm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware">vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/XML">XML</a>
     </li>
     
   </ul>

@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>ManageIQ - My First Contribution to ManageIQ</title>
-  <meta name="description" content="In this blog post, I am going to share my experience on how I made my first contribution to ManageIQ, the upstream open source project for Red Hat CloudForms...">
+  <meta name="description" content="In this blog post, I am going to share my experience on how I made my first contribution to ManageIQ, the upstream open source project for Red Hat CloudForms...">
   <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
 
   <script>
@@ -137,11 +137,11 @@
           </header>
 
           <div class="post-content" itemprop="articleBody">
-            <p>In this blog post, I am going to share my experience on how I made my first contribution to <a href="https://www.manageiq.org">ManageIQ</a>, the upstream open source project for Red Hat CloudForms. The post explains how I encountered and investigated an issue, and finally fixed it thereby sending my first “<a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests">Pull Request</a>” to ManageIQ repository.
- </p>
+            <p>In this blog post, I am going to share my experience on how I made my first contribution to <a href="https://www.manageiq.org">ManageIQ</a>, the upstream open source project for Red Hat CloudForms. The post explains how I encountered and investigated an issue, and finally fixed it thereby sending my first “<a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests">Pull Request</a>” to ManageIQ repository.</p>
+
 <h2 id="issue">Issue</h2>
 
-<p>When an infrastructure provider like VMware is added to <a href="https://access.redhat.com/products/red-hat-cloudforms]">CloudForms</a>/ManageIQ, a user/admin have an option to put host(s) into maintenance mode. The “Enter Maintenance mode” option is available in a dropdown list when “Power” button is clicked on the host summary page, as shown in below image,</p>
+<p>When an infrastructure provider like VMware is added to <a href="https://access.redhat.com/products/red-hat-cloudforms]">CloudForms</a>/ManageIQ, a user/admin have an option to put host(s) into maintenance mode. The “Enter Maintenance mode” option is available in a dropdown list when “Power” button is clicked on the host summary page, as shown in below image,</p>
 
 <p>The following image shows a host in maintenance mode from Red Hat CloudForms. The host goes into maintenance mode but never “exits” the mode when selecting “Exit Maintenance Mode”.</p>
 
@@ -149,8 +149,8 @@
 
 <p>However, the host still remains into maintenance mode, and we can validate this state from the VMware vSphere client.</p>
 
-<p>Now that we have identified the issue, we can look at its possible cause(s) by troubleshooting Red Hat CloudForms.
- </p>
+<p>Now that we have identified the issue, we can look at its possible cause(s) by troubleshooting Red Hat CloudForms.</p>
+
 <h2 id="debugging-an-issue">Debugging an issue</h2>
 
 <p>A good place to troubleshoot is to look into standard log files under /var/www/miq/vmdb/ on the CloudForms appliance. Below is short description of few important log files:</p>
@@ -159,62 +159,62 @@
   <li>production.log: All user Interface activities from Operations as well as Service UI are logged here.</li>
   <li>automation.log: As the name suggest, all automation logs are collected in this file.</li>
   <li>policy.log: This is a good place to look for logs related to events and policies.</li>
-  <li>evm.log: This file also covers automation logs as well as everything else. This file can be large in size and probably the first log file to look for errors &amp; warning messages.
-  
-As you can see below, the evm.log file contained warning messages every time “Exit Maintenance Mode” request is initiated,
-  
-[—-] W, [2017-12-20T16:32:02.557678 #2197:1090af0]  WARN – : MIQ(ManageIQ::Providers::Vmware::InfraManager::HostEsx#exit_maint_mode) Cannot exit maintenance mode because (&lt;)The Host is not powered ‘on’(&gt;)
-  
-The log message clearly shows that the host attempts to exit maintenance mode but fails as it is not powered on. At this point, we can ask ourselves why is the task failing with this warning? Isn’t the host supposed to be in maintenance mode? We suspect something is not right with the logic behind this action. To dig deeper we can look into the <a href="https://github.com/ManageIQ/manageiq/blob/master/app/models/host.rb">host.rb</a> file available at <a href="https://github.com/ManageIQ/manageiq">ManageIQ GitHub repository</a>.</li>
+  <li>evm.log: This file also covers automation logs as well as everything else. This file can be large in size and probably the first log file to look for errors &amp; warning messages.</li>
 </ul>
+
+<p>As you can see below, the evm.log file contained warning messages every time “Exit Maintenance Mode” request is initiated,</p>
+
+<p>[—-] W, [2017-12-20T16:32:02.557678 #2197:1090af0]  WARN – : MIQ(ManageIQ::Providers::Vmware::InfraManager::HostEsx#exit_maint_mode) Cannot exit maintenance mode because (&lt;)The Host is not powered ‘on’(&gt;)</p>
+
+<p>The log message clearly shows that the host attempts to exit maintenance mode but fails as it is not powered on. At this point, we can ask ourselves why is the task failing with this warning? Isn’t the host supposed to be in maintenance mode? We suspect something is not right with the logic behind this action. To dig deeper we can look into the <a href="https://github.com/ManageIQ/manageiq/blob/master/app/models/host.rb">host.rb</a> file available at <a href="https://github.com/ManageIQ/manageiq">ManageIQ GitHub repository</a>.</p>
 
 <p>Looking at the logic in host.rb file, the method enter_maint_mode() is triggered when “Enter Maintenance Mode” request is made. This in-turns validates the maintenance mode using method validate_enter_maint_mode() which basically checks the power state of host using method validate_esx_host_connected_to_vc_with_power_state(). The arguments passed to this method are ‘on’ or ‘maintenance’.</p>
 
-<p>A similar logic should be applied to the  exit_maint_mode() method. However, the method calls validate_enter_maint_mode() instead of calling validate_exit_maint_mode(), which causes the issue. The validation fails as the host is in ‘maintenance’ mode and not in ‘on’ mode as we can see below,</p>
+<p>A similar logic should be applied to the  exit_maint_mode() method. However, the method calls validate_enter_maint_mode() instead of calling validate_exit_maint_mode(), which causes the issue. The validation fails as the host is in ‘maintenance’ mode and not in ‘on’ mode as we can see below,</p>
 
-<p>A simple fix is to call validate_exit_maint_mode() instead of validate_enter_maint_mode() each time “Exit Maintenance Mode ” request is made. This fix should validate the host to exit maintenance mode successfully.
- </p>
+<p>A simple fix is to call validate_exit_maint_mode() instead of validate_enter_maint_mode() each time “Exit Maintenance Mode ” request is made. This fix should validate the host to exit maintenance mode successfully.</p>
+
 <h2 id="test">Test</h2>
 
-<p>To verify our analysis, We can replaced the validation method call from validate_enter_maint_mode() to validate_exit_maint_mode() and restart evmserverd on the appliance using,
-  
-systemctl restart evmserverd
-  
-This time the host successfully exits maintenance mode
-  
-CloudForms User Interface:</p>
+<p>To verify our analysis, We can replaced the validation method call from validate_enter_maint_mode() to validate_exit_maint_mode() and restart evmserverd on the appliance using,</p>
+
+<p>systemctl restart evmserverd</p>
+
+<p>This time the host successfully exits maintenance mode</p>
+
+<p>CloudForms User Interface:</p>
 
 <p>VMware User Interface:</p>
 
 <h2 id="creating-a-pull-request">Creating a Pull Request</h2>
 
-<p>A “Pull Request” is a way to propose a change in code on GitHub. For those who don’t have an GitHub account, you can create one by following (<a href="https://github.com/join">https://github.com/join</a>). Once the account is created we have to <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">fork</a> the repository by clicking “Fork” button as shown below,</p>
+<p>A “Pull Request” is a way to propose a change in code on GitHub. For those who don’t have an GitHub account, you can create one by following (<a href="https://github.com/join">https://github.com/join</a>). Once the account is created we have to <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">fork</a> the repository by clicking “Fork” button as shown below,</p>
 
 <p>Next step is to clone the repository to our local machine so that changes can be made. Click on “Clone or download” button to copy the https URL link.</p>
 
 <p>We can clone the repository by using the command</p>
 
-<p>git clone https:// github.com/imaanpreet/manageiq.git
-  
-Once our clone is completed, we can create a new branch using,</p>
+<p>git clone https:// github.com/imaanpreet/manageiq.git</p>
 
-<p>git checkout -b validate_exit_maint_mode
-  
-Make required changes and commit the changes using,</p>
+<p>Once our clone is completed, we can create a new branch using,</p>
+
+<p>git checkout -b validate_exit_maint_mode</p>
+
+<p>Make required changes and commit the changes using,</p>
 
 <p>git add app/models/host.rb</p>
 
-<p>git commit
-  
-Once changes are committed, it is time to send back changes as “Pull Request”, this can be done by pushing changes to the newly created branch,
-  
-git push origin validate_exit_maint_mode
-  
-The process to create a pull request is documented <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request">here</a>.
- </p>
+<p>git commit</p>
+
+<p>Once changes are committed, it is time to send back changes as “Pull Request”, this can be done by pushing changes to the newly created branch,</p>
+
+<p>git push origin validate_exit_maint_mode</p>
+
+<p>The process to create a pull request is documented <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request">here</a>.</p>
+
 <h2 id="conclusion">Conclusion</h2>
 
-<p>The Pull Request is <a href="https://github.com/ManageIQ/manageiq/pull/16710">merged</a> in the manageiq repository and the <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1531602">bug</a> is currently being worked on. This was a great experience and I enjoyed the process of debugging, investigating, and fixing a bug in ManageIQ. I hope sharing this experience in this article will be useful for other readers, and will encourage them to submit more Pull Requests.</p>
+<p>The Pull Request is <a href="https://github.com/ManageIQ/manageiq/pull/16710">merged</a> in the manageiq repository and the <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1531602">bug</a> is currently being worked on. This was a great experience and I enjoyed the process of debugging, investigating, and fixing a bug in ManageIQ. I hope sharing this experience in this article will be useful for other readers, and will encourage them to submit more Pull Requests.</p>
 
           </div>
         </article>
@@ -229,87 +229,7 @@ The process to create a pull request is documented <a href="https://docs.githu
   <ul id="blog_tag_menu" class="blog_menu">
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/external">external</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/operations">operations</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudforms">cloudforms</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vmware">vmware</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhev">rhev</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kvm">kvm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cluster">cluster</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vm">vm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/datastore">datastore</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/XML">XML</a>
-    </li>
-    
-    <li class="blog_menu-tag">
       <a href="/blog/tags/announcements">announcements</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/events">events</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/collaboration">collaboration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/releases">releases</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/sprints">sprints</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/automate">automate</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudformation">cloudformation</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/heat">heat</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openstack">openstack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/scale">scale</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -317,111 +237,7 @@ The process to create a pull request is documented <a href="https://docs.githu
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/control">control</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/policy">policy</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/management">management</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/servicenow">servicenow</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/slack">slack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/custom-buttons">custom-buttons</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rdp">rdp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/ssh">ssh</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/container">container</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kubernetes">kubernetes</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openshift">openshift</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/developers">developers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/tutorials">tutorials</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/containers">containers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/compliance">compliance</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openscap">openscap</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/security">security</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/best-practices">best-practices</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/provisioning">provisioning</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/services">services</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/architecture">architecture</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cmdb">cmdb</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/integration">integration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/show">show</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/github">github</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/manageiq">manageiq</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/pull-request">pull-request</a>
+      <a href="/blog/tags/api">api</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -429,11 +245,11 @@ The process to create a pull request is documented <a href="https://docs.githu
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/configuration">configuration</a>
+      <a href="/blog/tags/architecture">architecture</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/deployment">deployment</a>
+      <a href="/blog/tags/automate">automate</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -441,27 +257,87 @@ The process to create a pull request is documented <a href="https://docs.githu
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/azure">azure</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/microsoft">microsoft</a>
+      <a href="/blog/tags/best-practices">best-practices</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/self-service">self-service</a>
+      <a href="/blog/tags/cloudformation">cloudformation</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/tower">tower</a>
+      <a href="/blog/tags/cloudforms">cloudforms</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/workflows">workflows</a>
+      <a href="/blog/tags/cluster">cluster</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/ruby">ruby</a>
+      <a href="/blog/tags/cmdb">cmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/compliance">compliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/containers">containers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control">control</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/custom-buttons">custom-buttons</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore">datastore</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/github">github</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/heat">heat</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/integration">integration</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -469,11 +345,23 @@ The process to create a pull request is documented <a href="https://docs.githu
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/aws">aws</a>
+      <a href="/blog/tags/kubernetes">kubernetes</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/series">series</a>
+      <a href="/blog/tags/kvm">kvm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/manageiq">manageiq</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -481,23 +369,7 @@ The process to create a pull request is documented <a href="https://docs.githu
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/osp">osp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhv">rhv</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/api">api</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rest">rest</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/uxd">uxd</a>
+      <a href="/blog/tags/microsoft">microsoft</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -505,7 +377,123 @@ The process to create a pull request is documented <a href="https://docs.githu
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/openscap">openscap</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openshift">openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/pull-request">pull-request</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rdp">rdp</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rest">rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev">rhev</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/scale">scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/security">security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service">self-service</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/services">services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/slack">slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ssh">ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower">tower</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uxd">uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm">vm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware">vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/XML">XML</a>
     </li>
     
   </ul>

@@ -125,11 +125,7 @@
                 </li>
                 
                 <li>
-                  <a href="/blog/tags/osp">osp</a>
-                </li>
-                
-                <li>
-                  <a href="/blog/tags/rhv">rhv</a>
+                  <a href="/blog/tags/rhev">rhev</a>
                 </li>
                 
               </ul>
@@ -139,9 +135,9 @@
           <div class="post-content" itemprop="articleBody">
             <h2 id="introduction">Introduction</h2>
 
-<p>Red Hat held an event on the infrastructure part of our portfolio in Milan and Rome on April 17th and 19th, 2018. One of the two demos presented was the management of a hybrid cloud environment with the Cloud Management Platform (CMP) Red Hat CloudForms.  
-  
-The event information and agenda is available at:</p>
+<p>Red Hat held an event on the infrastructure part of our portfolio in Milan and Rome on April 17th and 19th, 2018. One of the two demos presented was the management of a hybrid cloud environment with the Cloud Management Platform (CMP) Red Hat CloudForms.</p>
+
+<p>The event information and agenda is available at:</p>
 
 <p>(<a href="https://www.redhat.com/en/events/infrastructure-tour-milan-2018">https://www.redhat.com/en/events/infrastructure-tour-milan-2018</a>)</p>
 
@@ -150,28 +146,28 @@ The event information and agenda is available at:</p>
 <p>Use cases of the demo included:</p>
 
 <ul>
-  <li>Single Pane of Glass Management </li>
+  <li>Single Pane of Glass Management</li>
   <li>Integration with RHV</li>
   <li>Integration with VMware</li>
   <li>Integration with OpenStack</li>
-  <li>Integration with Ansible Tower </li>
+  <li>Integration with Ansible Tower</li>
   <li>Drift Analysis</li>
   <li>OpenShift Operations and Monitoring</li>
 </ul>
 
-<p>In this part, we will cover Single Pane Glass and integration with the integration with infrastructure providers
- </p>
+<p>In this part, we will cover Single Pane Glass and integration with the integration with infrastructure providers</p>
+
 <h2 id="single-pane-of-glass-management">Single Pane of Glass Management</h2>
 
-<p>To provide a global dashboard of the providers we created some custom reports and widget (available for download, they can be imported in a greenfield Cloudforms environment via the Cloud Intel -&gt; Reports -&gt; Import / Export menu) to allow the operator to have an overview of common information on the overall providers.
-  
-More than one dashboard can be shown to users and access to dashboards can be regulated via RBAC features of CloudForms.</p>
+<p>To provide a global dashboard of the providers we created some custom reports and widget (available for download, they can be imported in a greenfield Cloudforms environment via the Cloud Intel -&gt; Reports -&gt; Import / Export menu) to allow the operator to have an overview of common information on the overall providers.</p>
+
+<p>More than one dashboard can be shown to users and access to dashboards can be regulated via RBAC features of CloudForms.</p>
 
 <p>The most relevant data shown is:</p>
 
 <ul>
   <li>The percentage of OS vendors and related versions of the guest running with histograms globally and per provider</li>
-  <li>The status of compliance of container images on OpenShift </li>
+  <li>The status of compliance of container images on OpenShift</li>
   <li>Openshift Project usage in a graph sorted by memory (usually the first relevant metric)</li>
   <li>Aggregated chargeback information</li>
 </ul>
@@ -188,18 +184,18 @@ More than one dashboard can be shown to users and access to dashboards can be re
 
 <h2 id="integration-with-red-hat-virtualization">Integration with Red Hat Virtualization</h2>
 
-<p>CloudForms 4.6 brings some new management capabilities for RHV, including CRUD (Create, Read, Update and Delete) for networking on a number of elements)
-  
-The configuration of the RHV 4.1 provider requires the enablement of the DWH component on the RHV Manager (RHV-M) as explained here:
-  
-(<a href="https://access.redhat.com/documentation/en-us/red_hat_virtualization/4.1/html/data_warehouse_guide/index">https://access.redhat.com/documentation/en-us/red_hat_virtualization/4.1/html/data_warehouse_guide/index</a>)</p>
+<p>CloudForms 4.6 brings some new management capabilities for RHV, including CRUD (Create, Read, Update and Delete) for networking on a number of elements)</p>
 
-<p>We had to get the user/password to access the DWH PostgreSQL DB on the RHV-M node checking the configuration in the file </p>
+<p>The configuration of the RHV 4.1 provider requires the enablement of the DWH component on the RHV Manager (RHV-M) as explained here:</p>
+
+<p>(<a href="https://access.redhat.com/documentation/en-us/red_hat_virtualization/4.1/html/data_warehouse_guide/index">https://access.redhat.com/documentation/en-us/red_hat_virtualization/4.1/html/data_warehouse_guide/index</a>)</p>
+
+<p>We had to get the user/password to access the DWH PostgreSQL DB on the RHV-M node checking the configuration in the file</p>
 
 <p>/etc/ovirt-engine-dwh/ovirt-engine-dwhd.conf.d/10-setup-database.conf</p>
 
-<p>The password was provided to CloudForms in the provider configuration page to allow CloudForms to gather metrics for hosts and VMs.
- </p>
+<p>The password was provided to CloudForms in the provider configuration page to allow CloudForms to gather metrics for hosts and VMs.</p>
+
 <h2 id="integration-with-vmware-vsphere">Integration with VMware vSphere</h2>
 
 <p>VMware vSphere is a first class citizen in CloudForms, we just had to configure the next two steps for operation.</p>
@@ -208,17 +204,17 @@ The configuration of the RHV 4.1 provider requires the enablement of the DWH com
 
 <p>(<a href="https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.6/html-single/installing_red_hat_cloudforms_on_vmware_vsphere/index#installing-vmware-vddk">https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.6/html-single/installing_red_hat_cloudforms_on_vmware_vsphere/index#installing-vmware-vddk</a>)</p>
 
-<p>Don’t forget also to enter credentials for the underlying ESX hosts on the Host pages with the Configuration Button -&gt; Edit configuration.
- </p>
+<p>Don’t forget also to enter credentials for the underlying ESX hosts on the Host pages with the Configuration Button -&gt; Edit configuration.</p>
+
 <h2 id="integration-with-red-hat-openstack-platform-and-cloud-providers">Integration with Red Hat OpenStack Platform and cloud providers</h2>
 
 <p>The configuration of the OpenStack provider required a specific setting for the ceilometer module to let CloudForms gather metrics data and configure the provider in CloudForms to get events via ceilometer.</p>
 
-<p>We did it editing the /etc/ceilometer/ceilometer.conf specifying the following option:</p>
+<p>We did it editing the /etc/ceilometer/ceilometer.conf specifying the following option:</p>
 
-<p>store_events = True
-  
-But can be done in a persistent way changing the parameter on the OSP Director. See (<a href="https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.5/html-single/managing_providers/#openstack-events-oc">https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.5/html-single/managing_providers/#openstack-events-oc</a>)</p>
+<p>store_events = True</p>
+
+<p>But can be done in a persistent way changing the parameter on the OSP Director. See (<a href="https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.5/html-single/managing_providers/#openstack-events-oc">https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.5/html-single/managing_providers/#openstack-events-oc</a>)</p>
 
           </div>
         </article>
@@ -233,87 +229,7 @@ But can be done in a persistent way changing the parameter on the OSP Director. 
   <ul id="blog_tag_menu" class="blog_menu">
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/external">external</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/operations">operations</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudforms">cloudforms</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vmware">vmware</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhev">rhev</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kvm">kvm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cluster">cluster</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vm">vm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/datastore">datastore</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/XML">XML</a>
-    </li>
-    
-    <li class="blog_menu-tag">
       <a href="/blog/tags/announcements">announcements</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/events">events</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/collaboration">collaboration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/releases">releases</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/sprints">sprints</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/automate">automate</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudformation">cloudformation</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/heat">heat</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openstack">openstack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/scale">scale</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -321,111 +237,7 @@ But can be done in a persistent way changing the parameter on the OSP Director. 
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/control">control</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/policy">policy</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/management">management</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/servicenow">servicenow</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/slack">slack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/custom-buttons">custom-buttons</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rdp">rdp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/ssh">ssh</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/container">container</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kubernetes">kubernetes</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openshift">openshift</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/developers">developers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/tutorials">tutorials</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/containers">containers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/compliance">compliance</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openscap">openscap</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/security">security</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/best-practices">best-practices</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/provisioning">provisioning</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/services">services</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/architecture">architecture</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cmdb">cmdb</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/integration">integration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/show">show</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/github">github</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/manageiq">manageiq</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/pull-request">pull-request</a>
+      <a href="/blog/tags/api">api</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -433,11 +245,11 @@ But can be done in a persistent way changing the parameter on the OSP Director. 
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/configuration">configuration</a>
+      <a href="/blog/tags/architecture">architecture</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/deployment">deployment</a>
+      <a href="/blog/tags/automate">automate</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -445,27 +257,87 @@ But can be done in a persistent way changing the parameter on the OSP Director. 
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/azure">azure</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/microsoft">microsoft</a>
+      <a href="/blog/tags/best-practices">best-practices</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/self-service">self-service</a>
+      <a href="/blog/tags/cloudformation">cloudformation</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/tower">tower</a>
+      <a href="/blog/tags/cloudforms">cloudforms</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/workflows">workflows</a>
+      <a href="/blog/tags/cluster">cluster</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/ruby">ruby</a>
+      <a href="/blog/tags/cmdb">cmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/compliance">compliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/containers">containers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control">control</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/custom-buttons">custom-buttons</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore">datastore</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/github">github</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/heat">heat</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/integration">integration</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -473,11 +345,23 @@ But can be done in a persistent way changing the parameter on the OSP Director. 
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/aws">aws</a>
+      <a href="/blog/tags/kubernetes">kubernetes</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/series">series</a>
+      <a href="/blog/tags/kvm">kvm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/manageiq">manageiq</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -485,23 +369,7 @@ But can be done in a persistent way changing the parameter on the OSP Director. 
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/osp">osp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhv">rhv</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/api">api</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rest">rest</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/uxd">uxd</a>
+      <a href="/blog/tags/microsoft">microsoft</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -509,7 +377,123 @@ But can be done in a persistent way changing the parameter on the OSP Director. 
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/openscap">openscap</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openshift">openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/pull-request">pull-request</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rdp">rdp</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rest">rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev">rhev</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/scale">scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/security">security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service">self-service</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/services">services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/slack">slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ssh">ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower">tower</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uxd">uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm">vm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware">vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/XML">XML</a>
     </li>
     
   </ul>

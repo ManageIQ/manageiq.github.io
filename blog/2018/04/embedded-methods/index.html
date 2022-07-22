@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>ManageIQ - Embedded Methods</title>
-  <meta name="description" content="One of the exciting new features in CloudForms 4.6 within Automate is Embedded Methods. That is, one can store reusable, directly callable, ruby code within ...">
+  <meta name="description" content="One of the exciting new features in CloudForms 4.6 within Automate is Embedded Methods. That is, one can store reusable, directly callable, ruby code within ...">
   <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
 
   <script>
@@ -125,15 +125,15 @@
           </header>
 
           <div class="post-content" itemprop="articleBody">
-            <p>One of the exciting new features in CloudForms 4.6 within Automate is Embedded Methods. That is, one can store reusable, directly callable, ruby code within Automate and access from other Automate Methods.</p>
+            <p>One of the exciting new features in CloudForms 4.6 within Automate is Embedded Methods. That is, one can store reusable, directly callable, ruby code within Automate and access from other Automate Methods.</p>
 
 <p>(In an attempt to maintain some sanity, I’m capitalizing words like Method when in the Automate sense, and leaving them lowercase when referring to the wholly unrelated ruby use).</p>
 
-<p>In my experimentation with <a href="https://github.com/jeffwarnica/manageiq-content-sample-tests">Unit Testing</a>, I’ve developed a reasonable and, I think, future proof process for doing this. The implementation is very flexible, allows for multiple Methods to be embedded in the caller. Otherwise, I think, ad-hoc conventions could cause a lot of trouble if not used with some rigor.</p>
+<p>In my experimentation with <a href="https://github.com/jeffwarnica/manageiq-content-sample-tests">Unit Testing</a>, I’ve developed a reasonable and, I think, future proof process for doing this. The implementation is very flexible, allows for multiple Methods to be embedded in the caller. Otherwise, I think, ad-hoc conventions could cause a lot of trouble if not used with some rigor.</p>
 
 <p>From the Calling Method, there is a new area in the UI to load in additional Methods. You may embed multiple Methods, but the embedding is not recursive; that is, if the target Method is configured to embed Methods, those will not be loaded.</p>
 
-<p>The method-to-be-Embedded, which I’ll call the Library Method needs no special configuration, though my strategy does require both methods to be coded in the <a href="https://github.com/ManageIQ/manageiq-content/issues/8">new style using classes</a>.  The Library Method couldhave “bare code”, that is, code not even in a ruby method, but that would almost always be a bad idea, as it would run unconditionally and be nigh impossible to troubleshoot.</p>
+<p>The method-to-be-Embedded, which I’ll call the Library Method needs no special configuration, though my strategy does require both methods to be coded in the <a href="https://github.com/ManageIQ/manageiq-content/issues/8">new style using classes</a>.  The Library Method couldhave “bare code”, that is, code not even in a ruby method, but that would almost always be a bad idea, as it would run unconditionally and be nigh impossible to troubleshoot.</p>
 
 <p>The ruby module/module/module namespaces match the Automate Domain/Namespace/Namespace/Class names. The Library Method’s name is not relevant. It is probably a good idea too, when configuring the calling Method, to always include the Domain Prefix in the method.</p>
 
@@ -143,72 +143,71 @@
 <h1 id="description-core-stdlib">Description: Core StdLib</h1>
 <p>#
 module Cflab
-  module StdLib
+  module StdLib
    module Core
-   def initialize(handle = $evm)
-     @handle = handle
-   end
-   def log(level, msg, update_message = false)
-     @handle.log(level, “#{msg}”)
-     @handle.task.message = msg if @task &amp;&amp; (update_message || level == ‘error’)
-   end
-   def dump_root()
-     log(:info, “Begin @handle.root.attributes”)
-     @handle.root.attributes.sort.each {|k, v| log(:info, “\t Attribute: #{k} = #{v}”)}
-     log(:info, “End @handle.root.attributes”)
-     log(:info, “”)
-   end
+   def initialize(handle = $evm)
+     @handle = handle
    end
-  end
+   def log(level, msg, update_message = false)
+     @handle.log(level, “#{msg}”)
+     @handle.task.message = msg if @task &amp;&amp; (update_message || level == ‘error’)
+   end
+   def dump_root()
+     log(:info, “Begin @handle.root.attributes”)
+     @handle.root.attributes.sort.each {|k, v| log(:info, “\t Attribute: #{k} = #{v}”)}
+     log(:info, “End @handle.root.attributes”)
+     log(:info, “”)
+   end
+   end
+  end
 end</p>
 
-<p>Note significantly, that the ruby methods are not part of a class, but a module. This makes the module, in ruby speak, a mixin.  You don’t need the initialize() method unless you also plan on unit testing the code.</p>
+<p>Note significantly, that the ruby methods are not part of a class, but a module. This makes the module, in ruby speak, a mixin.  You don’t need the initialize() method unless you also plan on unit testing the code.</p>
 
-<p>In the Calling Method’s class, you must include the ruby Module above, which brings in the ruby methods into the same namespace, e.g. include Cflab::StdLib::Core per below.</p>
+<p>In the Calling Method’s class, you must include the ruby Module above, which brings in the ruby methods into the same namespace, e.g. include Cflab::StdLib::Core per below.</p>
 
 <p>module Cflab
-  module DynamicDialogs
+  module DynamicDialogs
     module Methods
-    #
-    # Method for listing AWS flavors for a drop down.
-    #
-    class List_flavors
-    include Cflab::StdLib::Core
-    def initialize(handle = $evm)
-    @handle = handle
-    end</p>
+    #
+    # Method for listing AWS flavors for a drop down.
+    #
+    class List_flavors
+    include Cflab::StdLib::Core
+    def initialize(handle = $evm)
+    @handle = handle
+    end</p>
 
-<p>    #
-    # Actual entry point the bare script will call into. Outputs into @handle
-    #
-    def main
-    @user = @handle.root[‘user’]
-    dialog_hash = {}
-    dump_root()
-    @handle.vmdb(:ManageIQ_Providers_Amazon_CloudManager_Flavor).all.each do |flavor|
-         next unless flavor.ext_management_system || flavor.enabled
-         next unless object_eligible?(flavor)
-         @handle.log(:info, “Inspecting flavor: [#{flavor}]”)
-         dialog_hash[flavor.id] = “#{flavor.name} on #{flavor.ext_management_system.name}”
-    end
-    if dialog_hash.blank?
-         dialog_hash[’’] = “&lt; no flavors found &gt;”
-         @handle.object[‘default_value’] = ‘&lt; no flavors found &gt;’
-    else
-         @handle.object[‘default_value’] = dialog_hash.first[0]
-    end
-    @handle.object[“values”] = dialog_hash
-    end
-    end
-    end
-  end
-end</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#
+# Actual entry point the bare script will call into. Outputs into @handle
+#
+def main
+@user = @handle.root['user']
+dialog_hash = {}
+dump_root()
+@handle.vmdb(:ManageIQ_Providers_Amazon_CloudManager_Flavor).all.each do |flavor|
+     next unless flavor.ext_management_system || flavor.enabled
+     next unless object_eligible?(flavor)
+     @handle.log(:info, "Inspecting flavor: [#{flavor}]")
+     dialog_hash[flavor.id] = "#{flavor.name} on #{flavor.ext_management_system.name}"
+end
+if dialog_hash.blank?
+     dialog_hash[''] = "&lt; no flavors found &gt;"
+     @handle.object['default_value'] = '&lt; no flavors found &gt;'
+else
+     @handle.object['default_value'] = dialog_hash.first[0]
+end
+@handle.object["values"] = dialog_hash
+end
+end
+end   end end
+</code></pre></div></div>
 
 <p>if <strong>FILE</strong> == $PROGRAM_NAME
-  Cflab::DynamicDialogs::Methods::List_flavors.new.main
+  Cflab::DynamicDialogs::Methods::List_flavors.new.main
 end</p>
 
-<p>You are free to not include the Library module into your main class, but then would need to call the methods with their full path, </p>
+<p>You are free to not include the Library module into your main class, but then would need to call the methods with their full path,</p>
 
 <p>Cflab::StdLib::Core::log(:info, ‘stuff happened’)</p>
 
@@ -227,87 +226,7 @@ end</p>
   <ul id="blog_tag_menu" class="blog_menu">
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/external">external</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/operations">operations</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudforms">cloudforms</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vmware">vmware</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhev">rhev</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kvm">kvm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cluster">cluster</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vm">vm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/datastore">datastore</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/XML">XML</a>
-    </li>
-    
-    <li class="blog_menu-tag">
       <a href="/blog/tags/announcements">announcements</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/events">events</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/collaboration">collaboration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/releases">releases</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/sprints">sprints</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/automate">automate</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudformation">cloudformation</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/heat">heat</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openstack">openstack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/scale">scale</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -315,111 +234,7 @@ end</p>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/control">control</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/policy">policy</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/management">management</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/servicenow">servicenow</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/slack">slack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/custom-buttons">custom-buttons</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rdp">rdp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/ssh">ssh</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/container">container</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kubernetes">kubernetes</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openshift">openshift</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/developers">developers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/tutorials">tutorials</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/containers">containers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/compliance">compliance</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openscap">openscap</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/security">security</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/best-practices">best-practices</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/provisioning">provisioning</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/services">services</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/architecture">architecture</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cmdb">cmdb</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/integration">integration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/show">show</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/github">github</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/manageiq">manageiq</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/pull-request">pull-request</a>
+      <a href="/blog/tags/api">api</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -427,11 +242,11 @@ end</p>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/configuration">configuration</a>
+      <a href="/blog/tags/architecture">architecture</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/deployment">deployment</a>
+      <a href="/blog/tags/automate">automate</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -439,27 +254,87 @@ end</p>
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/azure">azure</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/microsoft">microsoft</a>
+      <a href="/blog/tags/best-practices">best-practices</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/self-service">self-service</a>
+      <a href="/blog/tags/cloudformation">cloudformation</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/tower">tower</a>
+      <a href="/blog/tags/cloudforms">cloudforms</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/workflows">workflows</a>
+      <a href="/blog/tags/cluster">cluster</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/ruby">ruby</a>
+      <a href="/blog/tags/cmdb">cmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/compliance">compliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/containers">containers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control">control</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/custom-buttons">custom-buttons</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore">datastore</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/github">github</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/heat">heat</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/integration">integration</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -467,11 +342,23 @@ end</p>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/aws">aws</a>
+      <a href="/blog/tags/kubernetes">kubernetes</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/series">series</a>
+      <a href="/blog/tags/kvm">kvm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/manageiq">manageiq</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -479,23 +366,7 @@ end</p>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/osp">osp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhv">rhv</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/api">api</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rest">rest</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/uxd">uxd</a>
+      <a href="/blog/tags/microsoft">microsoft</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -503,7 +374,123 @@ end</p>
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/openscap">openscap</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openshift">openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/pull-request">pull-request</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rdp">rdp</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rest">rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev">rhev</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/scale">scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/security">security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service">self-service</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/services">services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/slack">slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ssh">ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower">tower</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uxd">uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm">vm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware">vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/XML">XML</a>
     </li>
     
   </ul>

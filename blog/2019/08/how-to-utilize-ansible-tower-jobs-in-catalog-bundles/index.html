@@ -117,103 +117,103 @@
           </header>
 
           <div class="post-content" itemprop="articleBody">
-            <p>Red Hat CloudForms allows users to put both VM provisioning and Ansible Tower jobs in the same catalog bundle, with the intention of having that tower job of customizing the VM that was just provisioned.  However, it’s not as simple as adding a VM catalog item, and then an Ansible Tower catalog item. This post will guide you through the nuances of utilizing Tower jobs in CloudForms step by step.
-  
-Why can’t I just use Update on Launch when CloudForms is a source in Red Hat Tower’s inventory?
-  
-You can, as long as you don’t mind the jobs not being concurrent for that inventory.  If you have this option checked, then whatever concurrent jobs you have, will wait, since Tower does not update the inventory while a job is being executed.
-  
-However, if you wish to have concurrent jobs utilizing CloudForms, please continue reading this blog post.  This is the most efficient method utilizing CloudForms I’ve run across and we are currently using this in our lab environment for reproducers in North America for CloudForms CEE team.  A caveat of this is that you cannot have 2 VMs of the same name in your CloudForms environment, if you do, the limit will potentially be set to all of the VMs that match that name.
-  
-So how do I update the inventory for the newly provisioned host to Tower if we’re not updating on launch?
-  
-We will be utilizing an ansible playbook to use an API call to ad hoc add a host to the CloudForms inventory in Ansible Tower
-  
-What roles do I need to have enabled on the worker appliance for this to work?
- </p>
+            <p>Red Hat CloudForms allows users to put both VM provisioning and Ansible Tower jobs in the same catalog bundle, with the intention of having that tower job of customizing the VM that was just provisioned.  However, it’s not as simple as adding a VM catalog item, and then an Ansible Tower catalog item. This post will guide you through the nuances of utilizing Tower jobs in CloudForms step by step.</p>
+
+<p>Why can’t I just use Update on Launch when CloudForms is a source in Red Hat Tower’s inventory?</p>
+
+<p>You can, as long as you don’t mind the jobs not being concurrent for that inventory.  If you have this option checked, then whatever concurrent jobs you have, will wait, since Tower does not update the inventory while a job is being executed.</p>
+
+<p>However, if you wish to have concurrent jobs utilizing CloudForms, please continue reading this blog post.  This is the most efficient method utilizing CloudForms I’ve run across and we are currently using this in our lab environment for reproducers in North America for CloudForms CEE team.  A caveat of this is that you cannot have 2 VMs of the same name in your CloudForms environment, if you do, the limit will potentially be set to all of the VMs that match that name.</p>
+
+<p>So how do I update the inventory for the newly provisioned host to Tower if we’re not updating on launch?</p>
+
+<p>We will be utilizing an ansible playbook to use an API call to ad hoc add a host to the CloudForms inventory in Ansible Tower</p>
+
+<p>What roles do I need to have enabled on the worker appliance for this to work?</p>
+
 <ul>
   <li>Automate</li>
   <li>Embedded Ansible</li>
   <li>Provider Inventory</li>
-  <li>Provider Operations
-  
-You will also need to add the appropriate VM provider and Ansible Tower provider
-  
-Setting up the repository for embedded ansible
-  
-Go to Automation &gt; Ansible &gt; Repositories &gt; Add New Repository, and use the following URL:</li>
+  <li>Provider Operations</li>
 </ul>
+
+<p>You will also need to add the appropriate VM provider and Ansible Tower provider</p>
+
+<p>Setting up the repository for embedded ansible</p>
+
+<p>Go to Automation &gt; Ansible &gt; Repositories &gt; Add New Repository, and use the following URL:</p>
 
 <p>(<a href="https://github.com/rh-dluong/cloudforms-tower-example.git">https://github.com/rh-dluong/cloudforms-tower-example.git</a>)</p>
 
-<p>You will need to set the tower_user and tower_password extra vars on your own for this to work.  This user will need to have modification rights on the inventory you’re utilizing for the tower job.  You can do this through automate, service dialog, a vault/vars file or by modifying the playbook directly.
-  
-Customizing automate
-  
-You will need to create a new automate domain, for the example, my GitHub repository, it will be lab_maintenance.
- </p>
+<p>You will need to set the tower_user and tower_password extra vars on your own for this to work.  This user will need to have modification rights on the inventory you’re utilizing for the tower job.  You can do this through automate, service dialog, a vault/vars file or by modifying the playbook directly.</p>
+
+<p>Customizing automate</p>
+
+<p>You will need to create a new automate domain, for the example, my GitHub repository, it will be lab_maintenance.</p>
+
 <ol>
   <li>Copy and modify AutomationManagement/AnsibleTower/Operations/StateMachines/Job/wait_for_ip method</li>
 </ol>
 
 <ul>
-  <li>Original line:   ip_list = vm.ipaddresses</li>
-  <li>
-    <p>Changed line:  ip_list = vm.ipaddresses.grep(/./)
-  
-The reason for this modification is to wait for an ipv4 address, as CloudForms by default just waits for the first IP it discovers and it’s usually an ipv6 address.
-  
-2.Then create an ansible playbook method, picking the playbook found in the synced repository, with the following modifications:</p>
-  </li>
+  <li>Original line:   ip_list = vm.ipaddresses</li>
+  <li>Changed line:  ip_list = vm.ipaddresses.grep(/./)</li>
+</ul>
+
+<p>The reason for this modification is to wait for an ipv4 address, as CloudForms by default just waits for the first IP it discovers and it’s usually an ipv6 address.</p>
+
+<p>2.Then create an ansible playbook method, picking the playbook found in the synced repository, with the following modifications:</p>
+
+<ul>
   <li>Hosts is set to ${/#miq_provision.destination.ipaddresses.sort.first}</li>
   <li>Input parameters are set as followed:</li>
 </ul>
 
-<p>You will need to change the inventory number to whatever your inventory number is from tower that you want to utilize with the job template.  You can find the inventory number by navigating to the inventory in the Ansible Tower UI and inspecting the URL</p>
+<p>You will need to change the inventory number to whatever your inventory number is from tower that you want to utilize with the job template.  You can find the inventory number by navigating to the inventory in the Ansible Tower UI and inspecting the URL</p>
 
 <ul>
-  <li>Example, 3 is the inventory number according to this URL: (<a href="https://tower.example.com/#/inventories/inventory/3?inventory_search=page_size:20;order_by:name">https://tower.example.com/#/inventories/inventory/3?inventory_search=page_size:20;order_by:name</a>)</li>
+  <li>Example, 3 is the inventory number according to this URL: (<a href="https://tower.example.com/#/inventories/inventory/3?inventory_search=page_size:20;order_by:name">https://tower.example.com/#/inventories/inventory/3?inventory_search=page_size:20;order_by:name</a>)</li>
 </ul>
 
 <p>3.Create an instance called vm_name_limit and set it to the following:</p>
 
-<p>Create a method in the same class and have it filled out like so:
-  
-vm_name = $evm.root[‘dialog_option_1_vm_name’]
+<p>Create a method in the same class and have it filled out like so:</p>
+
+<p>vm_name = $evm.root[‘dialog_option_1_vm_name’]
 unless vm_name.nil? || vm_name.length.zero?
 limit = $evm.object
 limit[“data_type”] = “string”
 limit[“required”] = “true”
 limit[“value”] = vm_name
-end
-  
-This sets the limit to the dialog_option_1_vm_name dialog field, which ansible tower uses as the host, if you’re using CloudForms as a source for the inventory
-  
-4.Copy and modify the instance /Infrastructure/VM/Provisioning/StateMachines/VMProvision_VM/template
-  
-Add the WaitForIP and Playbook steps to the VMProvision_VM class after PostProvision and fill out the values like so:</p>
+end</p>
+
+<p>This sets the limit to the dialog_option_1_vm_name dialog field, which ansible tower uses as the host, if you’re using CloudForms as a source for the inventory</p>
+
+<p>4.Copy and modify the instance /Infrastructure/VM/Provisioning/StateMachines/VMProvision_VM/template</p>
+
+<p>Add the WaitForIP and Playbook steps to the VMProvision_VM class after PostProvision and fill out the values like so:</p>
 
 <h2 id="creating-the-service-dialog">Creating the Service Dialog</h2>
 
-<p>We will need to create a service dialog with 2 necessary fields:
- </p>
+<p>We will need to create a service dialog with 2 necessary fields:</p>
+
 <ul>
   <li>option_1_vm_name</li>
-  <li>limit
-  
-The limit is dynamic, and the entry point is set to the vm_name_limit instance we created earlier.  This is so we can set the limit to the vm that was just provisioned. Create this field first.
-  
-Create the option_1_vm_name field second, as it’s static, and you’ll need to select “limit” under Fields to Refresh under the Options tab
- 
-    <h2 id="creating-the-catalog-bundle">Creating the Catalog bundle</h2>
-  </li>
+  <li>limit</li>
 </ul>
 
-<p>Create a VM catalog item and then create an ansible tower job catalog item.  Then add both items to the bundle. Have the VM catalog item be 1st, and the tower job second.  In the following example, the CloudForms 4.7 catalog item is the VM catalog item, and Quick Setup is the ansible tower job item</p>
+<p>The limit is dynamic, and the entry point is set to the vm_name_limit instance we created earlier.  This is so we can set the limit to the vm that was just provisioned. Create this field first.</p>
+
+<p>Create the option_1_vm_name field second, as it’s static, and you’ll need to select “limit” under Fields to Refresh under the Options tab</p>
+
+<h2 id="creating-the-catalog-bundle">Creating the Catalog bundle</h2>
+
+<p>Create a VM catalog item and then create an ansible tower job catalog item.  Then add both items to the bundle. Have the VM catalog item be 1st, and the tower job second.  In the following example, the CloudForms 4.7 catalog item is the VM catalog item, and Quick Setup is the ansible tower job item</p>
 
 <h2 id="wrapping-up">Wrapping up</h2>
 
-<p>After all that you should be good to go!  These are the steps I’ve had to create since provisioning a CloudForms appliance and having the post provision modifications from Tower took around 30 minutes each.  If I had just done the update on launch option on the inventory, we would only be able to provision a reproducer every 30 minutes. Now with this, we can have concurrent jobs, enabling us to provision any number of reproducers in the same 30 minute time window.  I have examples of an automate domain and service dialog you can utilize in the same github repository as the one mentioned for the playbook, so you can skip all of this and import them as you wish.</p>
+<p>After all that you should be good to go!  These are the steps I’ve had to create since provisioning a CloudForms appliance and having the post provision modifications from Tower took around 30 minutes each.  If I had just done the update on launch option on the inventory, we would only be able to provision a reproducer every 30 minutes. Now with this, we can have concurrent jobs, enabling us to provision any number of reproducers in the same 30 minute time window.  I have examples of an automate domain and service dialog you can utilize in the same github repository as the one mentioned for the playbook, so you can skip all of this and import them as you wish.</p>
 
           </div>
         </article>
@@ -228,87 +228,7 @@ Create the option_1_vm_name field second, as it’s static, and you’ll need to
   <ul id="blog_tag_menu" class="blog_menu">
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/external">external</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/operations">operations</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudforms">cloudforms</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vmware">vmware</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhev">rhev</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kvm">kvm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cluster">cluster</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/vm">vm</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/datastore">datastore</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/XML">XML</a>
-    </li>
-    
-    <li class="blog_menu-tag">
       <a href="/blog/tags/announcements">announcements</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/events">events</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/collaboration">collaboration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/releases">releases</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/sprints">sprints</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/automate">automate</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cloudformation">cloudformation</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/heat">heat</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openstack">openstack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/scale">scale</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -316,111 +236,7 @@ Create the option_1_vm_name field second, as it’s static, and you’ll need to
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/control">control</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/policy">policy</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/management">management</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/servicenow">servicenow</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/slack">slack</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/custom-buttons">custom-buttons</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rdp">rdp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/ssh">ssh</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/container">container</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/kubernetes">kubernetes</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openshift">openshift</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/developers">developers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/tutorials">tutorials</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/containers">containers</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/compliance">compliance</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/openscap">openscap</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/security">security</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/best-practices">best-practices</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/provisioning">provisioning</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/services">services</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/architecture">architecture</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/cmdb">cmdb</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/integration">integration</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/show">show</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/github">github</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/manageiq">manageiq</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/pull-request">pull-request</a>
+      <a href="/blog/tags/api">api</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -428,11 +244,11 @@ Create the option_1_vm_name field second, as it’s static, and you’ll need to
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/configuration">configuration</a>
+      <a href="/blog/tags/architecture">architecture</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/deployment">deployment</a>
+      <a href="/blog/tags/automate">automate</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -440,27 +256,87 @@ Create the option_1_vm_name field second, as it’s static, and you’ll need to
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/azure">azure</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/microsoft">microsoft</a>
+      <a href="/blog/tags/best-practices">best-practices</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/self-service">self-service</a>
+      <a href="/blog/tags/cloudformation">cloudformation</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/tower">tower</a>
+      <a href="/blog/tags/cloudforms">cloudforms</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/workflows">workflows</a>
+      <a href="/blog/tags/cluster">cluster</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/ruby">ruby</a>
+      <a href="/blog/tags/cmdb">cmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/compliance">compliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/containers">containers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control">control</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/custom-buttons">custom-buttons</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/datastore">datastore</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/external">external</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/github">github</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/heat">heat</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/integration">integration</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -468,11 +344,23 @@ Create the option_1_vm_name field second, as it’s static, and you’ll need to
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/aws">aws</a>
+      <a href="/blog/tags/kubernetes">kubernetes</a>
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/series">series</a>
+      <a href="/blog/tags/kvm">kvm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/manageiq">manageiq</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -480,23 +368,7 @@ Create the option_1_vm_name field second, as it’s static, and you’ll need to
     </li>
     
     <li class="blog_menu-tag">
-      <a href="/blog/tags/osp">osp</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rhv">rhv</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/api">api</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/rest">rest</a>
-    </li>
-    
-    <li class="blog_menu-tag">
-      <a href="/blog/tags/uxd">uxd</a>
+      <a href="/blog/tags/microsoft">microsoft</a>
     </li>
     
     <li class="blog_menu-tag">
@@ -504,7 +376,123 @@ Create the option_1_vm_name field second, as it’s static, and you’ll need to
     </li>
     
     <li class="blog_menu-tag">
+      <a href="/blog/tags/openscap">openscap</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openshift">openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
       <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/pull-request">pull-request</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rdp">rdp</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rest">rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev">rhev</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/scale">scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/security">security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service">self-service</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/series">series</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/services">services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/show">show</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/slack">slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ssh">ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tower">tower</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uxd">uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vm">vm</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware">vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/XML">XML</a>
     </li>
     
   </ul>
