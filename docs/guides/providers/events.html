@@ -565,7 +565,7 @@
   <span class="c1"># fetching events from the provider.</span>
   <span class="k">def</span> <span class="nf">event_monitor_handle</span>
     <span class="vi">@event_monitor_handle</span> <span class="o">||=</span> <span class="k">begin</span>
-      <span class="nb">self</span><span class="p">.</span><span class="nf">class</span><span class="p">.</span><span class="nf">parent</span><span class="o">::</span><span class="no">Stream</span><span class="p">.</span><span class="nf">new</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">class</span><span class="p">.</span><span class="nf">module_parent</span><span class="o">::</span><span class="no">Stream</span><span class="p">.</span><span class="nf">new</span>
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
