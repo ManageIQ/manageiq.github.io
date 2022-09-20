@@ -1140,6 +1140,7 @@
 <p>Make any necessary changes (i.e applicationDomain) that apply to your environment then create the CR (Custom Resource).
 The operator will take action to deploy the application based on the information in the CR.
 It may take several minutes for the database to be initialized and the workers to enter a ready state.</p>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create <span class="nt">-f</span> config/samples/_v1alpha1_manageiq.yaml
 </code></pre></div></div>
 
@@ -1171,95 +1172,125 @@ If the global region database is migrated from an appliance to a pod, the replic
 If any of the remote region databases are running in the cluster, the <code class="language-plaintext highlighter-rouge">postgresql</code> service for those databases will need to be exposed using a <a href="https://kubernetes.io/docs/concepts/services-networking/service/#nodeport">node port</a>.
 To publish the postgresql service on a node port, patch the service using <code class="language-plaintext highlighter-rouge">$ kubectl patch service/postgresql --patch '{"spec": {"type": "NodePort"}}'</code>.
 Now you will see the node port listed (31871 in this example) as well as the internal service port (5432).  This node port can be used along with the IP address of any node in the cluster to access the postgresql service.</p>
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc get service/postgresql
-NAME         TYPE       CLUSTER-IP   EXTERNAL-IP   PORT<span class="o">(</span>S<span class="o">)</span>          AGE
-postgresql   NodePort   192.0.2.1    &lt;none&gt;        5432:31871/TCP   2m
-</code></pre></div>    </div>
-    <h3 id="collect-data-from-the-appliance">
-<a class="anchor" href="#collect-data-from-the-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collect data from the appliance</h3>
-    <ol>
-      <li>Take a backup of the database
-        <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pg_dump <span class="nt">-Fc</span> <span class="nt">-d</span> vmdb_production <span class="o">&gt;</span> /root/pg_dump
-</code></pre></div>        </div>
-      </li>
-      <li>Export the encryption key and Base64 encode it for the Kubernetes Secret.
-        <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vmdb <span class="o">&amp;&amp;</span> rails r <span class="s2">"puts Base64.encode64(ManageIQ::Password.v2_key.to_s)"</span>
-</code></pre></div>        </div>
-      </li>
-      <li>Get the region number
-        <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vmdb <span class="o">&amp;&amp;</span> rails r <span class="s2">"puts MiqRegion.my_region.region"</span>
-</code></pre></div>        </div>
-      </li>
-      <li>Get the GUID of the server that you want to run as.
-        <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vmdb <span class="o">&amp;&amp;</span> <span class="nb">cat </span>GUID
-</code></pre></div>        </div>
-        <h3 id="restore-the-backup-into-the-kubernetes-environment">
-<a class="anchor" href="#restore-the-backup-into-the-kubernetes-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Restore the backup into the kubernetes environment</h3>
-      </li>
-      <li>Create a YAML file defining the Custom Resource (CR). Minimally you’ll need the following:
-        <div class="language-yaml highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">manageiq.org/v1alpha1</span>
-<span class="na">kind</span><span class="pi">:</span> <span class="s">ManageIQ</span>
-<span class="na">metadata</span><span class="pi">:</span>
-<span class="na">name</span><span class="pi">:</span> <span class="s">&lt;friendly name for you CR instance&gt;</span>
-<span class="na">spec</span><span class="pi">:</span>
-<span class="na">applicationDomain</span><span class="pi">:</span> <span class="s">&lt;your application domain name&gt;</span>
-<span class="na">databaseRegion</span><span class="pi">:</span> <span class="s">&lt;region number from the appliance above&gt;</span>
-<span class="na">serverGuid</span><span class="pi">:</span> <span class="s">&lt;GUID value from appliance above&gt;</span>
-</code></pre></div>        </div>
-      </li>
-      <li>Create the CR in your namespace. Once created, the operator will create several additional resources and start deploying the app.
-        <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create <span class="nt">-f</span> &lt;file name from above&gt;
-</code></pre></div>        </div>
-      </li>
-      <li>Edit the app secret inserting the encryption key from the appliance. Replace the “encryption-key” value with the value we exported from the appliance above.
-        <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc edit secret app-secrets
-</code></pre></div>        </div>
-      </li>
-      <li>Temporarily hijack the orchestrator by adding the following to the deployment:
-        <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl patch deployment orchestrator <span class="nt">-p</span> <span class="s1">'{"spec":{"template":{"spec":{"containers":[{"name":"orchestrator","command":["sleep", "1d"]}]}}}}'</span>
-</code></pre></div>        </div>
-      </li>
-      <li>Shell into the orchestrator container:
-```bash
-$ oc rsh deploy/orchestrator</li>
-    </ol>
   </li>
 </ul>
 
-<p>$ cd /var/www/miq/vmdb
-$ source ./container_env
-$ DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rake db:drop db:create</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6. `oc rsh` into the database pod and restore the database backup
-```bash
-$ cd /var/lib/pgsql
-# --- download your backup here ---
-$ pg_restore -v -d vmdb_production &lt;your_backup_file&gt;
-$ rm -f &lt;your_backup_file&gt;
-$ exit
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc get service/postgresql
+NAME         TYPE       CLUSTER-IP   EXTERNAL-IP   PORT<span class="o">(</span>S<span class="o">)</span>          AGE
+postgresql   NodePort   192.0.2.1    &lt;none&gt;        5432:31871/TCP   2m
 </code></pre></div></div>
+
+<h3 id="collect-data-from-the-appliance">
+<a class="anchor" href="#collect-data-from-the-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collect data from the appliance</h3>
 <ol>
-  <li>Back in orchestrator pod from step 5:
+  <li>
+    <p>Take a backup of the database</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pg_dump <span class="nt">-Fc</span> <span class="nt">-d</span> vmdb_production <span class="o">&gt;</span> /root/pg_dump
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Export the encryption key and Base64 encode it for the Kubernetes Secret.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vmdb <span class="o">&amp;&amp;</span> rails r <span class="s2">"puts Base64.encode64(ManageIQ::Password.v2_key.to_s)"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Get the region number</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vmdb <span class="o">&amp;&amp;</span> rails r <span class="s2">"puts MiqRegion.my_region.region"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Get the GUID of the server that you want to run as.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vmdb <span class="o">&amp;&amp;</span> <span class="nb">cat </span>GUID
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="restore-the-backup-into-the-kubernetes-environment">
+<a class="anchor" href="#restore-the-backup-into-the-kubernetes-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Restore the backup into the kubernetes environment</h3>
+<ol>
+  <li>
+    <p>Create a YAML file defining the Custom Resource (CR). Minimally you’ll need the following:</p>
+
+    <div class="language-yaml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">manageiq.org/v1alpha1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">ManageIQ</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">&lt;friendly name for you CR instance&gt;</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">applicationDomain</span><span class="pi">:</span> <span class="s">&lt;your application domain name&gt;</span>
+  <span class="na">databaseRegion</span><span class="pi">:</span> <span class="s">&lt;region number from the appliance above&gt;</span>
+  <span class="na">serverGuid</span><span class="pi">:</span> <span class="s">&lt;GUID value from appliance above&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create the CR in your namespace. Once created, the operator will create several additional resources and start deploying the app.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create <span class="nt">-f</span> &lt;file name from above&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Edit the app secret inserting the encryption key from the appliance. Replace the “encryption-key” value with the value we exported from the appliance above.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc edit secret app-secrets
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Temporarily hijack the orchestrator by adding the following to the deployment:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl patch deployment orchestrator <span class="nt">-p</span> <span class="s1">'{"spec":{"template":{"spec":{"containers":[{"name":"orchestrator","command":["sleep", "1d"]}]}}}}'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Shell into the orchestrator container:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc rsh deploy/orchestrator
+
+<span class="nv">$ </span><span class="nb">cd</span> /var/www/miq/vmdb
+<span class="nv">$ </span><span class="nb">source</span> ./container_env
+<span class="nv">$ DISABLE_DATABASE_ENVIRONMENT_CHECK</span><span class="o">=</span>1 rake db:drop db:create
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">oc rsh</code> into the database pod and restore the database backup</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /var/lib/pgsql
+<span class="c"># --- download your backup here ---</span>
+<span class="nv">$ </span>pg_restore <span class="nt">-v</span> <span class="nt">-d</span> vmdb_production &lt;your_backup_file&gt;
+<span class="nv">$ </span><span class="nb">rm</span> <span class="nt">-f</span> &lt;your_backup_file&gt;
+<span class="nv">$ </span><span class="nb">exit</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Back in orchestrator pod from step 5:</p>
+
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rake db:migrate
 <span class="nv">$ </span><span class="nb">exit</span>
 </code></pre></div>    </div>
   </li>
-  <li>Delete the orchestrator deployment to remove the command override that we added above:
+  <li>
+    <p>Delete the orchestrator deployment to remove the command override that we added above:</p>
+
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl delete deployment orchestrator
 </code></pre></div>    </div>
-    <p>Done! The orchestrator will start deploying the rest of the pods required to run the application.</p>
   </li>
 </ol>
+
+<p>Done! The orchestrator will start deploying the rest of the pods required to run the application.</p>
 
 <h1 id="customizing-the-installation">
 <a class="anchor" href="#customizing-the-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customizing the Installation</h1>
@@ -1273,6 +1304,7 @@ $ exit
 <a class="anchor" href="#external-postgresql" aria-hidden="true"><span class="octicon octicon-link"></span></a>External postgresql</h2>
 
 <p>Running with an external Postgres server is an option, if you want the default internal Postgres you can skip this step. Additionally, if you want to secure the connection, you need to include the optional parameters <code class="language-plaintext highlighter-rouge">sslmode=verify-full</code> and <code class="language-plaintext highlighter-rouge">rootcertificate</code> when you create the secret. To do this, manually create the secret and substitute your values before you create the CR.</p>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create secret generic postgresql-secrets <span class="se">\</span>
   <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">dbname</span><span class="o">=</span>vmdb_production <span class="se">\</span>
   <span class="nt">--from-literal</span><span class="o">=</span><span class="nb">hostname</span><span class="o">=</span>&lt;your <span class="nb">hostname</span><span class="o">&gt;</span> <span class="se">\</span>
@@ -1282,6 +1314,7 @@ $ exit
   <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">sslmode</span><span class="o">=</span>verify-full <span class="se">\ </span><span class="c"># optional</span>
   <span class="nt">--from-file</span><span class="o">=</span><span class="nv">rootcertificate</span><span class="o">=</span>path/to/optional/certificate.pem <span class="c"># optional</span>
 </code></pre></div></div>
+
 <p>Note: If wanted, the secret name is also customizable by setting <code class="language-plaintext highlighter-rouge">databaseSecret</code> in the CR.</p>
 
 <h2 id="using-tls-to-encrypt-connections-between-pods-inside-the-cluster">
@@ -1343,9 +1376,15 @@ If you want a script that will generate these certificates for you, see: https:/
 <h2 id="configuring-an-image-pull-secret">
 <a class="anchor" href="#configuring-an-image-pull-secret" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring an image pull secret</h2>
 
-<p>If authentication is required in order to pull the images, a secret containing the credentials needs to be created.
-If your secret is named <code class="language-plaintext highlighter-rouge">image-pull-secret</code>, no additional changes are required to the custom resource.
-If you use a different name for the secret, that will need to be defined in the custom resource as <code class="language-plaintext highlighter-rouge">imagePullSecret: your-secret-name</code></p>
+<p>If authentication is required in order to pull the images, a secret containing the credentials needs to be created.  The following is an example of creating the secret.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl create secret docker-registry image-pull-secret <span class="nt">--docker-username</span><span class="o">=</span>&lt;your registry username&gt; <span class="nt">--docker-password</span><span class="o">=</span>&lt;your registry password&gt; <span class="nt">--docker-server</span><span class="o">=</span>&lt;your registry server&gt;
+</code></pre></div></div>
+
+<p>If you decide to use a secret name other than <code class="language-plaintext highlighter-rouge">image-pull-secret</code>, you need to specify that in the CR.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">imagePullSecret</span><span class="pi">:</span> <span class="s">&lt;name of your pull secret&gt;</span>
+</code></pre></div></div>
 
 <h2 id="configuring-openid-connect-authentication">
 <a class="anchor" href="#configuring-openid-connect-authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring OpenID-Connect Authentication</h2>
@@ -1356,7 +1395,7 @@ For this example we tested with Keycloak version 11.0</p>
 <p>Create a secret containing the OpenID-Connect’s <code class="language-plaintext highlighter-rouge">Client ID</code> and <code class="language-plaintext highlighter-rouge">Client Secret</code>.
 The values for <code class="language-plaintext highlighter-rouge">CLIENT_ID</code> and <code class="language-plaintext highlighter-rouge">CLIENT_SECRET</code> come from your authentication provider’s client definition.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create secret generic &lt;name of your kubernetes secret&gt; <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">CLIENT_ID</span><span class="o">=</span>&lt;your auth provider<span class="s1">'s client ID&gt; --from-literal=CLIENT_SECRET=&lt;your auth provider'</span>s client secret&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create secret generic &lt;name of your kubernetes secret&gt; <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">CLIENT_ID</span><span class="o">=</span>&lt;your auth provider client ID&gt; <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">CLIENT_SECRET</span><span class="o">=</span>&lt;your auth provider client secret&gt;
 </code></pre></div></div>
 
 <p>Modify the CR with the following values:</p>
@@ -1385,12 +1424,14 @@ The values for <code class="language-plaintext highlighter-rouge">CLIENT_ID</cod
 <a class="anchor" href="#using-your-own-images" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using your own images</h2>
 
 <p>If you built your own custom application images and want to deploy those you can specify the image names in the CR using the following example.</p>
+
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">applicationDomain</span><span class="pi">:</span> <span class="s">miqproject.apps-crc.testing</span>
 <span class="na">orchestratorImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-orchestrator:latest</span>
 <span class="na">baseWorkerImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-base-worker:latest</span>
 <span class="na">uiWorkerImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-ui-worker:latest</span>
 <span class="na">webserverWorkerImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-webserver-worker:latest</span>
 </code></pre></div></div>
+
 <p>If you built your own operator image, you’ll need to edit the operator deployment to specify that.</p>
 
 <h1 id="uninstalling">
@@ -1449,7 +1490,7 @@ The following command removes everything except for the operator:</p>
 <h2 id="check-readiness-of-the-pods">
 <a class="anchor" href="#check-readiness-of-the-pods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Check readiness of the pods</h2>
 
-<p><em><strong>Note:</strong></em> Please allow a few minutes for the application to start.  Initial install and upgrades take extra time due do database initialization.  HTTPS traffic will not be served until pods are running and ready.  The READY column denotes the number of replicas and their readiness state.  The operator deploys the following pods:</p>
+<p><strong>Note:</strong> Please allow a few minutes for the application to start.  Initial install and upgrades take extra time due to database initialization.  HTTPS traffic will not be served until pods are running and ready.  The READY column denotes the number of replicas and their readiness state.  The operator deploys the following pods:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc get pods
 NAME                                     READY     STATUS    RESTARTS   AGE
@@ -1487,6 +1528,7 @@ web-service-858f55f55d-5tmcr             1/1       Running   0          32m
 <a class="anchor" href="#obtain-host-information-from-ingressroute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Obtain host information from ingress/route</h3>
 
 <p>An ingress should have been deployed.  If enabling internal SSL and running in OpenShift, a route is created.</p>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc get ingress
 NAME      HOSTS                              ADDRESS   PORTS     AGE
 httpd     my-app.apps.example.com                     80, 443   56s
@@ -1494,6 +1536,7 @@ httpd     my-app.apps.example.com                     80, 443   56s
 NAME          HOST/PORT                          PATH      SERVICES   PORT      TERMINATION     WILDCARD
 httpd-qlvmj   my-app.apps.example.com           /         httpd      80        edge/Redirect   None
 </code></pre></div></div>
+
 <p>Examine output and point your web browser to the reported URL/HOST.</p>
 
 <h2 id="get-a-shell-on-the-miq-pod">
