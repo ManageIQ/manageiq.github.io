@@ -2912,7 +2912,7 @@ used, unless you specify otherwise.</p>
 where you want to change the dialog.</p>
   </li>
   <li>
-    <p>Navigate to menu:Automate[Customization].</p>
+    <p>Navigate to menu:Embedded Automate[Customization].</p>
   </li>
   <li>
     <p>Click the <strong>Provisioning Dialogs</strong> accordion.</p>
@@ -2968,7 +2968,7 @@ or <code class="language-plaintext highlighter-rouge">false</code> based on your
 
 <ol>
   <li>
-    <p>Navigate to menu:Automate[Customization].</p>
+    <p>Navigate to menu:Embedded Automate[Customization].</p>
   </li>
   <li>
     <p>Click on the <strong>Provisioning Dialogs</strong> accordion.</p>
@@ -3068,7 +3068,7 @@ Provisioning Profiles class so that it can be used for groups of users.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Automate[Explorer].</p>
+    <p>Navigate to menu:Embedded Automate[Explorer].</p>
   </li>
   <li>
     <p>Using the tree located in the accordion, click menu:DOMAIN[Cloud &gt; VM &gt; Provisioning &gt; Profile].</p>
@@ -3163,6 +3163,9 @@ pair to view its details.</p>
   <li>
     <p>If you want to use a public key, copy its contents into the <strong>Public
 Key (optional)</strong> field.</p>
+
+    <p><strong>Note</strong>: You must have a public key value for the IBM POWER VS provider to create the key pair.
+An error message is returned if you fail to add a public key value and can be viewed in <strong>Settings &gt; Tasks</strong>.</p>
   </li>
   <li>
     <p>Select which cloud provider on which to create the key pair. The key
@@ -3203,7 +3206,7 @@ trillion database IDs, this number can be several digits long.</p>
 
 <p><strong>Request ID Format</strong></p>
 
-<p><strong>Request 99</strong> in <strong>region 123</strong> results in <strong>Request ID
+<p><strong>Request 99</strong> in region 123 results in <strong>Request ID
 123000000000099</strong>.</p>
 
 <h4 id="reloading-the-status-of-provisioning-requests">
@@ -3214,7 +3217,7 @@ trillion database IDs, this number can be several digits long.</p>
     <p>Navigate to menu:Services[Requests].</p>
   </li>
   <li>
-    <p>Click <img src="../images/2106.png" alt="2106">(<strong>Reload the current display</strong>).</p>
+    <p>Click <img src="../images/2106.png" alt="2106">(<strong>Refreshes the current display</strong>).</p>
   </li>
 </ol>
 
@@ -3233,10 +3236,10 @@ virtual machine or instance creation.</p>
     <p>Click on the request you want to approve.</p>
   </li>
   <li>
-    <p>Type in a <strong>Reason</strong> for the approval.</p>
+    <p>Click <img src="../images/1852.png" alt="1852">(<strong>Approve this request</strong>).</p>
   </li>
   <li>
-    <p>Click <img src="../images/1852.png" alt="1852">(<strong>Approve this request</strong>).</p>
+    <p>Type in a <strong>Reason</strong> for the approval.</p>
   </li>
 </ol>
 
@@ -3251,10 +3254,10 @@ virtual machine or instance creation.</p>
     <p>Click on the request you want to deny.</p>
   </li>
   <li>
-    <p>Type in a <strong>Reason</strong> for the denial.</p>
+    <p>Click <img src="../images/2009.png" alt="2009">(<strong>Deny this request</strong>).</p>
   </li>
   <li>
-    <p>Click <img src="../images/2009.png" alt="2009">(<strong>Deny this request</strong>).</p>
+    <p>Type in a <strong>Reason</strong> for the denial.</p>
   </li>
 </ol>
 
@@ -3462,16 +3465,6 @@ are set to <strong>evmadmin@company.com</strong> as a default.</p>
     <p>Navigate to menu:Automate[Explorer].</p>
   </li>
   <li>
-    <p>Choose the following Namespace: menu:DOMAIN[Cloud &gt; VM &gt;
-Provisioning &gt; Email].</p>
-
-    <p><strong>Note:</strong></p>
-
-    <p><strong>DOMAIN</strong> must be a user-defined Domain and not the locked ManageIQ Domain. If necessary, you can copy the class from the ManageIQ domain into a custom domain.</p>
-
-    <p>This example uses the <strong>Cloud</strong> Namespace, but can also use the <strong>Infrastructure</strong> namespace.</p>
-  </li>
-  <li>
     <p>Select an instance within the chosen class.</p>
   </li>
   <li>
@@ -3500,7 +3493,7 @@ steps required to complete the request. The steps followed for a regular
 provision from a virtual machine to a virtual machine (not to a
 template) are found by navigating to menu:Automate[Explorer], then
 listed under menu:DOMAIN[Cloud|Infrastructure &gt; VM &gt; Provisioning &gt;
-VMProvision_VM &gt; Provision VM from Template (template)]. The value
+StateMachines &gt; VMProvision_VM &gt; Provision VM from Template (template)]. The value
 for each state shows where the instance resides in the <strong>Datastore</strong>
 accordion. The default set of execution steps is shown below. For more
 information on state machines, see <a href="#state-machines">State Machines</a>.</p>
@@ -3539,6 +3532,10 @@ information on state machines, see <a href="#state-machines">State Machines</a>.
     <tr>
       <td>Register AD</td>
       <td>Integrates with IPAM to register with active directory.</td>
+    </tr>
+    <tr>
+      <td>Placement</td>
+      <td>Determine placement of virtual machine or instance.</td>
     </tr>
     <tr>
       <td>PreProvision</td>
@@ -3662,7 +3659,7 @@ the <strong>Configuration Set Ownership</strong> button. If a virtual machine or
 
 <ol>
   <li>
-    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+    <p>Click <img src="../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>) &gt; click <strong>Application Settings</strong>.</p>
   </li>
   <li>
     <p>Click the <strong>Access Control</strong> accordion, and select the user or group
@@ -5813,8 +5810,7 @@ retirement date from.</p>
 <img src="../images/2010.png" alt="2010">(<strong>Set Retirement Date</strong>).</p>
   </li>
   <li>
-    <p>Click <img src="../images/remove-retirement-date.png" alt="remove retirement date">
-to remove the retirement date.</p>
+    <p>Save a blank date to remove the retirement dates.</p>
   </li>
 </ol>
 
@@ -5906,7 +5902,7 @@ Do not change it.</p>
   </li>
   <li>
     <p>Click menu:DOMAIN[Cloud &gt; VM &gt; Retirement &gt; Email &gt;
-vm_retire_extend].</p>
+System &gt; Request].</p>
 
     <p><strong>Note:</strong></p>
 

@@ -1068,12 +1068,9 @@
 <li class="toc-entry toc-h3"><a href="#network">Network</a></li>
 <li class="toc-entry toc-h3"><a href="#scm">SCM</a></li>
 <li class="toc-entry toc-h3"><a href="#amazon">Amazon</a></li>
-<li class="toc-entry toc-h3"><a href="#azure-classic-deprecated">Azure Classic (deprecated)</a></li>
 <li class="toc-entry toc-h3"><a href="#azure">Azure</a></li>
 <li class="toc-entry toc-h3"><a href="#openstack">OpenStack</a></li>
-<li class="toc-entry toc-h3"><a href="#rackspace">Rackspace</a></li>
 <li class="toc-entry toc-h3"><a href="#red-hat-virtualization">Red Hat Virtualization</a></li>
-<li class="toc-entry toc-h3"><a href="#satellite-6">Satellite 6</a></li>
 <li class="toc-entry toc-h3"><a href="#vmware">VMware</a></li>
 </ul>
 </li>
@@ -1675,7 +1672,7 @@ features.</p>
 <strong>Diagnostics</strong> and click on the desired server.</p>
   </li>
   <li>
-    <p>Click on the <strong>Workers</strong> tab.</p>
+    <p>Click on the <strong>Roles by Servers</strong> tab.</p>
   </li>
 </ol>
 
@@ -1702,9 +1699,6 @@ your playbooks.</p>
     <p>Add a description for the repository in the <strong>Description</strong> field.</p>
   </li>
   <li>
-    <p>Select an <strong>SCM Type</strong> from the drop-down menu.</p>
-  </li>
-  <li>
     <p>Add a <strong>URL</strong> or IP Address for the repository.</p>
   </li>
   <li>
@@ -1714,10 +1708,7 @@ your playbooks.</p>
     <p>Provide a branch name in the <strong>SCM Branch</strong> field.</p>
   </li>
   <li>
-    <p>Check the appropriate box for any <strong>SCM Update Options</strong>.</p>
-  </li>
-  <li>
-    <p>Click <strong>Add</strong>.</p>
+    <p>Click <strong>Save</strong>.</p>
   </li>
 </ol>
 
@@ -1795,6 +1786,10 @@ Credential</strong>).</p>
 depending on the type chosen.</p>
   </li>
   <li>
+    <p><strong>Vault Password</strong>: Ansible Vault credentials have only the <strong>Vault
+Password</strong> attribute that may be configured.</p>
+  </li>
+  <li>
     <p>Click <strong>Add</strong>.</p>
   </li>
 </ol>
@@ -1843,10 +1838,6 @@ escalation privileges on the remote system.</p>
     <p><strong>Privilege Escalation Password</strong>: Enter the actual password to be
 used to authenticate the user via the selected privilege escalation
 type on the remote system.</p>
-  </li>
-  <li>
-    <p><strong>Vault Password</strong>: Ansible Vault credentials have only the <strong>Vault
-Password</strong> attribute that may be configured.</p>
   </li>
 </ul>
 
@@ -1941,25 +1932,6 @@ Service.</p>
   </li>
 </ul>
 
-<h3 id="azure-classic-deprecated">
-<a class="anchor" href="#azure-classic-deprecated" aria-hidden="true"><span class="octicon octicon-link"></span></a>Azure Classic (deprecated)</h3>
-
-<p>Selecting this credential type enables synchronization of cloud
-inventory with Microsoft Windows Azure Classic.</p>
-
-<p>Microsoft Azure credentials have several attributes to configure:</p>
-
-<ul>
-  <li>
-    <p><strong>Subscription ID</strong>: The Subscription UUID for the Microsoft Azure
-Classic account.</p>
-  </li>
-  <li>
-    <p><strong>Management Certificate</strong>: The PEM file that corresponds to the
-certificate you uploaded in the Microsoft Azure Classic console.</p>
-  </li>
-</ul>
-
 <h3 id="azure">
 <a class="anchor" href="#azure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Azure</h3>
 
@@ -2022,24 +1994,6 @@ OpenStack. This value is usually the same as the username.</p>
   </li>
 </ul>
 
-<h3 id="rackspace">
-<a class="anchor" href="#rackspace" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rackspace</h3>
-
-<p>Selecting this credential type enables synchronization of cloud
-inventory with Rackspace.</p>
-
-<p>Rackspace credentials have the following attributes that may be
-configured:</p>
-
-<ul>
-  <li>
-    <p><strong>Username</strong>: The username to use to connect to vCenter.</p>
-  </li>
-  <li>
-    <p><strong>API Key</strong>: The public key related to the administrator ID.</p>
-  </li>
-</ul>
-
 <h3 id="red-hat-virtualization">
 <a class="anchor" href="#red-hat-virtualization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Red Hat Virtualization</h3>
 
@@ -2073,27 +2027,6 @@ authentication.</p>
     Virtualization.
 
 </div>
-  </li>
-</ul>
-
-<h3 id="satellite-6">
-<a class="anchor" href="#satellite-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Satellite 6</h3>
-
-<p>Selecting this credential type enables synchronization of cloud
-inventory with Red Hat Satellite 6.</p>
-
-<p>Satellite credentials have several attributes that may be configured:</p>
-
-<ul>
-  <li>
-    <p><strong>Username</strong>: The username to use to connect to Satellite 6.</p>
-  </li>
-  <li>
-    <p><strong>Password</strong>: The password to use to connect to Satellite 6.</p>
-  </li>
-  <li>
-    <p><strong>Satellite 6 Host</strong>: The Satellite 6 URL or IP address to connect
-to.</p>
   </li>
 </ul>
 
