@@ -1060,6 +1060,7 @@
 <li class="toc-entry toc-h3"><a href="#configuring-manageiq">Configuring ManageIQ</a></li>
 <li class="toc-entry toc-h3"><a href="#configuring-general-appliance-settings">Configuring General Appliance Settings</a></li>
 <li class="toc-entry toc-h3"><a href="#configuring-a-database-for-manageiq">Configuring a Database for ManageIQ</a></li>
+<li class="toc-entry toc-h3"><a href="#configuring-an-internal-database">Configuring an Internal Database</a></li>
 <li class="toc-entry toc-h3"><a href="#configuring-general-manageiq-settings">Configuring General ManageIQ Settings</a></li>
 <li class="toc-entry toc-h3"><a href="#configuring-manageiq-metrics-for-smartstate-analysis">Configuring ManageIQ Metrics for SmartState Analysis</a>
 <ul>
@@ -1790,19 +1791,18 @@ database. For instructions on how to configure an external database
 instead, see <a href="https://access.redhat.com/documentation/en/red-hat-cloudforms/4.1/single/installing-red-hat-cloudforms-on-red-hat-enterprise-linux-openstack-platform#configuring_an_external_database">Configuring an External
 Database</a>.</p>
 
-<div class="important">
+<h3 id="configuring-an-internal-database">
+<a class="anchor" href="#configuring-an-internal-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring an Internal Database</h3>
 
-### Configuring an Internal Database
-
-Before installing an internal database, add a disk to the infrastructure
+<p>Before installing an internal database, add a disk to the infrastructure
 hosting your appliance. See the documentation specific to your
 infrastructure for instructions for adding a disk. As a storage disk
 usually cannot be added while a virtual machine is running, Red Hat
 recommends adding the disk before starting the appliance.
 ManageIQ only supports installing of an internal VMDB on blank
-disks; installation will fail if the disks are not blank.
+disks; installation will fail if the disks are not blank.</p>
 
-</div>
+<p>&lt;/div&gt;</p>
 
 <ol>
   <li>
@@ -1841,6 +1841,8 @@ deployment must use the same key.</p>
   </li>
   <li>
     <p>Choose <strong>Create Internal Database</strong> for the database location.</p>
+
+    <p>In the <strong>Configure Messaging</strong> menu, select <strong>Make No messaging changes</strong>. If you see <code class="language-plaintext highlighter-rouge">Configuration failed: Internal database require a volume mounted at /var/lib/pgsql. Please add an unpartitioned disk and try again.</code> message, then ensure to add a second disk for the database per instructions as defined above.</p>
   </li>
   <li>
     <p>Choose a disk for the database. This can be either a disk you
