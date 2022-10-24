@@ -1052,9 +1052,9 @@
 <li class="toc-entry toc-h3"><a href="#configuring-a-database">Configuring a Database</a>
 <ul>
 <li class="toc-entry toc-h4"><a href="#configuring-an-external-database">Configuring an External Database</a></li>
-<li class="toc-entry toc-h4"><a href="#configuring-a-kafka-broker">Configuring a Kafka broker</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h3"><a href="#configure-messaging">Configure Messaging</a></li>
 <li class="toc-entry toc-h3"><a href="#configuring-a-worker-appliance">Configuring a Worker Appliance</a></li>
 </ul>
 </li>
@@ -1333,6 +1333,9 @@ time, you must perform some basic configuration. You must complete these steps:<
   <li>
     <p>Configure the database.</p>
   </li>
+  <li>
+    <p>Configure messaging</p>
+  </li>
 </ol>
 
 <p>Configure the appliance by using the internal appliance console.</p>
@@ -1456,27 +1459,12 @@ summary screen displays.</p>
 
 <p>ManageIQ will then configure the external database.</p>
 
-<h4 id="configuring-a-kafka-broker">
-<a class="anchor" href="#configuring-a-kafka-broker" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring a Kafka broker</h4>
+<h3 id="configure-messaging">
+<a class="anchor" href="#configure-messaging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure Messaging</h3>
 
-<p>Some features of ManageIQ can be enabled by enabling a message server.</p>
+<p>Configuring messaging is required for appliance setup. It is recommended to configure the broker on the same appliance where your database is configured</p>
 
 <ol>
-  <li>
-    <p>Start the appliance and open a terminal console.</p>
-  </li>
-  <li>
-    <p>Run the <code class="language-plaintext highlighter-rouge">appliance_console</code> command and the summary screen will be displayed.</p>
-  </li>
-  <li>
-    <p>Press <strong>Enter</strong> to manually configure settings.</p>
-  </li>
-  <li>
-    <p>Select <strong>Configure Application</strong> from the menu.</p>
-  </li>
-  <li>
-    <p>Select <strong>Make No Database Changes</strong> from the menu.</p>
-  </li>
   <li>
     <p>You can either configure the current appliance as a kafka broker, or point the
 appliance to an existing external kafka broker.</p>
@@ -1502,7 +1490,7 @@ appliance to handle work for one or many roles, with workers within the
 appliance carrying out the duties for which they are configured. You can
 configure a worker appliance through the terminal. The following steps
 demonstrate how to join a worker appliance to an appliance that already
-has a region configured with a database.</p>
+has a region configured with a database and messaging.</p>
 
 <ol>
   <li>
@@ -1547,6 +1535,15 @@ must use the same key.</p>
   </li>
   <li>
     <p>Enter the chosen database user’s password.</p>
+  </li>
+  <li>
+    <p>Confirm the configuration if prompted.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Connect to an external messaging system</strong> to connect to the external kafka broker located on the appliance with the external database</p>
+  </li>
+  <li>
+    <p>Enter the necessary <strong>Message Client Parameters</strong> such as the hostname/IP and username/password</p>
   </li>
   <li>
     <p>Confirm the configuration if prompted.</p>
