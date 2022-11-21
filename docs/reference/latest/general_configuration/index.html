@@ -7449,11 +7449,11 @@ database from a local backup.</p>
   <li>
     <p>If you are restoring a database backup on a high availability
 environment, stop the replication manager service
-(<code class="language-plaintext highlighter-rouge">repmgr10.service</code>). This is not required in other
+(<code class="language-plaintext highlighter-rouge">repmgr13.service</code>). This is not required in other
 ManageIQ configurations.</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># systemctl stop repmgr10.service
+<div class="highlight"><pre class="highlight"><code># systemctl stop repmgr13.service
 </code></pre></div>    </div>
   </li>
   <li>
@@ -7519,11 +7519,11 @@ servers that connect to this VMDB.</p>
   <li>
     <p>If you are restoring a database backup on a high availability
 environment, start the replication manager service
-(<code class="language-plaintext highlighter-rouge">repmgr10.service</code>). This is not required in other
+(<code class="language-plaintext highlighter-rouge">repmgr13.service</code>). This is not required in other
 ManageIQ configurations.</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># systemctl start repmgr10.service
+<div class="highlight"><pre class="highlight"><code># systemctl start repmgr13.service
 </code></pre></div>    </div>
   </li>
 </ol>
