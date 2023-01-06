@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/auth/openid_connect.html">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/oparin/auth/openid_connect">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li class="active">
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<div class="doc_menu-heading">
+  Oparin
+</div>
+
+<ul class="menu menu-toplevel" id=ref_menu_oparin>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Installation
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_aws/index.html">
+      Amazon Web Services (AWS)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_kubernetes/index.html">
+      Kubernetes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_ibm_cloud/index.html">
+      IBM Cloud
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_microsoft_azure/index.html">
+      Microsoft Azure
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_google_compute_engine/index.html">
+      Google Compute Engine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_vmware_vsphere/index.html">
+      VMware vSphere
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_red_hat_enterprise_linux_openstack_platform/index.html">
+      Red Hat Enterprise OpenStack Platform
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_red_hat_virtualization/index.html">
+      Red Hat Enterprise Virtualization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_scvmm/index.html">
+      Microsoft System Center Virtual Machine Manager (SCVMM)
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Upgrading
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/upgrading_appliances/index.html">
+      Appliances
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Configuration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/deployment_planning_guide/index.html">
+      Deployment Planning Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/general_configuration/index.html">
+      General Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/high_availability_guide/index.html">
+      High Availability Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/appliance_hardening_guide/index.html">
+      Appliance Hardening Guide
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Administration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/monitoring_alerts_and_reporting/index.html">
+      Monitoring, Alerts, and Reporting
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/policies_and_profiles_guide/index.html">
+      Policies and Profiles Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_infrastructure_and_inventory/index.html">
+      Managing Infrastructure and Inventory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/index.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Infrastructure Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/red_hat_virtualization_providers.html">
+      Red Hat Virtualization Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/openstack_infrastructure_providers.html">
+      OpenStack Infrastructure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/vmware_vcenter_providers.html">
+      VMware vCenter Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/microsoft_scvmm_providers.html">
+      Microsoft SCVMM Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/ibm_power_hmc_providers.html">
+      IBM Power HMC Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Configuration Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/configuration_management_providers/ibm_terraform_provider.html">
+      IBM Terraform Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/configuration_management_providers/red_hat_satellite_6.html">
+      Red Hat Satellite 6 Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Cloud Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/azure_providers.html">
+      Azure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/amazon_ec2_providers.html">
+      Amazon EC2 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/google_compute_engine_providers.html">
+      Google Compute Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/ibm_cloud_vpc_providers.html">
+      IBM Cloud VPC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/ibm_power_systems_virtual_servers_providers.html">
+      IBM Power Systems Virtual Servers Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/ibm_power_vc_providers.html">
+      IBM PowerVC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/openstack_providers.html">
+      OpenStack Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Container Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/azure_kubernetes_providers.html">
+      Azure Kubernetes Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/red_hat_openshift_providers.html">
+      Red Hat OpenShift Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/ibm_cloud_kubernetes_service_providers.html">
+      IBM Cloud Kubernetes Service Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/oracle_kubernetes_engine_providers.html">
+      Oracle Kubernetes Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/vmware_tanzu_providers.html">
+      VMware Tanzu Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Storage Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/amazon_ebs_managers.html">
+      Amazon Elastic Block Store Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/openstack_block_storage_managers.html">
+      OpenStack Block Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/openstack_object_storage_managers.html">
+      OpenStack Object Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/ibm_cloud_object_storage_managers.html">
+      IBM Cloud Object Storage Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/provisioning_virtual_machines_and_hosts/index.html">
+      Provisioning Virtual Machines and Hosts
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/scripting_actions/index.html">
+      Scripting Actions in ManageIQ
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Troubleshooting
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/troubleshooting/index.html">
+      Troubleshooting
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Authentication
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/active_directory.html">
+      Active Directory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/ipa_2fa.html">
+      2-Factor-Authentication with IPA
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/ipa_ad_trust.html">
+      IPA/AD Trust
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/ldap.html">
+      LDAP
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/saml.html">
+      SAML
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item active">
+    <a href="/docs/reference/oparin/auth/openid_connect.html">
+      OpenID-Connect
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Integration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+      AWS CloudFormation and OpenStack Heat
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/integration_with_servicenow/index.html">
+      ServiceNow
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Reference
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/capabilities_matrix/index.html">
+      Capabilities Matrix
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/api">
+      ManageIQ REST API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/methods_available_for_automation/index.html">
+      Methods Available for Automation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc user_doc">
+      
+
+      <div class="doc-content">
+        
+        <div class="doc-versions">
+          <span class="label">Versions: </span>
+          
+            <span>
+              <a href="/docs/reference/latest/auth/openid_connect.html">
+                Latest
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span class="active" >
+              <a href="/docs/reference/oparin/auth/openid_connect.html">
+                Oparin
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/najdorf/auth/openid_connect.html">
+                Najdorf
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/morphy/auth/openid_connect.html">
+                Morphy
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/lasker/auth/openid_connect.html">
+                Lasker
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/kasparov/auth/openid_connect.html">
+                Kasparov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/jansa/auth/openid_connect.html">
+                Jansa
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/ivanchuk/auth/openid_connect.html">
+                Ivanchuk
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/hammer/auth/openid_connect.html">
+                Hammer
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Gaprindashvili
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Fine
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Euwe
+              </a>
+            </span>
+            
+          
+        </div>
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#openid-connect">OpenID-Connect</a></li>
+<li class="toc-entry toc-h2"><a href="#requirements">Requirements</a></li>
+<li class="toc-entry toc-h2"><a href="#configuring-keycloak">Configuring Keycloak</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#oidc-assertions">OIDC Assertions</a></li>
+<li class="toc-entry toc-h3"><a href="#apache-configuration">Apache Configuration</a></li>
+<li class="toc-entry toc-h3"><a href="#oidc-configuration">OIDC Configuration</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#configuring-the-administrative-ui">Configuring the Administrative UI</a></li>
+<li class="toc-entry toc-h2"><a href="#re-enabling-local-login">Re-Enabling Local Login</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#administrative-ui">Administrative UI:</a></li>
+<li class="toc-entry toc-h3"><a href="#appliance-console-interface">Appliance Console Interface:</a></li>
+<li class="toc-entry toc-h3"><a href="#appliance-console-cli">Appliance Console CLI:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#configuring-oidc-using-the-cli">Configuring OIDC using the CLI</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#configure-openid-connect">Configure OpenID-Connect</a></li>
+<li class="toc-entry toc-h3"><a href="#unconfigure-openid-connect">Unconfigure OpenID-Connect</a></li>
+</ul>
+</li>
+</ul><h2 id="openid-connect">
+<a class="anchor" href="#openid-connect" aria-hidden="true"><span class="octicon octicon-link"></span></a>OpenID-Connect</h2>
+
+<p>External Authentication on the Appliance has been enhanced to support
+OpenID-Connect, which will also be referred to as <em>OIDC</em>.</p>
+
+<p>The OIDC implementation has been tested with KeyCloak 3.2.1.</p>
+
+<p>In this guide we will cover how to manually configure an Appliance’s
+external authentication to work with OIDC. The OIDC implementation has
+been tested with KeyCloak but is implemented generically using Apache’s
+mod_auth_openidc module and should work with other OIDC Identity
+Providers.</p>
+
+<p>The current implementation secures the Appliance’s Web
+administrative and Self-Service UI with OIDC.</p>
+
+<ol>
+  <li>
+    <p><a href="#requirements">Requirements</a></p>
+  </li>
+  <li>
+    <p><a href="#configuring-keycloak">Configuring Keycloak</a></p>
+  </li>
+  <li>
+    <p><a href="#oidc-assertions">OIDC Assertions</a></p>
+  </li>
+  <li>
+    <p><a href="#apache-configuration">Apache Configuration</a></p>
+  </li>
+  <li>
+    <p><a href="#oidc-configuration">OIDC Configuration</a></p>
+  </li>
+  <li>
+    <p><a href="#configuring-the-administrative-ui">Configuring the Administrative
+UI</a></p>
+  </li>
+  <li>
+    <p><a href="#re-enabling-local-login">Re-Enabling Local Login</a></p>
+  </li>
+  <li>
+    <p><a href="#oidc-configuration-cli">Configuring OIDC using the CLI</a></p>
+  </li>
+</ol>
+
+<h2 id="requirements">
+<a class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>The following is needed in order to enable OIDC Authentication to the
+Appliance:</p>
+
+<ul>
+  <li>
+    <p>A CentOS/RHEL 7.5 based Appliance</p>
+  </li>
+  <li>
+    <p>A OIDC Identity Provider, (e.g. KeyCloak 3.2.1 or Later)</p>
+  </li>
+</ul>
+
+<h2 id="configuring-keycloak">
+<a class="anchor" href="#configuring-keycloak" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring Keycloak</h2>
+
+<p>For KeyCloak, a Realm can be created for one or more Appliances with
+individual Clients defined one per Appliance where the Client ID
+identifies the individual appliance, e.g. the appliance hostname.</p>
+
+<p>Adding a Client in the KeyCloak ManageIQ Realm:</p>
+
+<ul>
+  <li>
+    <p>Set Client ID as &lt;miq-appliance&gt;</p>
+  </li>
+  <li>
+    <p>Set Client protocol as <strong>openid-connect</strong>.</p>
+  </li>
+</ul>
+
+<p>The Client definition for the appliance can then be updated with the
+following:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Client Protocol</td>
+      <td>openid-connect</td>
+    </tr>
+    <tr>
+      <td>Access Type</td>
+      <td>confidential</td>
+    </tr>
+    <tr>
+      <td>Valid Redirect URIs</td>
+      <td>
+<a href="https://&lt;miq-appliance">https://&lt;miq-appliance</a>&gt;</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>
+<a href="https://&lt;miq-appliance">https://&lt;miq-appliance</a>/ui/service/&gt;</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>
+<a href="https://&lt;miq-appliance">https://&lt;miq-appliance</a>/oidc_login/redirect_uri&gt;</td>
+    </tr>
+    <tr>
+      <td>User Info Signed</td>
+      <td>unsigned</td>
+    </tr>
+    <tr>
+      <td>Request Object Signature Algorithm</td>
+      <td>any</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Note</em>: The trailing / for the /ui/service/ entry is required.</p>
+
+<p>The value used for OIDCClientSecret (<em>oidc_client_secret</em>) in the
+<em>manageiq-external-auth-oidc.conf</em> file is taken from the Keycloak
+Client’s <em>Credentials / Secret</em> value. To generate a new client secret,
+First set the <em>Credentials / Client Authenticator</em> to <em>Client Id and
+Secret</em> . Then <em>Regenerate Secret</em> button.</p>
+
+<h3 id="oidc-assertions">
+<a class="anchor" href="#oidc-assertions" aria-hidden="true"><span class="octicon octicon-link"></span></a>OIDC Assertions</h3>
+
+<p>For authenticating to the appliance, the following remote user
+parameters are looked at by the appliance upon a successful login and
+redirect from the Identity Provider.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>HTTP Environment</th>
+      <th>OIDC Assertion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>REMOTE_USER</td>
+      <td>username</td>
+    </tr>
+    <tr>
+      <td>REMOTE_USER_EMAIL</td>
+      <td>email</td>
+    </tr>
+    <tr>
+      <td>REMOTE_USER_FIRSTNAME</td>
+      <td>firstname</td>
+    </tr>
+    <tr>
+      <td>REMOTE_USER_LASTNAME</td>
+      <td>lastname</td>
+    </tr>
+    <tr>
+      <td>REMOTE_USER_FULLNAME</td>
+      <td>fullname</td>
+    </tr>
+    <tr>
+      <td>REMOTE_USER_GROUPS</td>
+      <td>groups</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For KeyCloak, the above OIDC Assertions can be created for the Appliance
+Client in KeyCloak as Mappers.</p>
+
+<p>The following mappers are automatically generated when the OIDC client
+is created:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Mapper Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>email</td>
+      <td>Token mapper</td>
+      <td>User Property</td>
+    </tr>
+    <tr>
+      <td>family name</td>
+      <td>Token mapper</td>
+      <td>User Property</td>
+    </tr>
+    <tr>
+      <td>given name</td>
+      <td>Token mapper</td>
+      <td>User Property</td>
+    </tr>
+    <tr>
+      <td>full name</td>
+      <td>Token mapper</td>
+      <td>User’s full name</td>
+    </tr>
+    <tr>
+      <td>username</td>
+      <td>Token mapper</td>
+      <td>User Property</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The following <em>Group Membership</em> mapper must be manually created:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Consent Required</th>
+      <th>Mapper Type</th>
+      <th>Token Claim Name</th>
+      <th>Full group path</th>
+      <th>Add to ID token</th>
+      <th>Add to access token</th>
+      <th>Add to userinfo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>groups</td>
+      <td>OFF</td>
+      <td>Group Membership</td>
+      <td>groups</td>
+      <td>OFF</td>
+      <td>ON</td>
+      <td>ON</td>
+      <td>OFF</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The following <em>User Session Note</em> mappers must be manually created:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Consent Required</th>
+      <th>Mapper Type</th>
+      <th>User Session Note</th>
+      <th>Token Claim Name</th>
+      <th>Claim JSON Type</th>
+      <th>Add to ID token</th>
+      <th>Add to access token</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Client Host</td>
+      <td>OFF</td>
+      <td>User Session Note</td>
+      <td>clientHost</td>
+      <td>clientHost</td>
+      <td>String</td>
+      <td>ON</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <td>Client ID</td>
+      <td>OFF</td>
+      <td>User Session Note</td>
+      <td>clientId</td>
+      <td>clientId</td>
+      <td>String</td>
+      <td>ON</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <td>Client IP Address</td>
+      <td>OFF</td>
+      <td>User Session Note</td>
+      <td>clientAddress</td>
+      <td>clientAddress</td>
+      <td>String</td>
+      <td>ON</td>
+      <td>ON</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="apache-configuration">
+<a class="anchor" href="#apache-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apache Configuration</h3>
+
+<p>Copy the Apache OIDC template configuration files:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># TEMPLATE_DIR="/opt/manageiq/manageiq-appliance/TEMPLATE"
+# cp ${TEMPLATE_DIR}/etc/httpd/conf.d/manageiq-remote-user-openidc.conf \
+    /etc/httpd/conf.d/
+# cp ${TEMPLATE_DIR}/etc/httpd/conf.d/manageiq-external-auth-openidc.conf.erb \
+    /etc/httpd/conf.d/manageiq-external-auth-openidc.conf
+</code></pre></div></div>
+
+<h3 id="oidc-configuration">
+<a class="anchor" href="#oidc-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>OIDC Configuration</h3>
+
+<p>The Apache <em>/etc/httpd/conf.d/manageiq-external-auth-openidc.conf</em>
+configuration files must be updated with installation specific values:</p>
+
+<p>The defaults in the <em>manageiq-external-auth-oidc.conf</em> file are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LogLevel</td>
+      <td>warn</td>
+    </tr>
+    <tr>
+      <td>OIDCCryptoPassphrase</td>
+      <td>sp-cookie</td>
+    </tr>
+    <tr>
+      <td>OIDCOAuthRemoteUserClaim</td>
+      <td>username</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Installation specific values must be specified in the
+<em>manageiq-external-auth-oidc.conf</em> file for the following parameters,
+where the <em>parameter</em> including the &lt;%= …​ %&gt; anchors need to be
+replaced with the appropriate values:</p>
+
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+<p>ServerName</p>
+<p>and</p>
+<p>OIDCRedirectURI</p>
+</td>
+<td><p>miq_appliance</p></td>
+<td><p>FQDN of the appliance</p></td>
+</tr>
+<tr class="even">
+<td><p>OIDCProviderMetadataURL</p></td>
+<td><p>oidc_provider_metadata_url</p></td>
+<td><p>The OpenID-Connect Provider URL, i.e. <a href="http://&lt;keycloak_server&gt;:8080/auth/realms/miq/.well-known/openid-configuration">http://&lt;keycloak_server&gt;:8080/auth/realms/miq/.well-known/openid-configuration</a></p></td>
+</tr>
+<tr class="odd">
+<td>
+<p>OIDCClientID</p>
+<p>and</p>
+<p>OIDCOAuthClientID</p>
+</td>
+<td><p>oidc_client_id</p></td>
+<td><p>The OpenID-Connect Client ID</p></td>
+</tr>
+<tr class="even">
+<td>
+<p>OIDCClientSecret</p>
+<p>end</p>
+<p>OIDCOAuthClientSecret</p>
+</td>
+<td><p>oidc_client_secret</p></td>
+<td><p>The OpenID-Connect Client Secret</p></td>
+</tr>
+<tr class="odd">
+<td><p>OIDCOAuthIntrospectionEndpoint</p></td>
+<td><p>oidc_introspection_endpoint</p></td>
+<td><p>The OpenID-Connect Introspection Endpoint</p></td>
+</tr>
+</tbody>
+</table>
+
+<p>Optional parameters can be appended to the end fo the configuration file
+to avoid SSL verification. These can be used when a valid SSL server
+certificate is not available for communicating with the OpenID Provider.</p>
+
+<p><strong>NOTE: Using these parameters is insecure and should only be used in a
+development environment.</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OIDCSSLValidateServer</td>
+      <td>Off</td>
+    </tr>
+    <tr>
+      <td>OIDCOAuthSSLValidateServer</td>
+      <td>Off</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Finally, restart Apache on the appliance as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl restart httpd
+</code></pre></div></div>
+
+<h2 id="configuring-the-administrative-ui">
+<a class="anchor" href="#configuring-the-administrative-ui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring the Administrative UI</h2>
+
+<p>After having configured Apache for OIDC, the next step is to update the
+Appliance Administrative UI to be OIDC aware and function accordingly.</p>
+
+<p>Login as admin, then in <em>Configure→Configuration→Authentication</em></p>
+
+<ul>
+  <li>
+    <p>Set mode to External (httpd)</p>
+  </li>
+  <li>
+    <p>Check: <em>Provider Type: Enable Enable OpenID-Connect</em> - This enables
+the OIDC login button on the login screen, that redirects to the
+OIDC protected page for authentication, and supports the OIDC logout
+process.</p>
+  </li>
+  <li>
+    <p>Optional: Check: <em>Enable Single Signon</em> - With this option enabled,
+initial access to the Appliance Administrative UI will redirect to
+the OIDC Identity Provider authentication screen. Note that logouts
+from the Appliance will return the user to the Appliance login
+screen allowing them to login as admin unless <em>Disable Local Login</em>
+is checked below.</p>
+  </li>
+  <li>
+    <p>Optional: Check: <em>Disable Local Login</em> - Do this <strong>only</strong> if you
+need to disable <em>admin</em> login to appliance and only allow OIDC based
+authentication. Note that if there are issues with the Identity
+Provider or you need admin access to the appliance you won’t be able
+to login until you re-enable the Local Login as described below.</p>
+  </li>
+  <li>
+    <p>Check: <em>Get User Groups from External Authentication (httpd)</em></p>
+  </li>
+  <li>
+    <p>Click Save.</p>
+  </li>
+</ul>
+
+<p>The above steps need to be done on each UI enabled appliance.</p>
+
+<p>In Configure→Configuration→Access Control</p>
+
+<ul>
+  <li>Make sure the user’s groups are created on the Appliance and
+appropriate roles assigned to those groups.</li>
+</ul>
+
+<h2 id="re-enabling-local-login">
+<a class="anchor" href="#re-enabling-local-login" aria-hidden="true"><span class="octicon octicon-link"></span></a>Re-Enabling Local Login</h2>
+
+<p>If the Local Login has been disabled in the Administrative UI and there
+is a need to be able to login as <em>admin</em>, the Local Login can be
+re-enabled using either of the following methods:</p>
+
+<h3 id="administrative-ui">
+<a class="anchor" href="#administrative-ui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Administrative UI:</h3>
+
+<p>This option is available if the Identity Provider is available and one
+can login using a user with enough administrative privileges to update
+it:</p>
+
+<ul>
+  <li>
+    <p>Login as administrative user,</p>
+  </li>
+  <li>
+    <p>In then in <em>Configure→Configuration→Authentication</em> uncheck <em>Disable
+Local Login</em> and save.</p>
+  </li>
+</ul>
+
+<h3 id="appliance-console-interface">
+<a class="anchor" href="#appliance-console-interface" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appliance Console Interface:</h3>
+
+<ul>
+  <li>
+    <p>ssh to the appliance as root</p>
+  </li>
+  <li>
+    <p>Run <em>appliance_console</em></p>
+  </li>
+  <li>
+    <p>Select menu entry <em>Update External Authentication Options</em></p>
+  </li>
+  <li>
+    <p>Select <em>Enable Local Login</em></p>
+  </li>
+  <li>
+    <p>then <em>Apply updates</em></p>
+  </li>
+</ul>
+
+<h3 id="appliance-console-cli">
+<a class="anchor" href="#appliance-console-cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appliance Console CLI:</h3>
+
+<ul>
+  <li>
+    <p>ssh to the appliance as root</p>
+  </li>
+  <li>
+    <p>Run <em>appliance_console_cli –extauth-opts</em>
+<strong>local_login_disabled=false</strong></p>
+  </li>
+</ul>
+
+<h2 id="configuring-oidc-using-the-cli">
+<a class="anchor" href="#configuring-oidc-using-the-cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring OIDC using the CLI</h2>
+
+<p>Another way to configure OpenID-Connect on the appliance is to use the
+appliance console CLI instead of the above steps. The <code class="language-plaintext highlighter-rouge">--oidc-config</code>
+subcommand of the appliance console CLI allows one to configure the
+appliance for OpenID-Connect Authentication by updating both Apache
+configurations as well as the necessary Administrative UI settings. The
+<code class="language-plaintext highlighter-rouge">--oidc-unconfig</code> subcommand is also provided for unconfiguring the
+appliance OpenID-Connect Authentication and reverting the appliance to
+Database Authentication.</p>
+
+<p>Usage of the new Appliance Console CLI subcommands are as follows:</p>
+
+<h3 id="configure-openid-connect">
+<a class="anchor" href="#configure-openid-connect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure OpenID-Connect</h3>
+
+<p>To configure the appliance for OpenID-Connect Authentication:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># appliance_console_cli --oidc-config
+                        [--oidc-client-host]
+                        --oidc-url
+                        --oidc-client-id
+                        --oidc-client-secret
+                        [--oidc-introspection-endpoint]
+                        [--oidc-enable-sso]
+                        [--oidc-insecure]
+</code></pre></div></div>
+
+<p>When the <code class="language-plaintext highlighter-rouge">--oidc-introspection-endpoint</code> is not specified, an attempt
+will be made to fetch the introspection endpoint by querying the
+OpenID-Connect Provider URL.</p>
+
+<p>When the <code class="language-plaintext highlighter-rouge">--oidc-client-host</code> is not specified, the configured appliance
+host is used for the ServerName and OpenID-Connect Redirect URI in the
+OpenID-Connect Apache configuration file. The <code class="language-plaintext highlighter-rouge">--oidc-client-host</code> is
+usually the externally reachable FQDN of the appliance.</p>
+
+<p>When <code class="language-plaintext highlighter-rouge">--oidc-insecure</code> is specified no SSL verification will be done
+when attempting to fetch the introspection endpoint and SSL verification
+will be disabled using parameters <code class="language-plaintext highlighter-rouge">OIDCSSLValidateServer</code> and
+<code class="language-plaintext highlighter-rouge">OIDCOAuthSSLValidateServer</code> as described above.</p>
+
+<p>Configuring OpenID-Connect requires the following parameters:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>--oidc-url</td>
+      <td>This is the OpenID-Connect Provider URL</td>
+    </tr>
+    <tr>
+      <td>--oidc-client-id</td>
+      <td>The OpenID-Connect Provider Cliend ID</td>
+    </tr>
+    <tr>
+      <td>--oidc-client-secret</td>
+      <td>The OpenID-Connect Provider Client Secret</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <code class="language-plaintext highlighter-rouge">--oidc-url</code> varies for different providers. An example provider URL
+for keycloak:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--oidc-url=http://keycloak-server:8080/auth/realms/miq-realm/.well-known/openid-configuration
+</code></pre></div></div>
+
+<p>With <strong>miq-realm</strong> being the Keycloak Realm this OpenID-Connect
+appliance client is being configured for.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">--oidc-client-id</code> is the Client ID specified for the appliance in
+the OpenID-Connect provider, usually just <code class="language-plaintext highlighter-rouge">&lt;miq-appliance-fqdn&gt;</code></p>
+
+<p>By default, SSO is not enabled, so from the Appliance login page, the
+user clicks on Log In to Corporate System to get redirected to the
+OpenID-Connect login page. With the <code class="language-plaintext highlighter-rouge">--oidc-enable-sso</code> option
+specified, the Appliance redirects the user to the OpenID-Connect login
+page for logging in.</p>
+
+<h3 id="unconfigure-openid-connect">
+<a class="anchor" href="#unconfigure-openid-connect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unconfigure OpenID-Connect</h3>
+
+<p>To unconfigure the appliance from OpenID-Connect Authentication and
+revert to Database authentication:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># appliance_console_cli --oidc-unconfig
+</code></pre></div></div>
+
+<p>This will remove the Apache external authentication OpenID-Connect
+configuration files and revert the appliance’s authentication settings
+to Database mode.</p>
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2023 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/auth/saml.html">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/oparin/auth/saml">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li class="active">
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<div class="doc_menu-heading">
+  Oparin
+</div>
+
+<ul class="menu menu-toplevel" id=ref_menu_oparin>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Installation
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_aws/index.html">
+      Amazon Web Services (AWS)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_kubernetes/index.html">
+      Kubernetes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_ibm_cloud/index.html">
+      IBM Cloud
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_microsoft_azure/index.html">
+      Microsoft Azure
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_google_compute_engine/index.html">
+      Google Compute Engine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_vmware_vsphere/index.html">
+      VMware vSphere
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_red_hat_enterprise_linux_openstack_platform/index.html">
+      Red Hat Enterprise OpenStack Platform
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_red_hat_virtualization/index.html">
+      Red Hat Enterprise Virtualization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_scvmm/index.html">
+      Microsoft System Center Virtual Machine Manager (SCVMM)
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Upgrading
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/upgrading_appliances/index.html">
+      Appliances
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Configuration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/deployment_planning_guide/index.html">
+      Deployment Planning Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/general_configuration/index.html">
+      General Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/high_availability_guide/index.html">
+      High Availability Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/appliance_hardening_guide/index.html">
+      Appliance Hardening Guide
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Administration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/monitoring_alerts_and_reporting/index.html">
+      Monitoring, Alerts, and Reporting
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/policies_and_profiles_guide/index.html">
+      Policies and Profiles Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_infrastructure_and_inventory/index.html">
+      Managing Infrastructure and Inventory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/index.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Infrastructure Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/red_hat_virtualization_providers.html">
+      Red Hat Virtualization Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/openstack_infrastructure_providers.html">
+      OpenStack Infrastructure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/vmware_vcenter_providers.html">
+      VMware vCenter Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/microsoft_scvmm_providers.html">
+      Microsoft SCVMM Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/ibm_power_hmc_providers.html">
+      IBM Power HMC Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Configuration Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/configuration_management_providers/ibm_terraform_provider.html">
+      IBM Terraform Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/configuration_management_providers/red_hat_satellite_6.html">
+      Red Hat Satellite 6 Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Cloud Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/azure_providers.html">
+      Azure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/amazon_ec2_providers.html">
+      Amazon EC2 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/google_compute_engine_providers.html">
+      Google Compute Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/ibm_cloud_vpc_providers.html">
+      IBM Cloud VPC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/ibm_power_systems_virtual_servers_providers.html">
+      IBM Power Systems Virtual Servers Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/ibm_power_vc_providers.html">
+      IBM PowerVC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/openstack_providers.html">
+      OpenStack Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Container Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/azure_kubernetes_providers.html">
+      Azure Kubernetes Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/red_hat_openshift_providers.html">
+      Red Hat OpenShift Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/ibm_cloud_kubernetes_service_providers.html">
+      IBM Cloud Kubernetes Service Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/oracle_kubernetes_engine_providers.html">
+      Oracle Kubernetes Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/vmware_tanzu_providers.html">
+      VMware Tanzu Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Storage Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/amazon_ebs_managers.html">
+      Amazon Elastic Block Store Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/openstack_block_storage_managers.html">
+      OpenStack Block Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/openstack_object_storage_managers.html">
+      OpenStack Object Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/ibm_cloud_object_storage_managers.html">
+      IBM Cloud Object Storage Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/provisioning_virtual_machines_and_hosts/index.html">
+      Provisioning Virtual Machines and Hosts
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/scripting_actions/index.html">
+      Scripting Actions in ManageIQ
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Troubleshooting
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/troubleshooting/index.html">
+      Troubleshooting
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Authentication
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/active_directory.html">
+      Active Directory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/ipa_2fa.html">
+      2-Factor-Authentication with IPA
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/ipa_ad_trust.html">
+      IPA/AD Trust
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/ldap.html">
+      LDAP
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item active">
+    <a href="/docs/reference/oparin/auth/saml.html">
+      SAML
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/openid_connect.html">
+      OpenID-Connect
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Integration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+      AWS CloudFormation and OpenStack Heat
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/integration_with_servicenow/index.html">
+      ServiceNow
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Reference
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/capabilities_matrix/index.html">
+      Capabilities Matrix
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/api">
+      ManageIQ REST API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/methods_available_for_automation/index.html">
+      Methods Available for Automation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc user_doc">
+      
+
+      <div class="doc-content">
+        
+        <div class="doc-versions">
+          <span class="label">Versions: </span>
+          
+            <span>
+              <a href="/docs/reference/latest/auth/saml.html">
+                Latest
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span class="active" >
+              <a href="/docs/reference/oparin/auth/saml.html">
+                Oparin
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/najdorf/auth/saml.html">
+                Najdorf
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/morphy/auth/saml.html">
+                Morphy
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/lasker/auth/saml.html">
+                Lasker
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/kasparov/auth/saml.html">
+                Kasparov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/jansa/auth/saml.html">
+                Jansa
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/ivanchuk/auth/saml.html">
+                Ivanchuk
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/hammer/auth/saml.html">
+                Hammer
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/gaprindashvili/auth/saml.html">
+                Gaprindashvili
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/fine/auth/saml.html">
+                Fine
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/euwe/auth/saml.html">
+                Euwe
+              </a>
+            </span>
+            
+          
+        </div>
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#saml">SAML</a></li>
+<li class="toc-entry toc-h2"><a href="#requirements">Requirements</a></li>
+<li class="toc-entry toc-h2"><a href="#configure-saml">Configure SAML</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#apache-configuration">Apache Configuration</a></li>
+<li class="toc-entry toc-h3"><a href="#saml-configuration">SAML Configuration</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#saml-assertions">SAML Assertions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#configure-administrative-ui">Configure Administrative UI</a></li>
+<li class="toc-entry toc-h2"><a href="#re-enabling-local-login">Re-Enabling Local Login</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#administrative-ui">Administrative UI:</a></li>
+<li class="toc-entry toc-h3"><a href="#appliance-console-interface">Appliance Console Interface:</a></li>
+<li class="toc-entry toc-h3"><a href="#appliance-console-cli">Appliance Console CLI:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#configuring-saml-using-the-cli">Configuring SAML using the CLI</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#configure-saml-1">Configure SAML</a></li>
+<li class="toc-entry toc-h3"><a href="#unconfigure-saml">Unconfigure SAML</a></li>
+</ul>
+</li>
+</ul><h2 id="saml">
+<a class="anchor" href="#saml" aria-hidden="true"><span class="octicon octicon-link"></span></a>SAML</h2>
+
+<p>External Authentication on the Appliance has been enhanced to support
+SAML. The SAML implementation has been tested with KeyCloak 1.8.</p>
+
+<p>In this guide we will cover how to manually configure an Appliance’s
+external authentication to work with SAML. The SAML implementation has
+been tested with KeyCloak but is implemented generically using Apache’s
+mod_auth_mellon module and should work with other SAML Identity
+Providers.</p>
+
+<p>The current implementation only secures the Appliance’s Web
+administrative UI with SAML.</p>
+
+<p><strong>Note:</strong> The REST API and Self-Service UI do not currently support
+SAML.</p>
+
+<ol>
+  <li>
+    <p><a href="#requirements">Requirements</a></p>
+  </li>
+  <li>
+    <p><a href="#configuring-saml">Configuring SAML</a></p>
+  </li>
+  <li>
+    <p><a href="#configuring-admin-ui">Configuring the Administrative UI</a></p>
+  </li>
+  <li>
+    <p><a href="#re-enabling-local-login">Re-Enabling Local Login</a></p>
+  </li>
+  <li>
+    <p><a href="#configuring-saml-via-cli">Configuring SAML using the CLI</a></p>
+  </li>
+</ol>
+
+<h2 id="requirements">
+<a class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>The following is needed in order to enable SAML Authentication to the
+Appliance:</p>
+
+<ul>
+  <li>
+    <p>A CentOS/RHEL 7.2 based Appliance</p>
+  </li>
+  <li>
+    <p>A SAML Identity Provider, (e.g. KeyCloak 1.8 or Later)</p>
+  </li>
+</ul>
+
+<h2 id="configure-saml">
+<a class="anchor" href="#configure-saml" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure SAML</h2>
+
+<p>All SAML related certificates and keys are accessed from
+/etc/httpd/saml2/</p>
+
+<p>First ssh to the appliance as root, then create that directory:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mkdir -p /etc/httpd/saml2
+</code></pre></div></div>
+
+<h3 id="apache-configuration">
+<a class="anchor" href="#apache-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apache Configuration</h3>
+
+<p>Copy the Apache remote user and SAML template configuration files:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># TEMPLATE_DIR="/opt/manageiq/manageiq-appliance/TEMPLATE"
+# cp ${TEMPLATE_DIR}/etc/httpd/conf.d/manageiq-remote-user.conf        \
+    /etc/httpd/conf.d/
+# cp ${TEMPLATE_DIR}/etc/httpd/conf.d/manageiq-external-auth-saml.conf \
+    /etc/httpd/conf.d/
+</code></pre></div></div>
+
+<h3 id="saml-configuration">
+<a class="anchor" href="#saml-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>SAML Configuration</h3>
+
+<p>Notable defaults in the <em>manageiq-external-auth-saml.conf</em> file:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<strong>Identity Provider Files</strong> (i.e. KeyCloak)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Metadata File</td>
+      <td>/etc/httpd/saml2/idp-metadata.xml</td>
+    </tr>
+    <tr>
+      <td>
+<strong>Service Provider Files</strong> (i.e. mod_auth_mellon)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Private Key File</td>
+      <td>/etc/httpd/saml2/miqsp-key.key</td>
+    </tr>
+    <tr>
+      <td>Certificate File</td>
+      <td>/etc/httpd/saml2/miqsp-cert.cert</td>
+    </tr>
+    <tr>
+      <td>Metadata File</td>
+      <td>/etc/httpd/saml2/miqsp-metadata.xml</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Other mod_auth_mellon parameters must not be modified as the Appliance
+expects them to be defined as such, i.e. End points, Protected URL, etc.</p>
+
+<p>For the Service Provider files on the Appliance, these can be generated
+using the mod_auth_mellon command <em>mellon_create_metadata.sh</em> as
+follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd /etc/httpd/saml2
+# /usr/libexec/mod_auth_mellon/mellon_create_metadata.sh https://&lt;miq-appliance&gt; https://&lt;miq-appliance&gt;/saml2
+</code></pre></div></div>
+
+<p>The mellon_create_metadata.sh script creates file names based on the
+appliance URL but can be renamed to match the expected file names from
+the <em>manageiq-external-auth-saml.conf</em> file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mv https_&lt;miq-appliance&gt;.key  miqsp-key.key
+# mv https_&lt;miq-appliance&gt;.cert miqsp-cert.cert
+# mv https_&lt;miq-appliance&gt;.xml  miqsp-metadata.xml
+</code></pre></div></div>
+
+<p>With the service provider metadata.xml file generated, the Service
+Provider definition can now be defined in the Identity Provider.</p>
+
+<p>For KeyCloak, a Realm can be created for one or more Appliances with
+individual Clients defined one per Appliance where the Client ID is
+essentially the URL of the appliance.</p>
+
+<p>Adding a Client in the KeyCloak ManageIQ Realm:</p>
+
+<ul>
+  <li>
+    <p>Select and Import the miqsp-metadata.xml file created for
+mod_auth_mellon.</p>
+  </li>
+  <li>
+    <p>Set Client ID as <a href="https://&lt;miq-appliance">https://&lt;miq-appliance</a>&gt;</p>
+  </li>
+  <li>
+    <p>Set Client protocol as <strong>saml</strong>.</p>
+  </li>
+</ul>
+
+<p>The Client definition for the appliance can then be updated with the
+following:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Name ID Format</td>
+      <td>username</td>
+    </tr>
+    <tr>
+      <td>Valid Redirect URIs</td>
+      <td>
+<a href="https://&lt;miq-appliance">https://&lt;miq-appliance</a>/saml2/paosResponse&gt;</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>
+<a href="https://&lt;miq-appliance">https://&lt;miq-appliance</a>/saml2/postResponse&gt;</td>
+    </tr>
+    <tr>
+      <td>Base URL</td>
+      <td>
+<a href="https://&lt;miq-appliance">https://&lt;miq-appliance</a>/&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Fine Grain SAML Endpoint Configuration</strong></th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Setting</strong></td>
+      <td><strong>Value</strong></td>
+    </tr>
+    <tr>
+      <td>Assertion Consumer Service POST Binding URL</td>
+      <td>
+<a href="https://&lt;miq-appliance">https://&lt;miq-appliance</a>/saml2/postResponse&gt;</td>
+    </tr>
+    <tr>
+      <td>Assertion Consumer Service Redirect Binding URL</td>
+      <td>
+<a href="https://&lt;miq-appliance">https://&lt;miq-appliance</a>/saml2/postResponse&gt;</td>
+    </tr>
+    <tr>
+      <td>Logout Service Redirect Binding URL</td>
+      <td>
+<a href="https://&lt;miq-appliance">https://&lt;miq-appliance</a>/saml2/logout&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The Identity Provider’s Metadata file idp-metadata.xml can then be
+obtained as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd /etc/httpd/saml2
+# curl -s -o idp-metadata.xml \
+    http://&lt;keycloak-server&gt;:8080/auth/realms/&lt;miq-realm&gt;/protocol/saml/descriptor
+</code></pre></div></div>
+
+<p>Finally, restart Apache on the appliance as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl restart httpd
+</code></pre></div></div>
+
+<h4 id="saml-assertions">
+<a class="anchor" href="#saml-assertions" aria-hidden="true"><span class="octicon octicon-link"></span></a>SAML Assertions</h4>
+
+<p>For authenticating to the appliance, the following remote user
+parameters are looked at by the appliance upon a successful login and
+redirect from the Identity Provider.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>HTTP Environment</th>
+      <th>SAML Assertion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>REMOTE_USER</td>
+      <td>username</td>
+    </tr>
+    <tr>
+      <td>REMOTE_USER_EMAIL</td>
+      <td>email</td>
+    </tr>
+    <tr>
+      <td>REMOTE_USER_FIRSTNAME</td>
+      <td>firstname</td>
+    </tr>
+    <tr>
+      <td>REMOTE_USER_LASTNAME</td>
+      <td>lastname</td>
+    </tr>
+    <tr>
+      <td>REMOTE_USER_FULLNAME</td>
+      <td>fullname</td>
+    </tr>
+    <tr>
+      <td>REMOTE_USER_GROUPS</td>
+      <td>groups</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For KeyCloak, the above SAML Assertions can be created for the Appliance
+Client in KeyCloak as Mappers.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mapper Type</th>
+      <th>Property</th>
+      <th>Friendly Name</th>
+      <th>SAML Attribute Name</th>
+      <th>SAML Attribute Name Format</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>username</td>
+      <td>User Property</td>
+      <td>username</td>
+      <td>username</td>
+      <td>username</td>
+      <td>Basic</td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td>User Property</td>
+      <td>email</td>
+      <td>email</td>
+      <td>email</td>
+      <td>Basic</td>
+    </tr>
+    <tr>
+      <td>firstname</td>
+      <td>User Property</td>
+      <td>firstName</td>
+      <td>firstname</td>
+      <td>firstname</td>
+      <td>Basic</td>
+    </tr>
+    <tr>
+      <td>lastname</td>
+      <td>User Property</td>
+      <td>lastName</td>
+      <td>lastname</td>
+      <td>lastname</td>
+      <td>Basic</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mapper Type</th>
+      <th>User Attribute</th>
+      <th>Friendly Name</th>
+      <th>SAML Attribute Name</th>
+      <th>SAML Attribute Name Format</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>fullname</td>
+      <td>User Attribute</td>
+      <td>fullName</td>
+      <td>fullname</td>
+      <td>fullname</td>
+      <td>Basic</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mapper Type</th>
+      <th>Group attribute name</th>
+      <th>Friendly Name</th>
+      <th>SAML Attribute Name</th>
+      <th>SAML Attribute Name Format</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>groups</td>
+      <td>Group List</td>
+      <td>groups</td>
+      <td>groups</td>
+      <td>groups</td>
+      <td>Basic</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Note:</strong> The fullName attribute was not available in the default
+database as of this writing and must be added to each user as a user
+attribute.</p>
+
+<h2 id="configure-administrative-ui">
+<a class="anchor" href="#configure-administrative-ui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure Administrative UI</h2>
+
+<p>After having configured Apache for SAML, the next step is to update the
+Appliance Administrative UI to be SAML aware and function accordingly.</p>
+
+<p>Login as admin, then in <em>Configure→Configuration→Authentication</em></p>
+
+<ul>
+  <li>
+    <p>Set mode to External (httpd)</p>
+  </li>
+  <li>
+    <p>Check: <em>Enable Single Signon</em> - With this option enabled, initial
+access to the Appliance Administrative UI will redirect to the SAML
+Identity Provider authentication screen. Note that logouts from the
+Appliance will return the user to the Appliance login screen
+allowing them to login as admin unless <em>Disable Local Login</em> is
+checked below.</p>
+  </li>
+  <li>
+    <p>Check: <em>provider Type: _Enable SAML</em> - This enables the SAML login
+button on the login screen, the redirects to the SAML protected page
+for authentication, and supports the SAML logout process.</p>
+  </li>
+  <li>
+    <p>Optional: Check: <em>Disable Local Login</em> - Do this <strong>only</strong> if you
+need to disable <em>admin</em> login to appliance and only allow SAML based
+authentication. Note that if there are issues with the Identity
+Provider or you need admin access to the appliance you won’t be able
+to login until you re-enable the Local Login as described below.</p>
+  </li>
+  <li>
+    <p>Check: <em>Get User Groups from External Authentication (httpd)</em></p>
+  </li>
+  <li>
+    <p>Click Save.</p>
+  </li>
+</ul>
+
+<p>The above steps need to be done on each UI enabled appliance.</p>
+
+<p>in <em>Configure→Configuration→Access Control</em></p>
+
+<ul>
+  <li>Make sure the user’s groups are created on the Appliance and
+appropriate roles assigned to those groups.</li>
+</ul>
+
+<h2 id="re-enabling-local-login">
+<a class="anchor" href="#re-enabling-local-login" aria-hidden="true"><span class="octicon octicon-link"></span></a>Re-Enabling Local Login</h2>
+
+<p>If the Local Login has been disabled in the Administrative UI and there
+is a need to be able to login as <em>admin</em>, the Local Login can be
+re-enabled as follows:</p>
+
+<h3 id="administrative-ui">
+<a class="anchor" href="#administrative-ui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Administrative UI:</h3>
+
+<p>This option is available if the Identity Provider is available and one
+can login using a user with enough administrative privileges to update
+it:</p>
+
+<ul>
+  <li>
+    <p>Login as administrative user,</p>
+  </li>
+  <li>
+    <p>In then in <em>Configure→Configuration→Authentication</em> uncheck <em>Disable
+Local Login</em> and save.</p>
+  </li>
+</ul>
+
+<h3 id="appliance-console-interface">
+<a class="anchor" href="#appliance-console-interface" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appliance Console Interface:</h3>
+
+<ul>
+  <li>
+    <p>ssh to the appliance as root</p>
+  </li>
+  <li>
+    <p>Run <em>appliance_console</em></p>
+  </li>
+  <li>
+    <p>Select menu entry <em>Update External Authentication Options</em></p>
+  </li>
+  <li>
+    <p>Select <em>Enable Local Login</em></p>
+  </li>
+  <li>
+    <p>then <em>Apply updates</em></p>
+  </li>
+</ul>
+
+<h3 id="appliance-console-cli">
+<a class="anchor" href="#appliance-console-cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appliance Console CLI:</h3>
+
+<ul>
+  <li>
+    <p>ssh to the appliance as root</p>
+  </li>
+  <li>
+    <p>Run <em>appliance_console_cli –extauth-opts</em>
+<strong>local_login_disabled=false</strong></p>
+  </li>
+</ul>
+
+<h2 id="configuring-saml-using-the-cli">
+<a class="anchor" href="#configuring-saml-using-the-cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring SAML using the CLI</h2>
+
+<p>Another way to configure SAML on the appliance is to use the appliance
+console CLI instead of the above steps. The <code class="language-plaintext highlighter-rouge">--saml-config</code> subcommand
+of the appliance console CLI allows one to configure the appliance for
+SAML Authentication by updating both Apache configurations as well as
+the necessary Administrative UI settings. The <code class="language-plaintext highlighter-rouge">--saml-unconfig</code>
+subcommand is also provided for unconfiguring the appliance SAML
+Authentication and reverting the appliance to Database Authentication.</p>
+
+<p>Usage of the new Appliance Console CLI subcommands are as follows:</p>
+
+<h3 id="configure-saml-1">
+<a class="anchor" href="#configure-saml-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure SAML</h3>
+
+<p>To configure the appliance for SAML Authentication:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># appliance_console_cli --saml-config [--saml-client-host=miq_appliance.fqdn] \
+                                       --saml-idp-metadata=file|url           \
+                                      [--saml-enable-sso]
+</code></pre></div></div>
+
+<p>When –saml-client-host is not specified, the configured appliance host
+is used for creating the SP metadata. This host fqdn must be reachable
+from the SAML IDP.</p>
+
+<p>Configuring SAML requires the IDP metadata file. The –saml-idp-metadata
+option allows the user to specify the file path of a copy that was
+downloaded to the appliance or by a URL, in which case the CLI downloads
+the copy from the IDP.</p>
+
+<p>Examples:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--saml-idp-metadata=/tmp/downloaded_idp_metadata.xml
+
+--saml-idp-metadata=http://&lt;idp-host:port&gt;/auth/realms/&lt;miq-realm&gt;/protocol/saml/descriptor
+</code></pre></div></div>
+
+<p>In both cases, the IDP metadata file is copied to
+<code class="language-plaintext highlighter-rouge">/etc/httpd/saml2/idp-metadata.xml</code></p>
+
+<p>By default, SSO is not enabled, so from the Appliance login page, the
+user clicks on Log In to Corporate System to get redirected to the SAML
+login page. With this option enabled, the Appliance redirects the user
+to the SAML login page for logging in.</p>
+
+<p>After SAML is configured, the SP metadata file can be fetched from
+<code class="language-plaintext highlighter-rouge">/etc/httpd/saml2/miqsp-metadata.xml</code> to create the related Client on
+the SAML IDP.</p>
+
+<h3 id="unconfigure-saml">
+<a class="anchor" href="#unconfigure-saml" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unconfigure SAML</h3>
+
+<p>To unconfigure the appliance from SAML Authentication and revert to
+Database authentication:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># appliance_console_cli --saml-unconfig
+</code></pre></div></div>
+
+<p>This will remove the Apache external authentication SAML configuration
+files and revert the appliance’s authentication settings to Database
+mode.</p>
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2023 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

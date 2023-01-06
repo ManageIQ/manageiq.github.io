@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-364a522e6cb5aa31700d9562491465966c2c1081a61b11529597f13bf81cfb69.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/managing_providers/cloud_providers/amazon_ec2_providers.html">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/oparin/managing_providers/cloud_providers/amazon_ec2_providers">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li class="active">
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<div class="doc_menu-heading">
+  Oparin
+</div>
+
+<ul class="menu menu-toplevel" id=ref_menu_oparin>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Installation
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_aws/index.html">
+      Amazon Web Services (AWS)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_kubernetes/index.html">
+      Kubernetes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_ibm_cloud/index.html">
+      IBM Cloud
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_microsoft_azure/index.html">
+      Microsoft Azure
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_google_compute_engine/index.html">
+      Google Compute Engine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_vmware_vsphere/index.html">
+      VMware vSphere
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_red_hat_enterprise_linux_openstack_platform/index.html">
+      Red Hat Enterprise OpenStack Platform
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_red_hat_virtualization/index.html">
+      Red Hat Enterprise Virtualization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/installing_on_scvmm/index.html">
+      Microsoft System Center Virtual Machine Manager (SCVMM)
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Upgrading
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/upgrading_appliances/index.html">
+      Appliances
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Configuration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/deployment_planning_guide/index.html">
+      Deployment Planning Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/general_configuration/index.html">
+      General Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/high_availability_guide/index.html">
+      High Availability Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/appliance_hardening_guide/index.html">
+      Appliance Hardening Guide
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Administration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/monitoring_alerts_and_reporting/index.html">
+      Monitoring, Alerts, and Reporting
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/policies_and_profiles_guide/index.html">
+      Policies and Profiles Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_infrastructure_and_inventory/index.html">
+      Managing Infrastructure and Inventory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/index.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Infrastructure Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/red_hat_virtualization_providers.html">
+      Red Hat Virtualization Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/openstack_infrastructure_providers.html">
+      OpenStack Infrastructure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/vmware_vcenter_providers.html">
+      VMware vCenter Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/microsoft_scvmm_providers.html">
+      Microsoft SCVMM Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/infrastructure_providers/ibm_power_hmc_providers.html">
+      IBM Power HMC Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Configuration Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/configuration_management_providers/ibm_terraform_provider.html">
+      IBM Terraform Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/configuration_management_providers/red_hat_satellite_6.html">
+      Red Hat Satellite 6 Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Cloud Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/azure_providers.html">
+      Azure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item active">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/amazon_ec2_providers.html">
+      Amazon EC2 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/google_compute_engine_providers.html">
+      Google Compute Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/ibm_cloud_vpc_providers.html">
+      IBM Cloud VPC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/ibm_power_systems_virtual_servers_providers.html">
+      IBM Power Systems Virtual Servers Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/ibm_power_vc_providers.html">
+      IBM PowerVC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/cloud_providers/openstack_providers.html">
+      OpenStack Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Container Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/azure_kubernetes_providers.html">
+      Azure Kubernetes Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/red_hat_openshift_providers.html">
+      Red Hat OpenShift Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/ibm_cloud_kubernetes_service_providers.html">
+      IBM Cloud Kubernetes Service Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/oracle_kubernetes_engine_providers.html">
+      Oracle Kubernetes Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/containers_providers/vmware_tanzu_providers.html">
+      VMware Tanzu Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Storage Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/amazon_ebs_managers.html">
+      Amazon Elastic Block Store Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/openstack_block_storage_managers.html">
+      OpenStack Block Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/openstack_object_storage_managers.html">
+      OpenStack Object Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/managing_providers/storage_providers/ibm_cloud_object_storage_managers.html">
+      IBM Cloud Object Storage Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/provisioning_virtual_machines_and_hosts/index.html">
+      Provisioning Virtual Machines and Hosts
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/scripting_actions/index.html">
+      Scripting Actions in ManageIQ
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Troubleshooting
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/troubleshooting/index.html">
+      Troubleshooting
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Authentication
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/active_directory.html">
+      Active Directory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/ipa_2fa.html">
+      2-Factor-Authentication with IPA
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/ipa_ad_trust.html">
+      IPA/AD Trust
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/ldap.html">
+      LDAP
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/saml.html">
+      SAML
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/auth/openid_connect.html">
+      OpenID-Connect
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Integration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+      AWS CloudFormation and OpenStack Heat
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/integration_with_servicenow/index.html">
+      ServiceNow
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Reference
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/capabilities_matrix/index.html">
+      Capabilities Matrix
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/api">
+      ManageIQ REST API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/oparin/methods_available_for_automation/index.html">
+      Methods Available for Automation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc user_doc">
+      
+
+      <div class="doc-content">
+        
+        <div class="doc-versions">
+          <span class="label">Versions: </span>
+          
+            <span>
+              <a href="/docs/reference/latest/managing_providers/cloud_providers/amazon_ec2_providers.html">
+                Latest
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span class="active" >
+              <a href="/docs/reference/oparin/managing_providers/cloud_providers/amazon_ec2_providers.html">
+                Oparin
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/najdorf/managing_providers/cloud_providers/amazon_ec2_providers.html">
+                Najdorf
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Morphy
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Lasker
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Kasparov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Jansa
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Ivanchuk
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Hammer
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Gaprindashvili
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Fine
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Euwe
+              </a>
+            </span>
+            
+          
+        </div>
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#amazon-ec2-providers">Amazon EC2 Providers</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#permissions-for-amazon-ec2-providers">Permissions for Amazon EC2 Providers</a></li>
+<li class="toc-entry toc-h2"><a href="#manually-creating-an-amazon-ec2-role">Manually Creating an Amazon EC2 Role</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#adding-amazon-ec2-providers">Adding Amazon EC2 Providers</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#enabling-public-amis-from-amazon-ec2">Enabling Public AMIs from Amazon EC2</a></li>
+<li class="toc-entry toc-h2"><a href="#enabling-aws-config-notifications">Enabling AWS Config Notifications</a></li>
+<li class="toc-entry toc-h2"><a href="#enabling-amazon-ec2-events">Enabling Amazon EC2 Events</a></li>
+<li class="toc-entry toc-h2"><a href="#creating-a-cloudtrail">Creating a CloudTrail</a></li>
+<li class="toc-entry toc-h2"><a href="#creating-cloudwatch-rules-based-on-event-patterns">Creating CloudWatch Rules Based on Event Patterns</a></li>
+<li class="toc-entry toc-h2"><a href="#adding-amazon-cloud-regions">Adding Amazon Cloud Regions</a></li>
+<li class="toc-entry toc-h2"><a href="#disabling-amazon-cloud-regions">Disabling Amazon Cloud Regions</a></li>
+</ul>
+</li>
+</ul><h1 id="amazon-ec2-providers">
+<a class="anchor" href="#amazon-ec2-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Amazon EC2 Providers</h1>
+
+<h2 id="permissions-for-amazon-ec2-providers">
+<a class="anchor" href="#permissions-for-amazon-ec2-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Permissions for Amazon EC2 Providers</h2>
+
+<p>Further limiting API access limitations can limit Automate capabilities,
+as Automate scripts directly access the AWS SDK to create brand new
+application functionality.</p>
+
+<p>The AWS services primarily accessed by the ManageIQ API
+include:</p>
+
+<ul>
+  <li>
+    <p>Elastic Compute Cloud (EC2)</p>
+  </li>
+  <li>
+    <p>CloudFormation</p>
+  </li>
+  <li>
+    <p>CloudWatch</p>
+  </li>
+  <li>
+    <p>Elastic Load Balancing</p>
+  </li>
+  <li>
+    <p>Simple Notification Service (SNS)</p>
+  </li>
+  <li>
+    <p>Simple Queue Service (SQS)</p>
+  </li>
+</ul>
+
+<h2 id="manually-creating-an-amazon-ec2-role">
+<a class="anchor" href="#manually-creating-an-amazon-ec2-role" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manually Creating an Amazon EC2 Role</h2>
+
+<p>To eliminate the need to assign <em>Admin</em> group privileges to the Amazon
+EC2 provider, create an IAM role following the procedure described in
+<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html">Creating a Role for an AWS Service
+(Console)</a>
+in the Amazon Web Services documentation.</p>
+
+<p>Use the following parameters:</p>
+
+<ol>
+  <li>
+    <p>Select <strong>EC2</strong> as the service the role will use.</p>
+  </li>
+  <li>
+    <p>Attach the following permissions:</p>
+
+    <ol>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">AmazonEC2FullAccess</code></p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">AmazonS3FullAccess</code></p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">AmazonSQSFullAccess</code></p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Enter <code class="language-plaintext highlighter-rouge">smartstate</code> for the <strong>Role name</strong>.</p>
+  </li>
+</ol>
+
+<p>Once the IAM role is created, assign the provider <em>Power User</em> privileges as described in <a href="#amazon-provider-permissions">Permissions for Amazon EC2 Providers</a>.</p>
+
+<h1 id="adding-amazon-ec2-providers">
+<a class="anchor" href="#adding-amazon-ec2-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Amazon EC2 Providers</h1>
+
+<p>Complete the following procedure to add an Amazon EC2 cloud provider in
+ManageIQ.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Clouds &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then click
+<img src="../../images/1862.png" alt="1862"> (<strong>Add a New Cloud Provider</strong>).</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Name</strong> for the provider.</p>
+  </li>
+  <li>
+    <p>From the <strong>Type</strong> list, select <strong>Amazon EC2</strong>.</p>
+  </li>
+  <li>
+    <p>Select a <strong>Region</strong>.</p>
+  </li>
+  <li>
+    <p>Select the appropriate <strong>Zone</strong> if you have more than one available.</p>
+  </li>
+  <li>
+    <p>Under <strong>Endpoints</strong>, click the <strong>Default</strong> tab.</p>
+
+    <ol>
+      <li>
+        <p>Enter the <strong>Endpoint URL</strong>.</p>
+
+        <p><strong>Note:</strong></p>
+
+        <p>AWS allows users to set a custom endpoint URL when connecting to certain services, which you can add in the ManageIQ user interface per Amazon EC2 provider.
+See <a href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-interface.html">Interface VPC Endpoints (AWS PrivateLink)</a>
+for more information.</p>
+      </li>
+      <li>
+        <p>Generate an <strong>Access Key</strong> in the <strong>Security Credentials</strong> of
+your Amazon AWS account. The <strong>Access Key ID</strong> acts as your
+<strong>User ID</strong>, and your <strong>Secret Access Key</strong> acts as your
+<strong>Password</strong>.</p>
+      </li>
+      <li>
+        <p>Click <strong>Validate</strong> to validate the credentials.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Click the <strong>SmartState Docker</strong> tab.</p>
+
+    <ol>
+      <li>Enter the <strong>SmartState Docker User Name</strong> and <strong>SmartState
+Docker Password</strong>.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<h2 id="enabling-public-amis-from-amazon-ec2">
+<a class="anchor" href="#enabling-public-amis-from-amazon-ec2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling Public AMIs from Amazon EC2</h2>
+
+<p>By default, public AMIs from an Amazon EC2 provider are not viewable in
+ManageIQ. To make these images viewable, you must edit the main
+configuration file for the appliance.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>Syncing all public images may require additional memory resources. Also,
+bear in mind that syncing happens in each configured Amazon EC2
+provider, which will require a similar amount of total memory resources.</p>
+
+<ol>
+  <li>
+    <p>Browse to the settings menu, then menu: <strong>Configuration &gt; Zone &gt; Advanced</strong>.</p>
+  </li>
+  <li>
+    <p>Select the configuration file to edit from the <strong>File</strong> list. If not
+already automatically selected, select <strong>EVM Server Main
+Configuration</strong>.</p>
+  </li>
+  <li>
+    <p>Set the <strong>get_public_images</strong> parameter:</p>
+
+    <ol>
+      <li>
+        <p>Set the parameter to <strong>get_public_images: true</strong> to make
+public images viewable.</p>
+      </li>
+      <li>
+        <p>Set the parameter to <strong>get_public_images: false</strong> to make
+public images not viewable.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Optionally, configure an array of filters in
+<strong>public_images_filters</strong> to restrict which images are synced. See
+<a href="http://docs.aws.amazon.com/sdkforruby/api/Aws/EC2/Client.html#describe_images-instance_method">http://docs.aws.amazon.com/sdkforruby/api/Aws/EC2/Client.html#describe_images-instance_method</a>
+for more details.</p>
+  </li>
+</ol>
+
+<h2 id="enabling-aws-config-notifications">
+<a class="anchor" href="#enabling-aws-config-notifications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling AWS Config Notifications</h2>
+
+<p>Amazon’s AWS Config notifies subscribers of changes in a region through
+its Simple Notification Service (SNS). ManageIQ subscribes to the
+SNS service for AWS Config deltas and converts the deltas into
+ManageIQ events.</p>
+
+<ol>
+  <li>
+    <p>Enable the AWS Config service in the AWS Management Console. See the
+<a href="http://aws.amazon.com/documentation/config/">AWS Config Developer
+Guide</a> for more
+information.</p>
+  </li>
+  <li>
+    <p>Create a new Amazon SNS topic named <code class="language-plaintext highlighter-rouge">AWSConfig_topic</code>.
+ManageIQ automatically connects to this topic.</p>
+  </li>
+  <li>
+    <p>(Optional) Configure the frequency of delta creation in the AWS
+Management Console.</p>
+  </li>
+</ol>
+
+<p>You can assign ManageIQ policies to the AWS events listed
+below. The appliance performs a provider refresh on all these events
+except for <code class="language-plaintext highlighter-rouge">AWS_EC2_Instance_UPDATE</code>.</p>
+
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Event</th>
+<th>Policies</th>
+<th>Refresh</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>AWS_EC2_Instance_CREATE</p></td>
+<td>
+<p>src_vm</p>
+<p>vm_create</p>
+</td>
+<td><p>ems</p></td>
+</tr>
+<tr class="even">
+<td><p>AWS_EC2_Instance_UPDATE</p></td>
+<td><p>N/A</p></td>
+<td><p>ems</p></td>
+</tr>
+<tr class="odd">
+<td><p>AWS_EC2_Instance_running</p></td>
+<td>
+<p>src_vm</p>
+<p>vm_start</p>
+</td>
+<td><p>ems</p></td>
+</tr>
+<tr class="even">
+<td><p>AWS_EC2_Instance_stopped</p></td>
+<td>
+<p>src_vm</p>
+<p>vm_power_off</p>
+</td>
+<td><p>ems</p></td>
+</tr>
+<tr class="odd">
+<td><p>AWS_EC2_Instance_shutting-down</p></td>
+<td>
+<p>src_vm</p>
+<p>vm_power_off</p>
+</td>
+<td><p>ems</p></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="enabling-amazon-ec2-events">
+<a class="anchor" href="#enabling-amazon-ec2-events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling Amazon EC2 Events</h2>
+
+<p>After adding an Amazon EC2 provider and configuring an SNS topic in <a href="#enabling-aws-config-notifications">Enabling AWS Config Notifications</a>, create a CloudTrail,
+then configure CloudWatch rules on your EC2 provider to automatically get events in ManageIQ for monitoring the provider.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>The following procedures are accurate at time of publishing. See the <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">Amazon AWS documentation</a>
+for further details on these steps.</p>
+
+<h2 id="creating-a-cloudtrail">
+<a class="anchor" href="#creating-a-cloudtrail" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a CloudTrail</h2>
+
+<p>In the CloudTrail area of the AWS Management Console, create a trail and
+an S3 bucket:</p>
+
+<ol>
+  <li>
+    <p>Create a <strong>Trail</strong> with a custom name.</p>
+  </li>
+  <li>
+    <p>(Optional) If you want to apply the trail to all of your
+ManageIQ regions, select <strong>Yes</strong> for <strong>Apply trail to
+all regions</strong>.</p>
+  </li>
+  <li>
+    <p>For <strong>Management Events</strong>, select <strong>Read/Write events: All</strong>.</p>
+  </li>
+  <li>
+    <p>Create a new S3 bucket.</p>
+  </li>
+</ol>
+
+<h2 id="creating-cloudwatch-rules-based-on-event-patterns">
+<a class="anchor" href="#creating-cloudwatch-rules-based-on-event-patterns" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating CloudWatch Rules Based on Event Patterns</h2>
+
+<p>In the CloudWatch area of the AWS Management Console, create three
+rules: one rule each for EC2, volumes, and snapshots.</p>
+
+<div class="important">
+
+When an SNS topic is deleted and recreated (manually or by
+ManageIQ), CloudWatch rules must be recreated as well,
+even though the SNS target topic for CloudWatch rules appears to be
+assigned to these rules. The CloudWatch rule does not send events to
+this recreated topic until it is recreated too.
+
+</div>
+
+<p>To create a CloudWatch rule for EC2:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Events &gt; Rules</strong> and click <strong>Create rule</strong>.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Event Pattern</strong> radio button to specify the event source.</p>
+  </li>
+  <li>
+    <p>Edit the <strong>Event Pattern Preview</strong> box, and paste and save the following code to create a rule based on a custom event pattern:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>{
+  "source": [
+    "aws.ec2"
+  ],
+  "detail-type": [
+    "AWS API Call via CloudTrail"
+  ],
+  "detail": {
+    "eventSource": [
+      "ec2.amazonaws.com"
+    ]
+  }
+}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Click <strong>Add target</strong> and specify the following attributes:</p>
+
+    <ul>
+      <li>
+        <p><strong>Type</strong>: <code class="language-plaintext highlighter-rouge">SNS Topic</code></p>
+      </li>
+      <li>
+        <p><strong>Topic</strong>: <code class="language-plaintext highlighter-rouge">AWSConfig_topic</code></p>
+      </li>
+      <li>
+        <p><strong>Input</strong>: <code class="language-plaintext highlighter-rouge">Matched event</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Click <strong>Configure Details</strong> to save these details.</p>
+  </li>
+  <li>
+    <p>Configure a name and description for the rule if desired. Ensure the
+<strong>Enabled</strong> checkbox is selected for <strong>State</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Create rule</strong> to save the CloudWatch rule.</p>
+  </li>
+</ol>
+
+<p>Repeat the same procedure to create a CloudWatch rule for EC2 Instance
+State-changes:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Events &gt; Rules</strong> and click <strong>Create rule</strong>.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Event Pattern</strong> radio button to specify the event
+source.</p>
+  </li>
+  <li>
+    <p>Edit the <strong>Event Pattern Preview</strong> box, and paste and save the
+following code to create a rule based on a custom event pattern:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>{
+  "source": [
+    "aws.ec2"
+  ],
+  "detail-type": [
+    "EC2 Instance State-change Notification"
+  ]
+}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Click <strong>Add target</strong> and specify the following attributes:</p>
+
+    <ul>
+      <li>
+        <p><strong>Type</strong>: <code class="language-plaintext highlighter-rouge">SNS Topic</code></p>
+      </li>
+      <li>
+        <p><strong>Topic</strong>: <code class="language-plaintext highlighter-rouge">AWSConfig_topic</code></p>
+      </li>
+      <li>
+        <p><strong>Input</strong>: <code class="language-plaintext highlighter-rouge">Matched event</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Click <strong>Configure Details</strong> to save these details.</p>
+  </li>
+  <li>
+    <p>Configure a name and description for the rule if desired. Ensure the
+<strong>Enabled</strong> checkbox is selected for <strong>State</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Create rule</strong> to save the CloudWatch rule.</p>
+  </li>
+</ol>
+
+<p>Repeat the same procedure to create a CloudWatch rule for volumes,
+pasting the code snippet below to the <strong>Event Pattern Preview</strong> box:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Events &gt; Rules</strong> and click <strong>Create rule</strong>.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Event Pattern</strong> radio button to specify the event
+source.</p>
+  </li>
+  <li>
+    <p>Edit the <strong>Event Pattern Preview</strong> box, and paste and save the
+following code to create a rule based on a custom event pattern:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>{
+  "source": [
+    "aws.ec2"
+  ],
+  "detail-type": [
+    "EBS Volume Notification"
+  ]
+}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Click <strong>Add target</strong> and specify the following attributes:</p>
+
+    <ul>
+      <li>
+        <p><strong>Type</strong>: <code class="language-plaintext highlighter-rouge">SNS Topic</code></p>
+      </li>
+      <li>
+        <p><strong>Topic</strong>: <code class="language-plaintext highlighter-rouge">AWSConfig_topic</code></p>
+      </li>
+      <li>
+        <p><strong>Input</strong>: <code class="language-plaintext highlighter-rouge">Matched event</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Click <strong>Configure Details</strong> to save these details.</p>
+  </li>
+  <li>
+    <p>Configure a name and description for the rule if desired. Ensure the
+<strong>Enabled</strong> checkbox is selected for <strong>State</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Create rule</strong> to save the CloudWatch rule.</p>
+  </li>
+</ol>
+
+<p>Repeat the same procedure to create a CloudWatch rule for snapshots,
+pasting the code snippet below to the <strong>Event Pattern Preview</strong> box:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Events &gt; Rules</strong> and click <strong>Create rule</strong>.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Event Pattern</strong> radio button to specify the event
+source.</p>
+  </li>
+  <li>
+    <p>Edit the <strong>Event Pattern Preview</strong> box, and paste and save the
+following code to create a rule based on a custom event pattern:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>{
+  "source": [
+    "aws.ec2"
+  ],
+  "detail-type": [
+    "EBS Snapshot Notification"
+  ]
+}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Click <strong>Add target</strong> and specify the following attributes:</p>
+
+    <ul>
+      <li>
+        <p><strong>Type</strong>: <code class="language-plaintext highlighter-rouge">SNS Topic</code></p>
+      </li>
+      <li>
+        <p><strong>Topic</strong>: <code class="language-plaintext highlighter-rouge">AWSConfig_topic</code></p>
+      </li>
+      <li>
+        <p><strong>Input</strong>: <code class="language-plaintext highlighter-rouge">Matched event</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Click <strong>Configure Details</strong> to save these details.</p>
+  </li>
+  <li>
+    <p>Configure a name and description for the rule if desired. Ensure the
+<strong>Enabled</strong> checkbox is selected for <strong>State</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Create rule</strong> to save the CloudWatch rule.</p>
+  </li>
+</ol>
+
+<p>EC2 can now automatically refresh events in ManageIQ.</p>
+
+<h2 id="adding-amazon-cloud-regions">
+<a class="anchor" href="#adding-amazon-cloud-regions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Amazon Cloud Regions</h2>
+
+<p>ManageIQ allows administrators to add Amazon cloud regions on
+the appliance server. You can use this capability to add new regions that have been
+set up since ManageIQ was released.  Once adding the region it will be
+available when creating a new Amazon EC2 provider.</p>
+
+<ol>
+  <li>
+    <p>Click <img src="../../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Settings</strong> accordion, then click <strong>ManageIQ Region</strong> at the top.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Advanced</strong> tab.</p>
+  </li>
+  <li>
+    <p>Search for <code class="language-plaintext highlighter-rouge">:ems_amazon:</code>, and enter the regions you want to add
+under <code class="language-plaintext highlighter-rouge">:additional_regions:</code>.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>Example. To add hypothetical `lunar-base-1` `lunar-base-2` regions:
+
+:ems_amazon:
+  :additional_regions:
+    :lunar-base-1:
+      :name: Lunar Base 1
+      :hostname: ec2.lunar-base-1.amazonaws.com
+      :description: Lunar Base 1
+    :lunar-base-2:
+      :name: Lunar Base 2
+      :hostname: ec2.lunar-base-2.amazonaws.com
+      :description: Lunar Base 2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h2 id="disabling-amazon-cloud-regions">
+<a class="anchor" href="#disabling-amazon-cloud-regions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disabling Amazon Cloud Regions</h2>
+
+<p>ManageIQ allows administrators to disable Amazon cloud regions on
+the appliance server. Use this capability to disable certain classified
+regions like AWS GovCloud. Once disabled, the region will not be
+available when adding an Amazon EC2 provider.</p>
+
+<ol>
+  <li>
+    <p>Click <img src="../../images/config-gear.png" alt="config gear"> (<strong>Configuration</strong>).</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Zones</strong>.</p>
+  </li>
+  <li>
+    <p>Click the zone where the ManageIQ server is located,
+then click on the EVM server.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Advanced</strong> tab.</p>
+  </li>
+  <li>
+    <p>Search for <code class="language-plaintext highlighter-rouge">:ems_amazon:</code>, and enter the regions you want to disable
+under <code class="language-plaintext highlighter-rouge">:disabled_regions:</code>.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>Example. To disable the `ap-northeast-1` region:
+
+:ems_amazon:
+  :disabled_regions:
+  - us-gov-west-1
+  - ap-northeast-1
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2023 ManageIQ.
+      </span>
+      <span>
+        <a href="http://community.redhat.com/software/" target="_blank">
+          Sponsored by Red Hat, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

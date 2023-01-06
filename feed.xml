@@ -5,9 +5,25 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 04 Jan 2023 23:17:27 +0000</pubDate>
-    <lastBuildDate>Wed, 04 Jan 2023 23:17:27 +0000</lastBuildDate>
+    <pubDate>Fri, 06 Jan 2023 19:18:19 +0000</pubDate>
+    <lastBuildDate>Fri, 06 Jan 2023 19:18:19 +0000</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
+    
+      <item>
+        <title>ManageIQ Oparin GA Announcement</title>
+        <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Oparin&lt;/strong&gt;! This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Grigoriy_Oparin&quot;&gt;Grigoriy Oparin&lt;/a&gt;. You can download the Oparin-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 06 Jan 2023 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2023/01/manageiq-oparin-ga-announcement/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2023/01/manageiq-oparin-ga-announcement/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>ManageIQ Najdorf GA Announcement</title>
@@ -245,20 +261,6 @@ To estimate the size of the metric collection portion of the database, you could
         <category>releases</category>
         
         <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>ManageIQ at scale at KPN</title>
-        <description>&lt;h1 id=&quot;manageiq-at-scale-at-kpn&quot;&gt;ManageIQ at scale at KPN&lt;/h1&gt;
-
-</description>
-        <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
-        <link>http://manageiq.org/blog/2021/02/manageiq-at-scale-at-kpn/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2021/02/manageiq-at-scale-at-kpn/</guid>
-        
-        <category>collaboration</category>
         
         
       </item>
