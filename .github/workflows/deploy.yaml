@@ -2,6 +2,9 @@ name: Build
 on:
   repository_dispatch:
     types: [deploy]
+  schedule:
+  - cron: '0 3 * * *'
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
