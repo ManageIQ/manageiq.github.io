@@ -4668,7 +4668,7 @@ insecurely (not recommended).</p>
       </li>
       <li>
         <p>Enter the <strong>API Port</strong> of the provider. The default port is
-<code class="language-plaintext highlighter-rouge">8443</code>.</p>
+<code class="language-plaintext highlighter-rouge">6443</code>.</p>
       </li>
       <li>
         <p>Enter a token for your provider in the <strong>Token</strong> box.</p>
@@ -4685,51 +4685,6 @@ management-admin-token-8ixxs –template=’’ | base64 –decode</p>
       <li>
         <p>Click <strong>Validate</strong> to confirm that ManageIQ can connect
 to the OpenShift Container Platform provider.</p>
-      </li>
-    </ol>
-  </li>
-  <li>
-    <p>In the <strong>Alerts</strong> endpoint tab optionally configure the alerts service:</p>
-
-    <ol>
-      <li>
-        <p>Select a service type, or leave disabled.  Prometheus alerts are only supported on OCP v3</p>
-      </li>
-      <li>
-        <p>Select a <strong>Security Protocol</strong> method to specify how to
-authenticate the service:</p>
-
-        <ul>
-          <li>
-            <p><strong>SSL</strong>: Authenticate the provider securely using a trusted
-Certificate Authority. Select this option if the provider
-has a valid SSL certificate and it is signed by a trusted
-Certificate Authority. No further configuration is required
-for this option.</p>
-          </li>
-          <li>
-            <p><strong>SSL trusting custom CA</strong>: Authenticate the provider with a
-self-signed certificate. For this option, copy your
-provider’s CA certificate to the <strong>Trusted CA
-Certificates</strong> box in PEM format.</p>
-          </li>
-          <li>
-            <p><strong>SSL without validation</strong>: Authenticate the provider
-insecurely using SSL. (Not recommended)</p>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>Enter the <strong>Hostname</strong> (or IPv4 or IPv6 address) or alert
-<strong>Route</strong>.</p>
-      </li>
-      <li>
-        <p>Enter the <strong>API Port</strong> if your Prometheus provider uses a
-non-standard port for access. The default port is <code class="language-plaintext highlighter-rouge">443</code>.</p>
-      </li>
-      <li>
-        <p>Click <strong>Validate</strong> to confirm that ManageIQ can
-connect to the alerts service.</p>
       </li>
     </ol>
   </li>
@@ -4780,7 +4735,7 @@ metrics service.</p>
 
         <p>In order to find the hostname you can use the <code class="language-plaintext highlighter-rouge">oc get route</code> command.</p>
 
-        <p>On OCPv4 you can get the Prometheus route by running:</p>
+        <p>You can retrieve the Prometheus route by running:</p>
 
         <p><code class="language-plaintext highlighter-rouge">oc get route prometheus-k8s -n openshift-monitoring</code></p>
 
@@ -4792,14 +4747,6 @@ prometheus-k8s   prometheus-k8s-openshift-monitoring.ocp.example.com  prometheus
 </code></pre></div>        </div>
 
         <p>In this example you would use <code class="language-plaintext highlighter-rouge">prometheus-k8s-openshift-monitoring.ocp.example.com</code> as the metrics hostname.</p>
-
-        <p>On OCPv3 you can get the Hawkular route by running:</p>
-
-        <p><code class="language-plaintext highlighter-rouge">oc get route hawkular-metrics -n openshift-infra</code></p>
-
-        <p>Or the Prometheus route:</p>
-
-        <p><code class="language-plaintext highlighter-rouge">oc get route prometheus -n openshift-metrics</code></p>
       </li>
       <li>
         <p>Enter the <strong>API Port</strong> if your Hawkular or Prometheus provider
