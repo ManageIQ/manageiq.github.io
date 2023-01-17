@@ -474,22 +474,24 @@
 
       <div class="doc-content">
         
-        <h1 id="adding-a-new-model">Adding A New Model</h1>
+        <h2 id="adding-a-new-model">Adding A New Model</h2>
 
-<p>This article provides examples for adding a new model to ManageIQ, to represent and manipulate a model from a provider’s backend. The article uses the autosde provider plug-in and its <code class="language-plaintext highlighter-rouge">storage_manager</code> as example. Note that the exact names, details and file paths may differ between providers.</p>
+<p>So you’ve added your AwesomeCloud provider and collected everything that ManageIQ has tables for, but your cloud is so awesome it has something ManageIQ doesn’t have yet.  In order to manage this new type of inventory in ManageIQ you have to create a new model for it.</p>
 
-<p>Related articles which may expand on subjects mentioned here:</p>
+<p>Before we jump in make sure that you are familiar with the following guides:</p>
 <ul>
   <li><a href="./dev-guide">dev-guide</a></li>
   <li><a href="./persister/inventory_collections">Inventory Collections</a></li>
   <li><a href="./refresh">Refresh</a></li>
 </ul>
 
-<h3 id="create-a-new-schema">Create A New Schema</h3>
-<p>Before adding a new model, create a new schema to build its table in miq db.</p>
+<p>As well as <a href="https://guides.rubyonrails.org/active_record_basics.html">Rails Models</a> specifically ActiveRecord and Migrations.</p>
+
+<h3 id="create-a-new-database-table">Create a new database table</h3>
+<p>Before you can add a new model, you must create a database table to store the data.  This is done by using the migration generator.</p>
 <ol>
-  <li>In a miq vm terminal type <code class="language-plaintext highlighter-rouge">rails g migration create_&lt;table_names&gt;</code> (model name in plural), for instance: create_physical_storages. A migration file will be created on the vm in the repo <code class="language-plaintext highlighter-rouge">manageiq-schema</code>, in directory <code class="language-plaintext highlighter-rouge">db/migrate</code>.</li>
-  <li>Copy it from the vm to your local environment, using your editor/IDE.</li>
+  <li>If you haven’t already, clone the manageiq-schema repository and add it to your bundler overrides.</li>
+  <li>In a terminal type <code class="language-plaintext highlighter-rouge">rails generate migration create_&lt;table_names&gt;</code> (model name in plural), for instance: create_physical_storages. A migration file will be created on the vm in the repo <code class="language-plaintext highlighter-rouge">manageiq-schema</code>, in directory <code class="language-plaintext highlighter-rouge">db/migrate</code>.</li>
   <li>Edit the file and add necessary fields:
     <ol>
       <li>Use existing schema files as reference.</li>
@@ -500,85 +502,67 @@
       </li>
     </ol>
   </li>
-  <li>When the schema is ready, redeploy it to the vm and type <code class="language-plaintext highlighter-rouge">rails db:migrate</code> in the vm terminal.</li>
-  <li>Rollback a migration: <code class="language-plaintext highlighter-rouge">rails db:rollback</code>. Optional: specify the number (N) of rollbacks to perform by adding <code class="language-plaintext highlighter-rouge">STEP=N</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">manageiq-schema/spec/migrations</code>: A new spec file should also be auto-created here. Copy it from the vm to your local environment and push it to Git together with the schema.</li>
+  <li>When the migration is ready, change directory to your core manageiq directory and run <code class="language-plaintext highlighter-rouge">rails db:migrate</code>.</li>
+  <li>If you need to change something and have to re-run the migration again you can rollback a migration: <code class="language-plaintext highlighter-rouge">rails db:rollback</code>. Optional: specify the number (N) of rollbacks to perform by adding <code class="language-plaintext highlighter-rouge">STEP=N</code>.</li>
 </ol>
 
-<h3 id="form-a-new-model-class-and-register-it-in-the-providers-model-class">Form a New Model Class and Register it in the Provider’s Model Class</h3>
+<h3 id="create-the-new-model">Create the new Model</h3>
 <p>In the main manageiq repo:</p>
 <ol>
-  <li><code class="language-plaintext highlighter-rouge">app/models</code>:
+  <li>Create the model class in <code class="language-plaintext highlighter-rouge">app/models</code>:
     <ol>
       <li>Add a model class file and specify the necessary relations (<code class="language-plaintext highlighter-rouge">belongs_to</code>, <code class="language-plaintext highlighter-rouge">has_many</code>, etc.). Once again, it’s helpful to check existing models.</li>
-      <li>The name of the model should be in <code class="language-plaintext highlighter-rouge">snake_case</code> format and singular, not plural: <code class="language-plaintext highlighter-rouge">physical_storage</code> and not <code class="language-plaintext highlighter-rouge">physical_storages</code>.</li>
+      <li>The name of the model file should be in <code class="language-plaintext highlighter-rouge">snake_case</code> format and singular, not plural: <code class="language-plaintext highlighter-rouge">cloud_database.rb</code> and not <code class="language-plaintext highlighter-rouge">cloud_databases.rb</code>.</li>
       <li>The classes in this path are general, to be used throughout the ManageIQ platform. For behavior desired in only in a particular provider, a model can be inherited and overridden in that provider’s <code class="language-plaintext highlighter-rouge">app/models</code> dir.</li>
-      <li>For instance, the general <code class="language-plaintext highlighter-rouge">physical_storage</code> in the main repo defines CRUD methods with basic behavior, common to all its implementations. However, after performing the basic common necessities, each of its CRUD methods calls another final “raw” CRUD method, which is supposed to actually perform the operation. These raw methods are left unimplemented in the general <code class="language-plaintext highlighter-rouge">physical_storage</code>, and must be implemented by a subclass in the provider’s repo.</li>
+      <li>For instance, the general <code class="language-plaintext highlighter-rouge">cloud_database</code> in the main repo defines CRUD methods with basic behavior, common to all its implementations. However, after performing the basic common necessities, each of its CRUD methods calls another final “raw” CRUD method, which is supposed to actually perform the operation. These raw methods are left unimplemented in the general <code class="language-plaintext highlighter-rouge">cloud_database</code>, and must be implemented by a subclass in the provider’s repo.</li>
+      <li>Include a <code class="language-plaintext highlighter-rouge">belongs_to :ext_management_system, :foreign_key =&gt; :ems_id, , :class_name =&gt; "ManageIQ::Providers::CloudManager"</code></li>
+      <li>At the base class all features should default to <code class="language-plaintext highlighter-rouge">supports_not</code> so e.g. add <code class="language-plaintext highlighter-rouge">supports_not :create</code> to your base model.</li>
     </ol>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/storage_manager.rb</code> (replace <code class="language-plaintext highlighter-rouge">storage_manager</code> with the relevant provider):
+  <li>Add the collection to the manager type in <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/cloud_manager.rb</code> (replace <code class="language-plaintext highlighter-rouge">cloud_manager</code> with the relevant provider):
     <ol>
-      <li>Add the name of the new model in plural form (<code class="language-plaintext highlighter-rouge">physical_storages</code>) with the relevant relation: usually a <code class="language-plaintext highlighter-rouge">has_many</code> with <code class="language-plaintext highlighter-rouge">:dependent =&gt; destroy</code>.</li>
-      <li><code class="language-plaintext highlighter-rouge">supports</code> specifies that a feature (for instance, your new model) is generally supported by - and available for - all uses and implementations of this provider class.</li>
-      <li><code class="language-plaintext highlighter-rouge">supports_not</code> makes the feature only supported by those providers who inherit the general model in their provider plug-in repo, and specify <code class="language-plaintext highlighter-rouge">supports</code> for that feature in their implementation. For instance: the general <code class="language-plaintext highlighter-rouge">storage_manager</code> specifies <code class="language-plaintext highlighter-rouge">has_many cloud_volumes</code> but also <code class="language-plaintext highlighter-rouge">supports_not cloud_volumes</code>, and the autosde provider inherits it and in its own <code class="language-plaintext highlighter-rouge">storage_manager</code> class specifies <code class="language-plaintext highlighter-rouge">supports cloud_volumes</code>.</li>
+      <li>Add the <code class="language-plaintext highlighter-rouge">has_many</code> association (e.g. <code class="language-plaintext highlighter-rouge">has_many :cloud_databases</code>) as well as any modifiers you want such as <code class="language-plaintext highlighter-rouge">:dependent =&gt; destroy</code>.  <code class="language-plaintext highlighter-rouge">has_many :cloud_databases, :foreign_key =&gt; :ems_id, :dependent =&gt; :destroy</code></li>
     </ol>
   </li>
-</ol>
-
-<h3 id="connect-the-new-model-to-the-provider-backend---the-inventory-flow">Connect the New Model to the Provider Backend - The Inventory Flow:</h3>
-<p>After adding a schema and a model class, we would like to update its db table on every <code class="language-plaintext highlighter-rouge">EmsRefresh</code> with data we collect from the parallel model on the provider’s backend side.<br />
-In the main manageiq repo:</p>
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/inventory/persister/builder/storage_manager.rb</code>:<br />
+  <li>Add the new model to the inventory collections
+After adding a schema and a model class, we would like to update its db table on every <code class="language-plaintext highlighter-rouge">EmsRefresh</code> with data we collect from the parallel model on the provider’s backend side.<br />
+In the main manageiq repo:</li>
+  <li><code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/inventory/persister/builder/cloud_manager.rb</code>:<br />
 Add a method with the model’s plural name:
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cloud_volumes</span>
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cloud_databases</span>
   <span class="n">add_common_default_values</span>
 <span class="k">end</span>
 </code></pre></div>    </div>
-    <p>In the provider repo, (e.g. <code class="language-plaintext highlighter-rouge">mangeiq-providers-autosde</code>) in <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/autosde/inventory/</code>:</p>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">collector/storage_manager.rb</code>: Add a method with the model’s plural name, which calls the <code class="language-plaintext highlighter-rouge">GET</code> method of the model in the provider’s client:
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cloud_volumes</span>
-  <span class="vi">@cloud_volumes</span> <span class="o">||=</span> <span class="vi">@manager</span><span class="p">.</span><span class="nf">autosde_client</span><span class="o">.</span><span class="no">VolumeApi</span><span class="p">.</span><span class="nf">volumes_get</span>
+</ol>
+
+<h3 id="update-your-provider-to-collect-the-new-model">Update your provider to collect the new model</h3>
+
+<p>In the provider repo, (e.g. <code class="language-plaintext highlighter-rouge">manageiq-providers-awesome_cloud</code>) in <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/inventory/</code>:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">collector/cloud_manager.rb</code>: Add a method with the model’s plural name, which calls the <code class="language-plaintext highlighter-rouge">GET</code> method of the model in the provider’s client:
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cloud_databases</span>
+  <span class="vi">@cloud_databases</span> <span class="o">||=</span> <span class="n">compute_client</span><span class="p">.</span><span class="nf">get_databases</span>
 <span class="k">end</span>
 </code></pre></div>    </div>
   </li>
   <li><code class="language-plaintext highlighter-rouge">collector/target_collection.rb</code>: Add a method with the model’s plural name, which defines and returns a container for the collection. This can be an empty <code class="language-plaintext highlighter-rouge">[]</code>, but can also include more logic if needed:
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cluster_volume_mappings</span>
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cloud_databases</span>
   <span class="p">[]</span>
 <span class="k">end</span>
 </code></pre></div>    </div>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">parser/storage_manager.rb</code> (see Inventory::Parser in <a href="./refresh">Refresh</a> for examples):
+  <li><code class="language-plaintext highlighter-rouge">parser/cloud_manager.rb</code> (see Inventory::Parser in <a href="./refresh">Refresh</a> for examples):
     <ol>
       <li>Add the model’s plural name to the <code class="language-plaintext highlighter-rouge">parse</code> method in the top.</li>
       <li>Add a method with the model’s plural name, which calls the collector method (added in stage 2) and passes the fields that were retrieved from the client to a <code class="language-plaintext highlighter-rouge">build</code> method of the persister (which later saves them to the miq db).</li>
       <li>The parser is also the place for light processing of the data received from the client, in case it needs formatting or manipulation before it is saved to the db.</li>
     </ol>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">persister/storage_manager.rb</code> Add a new call to <code class="language-plaintext highlighter-rouge">add_collection(storage, &lt;plural_name&gt;)</code>, which saves the data to the miq db. <code class="language-plaintext highlighter-rouge">storage</code> here is the name defined in <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/inventory/persister/builder/persister_helper.rb</code> for the <code class="language-plaintext highlighter-rouge">builder_class</code> of this provider:
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">initialize_inventory_collections</span>
-  <span class="n">add_collection</span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="ss">:ext_management_system</span><span class="p">)</span>
-  <span class="n">add_collection</span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="ss">:physical_storages</span><span class="p">)</span>
-  <span class="n">add_collection</span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="ss">:cloud_volumes</span><span class="p">)</span>
-<span class="k">end</span>
-</code></pre></div>    </div>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">persister/cloud_databases.rb</code> Add a new call to <code class="language-plaintext highlighter-rouge">add_collection(cloud, :cloud_databases)</code>, which saves the data to the miq db. <code class="language-plaintext highlighter-rouge">cloud</code> here is the name defined in <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/inventory/persister/builder/persister_helper.rb</code> for the <code class="language-plaintext highlighter-rouge">builder_class</code> of this provider</li>
 </ol>
 
-<p><strong>Note:</strong> It is possible to collect data from the provider backend and save it to the provider’s model itself in miq.<br />
-This requires adding <code class="language-plaintext highlighter-rouge">ext_management_system</code> in stages 4-5. In stage 4, be sure to reference the provider’s <code class="language-plaintext highlighter-rouge">guid</code> so it will be found and updated in the db.</p>
-
-<p>In the following example, a provider’s <code class="language-plaintext highlighter-rouge">jsonb</code> field named <code class="language-plaintext highlighter-rouge">capabilities</code> is populated with a model called <code class="language-plaintext highlighter-rouge">capability_values</code>, which was collected from the provider in stages 2-3:</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">ext_management_system</span>
-    <span class="n">persister</span><span class="p">.</span><span class="nf">ext_management_system</span><span class="p">.</span><span class="nf">build</span><span class="p">(</span>
-      <span class="ss">:guid</span>         <span class="o">=&gt;</span> <span class="n">persister</span><span class="p">.</span><span class="nf">manager</span><span class="p">.</span><span class="nf">guid</span><span class="p">,</span>
-      <span class="ss">:capabilities</span> <span class="o">=&gt;</span> <span class="n">collector</span><span class="p">.</span><span class="nf">capability_values</span>
-    <span class="p">)</span>
-  <span class="k">end</span>
-</code></pre></div></div>
-
-<h3 id="open-up-an-api-endpoint-for-the-new-model">Open Up an API Endpoint for the New Model</h3>
+<h3 id="add-an-api-endpoint-for-the-new-model">Add an API Endpoint for the New Model</h3>
 <p>Now that we have a model with data collected from the provider’s backend, we might like to access and manipulate it without directly touching the db, by making an API request. This is necessary mainly for performing CRUD operations requested by the user through the UI, which must be passed on to the provider’s backend.</p>
 
 <p>In the main manageiq repo in <code class="language-plaintext highlighter-rouge">db/fixtures/miq_product_features.yml</code>: Add the model by copying from existing models. Pay attention to singular vs plural when writing the name of the model: Plural in <code class="language-plaintext highlighter-rouge">:description</code>, snake_case singular in <code class="language-plaintext highlighter-rouge">:identifier</code></p>
@@ -587,7 +571,7 @@ This requires adding <code class="language-plaintext highlighter-rouge">ext_mana
 <ol>
   <li><code class="language-plaintext highlighter-rouge">app/controllers/api/</code>: Add a controller, use existing files as reference. If the only operation necessary is retrieving data, the controller can be as thin as:
     <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Api</span>
-  <span class="k">class</span> <span class="nc">PhysicalStorageFamiliesController</span> <span class="o">&lt;</span> <span class="no">BaseController</span>
+  <span class="k">class</span> <span class="nc">CloudDatabaseController</span> <span class="o">&lt;</span> <span class="no">BaseController</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div>    </div>
