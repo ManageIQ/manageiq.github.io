@@ -1625,7 +1625,7 @@ prefix the attribute with <em>or</em> as follows:</p>
 <p>When strings, value to be quoted in single or double quotes. When
 datetimes, only strict comparison operators are supported.</p>
 
-<p>Example Query VMs named sample*, created_on &gt; 2019-09-01, and return
+<p>Example Query of VMs named sample*, created_on &gt; 2019-09-01, and return
 name and vendor</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/vms?expand=resources&amp;attributes=name,vendor&amp;filter[]=created_on&gt;2019-09-01&amp;filter[]=name='sample%'
@@ -1635,6 +1635,43 @@ name and vendor</p>
 unspecified service_id</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/services?expand=resources&amp;attributes=retired&amp;filter[]=service_id=nil&amp;filter[]=retired=true
+</code></pre></div></div>
+
+<p>Example Query of VMs with power_state of on or off:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/vms?expand=resources&amp;filter[]=power_state=[on,off]
+</code></pre></div></div>
+
+<p>Alternately, you can use the following more verbose syntax using OR:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/vms?expand=resources&amp;filter[]=power_state=off&amp;filter[]=or%20power_state=on
+</code></pre></div></div>
+
+<p>Example Query of VMs with more than 4 CPU sockets or more than 16,000 MB of RAM (OR):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/vms?expand=resources&amp;filter[]=num_cpu&gt;4&amp;filter[]=or%20ram_size&gt;16000
+</code></pre></div></div>
+
+<p>Example Query of VMs without a specific value (attribute negation):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/vms?expand=resources&amp;filter[]=power_state!=unknown
+</code></pre></div></div>
+
+<p>Example Query of VMs where a field is NOT NULL (vms that are either retired or not):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/vms?expand=resources&amp;filter[]=retired!=nil
+GET /api/vms?expand=resources&amp;filter[]=retired!=NULL
+GET /api/vms?expand=resources&amp;filter[]=retired!=null
+</code></pre></div></div>
+
+<p>Example Query of VMs using a boolean:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/vms?expand=resources&amp;filter[]=retired=true
+</code></pre></div></div>
+
+<p>Example Query of VMs created before a specific time:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/vms?expand=resources&amp;filter[]=created_on&lt;2023-01-01
 </code></pre></div></div>
 
 <p>Attributes specified via the filter[] parameter can include virtual
