@@ -587,6 +587,10 @@
         </tr>
       </tbody>
     </table>
+
+    <p><strong>Note</strong>: Users with MacOS running on Apple M1 CPU might need to specify location of the <code class="language-plaintext highlighter-rouge">Homebrew</code> libraries explicitly. 
+If build steps below fail for you then run <code class="language-plaintext highlighter-rouge">export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"</code>and retry the failing build step.
+See here for additional information: https://github.com/Homebrew/brew/issues/13481</p>
   </li>
 </ol>
 
