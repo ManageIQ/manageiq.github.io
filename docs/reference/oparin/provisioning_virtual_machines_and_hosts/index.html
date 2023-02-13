@@ -3799,34 +3799,54 @@ the number of virtual machines requested is less than the
 <a class="anchor" href="#customizing-provisioning-states" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customizing Provisioning States</h5>
 
 <p>The steps followed when provisioning a virtual machine or cloud instance are completed based on instances from the
-menu:DOMAIN[Cloud|Infrastructure &gt; VM &gt; Provisioning &gt; StateMachines &gt; VMProvision_VM] class. Depending on your environment you can remove, change, or add steps to the provisioning process. For example, if you are not integrating with IPAM or a CMDB, then you can remove
-those execution steps. <img src="../images/6281.png" alt="6281"></p>
+menu:DOMAIN[Cloud|Infrastructure &gt; VM &gt; Provisioning &gt; StateMachines &gt; VMProvision_VM] class.</p>
 
 <h5 id="editing-the-default-state-instance">
 <a class="anchor" href="#editing-the-default-state-instance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editing the Default State Instance</h5>
 
 <ol>
   <li>
-    <p>Navigate to menu:Automate[Explorer].</p>
+    <p>Navigate to menu:Automation &gt; Embedded Automate &gt; Explorer.</p>
   </li>
   <li>
-    <p>From the accordion menu, click menu:DOMAIN[Cloud &gt; VM &gt; Provisioning &gt; StateMachines &gt; VMProvision_VM].</p>
+    <p>Click <strong>Datastore</strong> accordion. Select <strong>Configuration</strong> &gt; Add a New Domain. You must fill the Name and Description values and click <strong>Add</strong> to create a custom 
+domain.</p>
+  </li>
+  <li>
+    <p>From the accordion menu, navigate to Cloud &gt; VM &gt;Provisioning &gt; StateMachines &gt; VMProvision_VM.</p>
+  </li>
+  <li>
+    <p>Click on the drop-down menu, Configuration &gt; Copy this class.</p>
+  </li>
+  <li>
+    <p>To add the class to the custom domain, specify the custom domain in the <strong>To Domain</strong> list and click Copy.</p>
+  </li>
+  <li>
+    <p>From the Datastore accordion, navigate to custom domain &gt; Cloud &gt; VM &gt; Provisioning &gt; StateMachines &gt; VMProvision_VM.</p>
 
-    <p><strong>Note:</strong></p>
+    <ol>
+      <li>
+        <p>Click <strong>Schema</strong> tab.</p>
+      </li>
+      <li>
+        <p>Select Configuration &gt; Edit selected Schema.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>You can remove, update, or insert a line in the Editing Class Schema panel.</p>
+  </li>
+</ol>
 
-    <p><strong>DOMAIN</strong> must be a user-defined Domain and not the locked ManageIQ Domain. If necessary, you can copy the class from the ManageIQ domain into a custom domain.</p>
+<p><strong>Note</strong>: Depending on your environment, you can leave the values blank in a provisioning process. For example, if you are not integrating with IPAM or a CMDB, then you can leave the values blank. <img src="../images/6281.png" alt="6281"></p>
 
-    <p>This example uses the <strong>Cloud</strong> Namespace, but can also use the <strong>Infrastructure</strong> namespace.</p>
+<ol>
+  <li>
+    <p>On the Datastore tree, navigate to custom domain &gt; Cloud &gt; VM &gt; Provisioning &gt; StateMachines &gt; VMProvision_VM. Click <strong>Schema</strong> tab and select 
+Configuration &gt; Edit sequence.</p>
   </li>
   <li>
-    <p>Click <img src="../images/1847.png" alt="1847">(<strong>Configuration</strong>), then <img src="../images/1851.png" alt="1851">(<strong>Edit this instance</strong>).
-<img src="../images/6281.png" alt="6281"></p>
-  </li>
-  <li>
-    <p>For each step that you want to remove, clear the entries in the <strong>Value</strong>, <strong>On Entry</strong>, <strong>On Exit</strong>, and <strong>On Error</strong> columns.</p>
-  </li>
-  <li>
-    <p>Click <strong>Save</strong>.</p>
+    <p>Resequence the schema in the Edit of Class Schema Sequence panel.</p>
   </li>
 </ol>
 
