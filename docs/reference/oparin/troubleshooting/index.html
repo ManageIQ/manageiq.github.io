@@ -1077,27 +1077,52 @@
 
 <p>Here are some helpful examples:</p>
 
-<p>View all logs: <code class="language-plaintext highlighter-rouge">journalctl</code>
-View all logs, most recent first: <code class="language-plaintext highlighter-rouge">journalctl -r</code>
-View all logs since the last boot: <code class="language-plaintext highlighter-rouge">journalctl -b</code>
-View all logs from the previous boot: <code class="language-plaintext highlighter-rouge">journalctl -b -1</code>
-View all logs from a time range: <code class="language-plaintext highlighter-rouge">journalctl --since "1 hour ago"</code>
-View all logs with extra metadata: <code class="language-plaintext highlighter-rouge">journalctl --output verbose</code></p>
+<p>Viewing:</p>
+<ul>
+  <li>View all logs: <code class="language-plaintext highlighter-rouge">journalctl</code>
+</li>
+  <li>View all logs, most recent first: <code class="language-plaintext highlighter-rouge">journalctl -r</code>
+</li>
+  <li>View all logs since the last boot: <code class="language-plaintext highlighter-rouge">journalctl -b</code>
+</li>
+  <li>View all logs from the previous boot: <code class="language-plaintext highlighter-rouge">journalctl -b -1</code>
+</li>
+  <li>View all logs from a time range: <code class="language-plaintext highlighter-rouge">journalctl --since "1 hour ago"</code>
+</li>
+  <li>View all logs with extra metadata: <code class="language-plaintext highlighter-rouge">journalctl --output verbose</code>
+</li>
+  <li>Tail all logs: <code class="language-plaintext highlighter-rouge">journalctl -f</code>
+</li>
+</ul>
 
-<p>Tail all logs: <code class="language-plaintext highlighter-rouge">journalctl -f</code>
-Tail all warnings: <code class="language-plaintext highlighter-rouge">journalctl -f -p warning</code>
-Tail all errors: <code class="language-plaintext highlighter-rouge">journalctl -f -p err</code>
-Tail all warnings and errors: <code class="language-plaintext highlighter-rouge">journalctl -f -p err -p warning</code></p>
+<p>Filtering:</p>
+<ul>
+  <li>Filter warnings: <code class="language-plaintext highlighter-rouge">journalctl -f -p warning</code>
+</li>
+  <li>Filter errors: <code class="language-plaintext highlighter-rouge">journalctl -f -p err</code>
+</li>
+  <li>Filter warnings and errors: <code class="language-plaintext highlighter-rouge">journalctl -f -p err -p warning</code>
+</li>
+  <li>Logs for a specific unit: <code class="language-plaintext highlighter-rouge">journalctl -f -u manageiq-generic@51113329-8942-4a4c-98d6-1e532656c569.service</code>
+</li>
+  <li>Logs for a group of workers: <code class="language-plaintext highlighter-rouge">journalctl -f -u manageiq-generic.slice</code>
+</li>
+  <li>Logs matching a pattern: <code class="language-plaintext highlighter-rouge">journalctl -g '(Started|Stopping) EVM server''</code> (accepts perl compatible regular expressions)</li>
+  <li>Logs for a specific identifier: <code class="language-plaintext highlighter-rouge">journalctl -f -t evm</code>
+</li>
+</ul>
 
-<p>Logs for a specific unit: <code class="language-plaintext highlighter-rouge">journalctl -f -u manageiq-generic@51113329-8942-4a4c-98d6-1e532656c569.service</code>
-Logs for a group of workers: <code class="language-plaintext highlighter-rouge">journalctl -f -u manageiq-generic.slice</code>
-Logs matching a pattern: <code class="language-plaintext highlighter-rouge">journalctl -g '(Started|Stopping) EVM server''</code> (accepts perl compatible regular expressions)
-Logs for a specific identifier: <code class="language-plaintext highlighter-rouge">journalctl -f -t evm</code></p>
-
-<p>Export to a file: <code class="language-plaintext highlighter-rouge">journalctl --output export &gt; export.log</code>
-Rotate the current journal to an archive: <code class="language-plaintext highlighter-rouge">journalctl --rotate</code>
-Clear out all archived journals: <code class="language-plaintext highlighter-rouge">journalctl --vacuum-time=1s</code>
-Clear out journal archives over a day old: <code class="language-plaintext highlighter-rouge">journalctl --vacuum-time=1d</code></p>
+<p>Other:</p>
+<ul>
+  <li>Export to a file: <code class="language-plaintext highlighter-rouge">journalctl --output export &gt; export.log</code>
+</li>
+  <li>Rotate the current journal to an archive: <code class="language-plaintext highlighter-rouge">journalctl --rotate</code>
+</li>
+  <li>Clear out all archived journals: <code class="language-plaintext highlighter-rouge">journalctl --vacuum-time=1s</code>
+</li>
+  <li>Clear out journal archives over a day old: <code class="language-plaintext highlighter-rouge">journalctl --vacuum-time=1d</code>
+</li>
+</ul>
 
 <p>Almost all of these can be combined together where they don’t conflict (e.g. <code class="language-plaintext highlighter-rouge">-f</code> can’t be used with <code class="language-plaintext highlighter-rouge">-r</code>)</p>
 
