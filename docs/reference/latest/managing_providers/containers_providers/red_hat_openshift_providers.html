@@ -1059,11 +1059,7 @@
 <h2 id="obtaining-an-openshift-container-platform-management-token">
 <a class="anchor" href="#obtaining-an-openshift-container-platform-management-token" aria-hidden="true"><span class="octicon octicon-link"></span></a>Obtaining an OpenShift Container Platform Management Token</h2>
 
-<p>When deploying OpenShift using <code class="language-plaintext highlighter-rouge">openshift-ansible-3.0.20</code> (or later
-versions), the OpenShift Container Platform <a href="https://docs.openshift.com/container-platform/4.5/authentication/understanding-and-creating-service-accounts.html">service account</a>
-and <a href="https://docs.openshift.com/container-platform/4.5/authentication/understanding-and-creating-service-accounts.html#service-accounts-granting-roles_understanding-service-accounts">roles</a> required by ManageIQ are installed by default.</p>
-
-<p>For newer versions of OpenShift you have to create a service-account with the proper permissions for ManageIQ.</p>
+<p>First you have to create a service-account with the proper permissions for ManageIQ.</p>
 
 <ol>
   <li>Create a namespace for the service account
@@ -1101,9 +1097,33 @@ for a list of the default roles.</p>
 
 <p>Run the following to obtain the token needed to add an OpenShift Container Platform provider:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># oc sa get-token -n $project_name $service_account_name
-eyJhbGciOiJSUzI1NiI...
-</code></pre></div></div>
+<p>Run the following to obtain the token needed to add a Red Hat OpenShift provider:</p>
+
+<ol>
+  <li>
+    <p>Obtain the <code class="language-plaintext highlighter-rouge">management</code> service account token name:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># oc describe sa -n management-infra management-admin
+...
+Tokens:  management-admin-token-0f3fh
+         management-admin-token-q7a87
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Select and describe one of the tokens to retrieve the full token
+output, replacing <code class="language-plaintext highlighter-rouge">management-admin-token-0f3fh</code> with the name of
+your token:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># oc describe secret -n management-infra management-admin-token-0f3fh
+...
+Data
+====
+token:  eyJhbGciOiJSUzI1NiI...
+</code></pre></div>    </div>
+  </li>
+</ol>
 
 <h2 id="adding-an-openshift-container-platform-provider">
 <a class="anchor" href="#adding-an-openshift-container-platform-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding an OpenShift Container Platform Provider</h2>
