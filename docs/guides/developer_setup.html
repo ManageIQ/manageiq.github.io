@@ -509,8 +509,8 @@
     </tr>
     <tr>
       <td>PostgreSQL</td>
-      <td>10.x</td>
       <td>13.x</td>
+      <td>14.x</td>
     </tr>
   </tbody>
 </table>
@@ -687,11 +687,11 @@ See here for additional information: https://github.com/Homebrew/brew/issues/134
         </tr>
         <tr>
           <td>apt</td>
-          <td><code class="language-plaintext highlighter-rouge">sudo apt -y install postgresql-11</code></td>
+          <td><code class="language-plaintext highlighter-rouge">sudo apt -y install postgresql</code></td>
         </tr>
         <tr>
           <td>brew</td>
-          <td><code class="language-plaintext highlighter-rouge">brew install postgresql@11</code></td>
+          <td><code class="language-plaintext highlighter-rouge">brew install postgresql@13</code></td>
         </tr>
         <tr>
           <td>containers</td>
@@ -713,9 +713,10 @@ See here for additional information: https://github.com/Homebrew/brew/issues/134
       <li>
         <p>Debian / Ubuntu</p>
 
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pg_dropcluster <span class="nt">--stop</span> 11 main
-<span class="nb">sudo </span>pg_createcluster <span class="nt">-e</span> UTF-8 <span class="nt">-l</span> C 11 main <span class="nt">--</span> <span class="nt">--auth</span> trust <span class="nt">--username</span> root
-<span class="nb">sudo </span>pg_ctlcluster 11 main start
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">pg_version</span><span class="o">=</span><span class="si">$(</span>pg_lsclusters <span class="nt">--no-header</span> | <span class="nb">awk</span> <span class="s1">'{print $1}'</span> | <span class="nb">sort</span> <span class="nt">-n</span> | <span class="nb">tail</span> <span class="nt">-1</span><span class="si">)</span>
+<span class="nb">sudo </span>pg_dropcluster <span class="nt">--stop</span> <span class="nv">$pg_version</span> main
+<span class="nb">sudo </span>pg_createcluster <span class="nt">-e</span> UTF-8 <span class="nt">-l</span> C <span class="nv">$pg_version</span> main <span class="nt">--</span> <span class="nt">--auth</span> trust <span class="nt">--username</span> root
+<span class="nb">sudo </span>pg_ctlcluster <span class="nv">$pg_version</span> main start
 </code></pre></div>        </div>
       </li>
       <li>
@@ -723,7 +724,7 @@ See here for additional information: https://github.com/Homebrew/brew/issues/134
 
         <p><code class="language-plaintext highlighter-rouge">brew</code> will configure the cluster automatically, but you will need to create the user.</p>
 
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew services start postgresql@11
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew services start postgresql@13
 psql <span class="nt">-c</span> <span class="s2">"CREATE USER root SUPERUSER PASSWORD 'smartvm';"</span> <span class="nt">-U</span> <span class="nv">$USER</span> <span class="nt">-d</span> template1
 </code></pre></div>        </div>
 
