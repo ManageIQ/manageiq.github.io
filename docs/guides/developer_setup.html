@@ -707,7 +707,7 @@ See here for additional information: https://github.com/Homebrew/brew/issues/134
       <li>
         <p>Fedora / CentOS</p>
 
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span><span class="nv">PGSETUP_INITDB_OPTIONS</span><span class="o">=</span><span class="s1">'--auth trust --username root --encoding UTF-8 --locale C'</span> postgresql-setup <span class="nt">--initdb</span>
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span><span class="nv">PGSETUP_INITDB_OPTIONS</span><span class="o">=</span><span class="s1">'--auth trust --username root --encoding UTF-8'</span> postgresql-setup <span class="nt">--initdb</span>
 </code></pre></div>        </div>
       </li>
       <li>
@@ -731,7 +731,7 @@ psql <span class="nt">-c</span> <span class="s2">"CREATE USER root SUPERUSER PAS
         <p>If not using brew, you can configure a cluster using <code class="language-plaintext highlighter-rouge">initdb</code> directly.</p>
 
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> /usr/local/var/postgres
-initdb <span class="nt">--auth</span> trust <span class="nt">--username</span> root <span class="nt">--encoding</span> UTF-8 <span class="nt">--locale</span> C /usr/local/var/postgres
+initdb <span class="nt">--auth</span> trust <span class="nt">--username</span> root <span class="nt">--encoding</span> UTF-8 /usr/local/var/postgres
 </code></pre></div>        </div>
       </li>
       <li>
