@@ -1865,10 +1865,10 @@ are necessary, for example AMPQ for OpenStack or Metrics for RHEVM.</p>
 
 <p>When creating or updating providers, connection configurations can be
 set. Connection configurations can be used to specify resources such as
-an <code class="language-plaintext highlighter-rouge">amqp</code> event provider for OpenStack, adding Hawkular metrics, or an
+an <code class="language-plaintext highlighter-rouge">amqp</code> event provider for OpenStack, adding Prometheus metrics, or an
 authentication token.</p>
 
-<p>Hawkular metrics:</p>
+<p>Prometheus metrics:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Openshift Provider"</span><span class="p">,</span><span class="w">
@@ -1877,16 +1877,16 @@ authentication token.</p>
   </span><span class="nl">"connection_configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"role"</span><span class="w">                  </span><span class="p">:</span><span class="w"> </span><span class="s2">"hawkular"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"hostname"</span><span class="w">              </span><span class="p">:</span><span class="w"> </span><span class="s2">"hawkular_host"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"port"</span><span class="w">                  </span><span class="p">:</span><span class="w"> </span><span class="s2">"1443"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="w">                  </span><span class="p">:</span><span class="w"> </span><span class="s2">"prometheus"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hostname"</span><span class="w">              </span><span class="p">:</span><span class="w"> </span><span class="s2">"prometheus_host"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"port"</span><span class="w">                  </span><span class="p">:</span><span class="w"> </span><span class="s2">"443"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"security_protocol"</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="s2">"ssl-without-validation"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"certificate_authority"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-----BEGIN CERTIFICATE-----"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"verify_ssl"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"role"</span><span class="w">     </span><span class="p">:</span><span class="w">  </span><span class="s2">"hawkular"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"auth_key"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="s2">"hawkular_auth_key"</span><span class="w">
+        </span><span class="nl">"role"</span><span class="w">     </span><span class="p">:</span><span class="w">  </span><span class="s2">"prometheus"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"auth_key"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="s2">"prometheus_auth_key"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">

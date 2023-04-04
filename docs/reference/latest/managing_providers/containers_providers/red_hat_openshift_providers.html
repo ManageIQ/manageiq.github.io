@@ -1222,7 +1222,7 @@ to the OpenShift Container Platform provider.</p>
 
     <ol>
       <li>
-        <p>Select a service type (Prometheus or Hawkular) or leave disabled</p>
+        <p>Select a service type (e.g.: Prometheus) or leave disabled</p>
       </li>
       <li>
         <p>Select a <strong>Security Protocol</strong> method to specify how to
@@ -1241,16 +1241,6 @@ for this option.</p>
 self-signed certificate. For this option, copy your
 provider’s CA certificate to the <strong>Trusted CA
 Certificates</strong> box in PEM format.</p>
-
-            <p><strong>Note:</strong></p>
-
-            <p>In OpenShift, the default deployment of the router generates
-certificates during installation, which can be used with the
-<strong>SSL trusting custom CA</strong> option. Connecting a Hawkular
-endpoint with this option requires the CA certificate that
-the cluster uses for service certificates, which is stored
-in <code class="language-plaintext highlighter-rouge">/etc/origin/master/service-signer.crt</code> on the first
-master in a cluster.</p>
           </li>
           <li>
             <p><strong>SSL without validation</strong>: Authenticate the provider
@@ -1278,7 +1268,7 @@ prometheus-k8s   prometheus-k8s-openshift-monitoring.ocp.example.com  prometheus
         <p>In this example you would use <code class="language-plaintext highlighter-rouge">prometheus-k8s-openshift-monitoring.ocp.example.com</code> as the metrics hostname.</p>
       </li>
       <li>
-        <p>Enter the <strong>API Port</strong> if your Hawkular or Prometheus provider
+        <p>Enter the <strong>API Port</strong> of your metrics endpoint
 uses a non-standard port for access. The default port is <code class="language-plaintext highlighter-rouge">443</code>.</p>
       </li>
       <li>

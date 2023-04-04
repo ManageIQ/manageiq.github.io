@@ -1050,14 +1050,6 @@
 <ul>
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#prerequisites">Prerequisites</a></li>
-<li class="toc-entry toc-h2"><a href="#enabling-openshift-container-platform-metrics">Enabling OpenShift Container Platform Metrics</a></li>
-<li class="toc-entry toc-h2"><a href="#configuring-the-required-service-accounts">Configuring the Required Service Accounts</a></li>
-<li class="toc-entry toc-h2"><a href="#configuring-metrics-components">Configuring Metrics Components</a>
-<ul>
-<li class="toc-entry toc-h3"><a href="#deploying-the-metrics-components">Deploying the Metrics Components</a></li>
-<li class="toc-entry toc-h3"><a href="#applying-the-hawkular-metrics-settings-to-openshift-container-platform">Applying the Hawkular Metrics Settings to OpenShift Container Platform</a></li>
-</ul>
-</li>
 <li class="toc-entry toc-h2"><a href="#retrieving-the-openshift-container-platform-management-token">Retrieving the OpenShift Container Platform Management Token</a></li>
 <li class="toc-entry toc-h2"><a href="#configuring-manageiq">Configuring ManageIQ</a></li>
 <li class="toc-entry toc-h2"><a href="#configuring-manageiq-capacity-and-utilization">Configuring ManageIQ Capacity and Utilization</a>
@@ -1115,199 +1107,6 @@ product documentation. However, links to the corresponding sections are provided
 </ul>
 
 <p>When enabling metrics on OpenShift Container Platform, you can store your metrics data on <em>persistent</em> or <em>non-persistent</em> storage. To use persistent storage, you need to provision a persistent volume specifically for this purpose before <a href="#ocp-metrics-storage">configuring the metrics components</a>. See <a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/3.9/html/architecture/additional-concepts#architecture-additional-concepts-storage">Persistent Volumes</a> in the OpenShift Container Platform <em>Architecture</em> documentation for more information.</p>
-
-<h2 id="enabling-openshift-container-platform-metrics">
-<a class="anchor" href="#enabling-openshift-container-platform-metrics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling OpenShift Container Platform Metrics</h2>
-
-<p>In order for ManageIQ to collect OpenShift Container Platform node, pod, and container, you must first enable <em>cluster
-metrics</em> for your OpenShift cluster. This involves running the OpenShift
-Metrics services inside your cluster. If cluster metrics are already
-enabled on OpenShift, skip this section and proceed to
-<a href="#retrieving-the-openshift-container-platform-management-token">Retrieving the OpenShift Container Platform Management Token</a>.</p>
-
-<p><strong>Note:</strong> This section is an abridged version of a more detailed chapter, namely
-<a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/3.9/html/installation_and_configuration/install-config-cluster-metrics">Enabling Cluster Metrics</a> from the OpenShift Container Platform <em>Installation and Configuration</em> documentation. Refer to that chapter for more information.</p>
-
-<h2 id="configuring-the-required-service-accounts">
-<a class="anchor" href="#configuring-the-required-service-accounts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring the Required Service Accounts</h2>
-
-<p>Cluster metrics requires the following service accounts:</p>
-
-<ul>
-  <li>
-    <p><strong>metrics-deployer</strong></p>
-  </li>
-  <li>
-    <p><strong>heapster</strong></p>
-  </li>
-</ul>
-
-<div class="important">
-
-If you deployed OpenShift using `openshift-ansible-3.0.20`, then the
-service account and roles required for enabling metrics will already be
-installed. You can skip this section and go to [Configuring Metrics
-Components](#ocp-metrics-storage).
-
-</div>
-
-<p>To create these accounts:</p>
-
-<ol>
-  <li>
-    <p>Log in as an administrator to any node within the OpenShift
-Container Platform cluster.</p>
-  </li>
-  <li>
-    <p>Open a terminal.</p>
-  </li>
-  <li>
-    <p>Switch to the <strong>openshift-infra</strong> project:</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>$ oc project openshift-infra
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Create a service account for the Metrics Deployer named
-<strong>metrics-deployer</strong>:</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>$ oc create -f - &lt;&lt;API
-  apiVersion: v1
-  kind: ServiceAccount
-  metadata:
-    name: metrics-deployer
-  secrets:
-  - name: metrics-deployer
-  API
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>As described in <a href="#ocp-metrics-storage">Configuring Metrics Components</a>, the Metrics Deployer uses the
-<strong>metrics-deployer</strong> service account. Configure the
-<strong>metrics-deployer</strong> account to have <strong>edit</strong> permissions in the
-<strong>openshift-infra</strong> project:</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>$ oc adm policy add-role-to-user \
-edit system:serviceaccount:openshift-infra:metrics-deployer
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>The <strong>heapster</strong> account will be automatically created in <a href="#ocp-metrics-deploy">Deploying the Metrics Components</a>. However, pre-emptively
-grant it <strong>cluster-reader</strong> permission to the <strong>openshift-infra</strong>
-project:</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>oc adm policy add-cluster-role-to-user \
-cluster-reader system:serviceaccount:openshift-infra:heapster
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<h2 id="configuring-metrics-components">
-<a class="anchor" href="#configuring-metrics-components" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring Metrics Components</h2>
-
-<p>The Metrics Deployer installs and configures the components required for
-OpenShift Container Platform metrics. By default, the Metrics Deployer
-uses <em>self-signed certificates</em> to secure communication between
-components. This document assumes that you will use this default. For
-information on alternative secure communication configurations, see
-<a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/3.9/html/installation_and_configuration/install-config-cluster-metrics#metrics-using-secrets">Using Secrets</a>
-from the OpenShift Container Platform <em>Installation and Configuration</em>
-documentation.</p>
-
-<p><strong>Note:</strong></p>
-
-<p>This section is an abridged version of a more detailed chapter, namely <a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/3.9/html/installation_and_configuration/install-config-cluster-metrics#metrics-data-storage">Metrics Data Storage</a>
-in the OpenShift Container Platform <em>Installation and Configuration</em> documentation. Refer to that chapter for more information on how to deploy the metrics plug-in using persistent and non-persistent storage.</p>
-
-<h3 id="deploying-the-metrics-components">
-<a class="anchor" href="#deploying-the-metrics-components" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deploying the Metrics Components</h3>
-
-<p>OpenShift Container Platform uses <em>Hawkular Metrics</em> as its metrics
-engine. The Metrics Deployer will install the Hawkular Metrics service;
-however, you need to provide the external hostname so that
-ManageIQ can reach the Hawkular Metrics service. The base configuration of the Metrics Deployer is defined in the
-<code class="language-plaintext highlighter-rouge">/usr/share/openshift/examples/infrastructure-templates/enterprise/metrics-deployer.yaml</code>
-file.</p>
-
-<p>Before deploying OpenShift metrics, choose a storage option, then log in
-as an administrator to any node within the OpenShift Container Platform
-cluster. From there, open a terminal and run the corresponding command:</p>
-
-<ul>
-  <li>
-    <p>Deploying with persistent storage
-With <em>persistent storage</em>, OpenShift metrics will be stored on a
-persistent volume. This offers metrics data protection by allowing
-it to survive a pod recreation or restart. OpenShift metrics
-requires a specifically configured persistent volume; see
-<a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/3.9/html/architecture/additional-concepts#persistent-volumes">Persistent Volumes</a>
-in the OpenShift Container Platform <em>Architecture</em> documentation.</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>$ oc new-app \
-    -f /usr/share/openshift/examples/infrastructure-templates/enterprise/metrics-deployer.yaml \
-    -p HAWKULAR_METRICS_HOSTNAME=HAWKULARHOST
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Deploying with non-persistent storage
-With <em>non-persistent storage</em>, any stored metrics will be deleted
-when the pod is deleted. While it is much easier to run cluster
-metrics with non-persistent data, it does come with the risk of
-permanent data loss. So, while you no longer need to provision and
-configure a volume to store metric data, this does not offer the
-same protection as persistent storage.</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>$ oc new-app \
-    -f /usr/share/openshift/examples/infrastructure-templates/enterprise/metrics-deployer.yaml \
-    -p HAWKULAR_METRICS_HOSTNAME=HAWKULARHOST \
-    -p USE_PERSISTENT_STORAGE=false
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<p>For either command, replace <em>HAWKULARHOST</em> with the external hostname
-that ManageIQ will use to reach the Hawkular Metrics
-service. <em>HAWKULARHOST</em> must be a fully-qualified domain name.</p>
-
-<p>Either storage method deploys the required metrics components and
-creates the necessary service accounts. In particular, the metrics
-components will be configured to also use the specified <em>HAWKULARHOST</em>
-as its public endpoint.</p>
-
-<h3 id="applying-the-hawkular-metrics-settings-to-openshift-container-platform">
-<a class="anchor" href="#applying-the-hawkular-metrics-settings-to-openshift-container-platform" aria-hidden="true"><span class="octicon octicon-link"></span></a>Applying the Hawkular Metrics Settings to OpenShift Container Platform</h3>
-
-<p>After deploying the metrics components, configure OpenShift Container
-Platform to use them:</p>
-
-<ol>
-  <li>
-    <p>Open the OpenShift Master Configuration file at
-<code class="language-plaintext highlighter-rouge">/etc/origin/master/master-config.yaml</code>. Add the
-<strong>metricsPublicURL</strong> parameter to the <strong>assetConfig</strong> section,
-specifying the <em>HAWKULARHOST</em> you specified in <a href="#ocp-metrics-deploy">Deploying the
-Metrics Components</a>:</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>assetConfig:
-    ...
-    metricsPublicURL: "https://HAWKULARHOST/hawkular/metrics"
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Restart your OpenShift Container Platform master host:</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>$ sudo systemctl restart atomic-openshift-master
-</code></pre></div>    </div>
-  </li>
-</ol>
 
 <h2 id="retrieving-the-openshift-container-platform-management-token">
 <a class="anchor" href="#retrieving-the-openshift-container-platform-management-token" aria-hidden="true"><span class="octicon octicon-link"></span></a>Retrieving the OpenShift Container Platform Management Token</h2>
@@ -1537,7 +1336,7 @@ to the OpenShift Container Platform provider.</p>
 
     <ol>
       <li>
-        <p>Select a service type (Prometheus or Hawkular) or leave disabled</p>
+        <p>Select a service type (e.g.: Prometheus) or leave disabled</p>
       </li>
       <li>
         <p>Select a <strong>Security Protocol</strong> method to specify how to
@@ -1556,16 +1355,6 @@ for this option.</p>
 self-signed certificate. For this option, copy your
 provider’s CA certificate to the <strong>Trusted CA
 Certificates</strong> box in PEM format.</p>
-
-            <p><strong>Note:</strong></p>
-
-            <p>In OpenShift, the default deployment of the router generates
-certificates during installation, which can be used with the
-<strong>SSL trusting custom CA</strong> option. Connecting a Hawkular
-endpoint with this option requires the CA certificate that
-the cluster uses for service certificates, which is stored
-in <code class="language-plaintext highlighter-rouge">/etc/origin/master/service-signer.crt</code> on the first
-master in a cluster.</p>
           </li>
           <li>
             <p><strong>SSL without validation</strong>: Authenticate the provider
@@ -1593,7 +1382,7 @@ prometheus-k8s   prometheus-k8s-openshift-monitoring.ocp.example.com  prometheus
         <p>In this example you would use <code class="language-plaintext highlighter-rouge">prometheus-k8s-openshift-monitoring.ocp.example.com</code> as the metrics hostname.</p>
       </li>
       <li>
-        <p>Enter the <strong>API Port</strong> if your Hawkular or Prometheus provider
+        <p>Enter the <strong>API Port</strong> of your metrics endpoint
 uses a non-standard port for access. The default port is <code class="language-plaintext highlighter-rouge">443</code>.</p>
       </li>
       <li>
