@@ -1050,7 +1050,12 @@
 <ul>
 <li class="toc-entry toc-h2"><a href="#logging">Logging</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#appliance-logging">Appliance Logging</a></li>
+<li class="toc-entry toc-h3"><a href="#appliance-logging">Appliance Logging</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#viewing-logs">Viewing Logs</a></li>
+<li class="toc-entry toc-h4"><a href="#collecting-logs">Collecting Logs</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h3"><a href="#podified-logging">Podified Logging</a></li>
 </ul>
 </li>
@@ -1066,6 +1071,9 @@
 
 <h3 id="appliance-logging">
 <a class="anchor" href="#appliance-logging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appliance Logging</h3>
+
+<h4 id="viewing-logs">
+<a class="anchor" href="#viewing-logs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Logs</h4>
 
 <p>On appliances logging is managed using the built-in systemd-journal system.  Journald uses database-like binary files to store log lines along with extensive metadata.</p>
 
@@ -1125,6 +1133,19 @@
 </ul>
 
 <p>Almost all of these can be combined together where they don’t conflict (e.g. <code class="language-plaintext highlighter-rouge">-f</code> can’t be used with <code class="language-plaintext highlighter-rouge">-r</code>)</p>
+
+<h4 id="collecting-logs">
+<a class="anchor" href="#collecting-logs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collecting Logs</h4>
+
+<p>If you have to collect logs from appliances for diagnostic purposes there are a couple utilities that are provided for this purpose.</p>
+
+<p>To collect logs from only a single appliance you can use <code class="language-plaintext highlighter-rouge">collect_current_logs.sh</code> or <code class="language-plaintext highlighter-rouge">collect_archive_logs.sh</code>.  To use these utilities you should ssh to the appliance and <code class="language-plaintext highlighter-rouge">cd /var/www/miq/vmdb/tools/collect_logs</code> directory.</p>
+
+<p>Now run <code class="language-plaintext highlighter-rouge">./collect_current_logs.sh</code> or <code class="language-plaintext highlighter-rouge">./collect_archive_logs.sh</code> depending on if you want the latest or all logs.</p>
+
+<p>The output will be in <code class="language-plaintext highlighter-rouge">/var/www/miq/vmdb/log/evm_current_HOSTNAME_TIMESTAMP.tar.xz</code> or <code class="language-plaintext highlighter-rouge">/var/www/miq/vmdb/log/evm_archive_HOSTNAME_TIMESTAMP.tar.xz</code></p>
+
+<p>To collect logs from all appliances in the region over ssh we provide a <code class="language-plaintext highlighter-rouge">collect_all_logs</code> utility.  This iterates over all <code class="language-plaintext highlighter-rouge">MiqServer</code> records in the region and collects the output of <code class="language-plaintext highlighter-rouge">collect_current_logs.sh</code> rolled up into a single <code class="language-plaintext highlighter-rouge">.tar.xz</code> file.</p>
 
 <h3 id="podified-logging">
 <a class="anchor" href="#podified-logging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Podified Logging</h3>
