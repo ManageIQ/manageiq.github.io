@@ -1050,6 +1050,7 @@
 <ul>
 <li class="toc-entry toc-h2"><a href="#ibm-powervc">IBM PowerVC</a></li>
 <li class="toc-entry toc-h2"><a href="#adding-ibm-powervc-providers">Adding IBM PowerVC Providers</a></li>
+<li class="toc-entry toc-h2"><a href="#enabling-capacity-and-utilization-data-from-ibm-powervc-providers">Enabling Capacity and Utilization data from IBM PowerVC Providers</a></li>
 </ul>
 </li>
 </ul><h1 id="ibm-powervc-providers">
@@ -1159,6 +1160,43 @@ connect to the PowerVC provider.</p>
     <p>Click <strong>Add</strong>.</p>
   </li>
 </ol>
+
+<h2 id="enabling-capacity-and-utilization-data-from-ibm-powervc-providers">
+<a class="anchor" href="#enabling-capacity-and-utilization-data-from-ibm-powervc-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling Capacity and Utilization data from IBM PowerVC Providers</h2>
+
+<p>In addition to enabling general
+<a href="../../general_configuration/index.html#capacity-and-utilization-collection">Capacity and Utilization Collection</a>,
+complete the following procedure to enable Capacity and Utilization data for an
+IBM PowerVC cloud provider in ManageIQ.</p>
+
+<p>Virtual Machines for which you want to monitor capacity and utilization data
+need to be created with a Compute Template with performance information
+collection enabled.</p>
+
+<ol>
+  <li>
+    <p>In the IBM PowerVC web interface, navigate to <strong>Virtual Machines &gt;
+Compute Templates</strong> in the side menu.</p>
+  </li>
+  <li>
+    <p>In the Compute Templates Menu, select the <strong>Create  +</strong> button.</p>
+  </li>
+  <li>
+    <p>During creation of the Compute Template, select the <strong>Miscellaneous</strong>
+tab.</p>
+  </li>
+  <li>
+    <p>Then select the checkbox with the description
+<strong>Enable performance information collection</strong>.</p>
+  </li>
+  <li>
+    <p>Continue with template creation. When ready, select <strong>Create</strong> to create
+your template.</p>
+  </li>
+</ol>
+
+<p>Any Virtual Machines created using that template will be able to transmit
+Capacity and Utilization data to ManageIQ.</p>
 
 
 
