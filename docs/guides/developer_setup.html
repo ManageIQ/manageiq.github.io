@@ -512,6 +512,11 @@
       <td>13.x</td>
       <td>14.x</td>
     </tr>
+    <tr>
+      <td>Java</td>
+      <td>11.x</td>
+      <td>19.x</td>
+    </tr>
   </tbody>
 </table>
 
@@ -588,7 +593,7 @@
       </tbody>
     </table>
 
-    <p><strong>Note</strong>: Users with MacOS running on Apple M1 CPU might need to specify location of the <code class="language-plaintext highlighter-rouge">Homebrew</code> libraries explicitly. 
+    <p><strong>Note</strong>: Users with MacOS running on Apple M1 CPU might need to specify location of the <code class="language-plaintext highlighter-rouge">Homebrew</code> libraries explicitly.
 If build steps below fail for you then run <code class="language-plaintext highlighter-rouge">export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"</code>and retry the failing build step.
 See here for additional information: https://github.com/Homebrew/brew/issues/13481</p>
   </li>
@@ -758,7 +763,7 @@ initdb <span class="nt">--auth</span> trust <span class="nt">--username</span> r
         </tr>
         <tr>
           <td>brew</td>
-          <td>*Already started above</td>
+          <td>Already started above</td>
         </tr>
         <tr>
           <td>containers</td>
@@ -786,6 +791,94 @@ nvm <span class="nb">alias </span>default 18
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--global</span> yarn
 </code></pre></div></div>
+
+<h3 id="kafka">Kafka</h3>
+
+<ol>
+  <li>
+    <p>Install</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th> </th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>dnf</td>
+          <td><code class="language-plaintext highlighter-rouge">sudo dnf -y install kafka</code></td>
+        </tr>
+        <tr>
+          <td>yum</td>
+          <td><code class="language-plaintext highlighter-rouge">sudo yum -y install kafka</code></td>
+        </tr>
+        <tr>
+          <td>apt</td>
+          <td><code class="language-plaintext highlighter-rouge">sudo apt -y install kafka</code></td>
+        </tr>
+        <tr>
+          <td>brew</td>
+          <td><code class="language-plaintext highlighter-rouge">brew install java kafka</code></td>
+        </tr>
+        <tr>
+          <td>containers</td>
+          <td>N/A</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Configure system to use Java</p>
+  </li>
+</ol>
+
+<ul>
+  <li>Mac</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo ln</span> <span class="nt">-sfn</span> <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+</code></pre></div></div>
+
+<ol>
+  <li>Configure kraft</li>
+</ol>
+
+<ul>
+  <li>Mac</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv</span> <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/server.properties <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/server.properties-zookeeper
+<span class="nb">ln</span> <span class="nt">-s</span> <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/kraft/server.properties <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/
+
+kafka-storage format <span class="nt">-t</span> <span class="si">$(</span>kafka-storage random-uuid<span class="si">)</span> <span class="nt">-c</span> <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/server.properties
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Start the service</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th> </th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>systemd</td>
+          <td><code class="language-plaintext highlighter-rouge">systemctl enable --now kafka</code></td>
+        </tr>
+        <tr>
+          <td>brew</td>
+          <td><code class="language-plaintext highlighter-rouge">brew services start kafka</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
 
 <h3 id="ruby-and-bundler">Ruby and Bundler</h3>
 
