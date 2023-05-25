@@ -927,7 +927,10 @@ git fetch upstream
 
 <p>The web UI should now be available at <code class="language-plaintext highlighter-rouge">http://localhost:3000</code>. The default username is <code class="language-plaintext highlighter-rouge">admin</code> and the default password is <code class="language-plaintext highlighter-rouge">smartvm</code>.  If you can login, then everything is working!  Press Ctrl-C to stop the Rails server.</p>
 
-<p>Note that in this runtime mode we are only verifying that the components are installed correctly.  However, individual workers are not running, so actions that require asynchronous handling will appear to hang forever.  To run the application complete with all workers, you can start with <code class="language-plaintext highlighter-rouge">bundle exec rails evm:start</code> and stop with <code class="language-plaintext highlighter-rouge">bundle exec rails evm:stop</code>.  Otherwise, read ahead to learn about running individual workers during development.</p>
+<p>ManageIQ runs a lot of work asynchronously via background queue workers, to simulate this we recommend running:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>rails console
+simulate_queue_worker
+</code></pre></div></div>
 
 <h2 id="further-reading">Further Reading</h2>
 
