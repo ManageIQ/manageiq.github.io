@@ -1,5 +1,6 @@
 (function() {
-  var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  var button, j, len, ref,
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   this.miq || (this.miq = {
     ui: {}
@@ -10,6 +11,13 @@
       selector = "body";
     }
     return document.querySelector(selector);
+  };
+
+  miq.selectAll = function(selector) {
+    if (selector == null) {
+      selector = "body";
+    }
+    return document.querySelectorAll(selector);
   };
 
   miq.setup_header_ani = function() {
@@ -196,7 +204,7 @@
 
   miq.html_doc = miq.select("html");
 
-  miq.theme_button = miq.select(miq.button_selector);
+  miq.theme_buttons = miq.selectAll(miq.button_selector);
 
   miq.set_theme = function(was, now) {
     miq.html_doc.classList.add(now);
@@ -222,6 +230,10 @@
     }
   };
 
-  miq.theme_button.addEventListener("click", miq.handle_button_click);
+  ref = miq.theme_buttons;
+  for (j = 0, len = ref.length; j < len; j++) {
+    button = ref[j];
+    button.addEventListener("click", miq.handle_button_click);
+  }
 
 }).call(this);
