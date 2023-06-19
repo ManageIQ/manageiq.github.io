@@ -112,6 +112,14 @@
                   <a href="/blog/tags/tutorials">tutorials</a>
                 </li>
                 
+                <li>
+                  <a href="/blog/tags/embedded-ansible">embedded-ansible</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/automate">automate</a>
+                </li>
+                
               </ul>
             </div>
           </header>
@@ -164,7 +172,7 @@ ok: [localhost]
 
 TASK [debug] *******************************************************************
 ok: [localhost] =&gt; {"msg": "Result:[
-u'root', 
+u'root',
 u'/ManageIQ/System/Request/call_instance',
 u'/pemcg/Stuff/StateMachines/Methods/state1',
 u'/Configuration/OpenShift/Parameters/default',
@@ -234,7 +242,7 @@ ok: [localhost]
 TASK [debug] *******************************************************************
 ok: [localhost] =&gt; {
     "msg": "Result:True"
-}   
+}
 </code></pre></div></div>
 <p><br /></p>
 <h5 id="get_attribute">get_attribute</h5>
@@ -336,7 +344,7 @@ The following code snippet in a Ruby method called after the Ansible playbook me
 $evm.log(:info, "netmask from Ansible = #{$evm.root['ipam_netmask']}")
 $evm.log(:info, "gateway from Ansible = #{$evm.root['ipam_gateway']}")
 $evm.log(:info, "root_passwd from Ansible = #{$evm.root.decrypt('root_passwd')}")
-  
+
 ...&lt;AEMethod state3&gt; ip_address from Ansible = 192.168.1.23
 ...&lt;AEMethod state3&gt; netmask from Ansible = 255.255.255.0
 ...&lt;AEMethod state3&gt; gateway from Ansible = 192.168.1.254
@@ -349,7 +357,7 @@ $evm.log(:info, "root_passwd from Ansible = #{$evm.root.decrypt('root_passwd')}"
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  roles:
   - manageiq-core.manageiq-vmdb
 
-  tasks:   
+  tasks:
   - name: Update task with new IP information
     manageiq_vmdb:
       href: "{{ manageiq.request_task }}" 
@@ -461,6 +469,10 @@ $evm.log(:info, "root_passwd from Ansible = #{$evm.root.decrypt('root_passwd')}"
     
     <li class="blog_menu-tag">
       <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/embedded-ansible">embedded-ansible</a>
     </li>
     
     <li class="blog_menu-tag">
