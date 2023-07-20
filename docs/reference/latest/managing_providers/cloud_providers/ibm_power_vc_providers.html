@@ -1051,6 +1051,8 @@
 <li class="toc-entry toc-h2"><a href="#ibm-powervc">IBM PowerVC</a></li>
 <li class="toc-entry toc-h2"><a href="#adding-ibm-powervc-providers">Adding IBM PowerVC Providers</a></li>
 <li class="toc-entry toc-h2"><a href="#enabling-capacity-and-utilization-data-from-ibm-powervc-providers">Enabling Capacity and Utilization data from IBM PowerVC Providers</a></li>
+<li class="toc-entry toc-h2"><a href="#enabling-events-in-ibm-powervc">Enabling Events in IBM PowerVC</a></li>
+<li class="toc-entry toc-h2"><a href="#viewing-ibm-powervc-events-in-manageiq">Viewing IBM PowerVC Events in ManageIQ</a></li>
 </ul>
 </li>
 </ul><h1 id="ibm-powervc-providers">
@@ -1197,6 +1199,44 @@ your template.</p>
 
 <p>Any Virtual Machines created using that template will be able to transmit
 Capacity and Utilization data to ManageIQ.</p>
+
+<h2 id="enabling-events-in-ibm-powervc">
+<a class="anchor" href="#enabling-events-in-ibm-powervc" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling Events in IBM PowerVC</h2>
+
+<p>Service events must be enabled in IBM PowerVC in order for ManageIQ to collect and display them.</p>
+
+<ol>
+  <li>Login to the PowerVC CLI and check if the following services are enabled:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>powervc-config image audit
+powervc-config compute audit
+powervc-config storage audit
+</code></pre></div>    </div>
+  </li>
+  <li>If the services are not enabled, use the following commands to enable them:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>powervc-config image audit --enable --restart
+powervc-config compute audit --enable --restart
+powervc-config storage audit --enable --restart
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>After enabling the services ManageIQ will be able to collect and display event data.</p>
+
+<h2 id="viewing-ibm-powervc-events-in-manageiq">
+<a class="anchor" href="#viewing-ibm-powervc-events-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing IBM PowerVC Events in ManageIQ</h2>
+
+<p>In ManageIQ, view events for your IBM PowerVC Provider by following these steps:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Clouds &gt; Providers</strong> and select your IBM PowerVC Provider.</p>
+  </li>
+  <li>
+    <p>Go to <strong>Monitoring &gt; Timelines</strong> on the provider summary page to view an events timeline for the provider.</p>
+  </li>
+</ol>
 
 
 
