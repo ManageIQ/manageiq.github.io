@@ -1068,8 +1068,12 @@
 <li class="toc-entry toc-h3"><a href="#obtaining-and-installing-the-manageiq-appliance">Obtaining and Installing the ManageIQ Appliance</a></li>
 <li class="toc-entry toc-h3"><a href="#configuring-manageiq">Configuring ManageIQ</a></li>
 <li class="toc-entry toc-h3"><a href="#configuring-general-appliance-settings">Configuring General Appliance Settings</a></li>
-<li class="toc-entry toc-h3"><a href="#configuring-a-database-for-manageiq">Configuring a Database for ManageIQ</a></li>
-<li class="toc-entry toc-h3"><a href="#configuring-an-internal-database">Configuring an Internal Database</a></li>
+<li class="toc-entry toc-h3"><a href="#configuring-a-database">Configuring a Database</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#configuring-an-internal-database">Configuring an Internal Database</a></li>
+<li class="toc-entry toc-h4"><a href="#configuring-an-external-database">Configuring an External Database</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h3"><a href="#configuring-general-manageiq-settings">Configuring General ManageIQ Settings</a></li>
 <li class="toc-entry toc-h3"><a href="#configuring-manageiq-metrics-for-smartstate-analysis">Configuring ManageIQ Metrics for SmartState Analysis</a>
 <ul>
@@ -1791,17 +1795,16 @@ configuration of the appliance:</p>
 </tbody>
 </table>
 
-<h3 id="configuring-a-database-for-manageiq">
-<a class="anchor" href="#configuring-a-database-for-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring a Database for ManageIQ</h3>
+<h3 id="configuring-a-database">
+<a class="anchor" href="#configuring-a-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring a Database</h3>
 
-<p>ManageIQ supports the use of an internal or external database.
-The following instructions are suitable for configuring an <em>internal</em>
-database. For instructions on how to configure an external database
-instead, see <a href="https://access.redhat.com/documentation/en/red-hat-cloudforms/4.1/single/installing-red-hat-cloudforms-on-red-hat-enterprise-linux-openstack-platform#configuring_an_external_database">Configuring an External
-Database</a>.</p>
+<p>ManageIQ uses a database to store information about the
+environment. Before using ManageIQ, configure the database
+options for it; ManageIQ provides the following two
+options for database configuration:</p>
 
-<h3 id="configuring-an-internal-database">
-<a class="anchor" href="#configuring-an-internal-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring an Internal Database</h3>
+<h4 id="configuring-an-internal-database">
+<a class="anchor" href="#configuring-an-internal-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring an Internal Database</h4>
 
 <p>Before installing an internal database, add a disk to the infrastructure
 hosting your appliance. See the documentation specific to your
@@ -1922,6 +1925,80 @@ database.
 <p>ManageIQ then configures the internal database. This takes a few
 minutes. After the database is created and initialized, you can log in
 to ManageIQ.</p>
+
+<h4 id="configuring-an-external-database">
+<a class="anchor" href="#configuring-an-external-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring an External Database</h4>
+
+<p>Based on your setup, you will choose to configure the appliance to use
+an external PostgreSQL database. For example, we can only have one
+database in a single region. However, a region can be segmented into
+multiple zones, such as database zone, user interface zone, and
+reporting zone, where each zone provides a specific function. The
+appliances in these zones must be configured to use an external
+database.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">postgresql.conf</code> file requires
+specific settings for correct operation. For example, it must correctly
+reclaim table space, control session timeouts, and format the PostgreSQL
+server log for improved system support. It is recommended that external databases use a
+<code class="language-plaintext highlighter-rouge">postgresql.conf</code> file based on the standard file used by the
+ManageIQ appliance.</p>
+
+<p>Ensure you configure the settings in the <code class="language-plaintext highlighter-rouge">postgresql.conf</code> to suit your
+system. For example, customize the <code class="language-plaintext highlighter-rouge">shared_buffers</code> setting according to
+the amount of real storage available in the external system hosting the
+PostgreSQL instance. In addition, depending on the aggregate number of
+appliances expected to connect to the PostgreSQL instance, it may be
+necessary to alter the <code class="language-plaintext highlighter-rouge">max_connections</code> setting.</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+  <li>
+    <p>ManageIQ requires PostgreSQL version 13.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">postgresql.conf</code> controls the operation of all databases managed by the
+   PostgreSQL instance, therefore it is not recommended to run other databases
+   on this PostgreSQL instance.</p>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>Start the appliance and open a terminal console.</p>
+  </li>
+  <li>
+    <p>Enter the <code class="language-plaintext highlighter-rouge">appliance_console</code> command. The appliance console summary screen will be displayed.</p>
+  </li>
+  <li>
+    <p>Press <strong>Enter</strong> to manually configure settings.</p>
+  </li>
+  <li>
+    <p>Select <strong>Configure Application</strong> from the menu.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Create Region in External Database</strong> for the database location.</p>
+  </li>
+  <li>
+    <p>Enter the database hostname or IP address when prompted.</p>
+  </li>
+  <li>
+    <p>Enter the database name or leave blank for the default
+(<code class="language-plaintext highlighter-rouge">vmdb_production</code>).</p>
+  </li>
+  <li>
+    <p>Enter the database username or leave blank for the default (<code class="language-plaintext highlighter-rouge">root</code>).</p>
+  </li>
+  <li>
+    <p>Enter the chosen database user’s password.</p>
+  </li>
+  <li>
+    <p>Confirm the configuration if prompted.</p>
+  </li>
+</ol>
+
+<p>ManageIQ will then configure the external database.</p>
 
 <h3 id="configuring-general-manageiq-settings">
 <a class="anchor" href="#configuring-general-manageiq-settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring General ManageIQ Settings</h3>
