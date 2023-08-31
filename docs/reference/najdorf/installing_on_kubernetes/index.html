@@ -1133,7 +1133,7 @@ Now you will see the node port listed (31871 in this example) as well as the int
     <p>Export the encryption key and Base64 encode it for the Kubernetes Secret.</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> $ vmdb &amp;&amp; rails r "puts Base64.encode64(ManageIQ::Password.v2_key.to_s)"
+<div class="highlight"><pre class="highlight"><code> $ vmdb &amp;&amp; rails r "puts Base64.encode64(ManageIQ::Password.key.to_s)"
 </code></pre></div>    </div>
   </li>
   <li>

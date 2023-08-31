@@ -1186,13 +1186,9 @@
 </li>
 <li class="toc-entry toc-h4"><a href="#schedules">Schedules</a>
 <ul>
-<li class="toc-entry toc-h5"><a href="#scheduling-smartstate-analyses-and-backups">Scheduling SmartState Analyses and Backups</a>
+<li class="toc-entry toc-h5"><a href="#scheduling-smartstate-analyses">Scheduling SmartState Analyses</a>
 <ul>
 <li class="toc-entry toc-h6"><a href="#scheduling-a-smartstate-analysis-or-compliance-check">Scheduling a SmartState Analysis or Compliance Check</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h5"><a href="#scheduling-a-database-backup">Scheduling a Database Backup</a>
-<ul>
 <li class="toc-entry toc-h6"><a href="#modifying-a-schedule">Modifying a Schedule</a></li>
 </ul>
 </li>
@@ -5229,8 +5225,8 @@ override zone-level settings.</p>
 <h4 id="schedules">
 <a class="anchor" href="#schedules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Schedules</h4>
 
-<h5 id="scheduling-smartstate-analyses-and-backups">
-<a class="anchor" href="#scheduling-smartstate-analyses-and-backups" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scheduling SmartState Analyses and Backups</h5>
+<h5 id="scheduling-smartstate-analyses">
+<a class="anchor" href="#scheduling-smartstate-analyses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scheduling SmartState Analyses</h5>
 
 <p>From the <strong>Schedules</strong> area in <strong>Settings</strong>, you can schedule the
 analyses of virtual machines, hosts, clusters, and datastores to keep
@@ -5314,9 +5310,7 @@ can choose to analyze <strong>All Hosts</strong>, <strong>All Hosts for Provider
 <strong>All Hosts for Cluster</strong>, <strong>A single Host</strong>, or <strong>Global Filters</strong>.</p>
       </li>
       <li>
-        <p><strong>Database Backup</strong>: Under <strong>Type</strong>, displays <strong>Network File System</strong>, <strong>Samba</strong>, <strong>Amazon AWS S3</strong> and <strong>OpenStack Swift</strong>..
-See <a href="#database_backup">Scheduling a Database Backup</a> for details
-on scheduling a database backup.</p>
+        <p><strong>Database Backup</strong>: Under <strong>Type</strong>, displays <strong>Network File System</strong>, <strong>Samba</strong>, <strong>Amazon AWS S3</strong> and <strong>OpenStack Swift</strong>..</p>
       </li>
     </ul>
   </li>
@@ -5356,133 +5350,6 @@ date and time.</p>
   <li>
     <p>Select a <strong>Starting Time</strong> based on a 24 hour clock in the selected
 Time Zone.</p>
-  </li>
-  <li>
-    <p>Click <strong>Add</strong>.</p>
-  </li>
-</ol>
-
-<h5 id="scheduling-a-database-backup">
-<a class="anchor" href="#scheduling-a-database-backup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scheduling a Database Backup</h5>
-
-<p><strong>Note:</strong></p>
-
-<p>Set <code class="language-plaintext highlighter-rouge">wal_keep_segments</code> parameter to a value that ensures
-ManageIQ scheduled backups finish. Create a test backup
-using a value based on the calculation:</p>
-
-<p><strong>(&lt;pg-volume-free-space&gt;MB/4)/16MB</strong>.</p>
-
-<p>Measure free space in MB and ensure the denominator matches in units.</p>
-
-<p>Setting <code class="language-plaintext highlighter-rouge">wal_keep_segments</code> to this value will cause the transaction log
-to occupy, at a minimum, one quarter of the current free space. Adjust
-your calculation accordingly upon successful testing.</p>
-
-<p>To set the <code class="language-plaintext highlighter-rouge">wal_keep_segments</code> value:</p>
-
-<ol>
-  <li>
-    <p>SSH to the database appliance</p>
-  </li>
-  <li>
-    <p>Access the database</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># psql DBNAME USERNAME
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Set the <code class="language-plaintext highlighter-rouge">wal_keep_segments</code> value</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>postgres=# ALTER SYSTEM SET wal_keep_segments = &lt;value&gt;;
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Reload <code class="language-plaintext highlighter-rouge">wal_keep_segments</code></p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>postgres=# SELECT pg_reload_conf();
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<p>On successful backup, revise the value for <code class="language-plaintext highlighter-rouge">wal_keep_segments</code> to save
-space based on transaction log size.</p>
-
-<p>To schedule a database backup:</p>
-
-<ol>
-  <li>
-    <p>Browse to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
-  </li>
-  <li>
-    <p>Click on the <strong>Settings</strong> accordion, then click <strong>Schedules</strong>.</p>
-  </li>
-  <li>
-    <p>Click <img src="../images/1847.png" alt="1847"> (<strong>Configuration</strong>), and <img src="../images/plus_green.png" alt="plus
-green">(<strong>Add a new Schedule</strong>).</p>
-  </li>
-  <li>
-    <p>In the <strong>Basic Information</strong> area, type in a <strong>Name</strong> and
-<strong>Description</strong> for the schedule. <img src="../images/2082.png" alt="2082"></p>
-  </li>
-  <li>
-    <p>Select <strong>Active</strong> to enable this backup schedule.</p>
-  </li>
-  <li>
-    <p>From the <strong>Action</strong> list, select <strong>Database backup</strong>.</p>
-  </li>
-  <li>
-    <p>In the <strong>Database Backup Settings</strong> area, select a type of server to
-put the backups. You can either use <strong>Network File System</strong> or
-<strong>Samba</strong>.</p>
-
-    <ul>
-      <li>
-        <p>If selecting <strong>Samba</strong>, enter the <strong>Depot Name</strong>, <strong>URI</strong>,
-<strong>User ID</strong>, and a valid <strong>Password</strong>. Then, click <strong>Validate</strong>
-to check the settings.</p>
-      </li>
-      <li>
-        <p>If you choose <strong>Network File System</strong>, enter the <strong>Depot Name</strong>
-and <strong>URI</strong>.</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>In <strong>Run</strong>, set the frequency of the analysis to run. There are
-further options based on which <strong>Run</strong> option you choose.</p>
-
-    <ul>
-      <li>
-        <p>Click <strong>Once</strong> to have the backup run only one time.</p>
-      </li>
-      <li>
-        <p>Click <strong>Daily</strong> to run the backup on a daily basis. You will be
-prompted to select the number of days between each backup.</p>
-      </li>
-      <li>
-        <p>Click <strong>Hourly</strong> to run the backup hourly. You will be prompted
-to select the number of hours between each backup.</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Select a <strong>Time Zone</strong>.</p>
-
-    <p><strong>Note:</strong></p>
-
-    <p>If you change the <strong>Time Zone</strong>, you will need to reset the stating
-date and time.</p>
-  </li>
-  <li>
-    <p>Type or select a date to begin the schedule in <strong>Starting Date</strong>.</p>
-  </li>
-  <li>
-    <p>Select a <strong>Starting Time</strong> (UTC) based on a 24 hour clock in the
-selected time zone.</p>
   </li>
   <li>
     <p>Click <strong>Add</strong>.</p>
@@ -5587,9 +5454,6 @@ schedules, including:</p>
   </li>
   <li>
     <p>SmartState Analysis</p>
-  </li>
-  <li>
-    <p>Database Backup</p>
   </li>
   <li>
     <p>Automation Task</p>

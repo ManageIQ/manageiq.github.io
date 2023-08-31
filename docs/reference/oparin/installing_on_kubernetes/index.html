@@ -1203,7 +1203,7 @@ postgresql   NodePort   192.0.2.1    &lt;none&gt;        5432:31871/TCP   2m
     <p>Export the encryption key and Base64 encode it for the Kubernetes Secret.</p>
 
     <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vmdb <span class="o">&amp;&amp;</span> rails r <span class="s2">"puts Base64.encode64(ManageIQ::Password.v2_key.to_s)"</span>
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vmdb <span class="o">&amp;&amp;</span> rails r <span class="s2">"puts Base64.encode64(ManageIQ::Password.key.to_s)"</span>
 </code></pre></div>    </div>
   </li>
   <li>
