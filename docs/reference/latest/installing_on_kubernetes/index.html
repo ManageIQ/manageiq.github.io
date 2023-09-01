@@ -1340,6 +1340,7 @@ postgresql   NodePort   192.0.2.1    &lt;none&gt;        5432:31871/TCP   2m
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    oc create secret generic internal-certificates-secret <span class="se">\</span>
       <span class="nt">--from-file</span><span class="o">=</span><span class="nv">root_crt</span><span class="o">=</span>./certs/root.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">root_key</span><span class="o">=</span>./certs/root.key <span class="se">\</span>
       <span class="nt">--from-file</span><span class="o">=</span><span class="nv">httpd_crt</span><span class="o">=</span>./certs/httpd.crt <span class="se">\</span>
       <span class="nt">--from-file</span><span class="o">=</span><span class="nv">httpd_key</span><span class="o">=</span>./certs/httpd.key <span class="se">\</span>
       <span class="nt">--from-file</span><span class="o">=</span><span class="nv">kafka_crt</span><span class="o">=</span>./certs/kafka.crt <span class="se">\</span>
