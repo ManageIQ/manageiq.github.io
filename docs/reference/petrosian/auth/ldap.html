@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-0e35068491e264b14654b1015221d2836e4d10611e4a5e7c7d39e00699263865.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/auth/ldap.html">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/petrosian/auth/ldap">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li class="active">
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<div class="doc_menu-heading">
+  Petrosian
+</div>
+
+<ul class="menu menu-toplevel" id=ref_menu_petrosian>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Installation
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/installing_on_aws/index.html">
+      Amazon Web Services (AWS)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/installing_on_kubernetes/index.html">
+      Kubernetes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/installing_on_ibm_cloud/index.html">
+      IBM Cloud
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/installing_on_microsoft_azure/index.html">
+      Microsoft Azure
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/installing_on_google_compute_engine/index.html">
+      Google Compute Engine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/installing_on_vmware_vsphere/index.html">
+      VMware vSphere
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/installing_on_red_hat_enterprise_linux_openstack_platform/index.html">
+      Red Hat Enterprise OpenStack Platform
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/installing_on_red_hat_virtualization/index.html">
+      Red Hat Enterprise Virtualization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/installing_on_scvmm/index.html">
+      Microsoft System Center Virtual Machine Manager (SCVMM)
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Upgrading
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/upgrading_appliances/index.html">
+      Appliances
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Configuration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/deployment_planning_guide/index.html">
+      Deployment Planning Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/general_configuration/index.html">
+      General Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/high_availability_guide/index.html">
+      High Availability Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/appliance_hardening_guide/index.html">
+      Appliance Hardening Guide
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Administration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/monitoring_alerts_and_reporting/index.html">
+      Monitoring, Alerts, and Reporting
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/policies_and_profiles_guide/index.html">
+      Policies and Profiles Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_infrastructure_and_inventory/index.html">
+      Managing Infrastructure and Inventory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/index.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Infrastructure Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/infrastructure_providers/red_hat_virtualization_providers.html">
+      Red Hat Virtualization Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/infrastructure_providers/openstack_infrastructure_providers.html">
+      OpenStack Infrastructure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/infrastructure_providers/vmware_vcenter_providers.html">
+      VMware vCenter Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/infrastructure_providers/microsoft_scvmm_providers.html">
+      Microsoft SCVMM Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/infrastructure_providers/ibm_power_hmc_providers.html">
+      IBM Power HMC Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Configuration Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/configuration_management_providers/ibm_terraform_provider.html">
+      IBM Terraform Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/configuration_management_providers/red_hat_satellite_6.html">
+      Red Hat Satellite 6 Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Cloud Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/cloud_providers/azure_providers.html">
+      Azure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/cloud_providers/amazon_ec2_providers.html">
+      Amazon EC2 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/cloud_providers/google_compute_engine_providers.html">
+      Google Compute Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/cloud_providers/ibm_cloud_vpc_providers.html">
+      IBM Cloud VPC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/cloud_providers/ibm_power_systems_virtual_servers_providers.html">
+      IBM Power Systems Virtual Servers Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/cloud_providers/ibm_power_vc_providers.html">
+      IBM PowerVC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/cloud_providers/openstack_providers.html">
+      OpenStack Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Container Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/containers_providers/azure_kubernetes_providers.html">
+      Azure Kubernetes Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/containers_providers/red_hat_openshift_providers.html">
+      Red Hat OpenShift Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/containers_providers/ibm_cloud_kubernetes_service_providers.html">
+      IBM Cloud Kubernetes Service Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/containers_providers/oracle_kubernetes_engine_providers.html">
+      Oracle Kubernetes Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/containers_providers/vmware_tanzu_providers.html">
+      VMware Tanzu Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Storage Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/storage_providers/amazon_ebs_managers.html">
+      Amazon Elastic Block Store Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/storage_providers/openstack_block_storage_managers.html">
+      OpenStack Block Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/storage_providers/openstack_object_storage_managers.html">
+      OpenStack Object Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/managing_providers/storage_providers/ibm_cloud_object_storage_managers.html">
+      IBM Cloud Object Storage Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/provisioning_virtual_machines_and_hosts/index.html">
+      Provisioning Virtual Machines and Hosts
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/scripting_actions/index.html">
+      Scripting Actions in ManageIQ
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Troubleshooting
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/troubleshooting/index.html">
+      Troubleshooting
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Authentication
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/auth/active_directory.html">
+      Active Directory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/auth/ipa_2fa.html">
+      2-Factor-Authentication with IPA
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/auth/ipa_ad_trust.html">
+      IPA/AD Trust
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item active">
+    <a href="/docs/reference/petrosian/auth/ldap.html">
+      LDAP
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/auth/saml.html">
+      SAML
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/auth/openid_connect.html">
+      OpenID-Connect
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Integration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+      AWS CloudFormation and OpenStack Heat
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/integration_with_servicenow/index.html">
+      ServiceNow
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Reference
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/capabilities_matrix/index.html">
+      Capabilities Matrix
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/api">
+      ManageIQ REST API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/petrosian/methods_available_for_automation/index.html">
+      Methods Available for Automation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc user_doc">
+      
+
+      <div class="doc-content">
+        
+        <div class="doc-versions">
+          <span class="label">Versions: </span>
+          
+            <span>
+              <a href="/docs/reference/latest/auth/ldap.html">
+                Latest
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span class="active" >
+              <a href="/docs/reference/petrosian/auth/ldap.html">
+                Petrosian
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/oparin/auth/ldap.html">
+                Oparin
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/najdorf/auth/ldap.html">
+                Najdorf
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/morphy/auth/ldap.html">
+                Morphy
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/lasker/auth/ldap.html">
+                Lasker
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/kasparov/auth/ldap.html">
+                Kasparov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/jansa/auth/ldap.html">
+                Jansa
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/ivanchuk/auth/ldap.html">
+                Ivanchuk
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/hammer/auth/ldap.html">
+                Hammer
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/gaprindashvili/auth/ldap.html">
+                Gaprindashvili
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/fine/auth/ldap.html">
+                Fine
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/euwe/auth/ldap.html">
+                Euwe
+              </a>
+            </span>
+            
+          
+        </div>
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#ldap">LDAP</a></li>
+<li class="toc-entry toc-h2"><a href="#testing-openldap">Testing OpenLDAP</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#with-ssl">With SSL</a></li>
+<li class="toc-entry toc-h3"><a href="#with-user-bind-dn-and-password">With User Bind DN and Password</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#configure-sssd">Configure SSSD</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#configure-sssdconf-with-authselect-centos-8-and-newer">Configure sssd.conf with authselect (CentOS 8 and newer)</a></li>
+<li class="toc-entry toc-h3"><a href="#configure-sssdconf-with-authconfig-centos-7-and-older">Configure sssd.conf with authconfig (CentOS 7 and older)</a></li>
+<li class="toc-entry toc-h3"><a href="#update-sssdconf">Update sssd.conf</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#testing-sssd-updates">Testing SSSD Updates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#configure-apache">Configure Apache</a></li>
+<li class="toc-entry toc-h2"><a href="#configure-selinux">Configure SELinux</a></li>
+<li class="toc-entry toc-h2"><a href="#configure-administrative-ui">Configure Administrative UI</a></li>
+</ul><h2 id="ldap">
+<a class="anchor" href="#ldap" aria-hidden="true"><span class="octicon octicon-link"></span></a>LDAP</h2>
+
+<p>This guide covers how to manually configure an appliance’s external authentication to work against LDAP. This provides LDAP users access to the Appliance UI as well as the REST API.</p>
+
+<ol>
+  <li>
+    <p><a href="#testing-openldap">Testing OpenLDAP</a></p>
+  </li>
+  <li>
+    <p><a href="#configure-sssd">Configure SSSD</a></p>
+  </li>
+  <li>
+    <p><a href="#configure-apache">Configure Apache</a></p>
+  </li>
+  <li>
+    <p><a href="#configure-selinux">Configure SELinux</a></p>
+  </li>
+  <li>
+    <p><a href="#configure-admin-ui">Configure Administrative UI</a></p>
+  </li>
+</ol>
+
+<p>In these examples, the LDAP domain used will be <em>example.com</em></p>
+
+<p><strong>Note</strong>: The SSSD and OpenLDAP configurations shown below are simply
+examples. Depending on the Ldap environment, Ldap directory server used,
+the configurations can widely differ. Many other options are available
+to the <em>authconfig</em> command as well as the <em>sssd.conf</em> configuration
+file.</p>
+
+<p>The following reference are available for customizing SSSD for any LDAP
+directory:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># man authconfig
+# man ldap.conf
+# man sssd-ldap
+</code></pre></div></div>
+
+<p>The document @
+<a href="https://onemoretech.wordpress.com/2014/02/23/sssd-for-ldap-auth-on-linux/">https://onemoretech.wordpress.com/2014/02/23/sssd-for-ldap-auth-on-linux/</a>
+is also helpful.</p>
+
+<h2 id="testing-openldap">
+<a class="anchor" href="#testing-openldap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing OpenLDAP</h2>
+
+<h3 id="with-ssl">
+<a class="anchor" href="#with-ssl" aria-hidden="true"><span class="octicon octicon-link"></span></a>With SSL</h3>
+
+<p>For Configuring external authentication to Ldap, the sssd-ldap
+communication must be secured (SSL or Start TLS). So an SSL Certificate
+needs to be created.</p>
+
+<p>The <em>apacheds-cert.pem</em> certificate file is used in the examples below.</p>
+
+<p>Update the LDAP Directory Server to point to the keystore for the
+certificate. This is used for both SSL and Start TLS.</p>
+
+<p>For SSL, update the <strong>/etc/openldap/ldap.conf</strong> accordingly to test:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SASL_NOCANON    on
+
+URI             ldaps://ldap-example.com:10636
+BASE            dc=example,dc=com
+TLS_REQCERT     demand
+TLS_CACERTDIR   /etc/openldap/cacerts
+TLS_CACERT      /etc/openldap/cacerts/apacheds-cert.pem
+</code></pre></div></div>
+
+<p>Then try out a search:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ldapsearch -x -H ldaps://ldap-example:10636 -LLL \
+       -b "ou=people,dc=example,dc=com" -s sub     \
+       "(objectclass=organizationalPerson)"
+</code></pre></div></div>
+
+<h3 id="with-user-bind-dn-and-password">
+<a class="anchor" href="#with-user-bind-dn-and-password" aria-hidden="true"><span class="octicon octicon-link"></span></a>With User Bind DN and Password</h3>
+
+<p>You can also test the ldap directory by specifying a user Bind DN and
+password on the Ldap search command line as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ldapsearch -x -H ldap://ldap-example:389 -LLL                 \
+       -b "ou=people,dc=example,dc=com" -s sub                  \
+       -D "ui=:userid,ou=People,dc=example,dc=com" -w :password \
+       "(objectclass=organizationalPerson)"
+</code></pre></div></div>
+
+<h2 id="configure-sssd">
+<a class="anchor" href="#configure-sssd" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure SSSD</h2>
+
+<p>There are two different ways that SSSD can be configured.</p>
+
+<p>For <em>CentOS 7</em> and earlier <strong>authconfig</strong> is used to configure SSSD.
+Starting with <em>CentOS 8</em> a new command, <strong>authselect</strong> is used.</p>
+
+<p>Perform the steps in only one of these two sections below:</p>
+
+<ul>
+  <li>
+    <p>Configure sssd.conf with authselect (CentOS 8 and newer)</p>
+  </li>
+  <li>
+    <p>Configure sssd.conf with authconfig (CentOS 7 and older)</p>
+  </li>
+</ul>
+
+<p><strong>Note</strong>: SSSD must be configured to communicate with LDAP over SSL or
+Start TLS. Otherwise an authentication error will be returned to the
+Appliance login screen.</p>
+
+<h3 id="configure-sssdconf-with-authselect-centos-8-and-newer">
+<a class="anchor" href="#configure-sssdconf-with-authselect-centos-8-and-newer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure sssd.conf with authselect (CentOS 8 and newer)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  # authselect select sssd --force
+</code></pre></div></div>
+
+<p>Seed the sssd.conf configuration file</p>
+
+<p><strong>authselect</strong> does not automatically generate the <em>/etc/sssd/sssd.conf</em>
+file, however the template, <em>sssd.conf.erb</em>, is now delivered with
+ManageIQ which can be used to seed the <em>/etc/sssd/sssd.conf</em>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># TEMPLATE_DIR="/opt/manageiq/manageiq-appliance/TEMPLATE"
+# mkdir -p /etc/sssd
+# cp ${TEMPLATE_DIR}/etc/sssd/sssd.conf.erb /etc/sssd/sssd.conf
+# chmod 600 /etc/sssd/sssd.conf
+</code></pre></div></div>
+
+<p>Update the SSSD configuration file /etc/sssd/sssd.conf to specify the
+correct <em>ldap_search_base</em> and <em>ldap_uri</em>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+ldap_search_base = dc=example,dc=com
+id_provider = ldap
+auth_provider = ldap
+chpass_provider = ldap
+ldap_uri = ldaps://ldap-example.com:10636
+ldap_id_use_start_tls = False
+cache_credentials = True
+...
+</code></pre></div></div>
+
+<h3 id="configure-sssdconf-with-authconfig-centos-7-and-older">
+<a class="anchor" href="#configure-sssdconf-with-authconfig-centos-7-and-older" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure sssd.conf with authconfig (CentOS 7 and older)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  # authconfig \
+    --enablesssd                                \
+    --enablesssdauth                            \
+    --enablelocauthorize                        \
+    --enableldap                                \
+    --enableldapauth                            \
+    --ldapserver=ldaps://ldap-example.com:10636 \
+    --disableldaptls                            \
+    --ldapbasedn=dc=example,dc=com              \
+    --enablerfc2307bis                          \
+    --enablecachecreds                          \
+    --update
+</code></pre></div></div>
+
+<h3 id="update-sssdconf">
+<a class="anchor" href="#update-sssdconf" aria-hidden="true"><span class="octicon octicon-link"></span></a>Update <strong>sssd.conf</strong>
+</h3>
+
+<p>Edit the different sections in <strong>/etc/sssd/sssd.conf</strong> for the Appliance
+as in the following example, customizing the main
+<strong>[domain/example.com]</strong> section for the particular Ldap installation.</p>
+
+<p><strong>Note</strong>: Starting with SSSD version 1.15.2, which will be available in
+CentOS version 7.4, SSSD will provide the domain name as a user
+attribute. The below examples show how to set <em>ldap_user_extra_attrs</em>
+and <em>user_attributes</em> to take advantage of this new feature. If running
+an appliance built with CentOS version prior to CentOS 7.4 do not
+include <em>domainname</em> for these attributes.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>=&gt;  [domain/example.com]
+    autofs_provider = ldap
+    id_provider = ldap
+    auth_provider = ldap
+    chpass_provider = ldap
+    ldap_schema = rfc2307bis
+
+    ldap_uri = ldaps://ldap-example.com:10636
+    ldap_id_use_start_tls = False
+=&gt;  ldap_tls_cacertdir = /etc/openldap/cacerts
+=&gt;  ldap_tls_cacert = /etc/openldap/cacerts/apacheds-cert.pem
+
+=&gt;  ldap_pwd_policy = none
+
+    ldap_search_base = dc=example,dc=com
+=&gt;  ldap_network_timeout = 3
+
+=&gt;  ldap_user_search_base = ou=people,dc=example,dc=com
+=&gt;  ldap_user_object_class = posixAccount
+=&gt;  ldap_user_name = uid
+=&gt;  ldap_user_uid_number = uidNumber
+
+=&gt;  ldap_group_object_class = groupOfNames
+=&gt;  ldap_group_search_base = ou=user_groups,dc=example,dc=com
+=&gt;  ldap_group_name = cn
+=&gt;  ldap_group_member = member
+
+    cache_credentials = True
+=&gt;  entry_cache_timeout = 600
+
+=&gt;  ldap_user_extra_attrs = mail, givenname, sn, displayname, domainname
+
+    [sssd]
+=&gt;  domains = example.com
+    config_file_version = 2
+=&gt;  services = nss, pam, ifp
+=&gt;  sbus_timeout = 30
+=&gt;  default_domain_suffix = example.com
+
+    [nss]
+    homedir_substring = /home
+
+    [pam]
+=&gt;  default_domain_suffix = example.com
+
+=&gt;  [ifp]
+=&gt;  default_domain_suffix = example.com
+=&gt;  allowed_uids = apache, root
+=&gt;  user_attributes = +mail, +givenname, +sn, +displayname, +domainname
+</code></pre></div></div>
+
+<h4 id="testing-sssd-updates">
+<a class="anchor" href="#testing-sssd-updates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing SSSD Updates</h4>
+
+<p>The best way to test manual SSSD updates is to query a user via the
+message bus system (D-Bus) API. When user attributes and groups are
+properly returned, that is a good indication that the External
+Authentication would succeed.</p>
+
+<p>For the <em>dbus-send</em> command to succeed when run from command line,
+SELinux must be in permissive mode.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># setenforce 0
+</code></pre></div></div>
+
+<p>After each update to <strong>sssd.cond</strong>, restart the sssd service before
+testing the changes.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart sssd
+</code></pre></div></div>
+
+<p>Example query of user attributes for user evmuser. This primarily
+validates the <em>ldap_user_</em> attributes of <strong>sssd.conf</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># dbus-send --print-reply --system --dest=org.freedesktop.sssd.infopipe /org/freedesktop/sssd/infopipe org.freedesktop.sssd.infopipe.GetUserAttr string:evmuser array:string:mail,givenname,sn,displayname,domainname
+</code></pre></div></div>
+
+<p>Query groups of user evmuser. This primarily validates the
+<em>ldap_group_</em> attributes of <strong>sssd.conf</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># dbus-send --print-reply --system --dest=org.freedesktop.sssd.infopipe /org/freedesktop/sssd/infopipe org.freedesktop.sssd.infopipe.GetUserGroups string:evmuser
+</code></pre></div></div>
+
+<p>With logging for each of the <strong>sssd.conf</strong> section in the appropriate
+/var/log/sssd/ log file. The log files of primary interest are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Log File</th>
+      <th>Type of debugging</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/var/log/sssd/sssd.log</td>
+      <td>SSSD communication with processes</td>
+    </tr>
+    <tr>
+      <td>/var/log/sssd/sssd_example.com.log</td>
+      <td>sssd-ldap communication to the LDAP server</td>
+    </tr>
+    <tr>
+      <td>/var/log/sssd/sssd_ifp.log</td>
+      <td>Gathering user and group information from LDAP server</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For each of the log file here, an debug level attribute (maximum value
+of 9) can be added to the appropriate <strong>sssd.conf</strong> section as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    [ifp]
+=&gt;  debug_level = 9
+    default_domain_suffix = example.com
+    ...
+</code></pre></div></div>
+
+<p>When done testing, re-enable SELinux enforcing mode.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># setenforce 1
+</code></pre></div></div>
+
+<p><strong>Note:</strong> When testing authentication on the Appliance, if updates are
+done in LDAP and not immediately seen when authenticating, then clean
+the SSSD cache as follows then retry:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># sss_cache -E
+</code></pre></div></div>
+
+<h2 id="configure-apache">
+<a class="anchor" href="#configure-apache" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure Apache</h2>
+
+<p>Create the Apache configuration files</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># TEMPLATE_DIR="/opt/manageiq/manageiq-appliance/TEMPLATE"
+# cp ${TEMPLATE_DIR}/etc/pam.d/httpd-auth                         \
+                    /etc/pam.d/httpd-auth
+# cp ${TEMPLATE_DIR}/etc/httpd/conf.d/manageiq-remote-user.conf       \
+                    /etc/httpd/conf.d/
+# cp ${TEMPLATE_DIR}/etc/httpd/conf.d/manageiq-external-auth.conf.erb \
+                    /etc/httpd/conf.d/manageiq-external-auth.conf
+</code></pre></div></div>
+
+<h2 id="configure-selinux">
+<a class="anchor" href="#configure-selinux" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure SELinux</h2>
+
+<p>For SSSD to Ldap, assure that non-standard Ldap ports (other than 389 or
+636) are allowed:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># semanage port -a -t ldap_port_t -p tcp 10389
+# semanage port -a -t ldap_port_t -p tcp 10636
+</code></pre></div></div>
+
+<p>Set appropriate SELinux permissions:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># setsebool -P allow_httpd_mod_auth_pam on
+# setsebool -P httpd_dbus_sssd          on
+</code></pre></div></div>
+
+<p>Restart Services</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl restart sssd
+# systemctl restart httpd
+</code></pre></div></div>
+
+<h2 id="configure-administrative-ui">
+<a class="anchor" href="#configure-administrative-ui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure Administrative UI</h2>
+
+<p>Log in as admin, navigate to <em>Settings &gt; Application Settings &gt; Settings</em>.  Select the server, then select the <em>Authentication tab</em></p>
+
+<ul>
+  <li>
+    <p>Set mode to External (httpd)</p>
+  </li>
+  <li>
+    <p>Check: <em>Get User Groups from External Authentication (httpd)</em></p>
+  </li>
+  <li>
+    <p>Do not check: <em>Enable Single Signon</em> since Kerberos is not
+configured against LDAP.</p>
+  </li>
+  <li>
+    <p>Click Save.</p>
+  </li>
+</ul>
+
+<p>The above steps need to be completed on each UI and WebService enabled
+appliance.</p>
+
+<p>Navigate to <em>Settings &gt; Application Settings &gt; Access Control</em></p>
+
+<ul>
+  <li>Make sure the user’s LDAP group for the appliance are created and
+appropriate roles assigned to those groups.</li>
+</ul>
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="http://talk.manageiq.org/">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2023 ManageIQ.
+      </span>
+      <span>
+        <a href="https://www.ibm.com/opensource/" target="_blank">
+          Sponsored by IBM, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

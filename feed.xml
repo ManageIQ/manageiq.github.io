@@ -5,9 +5,25 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 15 Sep 2023 03:09:18 +0000</pubDate>
-    <lastBuildDate>Fri, 15 Sep 2023 03:09:18 +0000</lastBuildDate>
+    <pubDate>Fri, 15 Sep 2023 14:03:57 +0000</pubDate>
+    <lastBuildDate>Fri, 15 Sep 2023 14:03:57 +0000</lastBuildDate>
     <generator>Jekyll v3.9.3</generator>
+    
+      <item>
+        <title>ManageIQ Petrosian GA Announcement</title>
+        <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Petrosian&lt;/strong&gt;! This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Tigran_Petrosian&quot;&gt;Tigran Petrosian&lt;/a&gt;. You can download the Petrosian-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2023/09/manageiq-petrosian-ga-announcement/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2023/09/manageiq-petrosian-ga-announcement/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>ManageIQ Oparin GA Announcement</title>
@@ -245,22 +261,6 @@ To estimate the size of the metric collection portion of the database, you could
         <guid isPermaLink="true">http://manageiq.org/blog/2021/05/manageiq-perf-results/</guid>
         
         <category>performance</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Announcing Lasker Beta</title>
-        <description>&lt;p&gt;The first beta release of ManageIQ Lasker is here!  We’ve been working hard and have a lot of new features you can see in the &lt;a href=&quot;https://github.com/orgs/ManageIQ/projects/13#column-11434545&quot;&gt;roadmap&lt;/a&gt;. Here are the major highlights for this new release:&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 26 Apr 2021 13:27:43 +0000</pubDate>
-        <link>http://manageiq.org/blog/2021/04/Announcing-Lasker-Beta/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2021/04/Announcing-Lasker-Beta/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
         
         
       </item>
