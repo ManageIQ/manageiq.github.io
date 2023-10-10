@@ -1066,6 +1066,7 @@
         
         <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h1"><a href="#backup">Backup</a></li>
+<li class="toc-entry toc-h1"><a href="#scheduling-database-backups">Scheduling Database Backups</a></li>
 <li class="toc-entry toc-h1"><a href="#restore">Restore</a></li>
 </ul><h1 id="backup">
 <a class="anchor" href="#backup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Backup</h1>
@@ -1082,6 +1083,31 @@
 </code></pre></div>    </div>
   </li>
   <li>Save and/or rename <code class="language-plaintext highlighter-rouge">/root/backup.tgz</code>
+</li>
+</ol>
+
+<h1 id="scheduling-database-backups">
+<a class="anchor" href="#scheduling-database-backups" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scheduling Database Backups</h1>
+<p>Scheduling a database backup using crontab and pg_dump.
+This example will create a backup file in <code class="language-plaintext highlighter-rouge">/tmp</code> named something like <code class="language-plaintext highlighter-rouge">db_dump20231009T145028.dump</code>.
+Before adding the cron job it would be best practice to mount an external storage and adjust the example accordingly.</p>
+
+<ol>
+  <li>SSH into the appliance and edit the root user crontab <code class="language-plaintext highlighter-rouge">crontab -e</code>
+</li>
+  <li>Press <code class="language-plaintext highlighter-rouge">i</code> to insert and add a line with the desired schedule to run the backup job. Examples:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="c"># Every hour on the hour</span>
+  0 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> pg_dump <span class="nt">-Fc</span> vmdb_production <span class="o">&gt;</span> /tmp/db_dump<span class="si">$(</span><span class="nb">date</span> +<span class="se">\%</span>Y<span class="se">\%</span>m<span class="se">\%</span>dT<span class="se">\%</span>H<span class="se">\%</span>M<span class="se">\%</span>S<span class="si">)</span>.dump
+  <span class="c"># Every day at midnight</span>
+  0 0 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> pg_dump <span class="nt">-Fc</span> vmdb_production <span class="o">&gt;</span> /tmp/db_dump<span class="si">$(</span><span class="nb">date</span> +<span class="se">\%</span>Y<span class="se">\%</span>m<span class="se">\%</span>dT<span class="se">\%</span>H<span class="se">\%</span>M<span class="se">\%</span>S<span class="si">)</span>.dump
+  <span class="c"># Every week at midnight on Sunday</span>
+  0 0 <span class="k">*</span> <span class="k">*</span> 0 pg_dump <span class="nt">-Fc</span> vmdb_production <span class="o">&gt;</span> /tmp/db_dump<span class="si">$(</span><span class="nb">date</span> +<span class="se">\%</span>Y<span class="se">\%</span>m<span class="se">\%</span>dT<span class="se">\%</span>H<span class="se">\%</span>M<span class="se">\%</span>S<span class="si">)</span>.dump
+</code></pre></div>    </div>
+  </li>
+  <li>Press <code class="language-plaintext highlighter-rouge">Esc</code> to exit insert mode then <code class="language-plaintext highlighter-rouge">:wq</code> and hit <code class="language-plaintext highlighter-rouge">Enter</code> to write and quit.  If successful, it will output <code class="language-plaintext highlighter-rouge">crontab: installing new crontab</code>
+</li>
+  <li>Done. If needed, logs can be found at <code class="language-plaintext highlighter-rouge">/var/log/cron</code>
 </li>
 </ol>
 
