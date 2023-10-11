@@ -1359,6 +1359,7 @@
 </li>
 <li class="toc-entry toc-h4"><a href="#adding-a-new-appliance-to-an-existing-region-with-a-non-default-password">Adding a New Appliance to an Existing Region with a Non-default Password</a></li>
 <li class="toc-entry toc-h4"><a href="#creating-a-database-dump">Creating a Database Dump</a></li>
+<li class="toc-entry toc-h4"><a href="#enabling-events-syndication">Enabling Events Syndication</a></li>
 </ul>
 </li>
 </ul>
@@ -7857,6 +7858,27 @@ the operation.</p>
 </ol>
 
 <p>The database dump is created and sent to the specified location.</p>
+
+<h4 id="enabling-events-syndication">
+<a class="anchor" href="#enabling-events-syndication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling Events Syndication</h4>
+
+<p>Events syndication can be enabled in the <code class="language-plaintext highlighter-rouge">Advanced</code> settings:</p>
+
+<ol>
+  <li>Head over to <code class="language-plaintext highlighter-rouge">Settings -&gt; Application Settings</code>
+</li>
+  <li>Under the <code class="language-plaintext highlighter-rouge">Advanced</code> tab, find the following settings:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>:event_streams:
+  :history:
+ :keep_events: 6.months
+ :purge_window_size: 1000
+  :syndicate_events: false
+</code></pre></div>    </div>
+  </li>
+  <li>Set the <code class="language-plaintext highlighter-rouge">:syndicate_events:</code> value to <code class="language-plaintext highlighter-rouge">true</code>
+</li>
+</ol>
 
 <h2 id="smartproxies">
 <a class="anchor" href="#smartproxies" aria-hidden="true"><span class="octicon octicon-link"></span></a>SmartProxies</h2>
