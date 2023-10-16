@@ -7862,22 +7862,40 @@ the operation.</p>
 <h4 id="enabling-events-syndication">
 <a class="anchor" href="#enabling-events-syndication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling Events Syndication</h4>
 
-<p>Events syndication can be enabled in the <code class="language-plaintext highlighter-rouge">Advanced</code> settings:</p>
+<p>You can enable events syndication in the <code class="language-plaintext highlighter-rouge">Advanced</code> settings:</p>
 
 <ol>
-  <li>Head over to <code class="language-plaintext highlighter-rouge">Settings -&gt; Application Settings</code>
-</li>
-  <li>Under the <code class="language-plaintext highlighter-rouge">Advanced</code> tab, find the following settings:
+  <li>
+    <p>From the menu, go to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
+  </li>
+  <li>
+    <p>Expand the <strong>Settings</strong> accordian. When you select the <strong>Settings</strong> accordion, you are automatically taken to the server list under <strong>Zones</strong>.</p>
+  </li>
+  <li>
+    <p>Select the zone where the EVM server is located, and select the EVM server.</p>
+  </li>
+  <li>
+    <p>Click the <strong>Advanced</strong> tab.</p>
+
+    <p>You can click the <strong>Advanced</strong> tab at the zone level to set advanced configuration settings for the entire zone. Or, you can click on the server, and then click the <strong>Advanced</strong> tab to set advanced configuration settings at the server (appliance) level, which overrides zone-level settings.</p>
+  </li>
+  <li>
+    <p>Find the following configuration:</p>
+
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>:event_streams:
   :history:
- :keep_events: 6.months
- :purge_window_size: 1000
+    :keep_events: 6.months
+    :purge_window_size: 1000
   :syndicate_events: false
 </code></pre></div>    </div>
   </li>
-  <li>Set the <code class="language-plaintext highlighter-rouge">:syndicate_events:</code> value to <code class="language-plaintext highlighter-rouge">true</code>
-</li>
+  <li>
+    <p>Set the value for <code class="language-plaintext highlighter-rouge">:syndicate_events:</code> to <code class="language-plaintext highlighter-rouge">true</code>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
 </ol>
 
 <h2 id="smartproxies">
