@@ -1179,24 +1179,22 @@
 <li class="toc-entry toc-h1"><a href="#editing-a-containers-provider">Editing a Containers Provider</a></li>
 <li class="toc-entry toc-h1"><a href="#hiding-environment-variables-for-containers-providers">Hiding Environment Variables for Containers Providers</a></li>
 <li class="toc-entry toc-h1"><a href="#viewing-a-containers-providers-timeline">Viewing a Containers Provider’s Timeline</a></li>
-<li class="toc-entry toc-h1"><a href="#storage-managers">Storage Managers</a></li>
-<li class="toc-entry toc-h1"><a href="#appendix">Appendix</a>
+<li class="toc-entry toc-h1"><a href="#storage-managers">Storage Managers</a>
 <ul>
+<li class="toc-entry toc-h2"><a href="#appendix">Appendix</a></li>
 <li class="toc-entry toc-h2"><a href="#using-a-self-signed-ca-certificate">Using a Self-Signed CA Certificate</a></li>
 </ul>
 </li>
 </ul><h1 id="managing-providers">
 <a class="anchor" href="#managing-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Managing Providers</h1>
 
-<p>ManageIQ can manage a variety of external environments, known as providers and managers. A provider or manager is any system that ManageIQ integrates with for the purpose of collecting data and performing operations.</p>
+<p>ManageIQ can manage a variety of external environments, which are known as providers and managers. A provider or manager is any system that ManageIQ integrates with for the purpose of collecting data and performing operations.</p>
 
-<p>In ManageIQ, a <em>provider</em> is an external virtualization, cloud, or containers environment that manages multiple virtual machines
-or instances residing on multiple hosts. One example is Red Hat Virtualization, a platform that manages multiple hosts and virtual machines.</p>
+<p>In ManageIQ, a <em>provider</em> is an external virtualization, cloud, or containers environment that manages multiple virtual machines or instances residing on multiple hosts. One example is Red Hat Virtualization, a platform that manages multiple hosts and virtual machines.</p>
 
 <p>In ManageIQ, a <em>manager</em> is an external management environment that manages more than one type of resource. One example of a manager is OpenStack, which manages infrastructure, cloud, network, and storage resources.</p>
 
-<p>This guide covers working with providers and managers in
-ManageIQ, which include:</p>
+<p>This guide covers working with providers and managers in ManageIQ, which include:</p>
 
 <ul>
   <li>
@@ -1225,7 +1223,7 @@ ManageIQ, which include:</p>
   </li>
 </ul>
 
-<p>For information on working with the resources contained by a provider or manager, see <a href="../managing_infrastructure_and_inventory/index.html">Managing Infrastructure and Inventory</a>.</p>
+<p>For information on working with the resources that are contained by a provider or manager, see <a href="../managing_infrastructure_and_inventory/index.html">Managing Infrastructure and Inventory</a>.</p>
 
 <h1 id="infrastructure-providers">
 <a class="anchor" href="#infrastructure-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Infrastructure Providers</h1>
@@ -1590,64 +1588,36 @@ ManageIQ.</p>
 <h1 id="automation-management-providers">
 <a class="anchor" href="#automation-management-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Automation Management Providers</h1>
 
-<p>In ManageIQ, an automation management provider is a management
-tool that integrates with ManageIQ to simplify automation
-operations for your resources. This chapter describes the automation
-management providers that you can use with ManageIQ, and how to
-work with them.</p>
+<p>In ManageIQ, an automation management provider is a management tool that integrates with ManageIQ to simplify automation operations for your resources. The following chapter describes the automation management providers that you can use with ManageIQ, and how to work with them.</p>
 
-<p>ManageIQ provides automation management features through the
-following:</p>
+<p>ManageIQ provides automation management through the following features:</p>
 
-<p><strong>Automate</strong> enables real-time, bi-directional process integration. This
-provides you with a method to implement adaptive automation for
-management events and administrative or operational activities.</p>
+<p><strong>Automate</strong> enables real-time, bidirectional process integration. This embedded automate feature provides you with a method to implement adaptive automation for management events and administrative or operational activities.</p>
 
-<p><strong>Ansible</strong> integration delivers out-of-the-box support for backing
-service, alert and policy actions using Ansible playbooks. Sync your
-existing playbook repositories with ManageIQ, add
-credentials to access providers, and create service catalog items for
-actions ranging from creating and retiring VMs, updating security
-software, or adding additional disks when space runs low.</p>
+<p><strong>Ansible</strong> integration delivers out-of-the-box support for backing service, alert, and policy actions by using Ansible playbooks. Sync your existing playbook repositories with ManageIQ, add credentials to access providers, and create service catalog items for actions ranging from creating and retiring VMs, updating security software, or adding more disks when space runs low.</p>
 
-<p><strong>Ansible Tower</strong> is a management tool integrated with
-ManageIQ, designed to help automate infrastructure
-operations utilizing existing Ansible Tower providers in your inventory.
-ManageIQ allows you to execute Ansible Tower jobs using
-service catalogs and Automate. Using Ansible Tower, you can schedule
-Ansible playbook runs and monitor current and historical results,
-allowing for troubleshooting or identification of issues before they
-occur.</p>
+<p><strong>Ansible Tower</strong> is a management tool that is integrated with ManageIQ, designed to help automate infrastructure operations utlizizing existing Ansible Tower providers in your inventory. ManageIQ allows you to execute Ansible Tower jobs by using service catalogs and Automate. Using Ansible Tower, you can schedule Ansible playbook runs and monitor current and historical results, allowing for troubleshooting or identification of issues before they occur.</p>
 
 <h2 id="ansible">
 <a class="anchor" href="#ansible" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ansible</h2>
 
-<p>Ansible integrates with ManageIQ to provide automation solutions,
-using playbooks, for Service, Policy and Alert actions. Ansible
-playbooks consist of series of <em>plays</em> or tasks that define automation
-across a set of hosts, known as the inventory.</p>
+<p>Ansible integrates with ManageIQ to provide automation solutions, using playbooks, for Service, Policy and Alert actions. Ansible playbooks consist of series of <em>plays</em> or tasks that define automation across a set of hosts, which is known as the inventory.</p>
 
-<p>Ranging from simple to complex tasks, Ansible playbooks can support
-cloud management:</p>
+<p>Ranging from simple to complex tasks, Ansible playbooks can support cloud management:</p>
 
 <ul>
   <li>
-    <p><strong>Services</strong> - allow a playbook to back a ManageIQ
-service catalog item.</p>
+    <p><strong>Services</strong> - allow a playbook to back a ManageIQ service catalog item.</p>
   </li>
   <li>
-    <p><strong>Control Actions</strong> - ManageIQ policies can execute
-playbooks as actions based on events from providers.</p>
+    <p><strong>Control Actions</strong> - ManageIQ policies can execute playbooks as actions based on events from providers.</p>
   </li>
   <li>
-    <p><strong>Control Alerts</strong> - set a playbook to launch prompted by a
-ManageIQ alert.</p>
+    <p><strong>Control Alerts</strong> - set a playbook to launch prompted by a ManageIQ alert.</p>
   </li>
 </ul>
 
-<p>Ansible is built into ManageIQ so there is nothing to
-install. The basic workflow when using Ansible in ManageIQ is as
-follows:</p>
+<p>Ansible is built into ManageIQ so there is nothing to install. The basic workflow when using Ansible in ManageIQ is as follows:</p>
 
 <ol>
   <li>
@@ -1660,25 +1630,20 @@ follows:</p>
     <p>Establish credentials with your inventory.</p>
   </li>
   <li>
-    <p>Back your services, alerts and policies using available playbooks.</p>
+    <p>Back your services, alerts, and policies using available playbooks.</p>
   </li>
 </ol>
 
 <h3 id="enabling-the-embedded-ansible-server-role">
 <a class="anchor" href="#enabling-the-embedded-ansible-server-role" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling the Embedded Ansible Server Role</h3>
 
-<p>In ManageIQ, the <strong>Embedded Ansible</strong> role is disabled by
-default. Enable this server role to utilize Ansible Automation Inside.</p>
+<p>In ManageIQ, the <strong>Embedded Ansible</strong> role is disabled by default. Enable this server role to utilize Ansible Automation Inside.</p>
 
-<p><strong>Note:</strong></p>
-
-<p>Configure your ManageIQ appliance network identity (hostname/IP address) before enabling the Embedded Ansible server role.
-Restart the <code class="language-plaintext highlighter-rouge">evmserverd</code> service on the appliance with the enabled Embedded Ansible server role after making any changes to the hostname or IP address.</p>
+<p><strong>Note:</strong> Configure your ManageIQ appliance network identity (hostname/IP address) before enabling the Embedded Ansible server role. Restart the <code class="language-plaintext highlighter-rouge">evmserverd</code> service on the appliance with the enabled Embedded Ansible server role after making any changes to the hostname or IP address.</p>
 
 <ol>
   <li>
-    <p>Browse to the settings menu, then <strong>Configuration</strong> →
-<strong>Settings</strong>.</p>
+    <p>Browse to the settings menu, then <strong>Configuration</strong> &gt; <strong>Settings</strong>.</p>
   </li>
   <li>
     <p>Select the desired server under <strong>Zones</strong>.</p>
@@ -1691,36 +1656,30 @@ Restart the <code class="language-plaintext highlighter-rouge">evmserverd</code>
 <h3 id="verifying-the-embedded-ansible-worker-state">
 <a class="anchor" href="#verifying-the-embedded-ansible-worker-state" aria-hidden="true"><span class="octicon octicon-link"></span></a>Verifying the Embedded Ansible Worker State</h3>
 
-<p>Verify that the Embedded Ansible worker has started to utilize its
-features.</p>
+<p>Verify that the Embedded Ansible worker has started to utilize its features.</p>
 
 <ol>
   <li>
-    <p>Browse to the settings menu, then <strong>Configuration</strong> →
-<strong>Diagnostics</strong> and click on the desired server.</p>
+    <p>Browse to the settings menu, then <strong>Configuration</strong> &gt; <strong>Diagnostics</strong> and click on the desired server.</p>
   </li>
   <li>
     <p>Click on the <strong>Roles by Servers</strong> tab.</p>
   </li>
 </ol>
 
-<p>A table of all workers and current status will appear from which you can
-confirm the state of your embedded Ansible worker.</p>
+<p>A table of all workers and current status will appear from which you can confirm the state of your embedded Ansible worker.</p>
 
 <h3 id="adding-a-playbook-repository">
 <a class="anchor" href="#adding-a-playbook-repository" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a Playbook Repository</h3>
 
-<p>Add a repository so that ManageIQ can discover and make available
-your playbooks.</p>
+<p>Add a repository so that ManageIQ can discover and make available your playbooks.</p>
 
 <ol>
   <li>
     <p>Browse to menu: <strong>Automation &gt; Ansible &gt; Repositories</strong>.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, then
-<img src="../images/1862.png" alt="Add New Repository"> (<strong>Add New
-Repository</strong>).</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Add New Repository"> (<strong>Add New Repository</strong>).</p>
   </li>
   <li>
     <p>Provide a Repository Name in the <strong>Name</strong> field.</p>
@@ -1742,14 +1701,12 @@ Repository</strong>).</p>
   </li>
 </ol>
 
-<p>Once you have synced a repository, its playbooks will become available
-to ManageIQ.</p>
+<p>Once you have synced a repository, its playbooks will become available to ManageIQ.</p>
 
 <h3 id="refreshing-repositories">
 <a class="anchor" href="#refreshing-repositories" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing Repositories</h3>
 
-<p>ManageIQ allows you to refresh a targeted playbook repository or
-all repositories in your inventory to ensure your playbooks are current.</p>
+<p>ManageIQ allows you to refresh a targeted playbook repository or all repositories in your inventory to ensure your playbooks are current.</p>
 
 <p>Refresh a targeted repository:</p>
 
@@ -1761,64 +1718,50 @@ all repositories in your inventory to ensure your playbooks are current.</p>
     <p>Click on a repository.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, then
-<img src="../images/2003.png" alt="Refresh this Repository"> (<strong>Refresh this
-Repository</strong>).</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/2003.png" alt="Refresh this Repository"> (<strong>Refresh this Repository</strong>).</p>
   </li>
 </ol>
 
-<p>Alternately, you can refresh some or all repositories from the list
-view:</p>
+<p>Alternately, you can refresh some or all repositories from the list view:</p>
 
 <ol>
   <li>
     <p>Browse to menu: <strong>Automation &gt; Ansible &gt; Repositories</strong>.</p>
   </li>
   <li>
-    <p>Check those repositories to refresh. Click <strong>Check All</strong> to select
-all repositories.</p>
+    <p>Check those repositories to refresh. Click <strong>Check All</strong> to select all repositories.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, then
-<img src="../images/2003.png" alt="Refresh Selected Ansible Repositories">
-(<strong>Refresh Selected Ansible Repositories</strong>).</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/2003.png" alt="Refresh Selected Ansible Repositories"> (<strong>Refresh Selected Ansible Repositories</strong>).</p>
   </li>
 </ol>
 
 <h1 id="credentials">
 <a class="anchor" href="#credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credentials</h1>
 
-<p>Credentials are utilized by ManageIQ for authentication when
-running Ansible playbooks against machines, synchronizing with inventory
-sources, and importing project content from a version control system.</p>
+<p>Credentials are utilized by ManageIQ for authentication when running Ansible playbooks against machines, synchronizing with inventory sources, and importing project content from a version control system.</p>
 
 <h2 id="adding-credentials">
 <a class="anchor" href="#adding-credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Credentials</h2>
 
-<p>ManageIQ can store credentials used by playbooks. Credentials
-saved in ManageIQ are matched and executed with a playbook
-when run.</p>
+<p>ManageIQ can store credentials used by playbooks. Credentials saved in ManageIQ are matched and executed with a playbook when run.</p>
 
 <ol>
   <li>
     <p>Browse to menu: <strong>Automation &gt; Ansible &gt; Credentials</strong>.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, then
-<img src="../images/1862.png" alt="Add New Credential"> (<strong>Add New
-Credential</strong>).</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Add New Credential"> (<strong>Add New Credential</strong>).</p>
   </li>
   <li>
     <p>Provide a <strong>Name</strong> for the credential.</p>
   </li>
   <li>
-    <p>Select the <strong>Credential Type</strong>. Additional fields will appear
-depending on the type chosen.</p>
+    <p>Select the <strong>Credential Type</strong>. Additional fields will appear depending on the type chosen.</p>
 
     <ul>
       <li>
-<strong>Vault Password</strong>: Ansible Vault credentials have only the <strong>Vault
-Password</strong> attribute that may be configured. For more information on Ansible Vault, see <a href="http://docs.ansible.com/ansible/latest/playbooks_vault.html">Using Vault in playbooks</a>.</li>
+<strong>Vault Password</strong>: Ansible Vault credentials have only the <strong>Vault Password</strong> attribute that may be configured. For more information on Ansible Vault, see <a href="http://docs.ansible.com/ansible/latest/playbooks_vault.html">Using Vault in playbooks</a>.</li>
     </ul>
   </li>
   <li>
@@ -1829,18 +1772,12 @@ Password</strong> attribute that may be configured. For more information on Ansi
 <h2 id="credential-types">
 <a class="anchor" href="#credential-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credential Types</h2>
 
-<p>Each credential type used by ManageIQ is detailed in the
-following sections.</p>
+<p>Each credential type used by ManageIQ is detailed in the following sections.</p>
 
 <h3 id="machine">
 <a class="anchor" href="#machine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Machine</h3>
 
-<p>Machine credentials enable ManageIQ to invoke Ansible on
-hosts under your management. Just like using Ansible on the command
-line, you can specify the SSH username, optionally provide a password,
-an SSH key, or a key password. They define SSH and user-level privilege
-escalation access for playbooks, and are used when running playbooks on
-a remote host.</p>
+<p>Machine credentials enable ManageIQ to invoke Ansible on hosts under your management. Just like using Ansible on the command line, you can specify the SSH username, optionally provide a password, an SSH key, or a key password. They define SSH and user-level privilege escalation access for playbooks, and are used when running playbooks on a remote host.</p>
 
 <ul>
   <li>
@@ -1850,143 +1787,111 @@ a remote host.</p>
     <p><strong>Password</strong>: The actual password to be used for SSH authentication.</p>
   </li>
   <li>
-    <p><strong>SSH Private Key</strong>: Copy or drag-and-drop the SSH private key for
-the machine credential.</p>
+    <p><strong>SSH Private Key</strong>: Copy or drag-and-drop the SSH private key for the machine credential.</p>
   </li>
   <li>
-    <p><strong>Private Key Passphrase</strong>: If the SSH Private Key used is protected
-by a password, you can configure a Key Password for the private key.</p>
+    <p><strong>Private Key Passphrase</strong>: If the SSH Private Key used is protected by a password, you can configure a Key Password for the private key.</p>
   </li>
   <li>
-    <p><strong>Privilege Escalation</strong>: Specifies the type of escalation privilege
-to assign to specific users. Options include <strong>sudo</strong>, <strong>su</strong>,
-<strong>pbrun</strong>, <strong>pfexec</strong>.</p>
+    <p><strong>Privilege Escalation</strong>: Specifies the type of escalation privilege to assign to specific users. Options include <strong>sudo</strong>, <strong>su</strong>, <strong>pbrun</strong>, <strong>pfexec</strong>.</p>
   </li>
   <li>
-    <p><strong>Privilege Escalation Username</strong>: Enter the username to use with
-escalation privileges on the remote system.</p>
+    <p><strong>Privilege Escalation Username</strong>: Enter the username to use with escalation privileges on the remote system.</p>
   </li>
   <li>
-    <p><strong>Privilege Escalation Password</strong>: Enter the actual password to be
-used to authenticate the user via the selected privilege escalation
-type on the remote system.</p>
+    <p><strong>Privilege Escalation Password</strong>: Enter the actual password to be used to authenticate the user via the selected privilege escalation type on the remote system.</p>
   </li>
 </ul>
 
 <h3 id="network">
 <a class="anchor" href="#network" aria-hidden="true"><span class="octicon octicon-link"></span></a>Network</h3>
 
-<p>Network credentials are used by Ansible networking modules to connect to
-and manage networking devices.</p>
+<p>Network credentials are used by Ansible networking modules to connect to and manage networking devices.</p>
 
 <p>Network credentials have several attributes that may be configured:</p>
 
 <ul>
   <li>
-    <p><strong>Username</strong>: The username to use in conjunction with the network
-device.</p>
+    <p><strong>Username</strong>: The username to use in conjunction with the network device.</p>
   </li>
   <li>
-    <p><strong>Password</strong>: The password to use in conjunction with the network
-device.</p>
+    <p><strong>Password</strong>: The password to use in conjunction with the network device.</p>
   </li>
   <li>
-    <p><strong>Authorize</strong>: Select this from the Options field to add an
-Authorize password which signs the RSA key with a password.</p>
+    <p><strong>Authorize</strong>: Select this from the Options field to add an Authorize password which signs the RSA key with a password.</p>
   </li>
   <li>
-    <p><strong>Authorize password</strong>: If <strong>Authorize</strong> is checked, enter a
-password in the <strong>Authorize Password</strong> field.</p>
+    <p><strong>Authorize password</strong>: If <strong>Authorize</strong> is checked, enter a password in the <strong>Authorize Password</strong> field.</p>
   </li>
   <li>
-    <p><strong>SSH Key</strong>: Copy or drag-and-drop the actual SSH Private Key to be
-used to authenticate the user to the network via SSH.</p>
+    <p><strong>SSH Key</strong>: Copy or drag-and-drop the actual SSH Private Key to be used to authenticate the user to the network via SSH.</p>
   </li>
   <li>
-    <p><strong>Private key passphrase</strong>: The actual passphrase for the private
-key to be used to authenticate the user to the network via SSH.</p>
+    <p><strong>Private key passphrase</strong>: The actual passphrase for the private key to be used to authenticate the user to the network via SSH.</p>
   </li>
 </ul>
 
 <h3 id="scm">
 <a class="anchor" href="#scm" aria-hidden="true"><span class="octicon octicon-link"></span></a>SCM</h3>
 
-<p>SCM (source control) credentials are used with Projects to clone and
-update local source code repositories from a remote revision control
-system such as Git, Subversion, or Mercurial.</p>
+<p>SCM (source control) credentials are used with Projects to clone and update local source code repositories from a remote revision control system such as Git, Subversion, or Mercurial.</p>
 
-<p>Source Control credentials have several attributes that may be
-configured:</p>
+<p>Source Control credentials have several attributes that may be configured:</p>
 
 <ul>
   <li>
-    <p><strong>Username</strong>: The username to use in conjunction with the source
-control system.</p>
+    <p><strong>Username</strong>: The username to use in conjunction with the source control system.</p>
   </li>
   <li>
-    <p><strong>Password</strong>: The password to use in conjunction with the source
-control system.</p>
+    <p><strong>Password</strong>: The password to use in conjunction with the source control system.</p>
   </li>
   <li>
-    <p><strong>Private key passphrase</strong>: If the SSH private key used is protected
-by a passphrase, you may configure a key passphrase for the private
-key.</p>
+    <p><strong>Private key passphrase</strong>: If the SSH private key used is protected by a passphrase, you may configure a key passphrase for the private key.</p>
   </li>
   <li>
-    <p><strong>Private Key</strong>: Copy or drag-and-drop the actual SSH Private Key to
-be used to authenticate the user to the source control system via
-SSH.</p>
+    <p><strong>Private Key</strong>: Copy or drag-and-drop the actual SSH Private Key to be used to authenticate the user to the source control system via SSH.</p>
   </li>
 </ul>
 
 <h3 id="amazon">
 <a class="anchor" href="#amazon" aria-hidden="true"><span class="octicon octicon-link"></span></a>Amazon</h3>
 
-<p>Selecting this credential type enables synchronization of cloud
-inventory with Amazon Web Services.</p>
+<p>Selecting this credential type enables synchronization of cloud inventory with Amazon Web Services.</p>
 
 <ul>
   <li>
-    <p><strong>Access Key</strong>: User credentials that allow for programmatic calls
-to Amazon Web Services.</p>
+    <p><strong>Access Key</strong>: User credentials that allow for programmatic calls to Amazon Web Services.</p>
   </li>
   <li>
-    <p><strong>Secret Key</strong>: The secret key that corresponds to the user access
-key.</p>
+    <p><strong>Secret Key</strong>: The secret key that corresponds to the user access key.</p>
   </li>
   <li>
-    <p><strong>STS Token</strong>: Token generated by Amazon Web Services Security Token
-Service.</p>
+    <p><strong>STS Token</strong>: Token generated by Amazon Web Services Security Token Service.</p>
   </li>
 </ul>
 
 <h3 id="azure">
 <a class="anchor" href="#azure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Azure</h3>
 
-<p>Selecting this credential type enables synchronization of cloud
-inventory with Microsoft Azure.</p>
+<p>Selecting this credential type enables synchronization of cloud inventory with Microsoft Azure.</p>
 
 <p>Microsoft Azure credentials have several attributes to configure:</p>
 
 <ul>
   <li>
-    <p><strong>Username</strong>: The username to use to connect to the Microsoft Azure
-account.</p>
+    <p><strong>Username</strong>: The username to use to connect to the Microsoft Azure account.</p>
   </li>
   <li>
-    <p><strong>Password</strong>: The password to use to connect to the Microsoft Azure
-account.</p>
+    <p><strong>Password</strong>: The password to use to connect to the Microsoft Azure account.</p>
   </li>
   <li>
-    <p><strong>Subscription ID</strong>: The Subscription UUID for the Microsoft Azure
-account.</p>
+    <p><strong>Subscription ID</strong>: The Subscription UUID for the Microsoft Azure account.</p>
   </li>
   <li>
     <p><strong>Tenant ID</strong>: The Tenant ID for the Microsoft Azure account.</p>
   </li>
   <li>
-    <p><strong>Client Secret</strong>: The Client Secret for the Microsoft Azure
-account.</p>
+    <p><strong>Client Secret</strong>: The Client Secret for the Microsoft Azure account.</p>
   </li>
   <li>
     <p><strong>Client ID</strong>: The Client ID for the Microsoft Azure account.</p>
@@ -1996,8 +1901,7 @@ account.</p>
 <h3 id="openstack">
 <a class="anchor" href="#openstack" aria-hidden="true"><span class="octicon octicon-link"></span></a>OpenStack</h3>
 
-<p>Selecting this credential type enables synchronization of cloud
-inventory with Red Hat OpenStack Platform.</p>
+<p>Selecting this credential type enables synchronization of cloud inventory with Red Hat OpenStack Platform.</p>
 
 <p>OpenStack credentials have several attributes that may be configured:</p>
 
@@ -2006,16 +1910,13 @@ inventory with Red Hat OpenStack Platform.</p>
     <p><strong>Username</strong>: The username to use to connect to OpenStack.</p>
   </li>
   <li>
-    <p><strong>Password (API Key)</strong>: The password or API key to use to connect to
-OpenStack.</p>
+    <p><strong>Password (API Key)</strong>: The password or API key to use to connect to OpenStack.</p>
   </li>
   <li>
-    <p><strong>Host (Authentication URL)</strong>: The host to be used for
-authentication.</p>
+    <p><strong>Host (Authentication URL)</strong>: The host to be used for authentication.</p>
   </li>
   <li>
-    <p><strong>Project (Tenant Name)</strong>: The Tenant name or Tenant ID used for
-OpenStack. This value is usually the same as the username.</p>
+    <p><strong>Project (Tenant Name)</strong>: The Tenant name or Tenant ID used for OpenStack. This value is usually the same as the username.</p>
   </li>
   <li>
     <p><strong>Domain name</strong>: The FQDN to be used to connect to OpenStack.</p>
@@ -2025,48 +1926,32 @@ OpenStack. This value is usually the same as the username.</p>
 <h3 id="red-hat-virtualization">
 <a class="anchor" href="#red-hat-virtualization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Red Hat Virtualization</h3>
 
-<p>Selecting this credential type enables synchronization of cloud
-inventory with Red Hat Virtualization.</p>
+<p>Selecting this credential type enables synchronization of cloud inventory with Red Hat Virtualization.</p>
 
-<p>Red Hat Virtualization credentials have several attributes that may be
-configured:</p>
+<p>Red Hat Virtualization credentials have several attributes that may be configured:</p>
 
 <ul>
   <li>
-    <p><strong>Username</strong>: The username to use to connect to Red Hat
-Virtualization.</p>
+    <p><strong>Username</strong>: The username to use to connect to Red Hat Virtualization.</p>
   </li>
   <li>
-    <p><strong>Password</strong>: The password to use to connect to Red Hat
-Virtualization.</p>
+    <p><strong>Password</strong>: The password to use to connect to Red Hat Virtualization.</p>
   </li>
   <li>
-    <p><strong>Host (Authentication URL)</strong>: The host to be used for
-authentication.</p>
+    <p><strong>Host (Authentication URL)</strong>: The host to be used for authentication.</p>
 
-    <div class="important">
+    <p><strong>Important</strong>: Enter in <strong>Host</strong> the Red Hat Virtualization provider URL, followed by the path <code class="language-plaintext highlighter-rouge">/ovirt_engine/api</code>. Example: <code class="language-plaintext highlighter-rouge">https://your.rhv.com/ovirt_engine/api</code></p>
 
-  - Enter in **Host** the Red Hat Virtualization provider URL,
-    followed by the path `/ovirt_engine/api`. Example:
-    `https://your.rhv.com/ovirt_engine/api`
-
-  - See [Ansible Roles](https://access.redhat.com/documentation/en-us/red_hat_virtualization/4.1/html/administration_guide/chap-automating_rhv_configuration_using_ansible#Ansible_Roles)
-    for more information on Ansible Roles available for Red Hat
-    Virtualization.
-
-</div>
+    <p>For more information on the Ansible Roles that are available for Red Hat Virtualization, see <a href="https://access.redhat.com/documentation/en-us/red_hat_virtualization/4.1/html/administration_guide/chap-automating_rhv_configuration_using_ansible#Ansible_Roles">Ansible Roles</a>.</p>
   </li>
 </ul>
 
 <h3 id="vmware">
 <a class="anchor" href="#vmware" aria-hidden="true"><span class="octicon octicon-link"></span></a>VMware</h3>
 
-<p>Selecting this credential type enables synchronization of inventory with
-VMware vCenter.</p>
+<p>Selecting this credential type enables synchronization of inventory with VMware vCenter.</p>
 
-<p><strong>Important:</strong></p>
-
-<p>If both ManageIQ and a VMware provider are located in the same IPv6-only network, use a DNS-resolvable hostname for the VMware provider in the <strong>vCenter Host</strong> field when adding credentials.</p>
+<p><strong>Important:</strong> If both ManageIQ and a VMware provider are located in the same IPv6-only network, use a DNS-resolvable hostname for the VMware provider in the <strong>vCenter Host</strong> field when adding credentials.</p>
 
 <p>VMware credentials have several attributes that may be configured:</p>
 
@@ -2082,9 +1967,7 @@ VMware vCenter.</p>
   </li>
 </ul>
 
-<p><strong>Note:</strong></p>
-
-<p>If the VMware guest tools are not running on the instance, VMware inventory sync may not return an IP address for that instance.</p>
+<p><strong>Note:</strong> If the VMware guest tools are not running on the instance, VMware inventory sync may not return an IP address for that instance.</p>
 
 <h1 id="tagging-ansible-playbooks-repositories-and-credentials">
 <a class="anchor" href="#tagging-ansible-playbooks-repositories-and-credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tagging Ansible Playbooks, Repositories, and Credentials</h1>
@@ -2185,23 +2068,15 @@ for use with ManageIQ.</p>
 <h2 id="installing-roles-on-an-embedded-ansible-appliance">
 <a class="anchor" href="#installing-roles-on-an-embedded-ansible-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing Roles on an Embedded Ansible Appliance</h2>
 
-<p>Roles are ways of automatically loading certain variable files, tasks,
-and handlers based on a known file structure. Grouping content by roles
-also allows easy sharing of roles with other users. Install roles on a
-ManageIQ appliance with the Embedded Ansible server role
-activated to optimize playbooks.</p>
+<p>Roles are ways of automatically loading certain variable files, tasks, and handlers based on a known file structure. Grouping content by roles also allows for easy sharing of roles with other users. Install roles on a ManageIQ appliance with the Embedded Ansible server role activated to optimize playbooks.</p>
 
-<p>When using this role in a playbook on a ManageIQ
-appliance, add an empty <code class="language-plaintext highlighter-rouge">roles</code> directory at the root of the playbook.
-In the <code class="language-plaintext highlighter-rouge">roles</code> directory, include a <code class="language-plaintext highlighter-rouge">requirements.yml</code> file with the
-following contents:</p>
+<p>When using this role in a playbook on a ManageIQ appliance, add an empty <code class="language-plaintext highlighter-rouge">roles</code> directory at the root of the playbook. In the <code class="language-plaintext highlighter-rouge">roles</code> directory, include a <code class="language-plaintext highlighter-rouge">requirements.yml</code> file with the following contents:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 - src: &lt;ansible-galaxy-role&gt;
 </code></pre></div></div>
 
-<p>ManageIQ will automatically install the role once it sees
-the <code class="language-plaintext highlighter-rouge">requirements.yml</code> file in the playbook.</p>
+<p>ManageIQ automatically installs the role once it sees the <code class="language-plaintext highlighter-rouge">requirements.yml</code> file in the playbook.</p>
 
 <h2 id="ansible-service-linking">
 <a class="anchor" href="#ansible-service-linking" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ansible Service Linking</h2>
@@ -2301,46 +2176,29 @@ service via an <em>href slug</em> or an object.</p>
 <h3 id="modifying-the-automate-workspace-using-the-manageiq-automate-role">
 <a class="anchor" href="#modifying-the-automate-workspace-using-the-manageiq-automate-role" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modifying the Automate Workspace Using the <code class="language-plaintext highlighter-rouge">manageiq-automate</code> Role.</h3>
 
-<p>The <code class="language-plaintext highlighter-rouge">manageiq-automate</code> role allows users of ManageIQ Automate to
-modify and add to the automate workspace via an Ansible playbook.</p>
+<p>The <code class="language-plaintext highlighter-rouge">manageiq-automate</code> role allows users of ManageIQ Automate to modify and add to the automate workspace via an Ansible playbook.</p>
 
-<p><strong>Note:</strong></p>
-
-<p>When using this role in a playbook on a ManageIQ appliance with
-Embedded Ansible activated, add an empty <code class="language-plaintext highlighter-rouge">roles</code> directory at the root
-of the playbook. In the <code class="language-plaintext highlighter-rouge">roles</code> directory, include a <code class="language-plaintext highlighter-rouge">requirements.yml</code>
-file with the following contents:</p>
+<p><strong>Note:</strong> When using this role in a playbook on a ManageIQ appliance with Embedded Ansible activated, add an empty <code class="language-plaintext highlighter-rouge">roles</code> directory at the root of the playbook. In the <code class="language-plaintext highlighter-rouge">roles</code> directory, include a <code class="language-plaintext highlighter-rouge">requirements.yml</code> file with the following contents:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 - src: syncrou.manageiq-automate
 </code></pre></div></div>
 
-<p>ManageIQ will automatically install the role once it sees
-the <code class="language-plaintext highlighter-rouge">requirements.yml</code> file in the playbook.</p>
+<p>ManageIQ will automatically install the role once it sees the <code class="language-plaintext highlighter-rouge">requirements.yml</code> file in the playbook.</p>
 
 <h4 id="role-variables">
 <a class="anchor" href="#role-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Role Variables</h4>
 
-<p>The <code class="language-plaintext highlighter-rouge">manageiq_automate</code> role employs the following variables when
-implemented in a playbook run on a ManageIQ appliance.
-Variables are defined in <code class="language-plaintext highlighter-rouge">defaults/main.yml</code> and <code class="language-plaintext highlighter-rouge">vars/main.yml</code>.</p>
+<p>The <code class="language-plaintext highlighter-rouge">manageiq_automate</code> role employs the following variables when implemented in a playbook run on a ManageIQ appliance. Variables are defined in <code class="language-plaintext highlighter-rouge">defaults/main.yml</code> and <code class="language-plaintext highlighter-rouge">vars/main.yml</code>.</p>
 
-<p><em>auto_commit</em>: By default is set to <code class="language-plaintext highlighter-rouge">True</code>. If set to False it will not
-auto commit back to ManageIQ each call to a <code class="language-plaintext highlighter-rouge">set_</code> method
-in the <code class="language-plaintext highlighter-rouge">manageiq_automate</code> module.</p>
+<p><code class="language-plaintext highlighter-rouge">auto_commit</code>: By default is set to <code class="language-plaintext highlighter-rouge">True</code>. If set to False it does not auto commit back to ManageIQ each call to a <code class="language-plaintext highlighter-rouge">set_</code> method in the <code class="language-plaintext highlighter-rouge">manageiq_automate</code> module.</p>
 
-<p><em>manageiq_validate_certs</em>: By default is set to <code class="language-plaintext highlighter-rouge">True</code>. If passed in
-via <em>extra_vars</em> or assigned in the playbook variables then the lookup
-will allow self-signed certificates to be used when using SSL REST API
-connection URLs.</p>
+<p><code class="language-plaintext highlighter-rouge">manageiq_validate_certs</code>: By default is set to <code class="language-plaintext highlighter-rouge">True</code>. If passed in with <code class="language-plaintext highlighter-rouge">extra_vars</code> or assigned in the playbook variables then the lookup allows self-signed certificates to be used when using SSL REST API connection URLs.</p>
 
 <h4 id="example-playbook">
 <a class="anchor" href="#example-playbook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example Playbook</h4>
 
-<p>The example below utilizes the <code class="language-plaintext highlighter-rouge">manageiq-automate</code> role. Using variable
-substitution, playbook tasks retrieve method parameters which are then
-used to modify object attributes. A final task uses the <code class="language-plaintext highlighter-rouge">set_retry</code>
-module to update the retry interval.</p>
+<p>The following example utilizes the <code class="language-plaintext highlighter-rouge">manageiq-automate</code> role. Using variable substitution, playbook tasks retrieve method parameters which are then used to modify object attributes. A final task uses the <code class="language-plaintext highlighter-rouge">set_retry</code> module to update the retry interval.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- name: Siphon Method Parameters into an object
   hosts: localhost
@@ -2387,89 +2245,61 @@ environment.</p>
 <h3 id="ansible-tower">
 <a class="anchor" href="#ansible-tower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ansible Tower</h3>
 
-<p>Ansible Tower is a management tool integrated with ManageIQ,
-designed to help automate infrastructure operations. ManageIQ
-allows you to execute Ansible Tower jobs or workflows using service
-catalogs and Automate. No custom configuration or Ruby scripting is
-needed in ManageIQ, as configuration is done in Ansible
-Tower using playbooks.</p>
+<p>Ansible Tower is a management tool integrated with ManageIQ, designed to help automate infrastructure operations. ManageIQ allows you to execute Ansible Tower jobs or workflows using service catalogs and Automate. No custom configuration or Ruby scripting is needed in ManageIQ, as configuration is done in Ansible Tower using playbooks.</p>
 
-<p>You can use the large library of existing Ansible playbooks as
-ManageIQ state machines to automate tasks such as
-deployments, backups, package updates, and maintenance in your
-ManageIQ environment. This can be particularly useful for quickly
-applying changes across large environments with many virtual machines or
-instances.</p>
+<p>You can use the large library of existing Ansible playbooks as ManageIQ state machines to automate tasks such as deployments, backups, package updates, and maintenance in your ManageIQ environment. This can be particularly useful for quickly applying changes across large environments with many virtual machines or instances.</p>
 
-<p>Using Ansible Tower, you can schedule Ansible playbook runs and monitor
-current and historical results, allowing for troubleshooting or
-identification of issues before they occur.</p>
+<p>Using Ansible Tower, you can schedule Ansible playbook runs and monitor current and historical results, allowing for troubleshooting or identification of issues before they occur.</p>
 
-<p>ManageIQ supports Ansible Tower API v2 provider
-integration.</p>
+<p>ManageIQ supports Ansible Tower API v2 provider integration.</p>
 
 <h4 id="working-with-an-ansible-tower-provider">
 <a class="anchor" href="#working-with-an-ansible-tower-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Working with an Ansible Tower Provider</h4>
 
-<p>The basic workflow when using ManageIQ with an Ansible Tower
-provider is as follows:</p>
+<p>The basic workflow when using ManageIQ with an Ansible Tower provider is as follows:</p>
 
 <ol>
   <li>
     <p>Create an Ansible playbook which performs a specific task.</p>
   </li>
   <li>
-    <p>A new Ansible Tower job template is created from the playbook (or
-workflow template created from disparate jobs), which is then
-retrieved by ManageIQ.</p>
+    <p>A new Ansible Tower job template is created from the playbook (or workflow template created from disparate jobs), which is then retrieved by ManageIQ.</p>
   </li>
   <li>
-    <p>From the Ansible Tower job or workflow template, create a new
-catalog item in ManageIQ, optionally with a service
-dialog that allows the user to enter parameters if needed.</p>
+    <p>From the Ansible Tower job or workflow template, create a new catalog item in ManageIQ, optionally with a service dialog that allows the user to enter parameters if needed.</p>
   </li>
   <li>
-    <p>The user orders the service from the ManageIQ user
-interface, and fills out any additional arguments (for example,
-limiting the task to run on a specific set of virtual machines).</p>
+    <p>The user orders the service from the ManageIQ user interface, and fills out any additional arguments (for example, limiting the task to run on a specific set of virtual machines).</p>
   </li>
   <li>
     <p>The job or workflow executes.</p>
   </li>
 </ol>
 
-<p><strong>Note:</strong></p>
+<p><strong>Notes:</strong></p>
 
 <ul>
   <li>
-    <p>For more information on Ansible playbooks, see the <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks.html">Ansible playbook documentation</a>.</p>
+    <p>For more information about Ansible playbooks, see the <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks.html">Ansible playbook documentation</a>.</p>
   </li>
   <li>
-    <p>For more information on worklows, see
-<a href="https://docs.ansible.com/ansible-tower/latest/html/userguide/workflows.html">Workflows</a>
-in the Ansible Tower <em>User Guide</em>.</p>
+    <p>For more information about worklows, see <a href="https://docs.ansible.com/ansible-tower/latest/html/userguide/workflows.html">Workflows</a> in the Ansible Tower <em>User Guide</em>.</p>
   </li>
 </ul>
 
 <h4 id="adding-an-ansible-tower-provider">
 <a class="anchor" href="#adding-an-ansible-tower-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding an Ansible Tower Provider</h4>
 
-<p>To access your Ansible Tower inventory from ManageIQ, you must
-add Ansible Tower as a provider.</p>
+<p>To access your Ansible Tower inventory from ManageIQ, you must add Ansible Tower as a provider.</p>
 
-<p><strong>Note:</strong></p>
+<p><strong>Notes:</strong></p>
 
 <ul>
   <li>
-    <p>Ensure <strong>ENABLE HTTP BASIC AUTH</strong> is set to <strong>On</strong> in the Ansible
-Tower configuration settings before adding the provider. See <a href="https://docs.ansible.com/ansible-tower/latest/html/administration/configure_tower_in_tower.html">Tower
-Configuration</a>
-in the Ansible Tower <em>Administration Guide</em>.</p>
+    <p>Ensure <strong>ENABLE HTTP BASIC AUTH</strong> is set to <strong>On</strong> in the Ansible Tower configuration settings before adding the provider. See <a href="https://docs.ansible.com/ansible-tower/latest/html/administration/configure_tower_in_tower.html">Tower Configuration</a> in the Ansible Tower <em>Administration Guide</em>.</p>
   </li>
   <li>
-    <p>A trailing slash is <strong>not</strong> required at the end of the Ansible Tower
-provider URL. Adding the trailing slash to the provider URL may
-result in a validation error.</p>
+    <p>A trailing slash is <strong>not</strong> required at the end of the Ansible Tower provider URL. Adding the trailing slash to the provider URL may result in a validation error.</p>
   </li>
 </ul>
 
@@ -2478,8 +2308,7 @@ result in a validation error.</p>
     <p>Browse to menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong> and click on the <strong>Providers</strong> accordion tab.</p>
   </li>
   <li>
-    <p>Under <strong>Configuration</strong>, click
-<img src="../images/1862.png" alt="Add a new Provider"> <strong>Add a new Provider</strong>.</p>
+    <p>Under <strong>Configuration</strong>, click <img src="../images/1862.png" alt="Add a new Provider"> <strong>Add a new Provider</strong>.</p>
   </li>
   <li>
     <p>In the <strong>Add a new Provider</strong> area:</p>
@@ -2502,8 +2331,7 @@ result in a validation error.</p>
     <p>Select the <strong>Verify Peer Certificate</strong> checkbox if desired.</p>
   </li>
   <li>
-    <p>In the <strong>Credentials</strong> area, provide the <strong>Username</strong> and
-<strong>Password</strong>, and <strong>Confirm Password</strong>.</p>
+    <p>In the <strong>Credentials</strong> area, provide the <strong>Username</strong> and <strong>Password</strong>, and <strong>Confirm Password</strong>.</p>
   </li>
   <li>
     <p>Click <strong>Validate</strong> to verify credentials.</p>
@@ -2520,14 +2348,9 @@ result in a validation error.</p>
 
 <p>Refresh relationships of all items related to an existing Ansible Tower configuration management provider including inventory, hosts, virtual machines, and clusters.</p>
 
-<p>You can refresh inventory from ManageIQ, or by enabling the
-<strong>Update on Launch</strong> option for inventory groups in Ansible Tower. The
-<strong>Update on Launch</strong> option allows Ansible Tower to automatically update inventory using a dynamic inventory script before launching an Ansible Tower job from a playbook. See the <a href="http://docs.ansible.com/ansible-tower/index.html">Ansible Tower documentation</a> for more information.</p>
+<p>You can refresh inventory from ManageIQ, or by enabling the <strong>Update on Launch</strong> option for inventory groups in Ansible Tower. The <strong>Update on Launch</strong> option allows Ansible Tower to automatically update inventory using a dynamic inventory script before launching an Ansible Tower job from a playbook. For more information, see the <a href="http://docs.ansible.com/ansible-tower/index.html">Ansible Tower documentation</a>.</p>
 
-<p><strong>Important</strong></p>
-
-<p>It can take a long time to retrieve information from providers containing many virtual machines or instances. The Ansible Tower dynamic inventory script can be modified to limit updates to specific items and
-reduce refresh time.</p>
+<p><strong>Important:</strong> It can take a long time to retrieve information from providers containing many virtual machines or instances. The Ansible Tower dynamic inventory script can be modified to limit updates to specific items and reduce refresh time.</p>
 
 <p>To refresh an Ansible Tower provider’s inventory in ManageIQ:</p>
 
@@ -2539,30 +2362,21 @@ reduce refresh time.</p>
     <p>Select the checkboxes for the Ansible Tower providers to refresh under <strong>All Ansible Tower Providers</strong>.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, and
-then <img src="../images/2003.png" alt="Refresh Relationships and Power States">
-(<strong>Refresh Relationships and Power States</strong>).</p>
+    <p>Click <strong>Configuration</strong>, and then <img src="../images/2003.png" alt="Refresh Relationships and Power States"> (<strong>Refresh Relationships and Power States</strong>).</p>
   </li>
   <li>
     <p>Click <strong>OK</strong>.</p>
   </li>
 </ol>
 
-<p>ManageIQ then queries the Ansible Tower API and obtains an
-inventory of all available hosts, job and workflow templates.</p>
+<p>ManageIQ then queries the Ansible Tower API and obtains an inventory of all available hosts, job, and workflow templates.</p>
 
 <h4 id="viewing-ansible-tower-providers-and-inventory">
 <a class="anchor" href="#viewing-ansible-tower-providers-and-inventory" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Ansible Tower Providers and Inventory</h4>
 
-<p>ManageIQ automatically updates its inventory from Ansible Tower.
-This includes system groups (known as Inventories in Ansible Tower),
-basic information about individual systems, and available Ansible Tower
-job or workflow templates to be executed from the service catalog or
-Automate.</p>
+<p>ManageIQ automatically updates its inventory from Ansible Tower. This includes system groups (known as Inventories in Ansible Tower), basic information about individual systems, and available Ansible Tower job or workflow templates to be executed from the service catalog or Automate.</p>
 
-<p><strong>Note:</strong></p>
-
-<p>To view and access Ansible Tower inventories and job or workflow templates in ManageIQ, you must first create them in Ansible Tower.</p>
+<p><strong>Note:</strong> To view and access Ansible Tower inventories and job or workflow templates in ManageIQ, you must first create them in Ansible Tower.</p>
 
 <p>To view a list of Ansible Tower providers and inventory:</p>
 
@@ -2599,9 +2413,7 @@ Automate.</p>
 
 <p>You can execute an Ansible Tower playbook from ManageIQ by creating a service catalog item from an Ansible Tower job or workflow template.</p>
 
-<p><strong>Important:</strong></p>
-
-<p>You must first create the job or workflow template in Ansible Tower. The job or workflow templates are automatically discovered by ManageIQ when refreshing your Ansible Tower provider’s inventory.</p>
+<p><strong>Important:</strong> You must first create the job or workflow template in Ansible Tower. The job or workflow templates are automatically discovered by ManageIQ when refreshing your Ansible Tower provider’s inventory.</p>
 
 <p>First, create a catalog:</p>
 
@@ -2610,8 +2422,7 @@ Automate.</p>
     <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and click <strong>Catalog Items</strong>.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, then
-<img src="../images/1862.png" alt="Add a New Catalog"> (<strong>Add a New Catalog</strong>)</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Add a New Catalog"> (<strong>Add a New Catalog</strong>)</p>
   </li>
   <li>
     <p>Enter a <strong>Name</strong> and <strong>Description</strong> for the catalog.</p>
@@ -2631,19 +2442,16 @@ Automate.</p>
     <p>Click <strong>Ansible Tower Templates</strong> and select an Ansible Tower job or workflow template.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, then
-<img src="../images/1862.png" alt="Create Service Dialog from Template"> (<strong>Create Service Dialog from this Template</strong>).</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Create Service Dialog from Template"> (<strong>Create Service Dialog from this Template</strong>).</p>
   </li>
   <li>
-    <p>Enter a <strong>Service Dialog Name</strong> (for example,
-<em>ansible_tower_job</em>)and click <strong>Save</strong>.</p>
+    <p>Enter a <strong>Service Dialog Name</strong> (for example, <em>ansible_tower_job</em>)and click <strong>Save</strong>.</p>
   </li>
   <li>
     <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and click <strong>Catalog Items</strong>.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, then
-<img src="../images/1862.png" alt="Add a New Catalog Item"> (<strong>Add a New Catalog Item</strong>) to create a new catalog item with the following details, at minimum:</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Add a New Catalog Item"> (<strong>Add a New Catalog Item</strong>) to create a new catalog item with the following details, at minimum:</p>
 
     <ul>
       <li>
@@ -2659,19 +2467,16 @@ Automate.</p>
         <p>In <strong>Catalog</strong>, select the catalog you created previously.</p>
       </li>
       <li>
-        <p>In <strong>Dialog</strong>, select the service dialog you created previously
-(in this example, <em>ansible_tower_job</em>). To ask the user to enter extra information when running the task, <strong>Service Dialog</strong> must be selected. A dialog is required if <strong>Display in Catalog</strong> is chosen.</p>
+        <p>In <strong>Dialog</strong>, select the service dialog you created previously (in this example, <em>ansible_tower_job</em>). To ask the user to enter extra information when running the task, <strong>Service Dialog</strong> must be selected. A dialog is required if <strong>Display in Catalog</strong> is chosen.</p>
       </li>
       <li>
-        <p>In <strong>Provider</strong>, select your Ansible Tower provider. This brings up the <strong>Ansible Tower Template</strong> option and configures the
-<strong>Provisioning Entry Point State Machine</strong> automatically.</p>
+        <p>In <strong>Provider</strong>, select your Ansible Tower provider. This brings up the <strong>Ansible Tower Template</strong> option and configures the <strong>Provisioning Entry Point State Machine</strong> automatically.</p>
       </li>
       <li>
         <p>Add configuration information for <strong>Reconfigure Entry Point</strong> and <strong>Retirement Entry Point</strong> as applicable.</p>
       </li>
       <li>
-        <p>Select your desired <strong>Ansible Tower Template</strong> from the list.
-Generally, this is the Ansible Tower job or workflow template previously used to create the service dialog.</p>
+        <p>Select your desired <strong>Ansible Tower Template</strong> from the list. Generally, this is the Ansible Tower job or workflow template previously used to create the service dialog.</p>
       </li>
     </ul>
   </li>
@@ -2696,22 +2501,18 @@ Generally, this is the Ansible Tower job or workflow template previously used to
   </li>
 </ol>
 
-<p>ManageIQ takes you to the <strong>Requests</strong> queue page and show the
-status of the job.</p>
+<p>ManageIQ takes you to the <strong>Requests</strong> queue page and show the status of the job.</p>
 
 <p>The service item’s details can be viewed in menu: <strong>Services &gt; My Services</strong> in ManageIQ.</p>
 
-<p><strong>Note:</strong></p>
-
-<p>Instead of running a single job at a time, multiple service catalog items can also be grouped together as a catalog bundle to create one deployment with multiple job templates. See <a href="../provisioning_virtual_machines_and_hosts/index.html#catalogs-and-services">Catalogs and Services</a> in <em>Provisioning Virtual Machines and Hosts</em> for more information.</p>
+<p><strong>Note:</strong> Instead of running a single job at a time, multiple service catalog items can also be grouped together as a catalog bundle to create one deployment with multiple job templates. For more information, see <a href="../provisioning_virtual_machines_and_hosts/index.html#catalogs-and-services">Catalogs and Services</a>.</p>
 
 <h4 id="executing-an-ansible-tower-job-using-a-custom-automate-button">
 <a class="anchor" href="#executing-an-ansible-tower-job-using-a-custom-automate-button" aria-hidden="true"><span class="octicon octicon-link"></span></a>Executing an Ansible Tower Job Using a Custom Automate Button</h4>
 
-<p>ManageIQ can execute Ansible Tower jobs on virtual machines or
-instances using custom buttons in Automate.</p>
+<p>ManageIQ can execute Ansible Tower jobs on virtual machines or instances using custom buttons in Automate.</p>
 
-<p>Ansible Tower jobs can either be non-customizable, which do not require any extra configuration from the user, or alternatively, they can allow the user to specify a parameter (for example, a package name to install). In Ansible Tower jobs containing a dialog, ManageIQ accepts additional information from the user and adds it to the appropriate API call in Automate, and then sends it into Ansible Tower.</p>
+<p>Ansible Tower jobs can either be noncustomizable, which do not require any extra configuration from the user, or alternatively, they can allow the user to specify a parameter (for example, a package name to install). In Ansible Tower jobs containing a dialog, ManageIQ accepts additional information from the user and adds it to the appropriate API call in Automate, and then sends it into Ansible Tower.</p>
 
 <p><strong>Prerequisites.</strong></p>
 
@@ -2747,50 +2548,47 @@ instances using custom buttons in Automate.</p>
     <p>Click menu: <strong>VM and Instance</strong> &gt; <strong>Unassigned Buttons</strong>. This configures the button to run on virtual machines or instances.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, then click
-<img src="../images/1862.png" alt="1862"> (<strong>Add a new Button</strong>).</p>
+    <p>Click <strong>Configuration</strong>, then click <img src="../images/1862.png" alt="1862"> (<strong>Add a new Button</strong>).</p>
 
-    <ul>
+    <ol>
       <li>
         <p>In the <strong>Adding a new Button</strong> screen, configure the <strong>Action</strong> parameters as desired. <strong>Dialog</strong> can be left blank if the playbook does not require extra variables. To ask the user to enter extra information when running the task, <strong>Service Dialog</strong> must be selected.</p>
       </li>
       <li>
         <p>Configure <strong>Object Details</strong> fields with the following request details:</p>
+      </li>
+    </ol>
 
-        <ul>
-          <li>
-            <p>For <strong>System/Process</strong>, select <strong>Request</strong>.</p>
-          </li>
-          <li>
-            <p>For <strong>Message</strong>, enter <strong>create</strong>.</p>
-          </li>
-          <li>
-            <p>For <strong>Request</strong>, enter <strong>Ansible_Tower_Job</strong>.</p>
-          </li>
-        </ul>
+    <ul>
+      <li>
+        <p>For <strong>System/Process</strong>, select <strong>Request</strong>.</p>
       </li>
       <li>
-        <p>Configure <strong>Attribute/Value Pairs</strong> with the following
-parameters:</p>
-
-        <ul>
-          <li>
-<strong>job_template_name</strong> is the Ansible Tower job template
-name to associate with the button. The
-<strong>job_template_name</strong> field is mandatory; other parameters
-are provided by the Tower job dialog.</li>
-        </ul>
+        <p>For <strong>Message</strong>, enter <strong>create</strong>.</p>
       </li>
       <li>
-        <p>Configure <strong>Visibility</strong> to all users, or limit visibility by
-role as desired.</p>
+        <p>For <strong>Request</strong>, enter <strong>Ansible_Tower_Job</strong>.</p>
+      </li>
+    </ul>
+
+    <ol>
+      <li>Configure <strong>Attribute/Value Pairs</strong> with the following parameters:</li>
+    </ol>
+
+    <ul>
+      <li>
+        <p><strong>job_template_name</strong> is the Ansible Tower job template name to associate with the button. The <strong>job_template_name</strong> field is mandatory; other parameters are provided by the Tower job dialog.</p>
+      </li>
+      <li>
+        <p>Configure <strong>Visibility</strong> to all users, or limit visibility by role as desired.</p>
 
         <p><img src="../images/add_button.png" alt="add button"></p>
       </li>
-      <li>
-        <p>Click <strong>Add</strong>.</p>
-      </li>
     </ul>
+
+    <ol>
+      <li>Click <strong>Add</strong>.</li>
+    </ol>
   </li>
 </ol>
 
@@ -2800,21 +2598,20 @@ role as desired.</p>
   <li>
     <p>From menu: <strong>Automation &gt; Automate &gt; Customization</strong>, browse to menu: <strong>Buttons</strong> and click <strong>VM and Instance &gt; Add a new Button Group</strong>, and configure the following:</p>
 
-    <ul>
+    <ol>
       <li>
         <p>Configure <strong>Basic Info</strong> as desired. For example, name the button group <code class="language-plaintext highlighter-rouge">VM Actions</code>.</p>
       </li>
       <li>
-        <p>In <strong>Assign Buttons</strong>, select the button you just created from
-the <strong>Unassigned</strong> list and click <img src="../images/1876.png" alt="1876"> to
-assign it to <strong>Selected</strong>.</p>
+        <p>In <strong>Assign Buttons</strong>, select the button you just created from the <strong>Unassigned</strong> list and click <img src="../images/1876.png" alt="1876"> to assign it to <strong>Selected</strong>.</p>
+      </li>
+    </ol>
 
-        <p><img src="../images/create_button_group.png" alt="create button group"></p>
-      </li>
-      <li>
-        <p>Click <strong>Add</strong>.</p>
-      </li>
-    </ul>
+    <p><img src="../images/create_button_group.png" alt="create button group"></p>
+
+    <ol>
+      <li>Click <strong>Add</strong>.</li>
+    </ol>
   </li>
 </ol>
 
@@ -2842,9 +2639,7 @@ assign it to <strong>Selected</strong>.</p>
     <p>Select the virtual machine to run the Ansible Tower job template on.</p>
   </li>
   <li>
-    <p>Click the <strong>VM Actions</strong> button to show the button you created, and
-click the button from the list to run the Ansible Tower job
-template.</p>
+    <p>Click the <strong>VM Actions</strong> button to show the button you created, and click the button from the list to run the Ansible Tower job template.</p>
 
     <p><img src="../images/run_update_button.png" alt="run update button"></p>
   </li>
@@ -2855,10 +2650,7 @@ template.</p>
 
 <p>ManageIQ then confirms the job has been executed.</p>
 
-<p>If you selected a service dialog to run when creating the button,
-ManageIQ will then prompt you to enter variables to complete the
-task. After entering your desired parameters, ManageIQ takes you
-to the <strong>Requests</strong> page.</p>
+<p>If you selected a service dialog to run when creating the button, ManageIQ will then prompt you to enter variables to complete the task. After entering your desired parameters, ManageIQ takes you to the <strong>Requests</strong> page.</p>
 
 <p>The service item’s details can be viewed in menu: <strong>Services &gt; My Services</strong> in ManageIQ.</p>
 
@@ -3156,8 +2948,7 @@ chassis, racks, and physical networking/storage devices.</p>
 <h2 id="ibm-powervc-to-ibm-power-systems-virtual-server">
 <a class="anchor" href="#ibm-powervc-to-ibm-power-systems-virtual-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>IBM PowerVC to IBM Power Systems Virtual Server</h2>
 
-<p>The image import functionality allows you to easily move an image from your on-prem PowerVC environment to an off-prem Power Systems Virtual Server environment using ManageIQ web interface.
-The enablement of the workflow in ManageIQ requires you to perform certain preparations that are described in detail below.</p>
+<p>The image import functionality allows you to easily move an image from your on-prem PowerVC environment to an off-prem Power Systems Virtual Server environment using ManageIQ web interface. The enablement of the workflow in ManageIQ requires you to perform certain preparations that are described in detail below.</p>
 
 <h3 id="preparing-manageiq-hosting-server-required-once">
 <a class="anchor" href="#preparing-manageiq-hosting-server-required-once" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparing ManageIQ hosting server (required once):</h3>
@@ -3165,59 +2956,39 @@ The enablement of the workflow in ManageIQ requires you to perform certain prepa
 <p>The following commands are to be run on a server (or in a corresponding docker container) that is dedicated to hosting your ManageIQ instance.</p>
 
 <ol>
-  <li>Install <code class="language-plaintext highlighter-rouge">ansible-runner</code> application using the installation <a href="https://ansible-runner.readthedocs.io/en/stable/install.html">instructions</a>. The application must be available in the the command line
-of the user under which the ManageIQ web-server is running.</li>
+  <li>Install <code class="language-plaintext highlighter-rouge">ansible-runner</code> application using the installation <a href="https://ansible-runner.readthedocs.io/en/stable/install.html">instructions</a>. The application must be available in the the command line of the user under which the ManageIQ web-server is running.</li>
 </ol>
 
 <h3 id="preparing-ibm-powervc-server-required-once">
 <a class="anchor" href="#preparing-ibm-powervc-server-required-once" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparing IBM PowerVC Server (required once):</h3>
-<p>The  following commands are to be run on a PowerVC server that is dedicated to supporting the image import workflow.</p>
+
+<p>The following commands are to be run on a PowerVC server that is dedicated to supporting the image import workflow.</p>
 
 <ol>
   <li>
     <p>Make sure that the minimal IBM PowerVC version you are using is <a href="https://www.ibm.com/docs/it/powervc/1.4.4?topic=installing-power-virtualization-center">1.4.4</a>.</p>
   </li>
   <li>
-    <p>Install <code class="language-plaintext highlighter-rouge">python3.X</code>, <code class="language-plaintext highlighter-rouge">pip3</code>, <code class="language-plaintext highlighter-rouge">virtualenv</code> applications as well as the <code class="language-plaintext highlighter-rouge">libselinux-python3</code> library.
-You can achieve this by issuing the following command as a “root” user:</p>
+    <p>Install <code class="language-plaintext highlighter-rouge">python3.X</code>, <code class="language-plaintext highlighter-rouge">pip3</code>, <code class="language-plaintext highlighter-rouge">virtualenv</code> applications as well as the <code class="language-plaintext highlighter-rouge">libselinux-python3</code> library. You can achieve this by issuing the following command as a “root” user:</p>
 
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>yum install -y python3 python-pip3 python-virtualenv libselinux-python3 gcc
 </code></pre></div>    </div>
 
-    <p>The standard <code class="language-plaintext highlighter-rouge">python3.X</code> installation will be used in order to run auxiliary scripts, which will
-upload PowerVC disk images (in Open Virtualization Format) to the <a href="https://www.ibm.com/cloud/object-storage">IBM Cloud Object Storage</a>.
-The <code class="language-plaintext highlighter-rouge">pip3</code> is required in order to install Cloud Object Storage <a href="https://github.com/ibm/ibm-cos-sdk-python">Python SDK</a> and auxiliary packages for proper functioning of the import workflow.
-The role of <code class="language-plaintext highlighter-rouge">virtualenv</code> will be to isolate python package installations that are relevant only to the image import workflow from the
-Python system packages. The <code class="language-plaintext highlighter-rouge">libselinux-python3</code> library is needed for the proper functioning of Ansible’s <code class="language-plaintext highlighter-rouge">copy</code> module, which will
-be used for the copying of auxiliary data between the ManageIQ hosting site and the PowerVC server. Presence
-of <code class="language-plaintext highlighter-rouge">gcc</code> is needed as a dependency of one of the Python packages (<code class="language-plaintext highlighter-rouge">pycryptodome</code>) that will be installed on later steps.</p>
+    <p>The standard <code class="language-plaintext highlighter-rouge">python3.X</code> installation will be used in order to run auxiliary scripts, which will upload PowerVC disk images (in Open Virtualization Format) to the <a href="https://www.ibm.com/cloud/object-storage">IBM Cloud Object Storage</a>. The <code class="language-plaintext highlighter-rouge">pip3</code> is required in order to install Cloud Object Storage <a href="https://github.com/ibm/ibm-cos-sdk-python">Python SDK</a> and auxiliary packages for proper functioning of the import workflow. The role of <code class="language-plaintext highlighter-rouge">virtualenv</code> will be to isolate python package installations that are relevant only to the image import workflow from the Python system packages. The <code class="language-plaintext highlighter-rouge">libselinux-python3</code> library is needed for the proper functioning of Ansible’s <code class="language-plaintext highlighter-rouge">copy</code> module, which will be used for the copying of auxiliary data between the ManageIQ hosting site and the PowerVC server. Presence of <code class="language-plaintext highlighter-rouge">gcc</code> is needed as a dependency of one of the Python packages (<code class="language-plaintext highlighter-rouge">pycryptodome</code>) that will be installed on later steps.</p>
   </li>
   <li>
-    <p>Prepare enough local storage for holding transient PowerVC disk images that will be transported into Power Systems Virtual Server
-and deleted from a local storage upon workflow completion. A typical PowerVC image file size can be many GBs.
-As an example, a RHEL 8.3 disk image can be of 20GB size or more. You would therefore require more space
-in your local storage than the mentioned disk image size in order to support the import workflow.
-You would also need enough space to hold Python virtual environment described in the next steps.
-Its size however will be no more than 100MB. Additionally, import session will place auxiliary files into the sessions directory
-during the workflow execution but their collective size will not exceed 5MB. In summary, if you’re attempting to import an image 
-whose size is ‘G’ Gigabytes, then having ‘G+1’ Gigabytes of free space in that directory would be sufficient.</p>
+    <p>Prepare enough local storage for holding transient PowerVC disk images that will be transported into Power Systems Virtual Server and deleted from a local storage upon workflow completion. A typical PowerVC image file size can be many GBs. As an example, a RHEL 8.3 disk image can be of 20GB size or more. You would therefore require more space in your local storage than the mentioned disk image size in order to support the import workflow. You would also need enough space to hold Python virtual environment described in the next steps. Its size however will be no more than 100MB. Additionally, import session will place auxiliary files into the sessions directory during the workflow execution but their collective size will not exceed 5MB. In summary, if you’re attempting to import an image whose size is ‘G’ Gigabytes, then having ‘G+1’ Gigabytes of free space in that directory would be sufficient.</p>
   </li>
   <li>
-    <p>Create an empty sessions directory <code class="language-plaintext highlighter-rouge">/home/sessions</code> which will have to be located on the local storage with sufficient space
-as described in the previous step. In addition, make sure that already existing <code class="language-plaintext highlighter-rouge">/var/opt/ibm/powervc/imgstaging</code> directory also 
-has at least G+1 Gigabytes of free storage as described in previous paragraph since IBM PowerVC internally uses it as a temporary 
-staging area during export of images to the local filesystem.</p>
+    <p>Create an empty sessions directory <code class="language-plaintext highlighter-rouge">/home/sessions</code> which will have to be located on the local storage with sufficient space as described in the previous step. In addition, make sure that already existing <code class="language-plaintext highlighter-rouge">/var/opt/ibm/powervc/imgstaging</code> directory also has at least G+1 Gigabytes of free storage as described in previous paragraph since IBM PowerVC internally uses it as a temporary staging area during export of images to the local filesystem.</p>
 
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>mkdir /home/sessions
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>The image import workflow will use Ansible via SSH from the ManageIQ server in order to execute commands on the PowerVC server. At this point you need to choose a system user 
-that will be made available to ManageIQ instance for connection to the PowerVC server via SSH. Make sure the user has a read/write access to the <code class="language-plaintext highlighter-rouge">/home/sessions</code> directory.
-The user must also be able to execute <code class="language-plaintext highlighter-rouge">powervc-image</code> application through the command line. In general, a good security practice would be 
-to permit user only as much as it is required to run the import workflow. We will assume that all further commands in this section are executed using this existing or newly created system user:</p>
+    <p>The image import workflow will use Ansible via SSH from the ManageIQ server in order to execute commands on the PowerVC server. At this point you need to choose a system user that will be made available to ManageIQ instance for connection to the PowerVC server via SSH. Make sure the user has a read/write access to the <code class="language-plaintext highlighter-rouge">/home/sessions</code> directory. The user must also be able to execute <code class="language-plaintext highlighter-rouge">powervc-image</code> application through the command line. In general, a good security practice would be to permit user only as much as it is required to run the import workflow. We will assume that all further commands in this section are executed using this existing or newly created system user:</p>
 
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>su - your_user
@@ -3230,13 +3001,10 @@ to permit user only as much as it is required to run the import workflow. We wil
 <div class="highlight"><pre class="highlight"><code>virtualenv --system-site-packages /home/sessions/venv
 </code></pre></div>    </div>
 
-    <p>This environment will hold Python packages that are relevant only to the image import workflow
-and as such will not be available system-wide. Conversely, the <code class="language-plaintext highlighter-rouge">--system-site-packages</code> will indicate to the application that the existing Python system packages are to be made available
-to the virtual environment.</p>
+    <p>This environment will hold Python packages that are relevant only to the image import workflow and as such will not be available system-wide. Conversely, the <code class="language-plaintext highlighter-rouge">--system-site-packages</code> will indicate to the application that the existing Python system packages are to be made available to the virtual environment.</p>
   </li>
   <li>
-    <p>Installing packages in the environment requires one to first activate the environment after which
-all the Python package installations via <code class="language-plaintext highlighter-rouge">pip3</code> will become environment relative only. Therefore, activate the newly created Python environment:</p>
+    <p>Installing packages in the environment requires one to first activate the environment after which all the Python package installations via <code class="language-plaintext highlighter-rouge">pip3</code> will become environment relative only. Therefore, activate the newly created Python environment:</p>
 
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>source /home/sessions/venv/bin/activate
@@ -3249,8 +3017,7 @@ all the Python package installations via <code class="language-plaintext highlig
 <div class="highlight"><pre class="highlight"><code>pip3 install pathlib pycryptodome ibm-cos-sdk
 </code></pre></div>    </div>
 
-    <p>The <code class="language-plaintext highlighter-rouge">pathlib</code> is  used for handling file paths. The <code class="language-plaintext highlighter-rouge">pycryptodome</code> is required for
-encrypting/decrypting IBM Cloud connection credentials and the <code class="language-plaintext highlighter-rouge">ibm-cos-sdk</code> represents the IBM Cloud Object Storage Python SDK.</p>
+    <p>The <code class="language-plaintext highlighter-rouge">pathlib</code> is  used for handling file paths. The <code class="language-plaintext highlighter-rouge">pycryptodome</code> is required for encrypting/decrypting IBM Cloud connection credentials and the <code class="language-plaintext highlighter-rouge">ibm-cos-sdk</code> represents the IBM Cloud Object Storage Python SDK.</p>
   </li>
   <li>
     <p>Upon completing the Python package installations above you should exit the virtual environment by running:</p>
@@ -3260,8 +3027,7 @@ encrypting/decrypting IBM Cloud connection credentials and the <code class="lang
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Make sure to have a valid PowerVC connection/resource file under <code class="language-plaintext highlighter-rouge">/opt/ibm/powervc/powervcrc</code> (or at your custom location) containing similar definitions
-(the values below represent an example and not a suggestion for usage).</p>
+    <p>Make sure to have a valid PowerVC connection/resource file under <code class="language-plaintext highlighter-rouge">/opt/ibm/powervc/powervcrc</code> (or at your custom location) containing similar definitions (the values below represent an example and not a suggestion for usage).</p>
 
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>export OS_IDENTITY_API_VERSION=3
@@ -3309,8 +3075,7 @@ export OS_VOLUME_API_VERSION=2
 <div class="highlight"><pre class="highlight"><code>powervc-image export -i test-IMG -p /home/sessions/image.ova
 </code></pre></div>    </div>
 
-    <p>It is a time-consuming operation with the runtime taking several minutes to complete depending on the size of exported image.
-  Once the operation completes you should be able to find the exported image under <code class="language-plaintext highlighter-rouge">/home/sessions/image.ova</code>.  At this stage you can remove the exported image thus concluding the test:</p>
+    <p>It is a time-consuming operation with the runtime taking several minutes to complete depending on the size of exported image. Once the operation completes you should be able to find the exported image under <code class="language-plaintext highlighter-rouge">/home/sessions/image.ova</code>.  At this stage you can remove the exported image thus concluding the test:</p>
 
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>rm /home/sessions/image.ova
@@ -3326,15 +3091,12 @@ export OS_VOLUME_API_VERSION=2
     <p>See the corresponding instructions <a href="storage_providers/ibm_cloud_object_storage_managers.html">here</a>.</p>
   </li>
   <li>
-    <p>Create a bucket in your Cloud Object Storage that will hold the transient OVA image files.  <br>
+    <p>Create a bucket in your Cloud Object Storage that will hold the transient OVA image files.
 <img src="../images/new_bucket.png" alt="New Bucket"></p>
 
-    <p>Make sure to choose the region for the bucket that <strong>corresponds</strong> to the region that you have specified when registering the
-Cloud Object Storage provider.</p>
+    <p>Make sure to choose the region for the bucket that <strong>corresponds</strong> to the region that you have specified when registering the Cloud Object Storage provider.</p>
 
-    <p><strong>NOTE</strong>: The “root” user as well as the workflow dedicated user of the PowerVC server from step <a href="#preparing-ibm-powervc-server-required-once">5</a> 
-would both be able to decrypt the Cloud Object Storage’s credentials during the execution of the import workflow and therefore make sure to take 
-this into consideration in your security setup.</p>
+    <p><strong>NOTE</strong>: The “root” user as well as the workflow dedicated user of the PowerVC server from step <a href="#preparing-ibm-powervc-server-required-once">5</a> would both be able to decrypt the Cloud Object Storage’s credentials during the execution of the import workflow and therefore make sure to take this into consideration in your security setup.</p>
   </li>
 </ol>
 
@@ -3354,39 +3116,35 @@ this into consideration in your security setup.</p>
   </li>
   <li>
     <p>Specify the image import related parameters on the PowerVC registration form.</p>
+
+    <ul>
+      <li>
+        <p>Enter the SSH username for access to the PowerVC server. It corresponds to the user on your PowerVC server that is dedicated to running image import related commands via Ansible as described in <a href="#preparing-ibm-powervc-server-required-once">5</a>.</p>
+      </li>
+      <li>
+        <p>Enter the private key and the private key passphrase (if present).
+<img src="../images/pvc_import_pkey.png" alt="pvc_reg"></p>
+      </li>
+    </ul>
   </li>
 </ol>
-
-<ul>
-  <li>
-    <p>Enter the SSH username for access to the PowerVC server. It corresponds to the user on your PowerVC server that is dedicated to
-running image import related commands via Ansible as described in <a href="#preparing-ibm-powervc-server-required-once">5</a>.</p>
-  </li>
-  <li>
-    <p>Enter the private key and the private key passphrase (if present).<br>
-<img src="../images/pvc_import_pkey.png" alt="pvc_reg"></p>
-  </li>
-</ul>
 
 <h3 id="grant-image-import-permissions-in-manageiq">
 <a class="anchor" href="#grant-image-import-permissions-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grant Image Import Permissions in ManageIQ:</h3>
 
-<p>User performing image import needs a corresponding permission in ManageIQ in order
-to perform this operation. For granting permissions, log-in through an administrative account and navigate 
-to <code class="language-plaintext highlighter-rouge">Settings -&gt; Application Settings -&gt; Access Control</code>. Make sure the user of your choice has permissions for 
-<code class="language-plaintext highlighter-rouge">Import Cloud Template</code> action through the user’s corresponding group and role.
- <img src="../images/import_access_control.png" alt="import_access_control"></p>
+<p>User performing image import needs a corresponding permission in ManageIQ in order to perform this operation. For granting permissions, log-in through an administrative account and navigate to <code class="language-plaintext highlighter-rouge">Settings -&gt; Application Settings -&gt; Access Control</code>. Make sure the user of your choice has permissions for <code class="language-plaintext highlighter-rouge">Import Cloud Template</code> action through the user’s corresponding group and role.
+<img src="../images/import_access_control.png" alt="import_access_control"></p>
 
 <h3 id="enable-embedded-ansible-in-manageiq">
 <a class="anchor" href="#enable-embedded-ansible-in-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enable Embedded Ansible in ManageIQ:</h3>
 
-<p>Currently the workflow event is queued as Embedded Ansible playbook upon request submission and as such the corresponding functionality has to be enabled
-in ManageIQ by navigating to: <code class="language-plaintext highlighter-rouge">Settings -&gt; Application Settings -&gt; Settings</code></p>
+<p>Currently the workflow event is queued as Embedded Ansible playbook upon request submission and as such the corresponding functionality has to be enabled in ManageIQ by navigating to: <code class="language-plaintext highlighter-rouge">Settings -&gt; Application Settings -&gt; Settings</code></p>
 
 <p><img src="../images/import_emb_ansible.png" alt="Enable Embedded Ansible"></p>
 
 <h3 id="start-the-workflow">
 <a class="anchor" href="#start-the-workflow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Start the workflow</h3>
+
 <p>The workflow operates by exporting the image as an OVA file onto a PowerVC local storage, uploading it to the Cloud Object Storage bucket and then transferring it into Power Systems Virtual Server image registry. In order to initiate the workflow:</p>
 
 <ol>
@@ -3395,7 +3153,7 @@ in ManageIQ by navigating to: <code class="language-plaintext highlighter-rouge"
 <img src="../images/refresh_providers.png" alt="Import Image Button Screenshot"></p>
   </li>
   <li>
-    <p>Navigate to the Power Systems Virtual Server provider added above.  <br>
+    <p>Navigate to the Power Systems Virtual Server provider added above.
 <img src="../images/import_button.png" alt="Import Image Button Screenshot"></p>
   </li>
   <li>
@@ -3423,20 +3181,18 @@ in ManageIQ by navigating to: <code class="language-plaintext highlighter-rouge"
     <p>Check the corresponding box if you wish to keep the OVA file in the cloud bucket upon workflow completion.</p>
   </li>
   <li>
-    <p>Click on the <code class="language-plaintext highlighter-rouge">Import</code> button initiating the workflow.<br>
-  <img src="../images/pvc_pvs_import_form.png" alt="Import Image Button Screenshot"></p>
+    <p>Click on the <code class="language-plaintext highlighter-rouge">Import</code> button initiating the workflow.
+   <img src="../images/pvc_pvs_import_form.png" alt="Import Image Button Screenshot"></p>
   </li>
   <li>
-    <p>The workflow can take an hour or more depending on the image size, bucket location,
-Power Systems Virtual Server and PowerVC internal load.</p>
+    <p>The workflow can take an hour or more depending on the image size, bucket location, Power Systems Virtual Server and PowerVC internal load.</p>
   </li>
   <li>
-    <p>Watch for the current status of the workflow under <code class="language-plaintext highlighter-rouge">Settings -&gt; Tasks -&gt; All Tasks</code>.<br>
-  <img src="../images/miq_import_task.png" alt="Workflow Form Screenshot"></p>
+    <p>Watch for the current status of the workflow under <code class="language-plaintext highlighter-rouge">Settings -&gt; Tasks -&gt; All Tasks</code>.
+   <img src="../images/miq_import_task.png" alt="Workflow Form Screenshot"></p>
   </li>
   <li>
-    <p>Initiate the refreshing of the Power Systems Virtual Server provider upon workflow completion and
-wait for the newly imported image to appear.</p>
+    <p>Initiate the refreshing of the Power Systems Virtual Server provider upon workflow completion and wait for the newly imported image to appear.</p>
   </li>
 </ol>
 
@@ -3448,13 +3204,10 @@ wait for the newly imported image to appear.</p>
     <p>If the ManageIQ UI shows no detailed error description then make sure to check the latest logs with <code class="language-plaintext highlighter-rouge">journalctl -t evm</code> or <code class="language-plaintext highlighter-rouge">oc logs</code> on a server or pod that hosts your ManageIQ instance.</p>
   </li>
   <li>
-    <p>If  <code class="language-plaintext highlighter-rouge">ManageIQ</code> server is terminated during the workflow execution then certain residual objects will 
-have to be removed manually. These are potentially the session directory on the PowerVC server under <code class="language-plaintext highlighter-rouge">/home/sessions</code>, the already uploaded OVA 
-image file in the Cloud Object Storage bucket or its parts as explained <a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-large-objects">here</a> (see <code class="language-plaintext highlighter-rouge">Abort incomplete multipart uploads</code>).</p>
+    <p>If  <code class="language-plaintext highlighter-rouge">ManageIQ</code> server is terminated during the workflow execution then certain residual objects will have to be removed manually. These are potentially the session directory on the PowerVC server under <code class="language-plaintext highlighter-rouge">/home/sessions</code>, the already uploaded OVA image file in the Cloud Object Storage bucket or its parts as explained <a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-large-objects">here</a> (see <code class="language-plaintext highlighter-rouge">Abort incomplete multipart uploads</code>).</p>
   </li>
   <li>
-    <p>Currently only one import workflow for a given PowerVC &lt;–&gt; Power Systems Virtual Server pair is allowed. Any newly submitted import workflow, where at least one of the instances in the pair is involved with some other
-import workflow request, will be queued until the latter completes. You would need to cancel such already executing workflow in order to force immediate execution of the newly submitted one.</p>
+    <p>Currently only one import workflow for a given PowerVC &lt;–&gt; Power Systems Virtual Server pair is allowed. Any newly submitted import workflow, where at least one of the instances in the pair is involved with some other import workflow request, will be queued until the latter completes. You would need to cancel such already executing workflow in order to force immediate execution of the newly submitted one.</p>
   </li>
 </ul>
 
@@ -4135,8 +3888,8 @@ ManageIQ:</p>
   </li>
 </ul>
 
-<h1 id="appendix">
-<a class="anchor" href="#appendix" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appendix</h1>
+<h2 id="appendix">
+<a class="anchor" href="#appendix" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appendix</h2>
 
 <h2 id="using-a-self-signed-ca-certificate">
 <a class="anchor" href="#using-a-self-signed-ca-certificate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using a Self-Signed CA Certificate</h2>
