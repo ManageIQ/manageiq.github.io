@@ -1088,7 +1088,7 @@
 </li>
 <li class="toc-entry toc-h2"><a href="#additional-configuration-for-appliances-on-vmware-vsphere">Additional Configuration for Appliances on VMware vSphere</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#installing-vmware-vddk-on-manageiq">Installing VMware VDDK on ManageIQ</a></li>
+<li class="toc-entry toc-h3"><a href="#installing-vmware-vddk-on-appliances">Installing VMware VDDK on appliances</a></li>
 <li class="toc-entry toc-h3"><a href="#tuning-appliance-performance">Tuning Appliance Performance</a></li>
 </ul>
 </li>
@@ -1606,25 +1606,17 @@ must use the same key.</p>
 <h2 id="additional-configuration-for-appliances-on-vmware-vsphere">
 <a class="anchor" href="#additional-configuration-for-appliances-on-vmware-vsphere" aria-hidden="true"><span class="octicon octicon-link"></span></a>Additional Configuration for Appliances on VMware vSphere</h2>
 
-<h3 id="installing-vmware-vddk-on-manageiq">
-<a class="anchor" href="#installing-vmware-vddk-on-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing VMware VDDK on ManageIQ</h3>
+<h3 id="installing-vmware-vddk-on-appliances">
+<a class="anchor" href="#installing-vmware-vddk-on-appliances" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing VMware VDDK on appliances</h3>
 
-<div class="important">
-
-Execution of SmartState Analysis on virtual machines within a VMware
-environment requires the Virtual Disk Development Kit (VDDK). This
-version of ManageIQ supports VDDK versions 6.0, 6.5, and
-6.7.
-
-</div>
+<p>Execution of SmartState Analysis on virtual machines within a VMware
+environment requires the Virtual Disk Development Kit (VDDK) to be installed.</p>
 
 <p>To install VMware VDDK:</p>
 
 <ol>
   <li>
-    <p>Download the required VDDK version
-(<code class="language-plaintext highlighter-rouge">VMware-vix-disklib-[version].x86_64.tar.gz</code>) from the VMware
-website.</p>
+    <p>Download the required VDDK version (<code class="language-plaintext highlighter-rouge">VMware-vix-disklib-[version].x86_64.tar.gz</code>) from the VMware website.</p>
 
     <p><strong>Note:</strong></p>
 
@@ -1632,7 +1624,7 @@ website.</p>
       <li>
         <p>If you do not already have a login ID to VMware, then you will
 need to create one. At the time of this writing, the file can be
-found by navigating to menu:Downloads[vSphere]. Select the
+found by navigating to <strong>Downloads</strong> &gt; <strong>vSphere</strong>. Select the
 version from the drop-down list, then click the <strong>Drivers &amp;
 Tools</strong> tab. Expand <strong>Automation Tools and SDKs</strong>, and click
 <strong>Go to Downloads</strong> next to the <strong>VMware vSphere Virtual Disk
@@ -1666,8 +1658,7 @@ file using the following commands:</p>
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Run <code class="language-plaintext highlighter-rouge">ldconfig</code> to instruct ManageIQ to find the newly
-installed VDDK library.</p>
+    <p>Run <code class="language-plaintext highlighter-rouge">ldconfig</code> to verify that the application can find the newly installed VDDK library.</p>
 
     <p><strong>Note:</strong></p>
 
@@ -1679,12 +1670,11 @@ accessible to the appliance:</p>
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Restart the ManageIQ appliance.</p>
+    <p>Restart the appliance.</p>
   </li>
 </ol>
 
-<p>The VDDK is now installed on the ManageIQ appliance. This
-enables use of the SmartState Analysis server role on the appliance.</p>
+<p>The VDDK is now installed on the appliance. This enables use of the SmartState Analysis server role on the appliance.</p>
 
 <h3 id="tuning-appliance-performance">
 <a class="anchor" href="#tuning-appliance-performance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tuning Appliance Performance</h3>
