@@ -1077,24 +1077,49 @@
 <li class="toc-entry toc-h1"><a href="#configuration-management-providers">Configuration Management Providers</a></li>
 <li class="toc-entry toc-h1"><a href="#automation-management-providers">Automation Management Providers</a>
 <ul>
+<li class="toc-entry toc-h2"><a href="#embedded-workflows">Embedded Workflows</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#embedded-workflows-ui">Embedded Workflows UI</a></li>
+<li class="toc-entry toc-h3"><a href="#adding-an-embedded-workflows-repository">Adding an Embedded Workflows Repository</a></li>
+<li class="toc-entry toc-h3"><a href="#viewing-the-list-of-workflows-in-a-repository">Viewing the List of Workflows in a Repository</a></li>
+<li class="toc-entry toc-h3"><a href="#refreshing-repositories">Refreshing Repositories</a></li>
+<li class="toc-entry toc-h3"><a href="#adding-credentials">Adding Credentials</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#credential-types">Credential Types</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#scm">SCM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#authoring-a-workflow">Authoring a workflow</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#example-provisioning-workflow">Example: Provisioning Workflow</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#viewing-workflow-details">Viewing workflow details</a></li>
+<li class="toc-entry toc-h3"><a href="#creating-a-service-dialog-using-an-embedded-workflow">Creating a Service Dialog using an Embedded Workflow</a></li>
+<li class="toc-entry toc-h3"><a href="#creating-service-catalog-items-using-an-embedded-workflow">Creating Service Catalog Items using an Embedded Workflow</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#ansible">Ansible</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#enabling-the-embedded-ansible-server-role">Enabling the Embedded Ansible Server Role</a></li>
 <li class="toc-entry toc-h3"><a href="#verifying-the-embedded-ansible-worker-state">Verifying the Embedded Ansible Worker State</a></li>
 <li class="toc-entry toc-h3"><a href="#adding-a-playbook-repository">Adding a Playbook Repository</a></li>
-<li class="toc-entry toc-h3"><a href="#refreshing-repositories">Refreshing Repositories</a></li>
+<li class="toc-entry toc-h3"><a href="#refreshing-repositories-1">Refreshing Repositories</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#credentials">Credentials</a>
 <ul>
-<li class="toc-entry toc-h2"><a href="#adding-credentials">Adding Credentials</a></li>
-<li class="toc-entry toc-h2"><a href="#credential-types">Credential Types</a>
+<li class="toc-entry toc-h2"><a href="#adding-credentials-1">Adding Credentials</a></li>
+<li class="toc-entry toc-h2"><a href="#credential-types-1">Credential Types</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#machine">Machine</a></li>
 <li class="toc-entry toc-h3"><a href="#network">Network</a></li>
-<li class="toc-entry toc-h3"><a href="#scm">SCM</a></li>
+<li class="toc-entry toc-h3"><a href="#scm-1">SCM</a></li>
 <li class="toc-entry toc-h3"><a href="#amazon">Amazon</a></li>
 <li class="toc-entry toc-h3"><a href="#azure">Azure</a></li>
 <li class="toc-entry toc-h3"><a href="#openstack">OpenStack</a></li>
@@ -1338,7 +1363,7 @@ time.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Infrastructure[Providers].</p>
+    <p>Navigate to <strong>Infrastructure &gt; Providers</strong>.</p>
   </li>
   <li>
     <p>Check the providers to tag.</p>
@@ -1450,7 +1475,7 @@ dependencies carefully before deleting a provider.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Compute[Infrastructure &gt; Providers].</p>
+    <p>Navigate to <strong>Compute &gt; Infrastructure &gt; Providers</strong>.</p>
   </li>
   <li>
     <p>Select the check box for the provider to delete.</p>
@@ -1473,7 +1498,7 @@ provider.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Compute[Infrastructure &gt; Providers].</p>
+    <p>Navigate to <strong>Compute &gt; Infrastructure &gt; Providers</strong>.</p>
   </li>
   <li>
     <p>Click a provider.</p>
@@ -1481,7 +1506,7 @@ provider.</p>
   <li>
     <p>Click <img src="../images/1994.png" alt="Monitoring"> (<strong>Monitoring</strong>), and then
 <img src="../images/1995.png" alt="Timelines"> (<strong>Timelines</strong>)from the taskbar, or
-from the provider accordion, click menu:Properties[Timeline].</p>
+from the provider accordion, click <strong>Properties &gt; Timeline</strong>.</p>
   </li>
   <li>
     <p>From <strong>Options</strong>, customize the period of time to display and the
@@ -1528,7 +1553,7 @@ starting event, and the actual <strong>Power On</strong> event. If you select
 
 <ol>
   <li>
-    <p>Navigate to menu:Compute[Infrastructure &gt; Providers].</p>
+    <p>Navigate to <strong>Compute &gt; Infrastructure &gt; Providers</strong>.</p>
   </li>
   <li>
     <p>Click the provider to view the hosts and clusters.</p>
@@ -1549,7 +1574,7 @@ from the <strong>Provider Summary</strong>.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Compute[Infrastructure &gt; Providers].</p>
+    <p>Navigate to <strong>Compute &gt; Infrastructure &gt; Providers</strong>.</p>
   </li>
   <li>
     <p>Click the provider to view the virtual machines and templates.</p>
@@ -1594,9 +1619,462 @@ ManageIQ.</p>
 
 <p><strong>Automate</strong> enables real-time, bidirectional process integration. This embedded automate feature provides you with a method to implement adaptive automation for management events and administrative or operational activities.</p>
 
+<p><strong>Embedded Workflows</strong> provide the capability to simplify service catalog creation and improve the overall service catalog experience through a step-based automation system. Workflows can run docker containers to accomplish a task that the user requires as part of the state machine. Workflows are imported from Git repository content into ManageIQ where they are made available for users to run. <em>Embedded Workflows</em> are an alternative to the <em>Embedded Automate</em> capability for authoring and running automation. With <em>Embedded Workflows</em>, you can continue to use the <em>Embedded Automate</em> feature for service catalog creation and management.</p>
+
 <p><strong>Ansible</strong> integration delivers out-of-the-box support for backing service, alert, and policy actions by using Ansible playbooks. Sync your existing playbook repositories with ManageIQ, add credentials to access providers, and create service catalog items for actions ranging from creating and retiring VMs, updating security software, or adding more disks when space runs low.</p>
 
 <p><strong>Ansible Tower</strong> is a management tool that is integrated with ManageIQ, designed to help automate infrastructure operations utlizizing existing Ansible Tower providers in your inventory. ManageIQ allows you to execute Ansible Tower jobs by using service catalogs and Automate. Using Ansible Tower, you can schedule Ansible playbook runs and monitor current and historical results, allowing for troubleshooting or identification of issues before they occur.</p>
+
+<h2 id="embedded-workflows">
+<a class="anchor" href="#embedded-workflows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Embedded Workflows</h2>
+
+<p><em>Embedded Workflows</em> provide the capability to simplify service catalog creation and improve the overall service catalog experience through a step-based automation system. Workflows can run docker containers to accomplish a task that the user requires as part of the state machine. Workflows are imported from Git repository content into ManageIQ where they are made available for users to run.</p>
+
+<p><em>Embedded Workflows</em> are an alternative to the <em>Embedded Automate</em> capability for authoring and running automation. With <em>Embedded Workflows</em>, you can continue to use the <em>Embedded Automate</em> feature for service catalog creation and management.</p>
+
+<h3 id="embedded-workflows-ui">
+<a class="anchor" href="#embedded-workflows-ui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Embedded Workflows UI</h3>
+
+<p>For the <em>Embedded Workflows</em> feature, the following pages are available in the UI, which you can use to access and work with workflows. To view these pages, go to <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong> and select the page.</p>
+
+<p><img src="../../images/embedworkflow_ui.png" alt="Embedded Workflow UI"></p>
+
+<ul>
+  <li>
+    <p><strong>Workflows</strong></p>
+
+    <p>This UI page includes a summary of the available workflows. You can use different views to review the workflows:</p>
+
+    <ul>
+      <li>Text view, which is the raw representation (JSON or YAML) of the Amazon State Languages (ASL) code.</li>
+      <li>Graph view, which shows a visual representation of the workflow structure.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Repositories</strong></p>
+
+    <p>This page lists, and provides a summary of, the added embedded workflow repositories. From this page, you can add, update, and remove repositories.
+ When a repository is added and synchronized, any workflows that are found in the repository can be viewed on the <strong>Workflows</strong> UI page.</p>
+  </li>
+  <li>
+    <p><strong>Credentials</strong></p>
+
+    <p>Credentials are used by ManageIQ for any authentication that is required when running embedded workflows, and when importing workflows from a version control system.</p>
+
+    <p>This page lists, and provides a summary of, the credentials for accessing and using embedded workflows. From this page, you can add, update, and delete credentials.</p>
+  </li>
+</ul>
+
+<p>In addition to the <em>Embedded Workflows</em> UI, <strong>Embedded Workflows</strong> can also be used in Service Dialogs for dynamic dialog fields and with Service Catalog Items for provisioning, reconfiguration, and retirement entrypoints.</p>
+
+<ul>
+  <li>
+    <p>Service Dialog</p>
+
+    <p>When creating a service dialog, fields that are dynamic include the option for using <strong>Embedded Workflows</strong> or <strong>Embedded Automate</strong>.</p>
+
+    <p><img src="../../images/embedworkflow_servicedialogdynamic.png" alt="Service Dialog options"></p>
+  </li>
+  <li>
+    <p>Service Catalog Items</p>
+
+    <p>The provisioning, reconfigure, and retirement entry points include the option for using <strong>Embedded Workflows</strong> or <strong>Embedded Automate</strong>.  You can set the point field to the workflow that you want to use for any, or all, of the three service entry points.</p>
+
+    <p><img src="../../images/embedworkflow_entrypointsembedded.png" alt="Entry Points options"></p>
+  </li>
+</ul>
+
+<h3 id="adding-an-embedded-workflows-repository">
+<a class="anchor" href="#adding-an-embedded-workflows-repository" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding an Embedded Workflows Repository</h3>
+
+<p>As a starting point to begin using workflows, you must first add a repository that includes your workflows.</p>
+
+<p>To add a repository, complete the following steps:</p>
+
+<ol>
+  <li>
+    <p>Click  <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong> &gt; <strong>Repositories</strong> &gt; <strong>Configuration</strong> &gt; <strong>Add New Repository</strong>.</p>
+
+    <p><img src="../../images/embedworkflow_addnewrepository.png" alt="Add a repository"></p>
+  </li>
+  <li>
+    <p>Enter the repository name in the <strong>Name</strong> field.</p>
+  </li>
+  <li>
+    <p>Add a description for the repository in the <strong>Description</strong> field.</p>
+  </li>
+  <li>
+    <p>Enter a Git repository URL for the repository in the <strong>URL</strong> field. The Git repository URL does not need to be a GitHub repository.</p>
+  </li>
+  <li>
+    <p>If you are adding a repository that requires authentication then add an SCM (Source Control Management) credential for accessing the repository. Select that credential for this repository from the <strong>SCM Credentials</strong> dropdown menu. These credentials are used in different ways within embedded workflows.</p>
+
+    <p>Source Control credentials have several attributes that can be configured:</p>
+
+    <ul>
+      <li>
+<strong>Username</strong>: The username to use in conjunction with the source control system.</li>
+      <li>
+<strong>Password</strong>: The password to use in conjunction with the source control system.</li>
+      <li>
+<strong>Private key passphrase</strong>: If the SSH private key used is protected by a passphrase, you can configure a key passphrase for the private key.</li>
+      <li>
+<strong>Private Key</strong>: Copy or drag and drop the actual SSH Private Key to be used to authenticate the user to the source control system by using SSH.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Provide a branch name in the <strong>SCM Branch</strong> field for the branch that you want to pull.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>. Upon saving, the repository is imported and scanned for any included workflows (any Amazon States Language <code class="language-plaintext highlighter-rouge">.asl</code> files).</p>
+
+    <p><img src="../../images/embedworkflow_addnewrepository_details.png" alt="Repository details"></p>
+  </li>
+  <li>
+    <p>Confirm that the synchronization with your repository is successful by viewing the list of workflows that are detected for the repository.</p>
+  </li>
+</ol>
+
+<p>To view the added repositories, return to the <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong> &gt; <strong>Repositories</strong> page. The list of repositories is displayed. To view a summary of details for a repository, click the repository to open the <em>Summary</em> page for that repository.</p>
+
+<p>If you need to edit a repository, select the repository from the list of repositories. Then, click <strong>Configuration</strong> &gt; <strong>Edit this Repository</strong>. After you complete your edits, click <strong>Save</strong>.</p>
+
+<p>If you need to delete a repository, select the repository from the list of repositories. Then, click <strong>Configuration</strong> &gt; <strong>Remove this Repository from Inventory</strong>.</p>
+
+<h3 id="viewing-the-list-of-workflows-in-a-repository">
+<a class="anchor" href="#viewing-the-list-of-workflows-in-a-repository" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing the List of Workflows in a Repository</h3>
+
+<p>When your repository is added, the repository shows in the <em>Repositories</em> list. You can now click the entry for the repository to open it so that you can view the imported workflows.
+If any workflows are found, click the corresponding number to view the list of workflows.</p>
+
+<p><img src="../../images/embedworkflow_workflownumbers.png" alt="Repository workflows"></p>
+
+<p>Alternatively, click <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong>. Then, click <strong>Workflows</strong> to see the list of workflows across all repositories.</p>
+
+<h3 id="refreshing-repositories">
+<a class="anchor" href="#refreshing-repositories" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing Repositories</h3>
+
+<p>ManageIQ allows you to refresh a targeted repository or all repositories in your inventory to ensure that your workflows are current.</p>
+
+<p>Refresh a targeted repository:</p>
+
+<ol>
+  <li>
+    <p>Browse to the menu: <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong> &gt; <strong>Repositories</strong>.</p>
+  </li>
+  <li>
+    <p>Click a repository.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then <img src="../../images/2003.png" alt="Refresh this Repository"> (<strong>Refresh this Repository</strong>).</p>
+  </li>
+</ol>
+
+<p>Alternately, you can refresh some or all repositories from the list view:</p>
+
+<ol>
+  <li>
+    <p>Browse to the menu: <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong> &gt; <strong>Repositories</strong>.</p>
+  </li>
+  <li>
+    <p>Check those repositories to refresh. Click <strong>Check All</strong> to select all repositories.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then <img src="../../images/2003.png" alt="Refresh Selected Workflow Repositories">(<strong>Refresh Selected Workflow Repositories</strong>).</p>
+  </li>
+</ol>
+
+<h3 id="adding-credentials">
+<a class="anchor" href="#adding-credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Credentials</h3>
+
+<p>Credentials are used by ManageIQ for any authentication that is required when running embedded workflows, or when importing workflows from a version control system.</p>
+
+<p>ManageIQ can store credentials that are used by embedded workflows. Credentials that are saved in ManageIQ are mapped to values in the <code class="language-plaintext highlighter-rouge">Credentials</code> field of your Workflow and are made available to the container with a workflow when the workflow runs.</p>
+
+<ol>
+  <li>
+    <p>Browse to the menu: <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong> &gt; <strong>Credentials</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then <img src="../../images/1862.png" alt="Add New Credential"> (<strong>Add New Credential</strong>).</p>
+  </li>
+  <li>
+    <p>Provide a <strong>Name</strong> for the credential.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Credential Type</strong>. More fields appear depending on the type chosen.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<p>To view the added credentials, return to the <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong> &gt; <strong>Credentials</strong> page. The list of credentials is displayed. To view a summary of details for a credential, click the credential to open the <em>Summary</em> page for that credential.</p>
+
+<p>If you need to edit a credential, select the credential from the list of credentials. Then, click <strong>Configuration</strong> &gt; <strong>Edit this Credential</strong>. After you complete your edits, click <strong>Save</strong>.</p>
+
+<p>If you need to delete a credential, select the credential from the list of credentials. Then, click <strong>Configuration</strong> &gt; <strong>Remove selected Credentials from Inventory</strong>.</p>
+
+<h4 id="credential-types">
+<a class="anchor" href="#credential-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credential Types</h4>
+
+<p>Each credential type that is used by ManageIQ for embedded workflows is detailed in the following sections.</p>
+
+<h5 id="scm">
+<a class="anchor" href="#scm" aria-hidden="true"><span class="octicon octicon-link"></span></a>SCM</h5>
+
+<p>SCM (source control Management) credentials are used with Projects to clone and update local source code Git repositories. Source Control credentials have several attributes that can be configured:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to use in conjunction with the source control system.</p>
+  </li>
+  <li>
+    <p><strong>Password</strong>: The password to use in conjunction with the source control system.</p>
+  </li>
+  <li>
+    <p><strong>Private key passphrase</strong>: If the SSH private key used is protected by a passphrase, you can configure a key passphrase for the private key.</p>
+  </li>
+  <li>
+    <p><strong>Private Key</strong>: Copy or drag-and-drop the actual SSH Private Key to be used to authenticate the user to the source control system by using SSH.</p>
+  </li>
+</ul>
+
+<h3 id="authoring-a-workflow">
+<a class="anchor" href="#authoring-a-workflow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authoring a workflow</h3>
+
+<p>You can configure workflows for use in the following areas during service catalog creation:</p>
+
+<ul>
+  <li>
+<strong>Dynamic dialog fields</strong> - You (or your users) can attach workflows to a field so that the field becomes populated or refreshed with the results from the running of the workflow.</li>
+  <li>
+<strong>Service Entry Points</strong> - You (or your users) can set and use workflows for provisioning, reconfiguring, and retiring services.</li>
+</ul>
+
+<p>You can create and use embedded workflows as needed to not only change parts of the provisioning process, but also to automate other operational tasks.</p>
+
+<p>Workflows must be authored in Amazon State Languages (ASL) format. As part of authoring a workflow, you (or your users) can build container images that are able to perform any tasks that are required in any language that you like. You can use these images during Task states in your workflows.</p>
+
+<ol>
+  <li>
+    <p>Define the code for the workflow. If your workflow requires the use of any credentials or parameters to be specified, ensure that they are passed in the code.</p>
+
+    <p>Within the workflow code, you need to specify the states that your workflow requires, including any next steps. For <code class="language-plaintext highlighter-rouge">Task</code> type steps in the workflow, a docker container is called. The container defines what happens for that Task state. For example, a docker container can run to clone a template. If your states require parameters or credentials, you can specify them in your state definitions.</p>
+
+    <p>The workflow code must be in the Amazon States Language (ASL) format and follow its supported specifications. For more information about Amazon States Language and its specification, see <a href="https://states-language.net/">Amazon States Language Guide</a>.</p>
+  </li>
+  <li>
+    <p>Build the docker containers that are required for the workflow.</p>
+
+    <p>When you have the code for your task resource written, you need to bundle it into a docker image. You can bundle the code by creating a standard <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> and building the image (https://docs.docker.com/engine/reference/commandline/build/). Then, you can push the image to a <a href="https://docs.docker.com/engine/reference/commandline/push/">registry</a>, which makes the image available to be used by ManageIQ. When you have pushed your images to an image registry, you can add the registry to ManageIQ.</p>
+
+    <p>On appliances, <code class="language-plaintext highlighter-rouge">podman</code> is used to execute the container, so use <a href="https://docs.podman.io/en/stable/markdown/podman-login.1.html">podman login</a> as the <code class="language-plaintext highlighter-rouge">manageiq</code> user.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  # su manageiq
+  $ podman login docker.io
+  Username:
+  Password:
+  Login Succeeded!
+</code></pre></div>    </div>
+
+    <p>You are recommended to use a docker.io <a href="https://docs.docker.com/security/for-developers/access-tokens/">access token</a> so that the token does not expire.</p>
+  </li>
+</ol>
+
+<h4 id="example-provisioning-workflow">
+<a class="anchor" href="#example-provisioning-workflow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example: Provisioning Workflow</h4>
+
+<pre><code class="language-asl">{
+  "Comment": "Provision a VMware VM.",
+  "StartAt": "CloneTemplate",
+  "States": {
+    "CloneTemplate": {
+      "Type": "Task",
+      "Resource": "docker://docker.io/manageiq/workflows-examples-clone-template:latest",
+      "Next": "CheckTaskComplete",
+      "Credentials": {
+        "api_user.$": "$.api_user",
+        "api_password.$": "$.api_password",
+        "vcenter_user.$": "$.vcenter_user",
+        "vcenter_password.$": "$.vcenter_password"
+      },
+      "Parameters": {
+        "PROVIDER_ID.$": "$.dialog_provider",
+        "VERIFY_SSL": false,
+        "TEMPLATE.$": "$.dialog_source_template",
+        "NAME.$": "$.dialog_vm_name"
+      }
+    },
+
+    "CheckTaskComplete": {
+      "Type": "Task",
+      "Resource": "docker://docker.io/manageiq/workflows-examples-check-task-complete:latest",
+      "Next": "PollTaskComplete",
+      "Credentials": {
+        "vcenter_user.$": "$.vcenter_user",
+        "vcenter_password.$": "$.vcenter_password"
+      },
+      "Parameters": {
+        "VCENTER_HOST.$": "$.vcenter_host",
+        "TASK.$": "$.task"
+      }
+    },
+
+    "PollTaskComplete": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.state",
+          "StringEquals": "success",
+          "Next": "PowerOnVM"
+        },
+        {
+          "Variable": "$.state",
+          "StringEquals": "running",
+          "Next": "RetryState"
+        },
+        {
+          "Variable": "$.state",
+          "StringEquals": "error",
+          "Next": "FailState"
+        }
+      ],
+      "Default": "FailState"
+    },
+
+    "RetryState": {
+      "Type": "Wait",
+      "Seconds": 5,
+      "Next": "CheckTaskComplete"
+    },
+
+    "PowerOnVM": {
+      "Type": "Task",
+      "Resource": "docker://docker.io/manageiq/workflows-examples-power-on-vm:latest",
+      "Next": "SuccessState",
+      "Credentials": {
+        "vcenter_user.$": "$.vcenter_user",
+        "vcenter_password.$": "$.vcenter_password"
+      },
+      "Parameters": {
+        "VCENTER_HOST.$": "$.vcenter_host",
+        "VM.$": "$.vm"
+      }
+    },
+
+    "FailState": {
+      "Type": "Fail",
+      "Error": "FailStateError",
+      "Cause": "No Matches!"
+    },
+
+    "SuccessState": {
+      "Type": "Succeed"
+    }
+  }
+}
+</code></pre>
+
+<h3 id="viewing-workflow-details">
+<a class="anchor" href="#viewing-workflow-details" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing workflow details</h3>
+
+<p>Once a workflow is imported, you can view the details, such as to verify the payload. To view the details for a workflow:</p>
+
+<ol>
+  <li>
+    <p>Go to the menu: <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong>. Then, click <strong>Workflows</strong> to see the workflows list.</p>
+  </li>
+  <li>
+    <p>Click a workflow. The default <em>Text</em> view of the workflow opens where you see the code content.</p>
+
+    <p><img src="../../images/embedworkflow_textview.png" alt="Text view"></p>
+
+    <p>Alternatively, click the <strong>Graph</strong> tab to see a graph of the same data.</p>
+
+    <p><img src="../../images/embedworkflow_graphView.png" alt="Graph view"></p>
+  </li>
+  <li>
+    <p>If your workflow has credential fields, create a workflow credential for each of the fields. For more information about creating a credential, see <a href="#adding-credentials">Adding Credentials</a>.</p>
+  </li>
+  <li>
+    <p>Map any workflow credentials to the workflow.</p>
+
+    <ol>
+      <li>
+        <p>Go to the menu: <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong>. Then, click <strong>Workflows</strong> to see the workflows list.</p>
+      </li>
+      <li>
+        <p>Select the workflow that includes the credentials that you need to map.</p>
+      </li>
+      <li>
+        <p>Click <strong>Configuration</strong> &gt; <strong>Map Credentials to this Workflow</strong>.</p>
+
+        <p>The table that displays on the <em>Map Credentials</em> page displays all the current mappings for the selected workflow. Verify that the list of credential identifiers includes all of the identifiers that are in the workflow payload.</p>
+      </li>
+      <li>
+        <p>Use the drop-down fields to map one or more credentials for the workflow. Verify that the table is updated with the correct information.</p>
+      </li>
+      <li>
+        <p>Click <strong>Save</strong>.</p>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="creating-a-service-dialog-using-an-embedded-workflow">
+<a class="anchor" href="#creating-a-service-dialog-using-an-embedded-workflow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a Service Dialog using an Embedded Workflow</h3>
+
+<p>Fields that are <em>Dynamic</em> offer the choice of <em>Embedded Workflows</em> in addition to the original <em>Embedded Automate</em>.</p>
+
+<p>Dialogs are the part of ManageIQ that you interface with when you order services.</p>
+
+<ol>
+  <li>To open a service dialog, click <strong>Automation</strong> &gt; <strong>Embedded Automate</strong> &gt; <strong>Customization</strong>.</li>
+  <li>From the <em>Service Dialog</em> section, review the list of created dialogs. Click one of the dialogs to view the details.</li>
+  <li>
+    <p>Click <strong>Edit the dialog</strong>. You can edit the <em>Name</em>, <em>Provider</em>, and <em>Template</em>.</p>
+
+    <p>When you select to edit any of the dropdown settings, you can see a <em>dynamic</em> option. Toggle to <strong>On</strong> to make sure it is enabled.</p>
+  </li>
+  <li>
+    <p>Click the <strong>Options</strong> tab. You can now select between <em>Embedded Automate</em> and <em>Embedded Workflows</em> in the Automation field.</p>
+
+    <p><img src="../../images/embedworkflow_servicedialogdynamic.png" alt="Dialog Dynamic"></p>
+
+    <p>If you choose <strong>Embedded Workflows</strong>, you can select the workflow to run. Complete the remaining fields and click <strong>Save</strong> when you complete the form. You can chain dialog fields together by using <strong>Fields to refresh</strong>, which lets one dialog field trigger the run of another when there are interdependencies. When you <em>order</em> a service catalog, any dynamic dialogs that are backed by embedded workflows run in the background to populate the dialogs.</p>
+  </li>
+</ol>
+
+<h3 id="creating-service-catalog-items-using-an-embedded-workflow">
+<a class="anchor" href="#creating-service-catalog-items-using-an-embedded-workflow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating Service Catalog Items using an Embedded Workflow</h3>
+
+<p>You can create a generic service catalog item that uses an embedded workflow. To use previously set up workflows and to view a service catalog item, you need to <em>order</em> the item. Complete the following steps to order a service catalog item that uses embedded workflows:</p>
+
+<ol>
+  <li>Click <strong>Services</strong> &gt; <strong>Catalogs</strong>.</li>
+  <li>
+    <p>The <em>Service Catalogs</em> section opens and you see the existing Service Catalogs. If you want to order one, click it and then <strong>Order</strong>.</p>
+
+    <p><img src="../../images/embedworkflow_orderservicecatalog.png" alt="Service Dialog Dynamic"></p>
+
+    <p>Complete the fields for your specified dialog. Then, click <strong>Submit</strong>.</p>
+  </li>
+  <li>
+    <p>If you want to know more about the item first or to edit it, click the <strong>Catalogs</strong> section, and then click that item that is created. Click <strong>Configuration</strong> &gt; <strong>Edit this item</strong>.</p>
+
+    <p><img src="../../images/embedworkflow_entrypointsembedded.png" alt="Entry Points Dynamic"></p>
+  </li>
+  <li>When you complete all your edits, click <strong>Save</strong>.</li>
+  <li>
+    <p>Confirm that you can order the service catalog item and that it runs the workflows to drive the dynamic dialog dropdown.</p>
+
+    <p>The list of services and requests is shown when the catalog item is submitted. Clicking the request shows the execution status, including any embedded workflows.</p>
+
+    <p><img src="../../images/embedworkflow_runstatus.png" alt="Workflow Status"></p>
+  </li>
+</ol>
 
 <h2 id="ansible">
 <a class="anchor" href="#ansible" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ansible</h2>
@@ -1643,7 +2121,7 @@ ManageIQ.</p>
 
 <ol>
   <li>
-    <p>Browse to the settings menu, then <strong>Configuration</strong> &gt; <strong>Settings</strong>.</p>
+    <p>Browse to the settings menu, then <strong>Configuration &gt; Settings</strong>.</p>
   </li>
   <li>
     <p>Select the desired server under <strong>Zones</strong>.</p>
@@ -1660,7 +2138,7 @@ ManageIQ.</p>
 
 <ol>
   <li>
-    <p>Browse to the settings menu, then <strong>Configuration</strong> &gt; <strong>Diagnostics</strong> and click on the desired server.</p>
+    <p>Browse to the settings menu, then <strong>Configuration &gt; Diagnostics</strong> and click on the desired server.</p>
   </li>
   <li>
     <p>Click on the <strong>Roles by Servers</strong> tab.</p>
@@ -1703,8 +2181,8 @@ ManageIQ.</p>
 
 <p>Once you have synced a repository, its playbooks will become available to ManageIQ.</p>
 
-<h3 id="refreshing-repositories">
-<a class="anchor" href="#refreshing-repositories" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing Repositories</h3>
+<h3 id="refreshing-repositories-1">
+<a class="anchor" href="#refreshing-repositories-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing Repositories</h3>
 
 <p>ManageIQ allows you to refresh a targeted playbook repository or all repositories in your inventory to ensure your playbooks are current.</p>
 
@@ -1741,8 +2219,8 @@ ManageIQ.</p>
 
 <p>Credentials are utilized by ManageIQ for authentication when running Ansible playbooks against machines, synchronizing with inventory sources, and importing project content from a version control system.</p>
 
-<h2 id="adding-credentials">
-<a class="anchor" href="#adding-credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Credentials</h2>
+<h2 id="adding-credentials-1">
+<a class="anchor" href="#adding-credentials-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Credentials</h2>
 
 <p>ManageIQ can store credentials used by playbooks. Credentials saved in ManageIQ are matched and executed with a playbook when run.</p>
 
@@ -1769,8 +2247,8 @@ ManageIQ.</p>
   </li>
 </ol>
 
-<h2 id="credential-types">
-<a class="anchor" href="#credential-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credential Types</h2>
+<h2 id="credential-types-1">
+<a class="anchor" href="#credential-types-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credential Types</h2>
 
 <p>Each credential type used by ManageIQ is detailed in the following sections.</p>
 
@@ -1831,8 +2309,8 @@ ManageIQ.</p>
   </li>
 </ul>
 
-<h3 id="scm">
-<a class="anchor" href="#scm" aria-hidden="true"><span class="octicon octicon-link"></span></a>SCM</h3>
+<h3 id="scm-1">
+<a class="anchor" href="#scm-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>SCM</h3>
 
 <p>SCM (source control) credentials are used with Projects to clone and update local source code repositories from a remote revision control system such as Git, Subversion, or Mercurial.</p>
 
@@ -1982,7 +2460,7 @@ permissions.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Automate[Ansible &gt; Playbooks].</p>
+    <p>Navigate to <strong>Automate &gt; Ansible &gt; Playbooks</strong>.</p>
   </li>
   <li>
     <p>Select the checkboxes for the Ansible playbooks to tag.</p>
@@ -2007,7 +2485,7 @@ Tags"> (<strong>Edit Tags</strong>).</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Automate[Ansible &gt; Repositories].</p>
+    <p>Navigate to <strong>Automate &gt; Ansible &gt; Repositories</strong>.</p>
   </li>
   <li>
     <p>Select the checkboxes for the Ansible repositories to tag.</p>
@@ -2032,7 +2510,7 @@ Tags"> (<strong>Edit Tags</strong>).</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Automate[Ansible &gt; credentials].</p>
+    <p>Navigate to <strong>Automate &gt; Ansible &gt; credentials</strong>.</p>
   </li>
   <li>
     <p>Select the checkboxes for the Ansible credentials to tag.</p>
@@ -2545,7 +3023,7 @@ environment.</p>
     <p>Click the <strong>Buttons</strong> accordion menu.</p>
   </li>
   <li>
-    <p>Click menu: <strong>VM and Instance</strong> &gt; <strong>Unassigned Buttons</strong>. This configures the button to run on virtual machines or instances.</p>
+    <p>Click menu: <strong>VM and Instance &gt; Unassigned Buttons</strong>. This configures the button to run on virtual machines or instances.</p>
   </li>
   <li>
     <p>Click <strong>Configuration</strong>, then click <img src="../images/1862.png" alt="1862"> (<strong>Add a new Button</strong>).</p>
@@ -2744,7 +3222,7 @@ same time.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Compute[Clouds &gt; Providers].</p>
+    <p>Navigate to <strong>Compute &gt; Clouds &gt; Providers</strong>.</p>
   </li>
   <li>
     <p>Select the checkboxes for the Cloud Providers to tag.</p>
@@ -2857,7 +3335,7 @@ provider.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Compute[Clouds &gt; Providers].</p>
+    <p>Navigate to <strong>Compute &gt; Clouds &gt; Providers</strong>.</p>
   </li>
   <li>
     <p>Click the desired cloud provider for viewing the timeline.</p>
@@ -3305,7 +3783,7 @@ time.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Networks[Providers].</p>
+    <p>Navigate to <strong>Networks &gt; Providers</strong>.</p>
   </li>
   <li>
     <p>Select the network providers to tag.</p>
@@ -3359,7 +3837,7 @@ provider.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Networks[Providers].</p>
+    <p>Navigate to <strong>Networks &gt; Providers</strong>.</p>
   </li>
   <li>
     <p>Click the network provider you want to monitor the timeline for.</p>
@@ -3558,7 +4036,7 @@ the same time.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Compute[Containers &gt; Providers].</p>
+    <p>Navigate to <strong>Compute &gt; Containers &gt; Providers</strong>.</p>
   </li>
   <li>
     <p>Select the checkboxes for the containers providers to tag.</p>
@@ -3778,8 +4256,8 @@ role.</p>
     <p>For <strong>Access Restriction for Services, VMs, and Templates</strong>, select if you want to limit users with this role to only see resources owned by the user or their group, owned by the user, or all resources (<strong>None</strong>).</p>
   </li>
   <li>
-    <p>Expand the <strong>Product Features (Editing)</strong> tree options to show menu:Everything[Compute &gt; Containers &gt; Containers Explorer &gt; All
-Containers &gt; View Containers].</p>
+    <p>Expand the <strong>Product Features (Editing)</strong> tree options to show <strong>Everything &gt; Compute &gt; Containers &gt; Containers Explorer &gt; All
+Containers &gt; View Containers</strong>.</p>
   </li>
   <li>
     <p>Clear the <strong>Environment Variables</strong> checkbox to restrict the user role from viewing container environment variables.</p>
@@ -3801,7 +4279,7 @@ provider.</p>
 
 <ol>
   <li>
-    <p>Navigate to menu:Compute[Containers &gt; Providers].</p>
+    <p>Navigate to <strong>Compute &gt; Containers &gt; Providers</strong>.</p>
   </li>
   <li>
     <p>Click the desired containers provider for viewing the timeline.</p>

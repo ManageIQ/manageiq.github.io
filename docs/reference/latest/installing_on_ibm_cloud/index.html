@@ -1112,7 +1112,7 @@
     <p>Approximately 2 GB of space for each image; 44+ GB of space, 12 GB RAM, and 4 VCPUs for the ManageIQ appliance.</p>
   </li>
   <li>
-    <p>You must have an IBM Cloud user account with the following roles: 
+    <p>You must have an IBM Cloud user account with the following roles:
 <img src="../images/required_roles.png" alt="Figure showing the required roles for an IBM Cloud user account." caption="Figure 1. Required roles for IBM Cloud user account" caption-side="bottom"></p>
   </li>
   <li>
@@ -1141,13 +1141,13 @@ For example, change from (file name: <code class="language-plaintext highlighter
   <li>
     <p>Upload the ManageIQ installation image (file name: <code class="language-plaintext highlighter-rouge">manageiq-openstack-kasparov-1.qcow2</code>) to your IBM Cloud Object Storage. Select your bucket and click Add Objects to upload the images. For more information, see <a href="https://cloud.ibm.com/docs/services/cloud-object-storage?topic=cloud-object-storage-upload#upload-console">Uploading data by using the console</a>.</p>
 
-    <p><strong>Note:</strong> You can use the Aspera high-speed transfer plug-in to upload images larger than 200 MB.<br>
+    <p><strong>Note:</strong> You can use the Aspera high-speed transfer plug-in to upload images larger than 200 MB.
 <img src="../images/upload_images_to_bucket_2.png" alt="Figure showing example that uses Aspera uploaded file to bucket." caption="Figure 4. Example using Aspera uploaded file to bucket" caption-side="bottom"></p>
   </li>
   <li>
     <p>From IBM Cloud Identity and Access Management (IAM), create an authorization between the Virtual Private Cloud (VPC) Infrastructure (source service) &gt; Image Service for VPC (resource type) and Cloud Object Storage (target service). For more information, see <a href="https://cloud.ibm.com/docs/iam?topic=iam-serviceauth#serviceauth">Create an authorization</a>.</p>
 
-    <p><strong>Important</strong>: The configuration must be set up as this example or permissions can fail. 
+    <p><strong>Important</strong>: The configuration must be set up as this example or permissions can fail.
  <img src="../images/service_auth_vpc.png" alt="Figure showing example IAM authorization." caption="Figure 5. Example IAM authorization" caption-side="bottom"></p>
   </li>
   <li>
@@ -1169,7 +1169,7 @@ For example, change from (file name: <code class="language-plaintext highlighter
   <li>
     <p>Import the ManageIQ installation images from the bucket into the VPC.</p>
 
-    <p>a. Browse to <strong>VPC Infrastructure</strong> &gt; <strong>Compute</strong> &gt; <strong>Custom images</strong> and select <strong>import custom image</strong>.</p>
+    <p>a. Browse to <strong>VPC Infrastructure &gt; Compute &gt; Custom images</strong> and select <strong>import custom image</strong>.</p>
 
     <p>b. Enter a name.</p>
 
