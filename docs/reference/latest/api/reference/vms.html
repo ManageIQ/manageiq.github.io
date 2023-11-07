@@ -1565,7 +1565,6 @@
 <li class="toc-entry toc-h3"><a href="#setting-server-of-a-virtual-machine">Setting Server of a Virtual Machine</a></li>
 <li class="toc-entry toc-h3"><a href="#setting-owner-of-a-virtual-machine">Setting Owner of a Virtual Machine</a></li>
 <li class="toc-entry toc-h3"><a href="#adding-an-event-to-a-virtual-machine">Adding an Event to a Virtual Machine</a></li>
-<li class="toc-entry toc-h3"><a href="#adding-a-lifecycle-event-to-a-virtual-machine">Adding a Lifecycle Event to a Virtual Machine</a></li>
 <li class="toc-entry toc-h3"><a href="#editing-a-virtual-machine">Editing a Virtual Machine</a></li>
 <li class="toc-entry toc-h3"><a href="#deleting-a-virtual-machine">Deleting a Virtual Machine</a></li>
 </ul>
@@ -1632,10 +1631,6 @@
       <td>Adding an event to a virtual machine</td>
     </tr>
     <tr>
-      <td>add_lifecycle_event</td>
-      <td>Add a life cycle event to a virtual machine</td>
-    </tr>
-    <tr>
       <td>edit</td>
       <td>Edits a virtual machine</td>
     </tr>
@@ -1688,9 +1683,6 @@
   </li>
   <li>
     <p><a href="#add-event-vm">Adding an Event to a VM</a></p>
-  </li>
-  <li>
-    <p><a href="#add-lifecycle-event-vm">Adding a Lifecycle Event to a VM</a></p>
   </li>
   <li>
     <p><a href="#edit-vm">Editing a VM</a></p>
@@ -1900,20 +1892,6 @@ reference as follows:</p>
 <p><strong>Note:</strong></p>
 
 <p>event_time above is optional. If skipped, current time will be used.</p>
-
-<h3 id="adding-a-lifecycle-event-to-a-virtual-machine">
-<a class="anchor" href="#adding-a-lifecycle-event-to-a-virtual-machine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a Lifecycle Event to a Virtual Machine</h3>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"action"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"add_lifecycle_event"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"resource"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"event"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_by"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
 
 <h3 id="editing-a-virtual-machine">
 <a class="anchor" href="#editing-a-virtual-machine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editing a Virtual Machine</h3>

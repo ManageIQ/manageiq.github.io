@@ -1074,9 +1074,12 @@
 
 <ol>
   <li>Launch <code class="language-plaintext highlighter-rouge">appliance_console</code>
-  a. Select <code class="language-plaintext highlighter-rouge">Stop EVM Server Processes</code> to stop the server processes
-  b. Select <code class="language-plaintext highlighter-rouge">Create Database Backup</code> and choose a backup location (/tmp/evm_db.backup is the default)
-  c. Select <code class="language-plaintext highlighter-rouge">Quit</code> to return to the shell</li>
+    <ol>
+      <li>Select <code class="language-plaintext highlighter-rouge">Stop EVM Server Processes</code> to stop the server processes</li>
+      <li>Select <code class="language-plaintext highlighter-rouge">Create Database Backup</code> and choose a backup location (/tmp/evm_db.backup is the default)</li>
+      <li>Select <code class="language-plaintext highlighter-rouge">Quit</code> to return to the shell</li>
+    </ol>
+  </li>
   <li>For convenience, create a TGZ containing all files required to restore the database
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>  <span class="nb">tar</span> <span class="nt">-czvf</span> /root/backup.tgz /tmp/evm_db.backup /var/www/miq/vmdb/GUID /var/www/miq/vmdb/certs/v2_key
@@ -1126,22 +1129,28 @@ Before adding the cron job it would be best practice to mount an external storag
 </code></pre></div>    </div>
   </li>
   <li>Launch <code class="language-plaintext highlighter-rouge">appliance_console</code>
-  a. If this is a brand new appliance and the database has not yet been initialized, select <code class="language-plaintext highlighter-rouge">Configure Application</code>. If this is an existing database appliance, this step can be skipped.
     <ol>
-      <li>When prompted to configure the database, select <code class="language-plaintext highlighter-rouge">Create Internal Database</code>
+      <li>If this is a brand new appliance and the database has not yet been initialized, select <code class="language-plaintext highlighter-rouge">Configure Application</code>. If this is an existing database appliance, this step can be skipped.
+        <ol>
+          <li>When prompted to configure the database, select <code class="language-plaintext highlighter-rouge">Create Internal Database</code>
 </li>
-      <li>When prompted to configure messaging, select <code class="language-plaintext highlighter-rouge">Make No messaging changes</code>
+          <li>When prompted to configure messaging, select <code class="language-plaintext highlighter-rouge">Make No messaging changes</code>
 </li>
-      <li>Choose a database disk</li>
-      <li>Answer y or n to “Should this appliance run as a standalone database server?”</li>
-      <li>Enter a region number (0), this is not important and will be overwritten on restore</li>
-      <li>Set a database password</li>
-      <li>Wait for database initialization to complete.
-  b. Select <code class="language-plaintext highlighter-rouge">Stop EVM Server Processes</code>
-  c. Select <code class="language-plaintext highlighter-rouge">Restore Database From Backup</code>
+          <li>Choose a database disk</li>
+          <li>Answer y or n to “Should this appliance run as a standalone database server?”</li>
+          <li>Enter a region number (0), this is not important and will be overwritten on restore</li>
+          <li>Set a database password</li>
+          <li>Wait for database initialization to complete.</li>
+        </ol>
+      </li>
+      <li>Select <code class="language-plaintext highlighter-rouge">Stop EVM Server Processes</code>
 </li>
-      <li>Decide whether you want to delete the backup file in /tmp after restore. (Yes)
-  d. Select <code class="language-plaintext highlighter-rouge">Start EVM Server Processes</code>
+      <li>Select <code class="language-plaintext highlighter-rouge">Restore Database From Backup</code>
+        <ul>
+          <li>Decide whether you want to delete the backup file in /tmp after restore. (Yes)</li>
+        </ul>
+      </li>
+      <li>Select <code class="language-plaintext highlighter-rouge">Start EVM Server Processes</code>
 </li>
     </ol>
   </li>
