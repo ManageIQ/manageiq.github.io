@@ -1868,20 +1868,25 @@ If any workflows are found, click the corresponding number to view the list of w
     <p>Build the docker containers that are required for the workflow.</p>
 
     <p>When you have the code for your task resource written, you need to bundle it into a docker image. You can bundle the code by creating a standard <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> and building the image (https://docs.docker.com/engine/reference/commandline/build/). Then, you can push the image to a <a href="https://docs.docker.com/engine/reference/commandline/push/">registry</a>, which makes the image available to be used by ManageIQ. When you have pushed your images to an image registry, you can add the registry to ManageIQ.</p>
-
-    <p>On appliances, <code class="language-plaintext highlighter-rouge">podman</code> is used to execute the container, so use <a href="https://docs.podman.io/en/stable/markdown/podman-login.1.html">podman login</a> as the <code class="language-plaintext highlighter-rouge">manageiq</code> user.</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  # su manageiq
-  $ podman login docker.io
-  Username:
-  Password:
-  Login Succeeded!
-</code></pre></div>    </div>
-
-    <p>You are recommended to use a docker.io <a href="https://docs.docker.com/security/for-developers/access-tokens/">access token</a> so that the token does not expire.</p>
   </li>
 </ol>
+
+<p>a) On appliances, <code class="language-plaintext highlighter-rouge">podman</code> is used to execute the container
+     On appliances, <code class="language-plaintext highlighter-rouge">podman</code> is used to execute the container so use <a href="https://docs.podman.io/en/stable/markdown/podman-login.1.html">podman login</a> as the <code class="language-plaintext highlighter-rouge">manageiq</code> user.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ```
+ # su manageiq
+ $ podman login docker.io
+ Username:
+ Password:
+ Login Succeeded!
+ ```
+</code></pre></div></div>
+
+<p>You are recommended to use a docker.io <a href="https://docs.docker.com/security/for-developers/access-tokens/">access token</a> so that the token does not expire.</p>
+
+<p>b) Provide an image pull secret to a podified Kubernetes container, and then add it to a service account
+     In order to pull an image from a private registry you have to provide an <code class="language-plaintext highlighter-rouge">ImagePullSecret</code> to your containers, see <a href="https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/">Pull an Image from a Private Registry</a>.  ManageIQ uses a service account called <code class="language-plaintext highlighter-rouge">manageiq-default</code> to run containers for your workflows.  You can add an <code class="language-plaintext highlighter-rouge">ImagePullSecret</code> to this service account by following <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account/">Add Image Pull Secrets to a service account</a>.</p>
 
 <h4 id="example-provisioning-workflow">
 <a class="anchor" href="#example-provisioning-workflow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example: Provisioning Workflow</h4>
