@@ -1094,6 +1094,7 @@
 </li>
 <li class="toc-entry toc-h3"><a href="#authoring-a-workflow">Authoring a workflow</a>
 <ul>
+<li class="toc-entry toc-h4"><a href="#running-an-embedded-workflow-on-appliances">Running an Embedded Workflow on Appliances</a></li>
 <li class="toc-entry toc-h4"><a href="#running-an-embedded-workflow-on-the-openshift-container-platform-ocp">Running an Embedded Workflow on the OpenShift Container Platform (OCP)</a></li>
 <li class="toc-entry toc-h4"><a href="#example-provisioning-workflow">Example: Provisioning Workflow</a></li>
 </ul>
@@ -1638,7 +1639,7 @@ ManageIQ.</p>
 
 <p>For the <em>Embedded Workflows</em> feature, the following pages are available in the UI, which you can use to access and work with workflows. To view these pages, go to <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong> and select the page.</p>
 
-<p><img src="../../images/embedworkflow_ui.png" alt="Embedded Workflow UI"></p>
+<p><img src="../images/embedworkflow_ui.png" alt="Embedded Workflow UI"></p>
 
 <ul>
   <li>
@@ -1674,14 +1675,14 @@ ManageIQ.</p>
 
     <p>When creating a service dialog, fields that are dynamic include the option for using <strong>Embedded Workflows</strong> or <strong>Embedded Automate</strong>.</p>
 
-    <p><img src="../../images/embedworkflow_servicedialogdynamic.png" alt="Service Dialog options"></p>
+    <p><img src="../images/embedworkflow_servicedialogdynamic.png" alt="Service Dialog options"></p>
   </li>
   <li>
     <p>Service Catalog Items</p>
 
     <p>The provisioning, reconfigure, and retirement entry points include the option for using <strong>Embedded Workflows</strong> or <strong>Embedded Automate</strong>. You can set the point field to the workflow that you want to use for any, or all, of the three service entry points.</p>
 
-    <p><img src="../../images/embedworkflow_entrypointsembedded.png" alt="Entry Points options"></p>
+    <p><img src="../images/embedworkflow_entrypointsembedded.png" alt="Entry Points options"></p>
   </li>
 </ul>
 
@@ -1696,7 +1697,7 @@ ManageIQ.</p>
   <li>
     <p>Click  <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong> &gt; <strong>Repositories</strong> &gt; <strong>Configuration</strong> &gt; <strong>Add New Repository</strong>.</p>
 
-    <p><img src="../../images/embedworkflow_addnewrepository.png" alt="Add a repository"></p>
+    <p><img src="../images/embedworkflow_addnewrepository.png" alt="Add a repository"></p>
   </li>
   <li>
     <p>Enter the repository name in the <strong>Name</strong> field.</p>
@@ -1729,7 +1730,7 @@ ManageIQ.</p>
   <li>
     <p>Click <strong>Save</strong>. Upon saving, the repository is imported and scanned for any included workflows (any Amazon States Language <code class="language-plaintext highlighter-rouge">.asl</code> files).</p>
 
-    <p><img src="../../images/embedworkflow_addnewrepository_details.png" alt="Repository details"></p>
+    <p><img src="../images/embedworkflow_addnewrepository_details.png" alt="Repository details"></p>
   </li>
   <li>
     <p>Confirm that the synchronization with your repository is successful by viewing the list of workflows that are detected for the repository.</p>
@@ -1748,7 +1749,7 @@ ManageIQ.</p>
 <p>When your repository is added, the repository shows in the <em>Repositories</em> list. You can now click the entry for the repository to open it so that you can view the imported workflows.
 If any workflows are found, click the corresponding number to view the list of workflows.</p>
 
-<p><img src="../../images/embedworkflow_workflownumbers.png" alt="Repository workflows"></p>
+<p><img src="../images/embedworkflow_workflownumbers.png" alt="Repository workflows"></p>
 
 <p>Alternatively, click <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong>. Then, click <strong>Workflows</strong> to see the list of workflows across all repositories.</p>
 
@@ -1767,7 +1768,7 @@ If any workflows are found, click the corresponding number to view the list of w
     <p>Click a repository.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, then <img src="../../images/2003.png" alt="Refresh this Repository"> (<strong>Refresh this Repository</strong>).</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/2003.png" alt="Refresh this Repository"> (<strong>Refresh this Repository</strong>).</p>
   </li>
 </ol>
 
@@ -1781,7 +1782,7 @@ If any workflows are found, click the corresponding number to view the list of w
     <p>Check those repositories to refresh. Click <strong>Check All</strong> to select all repositories.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, then <img src="../../images/2003.png" alt="Refresh Selected Workflow Repositories">(<strong>Refresh Selected Workflow Repositories</strong>).</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/2003.png" alt="Refresh Selected Workflow Repositories">(<strong>Refresh Selected Workflow Repositories</strong>).</p>
   </li>
 </ol>
 
@@ -1797,7 +1798,7 @@ If any workflows are found, click the corresponding number to view the list of w
     <p>Browse to the menu: <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong> &gt; <strong>Credentials</strong>.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong>, then <img src="../../images/1862.png" alt="Add New Credential"> (<strong>Add New Credential</strong>).</p>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Add New Credential"> (<strong>Add New Credential</strong>).</p>
   </li>
   <li>
     <p>Provide a <strong>Name</strong> for the credential.</p>
@@ -1874,7 +1875,8 @@ If any workflows are found, click the corresponding number to view the list of w
 
 <p>Pull secrets for containers are used differently between appliances and the OpenShift Container Platform (OCP). These differences are outlined in the following sections.</p>
 
-<p>#### Running an Embedded Workflow on Appliances</p>
+<h4 id="running-an-embedded-workflow-on-appliances">
+<a class="anchor" href="#running-an-embedded-workflow-on-appliances" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running an Embedded Workflow on Appliances</h4>
 
 <ul>
   <li>
@@ -2027,11 +2029,11 @@ Login Succeeded!
   <li>
     <p>Click a workflow. The default <em>Text</em> view of the workflow opens where you see the code content.</p>
 
-    <p><img src="../../images/embedworkflow_textview.png" alt="Text view"></p>
+    <p><img src="../images/embedworkflow_textview.png" alt="Text view"></p>
 
     <p>Alternatively, click the <strong>Graph</strong> tab to see a graph of the same data.</p>
 
-    <p><img src="../../images/embedworkflow_graphView.png" alt="Graph view"></p>
+    <p><img src="../images/embedworkflow_graphView.png" alt="Graph view"></p>
   </li>
   <li>
     <p>If your workflow has credential fields, create a workflow credential for each of the fields. For more information about creating a credential, see <a href="#adding-credentials">Adding Credentials</a>.</p>
@@ -2079,7 +2081,7 @@ Login Succeeded!
   <li>
     <p>Click the <strong>Options</strong> tab. You can now select between <em>Embedded Automate</em> and <em>Embedded Workflows</em> in the Automation field.</p>
 
-    <p><img src="../../images/embedworkflow_servicedialogdynamic.png" alt="Dialog Dynamic"></p>
+    <p><img src="../images/embedworkflow_servicedialogdynamic.png" alt="Dialog Dynamic"></p>
 
     <p>If you choose <strong>Embedded Workflows</strong>, you can select the workflow to run. Complete the remaining fields and click <strong>Save</strong> when you complete the form. You can chain dialog fields together by using <strong>Fields to refresh</strong>, which lets one dialog field trigger the run of another when there are interdependencies. When you <em>order</em> a service catalog, any dynamic dialogs that are backed by embedded workflows run in the background to populate the dialogs.</p>
   </li>
@@ -2095,14 +2097,14 @@ Login Succeeded!
   <li>
     <p>The <em>Service Catalogs</em> section opens and you see the existing Service Catalogs. If you want to order one, click it and then <strong>Order</strong>.</p>
 
-    <p><img src="../../images/embedworkflow_orderservicecatalog.png" alt="Service Dialog Dynamic"></p>
+    <p><img src="../images/embedworkflow_orderservicecatalog.png" alt="Service Dialog Dynamic"></p>
 
     <p>Complete the fields for your specified dialog. Then, click <strong>Submit</strong>.</p>
   </li>
   <li>
     <p>If you want to know more about the item first or to edit it, click the <strong>Catalogs</strong> section, and then click that item that is created. Click <strong>Configuration</strong> &gt; <strong>Edit this item</strong>.</p>
 
-    <p><img src="../../images/embedworkflow_entrypointsembedded.png" alt="Entry Points Dynamic"></p>
+    <p><img src="../images/embedworkflow_entrypointsembedded.png" alt="Entry Points Dynamic"></p>
   </li>
   <li>When you complete all your edits, click <strong>Save</strong>.</li>
   <li>
@@ -2110,7 +2112,7 @@ Login Succeeded!
 
     <p>The list of services and requests is shown when the catalog item is submitted. Clicking the request shows the execution status, including any embedded workflows.</p>
 
-    <p><img src="../../images/embedworkflow_runstatus.png" alt="Workflow Status"></p>
+    <p><img src="../images/embedworkflow_runstatus.png" alt="Workflow Status"></p>
   </li>
 </ol>
 
