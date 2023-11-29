@@ -24,7 +24,7 @@
     }
   </script>
 
-  <link type="text/css" rel="stylesheet" href="/assets/main-0e35068491e264b14654b1015221d2836e4d10611e4a5e7c7d39e00699263865.css">
+  <link type="text/css" rel="stylesheet" href="/assets/main-c62d712a15a5ba4c8ba8ce3af6a80e7ae432d1bd2c83c7d2973c3d72a7371e97.css">
   <link rel="canonical" href="http://manageiq.org/docs/reference/latest/managing_providers/">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
@@ -1094,6 +1094,7 @@
 </li>
 <li class="toc-entry toc-h3"><a href="#authoring-a-workflow">Authoring a workflow</a>
 <ul>
+<li class="toc-entry toc-h4"><a href="#running-an-embedded-workflow-on-the-openshift-container-platform-ocp">Running an Embedded Workflow on the OpenShift Container Platform (OCP)</a></li>
 <li class="toc-entry toc-h4"><a href="#example-provisioning-workflow">Example: Provisioning Workflow</a></li>
 </ul>
 </li>
@@ -1868,29 +1869,55 @@ If any workflows are found, click the corresponding number to view the list of w
     <p>Build the docker containers that are required for the workflow.</p>
 
     <p>When you have the code for your task resource written, you need to bundle it into a docker image. You can bundle the code by creating a standard <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> and building the image (https://docs.docker.com/engine/reference/commandline/build/). Then, you can push the image to a <a href="https://docs.docker.com/engine/reference/commandline/push/">registry</a>, which makes the image available to be used by ManageIQ. When you have pushed your images to an image registry, you can add the registry to ManageIQ.</p>
+  </li>
+</ol>
 
-    <ul>
-      <li>
-        <p>On appliances, <code class="language-plaintext highlighter-rouge">podman</code> is used to execute the container</p>
+<p>Pull secrets for containers are used differently between appliances and the OpenShift Container Platform (OCP). These differences are outlined in the following sections.</p>
 
-        <p>On appliances, <code class="language-plaintext highlighter-rouge">podman</code> is used to execute the container so use <a href="https://docs.podman.io/en/stable/markdown/podman-login.1.html">podman login</a> as the <code class="language-plaintext highlighter-rouge">manageiq</code> user.</p>
+<p>#### Running an Embedded Workflow on Appliances</p>
 
-        <div class="language-text highlighter-rouge">
+<ul>
+  <li>
+    <p>On appliances, <code class="language-plaintext highlighter-rouge">podman</code> is used to execute the container so use <a href="https://docs.podman.io/en/stable/markdown/podman-login.1.html">podman login</a> as the <code class="language-plaintext highlighter-rouge">manageiq</code> user.</p>
+
+    <div class="language-text highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code># su manageiq
 $ podman login docker.io
 Username:
 Password:
 Login Succeeded!
-</code></pre></div>        </div>
+</code></pre></div>    </div>
 
-        <p>You are recommended to use a docker.io <a href="https://docs.docker.com/security/for-developers/access-tokens/">access token</a> so that the token does not expire.</p>
-      </li>
-      <li>
-        <p>Provide an image pull secret to a podified Kubernetes container, and then add it to a service account</p>
+    <p>Images are pulled to a local directory /var/www/miq/vmdb/data/containers/storage as the default /home/manageiq partition has insufficient space to store large images.</p>
 
-        <p>In order to pull an image from a private registry you have to provide an <code class="language-plaintext highlighter-rouge">ImagePullSecret</code> to your containers, see <a href="https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/">Pull an Image from a Private Registry</a>. ManageIQ uses a service account called manageiq-default to run containers for your workflows. You can add an <code class="language-plaintext highlighter-rouge">ImagePullSecret</code> to this service account by following <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account/">Add Image Pull Secrets to a service account</a>.</p>
-      </li>
-    </ul>
+    <p>You are recommended to use a docker.io <a href="https://docs.docker.com/security/for-developers/access-tokens/">access token</a> so that the token does not expire.</p>
+  </li>
+  <li>
+    <p>Provide an image pull secret to a podified Kubernetes container, and then add it to a service account</p>
+
+    <p>In order to pull an image from a private registry you have to provide an <code class="language-plaintext highlighter-rouge">ImagePullSecret</code> to your containers, see <a href="https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/">Pull an Image from a Private Registry</a>. ManageIQ uses a service account called manageiq-default to run containers for your workflows. You can add an <code class="language-plaintext highlighter-rouge">ImagePullSecret</code> to this service account by following <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account/">Add Image Pull Secrets to a service account</a>.</p>
+  </li>
+</ul>
+
+<h4 id="running-an-embedded-workflow-on-the-openshift-container-platform-ocp">
+<a class="anchor" href="#running-an-embedded-workflow-on-the-openshift-container-platform-ocp" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running an Embedded Workflow on the OpenShift Container Platform (OCP)</h4>
+
+<p>If the user is running an embedded workflow on OCP, and is using a docker repository requiring a custom pull secret for their container images, the following steps need to be carried out.</p>
+
+<ol>
+  <li>
+    <p>Create a pull secret for the repository in question in the same namespace as ManageIQ, for example:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> oc create secret docker-registry &lt;pull-secret-name&gt; --docker-server=&lt;docker-server&gt; --docker-username=&lt;docker-username&gt; --docker-password=&lt;docker-password&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add this pull secret to the manageiq-default, for example:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> oc secret link manageiq-default &lt;pull-secret-name&gt; --for=pull
+</code></pre></div>    </div>
   </li>
 </ol>
 
