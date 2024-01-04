@@ -1097,6 +1097,7 @@
 <li class="toc-entry toc-h4"><a href="#running-an-embedded-workflow-on-appliances">Running an Embedded Workflow on Appliances</a></li>
 <li class="toc-entry toc-h4"><a href="#running-an-embedded-workflow-on-the-openshift-container-platform-ocp">Running an Embedded Workflow on the OpenShift Container Platform (OCP)</a></li>
 <li class="toc-entry toc-h4"><a href="#example-provisioning-workflow">Example: Provisioning Workflow</a></li>
+<li class="toc-entry toc-h4"><a href="#credentials">Credentials</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h3"><a href="#viewing-workflow-details">Viewing workflow details</a></li>
@@ -1114,7 +1115,7 @@
 </li>
 </ul>
 </li>
-<li class="toc-entry toc-h1"><a href="#credentials">Credentials</a>
+<li class="toc-entry toc-h1"><a href="#credentials-1">Credentials</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#adding-credentials-1">Adding Credentials</a></li>
 <li class="toc-entry toc-h2"><a href="#credential-types-1">Credential Types</a>
@@ -2023,6 +2024,84 @@ Login Succeeded!
 }
 </code></pre>
 
+<h4 id="credentials">
+<a class="anchor" href="#credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credentials</h4>
+
+<p>ManageIQ provides a mechanism for securely passing credentials to your running workflows.  Credentials should never be set statically in your workflow definition.</p>
+
+<p>Long lived credentials like usernames and passwords should be defined as Mapped Credentials as described in <code class="language-plaintext highlighter-rouge">Adding Credentials</code>.</p>
+
+<p>Short lived credentials such as bearer tokens which are obtained while the workflow is running can be set as state output and stored securely in the Credentials field for further states.  This can be accomplished by using <code class="language-plaintext highlighter-rouge">ResultPath</code> with a path starting with <code class="language-plaintext highlighter-rouge">$.Credentials</code>.  This will set the output of the state in the <code class="language-plaintext highlighter-rouge">Credentials</code> payload.</p>
+
+<p>For an example lets say we have a State which takes a username and password and outputs a bearer token to be used later on:</p>
+
+<pre><code class="language-asl">"Login": {
+  "Type": "Task",
+  "Resource": "docker://login:latest",
+  "Credentials": {
+    "username.$": "$.username",
+    "password.$": "$.password"
+  },
+  "ResultPath": "$.Credentials",
+  "Next": "NextState"
+}
+</code></pre>
+
+<p>If the output of the docker image is <code class="language-plaintext highlighter-rouge">{"bearer_token":"abcd"}</code> then we will be able to use this in the next state like so:</p>
+
+<pre><code class="language-asl">"NextState": {
+  "Type": "Task",
+  "Resource": "docker://do-something:latest",
+  "Credentials": {
+    "token.$": "$.bearer_token"
+  }
+}
+</code></pre>
+
+<p>All of the normal Input/Output processing still applies so if you need to manipulate the output you can use <code class="language-plaintext highlighter-rouge">ResultSelector</code>.  Say for example our login docker image outputs the token as <code class="language-plaintext highlighter-rouge">{"result":"abcd"}</code> but we want to store it as <code class="language-plaintext highlighter-rouge">"bearer_token"</code>.  We can use <code class="language-plaintext highlighter-rouge">ResultSelector</code> to change this:</p>
+
+<pre><code class="language-asl">"Login": {
+  "Type": "Task",
+  "Resource": "docker://login:latest",
+  "Credentials": {
+    "username.$": "$.username",
+    "password.$": "$.password"
+  },
+  "ResultSelector": {
+    "bearer_token.$": "$.result"
+  },
+  "ResultPath": "$.Credentials",
+  "Next": "NextState"
+}
+</code></pre>
+
+<p>We can also store the result in a parent node for organization:</p>
+
+<pre><code class="language-asl">"Login": {
+  "Type": "Task",
+  "Resource": "docker://login:latest",
+  "Credentials": {
+    "username.$": "$.username",
+    "password.$": "$.password"
+  },
+  "ResultPath": "$.Credentials.VMware",
+  "Next": "NextState"
+}
+</code></pre>
+
+<p>And then access it like:</p>
+
+<pre><code class="language-asl">"NextState": {
+  "Type": "Task",
+  "Resource": "docker://do-something:latest",
+  "Credentials": {
+    "token.$": "$.VMware.bearer_token"
+  }
+}
+</code></pre>
+
+<p>If you have a mapped credential and your state overwrites its, a new non-mapped entry will be created and the original mapped credential will be left intact.</p>
+
 <h3 id="viewing-workflow-details">
 <a class="anchor" href="#viewing-workflow-details" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing workflow details</h3>
 
@@ -2260,8 +2339,8 @@ Login Succeeded!
   </li>
 </ol>
 
-<h1 id="credentials">
-<a class="anchor" href="#credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credentials</h1>
+<h1 id="credentials-1">
+<a class="anchor" href="#credentials-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credentials</h1>
 
 <p>Credentials are utilized by ManageIQ for authentication when running Ansible playbooks against machines, synchronizing with inventory sources, and importing project content from a version control system.</p>
 
