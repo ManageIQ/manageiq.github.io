@@ -517,6 +517,11 @@
       <td>11.x</td>
       <td>19.x</td>
     </tr>
+    <tr>
+      <td>Kafka</td>
+      <td>3.3.1</td>
+      <td> </td>
+    </tr>
   </tbody>
 </table>
 
@@ -774,25 +779,7 @@ initdb <span class="nt">--auth</span> trust <span class="nt">--username</span> r
   </li>
 </ol>
 
-<h3 id="nvm-and-javascript-build-utilities">nvm and JavaScript build utilities</h3>
-
-<p><a href="https://github.com/nvm-sh/nvm">nvm</a> is <em>strongly</em> recommended for NodeJS version management.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvm <span class="nb">install </span>18
-nvm use 18
-
-<span class="c"># Set version 18 as the default for all scripts</span>
-nvm <span class="nb">alias </span>default 18
-</code></pre></div></div>
-
-<p>You may need to restart your shell in order to source the nvm initialization environment.</p>
-
-<p>Then install <code class="language-plaintext highlighter-rouge">yarn</code> - you can find the recommended way for your platform at https://classic.yarnpkg.com/en/docs/install, or, if that fails, via npm.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--global</span> yarn
-</code></pre></div></div>
-
-<h3 id="kafka">Kafka</h3>
+<h4 id="kafka">Kafka</h4>
 
 <ol>
   <li>
@@ -830,32 +817,30 @@ nvm <span class="nb">alias </span>default 18
     </table>
   </li>
   <li>
-    <p>Configure system to use Java</p>
-  </li>
-</ol>
+    <p>Configure the service</p>
 
-<ul>
-  <li>Mac</li>
-</ul>
+    <ul>
+      <li>macOS
+        <ul>
+          <li>
+            <p>Configure system to use Java</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo ln</span> <span class="nt">-sfn</span> <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
-</code></pre></div></div>
+            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo ln</span> <span class="nt">-sfn</span> <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>Configure KRaft (optional, if not using zookeeper)</p>
 
-<ol>
-  <li>Configure kraft (optional, if not using Zookeeper)</li>
-</ol>
-
-<ul>
-  <li>Mac</li>
-</ul>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv</span> <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/server.properties <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/server.properties-zookeeper
+            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv</span> <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/server.properties <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/server.properties-zookeeper
 <span class="nb">ln</span> <span class="nt">-s</span> <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/kraft/server.properties <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/
 
 kafka-storage format <span class="nt">-t</span> <span class="si">$(</span>kafka-storage random-uuid<span class="si">)</span> <span class="nt">-c</span> <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/kafka/server.properties
-</code></pre></div></div>
-
-<ol>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
   <li>
     <p>Start the service</p>
 
@@ -879,6 +864,24 @@ kafka-storage format <span class="nt">-t</span> <span class="si">$(</span>kafka-
     </table>
   </li>
 </ol>
+
+<h3 id="nvm-and-javascript-build-utilities">nvm and JavaScript build utilities</h3>
+
+<p><a href="https://github.com/nvm-sh/nvm">nvm</a> is <em>strongly</em> recommended for NodeJS version management.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvm <span class="nb">install </span>18
+nvm use 18
+
+<span class="c"># Set version 18 as the default for all scripts</span>
+nvm <span class="nb">alias </span>default 18
+</code></pre></div></div>
+
+<p>You may need to restart your shell in order to source the nvm initialization environment.</p>
+
+<p>Then install <code class="language-plaintext highlighter-rouge">yarn</code> - you can find the recommended way for your platform at https://classic.yarnpkg.com/en/docs/install, or, if that fails, via npm.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--global</span> yarn
+</code></pre></div></div>
 
 <h3 id="ruby-and-bundler">Ruby and Bundler</h3>
 
