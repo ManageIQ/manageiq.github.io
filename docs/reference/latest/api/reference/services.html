@@ -1805,6 +1805,19 @@ templates in a service catalog as follows:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
+<p><strong>Note:</strong> If you need to include a password in the call to the Ordering Services, you can use the <code class="language-plaintext highlighter-rouge">password::dialog_password</code> field to supply the password as a parameter. This password is passed as a <code class="language-plaintext highlighter-rouge">string</code> datatype.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resource"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/service_templates/3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"option_0_vm_target_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test-vm-0001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"option_0_vm_target_hostname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test-vm-0001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"password::dialog_password"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
 <h4 id="refresh-service-dialog-fields">
 <a class="anchor" href="#refresh-service-dialog-fields" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refresh Service Dialog Fields</h4>
 
