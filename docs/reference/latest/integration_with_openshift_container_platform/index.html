@@ -1142,7 +1142,7 @@ in <a href="#adding-openshift-container-platform-as-a-container-provider">Adding
     <p>Obtain the <code class="language-plaintext highlighter-rouge">management</code> service account token name:</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># oc describe sa -n management-infra management-admin
+<div class="highlight"><pre class="highlight"><code># oc describe sa -n $project_name $service_account_name
 ...
 Tokens:  management-admin-token-0f3fh
          management-admin-token-q7a87
@@ -1154,7 +1154,7 @@ output, replacing <code class="language-plaintext highlighter-rouge">management-
 your token:</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># oc describe secret -n management-infra management-admin-token-0f3fh
+<div class="highlight"><pre class="highlight"><code># oc describe secret -n $project_name management-admin-token-0f3fh
 ...
 Data
 ====

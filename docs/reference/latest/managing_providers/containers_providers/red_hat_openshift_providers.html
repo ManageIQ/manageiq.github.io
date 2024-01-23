@@ -1095,7 +1095,7 @@ oc create serviceaccount $service_account_name -n $project_name
   </li>
   <li>Create the cluster role
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>echo '{"apiVersion": "v1", "kind": "ClusterRole", "metadata": {"name": "management-manageiq-admin"}, "rules": [{"resources": ["pods/proxy"], "verbs": ["*"]}]}' | oc create -f -
+<div class="highlight"><pre class="highlight"><code>echo '{"apiVersion": "authorization.openshift.io/v1", "kind": "ClusterRole", "metadata": {"name": "management-manageiq-admin"}, "rules": [{"resources": ["pods/proxy"], "verbs": ["*"]}]}' | oc create -f -
 </code></pre></div>    </div>
   </li>
   <li>Apply roles and policies to the service account
@@ -1123,7 +1123,7 @@ for a list of the default roles.</p>
     <p>Obtain the <code class="language-plaintext highlighter-rouge">management</code> service account token name:</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># oc describe sa -n management-infra management-admin
+<div class="highlight"><pre class="highlight"><code># oc describe sa -n $project_name $service_account_name
 ...
 Tokens:  management-admin-token-0f3fh
          management-admin-token-q7a87
@@ -1135,7 +1135,7 @@ output, replacing <code class="language-plaintext highlighter-rouge">management-
 your token:</p>
 
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># oc describe secret -n management-infra management-admin-token-0f3fh
+<div class="highlight"><pre class="highlight"><code># oc describe secret -n $project_name management-admin-token-0f3fh
 ...
 Data
 ====
