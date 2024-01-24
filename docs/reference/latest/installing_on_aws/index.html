@@ -1650,7 +1650,7 @@ requested then restart evmserverd to pick up the changes.</p>
   </li>
 </ol>
 
-<p><strong>Note:</strong> It is recommended to use your FQDN as the messaging hostname rather than <code class="language-plaintext highlighter-rouge">localhost</code></p>
+<p><strong>Note:</strong> It is recommended to use your Fully Qualified Domain Name (FQDN) as the messaging hostname rather than <code class="language-plaintext highlighter-rouge">localhost</code></p>
 
 <h3 id="configuring-a-worker-appliance">
 <a class="anchor" href="#configuring-a-worker-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring a Worker Appliance</h3>
@@ -1723,7 +1723,7 @@ must use the same key.</p>
   </li>
 </ol>
 
-<p><strong>Note:</strong> When configuring messaging, please refer to https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-naming.html on hostname guidelines i.e. inclusion of <code class="language-plaintext highlighter-rouge">.ec2.internal</code> or <code class="language-plaintext highlighter-rouge">.compute.internal</code> in the hostname</p>
+<p><strong>Note:</strong> When configuring messaging, please refer to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-naming.html">Amazon EC2 instance hostname types</a> on hostname guidelines. For example, inclusion of <code class="language-plaintext highlighter-rouge">.ec2.internal</code> or <code class="language-plaintext highlighter-rouge">.compute.internal</code> in the hostname, which can be determined using <code class="language-plaintext highlighter-rouge">hostname -f</code>.</p>
 
 <p>Once ManageIQ is installed, you can log in and perform
 administration tasks.</p>
