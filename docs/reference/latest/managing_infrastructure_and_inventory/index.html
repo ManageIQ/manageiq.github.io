@@ -3423,6 +3423,26 @@ DirectLUN disk.</p>
         <p>A ManageIQ appliance <strong>must</strong> reside in each datacenter
 with the iSCSI / FCP storage type.</p>
       </li>
+      <li>
+        <p>If your storage domain is using Logical Volume Manager (LVM), you will need to manually activate your volume groups
+and logical volumes before performing the SmartState Analysis.</p>
+
+        <ol>
+          <li>Edit the <code class="language-plaintext highlighter-rouge">/etc/lvm/lvm.conf</code> file on the appliance and add volume groups to activate as read-only:
+            <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> activation {
+     read_only_volume_list = ["volume_group_0", "volume_group_1", etc...]
+ }
+</code></pre></div>            </div>
+            <p>Note: the volume group names are the storage domain UUIDs</p>
+          </li>
+          <li>Activate volume groups:
+            <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> vgchange -ay
+</code></pre></div>            </div>
+          </li>
+        </ol>
+      </li>
     </ul>
   </li>
   <li>
@@ -3531,6 +3551,28 @@ screen.</p>
 ManageIQ appliance.</p>
       </li>
     </ol>
+  </li>
+  <li>
+    <p>If your storage domain is using Logical Volume Manager (LVM), you will need to manually activate your volume groups
+and logical volumes before performing the SmartState Analysis.</p>
+
+    <ol>
+      <li>Edit the <code class="language-plaintext highlighter-rouge">/etc/lvm/lvm.conf</code> file on the appliance and add volume groups to activate as read-only:
+        <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> activation {
+     read_only_volume_list = ["volume_group_0", "volume_group_1", etc...]
+ }
+</code></pre></div>        </div>
+        <p>Note: the volume group names are the storage domain UUIDs</p>
+      </li>
+      <li>Activate volume groups:
+        <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> vgchange -ay
+</code></pre></div>        </div>
+      </li>
+    </ol>
+
+    <p>For more information, please refer to the Red Hat Enterprise Linux documentation.</p>
   </li>
 </ol>
 
