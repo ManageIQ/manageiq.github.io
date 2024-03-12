@@ -504,7 +504,7 @@
     </tr>
     <tr>
       <td>Python</td>
-      <td>3.8.x</td>
+      <td>3.9.x</td>
       <td> </td>
     </tr>
     <tr>
@@ -530,14 +530,6 @@
 <h3 id="system-packages">System packages</h3>
 
 <ol>
-  <li>
-    <p>Only if running CentOS 8</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum config-manager <span class="nt">--set-enabled</span> PowerTools
-<span class="nb">sudo </span>dnf copr <span class="nb">enable </span>manageiq/ManageIQ-Master
-<span class="nb">sudo </span>yum <span class="nb">install </span>epel-release
-</code></pre></div>    </div>
-  </li>
   <li>
     <p>In order to compile Ruby, install the header files for OpenSSL, readline and zlib.</p>
 
