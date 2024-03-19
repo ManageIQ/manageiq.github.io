@@ -805,23 +805,22 @@ index 6c228c2..91e8e71 100644
 <span class="k">end</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module ManageIQ::Providers::AwesomeCloud::Regions
-  REGIONS = {
-    "us-east-1" =&gt; {:name =&gt; "us-east-1", :hostname =&gt; "us-east-1.awesome.cloud"}
-  }.freeze
+<p>Now create a <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/regions.rb</code></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">ManageIQ</span>
+  <span class="k">module</span> <span class="nn">Providers::AwesomeCloud</span>
+    <span class="k">class</span> <span class="nc">Regions</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Regions</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
 
-  def self.regions
-    REGIONS
-  end
+<p>And a <code class="language-plaintext highlighter-rouge">config/regions.yml</code></p>
 
-  def self.all
-    regions.values
-  end
-
-  def self.names
-    regions.keys
-  end
-end
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">us-east-1</span><span class="pi">:</span>
+  <span class="s">:name: us-east-1</span>
+  <span class="s">:hostname: us-east-1.awesome.cloud</span>
+  <span class="s">:description: US East </span><span class="m">1</span>
 </code></pre></div></div>
 
 <p>With that added you should be able to go to the UI, add a cloud provider, and see your new cloud type.  For development typically the best way to test code in the UI is to run a rails server and a simulated generic worker via the terminal.</p>
