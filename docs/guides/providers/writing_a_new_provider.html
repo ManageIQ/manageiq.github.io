@@ -743,6 +743,9 @@ index 6c228c2..91e8e71 100644
 <p>You basically define what forms you need in a hash in your provider plugin and the ManageIQ UI will display it for you.  If you want a good introduction check out https://data-driven-forms.org/introduction.  For now we’ll just create a basic form that takes a provider region, access key, and secret key.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::CloudManager</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">CloudManager</span>
+  <span class="n">supports</span> <span class="ss">:create</span>
+  <span class="n">supports</span> <span class="ss">:regions</span>
+
   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">params_for_create</span>
     <span class="p">{</span>
       <span class="ss">:fields</span> <span class="o">=&gt;</span> <span class="p">[</span>
@@ -800,9 +803,7 @@ index 6c228c2..91e8e71 100644
     <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Regions</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">region</span><span class="o">|</span> <span class="p">{</span><span class="ss">:label</span> <span class="o">=&gt;</span> <span class="n">region</span><span class="p">[</span><span class="ss">:name</span><span class="p">],</span> <span class="ss">:value</span> <span class="o">=&gt;</span> <span class="n">region</span><span class="p">[</span><span class="ss">:name</span><span class="p">]}</span> <span class="p">}</span>
   <span class="k">end</span>
 
-  <span class="n">supports</span> <span class="ss">:regions</span>
   <span class="n">validates</span> <span class="ss">:provider_region</span><span class="p">,</span> <span class="ss">:inclusion</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:in</span> <span class="o">=&gt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Regions</span><span class="p">.</span><span class="nf">names</span><span class="p">}</span>
-<span class="k">end</span>
 </code></pre></div></div>
 
 <p>Now create a <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/regions.rb</code></p>
