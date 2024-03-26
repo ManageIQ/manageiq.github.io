@@ -1118,23 +1118,28 @@ Before adding the cron job it would be best practice to mount an external storag
 <p>Restoring a backup of the appliance will be done using SSH or the console.</p>
 
 <ol>
+  <li>Set the hostname on the new appliance.  On the command line:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  hostnamectl <span class="nb">hostname </span>your-new-hostname.example.com
+  <span class="nb">echo</span> <span class="s2">"your.ip.address your-new-hostname.example.com your-new-hostname"</span> <span class="o">&gt;&gt;</span> /etc/hosts
+</code></pre></div>    </div>
+  </li>
   <li>Download a backup TGZ and place it in <code class="language-plaintext highlighter-rouge">/</code>
 </li>
   <li>On the command line:
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>  <span class="nb">cd</span> /
-  <span class="nb">tar</span> <span class="nt">-zxf</span> /backup
-  <span class="nb">rm</span> <span class="nt">-f</span> /backup <span class="c"># if desired to save space</span>
+  <span class="nb">tar</span> <span class="nt">-zxf</span> /backup.tgz
+  <span class="nb">rm</span> <span class="nt">-f</span> /backup.tgz <span class="c"># if desired to save space</span>
 </code></pre></div>    </div>
   </li>
   <li>Launch <code class="language-plaintext highlighter-rouge">appliance_console</code>
     <ol>
-      <li>If this is a brand new appliance and the database has not yet been initialized, select <code class="language-plaintext highlighter-rouge">Configure Application</code>. If this is an existing database appliance, this step can be skipped.
+      <li>Since the database has not yet been initialized, select <code class="language-plaintext highlighter-rouge">Configure Application</code>.
         <ol>
           <li>When prompted to configure the database, select <code class="language-plaintext highlighter-rouge">Create Internal Database</code>
 </li>
-          <li>When prompted to configure messaging, select <code class="language-plaintext highlighter-rouge">Make No messaging changes</code>
-</li>
+          <li>When prompted to configure messaging, either connect to an external messaging system or configure this appliance as a messaging server</li>
           <li>Choose a database disk</li>
           <li>Answer y or n to “Should this appliance run as a standalone database server?”</li>
           <li>Enter a region number (0), this is not important and will be overwritten on restore</li>
