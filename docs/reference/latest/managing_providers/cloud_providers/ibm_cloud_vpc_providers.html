@@ -1072,7 +1072,12 @@
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#configuring-metrics-collection-for-the-ibm-cloud-vpc-provider">Configuring Metrics Collection for the IBM Cloud VPC Provider</a></li>
-<li class="toc-entry toc-h1"><a href="#configuring-event-handling-for-the-ibm-cloud-vpc-provider">Configuring Event Handling for the IBM Cloud VPC Provider</a></li>
+<li class="toc-entry toc-h1"><a href="#configuring-event-handling-for-the-ibm-cloud-vpc-provider">Configuring Event Handling for the IBM Cloud VPC Provider</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#adding-ibm-cloud-vpc-regions">Adding IBM Cloud VPC Regions</a></li>
+<li class="toc-entry toc-h2"><a href="#disabling-ibm-cloud-vpc-regions">Disabling IBM Cloud VPC Regions</a></li>
+</ul>
+</li>
 </ul><h1 id="ibm-cloud-vpc-providers">
 <a class="anchor" href="#ibm-cloud-vpc-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>IBM Cloud VPC Providers</h1>
 
@@ -1163,6 +1168,90 @@
 </ol>
 
 <p>For further information, see https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-service_keys</p>
+
+<h2 id="adding-ibm-cloud-vpc-regions">
+<a class="anchor" href="#adding-ibm-cloud-vpc-regions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding IBM Cloud VPC Regions</h2>
+
+<p>ManageIQ allows administrators to add additional IBM
+Cloud VPC regions on the appliance server. You can use this capability to add
+new regions that have been set up since ManageIQ was
+released. Once added the region it will be available when creating a new IBM
+Cloud VPC provider.</p>
+
+<ol>
+  <li>
+    <p>Browse to <img src="../../images/config-gear.png" alt="config gear"> <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Settings</strong> accordion, then click <strong>ManageIQ: Region</strong> at the top.
+Optionally, a server can be selected (within Zones) to limit the additional
+region to that server only.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Advanced</strong> tab.</p>
+  </li>
+  <li>
+    <p>Search for <code class="language-plaintext highlighter-rouge">:ems_ibm_cloud_vpc:</code>, and enter the regions you want to add
+under <code class="language-plaintext highlighter-rouge">:additional_regions:</code>.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>Example. To add hypothetical `lunar-base-1` `lunar-base-2` regions:
+
+:ems_ibm_cloud_vpc:
+  :additional_regions:
+    :lunar-base-1:
+      :name: Lunar Base 1
+      :hostname: lunar-base-1.iaas.cloud.ibm.com
+      :description: Lunar Base 1
+    :lunar-base-2:
+      :name: Lunar Base 2
+      :hostname: lunar-base-2.iaas.cloud.ibm.com
+      :description: Lunar Base 2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h2 id="disabling-ibm-cloud-vpc-regions">
+<a class="anchor" href="#disabling-ibm-cloud-vpc-regions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disabling IBM Cloud VPC Regions</h2>
+
+<p>ManageIQ allows administrators to disable IBM Cloud
+VPC regions on the appliance server. You can use this capability to disable
+certain classified regions. Once disabled, the region will not be available
+when adding a new IBM Cloud VPC provider.</p>
+
+<ol>
+  <li>
+    <p>Browse to <img src="../../images/config-gear.png" alt="config gear"> <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Settings</strong> accordion, then click <strong>ManageIQ: Region</strong> at the top.
+Optionally, a server can be selected (within Zones) to limit the disabled
+region to that server only.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Advanced</strong> tab.</p>
+  </li>
+  <li>
+    <p>Search for <code class="language-plaintext highlighter-rouge">:ems_ibm_cloud_vpc</code>, and enter the regions you want to disable
+under <code class="language-plaintext highlighter-rouge">:disabled_regions:</code>.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>Example. To disable the `au-syd` and `br-sao` regions:
+
+:ems_ibm_cloud_vpc:
+  :disabled_regions:
+  - au-syd
+  - br-sao
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
 
 
       </div>
