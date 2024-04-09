@@ -1360,6 +1360,7 @@
 <li class="toc-entry toc-h4"><a href="#adding-a-new-appliance-to-an-existing-region-with-a-non-default-password">Adding a New Appliance to an Existing Region with a Non-default Password</a></li>
 <li class="toc-entry toc-h4"><a href="#creating-a-database-dump">Creating a Database Dump</a></li>
 <li class="toc-entry toc-h4"><a href="#enabling-events-syndication">Enabling Events Syndication</a></li>
+<li class="toc-entry toc-h4"><a href="#enabling-inventory-syndication">Enabling Inventory Syndication</a></li>
 </ul>
 </li>
 </ul>
@@ -7895,6 +7896,42 @@ the operation.</p>
   </li>
   <li>
     <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h4 id="enabling-inventory-syndication">
+<a class="anchor" href="#enabling-inventory-syndication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling Inventory Syndication</h4>
+
+<p>You can enable inventory syndication in the <code class="language-plaintext highlighter-rouge">Advanced</code> settings:</p>
+
+<ol>
+  <li>
+    <p>From the menu, go to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
+  </li>
+  <li>
+    <p>Expand the <strong>Settings</strong> accordion. When you select the <strong>Settings</strong> accordion, you are automatically taken to the server list under <strong>Zones</strong>.</p>
+  </li>
+  <li>
+    <p>Select the zone where the EVM server is located and select the EVM server.</p>
+  </li>
+  <li>
+    <p>Click the <strong>Advanced</strong> tab.</p>
+
+    <p>You can click the <strong>Advanced</strong> tab at the zone level to set advanced configuration settings for the entire zone. Or, you can click on the server, and then click the <strong>Advanced</strong> tab to set advanced configuration settings at the server (appliance) level, which overrides zone-level settings.</p>
+  </li>
+  <li>
+    <p>Find the following configuration:</p>
+
+    <div class="language-yaml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="na">:ems_refresh</span><span class="pi">:</span>
+ <span class="na">:full_refresh_threshold</span><span class="pi">:</span> <span class="m">100</span>
+ <span class="na">:syndicate_inventory</span><span class="pi">:</span> <span class="kc">false</span>
+ <span class="na">:raise_vm_snapshot_complete_if_created_within</span><span class="pi">:</span> <span class="s">15.minutes</span>
+ <span class="na">:refresh_interval</span><span class="pi">:</span> <span class="s">24.hours</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Set the value for <code class="language-plaintext highlighter-rouge">syndicate_inventory</code> to <code class="language-plaintext highlighter-rouge">true</code>.</p>
   </li>
 </ol>
 
