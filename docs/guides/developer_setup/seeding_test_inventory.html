@@ -25,7 +25,7 @@
   </script>
 
   <link type="text/css" rel="stylesheet" href="/assets/main-c62d712a15a5ba4c8ba8ce3af6a80e7ae432d1bd2c83c7d2973c3d72a7371e97.css">
-  <link rel="canonical" href="http://manageiq.org/docs/guides/developer_setup/index">
+  <link rel="canonical" href="http://manageiq.org/docs/guides/developer_setup/seeding_test_inventory">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
   <link href="/assets/images/favicon.ico" rel="shortcut icon">
@@ -74,7 +74,7 @@
 </header>
 
 
-    <main data-url="/docs/guides/developer_setup/index">
+    <main data-url="/docs/guides/developer_setup/seeding_test_inventory">
       <nav class="doc_tabs">
   <ul>
   <li>
@@ -474,37 +474,77 @@
 
       <div class="doc-content">
         
-        <ul>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/debugging">Debugging</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/foreman">Foreman</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/git_workflow">Git Workflow</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/plugins">Plugins</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/ruby_mine_setup">Ruby Mine Setup</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/running_test_suites">Running Test Suites</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/seeding_test_inventory">Seeding Test Inventory</a>
-  </li>
-  
-</ul>
+        <h2 id="using-test-recordings-to-populate-a-development-database">Using test recordings to populate a development database</h2>
+
+<p>One of the more difficult tasks when developing for ManageIQ is when a feature requires some
+provider specific inventory to be present in your local database when you don’t have
+access to the provider.</p>
+
+<p>Most providers have something called a “VCR Cassette” to aid in running spec tests
+without access to a real provider.  It is a YAML file which “replays” HTTP calls back
+to a calling method making it appear that it is interacting with a real native provider.</p>
+
+<p>While this is critical for running specs, we can also make use of this for development
+by treating it as an offline dump of real inventory data.  It is possible to configure
+VCR in a development environment and use a VCR cassette when running a refresh, thereby
+creating inventory records in our development database from the data stored in the VCR.</p>
+
+<p>VCR is fairly unforgiving, if any data doesn’t match it will throw an exception and
+fail the refresh so it is critical to set everything up the same way it would run in
+spec tests.  Specifically, things like provider hostname/port/region and authentication
+userid/password have to match what is in the VCR cassette or the vcr gem won’t recognize
+the request.</p>
+
+<p>For this example we’ll use an Amazon provider.  We first have to create a “fake” Amazon
+provider to use for the VCR backed refresh.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vcr_region</span>   <span class="o">=</span> <span class="s2">"us-east-1"</span>
+<span class="n">vcr_userid</span>   <span class="o">=</span> <span class="s2">"AMAZON_CLIENT_ID"</span>
+<span class="n">vcr_password</span> <span class="o">=</span> <span class="s2">"AMAZON_CLIENT_SECRET"</span>
+
+<span class="n">ems</span> <span class="o">=</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Amazon</span><span class="o">::</span><span class="no">CloudManager</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span>
+  <span class="ss">:name</span>             <span class="o">=&gt;</span> <span class="s2">"AWS VCR"</span><span class="p">,</span>
+  <span class="ss">:provider_region</span>  <span class="o">=&gt;</span> <span class="n">vcr_region</span><span class="p">,</span>
+  <span class="ss">:default_userid</span>   <span class="o">=&gt;</span> <span class="n">vcr_userid</span><span class="p">,</span>
+  <span class="ss">:default_password</span> <span class="o">=&gt;</span> <span class="n">vcr_password</span><span class="p">,</span>
+  <span class="ss">:zone</span>             <span class="o">=&gt;</span> <span class="no">Zone</span><span class="p">.</span><span class="nf">default_zone</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>We can find these values by looking at the amazon provider’s vcr cassette file,
+<code class="language-plaintext highlighter-rouge">src/manageiq/manageiq-providers-amazon/spec/vcr_cassettes/manageiq/providers/amazon/cloud_manager/refresher_inventory_object.yml</code></p>
+
+<p>We can see that <code class="language-plaintext highlighter-rouge">'us-east-1'</code> is used as the region in the URIs, and in the <code class="language-plaintext highlighter-rouge">config/secrets.defaults.yml</code>
+and <code class="language-plaintext highlighter-rouge">spec/factories/ext_management_system.rb</code> files we can see that <code class="language-plaintext highlighter-rouge">AMAZON_CLIENT_ID</code> and
+<code class="language-plaintext highlighter-rouge">AMAZON_CLIENT_SECRET</code> are used for the userid and password values for the authentication.</p>
+
+<p>Now that we have our provider record created we can configure VCR and run the refresh:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s2">"vcr"</span>
+<span class="no">VCR</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">cassette_library_dir</span> <span class="o">=</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Amazon</span><span class="o">::</span><span class="no">Engine</span><span class="p">.</span><span class="nf">root</span><span class="p">(</span><span class="s2">"spec/vcr_cassettes"</span><span class="p">).</span><span class="nf">to_s</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">hook_into</span> <span class="ss">:webmock</span>
+<span class="k">end</span>
+<span class="no">VCR</span><span class="p">.</span><span class="nf">use_cassette</span><span class="p">(</span><span class="s2">"manageiq/providers/amazon/cloud_manager/refresher_inventory_object"</span><span class="p">)</span> <span class="p">{</span> <span class="no">EmsRefresh</span><span class="p">.</span><span class="nf">refresh</span><span class="p">(</span><span class="n">ems</span><span class="p">)</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Each provider can have slight variances in the names of their VCR cassettes so it is
+best to review the spec tests in the provider you are trying to replicate.</p>
+
+<p>Now you should have inventory in your database for this provider:
+```ruby</p>
+<blockquote>
+  <blockquote>
+    <p>ems.vms.count
+=&gt; 9
+ems.miq_templates.count
+=&gt; 243
+ems.orchestration_templates.count
+=&gt; 0
+ems.cloud_networks.count                      <br />
+=&gt; 5</p>
+  </blockquote>
+</blockquote>
 
       </div>
     </article>
