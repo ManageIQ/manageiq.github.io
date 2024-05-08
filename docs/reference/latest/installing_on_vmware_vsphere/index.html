@@ -1103,6 +1103,7 @@
 <li class="toc-entry toc-h1"><a href="#appliance-console-command-line-interface-cli">Appliance Console Command-Line Interface (CLI)</a>
 <ul>
 <li class="toc-entry toc-h4"><a href="#database-configuration-options">Database Configuration Options</a></li>
+<li class="toc-entry toc-h4"><a href="#messaging-configuration-options">Messaging Configuration Options</a></li>
 <li class="toc-entry toc-h4"><a href="#v2_key-options">v2_key Options</a></li>
 <li class="toc-entry toc-h4"><a href="#ipa-server-options">IPA Server Options</a></li>
 <li class="toc-entry toc-h4"><a href="#certificate-options">Certificate Options</a></li>
@@ -1824,7 +1825,27 @@ text fields.</p>
   </tbody>
 </table>
 
-<h4 caption="Table 1. Database Configuration Options" caption-side="top" id="v2_key-options">
+<h4 caption="Table 1. Database Configuration Options" caption-side="top" id="messaging-configuration-options">
+<a class="anchor" href="#messaging-configuration-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Messaging Configuration Options</h4>
+<p>|                               |                                                       |
+| —————————– | —————————————————– |
+| Option                        | Description                                           |
+| –message-server-config       | configure appliance as a messaging server (boolean)   |
+| –message-server-unconfig     | unconfigure appliance as a messaging server (boolean) |
+| –message-client-config       | configure appliance as a messaging server (boolean)   |
+| –message-client-unconfig     | unconfigure appliance as a messaging server (boolean) |
+| –message-keystore-username   | messaging keystore username (defaults to admin)       |
+| –message-keystore-password   | messaging keystore password                           |
+| –message-server-username     | messaging server username (defaults to admin)         |
+| –message-server-password     | messaging server password                             |
+| –message-server-port         | messaging server port (defaults to 9093)              |
+| –message-server-use-ipaddr   | use ipaddress not hostname for messaging server       |
+| –message-server-host         | messaging server hostname or ipaddress                |
+| –message-truststore-path-src | path for messaging server truststore                  |
+| –message-ca-cert-path-src    | path to a certificate authority for messaging SSL     |
+| –message-persistent-disk     | configure a new volume for storing messaging data     |</p>
+
+<h4 id="v2_key-options">
 <a class="anchor" href="#v2_key-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>v2_key Options</h4>
 
 <table>
@@ -1994,6 +2015,16 @@ text fields.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh root@appliance.test.company.com
 </code></pre></div></div>
 
+<p>Set up an all-in-one appliance as a local database and messaging appliance and start the MIQ Server:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># appliance_console_cli --internal --dbdisk /dev/sdb --region 0 --password smartvm --message-server-config --message-keystore-password smartvm --server=start
+</code></pre></div></div>
+
+<p>Join a worker appliance to an existing region:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># appliance_console_cli --fetch-key db.example.com --sshlogin root --sshpassword smartvm --hostname db.example.com --password mydatabasepassword --message-client-config --message-server-host db.example.com --message-server-password smartvm --message-keystore-password smartvm --server start
+</code></pre></div></div>
+
 <p>To create a new database locally on the server by using <code class="language-plaintext highlighter-rouge">/dev/sdb</code>:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># appliance_console_cli --internal --dbdisk /dev/sdb --region 0 --password smartvm
@@ -2007,6 +2038,16 @@ text fields.</p>
 <p>You could combine the two to join a region where <em>db.example.com</em> is the appliance hosting the database:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># appliance_console_cli --fetch-key db.example.com --sshlogin root --sshpassword smartvm --hostname db.example.com --password mydatabasepassword
+</code></pre></div></div>
+
+<p>To configure an appliance as a messaging server:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># appliance_console_cli --message-server-config --message-keystore-password="smartvm"
+</code></pre></div></div>
+
+<p>To configure an appliance as a messaging client:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># appliance_console_cli --message-client-config --message-server-host db.example.com --message-server-password smartvm --message-keystore-password smartvm
 </code></pre></div></div>
 
 <p>To configure external authentication:</p>
