@@ -1,0 +1,2314 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-c62d712a15a5ba4c8ba8ce3af6a80e7ae432d1bd2c83c7d2973c3d72a7371e97.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/api/reference/tagging.html">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/quinteros/api/reference/tagging">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li>
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li class="active">
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    <ul class="menu menu-toplevel" id="api_menu">
+
+  
+  
+  
+  <li class="menu-item menu-parent">
+    <a href="#">
+      Overview
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/overview/auth.html">
+      Authentication
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/overview/authorization.html">
+      Authorization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/overview/password.html">
+      Password Updates
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/overview/crud.html">
+      CRUD
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/overview/http.html">
+      HTTP Basics
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/overview/json.html">
+      Json Convention
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/overview/query.html">
+      Querying
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/overview/bulk_query.html">
+      Bulk Querying
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/overview/filtering.html">
+      Filtering
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/overview/pagination.html">
+      Pagination
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/overview/versioning.html">
+      Version History
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-item menu-parent">
+    <a href="#">
+      Reference
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/collections.html">
+      Primary Collections
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/actions.html">
+      Actions
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/alerts.html">
+      Alert Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/authentications.html">
+      Authentication Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/automate.html">
+      Automate Model
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/automate_domains.html">
+      Automate Domains
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/automation_requests.html">
+      Automation Requests
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/automate_workspaces.html">
+      Automate Workspaces
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/categories_tags.html">
+      Categories & Tags
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/chargebacks_rates.html">
+      Chargebacks & Rates
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/cloud_volumes.html">
+      Cloud Volumes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/conditions.html">
+      Conditions
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/configuration_script_payloads.html">
+      Configuration Script Payloads
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/configuration_script_sources.html">
+      Configuration Script Source Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/custom_actions.html">
+      Custom Actions
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/custom_attributes.html">
+      Custom Attributes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/custom_buttons.html">
+      Custom Button Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/event_streams.html">
+      Event Streams
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/flavors.html">
+      Flavor Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/generic_objects.html">
+      Generic Object Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/groups.html">
+      Group Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/hosts.html">
+      Host Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/instances.html">
+      Instance Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/metric_rollups.html">
+      Metric Rollups
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/network_routers.html">
+      Network Routers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/notifications.html">
+      Notifications Support
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/orchestration.html">
+      Orchestration Support
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/physical_servers.html">
+      Physical Servers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/pictures.html">
+      Picture Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/policies.html">
+      Policies & Policy Profiles
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/policy_collections.html">
+      Policy Collections
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/providers.html">
+      Provider Support
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/provision_requests.html">
+      Provision Requests
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/requests.html">
+      Request Support
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/reports.html">
+      Reports Support
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/roles.html">
+      Role Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/security_groups.html">
+      Security Groups
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/services.html">
+      Service Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/service_queries.html">
+      Service Queries
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/service_custom_actions.html">
+      Service Custom Actions
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/service_dialogs.html">
+      Service Dialogs
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/service_orders.html">
+      Service Orders (Shopping Carts)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/ownership.html">
+      Setting Ownership
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/settings.html">
+      Settings Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/snapshots.html">
+      Snapshot Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/tagging.html">
+      Tags & Tagging
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/tasks.html">
+      Tasks
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/tenants.html">
+      Tenant Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/users.html">
+      User Management
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/reference/vms.html">
+      VM Management
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-item menu-parent">
+    <a href="#">
+      Appendices
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/appendices/quick_reference.html">
+      Quick Reference
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/appendices/collection_metadata.html">
+      Collection Metadata
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/appendices/resource_attributes.html">
+      Resource Attributes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/appendices/provider_types.html">
+      Provider Types
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/appendices/provision_attributes.html">
+      Provision Request Supported Attributes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/appendices/advanced_provisioning.html">
+      Advanced Provisioning Attributes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/appendices/soap_to_rest.html">
+      SOAP to REST Mapping
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/appendices/deprecated_types.html">
+      Deprecated Types
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/appendices/deprecated_resource_attributes.html">
+      Deprecated Resource Attributes
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="menu-item menu-parent">
+    <a href="#">
+      Examples
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Foundation
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/queries.html">
+      Querying Examples
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/paging_queries.html">
+      Paging Queries
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Automation Requests
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/automation_request.html">
+      Create an Automation Request
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/automation_requests.html">
+      Create multiple Automation Requests
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/create_provider.html">
+      Create a Provider
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/create_provider_compound_credentials.html">
+      Create a Provider with multiple credentials
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/update_provider.html">
+      Update a Provider
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/refresh_provider.html">
+      Refresh Provider
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/delete_provider.html">
+      Delete Provider
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Provisioning Requests
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/provision_request.html">
+      Create a Provision Request
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/provision_requests.html">
+      Create multliple Provision Requests
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Service Catalogs
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/add_service_catalog.html">
+      Add a Service Catalog
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/add_service_catalogs.html">
+      Add multiple Service Catalogs
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/edit_service_catalog.html">
+      Edit a Service Catalog
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/edit_service_catalogs.html">
+      Edit Service Catalogs
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/assign_service_templates.html">
+      Assign Service Templates
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/unassign_service_templates.html">
+      Unassign Service Templates
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/delete_service_catalogs.html">
+      Delete Service Catalogs
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Service Templates
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/edit_service_template.html">
+      Edit a Service Template
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/edit_service_templates.html">
+      Edit Service Templates
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/delete_service_templates.html">
+      Delete Service Templates
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Services
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/order_service.html">
+      Order a Service
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/order_services.html">
+      Order multiple Services
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/edit_service.html">
+      Edit a Service
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/edit_service_via_patch.html">
+      Edit Service via PATCH
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/edit_service_via_put.html">
+      Edit Service via PUT
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/edit_services.html">
+      Edit Services
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/reconfigure_service.html">
+      Reconfigure Service
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/refresh_dialog_fields.html">
+      Refresh Service Template Dialog Fields
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/refresh_service_dialog_fields.html">
+      Refresh Service Dialog Fields
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/retire_service.html">
+      Retire a Service
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/retire_services.html">
+      Retire multiple Services
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/custom_action_service.html">
+      Trigger a Custom Action on a Service
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/delete_services.html">
+      Delete Services
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      VM Management
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/start_vm.html">
+      Start a VM
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/stop_vm.html">
+      Stop a VM
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/suspend_vm.html">
+      Suspend a VM
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/scan_vm.html">
+      Scan a VM
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/set_owner_vm.html">
+      Set owner of a VM
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/add_event_vm.html">
+      Add event to a VM
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/add_lifecycle_event_vm.html">
+      Add lifecycle event to a VM
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/delete_vm.html">
+      Delete a VM
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/reconfigure_vm.html">
+      Reconfigure a VM
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Tag Management
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/assign_tags.html">
+      Assign Tags
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/assign_tags_to_service_template.html">
+      Assign Tags to Service Template
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/unassign_tags.html">
+      Unassign Tags
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/unassign_tags_from_service_template.html">
+      Unassign Tags from a Service Template
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Usage Flows
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/api/examples/compliance_policy_flow.html">
+      Compliance Policy Flow
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc api_doc">
+      
+
+      <div class="doc-content">
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#tags--tagging">Tags &amp; Tagging</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#tag-management">Tag Management</a></li>
+<li class="toc-entry toc-h3"><a href="#querying-tags">Querying Tags</a></li>
+<li class="toc-entry toc-h3"><a href="#querying-tags-of-a-resource">Querying Tags of a Resource</a></li>
+<li class="toc-entry toc-h3"><a href="#assigning-tags">Assigning Tags</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#tag-specification">Tag specification</a></li>
+<li class="toc-entry toc-h4"><a href="#assigning-tags-to-a-resource">Assigning tags to a resource</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#response">Response:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h4"><a href="#unassigning-tags-from-a-resource">Unassigning tags from a resource</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#response-1">Response:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h4"><a href="#bulk-assigning-tags">Bulk Assigning Tags</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#response-2">Response:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h4"><a href="#bulk-unassigning-tags">Bulk Unassigning Tags</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#response-3">Response:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h2 id="tags--tagging">
+<a class="anchor" href="#tags--tagging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tags &amp; Tagging</h2>
+
+<ul>
+  <li>
+    <p><a href="#tag-management">Tag Management</a></p>
+  </li>
+  <li>
+    <p><a href="#querying-tags">Querying Tags</a></p>
+  </li>
+  <li>
+    <p><a href="#querying-tags-of-resources">Querying Tags of a Resource</a></p>
+  </li>
+  <li>
+    <p><a href="#assigning-tags">Assigning Tags</a></p>
+  </li>
+  <li>
+    <p><a href="#tag-specification">Tag Specification</a></p>
+  </li>
+  <li>
+    <p><a href="#assigning-tags-to-a-resource">Assigning Tags to a Resource</a></p>
+  </li>
+  <li>
+    <p><a href="#unassigning-tags-from-a-resource">Unassigning Tags from a
+Resource</a></p>
+  </li>
+  <li>
+    <p><a href="#bulk-assigning-tags">Bulk Assigning Tags</a></p>
+  </li>
+  <li>
+    <p><a href="#bulk-unassigning-tags">Bulk Unassigning Tags</a></p>
+  </li>
+</ul>
+
+<h3 id="tag-management">
+<a class="anchor" href="#tag-management" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tag Management</h3>
+
+<p>Management of Tags is provided in the following forms:</p>
+
+<ul>
+  <li>Querying of tags via the primary collection:</li>
+</ul>
+
+<!-- end list -->
+
+<pre><code class="language-data">/api/tags
+</code></pre>
+
+<ul>
+  <li>Assigning and Unassigning tags to resources via the tags
+subcollection of a resource</li>
+</ul>
+
+<!-- end list -->
+
+<pre><code class="language-data">/api/:collection/:id/tags
+</code></pre>
+
+<p>and posting <strong>assign</strong> or <strong>unassign</strong> actions to the tags
+subcollection.</p>
+
+<h3 id="querying-tags">
+<a class="anchor" href="#querying-tags" aria-hidden="true"><span class="octicon octicon-link"></span></a>Querying Tags</h3>
+
+<p>Querying all tags in the system is simply:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/tags
+</code></pre></div></div>
+
+<p>However, that only gives us the href’s of the tags:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tags"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1385</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subcount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1385</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/2"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/3"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Which is not too useful.</p>
+
+<p>Expanding the resources, does provide us with the tag name as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/tags?expand=resources
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tags"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1385</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subcount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1385</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/managed/roles/change_managers"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/managed/roles/operators"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/managed/roles/cfme_administrators"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/4"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/managed/location"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/managed/location/ny"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>For additional details on tags, the <strong>category</strong> and <strong>classification</strong>
+attributes can be queried on tags as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/tags/5?attributes=category,classification
+</code></pre></div></div>
+
+<p>Additionally, a compound attribute called <strong>categorization</strong> is provided
+to return key information from both <strong>category</strong> and <strong>classification</strong>
+of tags as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/tags/5?attributes=categorization
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/managed/location/ny"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"categorization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ny"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"location"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Location"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Location: New York"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="querying-tags-of-a-resource">
+<a class="anchor" href="#querying-tags-of-a-resource" aria-hidden="true"><span class="octicon octicon-link"></span></a>Querying Tags of a Resource</h3>
+
+<p>To find out which tags are assigned to a resource, the tags
+subcollection can be expanded for that particular resource as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/vms/320?expand=tags
+</code></pre></div></div>
+
+<p>This will provide the id, href and name of the tags:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/320"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vmware"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aab-vm1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is a test"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"raw_power_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"poweredOn"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/320/tags/81"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"81"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/managed/quota_max_cpu/4"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/320/tags/61"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/managed/cc/001"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Optionally, one can also query just the tags subcollection of the
+resource to get additional information about them like the
+categorization:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/vms/320/tags?expand=resources&amp;attributes=categorization
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tags"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1385</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subcount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/320/tags/81"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"81"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/managed/quota_max_cpu/4"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"categorization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quota_max_cpu"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quota - Max CPUs"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quota - Max CPUs: 4"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/320/tags/61"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/managed/cc/001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"categorization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cost Center 001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cost Center"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cost Center: Cost Center 001"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="assigning-tags">
+<a class="anchor" href="#assigning-tags" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assigning Tags</h3>
+
+<p>Tag management on resources can be done by POSTing <strong>assign</strong> and
+<strong>unassign</strong> actions to the tags subcollection of resources. Tags can be
+managed as subcollections of the following primary collections:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Collection</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/api/categories</td>
+    </tr>
+    <tr>
+      <td>/api/clusters</td>
+    </tr>
+    <tr>
+      <td>/api/data_stores</td>
+    </tr>
+    <tr>
+      <td>/api/generic_objects</td>
+    </tr>
+    <tr>
+      <td>/api/groups</td>
+    </tr>
+    <tr>
+      <td>/api/hosts</td>
+    </tr>
+    <tr>
+      <td>/api/lans</td>
+    </tr>
+    <tr>
+      <td>/api/providers</td>
+    </tr>
+    <tr>
+      <td>/api/resource_pools</td>
+    </tr>
+    <tr>
+      <td>/api/services</td>
+    </tr>
+    <tr>
+      <td>/api/service_templates</td>
+    </tr>
+    <tr>
+      <td>/api/templates</td>
+    </tr>
+    <tr>
+      <td>/api/tenants</td>
+    </tr>
+    <tr>
+      <td>/api/users</td>
+    </tr>
+    <tr>
+      <td>/api/vms</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="tag-specification">
+<a class="anchor" href="#tag-specification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tag specification</h4>
+
+<p>Tags can be specified using one of the following forms:</p>
+
+<p>By Tag category and name:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="s2">"finance"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>By Tag path:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"path"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"/managed/department/finance"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>By Tag href:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/10"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="assigning-tags-to-a-resource">
+<a class="anchor" href="#assigning-tags-to-a-resource" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assigning tags to a resource</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /api/vms/320/tags
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"assign"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resources"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"finance"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h5 id="response">
+<a class="anchor" href="#response" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response:</h5>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assigning Tag: category:'department' name:'finance'"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/320"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/81"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assigning Tag: category:'cc' name:'001'"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/320"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/91"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="unassigning-tags-from-a-resource">
+<a class="anchor" href="#unassigning-tags-from-a-resource" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unassigning tags from a resource</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /api/vms/320/tags
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"unassign"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resources"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"finance"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h5 id="response-1">
+<a class="anchor" href="#response-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response:</h5>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unassigning Tag: category:'department' name:'finance'"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/320"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/81"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unassigning Tag: category:'cc' name:'001'"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/320"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/91"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Additional Tag Management examples can be found on the main REST API
+Examples section.</p>
+
+<h4 id="bulk-assigning-tags">
+<a class="anchor" href="#bulk-assigning-tags" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bulk Assigning Tags</h4>
+
+<p>While the general URL for tag assignment via the subcollection as
+follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /api/vms/320/tags
+</code></pre></div></div>
+
+<p>allows one to assign multiple tags to a single resource in one call, it
+does not provide the ability to assign tags to multiple resources in one
+call.</p>
+
+<p>Bulk assignment of tags is available via the <em>assign_tags</em> action to
+the following collections:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Collection</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/api/vms</td>
+    </tr>
+    <tr>
+      <td>/api/services</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <em>assign_tags</em> action allows adding one or more tags to one or more
+resources.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /api/vms
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"assign_tags"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resources"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/11"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="nl">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"finance"</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/12"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="nl">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h5 id="response-2">
+<a class="anchor" href="#response-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response:</h5>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assigning Tag: category:'department' name:'finance'"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/11"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/81"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assigning Tag: category:'cc' name:'001'"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/vms/12"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/91"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="bulk-unassigning-tags">
+<a class="anchor" href="#bulk-unassigning-tags" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bulk Unassigning Tags</h4>
+
+<p>Tags can also be unassigned in bulk from multiple resources for the
+following collections via the <em>unassign_tags</em> action:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Collection</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/api/vms</td>
+    </tr>
+    <tr>
+      <td>/api/services</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /api/services
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"unassign_tags"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resources"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/services/5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/services/5/tags/81"</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/services/6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="nl">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h5 id="response-3">
+<a class="anchor" href="#response-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response:</h5>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unassigning Tag: category:'department' name:'finance'"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/services/5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/81"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unassigning Tag: category:'cc' name:'001'"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/services/6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/api/tags/91"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/orgs/ManageIQ/discussions">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2024 ManageIQ.
+      </span>
+      <span>
+        <a href="https://www.ibm.com/opensource/" target="_blank">
+          Sponsored by IBM, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

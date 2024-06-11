@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-c62d712a15a5ba4c8ba8ce3af6a80e7ae432d1bd2c83c7d2973c3d72a7371e97.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/managing_providers/containers_providers/red_hat_openshift_providers.html">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/quinteros/managing_providers/containers_providers/red_hat_openshift_providers">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li class="active">
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<div class="doc_menu-heading">
+  Quinteros
+</div>
+
+<ul class="menu menu-toplevel" id=ref_menu_quinteros>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Installation
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/installing_on_aws/index.html">
+      Amazon Web Services (AWS)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/installing_on_kubernetes/index.html">
+      Kubernetes
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/installing_on_ibm_cloud/index.html">
+      IBM Cloud
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/installing_on_microsoft_azure/index.html">
+      Microsoft Azure
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/installing_on_google_compute_engine/index.html">
+      Google Compute Engine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/installing_on_vmware_vsphere/index.html">
+      VMware vSphere
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/installing_on_red_hat_enterprise_linux_openstack_platform/index.html">
+      Red Hat Enterprise OpenStack Platform
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/installing_on_red_hat_virtualization/index.html">
+      Red Hat Enterprise Virtualization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/installing_on_scvmm/index.html">
+      Microsoft System Center Virtual Machine Manager (SCVMM)
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Appliances
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/appliances/backup_and_restore.html">
+      Backup and Restore
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/appliances/upgrading.html">
+      Upgrading
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Configuration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/deployment_planning_guide/index.html">
+      Deployment Planning Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/general_configuration/index.html">
+      General Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/high_availability_guide/index.html">
+      High Availability Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/appliance_hardening_guide/index.html">
+      Appliance Hardening Guide
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Administration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/monitoring_alerts_and_reporting/index.html">
+      Monitoring, Alerts, and Reporting
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/policies_and_profiles_guide/index.html">
+      Policies and Profiles Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_infrastructure_and_inventory/index.html">
+      Managing Infrastructure and Inventory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/index.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Infrastructure Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/infrastructure_providers/red_hat_virtualization_providers.html">
+      Red Hat Virtualization Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/infrastructure_providers/openstack_infrastructure_providers.html">
+      OpenStack Infrastructure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/infrastructure_providers/vmware_vcenter_providers.html">
+      VMware vCenter Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/infrastructure_providers/microsoft_scvmm_providers.html">
+      Microsoft SCVMM Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/infrastructure_providers/ibm_power_hmc_providers.html">
+      IBM Power HMC Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Configuration Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/configuration_management_providers/ibm_terraform_provider.html">
+      IBM Terraform Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/configuration_management_providers/red_hat_satellite_6.html">
+      Red Hat Satellite 6 Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Cloud Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/cloud_providers/azure_providers.html">
+      Azure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/cloud_providers/amazon_ec2_providers.html">
+      Amazon EC2 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/cloud_providers/google_compute_engine_providers.html">
+      Google Compute Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/cloud_providers/ibm_cloud_vpc_providers.html">
+      IBM Cloud VPC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/cloud_providers/ibm_power_systems_virtual_servers_providers.html">
+      IBM Power Systems Virtual Servers Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/cloud_providers/ibm_power_vc_providers.html">
+      IBM PowerVC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/cloud_providers/openstack_providers.html">
+      OpenStack Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Container Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/containers_providers/azure_kubernetes_providers.html">
+      Azure Kubernetes Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item active">
+    <a href="/docs/reference/quinteros/managing_providers/containers_providers/red_hat_openshift_providers.html">
+      Red Hat OpenShift Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/containers_providers/ibm_cloud_kubernetes_service_providers.html">
+      IBM Cloud Kubernetes Service Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/containers_providers/oracle_kubernetes_engine_providers.html">
+      Oracle Kubernetes Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/containers_providers/vmware_tanzu_providers.html">
+      VMware Tanzu Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Storage Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/storage_providers/amazon_ebs_managers.html">
+      Amazon Elastic Block Store Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/storage_providers/openstack_block_storage_managers.html">
+      OpenStack Block Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/storage_providers/openstack_object_storage_managers.html">
+      OpenStack Object Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/managing_providers/storage_providers/ibm_cloud_object_storage_managers.html">
+      IBM Cloud Object Storage Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/provisioning_virtual_machines_and_hosts/index.html">
+      Provisioning Virtual Machines and Hosts
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/scripting_actions/index.html">
+      Scripting Actions in ManageIQ
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Troubleshooting
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/troubleshooting/index.html">
+      Troubleshooting
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Authentication
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/auth/active_directory.html">
+      Active Directory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/auth/ipa_2fa.html">
+      2-Factor-Authentication with IPA
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/auth/ipa_ad_trust.html">
+      IPA/AD Trust
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/auth/ldap.html">
+      LDAP
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/auth/saml.html">
+      SAML
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/auth/openid_connect.html">
+      OpenID-Connect
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Integration
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+      AWS CloudFormation and OpenStack Heat
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/integration_with_servicenow/index.html">
+      ServiceNow
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Reference
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/capabilities_matrix/index.html">
+      Capabilities Matrix
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/api">
+      ManageIQ REST API
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/quinteros/methods_available_for_automation/index.html">
+      Methods Available for Automation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc user_doc">
+      
+
+      <div class="doc-content">
+        
+        <div class="doc-versions">
+          <span class="label">Versions: </span>
+          
+            <span>
+              <a href="/docs/reference/latest/managing_providers/containers_providers/red_hat_openshift_providers.html">
+                Latest
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span class="active" >
+              <a href="/docs/reference/quinteros/managing_providers/containers_providers/red_hat_openshift_providers.html">
+                Quinteros
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/petrosian/managing_providers/containers_providers/red_hat_openshift_providers.html">
+                Petrosian
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/oparin/managing_providers/containers_providers/red_hat_openshift_providers.html">
+                Oparin
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/najdorf/managing_providers/containers_providers/red_hat_openshift_providers.html">
+                Najdorf
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Morphy
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Lasker
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Kasparov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Jansa
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Ivanchuk
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Hammer
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Gaprindashvili
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Fine
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Euwe
+              </a>
+            </span>
+            
+          
+        </div>
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#red-hat-openshift">Red Hat OpenShift</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#obtaining-an-openshift-container-platform-management-token">Obtaining an OpenShift Container Platform Management Token</a></li>
+<li class="toc-entry toc-h2"><a href="#adding-an-openshift-container-platform-provider">Adding an OpenShift Container Platform Provider</a></li>
+<li class="toc-entry toc-h2"><a href="#enabling-openshift-cluster-metrics">Enabling OpenShift Cluster Metrics</a></li>
+</ul>
+</li>
+</ul><h1 id="red-hat-openshift">
+<a class="anchor" href="#red-hat-openshift" aria-hidden="true"><span class="octicon octicon-link"></span></a>Red Hat OpenShift</h1>
+
+<h2 id="obtaining-an-openshift-container-platform-management-token">
+<a class="anchor" href="#obtaining-an-openshift-container-platform-management-token" aria-hidden="true"><span class="octicon octicon-link"></span></a>Obtaining an OpenShift Container Platform Management Token</h2>
+
+<p>First you have to create a service-account with the proper permissions for ManageIQ.</p>
+
+<ol>
+  <li>Create a namespace for the service account
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>project_name="management-manageiq" # Pick a name for your project
+oc adm new-project $project_name --description="ManageIQ Project"
+</code></pre></div>    </div>
+  </li>
+  <li>Create a service account in that project
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>service_account_name="management-admin"
+oc create serviceaccount $service_account_name -n $project_name
+</code></pre></div>    </div>
+  </li>
+  <li>Create the cluster role
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>echo '{"apiVersion": "v1", "kind": "ClusterRole", "metadata": {"name": "management-manageiq-admin"}, "rules": [{"resources": ["pods/proxy"], "verbs": ["*"]}]}' | oc create -f -
+</code></pre></div>    </div>
+  </li>
+  <li>Apply roles and policies to the service account
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>oc policy add-role-to-user -n $project_name admin -z $service_account_name
+oc policy add-role-to-user -n $project_name management-manageiq-admin -z $service_account_name
+oc adm policy add-cluster-role-to-user cluster-reader system:serviceaccount:$project_name:$service_account_name
+oc adm policy add-scc-to-user privileged system:serviceaccount:$project_name:$service_account_name
+oc adm policy add-cluster-role-to-user self-provisioner system:serviceaccount:$project_name:$service_account_name
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><strong>Note:</strong></p>
+
+<p>See the <a href="https://docs.openshift.com/container-platform/4.5/authentication/using-rbac.html#default-roles_using-rbac">OpenShift Container Platform documentation</a>
+for a list of the default roles.</p>
+
+<p>Run the following to obtain the token needed to add an OpenShift Container Platform provider:</p>
+
+<p>Run the following to obtain the token needed to add a Red Hat OpenShift provider:</p>
+
+<ol>
+  <li>
+    <p>Obtain the <code class="language-plaintext highlighter-rouge">management</code> service account token name:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># oc describe sa -n management-infra management-admin
+...
+Tokens:  management-admin-token-0f3fh
+         management-admin-token-q7a87
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Select and describe one of the tokens to retrieve the full token
+output, replacing <code class="language-plaintext highlighter-rouge">management-admin-token-0f3fh</code> with the name of
+your token:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># oc describe secret -n management-infra management-admin-token-0f3fh
+...
+Data
+====
+token:  eyJhbGciOiJSUzI1NiI...
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="adding-an-openshift-container-platform-provider">
+<a class="anchor" href="#adding-an-openshift-container-platform-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding an OpenShift Container Platform Provider</h2>
+
+<p>After initial installation and creation of a ManageIQ
+environment, add an OpenShift Container Platform provider using the
+token obtained in
+<a href="#obtaining-an-openshift-container-platform-management-token">Obtaining an OpenShift Container Platform Management Token</a> and following the procedure below.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Compute &gt; Containers &gt; Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+click <img src="../images/1862.png" alt="Add a New Containers Provider"> (<strong>Add a New Containers Provider</strong>).</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Name</strong> for the provider.</p>
+  </li>
+  <li>
+    <p>From the <strong>Type</strong> list, select <strong>OpenShift Container Platform</strong>.</p>
+  </li>
+  <li>
+    <p>Enter the appropriate <strong>Zone</strong> for the provider. If you do not
+specify a zone, it is set to <code class="language-plaintext highlighter-rouge">default</code>.</p>
+  </li>
+  <li>
+    <p>In the <strong>Default</strong> tab, configure the following for the OpenShift
+provider:</p>
+
+    <ol>
+      <li>
+        <p>Select a <strong>Security Protocol</strong> method to specify how to
+authenticate the provider:</p>
+
+        <ul>
+          <li>
+            <p><strong>SSL</strong>: Authenticate the provider securely using a trusted
+Certificate Authority. Select this option if the provider
+has a valid SSL certificate and it is signed by a trusted
+Certificate Authority. No further configuration is required
+for this option.</p>
+          </li>
+          <li>
+            <p><strong>SSL trusting custom CA</strong>: Authenticate the provider with a
+self-signed certificate. For this option, copy your
+provider’s CA certificate to the <strong>Trusted CA
+Certificates</strong> box in PEM format.</p>
+
+            <p><strong>Note:</strong></p>
+
+            <p>You can obtain your OpenShift Container Platform provider’s
+CA certificate for all endpoints (default, metrics, alerts)
+from <code class="language-plaintext highlighter-rouge">/etc/origin/master/ca.crt</code>. Paste the output (a block
+of text starting with <code class="language-plaintext highlighter-rouge">-----BEGIN CERTIFICATE-----</code>) into
+the <strong>Trusted CA Certificates</strong> field.</p>
+          </li>
+          <li>
+            <p><strong>SSL without validation</strong>: Authenticate the provider
+insecurely (not recommended).</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Enter the <strong>Hostname</strong> (or IPv4 or IPv6 address) of the provider.</p>
+
+        <p><strong>Important:</strong></p>
+
+        <p>The <strong>Hostname</strong> must use a unique fully qualified domain name.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>API Port</strong> of the provider. The default port is
+<code class="language-plaintext highlighter-rouge">6443</code>.</p>
+      </li>
+      <li>
+        <p>Enter a token for your provider in the <strong>Token</strong> box.</p>
+
+        <p><strong>Note:</strong></p>
+
+        <p>To obtain a token for your provider, run the <code class="language-plaintext highlighter-rouge">oc get secret</code> command on your provider; see <a href="../managing_providers/index.html#obtaining-an-openshift-container-platform-management-token">Obtaining an OpenShift Container Platform Management Token</a>.</p>
+
+        <p>For example:</p>
+
+        <p># oc get secret –namespace management-infra
+management-admin-token-8ixxs –template=’’ | base64 –decode</p>
+      </li>
+      <li>
+        <p>Click <strong>Validate</strong> to confirm that ManageIQ can connect
+to the OpenShift Container Platform provider.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>In the <strong>Metrics</strong> endpoint tab optionally configure the metrics service details:</p>
+
+    <ol>
+      <li>
+        <p>Select a service type (e.g.: Prometheus) or leave disabled</p>
+      </li>
+      <li>
+        <p>Select a <strong>Security Protocol</strong> method to specify how to
+authenticate the service:</p>
+
+        <ul>
+          <li>
+            <p><strong>SSL</strong>: Authenticate the provider securely using a trusted
+Certificate Authority. Select this option if the provider
+has a valid SSL certificate and it is signed by a trusted
+Certificate Authority. No further configuration is required
+for this option.</p>
+          </li>
+          <li>
+            <p><strong>SSL trusting custom CA</strong>: Authenticate the provider with a
+self-signed certificate. For this option, copy your
+provider’s CA certificate to the <strong>Trusted CA
+Certificates</strong> box in PEM format.</p>
+          </li>
+          <li>
+            <p><strong>SSL without validation</strong>: Authenticate the provider
+insecurely using SSL. (Not recommended)</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Enter the <strong>Hostname</strong> (or IPv4 or IPv6 address) of the
+metrics service.</p>
+
+        <p>In order to find the hostname you can use the <code class="language-plaintext highlighter-rouge">oc get route</code> command.</p>
+
+        <p>You can retrieve the Prometheus route by running:</p>
+
+        <p><code class="language-plaintext highlighter-rouge">oc get route prometheus-k8s -n openshift-monitoring</code></p>
+
+        <p>Example:</p>
+        <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>oc get route prometheus-k8s -n openshift-monitoring
+NAME             HOST/PORT                                            PATH             SERVICES  PORT      TERMINATION          WILDCARD
+prometheus-k8s   prometheus-k8s-openshift-monitoring.ocp.example.com  prometheus-k8s   web       reencrypt/Redirect   None
+</code></pre></div>        </div>
+
+        <p>In this example you would use <code class="language-plaintext highlighter-rouge">prometheus-k8s-openshift-monitoring.ocp.example.com</code> as the metrics hostname.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>API Port</strong> of your metrics endpoint
+uses a non-standard port for access. The default port is <code class="language-plaintext highlighter-rouge">443</code>.</p>
+      </li>
+      <li>
+        <p>Click <strong>Validate</strong> to confirm that ManageIQ can connect
+to the metrics endpoint.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>In the <strong>Virtualization</strong> endpoint tab optionally configure the virtualization service details:</p>
+
+    <ol>
+      <li>
+        <p>Select a service type (KubeVirt) or leave disabled</p>
+      </li>
+      <li>
+        <p>Select a <strong>Security Protocol</strong> method to specify how to
+authenticate the service:</p>
+
+        <ul>
+          <li>
+            <p><strong>SSL</strong>: Authenticate the provider securely using a trusted
+Certificate Authority. Select this option if the provider
+has a valid SSL certificate and it is signed by a trusted
+Certificate Authority. No further configuration is required
+for this option.</p>
+          </li>
+          <li>
+            <p><strong>SSL trusting custom CA</strong>: Authenticate the provider with a
+self-signed certificate. For this option, copy your
+provider’s CA certificate to the <strong>Trusted CA
+Certificates</strong> box in PEM format.</p>
+          </li>
+          <li>
+            <p><strong>SSL without validation</strong>: Authenticate the provider
+insecurely using SSL. (Not recommended)</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Enter the <strong>Hostname</strong> (or IPv4 or IPv6 address) of the
+virtualization service.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>API Port</strong> of your virtualization service. The default port is <code class="language-plaintext highlighter-rouge">443</code>.</p>
+      </li>
+      <li>
+        <p>Enter a token for your provider in the <strong>Token</strong> box.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Click the <strong>Advanced</strong> tab to add image inspector settings for
+scanning container images on your provider using OpenSCAP.</p>
+
+    <p><strong>Note:</strong></p>
+
+    <ul>
+      <li>
+        <p>These settings control downloading the image inspector container
+image from the registry and obtaining the Common Vulnerabilities
+and Exposures (CVE) information (for effective scanning) via a
+proxy.</p>
+      </li>
+      <li>
+        <p>CVE URL that ManageIQ requires to be open for
+OpenSCAP scanning:
+<a href="https://www.redhat.com/security/data/metrics/ds/">https://www.redhat.com/security/data/metrics/ds/</a>. This
+information is based on the source code of OpenSCAP.</p>
+      </li>
+    </ul>
+
+    <ol>
+      <li>
+        <p>Enter the proxy information for the provider in either <strong>HTTP</strong>,
+<strong>HTTPS</strong>, or <strong>NO Proxy</strong> depending on your environment.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>Image-Inspector Repository</strong> information. For
+example, <code class="language-plaintext highlighter-rouge">openshift3/image-inspector</code>.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>Image-Inspector Registry</strong> information. For example,
+<code class="language-plaintext highlighter-rouge">registry.access.redhat.com</code>.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>Image-Inspector Tag</strong> value. A tag is a mark used to
+differentiate images in a repository, typically by the
+application version stored in the image.</p>
+      </li>
+      <li>
+        <p>Enter <code class="language-plaintext highlighter-rouge">https://www.redhat.com/security/data/metrics/ds/</code> in
+<strong>CVE location</strong>.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<p><strong>Note:</strong></p>
+
+<p>You can also set global default image-inspector settings for all
+OpenShift providers in the advanced settings menu by editing the values
+under <code class="language-plaintext highlighter-rouge">ems_kubernetes</code>, instead of setting this for each provider.</p>
+
+<p>For example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:image_inspector_registry: registry.access.redhat.com
+:image_inspector_repository: openshift3/image-inspector
+</code></pre></div></div>
+
+<h2 id="enabling-openshift-cluster-metrics">
+<a class="anchor" href="#enabling-openshift-cluster-metrics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling OpenShift Cluster Metrics</h2>
+
+<p>Use the OpenShift Cluster Metrics plug-in to collect node, pod, and container metrics into one location. This helps track usage and find common issues.</p>
+
+<ul>
+  <li>
+    <p>Configure ManageIQ to allow for all three <a href="../deployment_planning_guide/index.html#assigning-the-capacity-and-utilization-server-roles">Capacity &amp; Utilization server roles</a>.</p>
+  </li>
+  <li>
+    <p>Enable cluster metrics using the <a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/3.5/html-single/installation_and_configuration/#install-config-cluster-metrics">OpenShift Container Platform documentation</a>.</p>
+  </li>
+</ul>
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/orgs/ManageIQ/discussions">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2024 ManageIQ.
+      </span>
+      <span>
+        <a href="https://www.ibm.com/opensource/" target="_blank">
+          Sponsored by IBM, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>
