@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - Changelog from Petrosian-1 to Quinteros-1</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-c62d712a15a5ba4c8ba8ce3af6a80e7ae432d1bd2c83c7d2973c3d72a7371e97.css">
+  <link rel="canonical" href="http://manageiq.org/changelog/petrosian-1-to-quinteros-1/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/changelog/petrosian-1-to-quinteros-1/">
+      <article class="page">
+  <div class="container">
+    <header class="page-header">
+      <h1 class="page-title">Changelog from Petrosian-1 to Quinteros-1</h1>
+    </header>
+
+    <div class="page-content">
+      <h2 id="-manageiqmanageiq"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq/compare/petrosian-1...quinteros-1">ManageIQ/manageiq</a></h2>
+
+<h3 id="bug">Bug</h3>
+
+<ul>
+  <li>[QUINTEROS] Fix codename <a href="https://github.com/ManageIQ/manageiq/pull/22897">[#22897]</a></li>
+  <li>Fix DRB dequeue_method spec <a href="https://github.com/ManageIQ/manageiq/pull/22875">[#22875]</a></li>
+  <li>Fix dashboard missing chart <a href="https://github.com/ManageIQ/manageiq/pull/22872">[#22872]</a></li>
+  <li>Psych 4 won’t allow unpermitted classes by default <a href="https://github.com/ManageIQ/manageiq/pull/22861">[#22861]</a></li>
+  <li>Add zone_id to provider generator validationDependencies <a href="https://github.com/ManageIQ/manageiq/pull/22846">[#22846]</a></li>
+  <li>Separate vm store and datastore smartstate scan supports checks <a href="https://github.com/ManageIQ/manageiq/pull/22738">[#22738]</a></li>
+  <li>Use “traditional chinese” for human locale name, not Mandarin <a href="https://github.com/ManageIQ/manageiq/pull/22792">[#22792]</a></li>
+  <li>Update translations based on #22777 #22783 11/8/23 <a href="https://github.com/ManageIQ/manageiq/pull/22788">[#22788]</a></li>
+  <li>Add my_settings_view product feature for the My Settings page <a href="https://github.com/ManageIQ/manageiq/pull/22779">[#22779]</a></li>
+  <li>Add missing widget dashboard yaml strings to locale task config <a href="https://github.com/ManageIQ/manageiq/pull/22777">[#22777]</a></li>
+  <li>Change messaging-health-check to manageiq.liveness-check  <a href="https://github.com/ManageIQ/manageiq/pull/22775">[#22775]</a></li>
+  <li>Autosave the EMS’s provider to allow delegates <a href="https://github.com/ManageIQ/manageiq/pull/20318">[#20318]</a></li>
+  <li>Fix ci.yaml syntax error <a href="https://github.com/ManageIQ/manageiq/pull/22765">[#22765]</a></li>
+  <li>Fix locale update all from GitHub actions <a href="https://github.com/ManageIQ/manageiq/pull/22763">[#22763]</a></li>
+  <li>Use forked fog-google for pagination fixes <a href="https://github.com/ManageIQ/manageiq/pull/22756">[#22756]</a></li>
+  <li>pg_log changed to log in postgres 10 as default log directory <a href="https://github.com/ManageIQ/manageiq/pull/22747">[#22747]</a></li>
+  <li>Multiple users being created for the same AD account <a href="https://github.com/ManageIQ/manageiq/pull/21919">[#21919]</a></li>
+  <li>Only queue Job.check_for_evm_snapshots on zones with an active smartstate role <a href="https://github.com/ManageIQ/manageiq/pull/22742">[#22742]</a></li>
+  <li>Fixed physical storage table missing translation <a href="https://github.com/ManageIQ/manageiq/pull/22737">[#22737]</a></li>
+  <li>Add dequeue method check to add_queue <a href="https://github.com/ManageIQ/manageiq/pull/22728">[#22728]</a></li>
+  <li>Messaging SASL mechanism updates <a href="https://github.com/ManageIQ/manageiq/pull/22692">[#22692]</a></li>
+  <li>Fix MiqRequestTask#options configuration_script_id <a href="https://github.com/ManageIQ/manageiq/pull/22722">[#22722]</a></li>
+  <li>Drop dependent destroy <a href="https://github.com/ManageIQ/manageiq/pull/22669">[#22669]</a></li>
+  <li>Add manageiq user to allowed_uids for sssd <a href="https://github.com/ManageIQ/manageiq/pull/22715">[#22715]</a></li>
+  <li>Add validation for configuration script payload credentials <a href="https://github.com/ManageIQ/manageiq/pull/22690">[#22690]</a></li>
+  <li>Drop dependent =&gt; destroy on through associations <a href="https://github.com/ManageIQ/manageiq/pull/22694">[#22694]</a></li>
+  <li>Add APPLICATION_DOMAIN to pod environment <a href="https://github.com/ManageIQ/manageiq/pull/22697">[#22697]</a></li>
+  <li>Fix api_system_auth_token missing MiqServer <a href="https://github.com/ManageIQ/manageiq/pull/22664">[#22664]</a></li>
+  <li>Skip processing of duplicate events <a href="https://github.com/ManageIQ/manageiq/pull/22689">[#22689]</a></li>
+  <li>Let bundler do the require <a href="https://github.com/ManageIQ/manageiq/pull/22682">[#22682]</a></li>
+  <li>Fix MiqRegion#remote_*_url returning invalid URL on podified <a href="https://github.com/ManageIQ/manageiq/pull/22668">[#22668]</a></li>
+  <li>Ensure provider destroy requeue has long timeout <a href="https://github.com/ManageIQ/manageiq/pull/22660">[#22660]</a></li>
+  <li>Prevent more than 1 event_handler from running <a href="https://github.com/ManageIQ/manageiq/pull/22655">[#22655]</a></li>
+  <li>fix GuestDevice#child_device references <a href="https://github.com/ManageIQ/manageiq/pull/22670">[#22670]</a></li>
+  <li>Disallow timecop 0.9.7 due to buggy release <a href="https://github.com/ManageIQ/manageiq/pull/22659">[#22659]</a></li>
+  <li>Add workflow_dispatch to generator ci.yaml <a href="https://github.com/ManageIQ/manageiq/pull/22653">[#22653]</a></li>
+  <li>Keep archived out of VimPerformanceState <a href="https://github.com/ManageIQ/manageiq/pull/22585">[#22585]</a></li>
+  <li>Change Perf capture timer to medium priority <a href="https://github.com/ManageIQ/manageiq/pull/22652">[#22652]</a></li>
+  <li>Shorten the query for pre-loading VimPerformanceStates <a href="https://github.com/ManageIQ/manageiq/pull/22648">[#22648]</a></li>
+  <li>Fix Workflows Service Entrypoint arguments <a href="https://github.com/ManageIQ/manageiq/pull/22639">[#22639]</a></li>
+  <li>Fix undefined method reject! in allowed_storages <a href="https://github.com/ManageIQ/manageiq/pull/22636">[#22636]</a></li>
+  <li>Upgrade i18n version <a href="https://github.com/ManageIQ/manageiq/pull/22550">[#22550]</a></li>
+  <li>Filter storages in the database rather than in ruby. <a href="https://github.com/ManageIQ/manageiq/pull/22625">[#22625]</a></li>
+  <li>Fix migrations being run from a plugin <a href="https://github.com/ManageIQ/manageiq/pull/22626">[#22626]</a></li>
+  <li>Precache rollup values <a href="https://github.com/ManageIQ/manageiq/pull/22604">[#22604]</a></li>
+  <li>MiqUserRole restriction_type method fixup (Separate role access restrictions for catalog items) <a href="https://github.com/ManageIQ/manageiq/pull/22613">[#22613]</a></li>
+  <li>Fix workflows operations queued on embedded_ansible <a href="https://github.com/ManageIQ/manageiq/pull/22614">[#22614]</a></li>
+  <li>Fix Authentication.build_credential_types <a href="https://github.com/ManageIQ/manageiq/pull/22598">[#22598]</a></li>
+  <li>Fix EmbeddedAnsible ScmCredential parent class <a href="https://github.com/ManageIQ/manageiq/pull/22577">[#22577]</a></li>
+  <li>Add missing tooltips for Group button <a href="https://github.com/ManageIQ/manageiq/pull/22572">[#22572]</a></li>
+  <li>Don’t instantiate queue records on deleting a zone  - Fix UI deletion of zone with many rows growing memory beyond limits <a href="https://github.com/ManageIQ/manageiq/pull/22569">[#22569]</a></li>
+  <li>Quiesce before raising ‘stop’ event and ignore any exceptions <a href="https://github.com/ManageIQ/manageiq/pull/22566">[#22566]</a></li>
+  <li>Fix normal priority reports not being run in reporting workers <a href="https://github.com/ManageIQ/manageiq/pull/22563">[#22563]</a></li>
+  <li>fix test by giving metrics endpoint to metrics capture ems <a href="https://github.com/ManageIQ/manageiq/pull/22567">[#22567]</a></li>
+  <li>Check if an EMS is enabled before <code class="language-plaintext highlighter-rouge">perf_capture_*</code> <a href="https://github.com/ManageIQ/manageiq/pull/22564">[#22564]</a></li>
+  <li>Fix Data/X-Axis Display Issue in Performance Charts <a href="https://github.com/ManageIQ/manageiq/pull/22534">[#22534]</a></li>
+  <li>Remove N+1 from ContainerNode <a href="https://github.com/ManageIQ/manageiq/pull/22559">[#22559]</a></li>
+  <li>Unlock manageiq-style gem <a href="https://github.com/ManageIQ/manageiq/pull/22560">[#22560]</a></li>
+  <li>Update some translation ICT after 0601 <a href="https://github.com/ManageIQ/manageiq/pull/22555">[#22555]</a></li>
+  <li>Fix some deliver_to_automate method overries not accepting any args <a href="https://github.com/ManageIQ/manageiq/pull/22552">[#22552]</a></li>
+  <li>Fix specs to be relative in time back to avoid changes in the result  <a href="https://github.com/ManageIQ/manageiq/pull/22541">[#22541]</a></li>
+  <li>Make container class’ event_stream_filters match event_where_clause for ems_events <a href="https://github.com/ManageIQ/manageiq/pull/22388">[#22388]</a></li>
+  <li>Fix cloud provision quota memory and cpu counting <a href="https://github.com/ManageIQ/manageiq/pull/22517">[#22517]</a></li>
+</ul>
+
+<h3 id="enhancement">Enhancement</h3>
+
+<ul>
+  <li>Avoid tabnapping exploits for target=”_blank” <a href="https://github.com/ManageIQ/manageiq/pull/22881">[#22881]</a></li>
+  <li>Add tenancy scoping to Switches <a href="https://github.com/ManageIQ/manageiq/pull/22843">[#22843]</a></li>
+  <li>Add New Product Feature to See Request Logs <a href="https://github.com/ManageIQ/manageiq/pull/22701">[#22701]</a></li>
+  <li>FixAuth for ConfigurationScript#credentials <a href="https://github.com/ManageIQ/manageiq/pull/22824">[#22824]</a></li>
+  <li>Re-revert enforce kafka changes <a href="https://github.com/ManageIQ/manageiq/pull/22799">[#22799]</a></li>
+  <li>There can be only one autoloader: zeitwerk <a href="https://github.com/ManageIQ/manageiq/pull/22801">[#22801]</a></li>
+  <li>Mount messaging cert if root not present <a href="https://github.com/ManageIQ/manageiq/pull/22773">[#22773]</a></li>
+  <li>Fix dashboard accessibility issues <a href="https://github.com/ManageIQ/manageiq/pull/22807">[#22807]</a></li>
+  <li>Seed an initial service catalog <a href="https://github.com/ManageIQ/manageiq/pull/22509">[#22509]</a></li>
+  <li>Mark Strings in Request Details for Translation <a href="https://github.com/ManageIQ/manageiq/pull/22506">[#22506]</a></li>
+  <li>Change ems refresh task complete messaging <a href="https://github.com/ManageIQ/manageiq/pull/22776">[#22776]</a></li>
+  <li>Dynamically build worker_cmdline for non-rails workers <a href="https://github.com/ManageIQ/manageiq/pull/22236">[#22236]</a></li>
+  <li>Update test for Ruby 3.1 compatibility <a href="https://github.com/ManageIQ/manageiq/pull/22767">[#22767]</a></li>
+  <li>Add deep delete functionality <a href="https://github.com/ManageIQ/manageiq/pull/22674">[#22674]</a></li>
+  <li>Use named arguments for psych 4 support <a href="https://github.com/ManageIQ/manageiq/pull/22766">[#22766]</a></li>
+  <li>Add Node Affinity arch selector based on the affinity of the orchestrator <a href="https://github.com/ManageIQ/manageiq/pull/22757">[#22757]</a></li>
+  <li>Link AuthKeyPair with an EMS <a href="https://github.com/ManageIQ/manageiq/pull/22735">[#22735]</a></li>
+  <li>Use type when defining a deprecated attribute <a href="https://github.com/ManageIQ/manageiq/pull/22040">[#22040]</a></li>
+  <li>Set AUTOMATION_JOB_SERVICE_ACCOUNT env var for the automation worker <a href="https://github.com/ManageIQ/manageiq/pull/22740">[#22740]</a></li>
+  <li>Set configuration_script_id in MiqRequestTask#options <a href="https://github.com/ManageIQ/manageiq/pull/22714">[#22714]</a></li>
+  <li>Add an AutomationWorker to orchestrate workflows/playbooks <a href="https://github.com/ManageIQ/manageiq/pull/22710">[#22710]</a></li>
+  <li>Add new Workflow Credential Mapping Feature <a href="https://github.com/ManageIQ/manageiq/pull/22685">[#22685]</a></li>
+  <li>Zeitwerk <a href="https://github.com/ManageIQ/manageiq/pull/22488">[#22488]</a></li>
+  <li>introduce Chargeback group_by date-first <a href="https://github.com/ManageIQ/manageiq/pull/22475">[#22475]</a></li>
+  <li>Update English Translations 2023-07-24T18:11:37Z <a href="https://github.com/ManageIQ/manageiq/pull/22621">[#22621]</a></li>
+  <li>Reload UI menu when Settings.prototype changes <a href="https://github.com/ManageIQ/manageiq/pull/22646">[#22646]</a></li>
+  <li>VimPerformanceState#vim_performance_state_for_ts optimizations <a href="https://github.com/ManageIQ/manageiq/pull/22611">[#22611]</a></li>
+  <li>validate format for SettingsChange#key <a href="https://github.com/ManageIQ/manageiq/pull/22624">[#22624]</a></li>
+  <li>externalizing GRAPH_MAX_COUNT to settings.yaml <a href="https://github.com/ManageIQ/manageiq/pull/22632">[#22632]</a></li>
+  <li>Change plugin setup to more closely match core setup <a href="https://github.com/ManageIQ/manageiq/pull/22627">[#22627]</a></li>
+  <li>Allow ConfigurationScripts to be used for ServiceTemplateProvisionTasks <a href="https://github.com/ManageIQ/manageiq/pull/22511">[#22511]</a></li>
+  <li>Translations for 2023-07-11 English po file updated #22543 <a href="https://github.com/ManageIQ/manageiq/pull/22623">[#22623]</a></li>
+  <li>Pre-zeitwerk - Add inflections and acronyms <a href="https://github.com/ManageIQ/manageiq/pull/22620">[#22620]</a></li>
+  <li>Add docker and podman as known commands <a href="https://github.com/ManageIQ/manageiq/pull/22603">[#22603]</a></li>
+  <li>Enable notifier role by default <a href="https://github.com/ManageIQ/manageiq/pull/22587">[#22587]</a></li>
+  <li>Allow <code class="language-plaintext highlighter-rouge">supports?(feature)</code> to work without requiring <code class="language-plaintext highlighter-rouge">supports_not</code> <a href="https://github.com/ManageIQ/manageiq/pull/22578">[#22578]</a></li>
+  <li>Added Workflow Credentials to ./spec/factories/authentication.rb <a href="https://github.com/ManageIQ/manageiq/pull/22612">[#22612]</a></li>
+  <li>Specs for Vim Performance States <a href="https://github.com/ManageIQ/manageiq/pull/22607">[#22607]</a></li>
+  <li>VimPerformanceState#purge_timer for old records <a href="https://github.com/ManageIQ/manageiq/pull/22605">[#22605]</a></li>
+  <li>Added vm reload features <a href="https://github.com/ManageIQ/manageiq/pull/22602">[#22602]</a></li>
+  <li>Separate role access restrictions for catalog items <a href="https://github.com/ManageIQ/manageiq/pull/22573">[#22573]</a></li>
+  <li>Allow <code class="language-plaintext highlighter-rouge">ResourceAction#fqname=nil</code> to clear <code class="language-plaintext highlighter-rouge">ae_*</code> <a href="https://github.com/ManageIQ/manageiq/pull/22600">[#22600]</a></li>
+  <li>Set associations during targeted refresh for VMs and MiqTemplate <a href="https://github.com/ManageIQ/manageiq/pull/22588">[#22588]</a></li>
+  <li>Updated Titles in Embedded Workflow Pages <a href="https://github.com/ManageIQ/manageiq/pull/22586">[#22586]</a></li>
+  <li>Create workflow factories <a href="https://github.com/ManageIQ/manageiq/pull/22584">[#22584]</a></li>
+  <li>Add a default params_to_attributes for EmbeddedAutomationManager Authentications <a href="https://github.com/ManageIQ/manageiq/pull/22570">[#22570]</a></li>
+  <li>Add real execution specs for ansible-runner <a href="https://github.com/ManageIQ/manageiq/pull/22522">[#22522]</a></li>
+  <li>Use namespaced gem require instead of hyphenated name <a href="https://github.com/ManageIQ/manageiq/pull/22548">[#22548]</a></li>
+  <li>Move ScmCredential up from EmbeddedAnsible to EmbeddedAutomationManager <a href="https://github.com/ManageIQ/manageiq/pull/22549">[#22549]</a></li>
+  <li>Use AS::Dependencies interlock with classic autoloader <a href="https://github.com/ManageIQ/manageiq/pull/22539">[#22539]</a></li>
+  <li>Pass zone to workflow run from ResourceAction <a href="https://github.com/ManageIQ/manageiq/pull/22546">[#22546]</a></li>
+  <li>Move MiqRequestTask entrypoint to <code class="language-plaintext highlighter-rouge">#deliver_queue</code> <a href="https://github.com/ManageIQ/manageiq/pull/22544">[#22544]</a></li>
+  <li>Add arm64-darwin to generate_lockfile <a href="https://github.com/ManageIQ/manageiq/pull/22536">[#22536]</a></li>
+  <li>Adding relative date formatting option for report generation <a href="https://github.com/ManageIQ/manageiq/pull/22426">[#22426]</a></li>
+  <li>MiqExpression::Target.parse returns null object to simplify callers <a href="https://github.com/ManageIQ/manageiq/pull/22519">[#22519]</a></li>
+</ul>
+
+<h3 id="other">Other</h3>
+
+<ul>
+  <li>[QUINTEROS] Bump appliance_console to 8.1 in Gemfile.lock.release <a href="https://github.com/ManageIQ/manageiq/pull/22890">[#22890]</a></li>
+  <li>Bump appliance_console minimum to 8.1.0 <a href="https://github.com/ManageIQ/manageiq/pull/22889">[#22889]</a></li>
+  <li>[QUINTEROS] Bump nokogiri to 1.16.2 <a href="https://github.com/ManageIQ/manageiq/pull/22880">[#22880]</a></li>
+  <li>Clear messaging_client between specs <a href="https://github.com/ManageIQ/manageiq/pull/22876">[#22876]</a></li>
+  <li>[QUINTEROS] Bump floe to v0.7.1 in lockfile <a href="https://github.com/ManageIQ/manageiq/pull/22868">[#22868]</a></li>
+  <li>BinaryBlob was changed in #22861 do this check, so use it <a href="https://github.com/ManageIQ/manageiq/pull/22866">[#22866]</a></li>
+  <li>Bump puma to address CVE-2024-21647 <a href="https://github.com/ManageIQ/manageiq/pull/22840">[#22840]</a></li>
+  <li>Updated translations based on English changes from core 22789 <a href="https://github.com/ManageIQ/manageiq/pull/22834">[#22834]</a></li>
+  <li>[QUINTEROS] Bump lockfile after backport of #22799 <a href="https://github.com/ManageIQ/manageiq/pull/22826">[#22826]</a></li>
+  <li>Update English Translations 2023-12-26T17:22:29Z <a href="https://github.com/ManageIQ/manageiq/pull/22789">[#22789]</a></li>
+  <li>[QUINTEROS] Bump lockfile for quinteros branch <a href="https://github.com/ManageIQ/manageiq/pull/22825">[#22825]</a></li>
+  <li>Bump manageiq-messaging to 1.4.1 <a href="https://github.com/ManageIQ/manageiq/pull/22822">[#22822]</a></li>
+  <li>[QUINTEROS] Bump Gemfile.lock.release after backport of #22814 <a href="https://github.com/ManageIQ/manageiq/pull/22823">[#22823]</a></li>
+  <li>Bump manageiq-loggers to v1.1.1 <a href="https://github.com/ManageIQ/manageiq/pull/22814">[#22814]</a></li>
+  <li>Run apt-get update before install in bin/before_install <a href="https://github.com/ManageIQ/manageiq/pull/22809">[#22809]</a></li>
+  <li>Drop fog-google from manageiq.rubygems.org <a href="https://github.com/ManageIQ/manageiq/pull/22800">[#22800]</a></li>
+  <li>Remove default views feature <a href="https://github.com/ManageIQ/manageiq/pull/22797">[#22797]</a></li>
+  <li>Update yarn to stable v4.0.2 <a href="https://github.com/ManageIQ/manageiq/pull/22791">[#22791]</a></li>
+  <li>Update English Translations 2023-11-08T18:59:09Z <a href="https://github.com/ManageIQ/manageiq/pull/22783">[#22783]</a></li>
+  <li>rbac simplify rbac_base_class <a href="https://github.com/ManageIQ/manageiq/pull/22784">[#22784]</a></li>
+  <li>Add awesome_spawn gem directly <a href="https://github.com/ManageIQ/manageiq/pull/22782">[#22782]</a></li>
+  <li>Update translations from 10/26 English catalog <a href="https://github.com/ManageIQ/manageiq/pull/22781">[#22781]</a></li>
+  <li>Fix Build: handle awesome spawn update <a href="https://github.com/ManageIQ/manageiq/pull/22772">[#22772]</a></li>
+  <li>Remove unnecessary supports_not <a href="https://github.com/ManageIQ/manageiq/pull/22751">[#22751]</a></li>
+  <li>Change the ci.yaml to be more consistent with YAML.load/dump <a href="https://github.com/ManageIQ/manageiq/pull/22769">[#22769]</a></li>
+  <li>Update English Translations 2023-10-26T20:23:23Z <a href="https://github.com/ManageIQ/manageiq/pull/22770">[#22770]</a></li>
+  <li>Drop Ruby 2.7 support <a href="https://github.com/ManageIQ/manageiq/pull/22768">[#22768]</a></li>
+  <li>[QUINTEROS] Update lockfile after merge of #22761 <a href="https://github.com/ManageIQ/manageiq/pull/22764">[#22764]</a></li>
+  <li>upgrade gems for ruby 3.0.x security issues <a href="https://github.com/ManageIQ/manageiq/pull/22761">[#22761]</a></li>
+  <li>Rebuild Gemfile.lock.release after merge of master into quinteros <a href="https://github.com/ManageIQ/manageiq/pull/22760">[#22760]</a></li>
+  <li>fix specs for Virtual attributes update <a href="https://github.com/ManageIQ/manageiq/pull/22758">[#22758]</a></li>
+  <li>Change URL for the OpenSSF Best Practices badge to the current one <a href="https://github.com/ManageIQ/manageiq/pull/22755">[#22755]</a></li>
+  <li>Drop tools/miqssh <a href="https://github.com/ManageIQ/manageiq/pull/22501">[#22501]</a></li>
+  <li>Lock down psych to pre-4.0.0 versions <a href="https://github.com/ManageIQ/manageiq/pull/22727">[#22727]</a></li>
+  <li>Change plugin generator to create zeitwerk compliant files <a href="https://github.com/ManageIQ/manageiq/pull/22725">[#22725]</a></li>
+  <li>[QUINTEROS] Bump manageiq-messaging to 1.4.0 <a href="https://github.com/ManageIQ/manageiq/pull/22724">[#22724]</a></li>
+  <li>Add shared examples for EMS#pause! and #resume! <a href="https://github.com/ManageIQ/manageiq/pull/22716">[#22716]</a></li>
+  <li>[test] For Rbac tests, use User.with_user over setting the current_user <a href="https://github.com/ManageIQ/manageiq/pull/22712">[#22712]</a></li>
+  <li>comment that default tenant access strategy of nil means tenant only <a href="https://github.com/ManageIQ/manageiq/pull/22711">[#22711]</a></li>
+  <li>[QUINTEROS] Bump fog-openstack, rbvmomi2, and floe in Gemfile.lock.release <a href="https://github.com/ManageIQ/manageiq/pull/22717">[#22717]</a></li>
+  <li>Upgrade to yarn 4.0.0-rc.51 for the plugin generator <a href="https://github.com/ManageIQ/manageiq/pull/22707">[#22707]</a></li>
+  <li>[QUINTEROS] Bump Rails to 6.1.7.6 for CVEs <a href="https://github.com/ManageIQ/manageiq/pull/22709">[#22709]</a></li>
+  <li>Add purging of ems’s relationships in async batches <a href="https://github.com/ManageIQ/manageiq/pull/22691">[#22691]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq/pull/22705">[#22705]</a></li>
+  <li>Ruby 3.1 - net/ftp was moved out of standard library to a gem in ruby 3.1 <a href="https://github.com/ManageIQ/manageiq/pull/22702">[#22702]</a></li>
+  <li>Drop Ems destroy callback <a href="https://github.com/ManageIQ/manageiq/pull/22695">[#22695]</a></li>
+  <li>Delete the container_manager reconnect_block <a href="https://github.com/ManageIQ/manageiq/pull/22688">[#22688]</a></li>
+  <li>Add missing benchmark around rollup to parents <a href="https://github.com/ManageIQ/manageiq/pull/22687">[#22687]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq/pull/22679">[#22679]</a></li>
+  <li>[QUINTEROS]  Lock the release branch to test with ruby 3.0 / Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq/pull/22677">[#22677]</a></li>
+  <li>Upgrade puma to 6.x <a href="https://github.com/ManageIQ/manageiq/pull/22672">[#22672]</a></li>
+  <li>[QUINTEROS] Quinteros lock timecop 0.9.8 after #22659 <a href="https://github.com/ManageIQ/manageiq/pull/22676">[#22676]</a></li>
+  <li>Translations for 2023-07-24 English po file updated (#22621) <a href="https://github.com/ManageIQ/manageiq/pull/22654">[#22654]</a></li>
+  <li>Metric::Rollup - simplify column declarations <a href="https://github.com/ManageIQ/manageiq/pull/22608">[#22608]</a></li>
+  <li>Use Arel helper methods to generate arel <a href="https://github.com/ManageIQ/manageiq/pull/22581">[#22581]</a></li>
+  <li>Add Switch#ext_management_system <a href="https://github.com/ManageIQ/manageiq/pull/22645">[#22645]</a></li>
+  <li>Vim performance state time interval <a href="https://github.com/ManageIQ/manageiq/pull/22606">[#22606]</a></li>
+  <li>VimPerformanceState do not bring back archived records <a href="https://github.com/ManageIQ/manageiq/pull/22589">[#22589]</a></li>
+  <li>Add import specs <a href="https://github.com/ManageIQ/manageiq/pull/22637">[#22637]</a></li>
+  <li>Add methods for env vars in ManageIQ::Environment <a href="https://github.com/ManageIQ/manageiq/pull/22628">[#22628]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq/pull/22635">[#22635]</a></li>
+  <li>add miqExpression::Target equality <a href="https://github.com/ManageIQ/manageiq/pull/22615">[#22615]</a></li>
+  <li>Remove ContainerGroup#old_container_project_id <a href="https://github.com/ManageIQ/manageiq/pull/22610">[#22610]</a></li>
+  <li>Precache rollup values <a href="https://github.com/ManageIQ/manageiq/pull/22594">[#22594]</a></li>
+  <li>Remove User#unlock_queue use of put_or_update <a href="https://github.com/ManageIQ/manageiq/pull/22592">[#22592]</a></li>
+  <li>Bump appliance_console for IPA/certmonger principal name fix <a href="https://github.com/ManageIQ/manageiq/pull/22595">[#22595]</a></li>
+  <li>Upgrade Rails to 6.1.7.4 for CVE-2023-28362 <a href="https://github.com/ManageIQ/manageiq/pull/22590">[#22590]</a></li>
+  <li>Only load performance states for the records of interest  <a href="https://github.com/ManageIQ/manageiq/pull/22579">[#22579]</a></li>
+  <li>remove extra vim_performance_state finders <a href="https://github.com/ManageIQ/manageiq/pull/22580">[#22580]</a></li>
+  <li>allow container nodes to be created with hardware <a href="https://github.com/ManageIQ/manageiq/pull/22565">[#22565]</a></li>
+  <li>Simulate queue order <a href="https://github.com/ManageIQ/manageiq/pull/22561">[#22561]</a></li>
+  <li>peg i18n gem to 1.13 <a href="https://github.com/ManageIQ/manageiq/pull/22545">[#22545]</a></li>
+  <li>add protected dialog_field factory <a href="https://github.com/ManageIQ/manageiq/pull/22530">[#22530]</a></li>
+  <li>Perf capture minor changes for testing <a href="https://github.com/ManageIQ/manageiq/pull/22287">[#22287]</a></li>
+  <li>Set init.defaultBranch for specs <a href="https://github.com/ManageIQ/manageiq/pull/22551">[#22551]</a></li>
+  <li>Remove if AUTOMATE_DRIVES from service_template_provision_task <a href="https://github.com/ManageIQ/manageiq/pull/22540">[#22540]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqamazon_ssa_support"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/amazon_ssa_support">ManageIQ/amazon_ssa_support</a></h2>
+
+<h3 id="bug-1">Bug</h3>
+
+<ul>
+  <li>Fix name error loading gem-pending files without the zeitwerk loader <a href="https://github.com/ManageIQ/amazon_ssa_support/pull/106">[#106]</a></li>
+</ul>
+
+<h3 id="enhancement-1">Enhancement</h3>
+
+<ul>
+  <li>Use namespaced gem require instead of hyphenated name <a href="https://github.com/ManageIQ/amazon_ssa_support/pull/96">[#96]</a></li>
+</ul>
+
+<h3 id="other-1">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/amazon_ssa_support/pull/105">[#105]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/amazon_ssa_support/pull/104">[#104]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/amazon_ssa_support/pull/103">[#103]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/amazon_ssa_support/pull/102">[#102]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/amazon_ssa_support/pull/100">[#100]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/amazon_ssa_support/pull/98">[#98]</a></li>
+  <li>Allow workflow_dispatch GHA event <a href="https://github.com/ManageIQ/amazon_ssa_support/pull/97">[#97]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-api"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-api/compare/petrosian-1...quinteros-1">ManageIQ/manageiq-api</a></h2>
+
+<h3 id="bug-2">Bug</h3>
+
+<ul>
+  <li>Add stub_supports/supports_not for VM Scan specs <a href="https://github.com/ManageIQ/manageiq-api/pull/1245">[#1245]</a></li>
+  <li>Allow the user to list and see themselves even without rbac_user_show <a href="https://github.com/ManageIQ/manageiq-api/pull/1230">[#1230]</a></li>
+  <li>Reject invalid script_payload credential_fields <a href="https://github.com/ManageIQ/manageiq-api/pull/1241">[#1241]</a></li>
+  <li>Allow configuration_script_payloads#credentials to be shown <a href="https://github.com/ManageIQ/manageiq-api/pull/1239">[#1239]</a></li>
+</ul>
+
+<h3 id="enhancement-2">Enhancement</h3>
+
+<ul>
+  <li>loading is not needed with zeitwerk autoloader <a href="https://github.com/ManageIQ/manageiq-api/pull/1243">[#1243]</a></li>
+  <li>Add support for edit configuration_script_payloads <a href="https://github.com/ManageIQ/manageiq-api/pull/1231">[#1231]</a></li>
+</ul>
+
+<h3 id="other-2">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-api/pull/1242">[#1242]</a></li>
+  <li>Drop lifecycle_event model <a href="https://github.com/ManageIQ/manageiq-api/pull/1232">[#1232]</a></li>
+  <li>Filter uses a regular expression <a href="https://github.com/ManageIQ/manageiq-api/pull/1233">[#1233]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-api/pull/1240">[#1240]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-api/pull/1237">[#1237]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 / Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-api/pull/1236">[#1236]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-api/pull/1234">[#1234]</a></li>
+  <li>add test to document how to pass parameters into service template orders <a href="https://github.com/ManageIQ/manageiq-api/pull/1225">[#1225]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-appliance"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-appliance">ManageIQ/manageiq-appliance</a></h2>
+
+<h3 id="bug-3">Bug</h3>
+
+<ul>
+  <li>pg_log changed to log in postgres 10 as default log directory <a href="https://github.com/ManageIQ/manageiq-appliance/pull/377">[#377]</a></li>
+</ul>
+
+<h3 id="enhancement-3">Enhancement</h3>
+
+<ul>
+  <li>Initialize Kafka topics <a href="https://github.com/ManageIQ/manageiq-appliance/pull/378">[#378]</a></li>
+  <li>Disable old SSL Protocols &lt; TLSv1.2 <a href="https://github.com/ManageIQ/manageiq-appliance/pull/305">[#305]</a></li>
+</ul>
+
+<h3 id="other-3">Other</h3>
+
+<ul>
+  <li>dropping miq_ldap <a href="https://github.com/ManageIQ/manageiq-appliance/pull/374">[#374]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-appliance-build"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-appliance-build">ManageIQ/manageiq-appliance-build</a></h2>
+
+<h3 id="bug-4">Bug</h3>
+
+<ul>
+  <li>[quinteros] Revert “Changes after new branch quinteros” <a href="https://github.com/ManageIQ/manageiq-appliance-build/pull/567">[#567]</a></li>
+  <li>Fully qualify the docker image <a href="https://github.com/ManageIQ/manageiq-appliance-build/pull/555">[#555]</a></li>
+  <li>Fix issue when newer json gem is not present <a href="https://github.com/ManageIQ/manageiq-appliance-build/pull/552">[#552]</a></li>
+</ul>
+
+<h3 id="enhancement-4">Enhancement</h3>
+
+<ul>
+  <li>Schedule a weekly appliance build on Sundays <a href="https://github.com/ManageIQ/manageiq-appliance-build/pull/554">[#554]</a></li>
+  <li>Split appliance build jobs and run in parallel <a href="https://github.com/ManageIQ/manageiq-appliance-build/pull/551">[#551]</a></li>
+</ul>
+
+<h3 id="other-4">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-appliance-build/pull/558">[#558]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-appliance-build/pull/557">[#557]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-appliance-build/pull/556">[#556]</a></li>
+  <li>Allow workflow_dispatch GHA event <a href="https://github.com/ManageIQ/manageiq-appliance-build/pull/550">[#550]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-automation_engine"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-automation_engine">ManageIQ/manageiq-automation_engine</a></h2>
+
+<h3 id="bug-5">Bug</h3>
+
+<ul>
+  <li>Use load when loading static service models <a href="https://github.com/ManageIQ/manageiq-automation_engine/pull/536">[#536]</a></li>
+</ul>
+
+<h3 id="enhancement-5">Enhancement</h3>
+
+<ul>
+  <li>permit_concurrent_loads is not needed with zeitwerk autoloader <a href="https://github.com/ManageIQ/manageiq-automation_engine/pull/537">[#537]</a></li>
+  <li>Psych4 support <a href="https://github.com/ManageIQ/manageiq-automation_engine/pull/535">[#535]</a></li>
+</ul>
+
+<h3 id="other-5">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-automation_engine/pull/534">[#534]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-automation_engine/pull/533">[#533]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-automation_engine/pull/531">[#531]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 / Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-automation_engine/pull/530">[#530]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-automation_engine/pull/528">[#528]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-consumption"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-consumption">ManageIQ/manageiq-consumption</a></h2>
+
+<h3 id="other-6">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-consumption/pull/212">[#212]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-consumption/pull/211">[#211]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-consumption/pull/210">[#210]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-consumption/pull/209">[#209]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-consumption/pull/208">[#208]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-consumption/pull/207">[#207]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-content"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-content/compare/petrosian-1...quinteros-1">ManageIQ/manageiq-content</a></h2>
+
+<h3 id="other-7">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-content/pull/739">[#739]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-content/pull/738">[#738]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-content/pull/736">[#736]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-content/pull/735">[#735]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-content/pull/734">[#734]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-content/pull/733">[#733]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-decorators"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-decorators">ManageIQ/manageiq-decorators</a></h2>
+
+<h3 id="enhancement-6">Enhancement</h3>
+
+<ul>
+  <li>Add icon for workflows <a href="https://github.com/ManageIQ/manageiq-decorators/pull/96">[#96]</a></li>
+</ul>
+
+<h3 id="other-8">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-decorators/pull/97">[#97]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-decorators/pull/95">[#95]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-decorators/pull/94">[#94]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-decorators/pull/93">[#93]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-decorators/pull/92">[#92]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-decorators/pull/91">[#91]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-documentation"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-documentation">ManageIQ/manageiq-documentation</a></h2>
+
+<h3 id="bug-6">Bug</h3>
+
+<ul>
+  <li>screengrabs diff location btw MIQ &amp; IBM Docs embedded_workflows.md <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1768">[#1768]</a></li>
+  <li>Fix capabilities matrix <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1765">[#1765]</a></li>
+  <li>Add CIC to provider section of capabilities matrix <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1764">[#1764]</a></li>
+  <li>Add procedure to specify docker pull secret for embedded workflow <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1760">[#1760]</a></li>
+  <li>Fix appliance backup and restore numbered lists <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1758">[#1758]</a></li>
+  <li>pg_log changed to log in postgres 10 as default log directory <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1754">[#1754]</a></li>
+  <li>Fix remote-console cert keys <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1747">[#1747]</a></li>
+  <li>Add manageiq user as allowed uid to the sssd.conf documentation <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1743">[#1743]</a></li>
+  <li>Add back the internal database configuration docs <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1689">[#1689]</a></li>
+  <li>Fix missing method v2_key <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1734">[#1734]</a></li>
+  <li>Fix navigation references to Embedded Automate <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1732">[#1732]</a></li>
+</ul>
+
+<h3 id="enhancement-7">Enhancement</h3>
+
+<ul>
+  <li>Revert #1780 and specify adding hostname to /etc/hosts <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1781">[#1781]</a></li>
+  <li>Specify internal FQDN for messaging hostname <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1780">[#1780]</a></li>
+  <li>Messaging hostname guideline updates <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1778">[#1778]</a></li>
+  <li>Messaging configuration hostname guidelines <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1777">[#1777]</a></li>
+  <li>QA Update services.md to add the password paramater <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1775">[#1775]</a></li>
+  <li>Strimzi installation on Kubernetes <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1769">[#1769]</a></li>
+  <li>Volume snapshot to Instance -  not enabled on IM on Z <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1770">[#1770]</a></li>
+  <li>Create configuration_script_payloads API doc <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1757">[#1757]</a></li>
+  <li>Docker pull secrets - IM Appliance - final Edits <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1771">[#1771]</a></li>
+  <li>Embedded Workflows on OCP docker custom pull secret <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1762">[#1762]</a></li>
+  <li>Add <code class="language-plaintext highlighter-rouge">Q35 Chipset with BIOS</code> to RHV installation docs <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1763">[#1763]</a></li>
+  <li>Better indenting and bullets <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1766">[#1766]</a></li>
+  <li>Update product.yml <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1761">[#1761]</a></li>
+  <li>Update embedded_workflows.md <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1759">[#1759]</a></li>
+  <li>Consolidate VMWare VDDK docs to a central location <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1755">[#1755]</a></li>
+  <li>Update event syndication enablement content <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1751">[#1751]</a></li>
+  <li>Enable events syndication <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1746">[#1746]</a></li>
+  <li>Add documentation for scheduling database backups using crontab <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1749">[#1749]</a></li>
+  <li>Document the steps for backup and restore of appliances <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1740">[#1740]</a></li>
+  <li>Add root key to internal certificate secret example <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1741">[#1741]</a></li>
+  <li>Show support for PowerVC metrics <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1739">[#1739]</a></li>
+  <li>enabling ibm_powervc events <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1737">[#1737]</a></li>
+</ul>
+
+<h3 id="other-9">Other</h3>
+
+<ul>
+  <li>Add documentation on setting credentials in workflows <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1773">[#1773]</a></li>
+  <li>It is not required to stop services before backup <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1767">[#1767]</a></li>
+  <li>dropping references to vm lifecycle events <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1736">[#1736]</a></li>
+  <li>Add Embedded Workflows content <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1752">[#1752]</a></li>
+  <li>Fix menu entries <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1756">[#1756]</a></li>
+  <li>General markdown edits for provider topics <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1753">[#1753]</a></li>
+  <li>Update automation_providers.md <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1750">[#1750]</a></li>
+  <li>Remove SCVMM from Capabilities Matrix <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1748">[#1748]</a></li>
+  <li>Remove prior now that #1740 has been backported down to najdorf <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1744">[#1744]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1742">[#1742]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1738">[#1738]</a></li>
+  <li>Remove scheduling of database backups from documentation <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1735">[#1735]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-gems-pending"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-gems-pending">ManageIQ/manageiq-gems-pending</a></h2>
+
+<h3 id="bug-7">Bug</h3>
+
+<ul>
+  <li>Fix stubbing of AwesomeSpawn private method results <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/568">[#568]</a></li>
+</ul>
+
+<h3 id="enhancement-8">Enhancement</h3>
+
+<ul>
+  <li>Add zeitwerk loader and teach it about this gem <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/551">[#551]</a></li>
+</ul>
+
+<h3 id="other-10">Other</h3>
+
+<ul>
+  <li>Use AwesomeSpawn’s stub_good_run spec helper <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/569">[#569]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/567">[#567]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/566">[#566]</a></li>
+  <li>Ruby 3.1 - net/ftp was moved from stdlib to a gem <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/565">[#565]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/564">[#564]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/563">[#563]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/562">[#562]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/561">[#561]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-pods"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-pods/compare/petrosian-1...quinteros-1">ManageIQ/manageiq-pods</a></h2>
+
+<h3 id="bug-8">Bug</h3>
+
+<ul>
+  <li>[QUINTEROS] Fix quinteros RPM repo links <a href="https://github.com/ManageIQ/manageiq-pods/pull/1082">[#1082]</a></li>
+  <li>Only return passwords that include letters. <a href="https://github.com/ManageIQ/manageiq-pods/pull/1052">[#1052]</a></li>
+  <li>Error handling for FindCatalogSourceByName <a href="https://github.com/ManageIQ/manageiq-pods/pull/1044">[#1044]</a></li>
+  <li>Revert default messaging change <a href="https://github.com/ManageIQ/manageiq-pods/pull/1026">[#1026]</a></li>
+  <li>Fix typo pods/log <a href="https://github.com/ManageIQ/manageiq-pods/pull/1001">[#1001]</a></li>
+  <li>Give the operator permission to give permission to pod/logs get <a href="https://github.com/ManageIQ/manageiq-pods/pull/1000">[#1000]</a></li>
+  <li>Add permissions for pods/logs to the manageiq-automation role <a href="https://github.com/ManageIQ/manageiq-pods/pull/999">[#999]</a></li>
+  <li>Deploy Kafka network policies only when needed <a href="https://github.com/ManageIQ/manageiq-pods/pull/990">[#990]</a></li>
+  <li>Fix route permissions issues after #989 <a href="https://github.com/ManageIQ/manageiq-pods/pull/996">[#996]</a></li>
+  <li>Lock down to UBI 8.8-1032 <a href="https://github.com/ManageIQ/manageiq-pods/pull/987">[#987]</a></li>
+  <li>quinteros branching followup <a href="https://github.com/ManageIQ/manageiq-pods/pull/983">[#983]</a></li>
+  <li>[quinteros] branching followup <a href="https://github.com/ManageIQ/manageiq-pods/pull/982">[#982]</a></li>
+  <li>Let sysv handle dynamic shared memory type for containers <a href="https://github.com/ManageIQ/manageiq-pods/pull/974">[#974]</a></li>
+  <li>Log to stderr by turning off the log file collector <a href="https://github.com/ManageIQ/manageiq-pods/pull/968">[#968]</a></li>
+</ul>
+
+<h3 id="enhancement-9">Enhancement</h3>
+
+<ul>
+  <li>Move orchestrator internal root cert to projected volume source <a href="https://github.com/ManageIQ/manageiq-pods/pull/1030">[#1030]</a></li>
+  <li>Bump strimzi to 0.37 <a href="https://github.com/ManageIQ/manageiq-pods/pull/1025">[#1025]</a></li>
+  <li>Replace Bitnami with Strimzi Kafka <a href="https://github.com/ManageIQ/manageiq-pods/pull/1005">[#1005]</a></li>
+  <li>Deploy messaging by default <a href="https://github.com/ManageIQ/manageiq-pods/pull/1024">[#1024]</a></li>
+  <li>Enforce and default Kafka configuration <a href="https://github.com/ManageIQ/manageiq-pods/pull/896">[#896]</a></li>
+  <li>AddLabels util function <a href="https://github.com/ManageIQ/manageiq-pods/pull/1020">[#1020]</a></li>
+  <li>Add or update unique volume mount <a href="https://github.com/ManageIQ/manageiq-pods/pull/1008">[#1008]</a></li>
+  <li>Add Node affinity <a href="https://github.com/ManageIQ/manageiq-pods/pull/1003">[#1003]</a></li>
+  <li>Add RBAC for the automation worker <a href="https://github.com/ManageIQ/manageiq-pods/pull/995">[#995]</a></li>
+  <li>Operator sdk v1.30 upgrade <a href="https://github.com/ManageIQ/manageiq-pods/pull/966">[#966]</a></li>
+  <li>Added ManageIQ Status with conditions, versions and ingress endpoint info <a href="https://github.com/ManageIQ/manageiq-pods/pull/973">[#973]</a></li>
+</ul>
+
+<h3 id="other-11">Other</h3>
+
+<ul>
+  <li>Update to go v1.22 <a href="https://github.com/ManageIQ/manageiq-pods/pull/1054">[#1054]</a></li>
+  <li>Update github.com/openshift/api digest to 7162acc <a href="https://github.com/ManageIQ/manageiq-pods/pull/1037">[#1037]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1049">[#1049]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1042">[#1042]</a></li>
+  <li>Update github.com/openshift/api digest to 2054c69 <a href="https://github.com/ManageIQ/manageiq-pods/pull/1012">[#1012]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1036">[#1036]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1032">[#1032]</a></li>
+  <li>Upgrade to operator-sdk v1.33 <a href="https://github.com/ManageIQ/manageiq-pods/pull/1027">[#1027]</a></li>
+  <li>Update actions/setup-go action to v5 <a href="https://github.com/ManageIQ/manageiq-pods/pull/1021">[#1021]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1018">[#1018]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1017">[#1017]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1015">[#1015]</a></li>
+  <li>Configure Renovate <a href="https://github.com/ManageIQ/manageiq-pods/pull/967">[#967]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1011">[#1011]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1009">[#1009]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1006">[#1006]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-pods/pull/1007">[#1007]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1004">[#1004]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/1002">[#1002]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/998">[#998]</a></li>
+  <li>Update go dependencies <a href="https://github.com/ManageIQ/manageiq-pods/pull/997">[#997]</a></li>
+  <li>Group dependencies together for simplicity <a href="https://github.com/ManageIQ/manageiq-pods/pull/989">[#989]</a></li>
+  <li>go get -t -u ./… &amp;&amp; go mod tidy <a href="https://github.com/ManageIQ/manageiq-pods/pull/994">[#994]</a></li>
+  <li>Revert “Lock down to UBI 8.8-1032” <a href="https://github.com/ManageIQ/manageiq-pods/pull/992">[#992]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-pods/pull/991">[#991]</a></li>
+  <li>Upgrade to go v1.21.0 to resolve multiple CVEs <a href="https://github.com/ManageIQ/manageiq-pods/pull/984">[#984]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-pods/pull/985">[#985]</a></li>
+  <li>Removing perl* exclude as there are no longer conflicts <a href="https://github.com/ManageIQ/manageiq-pods/pull/981">[#981]</a></li>
+  <li>Update actions <a href="https://github.com/ManageIQ/manageiq-pods/pull/980">[#980]</a></li>
+  <li>Add a test to ensure that go versions are all the same <a href="https://github.com/ManageIQ/manageiq-pods/pull/975">[#975]</a></li>
+  <li>Mark deprecated spec properties. <a href="https://github.com/ManageIQ/manageiq-pods/pull/971">[#971]</a></li>
+  <li>Allow workflow_dispatch GHA event <a href="https://github.com/ManageIQ/manageiq-pods/pull/970">[#970]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-amazon"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-amazon">ManageIQ/manageiq-providers-amazon</a></h2>
+
+<h3 id="enhancement-10">Enhancement</h3>
+
+<ul>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/840">[#840]</a></li>
+  <li>Update safe_load calls to work with psych 3/4 <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/837">[#837]</a></li>
+  <li>Update AWS Regions as a scheduled task <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/834">[#834]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/835">[#835]</a></li>
+  <li>Update AWS regions.yml <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/831">[#831]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/832">[#832]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/830">[#830]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/829">[#829]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/826">[#826]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/824">[#824]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/823">[#823]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/819">[#819]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/818">[#818]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/817">[#817]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/815">[#815]</a></li>
+  <li>Update AWS instance_types <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/814">[#814]</a></li>
+</ul>
+
+<h3 id="other-12">Other</h3>
+
+<ul>
+  <li>Refactor regions spec to not hard-code atypical regions <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/833">[#833]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/836">[#836]</a></li>
+  <li>Add ContainerManager #pause! and #resume! specs <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/828">[#828]</a></li>
+  <li>Include shared EMS#pause!,#resume! specs <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/827">[#827]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/825">[#825]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/822">[#822]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/821">[#821]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/820">[#820]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/816">[#816]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-ansible_tower"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-ansible_tower">ManageIQ/manageiq-providers-ansible_tower</a></h2>
+
+<h3 id="bug-9">Bug</h3>
+
+<ul>
+  <li>Use the right foreign_key for Job#job_template <a href="https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/302">[#302]</a></li>
+</ul>
+
+<h3 id="other-13">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/300">[#300]</a></li>
+  <li>Add EMS #pause! and #resume! specs <a href="https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/299">[#299]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/298">[#298]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/297">[#297]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/296">[#296]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/295">[#295]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/294">[#294]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-autosde"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-autosde">ManageIQ/manageiq-providers-autosde</a></h2>
+
+<h3 id="bug-10">Bug</h3>
+
+<ul>
+  <li>Add zone_id to vcloud amqp validationDependencies <a href="https://github.com/ManageIQ/manageiq-providers-autosde/pull/241">[#241]</a></li>
+  <li>host initiator creation: bug in the group/cluster field <a href="https://github.com/ManageIQ/manageiq-providers-autosde/pull/233">[#233]</a></li>
+</ul>
+
+<h3 id="enhancement-11">Enhancement</h3>
+
+<ul>
+  <li>storage service edit mode: check which attached resources are compliant to selected capabilities <a href="https://github.com/ManageIQ/manageiq-providers-autosde/pull/226">[#226]</a></li>
+</ul>
+
+<h3 id="other-14">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-autosde/pull/240">[#240]</a></li>
+  <li>Add EMS #pause! and #resume! specs <a href="https://github.com/ManageIQ/manageiq-providers-autosde/pull/239">[#239]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-autosde/pull/238">[#238]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-autosde/pull/237">[#237]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-autosde/pull/236">[#236]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-autosde/pull/235">[#235]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-autosde/pull/234">[#234]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-awx"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-awx">ManageIQ/manageiq-providers-awx</a></h2>
+
+<h3 id="bug-11">Bug</h3>
+
+<ul>
+  <li>Use the right foreign_key for Job#job_template <a href="https://github.com/ManageIQ/manageiq-providers-awx/pull/22">[#22]</a></li>
+</ul>
+
+<h3 id="other-15">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-awx/pull/21">[#21]</a></li>
+  <li>Add EMS #pause! and #resume! specs <a href="https://github.com/ManageIQ/manageiq-providers-awx/pull/20">[#20]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-awx/pull/19">[#19]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-awx/pull/18">[#18]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-awx/pull/17">[#17]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-awx/pull/16">[#16]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-awx/pull/15">[#15]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-azure"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-azure">ManageIQ/manageiq-providers-azure</a></h2>
+
+<h3 id="bug-12">Bug</h3>
+
+<ul>
+  <li>Add zone_id to AKS validationDependencies <a href="https://github.com/ManageIQ/manageiq-providers-azure/pull/545">[#545]</a></li>
+  <li>Remove never used network manager metrics collector worker <a href="https://github.com/ManageIQ/manageiq-providers-azure/pull/536">[#536]</a></li>
+</ul>
+
+<h3 id="other-16">Other</h3>
+
+<ul>
+  <li>Fix InventoryRefresh lazy_find deprecation warning <a href="https://github.com/ManageIQ/manageiq-providers-azure/pull/543">[#543]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-azure/pull/544">[#544]</a></li>
+  <li>Add EMS #pause! and #resume! specs <a href="https://github.com/ManageIQ/manageiq-providers-azure/pull/542">[#542]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-azure/pull/541">[#541]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-azure/pull/540">[#540]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-azure/pull/539">[#539]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-azure/pull/538">[#538]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-azure/pull/537">[#537]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-azure_stack"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-azure_stack">ManageIQ/manageiq-providers-azure_stack</a></h2>
+
+<h3 id="other-17">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-azure_stack/pull/101">[#101]</a></li>
+  <li>Add EMS #pause! and #resume! specs <a href="https://github.com/ManageIQ/manageiq-providers-azure_stack/pull/100">[#100]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-azure_stack/pull/99">[#99]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-azure_stack/pull/98">[#98]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-azure_stack/pull/97">[#97]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-azure_stack/pull/96">[#96]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-azure_stack/pull/95">[#95]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-cisco_intersight"><i class="fa fa-github"></i> <a href="https://github.com/compare/petrosian-1...quinteros-1/ManageIQ/manageiq-providers-cisco_intersight">ManageIQ/manageiq-providers-cisco_intersight</a></h2>
+
+<h3 id="bug-13">Bug</h3>
+
+<ul>
+  <li>Add zone_id to provider validationDependencies <a href="https://github.com/ManageIQ/manageiq-providers-cisco_intersight/pull/104">[#104]</a></li>
+</ul>
+
+<h3 id="other-18">Other</h3>
+
+<ul>
+  <li>Update yarn to stable v4.0.2 <a href="https://github.com/ManageIQ/manageiq-providers-cisco_intersight/pull/102">[#102]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-cisco_intersight/pull/101">[#101]</a></li>
+  <li>Add EMS #pause! and #resume! specs <a href="https://github.com/ManageIQ/manageiq-providers-cisco_intersight/pull/100">[#100]</a></li>
+  <li>Update yarn to 4.0.0.rc51 since it’s works on s390x <a href="https://github.com/ManageIQ/manageiq-providers-cisco_intersight/pull/99">[#99]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-cisco_intersight/pull/98">[#98]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-cisco_intersight/pull/97">[#97]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-cisco_intersight/pull/96">[#96]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-cisco_intersight/pull/95">[#95]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-cisco_intersight/pull/94">[#94]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-foreman"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-foreman">ManageIQ/manageiq-providers-foreman</a></h2>
+
+<h3 id="bug-14">Bug</h3>
+
+<ul>
+  <li>Fix deliver_to_automate not taking any args <a href="https://github.com/ManageIQ/manageiq-providers-foreman/pull/116">[#116]</a></li>
+</ul>
+
+<h3 id="other-19">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-foreman/pull/122">[#122]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-foreman/pull/121">[#121]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-foreman/pull/120">[#120]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-foreman/pull/119">[#119]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-foreman/pull/118">[#118]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-foreman/pull/117">[#117]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-google"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-google">ManageIQ/manageiq-providers-google</a></h2>
+
+<h3 id="bug-15">Bug</h3>
+
+<ul>
+  <li>Cleanup any created disks if start_clone fails <a href="https://github.com/ManageIQ/manageiq-providers-google/pull/256">[#256]</a></li>
+  <li>Fix google API pagination <a href="https://github.com/ManageIQ/manageiq-providers-google/pull/254">[#254]</a></li>
+</ul>
+
+<h3 id="other-20">Other</h3>
+
+<ul>
+  <li>Bump fog-google to 1.23.0 to pull in paging fix <a href="https://github.com/ManageIQ/manageiq-providers-google/pull/257">[#257]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-google/pull/255">[#255]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-google/pull/253">[#253]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-google/pull/252">[#252]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-google/pull/251">[#251]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-google/pull/250">[#250]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-google/pull/249">[#249]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-ibm_cic"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-ibm_cic">ManageIQ/manageiq-providers-ibm_cic</a></h2>
+
+<h3 id="bug-16">Bug</h3>
+
+<ul>
+  <li>Fix expired_at causing VCRs to fail authentication <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cic/pull/35">[#35]</a></li>
+</ul>
+
+<h3 id="enhancement-12">Enhancement</h3>
+
+<ul>
+  <li>add IBM CIC missing catalog type <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cic/pull/40">[#40]</a></li>
+</ul>
+
+<h3 id="other-21">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cic/pull/42">[#42]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cic/pull/41">[#41]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cic/pull/39">[#39]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cic/pull/38">[#38]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cic/pull/37">[#37]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cic/pull/36">[#36]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-ibm_cloud"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-ibm_cloud">ManageIQ/manageiq-providers-ibm_cloud</a></h2>
+
+<h3 id="bug-17">Bug</h3>
+
+<ul>
+  <li>Fix duplicate advanced settings <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/483">[#483]</a></li>
+  <li>Add zone_id to provider validationDependencies for metrics endpoint <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/480">[#480]</a></li>
+  <li>Add targeted refresh specs to PowerVS / Fix targeted VM refresh bug <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/479">[#479]</a></li>
+  <li>Handle VPC flavor with nil :disks value <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/475">[#475]</a></li>
+  <li>Bump all ibm_cloud/ibm_vpc gems for http 5.1 to resolve known HTTP::ConnectionError issues <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/473">[#473]</a></li>
+  <li>Fix missing package.json metadata <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/472">[#472]</a></li>
+  <li>Remove ‘migratable’ param from PVS VM provision <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/465">[#465]</a></li>
+  <li>Fix clone_to_template provision preparation <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/463">[#463]</a></li>
+  <li>PowerVS: Attach newly created volumes during VM provision <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/462">[#462]</a></li>
+  <li>Fix missing System Profile dropdown VPC Provision <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/461">[#461]</a></li>
+  <li>PowerVS Cloning: Use ems_ref, not name, to find new VM or Template <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/455">[#455]</a></li>
+</ul>
+
+<h3 id="enhancement-13">Enhancement</h3>
+
+<ul>
+  <li>Add new VPC regions <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/484">[#484]</a></li>
+  <li>Use new resource pool cpu_core_* columns <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/474">[#474]</a></li>
+  <li>Retirement settings upon VM provision in PowerVS <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/460">[#460]</a></li>
+  <li>Use consistent child manager description <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/459">[#459]</a></li>
+</ul>
+
+<h3 id="other-22">Other</h3>
+
+<ul>
+  <li>Update yarn to stable v4.0.2 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/478">[#478]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/477">[#477]</a></li>
+  <li>Update GitHub CODEOWNERS <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/476">[#476]</a></li>
+  <li>Update yarn to 4.0.0.rc51 since it’s works on s390x <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/471">[#471]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/470">[#470]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/468">[#468]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/467">[#467]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/466">[#466]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/464">[#464]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-ibm_power_hmc"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-ibm_power_hmc">ManageIQ/manageiq-providers-ibm_power_hmc</a></h2>
+
+<h3 id="bug-18">Bug</h3>
+
+<ul>
+  <li>Change default API port to 443 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/148">[#148]</a></li>
+  <li>Fix provisioning dialog ‘src_vm_id’ method <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/145">[#145]</a></li>
+</ul>
+
+<h3 id="enhancement-14">Enhancement</h3>
+
+<ul>
+  <li>Use new resource pool cpu_core_* columns <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/147">[#147]</a></li>
+</ul>
+
+<h3 id="other-23">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/150">[#150]</a></li>
+  <li>Update GitHub CODEOWNERS <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/149">[#149]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/144">[#144]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/143">[#143]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/142">[#142]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/141">[#141]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_hmc/pull/140">[#140]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-ibm_power_vc"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-ibm_power_vc">ManageIQ/manageiq-providers-ibm_power_vc</a></h2>
+
+<h3 id="bug-19">Bug</h3>
+
+<ul>
+  <li>Add zone_id to provider validationDependencies <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/100">[#100]</a></li>
+  <li>add log level for IbmPowerVc <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/88">[#88]</a></li>
+</ul>
+
+<h3 id="enhancement-15">Enhancement</h3>
+
+<ul>
+  <li>Ibm PowerVc events <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/89">[#89]</a></li>
+</ul>
+
+<h3 id="other-24">Other</h3>
+
+<ul>
+  <li>Update yarn to stable v4.0.2 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/99">[#99]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/98">[#98]</a></li>
+  <li>Update GitHub CODEOWNERS <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/97">[#97]</a></li>
+  <li>Update yarn to 4.0.0.rc51 since it’s works on s390x <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/96">[#96]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/95">[#95]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/94">[#94]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/93">[#93]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/92">[#92]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/91">[#91]</a></li>
+  <li>Update VCRs for fog-openstack v1 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_power_vc/pull/87">[#87]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-ibm_terraform"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-ibm_terraform">ManageIQ/manageiq-providers-ibm_terraform</a></h2>
+
+<h3 id="other-25">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_terraform/pull/100">[#100]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_terraform/pull/99">[#99]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_terraform/pull/98">[#98]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_terraform/pull/97">[#97]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ibm_terraform/pull/96">[#96]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-ibm_terraform/pull/95">[#95]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-kubernetes"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-kubernetes">ManageIQ/manageiq-providers-kubernetes</a></h2>
+
+<h3 id="bug-20">Bug</h3>
+
+<ul>
+  <li>Add zone_id to provider validationDependencies <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/513">[#513]</a></li>
+  <li>Reject any events which do not have a timestamp <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/501">[#501]</a></li>
+  <li>Fix No Method get_nodes for NilClass invalid token <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/500">[#500]</a></li>
+  <li>Fix started_at/finished_at always being nil <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/496">[#496]</a></li>
+  <li>Convert the duration to a float <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/497">[#497]</a></li>
+  <li>Removed the <code class="language-plaintext highlighter-rouge">auth_key</code> from list of Validation Dependencies in Metrics and Alerts <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/492">[#492]</a></li>
+  <li>Check metrics authentication validity before perf_capture_queue <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/493">[#493]</a></li>
+</ul>
+
+<h3 id="enhancement-16">Enhancement</h3>
+
+<ul>
+  <li>We explicitly serialize objects so we need to permit yaml loading them <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/512">[#512]</a></li>
+  <li>Added Helper Text To the Token Field <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/498">[#498]</a></li>
+</ul>
+
+<h3 id="other-26">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/511">[#511]</a></li>
+  <li>The prometheus_alerts endpoint is no longer supported <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/506">[#506]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/505">[#505]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/504">[#504]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/503">[#503]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/502">[#502]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/499">[#499]</a></li>
+  <li>Revert “Merge pull request #492 from DavidResende0/remove-validation-dependecies” <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/495">[#495]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-kubevirt"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-kubevirt">ManageIQ/manageiq-providers-kubevirt</a></h2>
+
+<h3 id="enhancement-17">Enhancement</h3>
+
+<ul>
+  <li>Update safe_load calls to work with psych 3/4 <a href="https://github.com/ManageIQ/manageiq-providers-kubevirt/pull/226">[#226]</a></li>
+</ul>
+
+<h3 id="other-27">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-kubevirt/pull/225">[#225]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-kubevirt/pull/224">[#224]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-kubevirt/pull/223">[#223]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-kubevirt/pull/222">[#222]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-kubevirt/pull/221">[#221]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-kubevirt/pull/220">[#220]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-lenovo"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-lenovo">ManageIQ/manageiq-providers-lenovo</a></h2>
+
+<h3 id="bug-21">Bug</h3>
+
+<ul>
+  <li>Add zone_id to provider validationDependencies <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/pull/399">[#399]</a></li>
+  <li>Fix verify_credentials for an existing EMS <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/pull/396">[#396]</a></li>
+  <li>Fix deliver_to_automate not taking args <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/pull/388">[#388]</a></li>
+</ul>
+
+<h3 id="other-28">Other</h3>
+
+<ul>
+  <li>Update yarn to stable v4.0.2 <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/pull/398">[#398]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/pull/397">[#397]</a></li>
+  <li>Update yarn to 4.0.0.rc51 since it’s works on s390x <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/pull/395">[#395]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/pull/394">[#394]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/pull/393">[#393]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/pull/392">[#392]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/pull/391">[#391]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/pull/390">[#390]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-nsxt"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-nsxt">ManageIQ/manageiq-providers-nsxt</a></h2>
+
+<h3 id="bug-22">Bug</h3>
+
+<ul>
+  <li>Lock down es-abstract <a href="https://github.com/ManageIQ/manageiq-providers-nsxt/pull/89">[#89]</a></li>
+</ul>
+
+<h3 id="other-29">Other</h3>
+
+<ul>
+  <li>Update yarn to stable v4.0.2 <a href="https://github.com/ManageIQ/manageiq-providers-nsxt/pull/96">[#96]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-nsxt/pull/95">[#95]</a></li>
+  <li>Bump semver from 5.7.1 to 5.7.2 <a href="https://github.com/ManageIQ/manageiq-providers-nsxt/pull/87">[#87]</a></li>
+  <li>Update yarn to 4.0.0.rc51 since it’s works on s390x <a href="https://github.com/ManageIQ/manageiq-providers-nsxt/pull/94">[#94]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-nsxt/pull/93">[#93]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-nsxt/pull/92">[#92]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-nsxt/pull/91">[#91]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-nsxt/pull/90">[#90]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-nsxt/pull/88">[#88]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-nuage"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-nuage">ManageIQ/manageiq-providers-nuage</a></h2>
+
+<h3 id="bug-23">Bug</h3>
+
+<ul>
+  <li>Add zone_id to provider validationDependencies <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/303">[#303]</a></li>
+  <li>Revert “Merge pull request #298 from agrare/replace_xlab_si_with_xlab-si” <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/300">[#300]</a></li>
+  <li>Fix xlab-si galaxy roles pointing to invalid repository URL <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/298">[#298]</a></li>
+  <li>Require the gem defining the constant we’re subclassing <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/299">[#299]</a></li>
+  <li>Ubuntu Kinetic has been removed, replace with Lunar <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/297">[#297]</a></li>
+</ul>
+
+<h3 id="enhancement-18">Enhancement</h3>
+
+<ul>
+  <li>Remove lib/gem-name.rb loader in favor of namespaced file <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/290">[#290]</a></li>
+</ul>
+
+<h3 id="other-30">Other</h3>
+
+<ul>
+  <li>Update yarn to stable v4.0.2 <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/302">[#302]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/301">[#301]</a></li>
+  <li>Update yarn to 4.0.0.rc51 since it’s works on s390x <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/296">[#296]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/295">[#295]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/294">[#294]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/293">[#293]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/292">[#292]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-nuage/pull/291">[#291]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-openshift"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-openshift">ManageIQ/manageiq-providers-openshift</a></h2>
+
+<h3 id="other-31">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-openshift/pull/252">[#252]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-openshift/pull/251">[#251]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-openshift/pull/250">[#250]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-openshift/pull/249">[#249]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-openshift/pull/248">[#248]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-openshift/pull/247">[#247]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-openstack"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-openstack">ManageIQ/manageiq-providers-openstack</a></h2>
+
+<h3 id="bug-24">Bug</h3>
+
+<ul>
+  <li>Add zone_id to provider validationDependencies <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/870">[#870]</a></li>
+  <li>Don’t store AR objects in Notification options <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/866">[#866]</a></li>
+  <li>Fix Gem.loaded_specs looking for wrong key name <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/863">[#863]</a></li>
+  <li>Allow numberic-only passwords for keystone v3 again <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/859">[#859]</a></li>
+  <li>Ubuntu Kinetic has been removed, replace with Lunar <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/861">[#861]</a></li>
+  <li>Fix incorrect constant name reference by referencing HostAggregate <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/853">[#853]</a></li>
+  <li>Fix CloudNetwork#delete_cloud_network argument error <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/852">[#852]</a></li>
+</ul>
+
+<h3 id="enhancement-19">Enhancement</h3>
+
+<ul>
+  <li>Psych 4 support <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/865">[#865]</a></li>
+</ul>
+
+<h3 id="other-32">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/864">[#864]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/860">[#860]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/858">[#858]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/857">[#857]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/856">[#856]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/854">[#854]</a></li>
+  <li>Move fix_token_expries_at to spec/support <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/851">[#851]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-oracle_cloud"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-oracle_cloud">ManageIQ/manageiq-providers-oracle_cloud</a></h2>
+
+<h3 id="bug-25">Bug</h3>
+
+<ul>
+  <li>Fix for blockstorage_client changed API <a href="https://github.com/ManageIQ/manageiq-providers-oracle_cloud/pull/93">[#93]</a></li>
+</ul>
+
+<h3 id="other-33">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-oracle_cloud/pull/94">[#94]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-oracle_cloud/pull/92">[#92]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-oracle_cloud/pull/91">[#91]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-oracle_cloud/pull/90">[#90]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-oracle_cloud/pull/89">[#89]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-oracle_cloud/pull/88">[#88]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-ovirt"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-ovirt">ManageIQ/manageiq-providers-ovirt</a></h2>
+
+<h3 id="bug-26">Bug</h3>
+
+<ul>
+  <li>Check supported storage type for vm Smartstate analysis scan <a href="https://github.com/ManageIQ/manageiq-providers-ovirt/pull/653">[#653]</a></li>
+  <li>Fix OVN refresher spec “expires” causing failures <a href="https://github.com/ManageIQ/manageiq-providers-ovirt/pull/646">[#646]</a></li>
+</ul>
+
+<h3 id="enhancement-20">Enhancement</h3>
+
+<ul>
+  <li>Use unsafe_load to load a test file with unpermitted classes <a href="https://github.com/ManageIQ/manageiq-providers-ovirt/pull/655">[#655]</a></li>
+</ul>
+
+<h3 id="other-34">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-ovirt/pull/654">[#654]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-ovirt/pull/652">[#652]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ovirt/pull/650">[#650]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ovirt/pull/649">[#649]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-ovirt/pull/648">[#648]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-ovirt/pull/647">[#647]</a></li>
+  <li>Use Rails.application.secrets for VCR hostnames <a href="https://github.com/ManageIQ/manageiq-providers-ovirt/pull/645">[#645]</a></li>
+  <li>Update Ovirt OVN VCRs <a href="https://github.com/ManageIQ/manageiq-providers-ovirt/pull/644">[#644]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-red_hat_virtualization"><i class="fa fa-github"></i> <a href="https://github.com/compare/petrosian-1...quinteros-1/ManageIQ/manageiq-providers-red_hat_virtualization">ManageIQ/manageiq-providers-red_hat_virtualization</a></h2>
+
+<h3 id="bug-27">Bug</h3>
+
+<ul>
+  <li>Fix targeted refresh duplicating external switches <a href="https://github.com/ManageIQ/manageiq-providers-red_hat_virtualization/pull/33">[#33]</a></li>
+  <li>Fix the Redhat NetworkManager in create dropdown <a href="https://github.com/ManageIQ/manageiq-providers-red_hat_virtualization/pull/31">[#31]</a></li>
+  <li>Fix OVN refresher spec “expires” causing failures <a href="https://github.com/ManageIQ/manageiq-providers-red_hat_virtualization/pull/30">[#30]</a></li>
+</ul>
+
+<h3 id="enhancement-21">Enhancement</h3>
+
+<ul>
+  <li>Use unsafe_load to load a test file with unpermitted classes <a href="https://github.com/ManageIQ/manageiq-providers-red_hat_virtualization/pull/39">[#39]</a></li>
+</ul>
+
+<h3 id="other-35">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-red_hat_virtualization/pull/38">[#38]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-red_hat_virtualization/pull/37">[#37]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-red_hat_virtualization/pull/36">[#36]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-red_hat_virtualization/pull/35">[#35]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-red_hat_virtualization/pull/34">[#34]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-red_hat_virtualization/pull/32">[#32]</a></li>
+  <li>Update OVN VCR specs <a href="https://github.com/ManageIQ/manageiq-providers-red_hat_virtualization/pull/29">[#29]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-redfish"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-redfish">ManageIQ/manageiq-providers-redfish</a></h2>
+
+<h3 id="bug-28">Bug</h3>
+
+<ul>
+  <li>Add zone_id to provider validationDependencies <a href="https://github.com/ManageIQ/manageiq-providers-redfish/pull/186">[#186]</a></li>
+  <li>Handle missing UpdateService <a href="https://github.com/ManageIQ/manageiq-providers-redfish/pull/182">[#182]</a></li>
+</ul>
+
+<h3 id="other-36">Other</h3>
+
+<ul>
+  <li>Update yarn to stable v4.0.2 <a href="https://github.com/ManageIQ/manageiq-providers-redfish/pull/185">[#185]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-redfish/pull/183">[#183]</a></li>
+  <li>Update yarn to 4.0.0.rc51 since it’s works on s390x <a href="https://github.com/ManageIQ/manageiq-providers-redfish/pull/181">[#181]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-redfish/pull/180">[#180]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-redfish/pull/179">[#179]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-redfish/pull/178">[#178]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-redfish/pull/177">[#177]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-redfish/pull/176">[#176]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-vmware"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-vmware">ManageIQ/manageiq-providers-vmware</a></h2>
+
+<h3 id="bug-29">Bug</h3>
+
+<ul>
+  <li>Fix VM terminate showing supported when running <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/897">[#897]</a></li>
+  <li>Add zone_id to vcloud amqp validationDependencies <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/896">[#896]</a></li>
+  <li>Add supports storage smartstate_analysis <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/887">[#887]</a></li>
+  <li>Handle a HostSystem with missing product vendor <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/882">[#882]</a></li>
+  <li>Don’t delegate NetworkManager#zone to parent_manager <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/886">[#886]</a></li>
+  <li>Set sub_event_type for com.vmware.cns.tasks.updatevolume <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/883">[#883]</a></li>
+</ul>
+
+<h3 id="enhancement-22">Enhancement</h3>
+
+<ul>
+  <li>Enable non-rails event catcher by default <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/894">[#894]</a></li>
+  <li>Use unsafe_load to load a test file with unpermitted classes <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/890">[#890]</a></li>
+  <li>Bump rbvmomi2 to 3.7.0 for vSphere 8.0U2 <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/884">[#884]</a></li>
+  <li>Bump ffi-vix_disklib to pull in VDDK 8.0.1/8.0.2 <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/879">[#879]</a></li>
+</ul>
+
+<h3 id="other-37">Other</h3>
+
+<ul>
+  <li>Delete EventCatcher worker_cmdline for non-rails worker <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/889">[#889]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/888">[#888]</a></li>
+  <li>Override CloudManager#network_manager to define type <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/885">[#885]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/881">[#881]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/878">[#878]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/877">[#877]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/876">[#876]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/875">[#875]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-providers-workflows"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-providers-workflows">ManageIQ/manageiq-providers-workflows</a></h2>
+
+<h3 id="bug-30">Bug</h3>
+
+<ul>
+  <li>Fix tasks staying active for failed workflows <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/67">[#67]</a></li>
+  <li>Ensure WorkflowInstance#credentials is not nil <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/66">[#66]</a></li>
+  <li>Handle the case where <code class="language-plaintext highlighter-rouge">:credentials</code> column is <code class="language-plaintext highlighter-rouge">nil</code> <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/64">[#64]</a></li>
+  <li>Fix issue where new service account ENV var is forced in every process <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/56">[#56]</a></li>
+  <li>Bump floe to v0.4.1 for task output fixes <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/54">[#54]</a></li>
+  <li>Strip trailing .$ from Credentials <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/49">[#49]</a></li>
+  <li>Fix expected context after StateHistory rename <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/48">[#48]</a></li>
+  <li>Override the podman image storage root directory <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/46">[#46]</a></li>
+  <li>Set network=host for development mode <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/42">[#42]</a></li>
+  <li>Normalize the ae_result passed to after_ae_delivery <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/38">[#38]</a></li>
+  <li>Fix the default role from automation to automate <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/37">[#37]</a></li>
+  <li>Fix WorkflowInstance#output not being set <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/35">[#35]</a></li>
+  <li>Fix workflows queued on embedded_ansible <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/34">[#34]</a></li>
+  <li>Fix Workflows Credentials from Authentication options API <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/33">[#33]</a></li>
+  <li>Fix parent class for Workflows ScmCredential <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/32">[#32]</a></li>
+  <li>Updated Workflows Credential Schema <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/30">[#30]</a></li>
+  <li>Fix workflow_instance queue delivery <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/27">[#27]</a></li>
+  <li>Always allow seeding even without prototype flag <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/26">[#26]</a></li>
+</ul>
+
+<h3 id="enhancement-23">Enhancement</h3>
+
+<ul>
+  <li>Update <code class="language-plaintext highlighter-rouge">:credentials</code> column if state sets a new credential <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/62">[#62]</a></li>
+  <li>Pass the workflow service account <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/55">[#55]</a></li>
+  <li>Enable Embedded Workflows by default <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/52">[#52]</a></li>
+  <li>Pass manageiq_api url in global context <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/39">[#39]</a></li>
+  <li>Run workflows asyncrhonously on MiqAutomationWorker <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/50">[#50]</a></li>
+  <li>Pass namespace to the Floe Kubernetes Runner <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/51">[#51]</a></li>
+  <li>Update Workflow#credential format <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/40">[#40]</a></li>
+  <li>Set the Floe::Workflow::Runner based on platform <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/28">[#28]</a></li>
+  <li>Allow creation of Credentials for Workflows <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/25">[#25]</a></li>
+  <li>Invoke service before after callbacks <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/23">[#23]</a></li>
+  <li>Add Workflows SCM Credential for Repositories <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/24">[#24]</a></li>
+  <li>Add ability to pass zone or other role to run <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/22">[#22]</a></li>
+</ul>
+
+<h3 id="other-38">Other</h3>
+
+<ul>
+  <li>Run apt-get update before install in bin/before_install <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/61">[#61]</a></li>
+  <li>Bump floe for kubernetes image pull error fixes <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/60">[#60]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/58">[#58]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/47">[#47]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/45">[#45]</a></li>
+  <li>Add workflow_dispatch to ci.yaml <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/43">[#43]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/36">[#36]</a></li>
+  <li>Move workflow executing into manageiq-floe <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/5">[#5]</a></li>
+  <li>Use params_to_attributes from core <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/31">[#31]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-rpm_build"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-rpm_build">ManageIQ/manageiq-rpm_build</a></h2>
+
+<h3 id="bug-31">Bug</h3>
+
+<ul>
+  <li>[quinteros] Update version numbers for Quinteros-1 build and fix rpm issue <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/453">[#453]</a></li>
+  <li>python cryptography requires rust <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/439">[#439]</a></li>
+  <li>Add ansible-core 2.12.7 to our repos <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/438">[#438]</a></li>
+  <li>Add manageiq user to disk group <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/435">[#435]</a></li>
+  <li>Lock down psych to &lt;4 <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/427">[#427]</a></li>
+  <li>[QUINTEROS] Fix issues with RPM versioning after merge of master into quinteros <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/424">[#424]</a></li>
+  <li>Fix missing git_ref default value <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/422">[#422]</a></li>
+  <li>Add subuid/subgid for the manageiq user <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/415">[#415]</a></li>
+  <li>core-utils is coreutils on appliances and coreutils-single on containers <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/414">[#414]</a></li>
+  <li>Fix RPM spec require parsing issue <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/413">[#413]</a></li>
+  <li>Lock down to UBI 8.8-1032 <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/416">[#416]</a></li>
+  <li>Reverts a962a14350ad89d09f2d30a5983a08cd57f53e56 <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/410">[#410]</a></li>
+  <li>Ensure yarn.lock is not updated by yarn install <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/409">[#409]</a></li>
+  <li>Registry is set differently for diffrent yarn versions <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/407">[#407]</a></li>
+  <li>Remove references to yarn 1.22.18 <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/402">[#402]</a></li>
+  <li>Revert “Merge pull request #393 from bdunne/revert_278” <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/399">[#399]</a></li>
+  <li>Revert “Merge pull request #278 from Minal-Mahor/s390x-changes” <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/393">[#393]</a></li>
+  <li>Revert “Merge pull request #392 from bdunne/revert_275” <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/396">[#396]</a></li>
+  <li>Revert “Merge pull request #275 from Minal-Mahor/s390x-changes” <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/392">[#392]</a></li>
+  <li>disable git clean on s390x <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/278">[#278]</a></li>
+</ul>
+
+<h3 id="enhancement-24">Enhancement</h3>
+
+<ul>
+  <li>Revert “Temporarily remove the npm_registry until npm.manageiq.org is back up” <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/405">[#405]</a></li>
+  <li>Add Podman as dependency for manageiq-appliance <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/401">[#401]</a></li>
+</ul>
+
+<h3 id="other-39">Other</h3>
+
+<ul>
+  <li>Faster rpm build step 1 <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/437">[#437]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/425">[#425]</a></li>
+  <li>Drop s390x hack now that we are on yarn 4 <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/420">[#420]</a></li>
+  <li>Revert “Lock down to UBI 8.8-1032” <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/419">[#419]</a></li>
+  <li>Remove yarn1 hack now that yarn4 works on s390x <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/418">[#418]</a></li>
+  <li>No longer need to build postgres ourselves. <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/421">[#421]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/417">[#417]</a></li>
+  <li>declare rpm dependencies for creating user <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/406">[#406]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/412">[#412]</a></li>
+  <li>Bump ipaddress python package <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/403">[#403]</a></li>
+  <li>Allow workflow_dispatch GHA event <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/395">[#395]</a></li>
+  <li>Set yarn version to 1.22.18 for s390x platform <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/275">[#275]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-schema"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-schema/compare/petrosian-1...quinteros-1">ManageIQ/manageiq-schema</a></h2>
+
+<h3 id="bug-32">Bug</h3>
+
+<ul>
+  <li>Fix OrchestrationStack#configuration_script reference <a href="https://github.com/ManageIQ/manageiq-schema/pull/714">[#714]</a></li>
+  <li>Remove VimStrings from MiqQueue <a href="https://github.com/ManageIQ/manageiq-schema/pull/706">[#706]</a></li>
+  <li>Delete invalid nil timestamp event streams <a href="https://github.com/ManageIQ/manageiq-schema/pull/704">[#704]</a></li>
+  <li>Separate Role Access Restrictions for Service Templates <a href="https://github.com/ManageIQ/manageiq-schema/pull/697">[#697]</a></li>
+</ul>
+
+<h3 id="enhancement-25">Enhancement</h3>
+
+<ul>
+  <li>Add my_settings_view to roles <a href="https://github.com/ManageIQ/manageiq-schema/pull/713">[#713]</a></li>
+  <li>Add payload validity attributes to configuration_scripts <a href="https://github.com/ManageIQ/manageiq-schema/pull/710">[#710]</a></li>
+  <li>Add new resource_pools column for cpu_cores_* <a href="https://github.com/ManageIQ/manageiq-schema/pull/708">[#708]</a></li>
+  <li>Support ruby 3.1 <a href="https://github.com/ManageIQ/manageiq-schema/pull/707">[#707]</a></li>
+</ul>
+
+<h3 id="other-40">Other</h3>
+
+<ul>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-schema/pull/709">[#709]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-schema/pull/705">[#705]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-schema/pull/703">[#703]</a></li>
+  <li>[QUINTEROS] Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-schema/pull/702">[#702]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 <a href="https://github.com/ManageIQ/manageiq-schema/pull/701">[#701]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-schema/pull/698">[#698]</a></li>
+  <li>Drop old_container_project_id <a href="https://github.com/ManageIQ/manageiq-schema/pull/696">[#696]</a></li>
+  <li>Add spec to check whether foreign key columns are in an index <a href="https://github.com/ManageIQ/manageiq-schema/pull/694">[#694]</a></li>
+  <li>add container indexes for foreign keys <a href="https://github.com/ManageIQ/manageiq-schema/pull/695">[#695]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-ui-classic"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-ui-classic">ManageIQ/manageiq-ui-classic</a></h2>
+
+<h3 id="bug-33">Bug</h3>
+
+<ul>
+  <li>Disable ip address fields when dhcp is selected <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9063">[#9063]</a></li>
+  <li>Fix dashboard missing chart <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9061">[#9061]</a></li>
+  <li>Fix for the error messages in Request-info tabs in the Service catalog item summary pages <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9030">[#9030]</a></li>
+  <li>Fix EMS network “Region” text <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9050">[#9050]</a></li>
+  <li>Filter vlans by switch and then lan <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9036">[#9036]</a></li>
+  <li>Fixed Empty TableListView for Some Summary Pages <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9039">[#9039]</a></li>
+  <li>Updated RecordId in Edit Management Engine Form <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9038">[#9038]</a></li>
+  <li>filter vms displayed in tree lan <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8998">[#8998]</a></li>
+  <li>Fixed <code class="language-plaintext highlighter-rouge">no implicit conversion of String into Integer</code> Error when Adding/Editing Container Provider <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9025">[#9025]</a></li>
+  <li>Fix task details page <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9026">[#9026]</a></li>
+  <li>Fix duplicate notifications and toasters <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8867">[#8867]</a></li>
+  <li>Fix dashboard initial tab <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9011">[#9011]</a></li>
+  <li>Fix warning for image with no title in structured list <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9008">[#9008]</a></li>
+  <li>Fix trailing space for hostname in container provider form <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9003">[#9003]</a></li>
+  <li>Return Username Field to “LDAP Group Look Up” Section <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8996">[#8996]</a></li>
+  <li>Fix multiple vm reconfigure schema error <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8981">[#8981]</a></li>
+  <li>Fix tasks permission issue <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8978">[#8978]</a></li>
+  <li>Default Disk Unit Fix in VM Reconfigure Form <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8974">[#8974]</a></li>
+  <li>Fix incorrect settings tab aria-labelledby id <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8983">[#8983]</a></li>
+  <li>Fix my settings error screen <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8980">[#8980]</a></li>
+  <li>Fix settings permissions <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8969">[#8969]</a></li>
+  <li>Fixed Service Reconfigure Form and Request Summary Pages <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8953">[#8953]</a></li>
+  <li>Fix copy time profile error <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8967">[#8967]</a></li>
+  <li>Fix for custom button action events <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8930">[#8930]</a></li>
+  <li>Update ui json files after core 22777, 22783, 22788 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8962">[#8962]</a></li>
+  <li>Use new dedicated my_settings_view permission <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8957">[#8957]</a></li>
+  <li>Fixed accessibility issues with the server settings authentication page <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8940">[#8940]</a></li>
+  <li>Fixed explorer tree accessibility violations <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8952">[#8952]</a></li>
+  <li>Fix table header accessibility issues <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8955">[#8955]</a></li>
+  <li>Remove Id from Host Endpoint When Submitting Form <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8950">[#8950]</a></li>
+  <li>Fix for missing toast notifications <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8948">[#8948]</a></li>
+  <li>Updated Component Names/Ids in Credential Mapper Form <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8947">[#8947]</a></li>
+  <li>Refactoring the test cases for the ansible-playbook-workflow <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8942">[#8942]</a></li>
+  <li>Fixed console warning for miq table cell button size <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8941">[#8941]</a></li>
+  <li>Fix missing customization_templates list <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8939">[#8939]</a></li>
+  <li>Fixed provision custom specifications table <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8936">[#8936]</a></li>
+  <li>Change ui to display max alert description length <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8933">[#8933]</a></li>
+  <li>Fixed optimization table translations <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8931">[#8931]</a></li>
+  <li>Fixed chargeback rates title missing translation <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8932">[#8932]</a></li>
+  <li>Fix .camelize after a &amp;. safe navigation <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8928">[#8928]</a></li>
+  <li>Fix for displaying ansible credential info <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8926">[#8926]</a></li>
+  <li>Fixed service catalog permission errors <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8927">[#8927]</a></li>
+  <li>Fixed Missing Styling for Remote Consoles <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8919">[#8919]</a></li>
+  <li>Filter effect text and clear option missing in sub listing pages <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8852">[#8852]</a></li>
+  <li>Fix Configuration&gt;Access Control&gt;Tenants list view <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8898">[#8898]</a></li>
+  <li>More package lockdowns for s390x <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8906">[#8906]</a></li>
+  <li>Fix for  multiselect dropdown to stay open for multiselection in edit… <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8896">[#8896]</a></li>
+  <li>Refactor NotificationMessage component <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8894">[#8894]</a></li>
+  <li>Fix for the subrow items in summary pages <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8889">[#8889]</a></li>
+  <li>Revert “Ensure engines lock down es-abstract” <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8884">[#8884]</a></li>
+  <li>Lock down es-abstract to avoid build issues on s390x <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8882">[#8882]</a></li>
+  <li>Fix data-tables cell text alignment <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8880">[#8880]</a></li>
+  <li>Added supports?(:update) check to Host Edit Form <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8878">[#8878]</a></li>
+  <li>Ensure yarn.lock is not updated by yarn install <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8879">[#8879]</a></li>
+  <li>Fix utilization chart <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8868">[#8868]</a></li>
+  <li>Add Missing Routes to Configuration Profiles <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8862">[#8862]</a></li>
+  <li>Fix overview-&gt;assignments accessibility check violation <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8804">[#8804]</a></li>
+  <li>Mark Switch Labels for Translation in Settings-Category Form <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8856">[#8856]</a></li>
+  <li>Fixed tasks table <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8851">[#8851]</a></li>
+  <li>Fixed workflow repository specs <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8854">[#8854]</a></li>
+  <li>Fixed ansible repository refresh buttons <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8846">[#8846]</a></li>
+  <li>failure in resource compliance check in storage service update shouldn’t block form submission  <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8809">[#8809]</a></li>
+  <li>Fix dropdown options that overlaps with header <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8841">[#8841]</a></li>
+  <li>Fix the request refresh button <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8843">[#8843]</a></li>
+  <li>Enhance data tables to fix minor alignments issues <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8832">[#8832]</a></li>
+  <li>Fixed physical providers empty page <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8827">[#8827]</a></li>
+  <li>Fix page title on auth_error screen <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8831">[#8831]</a></li>
+  <li>Translation fixes from 06/01 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8821">[#8821]</a></li>
+  <li>Fix text truncation in data tables <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8825">[#8825]</a></li>
+  <li>host initiator creation: bug in the group/cluster field <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8812">[#8812]</a></li>
+  <li>Fix Data/X-Axis Display Issue in Performance Charts <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8802">[#8802]</a></li>
+  <li>Change redirects to be portable <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8820">[#8820]</a></li>
+  <li>Fixed Provider Edit Form Preventing You From Saving Without Changing The Name <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8818">[#8818]</a></li>
+  <li>Container and container node timelines require ems <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8810">[#8810]</a></li>
+</ul>
+
+<h3 id="enhancement-26">Enhancement</h3>
+
+<ul>
+  <li>Add noopener noreferrer to blank targets <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9068">[#9068]</a></li>
+  <li>Added New Feature That Controls Who Can See Request Logs <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8920">[#8920]</a></li>
+  <li>Add tasks detail page <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9000">[#9000]</a></li>
+  <li>Fix for responsive styles for layout and summary <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8985">[#8985]</a></li>
+  <li>Convert settings tabs to React <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8956">[#8956]</a></li>
+  <li>Integrating react-markdown with miq-structured-list and adding a markdown preview to service-catalog-item’s long-description field <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8972">[#8972]</a></li>
+  <li>Replace .haml-lint.yml with a symlink to .rubocop.yml <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8973">[#8973]</a></li>
+  <li>Integrating the CodeMirror into MiqStructuredList component. <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8918">[#8918]</a></li>
+  <li>Refactor MiqStructuredList component <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8877">[#8877]</a></li>
+  <li>Added better logo file validation <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8934">[#8934]</a></li>
+  <li>Introducing payloads in Ansible Playbooks <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8938">[#8938]</a></li>
+  <li>Introducing workflow status list in request’s show page <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8782">[#8782]</a></li>
+  <li>Credential Mapping Form <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8905">[#8905]</a></li>
+  <li>Prefix workflows list with repository <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8907">[#8907]</a></li>
+  <li>Give chargeback users sorting by date and project <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8763">[#8763]</a></li>
+  <li>Enhance smart management presentation <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8912">[#8912]</a></li>
+  <li>C and U collection form conversion from HAML to React <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8909">[#8909]</a></li>
+  <li>Automate Method summary conversion from Haml to React <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8803">[#8803]</a></li>
+  <li>Rename memory labels in reconfigure form <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8881">[#8881]</a></li>
+  <li>Reconfigure form page enhancements <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8871">[#8871]</a></li>
+  <li>Customizable chart top values (dropdown choices) <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8826">[#8826]</a></li>
+  <li>Add Menu::Manager.reload method <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8886">[#8886]</a></li>
+  <li>Adding embedded workflows to service catalog item <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8815">[#8815]</a></li>
+  <li>po to json from July 11th <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8864">[#8864]</a></li>
+  <li>Introducing embedded_workflow to dynamic select box in service dialogs <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8844">[#8844]</a></li>
+  <li>Separate role access restrictions for catalog items <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8833">[#8833]</a></li>
+  <li>Added Embedded Workflows / Credentials Page <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8834">[#8834]</a></li>
+  <li>Enhance Workflow Repository Pages <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8842">[#8842]</a></li>
+  <li>Mark workflow controllers as prototype <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8848">[#8848]</a></li>
+  <li>Added vm refresh buttons <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8850">[#8850]</a></li>
+  <li>Angular to react conversion Reconfigure form <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8710">[#8710]</a></li>
+  <li>Add Toolbar and Edit Tag Button to Workflows Page <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8838">[#8838]</a></li>
+  <li>Added Button Helper For Embedded Workflows <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8835">[#8835]</a></li>
+  <li>Enhance the MiqStructuredList for summary pages <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8814">[#8814]</a></li>
+  <li>Updated rake locale: po_to_json from May 14th catalogs <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8800">[#8800]</a></li>
+</ul>
+
+<h3 id="other-41">Other</h3>
+
+<ul>
+  <li>Simplify regex to remove_right_size_zeros <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9072">[#9072]</a></li>
+  <li>Updated ui translation json files based on core 22789 and 22834 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9015">[#9015]</a></li>
+  <li>Updated Flash Message Text for Consistency <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9012">[#9012]</a></li>
+  <li>Revert s390x lockdowns <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8993">[#8993]</a></li>
+  <li>Upgrade carbon packages to release 10.59.17 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8984">[#8984]</a></li>
+  <li>Update yarn.lock with latest dependencies <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8997">[#8997]</a></li>
+  <li>Fix dashboard accessibility issues <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8994">[#8994]</a></li>
+  <li>Update yarn.lock packages <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8989">[#8989]</a></li>
+  <li>[Quinteros] Fix failing snapshot specs <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8992">[#8992]</a></li>
+  <li>Fix utilization accessibility issues <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8982">[#8982]</a></li>
+  <li>Remove legacy settings code <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8965">[#8965]</a></li>
+  <li>Update yarn to stable v4.0.2 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8968">[#8968]</a></li>
+  <li>Resorted component-definitions-common.js <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8963">[#8963]</a></li>
+  <li>Updated the package babel/core <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8959">[#8959]</a></li>
+  <li>Updated ui json files after core 22770 22781 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8960">[#8960]</a></li>
+  <li>Rubocop Fixes in routes.rb <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8845">[#8845]</a></li>
+  <li>Drop Ruby 2.7 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8949">[#8949]</a></li>
+  <li>Remove the s390x hack now that we are on yarn4 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8925">[#8925]</a></li>
+  <li>Update yarn to 4.0.0.rc51 since it’s works on s390x <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8924">[#8924]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8923">[#8923]</a></li>
+  <li>More s390x lockdowns <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8915">[#8915]</a></li>
+  <li>Renamed first_user_summary to method_details <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8913">[#8913]</a></li>
+  <li>Add chargeback rates cypress tests <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8899">[#8899]</a></li>
+  <li>Fix CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8904">[#8904]</a></li>
+  <li>[QUINTEROS] Lock the release branch to test with ruby 3.0 / Fixup CI ‘if’ ruby-version check for 3.0 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8902">[#8902]</a></li>
+  <li>Updated translation json files after core 22621 22654 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8897">[#8897]</a></li>
+  <li>Fix cypress config file <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8893">[#8893]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8870">[#8870]</a></li>
+  <li>Add Cypress to GitHub Actions <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8866">[#8866]</a></li>
+  <li>Delete the cypress videos for passing tests on CI <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8863">[#8863]</a></li>
+  <li>Fixed dashboard tests <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8860">[#8860]</a></li>
+  <li>Update cypress version <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8861">[#8861]</a></li>
+  <li>Add cypress:run:edge command <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8858">[#8858]</a></li>
+  <li>Added Overview &gt; Dashboard Cypress tests <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8857">[#8857]</a></li>
+  <li>Fixed cypress logout test <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8855">[#8855]</a></li>
+  <li>Update searchbox tests <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8829">[#8829]</a></li>
+  <li>Remove unneccessary cypress tests <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8830">[#8830]</a></li>
+  <li>Add logout cypress test <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8828">[#8828]</a></li>
+  <li>Fixed empty db menu tests <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8824">[#8824]</a></li>
+  <li>Fix searchbox cypress tests <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8822">[#8822]</a></li>
+  <li>Fixed missing menu tests <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8819">[#8819]</a></li>
+  <li>Fix cypress tests for firefox <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8816">[#8816]</a></li>
+  <li>Added menu item tests to check for non error screens <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8813">[#8813]</a></li>
+  <li>Update cypress <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8811">[#8811]</a></li>
+  <li>Initial cypress fix <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/8805">[#8805]</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-manageiqmanageiq-ui-service"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/compare/petrosian-1...quinteros-1/manageiq-ui-service">ManageIQ/manageiq-ui-service</a></h2>
+
+<h3 id="bug-34">Bug</h3>
+
+<ul>
+  <li>Fix Notification Drawer in Production <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1865">[#1865]</a></li>
+  <li>More package lockdowns for s390x <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1860">[#1860]</a></li>
+  <li>Lock down es-abstract to avoid build issues on s390x <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1857">[#1857]</a></li>
+</ul>
+
+<h3 id="enhancement-27">Enhancement</h3>
+
+<ul>
+  <li>Prevent autocomplete on login fields <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1884">[#1884]</a></li>
+  <li>Add noopener noreferrer to blank targets <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1883">[#1883]</a></li>
+</ul>
+
+<h3 id="other-42">Other</h3>
+
+<ul>
+  <li>Revert s390x lockdowns <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1874">[#1874]</a></li>
+  <li>Update yarn.lock packages <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1873">[#1873]</a></li>
+  <li>Update yarn to stable v4.0.2 <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1872">[#1872]</a></li>
+  <li>Bump get-func-name from 2.0.0 to 2.0.2 <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1867">[#1867]</a></li>
+  <li>Bump word-wrap from 1.2.3 to 1.2.5 <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1866">[#1866]</a></li>
+  <li>Bump socket.io-parser from 4.2.2 to 4.2.4 <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1856">[#1856]</a></li>
+  <li>Bump semver from 5.7.1 to 5.7.2 <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1853">[#1853]</a></li>
+  <li>Upgrade to yarn 4.0.0-rc.51 which works on s390x <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1863">[#1863]</a></li>
+  <li>Update actions/checkout version to v4 <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1862">[#1862]</a></li>
+  <li>More s390x lockdowns <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1861">[#1861]</a></li>
+  <li>Update GitHub Actions versions <a href="https://github.com/ManageIQ/manageiq-ui-service/pull/1855">[#1855]</a></li>
+</ul>
+
+    </div>
+  </div>
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/orgs/ManageIQ/discussions">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/changelog/petrosian-1-to-quinteros-1.md">
+          <i class="fa fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2024 ManageIQ.
+      </span>
+      <span>
+        <a href="https://www.ibm.com/opensource/" target="_blank">
+          Sponsored by IBM, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>
