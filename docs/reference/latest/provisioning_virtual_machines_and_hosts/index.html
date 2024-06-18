@@ -1207,6 +1207,16 @@
 </li>
 </ul>
 </li>
+<li class="toc-entry toc-h3"><a href="#provisioning-dialog">Provisioning Dialog</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#create-a-workflow-optional">Create a workflow (optional)</a></li>
+<li class="toc-entry toc-h4"><a href="#add-a-workflow-repository">Add a Workflow Repository</a></li>
+<li class="toc-entry toc-h4"><a href="#create-a-provisioning-dialog">Create a Provisioning Dialog</a></li>
+<li class="toc-entry toc-h4"><a href="#create-a-service-catalog-item">Create a Service Catalog Item</a></li>
+<li class="toc-entry toc-h4"><a href="#provisioning-a-virtual-machine">Provisioning a Virtual Machine</a></li>
+<li class="toc-entry toc-h4"><a href="#iterate">Iterate</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h3"><a href="#catalogs">Catalogs</a>
 <ul>
 <li class="toc-entry toc-h4"><a href="#creating-a-catalog-bundle">Creating a Catalog Bundle</a></li>
@@ -4732,6 +4742,206 @@ instance.</p>
   <li>
     <p>Click <strong>Save</strong> or <strong>Add</strong> if you are adding this to a new instance.</p>
   </li>
+</ol>
+
+<h3 id="provisioning-dialog">
+<a class="anchor" href="#provisioning-dialog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Provisioning Dialog</h3>
+
+<p>The following example shows how to create a Provisioning Dialog that modifies the parameters for provisioning a small, medium, or large service.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">provision-vm-small-med-large.asl</code> workflow runs for every provisioned VM and is responsible for modifying the VM size. This workflow is the Provisioning service entry point.</p>
+
+<p>You need to set the Provisioning service entry point to workflow script. For example, this workflow is run for every provisioned Virtual Machine (VM), and modifies the VM size.</p>
+
+<p>Use the following sections and follow them in order to provision a VM service, create a Provisioning Dialog and modify the parameters.</p>
+
+<h4 id="create-a-workflow-optional">
+<a class="anchor" href="#create-a-workflow-optional" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a workflow (optional)</h4>
+
+<p><strong>Note</strong>: If you want to use the existing <code class="language-plaintext highlighter-rouge">provision-vm-small-med-large.asl</code> workflow script without any changes, you can skip this section and proceed to <code class="language-plaintext highlighter-rouge">Add a Workflow Repository</code> section.</p>
+
+<ol>
+  <li>Fork <code class="language-plaintext highlighter-rouge">https://github.com/ManageIQ/workflows-examples</code> repository or create your own repository.</li>
+  <li>
+    <p>Clone the repo locally by using the clone command:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>git clone https://github.com/&lt;owner&gt;/workflows-examples
+</code></pre></div>    </div>
+    <p>Where <code class="language-plaintext highlighter-rouge">&lt;owner&gt;</code> is the owner of the repository.</p>
+  </li>
+  <li>
+    <p>Create a new branch:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> sm-md-lg
+</code></pre></div>    </div>
+  </li>
+  <li>Create your own script or edit the existing script that is provided. The script used in this example is <code class="language-plaintext highlighter-rouge">provision-vm-small-med-large.asl</code>.</li>
+  <li>Push code changes to your branch.</li>
+</ol>
+
+<h4 id="add-a-workflow-repository">
+<a class="anchor" href="#add-a-workflow-repository" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add a Workflow Repository</h4>
+
+<p>Use the following steps to add a Workflow Repository.</p>
+
+<ol>
+  <li>Click <strong>Automation</strong> &gt; <strong>Embedded Workflows</strong> &gt; <strong>Repositories</strong>.</li>
+  <li>Click <strong>Configuration</strong> &gt; <strong>Add new Repository</strong>.</li>
+  <li>Provide the <strong>Name</strong> and <strong>URL</strong> for the repository:
+    <ul>
+      <li>
+<strong>Name</strong>: Local name to identify this repository. For example, <code class="language-plaintext highlighter-rouge">Example Workflows</code>.</li>
+      <li>
+<strong>Url</strong>: Git repository URL. For example, <code class="language-plaintext highlighter-rouge">https://github.com/ManageIQ/workflows-examples</code>.</li>
+      <li>
+<strong>SCM Branch</strong>: Git repository branch name. For example, leave this field blank if you want to use the existing <code class="language-plaintext highlighter-rouge">provision-vm-small-med-large.asl</code> script from the master branch, or use a branch name like <code class="language-plaintext highlighter-rouge">sm-md-lg</code> if you have edited or created your own workflow script.</li>
+    </ul>
+  </li>
+  <li>Click <strong>Save</strong>.</li>
+</ol>
+
+<h4 id="create-a-provisioning-dialog">
+<a class="anchor" href="#create-a-provisioning-dialog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a Provisioning Dialog</h4>
+
+<p>Use the following steps to create a Provisioning Dialog.</p>
+
+<ol>
+  <li>Click <strong>Automation</strong> &gt; <strong>Embedded Automate</strong> &gt; <strong>Customization</strong>.</li>
+  <li>Click <strong>Service Dialogs</strong> &gt; <strong>All Dialogs</strong>.</li>
+  <li>Click <strong>Configuration</strong> &gt; <strong>Add a new Dialog</strong>.</li>
+  <li>Provide a <strong>Name</strong> and <strong>Description</strong> for the dialog:
+    <ul>
+      <li>
+<strong>Name</strong>: Name used in the Service Catalog. For example, <code class="language-plaintext highlighter-rouge">sm-med-lg dialog</code>.</li>
+      <li>
+<strong>Description</strong>: Description for the dialog. For example, <code class="language-plaintext highlighter-rouge">Dialog choosing vm size</code>.</li>
+    </ul>
+  </li>
+  <li>Add a text box named <strong>vm_name</strong>.</li>
+  <li>Add a dropdown named <strong>size</strong>.</li>
+  <li>Click the edit pencil icon for the <strong>size</strong> dropdown.</li>
+  <li>Under <strong>Options</strong> &gt; <strong>Entries</strong> enter the following values:
+    <ul>
+      <li>Enter the following for the first row:
+        <ul>
+          <li>For <strong>Name</strong> field, type <code class="language-plaintext highlighter-rouge">Large</code>.</li>
+          <li>For <strong>Value</strong> field, type <code class="language-plaintext highlighter-rouge">large</code>.</li>
+        </ul>
+      </li>
+      <li>Enter the following for the second row:
+        <ul>
+          <li>For <strong>Name</strong> field, type <code class="language-plaintext highlighter-rouge">Medium</code>.</li>
+          <li>For <strong>Value</strong> field, type <code class="language-plaintext highlighter-rouge">medium</code>.</li>
+        </ul>
+      </li>
+      <li>Enter the following for the third row:
+        <ul>
+          <li>For <strong>Name</strong> field, type <code class="language-plaintext highlighter-rouge">Small</code>.</li>
+          <li>For <strong>Value</strong> field, type <code class="language-plaintext highlighter-rouge">small</code>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Click <strong>Save</strong>.</li>
+</ol>
+
+<h4 id="create-a-service-catalog-item">
+<a class="anchor" href="#create-a-service-catalog-item" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a Service Catalog Item</h4>
+
+<p>Use the following steps to create a Service Catalog Item.</p>
+
+<ol>
+  <li>Click <strong>Service</strong> &gt; <strong>Catalogs</strong>.</li>
+  <li>Click <strong>Catalogs</strong> &gt; <strong>All Catalogs</strong>.</li>
+  <li>Click <strong>Configuration</strong> &gt; <strong>Add a New Catalog</strong>.</li>
+  <li>Provide a <strong>Name</strong> and <strong>Description</strong>:
+    <ul>
+      <li>
+<strong>Name</strong>: Name displayed in the catalog. For example, <code class="language-plaintext highlighter-rouge">Provision VM</code>.</li>
+      <li>
+<strong>Description</strong>: Description of the catalog. For example, <code class="language-plaintext highlighter-rouge">Provisioning VM by size</code>.</li>
+    </ul>
+  </li>
+  <li>Click <strong>Save</strong>.</li>
+  <li>Click <strong>Catalog Items</strong> &gt; <strong>All Catalog Items</strong> &gt; <strong>Provisioning</strong>.</li>
+  <li>Click <strong>Configuration</strong> &gt; <strong>Add a New Catalog Item</strong>.</li>
+  <li>Provide a value for <code class="language-plaintext highlighter-rouge">Catalog Item Type</code>:
+    <ul>
+      <li>
+<strong>Catalog Item Type</strong>: The functionality of this catalog item. Choose <strong>VMware</strong>.</li>
+    </ul>
+  </li>
+  <li>Under the <strong>Basic Information</strong> tab, provide the values for the following fields:
+    <ul>
+      <li>
+<strong>Name</strong>: Name displayed in the catalog. For example, <code class="language-plaintext highlighter-rouge">Provision VM with Size</code>.</li>
+      <li>
+<strong>Description</strong>: Description of the catalog. For example, <code class="language-plaintext highlighter-rouge">Provision a VM choosing size</code>.</li>
+      <li>
+<strong>Display in Catalog</strong>: Check to display this catalog item.</li>
+      <li>
+<strong>Catalog</strong>: Organization concept. For example, <code class="language-plaintext highlighter-rouge">My Company/Provisioning</code>.</li>
+      <li>
+<strong>Dialog</strong>: The dialog created previously. For example, <code class="language-plaintext highlighter-rouge">sm-med-lg dialog</code>.</li>
+      <li>
+<strong>Provisioning Entry Point</strong>:
+        <ul>
+          <li>For <strong>endpoint type</strong>, choose <strong>Embedded Workflow</strong>.</li>
+          <li>For the <strong>endpoint value</strong> choose the workflow script. For example, <code class="language-plaintext highlighter-rouge">provision-vm-small-med-large.asl</code>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Under the <strong>Request Info</strong> &gt; <strong>Catalog</strong> tab enter the following values:
+    <ul>
+      <li>
+<strong>VM Name</strong>: Name that is overwritten by the <strong>VM name</strong> in the dialog. Enter anything here.</li>
+    </ul>
+  </li>
+  <li>Under the <strong>Environment</strong> tab, choose an appropriate <strong>Host</strong> and <strong>Datastore</strong>:
+    <ul>
+      <li>
+<strong>Host</strong>: Host that runs the VM.</li>
+      <li>
+<strong>Datastore</strong>: Disk that stores the VM.</li>
+    </ul>
+  </li>
+  <li>Under the <strong>Networking</strong> tab, choose an appropriate <strong>Network Adapter</strong>.</li>
+  <li>Click <strong>Add</strong>.</li>
+</ol>
+
+<h4 id="provisioning-a-virtual-machine">
+<a class="anchor" href="#provisioning-a-virtual-machine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Provisioning a Virtual Machine</h4>
+
+<ol>
+  <li>Click <strong>Services</strong> &gt; <strong>Catalogs</strong> &gt; <strong>Service Catalogs</strong>.</li>
+  <li>Click <strong>Order</strong> under the newly created service, <strong>Vm with Size</strong>.</li>
+  <li>Provide the following fields:
+    <ul>
+      <li>
+<strong>VM name</strong>: Name for the newly created VM. For example <code class="language-plaintext highlighter-rouge">demo-1</code>.</li>
+      <li>
+<strong>Size</strong>: The desired VM size. You can choose <code class="language-plaintext highlighter-rouge">Small</code>, <code class="language-plaintext highlighter-rouge">Medium</code> or <code class="language-plaintext highlighter-rouge">Large</code>. For example, choose <strong>Small</strong>.</li>
+    </ul>
+  </li>
+  <li>Click <strong>Submit</strong>
+</li>
+</ol>
+
+<h4 id="iterate">
+<a class="anchor" href="#iterate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Iterate</h4>
+
+<p>If the provisioning did not go as planned use the following steps:</p>
+
+<ol>
+  <li>Edit the workflow script.</li>
+  <li>Push code changes to your branch.</li>
+  <li>Refresh the Workflow repository.</li>
+  <li>You can follow the workflows link to view the version of the script is stored on the server.</li>
+  <li>If you changed the script name, edit the Service Catalog Item that you previously created.</li>
+  <li>Provision the Virtual Machine.</li>
 </ol>
 
 <h3 id="catalogs">
