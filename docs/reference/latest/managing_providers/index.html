@@ -1177,6 +1177,39 @@
 </li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#embedded-terraform-opentofu">Embedded Terraform (OpenTofu)</a></li>
+<li class="toc-entry toc-h2"><a href="#importing-opentofu-image-on-an-appliance">Importing OpenTofu image on an appliance</a></li>
+<li class="toc-entry toc-h2"><a href="#usage-of-embedded-terraform-opentofu">Usage of Embedded Terraform (OpenTofu)</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#enabling-the-embedded-terraform-server-role">Enabling the Embedded Terraform Server Role</a></li>
+<li class="toc-entry toc-h3"><a href="#verifying-the-embedded-terraform-worker-state">Verifying the Embedded Terraform worker state</a></li>
+<li class="toc-entry toc-h3"><a href="#adding-a-template-repository">Adding a Template Repository</a></li>
+<li class="toc-entry toc-h3"><a href="#refreshing-repositories-2">Refreshing Repositories</a></li>
+<li class="toc-entry toc-h3"><a href="#credentials-2">Credentials</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#adding-credentials-2">Adding Credentials</a></li>
+<li class="toc-entry toc-h4"><a href="#credential-types-2">Credential Types</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#scm-2">SCM</a></li>
+<li class="toc-entry toc-h5"><a href="#amazon-1">Amazon</a></li>
+<li class="toc-entry toc-h5"><a href="#azure-1">Azure</a></li>
+<li class="toc-entry toc-h5"><a href="#google-compute-engine">Google Compute Engine</a></li>
+<li class="toc-entry toc-h5"><a href="#ibm-cloud-classic-infrastructure">IBM Cloud Classic Infrastructure</a></li>
+<li class="toc-entry toc-h5"><a href="#openstack-1">OpenStack</a></li>
+<li class="toc-entry toc-h5"><a href="#vmware-1">VMware</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#running-a-terraform-template-from-a-service-catalog">Running a Terraform Template from a Service Catalog</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#create-a-catalog">Create a catalog</a></li>
+<li class="toc-entry toc-h4"><a href="#create-a-terraform-service-catalog-item">Create a Terraform Service Catalog item</a></li>
+<li class="toc-entry toc-h4"><a href="#run-the-terraform-template">Run the Terraform Template:</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#cloud-providers">Cloud Providers</a></li>
@@ -3265,6 +3298,428 @@ environment.</p>
 <p>If you selected a service dialog to run when creating the button, ManageIQ will then prompt you to enter variables to complete the task. After entering your desired parameters, ManageIQ takes you to the <strong>Requests</strong> page.</p>
 
 <p>The service item’s details can be viewed in menu: <strong>Services &gt; My Services</strong> in ManageIQ.</p>
+
+<h2 id="embedded-terraform-opentofu">
+<a class="anchor" href="#embedded-terraform-opentofu" aria-hidden="true"><span class="octicon octicon-link"></span></a>Embedded Terraform (OpenTofu)</h2>
+
+<p>OpenTofu is an open source infrastructure as code tool, which can be used to build, change, and version the infrastructure. You can use OpenTofu to define infrastructure resources in human-readable configuration files that you can use to version, reuse, and share.</p>
+
+<p>OpenTofu is built into ManageIQ so you do not need to install any additional components.</p>
+
+<p>If you want to use the Embedded Terraform feature in ManageIQ that is deployed as a virtual machine appliance, then you need to manually import the Terraform image on an appliance:</p>
+
+<h2 id="importing-opentofu-image-on-an-appliance">
+<a class="anchor" href="#importing-opentofu-image-on-an-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Importing OpenTofu image on an appliance</h2>
+
+<p><strong>Note</strong>: Follow this section if you have ManageIQ that is deployed as a virtual appliance. These steps are not applicable to a containerized deployment (podified) of ManageIQ.</p>
+
+<p>Use the following command to import the OpenTofu image on your appliance server.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>runuser <span class="nt">--login</span> manageiq <span class="nt">--command</span> <span class="s1">'podman --root=/var/www/miq/vmdb/data/containers/storage image load --input /tmp/&lt;OpenTofu_image&gt;'</span>
+</code></pre></div></div>
+
+<p>Where <code class="language-plaintext highlighter-rouge">OpenTofu_image</code> is the name of your OpenTofu image.</p>
+
+<p>You also need to set the docker image name in advanced settings before enabling the server role. Navigate to the <strong>Settings</strong> &gt; <strong>Application Settings</strong> in ManageIQ UI and set the value for <code class="language-plaintext highlighter-rouge">workers/worker_base/opentofu_worker/container_image</code> field.</p>
+
+<p>An example value of this field is <code class="language-plaintext highlighter-rouge">container_image: docker.io/manageiq/opentofu-runner:latest</code>.</p>
+
+<h2 id="usage-of-embedded-terraform-opentofu">
+<a class="anchor" href="#usage-of-embedded-terraform-opentofu" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage of Embedded Terraform (OpenTofu)</h2>
+
+<p>The following sections show the usage of Embedded Terraform in ManageIQ. The following sections apply to ManageIQ that is deployed as a containerized deployment (podified) and ManageIQ that is deployed as a virtual machine appliance:</p>
+
+<ol>
+  <li>Enable the Embedded Terraform server role.</li>
+  <li>Add a source control repository that contains your templates.</li>
+  <li>Add credentials to access the repository.</li>
+  <li>Create a Service Catalog item with the desired Terraform template.</li>
+</ol>
+
+<h3 id="enabling-the-embedded-terraform-server-role">
+<a class="anchor" href="#enabling-the-embedded-terraform-server-role" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling the Embedded Terraform Server Role</h3>
+
+<p>In ManageIQ, the Embedded Terraform server role is disabled by default. Enable this server role to use Embedded Terraform (OpenTofu).</p>
+
+<p>To enable the Embedded Terraform Server Role, use the following steps:</p>
+
+<ol>
+  <li>Browse to the settings menu, and click <strong>Configuration</strong> &gt; <strong>Settings</strong>.</li>
+  <li>Select the desired server under <strong>Zones</strong>.</li>
+  <li>Set the <strong>Server Role</strong> for <strong>Embedded Terraform</strong> to <code class="language-plaintext highlighter-rouge">On</code>.</li>
+</ol>
+
+<h3 id="verifying-the-embedded-terraform-worker-state">
+<a class="anchor" href="#verifying-the-embedded-terraform-worker-state" aria-hidden="true"><span class="octicon octicon-link"></span></a>Verifying the Embedded Terraform worker state</h3>
+
+<p>Verify that the Embedded Terraform worker is started to use its features:</p>
+
+<ol>
+  <li>Browse to the settings menu, then click <strong>Configuration</strong> &gt; <strong>Diagnostics</strong> and click the server that you want to choose.</li>
+  <li>Click <strong>Roles by Servers</strong> tab.</li>
+</ol>
+
+<p>A table of all workers and their status appears from which you can confirm the state of your Embedded Terraform worker.</p>
+
+<h3 id="adding-a-template-repository">
+<a class="anchor" href="#adding-a-template-repository" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a Template Repository</h3>
+
+<p>To enable ManageIQ to discover and use your Terraform templates, add a repository to store and manage your templates.</p>
+
+<p>If your repository requires credentials for access, then you need to create SCM credentials. For more information about how to create SCM credentials, see <a href="../_topics/opentofu_credentials.md#scm">SCM credentials</a>.</p>
+
+<p>Use the following steps to add a repository:</p>
+
+<ol>
+  <li>
+    <p>Browse to the menu and click <strong>Automation &gt; Embedded Terraform &gt; Repositories</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Add New Repository"> (<strong>Add New Repository</strong>).</p>
+  </li>
+  <li>
+    <p>Provide a Repository Name in the <strong>Name</strong> field.</p>
+  </li>
+  <li>
+    <p>Add a description for the repository in the <strong>Description</strong> field.</p>
+  </li>
+  <li>
+    <p>Add a <strong>URL</strong> and an optional port for the repository.</p>
+  </li>
+  <li>
+    <p>Select the appropriate <strong>SCM Credentials</strong> from the drop-down menu.</p>
+  </li>
+  <li>
+    <p>Provide a branch name in the <strong>SCM Branch</strong> field. This field is optional and default value is set to <code class="language-plaintext highlighter-rouge">master</code> branch.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<p>When you save the repository, the Terraform templates are synced, and are available to ManageIQ.</p>
+
+<h3 id="refreshing-repositories-2">
+<a class="anchor" href="#refreshing-repositories-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing Repositories</h3>
+
+<p>You can use ManageIQ to refresh specific Terraform repositories or all repositories in your inventory to make sure that your templates are up to date.</p>
+
+<p>Use the following steps to refresh a specific repository:</p>
+
+<ol>
+  <li>
+    <p>Browse to the menu and click <strong>Automation &gt; Embedded Terraform &gt; Repositories</strong>.</p>
+  </li>
+  <li>
+    <p>Click a repository.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/2003.png" alt="Refresh this Repository"> (<strong>Refresh this Repository</strong>).</p>
+  </li>
+</ol>
+
+<p>Alternately, you can refresh some or all of the repositories from the list view:</p>
+
+<ol>
+  <li>
+    <p>Browse to the menu and click <strong>Automation &gt; Embedded Terraform &gt; Repositories</strong>.</p>
+  </li>
+  <li>
+    <p>Select the repositories that you want to refresh. Click <strong>Check All</strong> to select all repositories.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/2003.png" alt="Refresh Selected Terraform Templates Repositories"> (<strong>Refresh Selected Ansible Repositories</strong>).</p>
+  </li>
+</ol>
+
+<h3 id="credentials-2">
+<a class="anchor" href="#credentials-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credentials</h3>
+
+<p>Use the following sections to learn more about credentials that are associated with ManageIQ and Embedded Terraform:</p>
+
+<h4 id="adding-credentials-2">
+<a class="anchor" href="#adding-credentials-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Credentials</h4>
+
+<p>Credentials are used by ManageIQ for authentication when you connect to cloud providers for infrastructure deployment.</p>
+
+<ol>
+  <li>
+    <p>Browse to the menu and click <strong>Automation &gt; Embedded Terraform &gt; Credentials</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Add New Credential"> (<strong>Add New Credential</strong>).</p>
+  </li>
+  <li>
+    <p>Provide a <strong>Name</strong> for the credential.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Credential Type</strong>. Additional fields might appear depending on the credential type that you chose.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<h4 id="credential-types-2">
+<a class="anchor" href="#credential-types-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credential Types</h4>
+
+<p>Each credential type that is used by ManageIQ for the Embedded Terraform is listed in the following sections:</p>
+
+<h5 id="scm-2">
+<a class="anchor" href="#scm-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>SCM</h5>
+
+<p>SCM (source control) credentials are used with projects to clone and update the local source code repositories from a remote revision control system such as Git, Subversion, or Mercurial.</p>
+
+<p>Source Control credentials contain multiple attributes, which you need to configure:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username for source control system.</p>
+  </li>
+  <li>
+    <p><strong>Password</strong>: The password for source control system.</p>
+  </li>
+  <li>
+    <p><strong>Private key passphrase</strong>: If the SSH private key used is protected by a passphrase, you might need to configure a key passphrase for the private key.</p>
+  </li>
+  <li>
+    <p><strong>Private Key</strong>: Copy or drag-and-drop the actual SSH private key, which is used to authenticate the user to the source control system by using SSH.</p>
+  </li>
+</ul>
+
+<h5 id="amazon-1">
+<a class="anchor" href="#amazon-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Amazon</h5>
+
+<p>If you select this credential type, it enables connection between ManageIQ and Amazon Web Services.</p>
+
+<p>Amazon Web Services credentials contain multiple attributes, which you need to configure:</p>
+
+<ul>
+  <li>
+    <p><strong>Access Key</strong>: User credentials that allow for programmatic calls to Amazon Web Services.</p>
+  </li>
+  <li>
+    <p><strong>Secret Key</strong>: The secret key that corresponds to the user access key.</p>
+  </li>
+  <li>
+    <p><strong>STS Token</strong>: Token generated by Amazon Web Services Security Token Service.</p>
+  </li>
+</ul>
+
+<h5 id="azure-1">
+<a class="anchor" href="#azure-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Azure</h5>
+
+<p>If you select this credential type, it enables connection between ManageIQ and Microsoft Azure.</p>
+
+<p>Microsoft Azure credentials contain multiple attributes, which you need to configure:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to connect to the Microsoft Azure account.</p>
+  </li>
+  <li>
+    <p><strong>Password</strong>: The password to connect to the Microsoft Azure account.</p>
+  </li>
+  <li>
+    <p><strong>Subscription ID</strong>: The Subscription UUID for the Microsoft Azure account.</p>
+  </li>
+  <li>
+    <p><strong>Tenant ID</strong>: The Tenant ID for the Microsoft Azure account.</p>
+  </li>
+  <li>
+    <p><strong>Client Secret</strong>: The Client Secret for the Microsoft Azure account.</p>
+  </li>
+  <li>
+    <p><strong>Client ID</strong>: The Client ID for the Microsoft Azure account.</p>
+  </li>
+</ul>
+
+<h5 id="google-compute-engine">
+<a class="anchor" href="#google-compute-engine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Google Compute Engine</h5>
+
+<p>If you select this credential type, it enables connection between ManageIQ and Google Compute Engine.</p>
+
+<p>Google Compute Engine credentials contain multiple attributes, which you need to configure:</p>
+
+<ul>
+  <li>
+<strong>Service Account Email Address</strong>: The Service Account email address to connect to the Google Compute Engine.</li>
+  <li>
+<strong>RSA Private Key</strong>: Contents of the PEM file associated with the service account email.</li>
+  <li>
+<strong>Project</strong>: The Google Compute Engine assigned identification. This field is constructed as two words followed by a three-digit number, such as <code class="language-plaintext highlighter-rouge">squeamish-ossifrage-123</code>.</li>
+  <li>
+<strong>Google Cloud Region</strong>: The default region for the resources. If another region is specified on the resource, it takes precedence.</li>
+</ul>
+
+<h5 id="ibm-cloud-classic-infrastructure">
+<a class="anchor" href="#ibm-cloud-classic-infrastructure" aria-hidden="true"><span class="octicon octicon-link"></span></a>IBM Cloud Classic Infrastructure</h5>
+
+<p>If you select this credential type, it enables connection between ManageIQ and IBM Cloud Classic Infrastructure.</p>
+
+<p>IBM Cloud Classic Infrastructure credentials contain multiple attributes, which you need to configure:</p>
+
+<ul>
+  <li>
+<strong>IBM Cloud Classic Infrastructure User Name</strong>: The username for IBM Cloud Classic Infrastructure.</li>
+  <li>
+<strong>IBM Cloud Classic Infrastructure API Key</strong>: The API key for IBM Cloud Classic Infrastructure.</li>
+</ul>
+
+<h5 id="openstack-1">
+<a class="anchor" href="#openstack-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>OpenStack</h5>
+
+<p>If you select this credential type, it enables connection between ManageIQ and OpenStack.</p>
+
+<p>OpenStack credentials contain multiple attributes, which you might need to configure:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to connect to OpenStack.</p>
+  </li>
+  <li>
+    <p><strong>Password (API Key)</strong>: The password or API key to connect to OpenStack.</p>
+  </li>
+  <li>
+    <p><strong>Host (Authentication URL)</strong>: The host to be used for authentication.</p>
+  </li>
+  <li>
+    <p><strong>Project (Tenant Name)</strong>: The Tenant name or Tenant ID to connect to OpenStack. This value is usually the same as the username.</p>
+  </li>
+  <li>
+    <p><strong>Domain name</strong>: The Fully qualified domain name (FQDN) to connect to OpenStack.</p>
+  </li>
+</ul>
+
+<h5 id="vmware-1">
+<a class="anchor" href="#vmware-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>VMware</h5>
+
+<p>If you select this credential type, it enables connection between ManageIQ and VMware vCenter.</p>
+
+<p><strong>Important:</strong> If both ManageIQ and a VMware provider are located in the same IPv6-only network, then use a DNS-resolvable hostname for the VMware provider in the <strong>vCenter Host</strong> field when you add the credentials.</p>
+
+<p>VMware credentials contain multiple attributes, which you might need to configure:</p>
+
+<ul>
+  <li>
+    <p><strong>Username</strong>: The username to connect to vCenter.</p>
+  </li>
+  <li>
+    <p><strong>Password</strong>: The password to connect to vCenter.</p>
+  </li>
+  <li>
+    <p><strong>vCenter Host</strong>: The vCenter hostname or IP address to connect to.</p>
+  </li>
+</ul>
+
+<h3 id="running-a-terraform-template-from-a-service-catalog">
+<a class="anchor" href="#running-a-terraform-template-from-a-service-catalog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running a Terraform Template from a Service Catalog</h3>
+
+<p>You can run a Terraform Template from ManageIQ by creating a Service Catalog item from a Terraform template.</p>
+
+<p>Use the following listed steps in each section to run the Terraform Template from a Service Catalog:</p>
+
+<ol>
+  <li>Create a catalog</li>
+  <li>Create a Terraform Service Catalog item</li>
+  <li>Run the Terraform template</li>
+</ol>
+
+<h4 id="create-a-catalog">
+<a class="anchor" href="#create-a-catalog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a catalog</h4>
+
+<p>Use the following steps to create a catalog:</p>
+
+<ol>
+  <li>
+    <p>In the navigation bar, click <strong>Services</strong> &gt; <strong>Catalogs and click Catalog Items</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then click <strong>Add a New Catalog</strong>.</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Name</strong> and <strong>Description</strong> for the catalog.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<h4 id="create-a-terraform-service-catalog-item">
+<a class="anchor" href="#create-a-terraform-service-catalog-item" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a Terraform Service Catalog item</h4>
+
+<p>Use the following steps to create a Terraform Service Catalog item:</p>
+
+<ol>
+  <li>
+    <p>In the navigation bar click <strong>Automation</strong> &gt; <strong>Embedded Automate</strong> &gt; <strong>Customization</strong>, then click <strong>Service Dialog</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong> &gt; <strong>Create Service Dialog</strong>.</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Service Dialog Name</strong> and add the required fields for the Terraform template.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+  <li>
+    <p>In the navigation bar, click <strong>Services</strong> &gt; <strong>Catalogs</strong> &gt; <strong>Catalog Items</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong> &gt; <strong>Add a New Catalog Item</strong> to create a new catalog item with the following details at minimum:</p>
+
+    <ul>
+      <li>
+        <p>For <strong>Catalog Item type</strong>, select <strong>Terraform Template</strong>.</p>
+      </li>
+      <li>
+        <p>Enter a <strong>Name</strong> for the service catalog item.</p>
+      </li>
+      <li>
+        <p>Select <strong>Display</strong> in <strong>Catalog</strong>.</p>
+      </li>
+      <li>
+        <p>In Catalog, select the catalog that you created previously.</p>
+      </li>
+      <li>
+        <p>In Provisioning, select the repository that you previously added and select the Terraform template that you want to deploy.</p>
+      </li>
+      <li>
+        <p>In Provisioning, select the <strong>Cloud Type</strong> and then select the <strong>credential</strong> to connect to the cloud.</p>
+      </li>
+      <li>
+        <p>In Provisioning, select the <strong>Service Dialog</strong> that you created previously. If you want to enter additional information when you run the task, <strong>Service Dialog</strong> must be selected. A dialog is required if <strong>Display in Catalog</strong> is chosen.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<p>The catalog item that you created appears in the <em>All Service Catalog Items</em> list.</p>
+
+<h4 id="run-the-terraform-template">
+<a class="anchor" href="#run-the-terraform-template" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run the Terraform Template:</h4>
+
+<p>Use the following steps to run the Terraform Template.</p>
+
+<ol>
+  <li>
+    <p>In the navigation bar, click <strong>Service</strong> &gt; <strong>Catalogs</strong> &gt; <strong>Service Catalogs</strong> &gt; <strong>created catalog</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Order</strong> for the catalog item.</p>
+  </li>
+  <li>
+    <p>Enter any variables that are requested and click <strong>Submit</strong>.</p>
+  </li>
+</ol>
+
+<p>ManageIQ takes you to the <em>Requests queue</em> page and displays the status of the job.</p>
+
+<p>The service item details can be viewed when you navigate to <strong>Services</strong> &gt; <strong>My Services in ManageIQ</strong>.</p>
 
 <h1 id="cloud-providers">
 <a class="anchor" href="#cloud-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cloud Providers</h1>
