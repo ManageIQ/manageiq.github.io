@@ -1472,8 +1472,12 @@ The values for <code class="language-plaintext highlighter-rouge">CLIENT_ID</cod
 <p>If you built your own custom application images and want to deploy those you can specify the image names in the CR using the following example.</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">applicationDomain</span><span class="pi">:</span> <span class="s">miqproject.apps-crc.testing</span>
-<span class="na">orchestratorImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-orchestrator:latest</span>
 <span class="na">baseWorkerImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-base-worker:latest</span>
+<span class="na">httpdImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-httpd:latest</span>
+<span class="na">memcachedImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-memcached:latest</span>
+<span class="na">opentofuRunnerImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-opentofurunner:latest</span>
+<span class="na">orchestratorImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-orchestrator:latest</span>
+<span class="na">postgresqlImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-postgresql:latest</span>
 <span class="na">uiWorkerImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-ui-worker:latest</span>
 <span class="na">webserverWorkerImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-webserver-worker:latest</span>
 </code></pre></div></div>
