@@ -1134,7 +1134,7 @@ image template.</p>
   </li>
 </ol>
 
-<p>After you have completed all the procedures in this guide, you will have
+<p>After you complete all the listed preceding steps, you have
 a working environment on which additional customizations and
 configurations can be performed.</p>
 
@@ -1144,12 +1144,14 @@ configurations can be performed.</p>
 <h3 id="uploading-the-appliance-on-google-compute-engine">
 <a class="anchor" href="#uploading-the-appliance-on-google-compute-engine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uploading the Appliance on Google Compute Engine</h3>
 
-<p>When the ManageIQ Google Compute Engine appliance has finished
-downloading to your system, upload the appliance to Google Compute
-Engine.</p>
+<p>When the ManageIQ Google Compute Engine appliance is downloaded to your system, upload the appliance to Google Compute Engine.</p>
 
-<p>To upload the ManageIQ Google Compute Engine appliance file you
-will need: * 44 GB of storage space. * 12 GB RAM. * 4 vCPUs.</p>
+<p>To upload the ManageIQ Google Compute Engine appliance file, you need to satisfy the following requirements:</p>
+<ul>
+  <li>44 GB of storage space</li>
+  <li>12 GB RAM</li>
+  <li>4 vCPUs.</li>
+</ul>
 
 <p>You can upload the appliance with the following steps:</p>
 
@@ -1158,7 +1160,7 @@ will need: * 44 GB of storage space. * 12 GB RAM. * 4 vCPUs.</p>
     <p>Log in to the Google Cloud Platform dashboard.</p>
   </li>
   <li>
-    <p>Click <strong>Home</strong> in the top left of the screen.</p>
+    <p>Click <strong>Home</strong> located on the left of the screen.</p>
   </li>
   <li>
     <p>Click <img src="../images/gce-products-services.png" alt="gce products services"> to
@@ -1170,8 +1172,7 @@ following details:</p>
 
     <ol>
       <li>
-        <p>Enter a unique <strong>Name</strong> for the bucket using lower case
-alphanumeric characters, hyphens, and/or underscores.</p>
+        <p>Enter a unique <strong>Name</strong> for the bucket.  Valid characters include lowercase alphanumeric characters, hyphens, and underscores.</p>
       </li>
       <li>
         <p>Configure your location from the dropdown list.</p>
@@ -1194,18 +1195,17 @@ services &gt; Compute Engine</strong> on the left menu.</p>
   </li>
   <li>
     <p>Create an image by clicking <strong>Images</strong> from the left menu, then
-<strong>Create Image</strong>. Fill in the following details about the image:</p>
+<strong>Create Image</strong>. Enter the following details about the image:</p>
 
     <ol>
       <li>
-        <p>Enter a unique <strong>Name</strong> for the image using lower case
-alphanumeric characters and/or hyphens.</p>
+        <p>Enter a unique <strong>Name</strong> for the image. Valid characters include lowercase alphanumeric characters and hyphens.</p>
       </li>
       <li>
-        <p>Add a <strong>Description</strong> if desired.</p>
+        <p>Optionally, add a <strong>Description</strong>.</p>
       </li>
       <li>
-        <p>Configure <strong>Encryption</strong> if desired. This defaults to <code class="language-plaintext highlighter-rouge">Automatic
+        <p>Configure <strong>Encryption</strong> if needed. The default value is set to <code class="language-plaintext highlighter-rouge">Automatic
 (recommended)</code>.</p>
       </li>
       <li>
@@ -1213,15 +1213,14 @@ alphanumeric characters and/or hyphens.</p>
 This shows the <strong>Cloud Storage file</strong> field.</p>
       </li>
       <li>
-        <p>In <strong>Cloud Storage file</strong>, click <strong>Browse</strong> to bring up the
-<strong>Select object</strong> window. Select the bucket containing the image
-you uploaded and click the <strong>&gt;</strong> symbol to locate the <code class="language-plaintext highlighter-rouge">tar.gz</code>
+        <p>In <strong>Cloud Storage file</strong>, click <strong>Browse</strong> to open the
+<strong>Select object</strong> window. Select the bucket containing the image that you uploaded and click the <strong>&gt;</strong> symbol to locate the <code class="language-plaintext highlighter-rouge">tar.gz</code>
 image inside the bucket. Select the image and click <strong>Select</strong>.</p>
       </li>
       <li>
-        <p>Click <strong>Create</strong>. Creating the image will take a few minutes.
-When the image is created, the screen will refresh and the new
-image will appear in the <strong>Images</strong> list.</p>
+        <p>Click <strong>Create</strong>. Creating an image can take a few minutes.
+When the image is created, the screen refreshes, and the new
+image appears in the <strong>Images</strong> list.</p>
       </li>
     </ol>
   </li>
@@ -1231,19 +1230,17 @@ instances &gt; Create Instance</strong>, and configure the following fields:</p>
 
     <ol>
       <li>
-        <p>Enter a unique <strong>Name</strong> for the virtual machine instance using
-lower case alphanumeric characters and/or hyphens.</p>
+        <p>Enter a unique <strong>Name</strong> for the virtual machine instance. Valid characters include lowercase alphanumeric characters and hyphens.</p>
       </li>
       <li>
         <p>Select the <strong>Zone</strong> closest to your location.</p>
       </li>
       <li>
-        <p>Under <strong>Boot disk</strong>, click <strong>Change</strong> to bring up the <strong>Boot
-disk</strong> window. Click the <strong>Your Image</strong> tab and select the disk
-you previously created. Click <strong>Select</strong>.</p>
+        <p>Under <strong>Boot disk</strong>, click <strong>Change</strong> to open the <strong>Boot
+disk</strong> window. Click the <strong>Your Image</strong> tab and select the disk that you previously created. Click <strong>Select</strong>.</p>
       </li>
       <li>
-        <p>Under <strong>Firewall</strong>, select the check box for <strong>Allow HTTPS
+        <p>Under <strong>Firewall</strong>, select the checkbox for <strong>Allow HTTPS
 traffic</strong>.</p>
       </li>
       <li>
@@ -1253,15 +1250,14 @@ disk, networking, SSH keys</strong>. Then, click the <strong>SSH Keys</strong> t
 add your entire SSH public key data in the <strong>Username</strong> box.</p>
       </li>
       <li>
-        <p>Configure any other fields as desired, and click <strong>Create</strong>.</p>
+        <p>Configure any other fields as needed, and click <strong>Create</strong>.</p>
       </li>
     </ol>
   </li>
 </ol>
 
-<p>Your new virtual machine instance, as well as the external IP address
-for accessing the ManageIQ interface, appears under <strong>VM
-instances</strong>.</p>
+<p>Your new virtual machine instance and the external IP address
+for accessing the ManageIQ interface appears under <strong>VM instances</strong>.</p>
 
 <h2 id="configuring-manageiq">
 <a class="anchor" href="#configuring-manageiq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring ManageIQ</h2>
