@@ -482,7 +482,7 @@ provider for ManageIQ:</p>
 <ul>
   <li>using <a href="https://github.com/openshift/openshift-ansible">openshift-ansible</a> to
 deploy RPM packages on a cluster</li>
-  <li>using <a href="https://github.com/minishift/minishift">minishift</a> to deploy
+  <li>using <a href="https://github.com/crc-org/crc">CodeReady Containers</a> to deploy
 openshift source to a vm</li>
 </ul>
 
@@ -512,14 +512,14 @@ example file for a cluster composed of two machines (Master and Node):</p>
 <pre><code class="language-INI">[OSEv3:children]
 masters
 nodes
- 
+
 [OSEv3:vars]
 ansible_ssh_user=root
 deployment_type=origin
- 
+
 [masters]
 master_hostname openshift_scheduleable=True
- 
+
 [nodes]
 master_hostname
 node_hostname
@@ -534,100 +534,24 @@ logging use <code class="language-plaintext highlighter-rouge">openshift_hosted_
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>ansible-playbook playbooks/byo/config.yml <span class="nt">-i</span> path/to/inventory/file
 </code></pre></div></div>
 
-<h3 id="running-with-minishift">Running with minishift</h3>
-
-<p>For a simple single host setup for working with the openshift provider locally,
-you can use <a href="https://github.com/minishift/minishift"><code class="language-plaintext highlighter-rouge">minishift</code></a> to run a
-local openshift 3.x instance.</p>
-
-<h4 id="requirements">Requirements</h4>
-
-<ul>
-  <li><a href="https://github.com/minishift/minishift"><code class="language-plaintext highlighter-rouge">minishift</code></a> &gt;= 1.0.0.rc1 (<a href="https://docs.openshift.org/latest/minishift/getting-started/installing.html#installing-instructions">Installation Instructions</a>)</li>
-  <li>Virtualization host of your choice (see supported hypervisors <a href="https://docs.openshift.org/latest/minishift/getting-started/installing.html#install-prerequisites">here</a>)</li>
-</ul>
-
-<h4 id="quickstart">Quickstart</h4>
-
-<p>Since VirtualBox is a consistent hypervisor across all platforms, this guide
-will assume that is being used, and updates to some commands might be
-necessary (most commands should be virtualization software agnostic and work
-regardless of the hypervisor).</p>
-
-<ol>
-  <li>
-    <p>Download and enable the manageiq addon for minishift:</p>
-
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">mkdir</span> <span class="nt">-p</span> ~/minishift/addons
-<span class="gp">$</span><span class="w"> </span>git clone https://gist.github.com/e2fac8be87ea0e9f429b6f5d75e02176 ~/minishift/addons/manageiq
-<span class="gp">$</span><span class="w"> </span>minishift addons <span class="nb">install</span> <span class="nt">--force</span> ~/minishift/addons/manageiq
-<span class="gp">$</span><span class="w"> </span>minishift addons <span class="nb">enable </span>manageiq
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Start minishift:</p>
-
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>minishift start <span class="nt">--vm-driver</span> virtualbox <span class="nt">--openshift-version</span> <span class="s2">"v3.6.1"</span>
-</code></pre></div>    </div>
-
-    <p>You might want to add <code class="language-plaintext highlighter-rouge">--metrics --memory 5G</code>.  As of this writing that only supports hawkular and doesn’t work on 3.7.0.</p>
-
-    <p>See https://hub.docker.com/r/openshift/origin/tags/ for possible versions.</p>
-  </li>
-  <li>
-    <p>Grab the minishift IP:</p>
-
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>minishift ip
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Add <code class="language-plaintext highlighter-rouge">oc</code> and/or <code class="language-plaintext highlighter-rouge">docker</code> to your PATH, configured to the cluster (auto-detects correct shell):</p>
-
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">eval</span> <span class="si">$(</span>minishift oc-env<span class="si">)</span>
-<span class="gp">$</span><span class="w"> </span><span class="nb">eval</span> <span class="si">$(</span>minishift docker-env<span class="si">)</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Grab the token to access openshift through <code class="language-plaintext highlighter-rouge">manageiq</code>:</p>
-
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>oc login <span class="nt">-u</span> system:admin
-<span class="gp">$</span><span class="w"> </span>oc sa get-token <span class="nt">-n</span> management-infra management-admin
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Configure a provider in ManageIQ, filling in your token and IP where
-appropriate:</p>
-
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>bin/rails c
-<span class="gp">irb&gt;</span><span class="w"> </span>token <span class="o">=</span> <span class="s1">'&lt;&lt;YOUR_TOKEN_FROM_ABOVE_HERE&gt;&gt;'</span>
-<span class="gp">irb&gt;</span><span class="w"> </span>host  <span class="o">=</span> <span class="s1">'&lt;&lt;YOUR_IP_FROM_ABOVE_HERE&gt;&gt;'</span>
-<span class="gp">irb&gt;</span><span class="w"> </span>os <span class="o">=</span> ManageIQ::Providers::Openshift::ContainerManager
-<span class="gp">irb&gt;</span><span class="w"> </span>os.create<span class="o">(</span>:name <span class="o">=&gt;</span> <span class="s2">"Minishift"</span>, :hostname <span class="o">=&gt;</span> host, :port <span class="o">=&gt;</span> 8443, :ipaddress <span class="o">=&gt;</span> host, :zone <span class="o">=&gt;</span> Zone.first, :storage_profiles <span class="o">=&gt;</span> <span class="o">[]</span>, :security_protocol <span class="o">=&gt;</span> <span class="s2">"ssl-without-validation"</span><span class="o">)</span>
-<span class="gp">irb&gt;</span><span class="w"> </span>os.last.update_authentication<span class="o">(</span>:bearer <span class="o">=&gt;</span> <span class="o">{</span>:auth_key <span class="o">=&gt;</span> token, :save <span class="o">=&gt;</span> <span class="nb">true</span><span class="o">})</span>
-</code></pre></div>    </div>
-
-    <p>Or through the UI if you prefer.</p>
-  </li>
-</ol>
-
 <h3 id="running-with-codeready-containers">Running with CodeReady Containers</h3>
 
 <p>If you want to develop with an OpenShift 4 provider, CodeReady Containers (CRC)
 is a great option.  It provides all of benefits as minishift (a simple single
 vm openshift on your development machine) but is an OpenShift v4 cluster.</p>
 
-<h4 id="requirements-1">Requirements</h4>
+<h4 id="requirements">Requirements</h4>
 
 <ul>
-  <li><a href="https://github.com/code-ready/crc"><code class="language-plaintext highlighter-rouge">CodeReady Containers</code></a> (<a href="https://code-ready.github.io/crc/#installation_gsg">Installation Instructions</a>)</li>
-  <li>A compatible <a href="https://code-ready.github.io/crc/#minimum-system-requirements-operating-system_gsg">Operating System</a> and the <a href="https://code-ready.github.io/crc/#required-software-packages_gsg">Required software packages</a></li>
+  <li><a href="https://github.com/crc-org/crc"><code class="language-plaintext highlighter-rouge">CodeReady Containers</code></a> (<a href="https://crc.dev/crc/getting_started/getting_started/installing/">Installation Instructions</a>)</li>
+  <li>A compatible <a href="https://crc.dev/crc/getting_started/getting_started/installing/#_operating_system_requirements">Operating System</a></li>
 </ul>
 
-<h4 id="quickstart-1">Quickstart</h4>
+<h4 id="quickstart">Quickstart</h4>
 
 <ol>
   <li>
-    <p><a href="https://cloud.redhat.com/openshift/install/crc/installer-provisioned">Download</a> ane extract the latest release of CRC</p>
+    <p><a href="https://console.redhat.com/openshift/create/local">Download</a> ane extract the latest release of CRC</p>
 
     <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> tar xfJ crc-linux-amd64.tar.xz
 </span></code></pre></div>    </div>
@@ -635,7 +559,7 @@ vm openshift on your development machine) but is an OpenShift v4 cluster.</p>
   <li>
     <p>Copy the crc binary to a location on your PATH</p>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> sudo cp crc-linux-1.8.0-amd64/crc /usr/local/bin
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> sudo install crc-linux-2.39.0-amd64/crc /usr/local/bin/crc
  which crc
  /usr/local/bin/crc
 </span></code></pre></div>    </div>
@@ -658,29 +582,7 @@ vm openshift on your development machine) but is an OpenShift v4 cluster.</p>
  oc login -u kubeadmin -p KUBEADMING_PASSWORD https://api.crc.testing:6443
 </span></code></pre></div>    </div>
   </li>
-  <li>Now you can setup the management-infra/management-admin service account for use with ManageIQ
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> git clone https://gist.github.com/e2fac8be87ea0e9f429b6f5d75e02176 /tmp/manageiq_crc
- oc adm new-project management-infra --description="Management-Infrastructure"
- oc create serviceaccount management-admin -n management-infra
- oc create -f /tmp/manageiq_crc/management-infra-admin-cluster-role.json
- oc policy add-role-to-user -n management-infra admin -z management-admin
- oc policy add-role-to-user -n management-infra management-infra-admin -z management-admin
- oc adm policy add-cluster-role-to-user cluster-reader system:serviceaccount:management-infra:management-admin
- oc adm policy add-scc-to-user privileged system:serviceaccount:management-infra:management-admin
- oc adm policy add-cluster-role-to-user system:image-puller system:serviceaccount:management-infra:inspector-admin
- oc adm policy add-scc-to-user privileged system:serviceaccount:management-infra:inspector-admin
- oc adm policy add-cluster-role-to-user self-provisioner system:serviceaccount:management-infra:management-admin
-</span></code></pre></div>    </div>
-  </li>
-  <li>Grab the console IP address and token to acess CRC through <code class="language-plaintext highlighter-rouge">ManageIQ</code>
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp"> cluster_ip=$</span><span class="o">(</span>crc ip<span class="o">)</span>
-<span class="gp"> service_account_token=$</span><span class="o">(</span>oc sa get-token <span class="nt">-n</span> management-infra management-admin<span class="o">)</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Configure a provider in ManageIQ
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp"> rails r "ManageIQ::Providers::Openshift::ContainerManager.create!(:name =&gt;</span><span class="w"> </span><span class="s1">'CRC'</span>, :hostname <span class="o">=&gt;</span> <span class="s1">'$cluster_ip'</span>, :port <span class="o">=&gt;</span> 6443, :zone <span class="o">=&gt;</span> Zone.visible.first, :security_protocol <span class="o">=&gt;</span> <span class="s1">'ssl-without-validation'</span><span class="o">)</span>.update_authentication<span class="o">(</span>:bearer <span class="o">=&gt;</span> <span class="o">{</span>:auth_key <span class="o">=&gt;</span> <span class="s1">'$service_account_token'</span><span class="o">})</span><span class="s2">"
-</span></code></pre></div>    </div>
-  </li>
+  <li>Now you can setup the project and service account for use with ManageIQ by following the documentation: https://www.manageiq.org/docs/reference/latest/managing_providers/containers_providers/red_hat_openshift_providers.html</li>
 </ol>
 
 <h3 id="automated-script-to-record-new-vcr">Automated script to record new VCR</h3>
