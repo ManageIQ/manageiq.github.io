@@ -1842,8 +1842,6 @@ recommends adding the disk before starting the appliance.
 ManageIQ only supports installing of an internal VMDB on blank
 disks; installation will fail if the disks are not blank.</p>
 
-<p>&lt;/div&gt;</p>
-
 <ol>
   <li>
     <p>Start the appliance and open a terminal console.</p>
@@ -1872,10 +1870,7 @@ key</strong>.</p>
 first appliance. For worker and multi-region setups, use this
 option to copy key from another appliance.</p>
 
-        <p><strong>Note:</strong></p>
-
-        <p>All ManageIQ appliances in a multi-region
-deployment must use the same key.</p>
+        <p><strong>Note</strong>: All ManageIQ appliances in a multi-region deployment must use the same key.</p>
       </li>
     </ul>
   </li>
@@ -1957,8 +1952,8 @@ to ManageIQ.</p>
 <h4 id="configuring-an-external-database">
 <a class="anchor" href="#configuring-an-external-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring an External Database</h4>
 
-<p>Based on your setup, you will choose to configure the appliance to use
-an external PostgreSQL database. For example, we can only have one
+<p>Based on your setup, you need to configure the appliance to use
+an external PostgreSQL database. For example, you can only have one
 database in a single region. However, a region can be segmented into
 multiple zones, such as database zone, user interface zone, and
 reporting zone, where each zone provides a specific function. The
@@ -1976,28 +1971,24 @@ ManageIQ appliance.</p>
 system. For example, customize the <code class="language-plaintext highlighter-rouge">shared_buffers</code> setting according to
 the amount of real storage available in the external system hosting the
 PostgreSQL instance. In addition, depending on the aggregate number of
-appliances expected to connect to the PostgreSQL instance, it may be
+appliances that are expected to connect to the PostgreSQL instance, it might be
 necessary to alter the <code class="language-plaintext highlighter-rouge">max_connections</code> setting.</p>
 
 <p><strong>Note:</strong></p>
 
-<ul>
-  <li>
-    <p>ManageIQ requires PostgreSQL version 13.</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">postgresql.conf</code> controls the operation of all databases managed by the
-   PostgreSQL instance, therefore it is not recommended to run other databases
-   on this PostgreSQL instance.</p>
-  </li>
-</ul>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- ManageIQ requires PostgreSQL version 13.
+
+- `postgresql.conf` controls the operation of all databases managed by the PostgreSQL instance, therefore it is not recommended to run other databases on this PostgreSQL instance.
+</code></pre></div></div>
+
+<p>Use the following steps to configure an external PostgreSQL database:</p>
 
 <ol>
   <li>
     <p>Start the appliance and open a terminal console.</p>
   </li>
   <li>
-    <p>Enter the <code class="language-plaintext highlighter-rouge">appliance_console</code> command. The appliance console summary screen will be displayed.</p>
+    <p>Enter the <code class="language-plaintext highlighter-rouge">appliance_console</code> command. The appliance console summary screen is displayed.</p>
   </li>
   <li>
     <p>Press <strong>Enter</strong> to manually configure settings.</p>
@@ -2026,7 +2017,7 @@ necessary to alter the <code class="language-plaintext highlighter-rouge">max_co
   </li>
 </ol>
 
-<p>ManageIQ will then configure the external database.</p>
+<p>ManageIQ configures an external database.</p>
 
 <h3 id="configuring-general-manageiq-settings">
 <a class="anchor" href="#configuring-general-manageiq-settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring General ManageIQ Settings</h3>

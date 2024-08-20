@@ -1395,7 +1395,7 @@ summary screen displays.</p>
     <p>Press <code class="language-plaintext highlighter-rouge">Enter</code> to manually configure settings.</p>
   </li>
   <li>
-    <p>Press the number for the item you want to change, and press <code class="language-plaintext highlighter-rouge">Enter</code>.
+    <p>Press the number for the item that you want to change, and press <code class="language-plaintext highlighter-rouge">Enter</code>.
 The options for your selection are displayed.</p>
   </li>
   <li>
@@ -1406,10 +1406,7 @@ The options for your selection are displayed.</p>
   </li>
 </ol>
 
-<p><strong>Note:</strong></p>
-
-<p>The ManageIQ appliance console automatically logs out
-after five minutes of inactivity.</p>
+<p><strong>Note</strong>: The ManageIQ appliance console automatically logs out after five minutes of inactivity.</p>
 
 <h3 id="configuring-a-database">
 <a class="anchor" href="#configuring-a-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring a Database</h3>
@@ -1429,8 +1426,6 @@ usually cannot be added while a virtual machine is running, Red Hat
 recommends adding the disk before starting the appliance.
 ManageIQ only supports installing of an internal VMDB on blank
 disks; installation will fail if the disks are not blank.</p>
-
-<p>&lt;/div&gt;</p>
 
 <ol>
   <li>
@@ -1460,10 +1455,7 @@ key</strong>.</p>
 first appliance. For worker and multi-region setups, use this
 option to copy key from another appliance.</p>
 
-        <p><strong>Note:</strong></p>
-
-        <p>All ManageIQ appliances in a multi-region
-deployment must use the same key.</p>
+        <p><strong>Note</strong>: All ManageIQ appliances in a multi-region deployment must use the same key.</p>
       </li>
     </ul>
   </li>
@@ -1545,8 +1537,8 @@ to ManageIQ.</p>
 <h4 id="configuring-an-external-database">
 <a class="anchor" href="#configuring-an-external-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring an External Database</h4>
 
-<p>Based on your setup, you will choose to configure the appliance to use
-an external PostgreSQL database. For example, we can only have one
+<p>Based on your setup, you need to configure the appliance to use
+an external PostgreSQL database. For example, you can only have one
 database in a single region. However, a region can be segmented into
 multiple zones, such as database zone, user interface zone, and
 reporting zone, where each zone provides a specific function. The
@@ -1564,28 +1556,24 @@ ManageIQ appliance.</p>
 system. For example, customize the <code class="language-plaintext highlighter-rouge">shared_buffers</code> setting according to
 the amount of real storage available in the external system hosting the
 PostgreSQL instance. In addition, depending on the aggregate number of
-appliances expected to connect to the PostgreSQL instance, it may be
+appliances that are expected to connect to the PostgreSQL instance, it might be
 necessary to alter the <code class="language-plaintext highlighter-rouge">max_connections</code> setting.</p>
 
 <p><strong>Note:</strong></p>
 
-<ul>
-  <li>
-    <p>ManageIQ requires PostgreSQL version 13.</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">postgresql.conf</code> controls the operation of all databases managed by the
-   PostgreSQL instance, therefore it is not recommended to run other databases
-   on this PostgreSQL instance.</p>
-  </li>
-</ul>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- ManageIQ requires PostgreSQL version 13.
+
+- `postgresql.conf` controls the operation of all databases managed by the PostgreSQL instance, therefore it is not recommended to run other databases on this PostgreSQL instance.
+</code></pre></div></div>
+
+<p>Use the following steps to configure an external PostgreSQL database:</p>
 
 <ol>
   <li>
     <p>Start the appliance and open a terminal console.</p>
   </li>
   <li>
-    <p>Enter the <code class="language-plaintext highlighter-rouge">appliance_console</code> command. The appliance console summary screen will be displayed.</p>
+    <p>Enter the <code class="language-plaintext highlighter-rouge">appliance_console</code> command. The appliance console summary screen is displayed.</p>
   </li>
   <li>
     <p>Press <strong>Enter</strong> to manually configure settings.</p>
@@ -1614,33 +1602,35 @@ necessary to alter the <code class="language-plaintext highlighter-rouge">max_co
   </li>
 </ol>
 
-<p>ManageIQ will then configure the external database.</p>
+<p>ManageIQ configures an external database.</p>
 
 <h3 id="configure-messaging">
 <a class="anchor" href="#configure-messaging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure Messaging</h3>
 
-<p>Configuring messaging is required for appliance setup. It is recommended to configure the broker on the same appliance where your database is configured</p>
+<p>Configuring messaging is required for the appliance setup. It is recommended to configure the broker on the same appliance where your database is configured</p>
 
-<p><strong>Note:</strong> You can only have one kafka broker per region</p>
+<p><strong>Note:</strong> You can only have one Kafka broker per region.</p>
 
 <ol>
   <li>
-    <p>You can either configure the current appliance as a kafka broker, or point the
-appliance to an existing external kafka broker.</p>
+    <p>You can either configure the current appliance as a Kafka broker, or point the
+appliance to an existing external Kafka broker.</p>
 
     <p>Select the appropriate option either
 <strong>Configure this appliance as a messaging server</strong> or
 <strong>Connect to an external messaging system</strong>
-to connect to an external kafka broker.  You will be asked to fill in the
-required <strong>Message Client Parameters</strong> like IP address and username/password.</p>
+to connect to an external Kafka broker. Fill in the
+required <strong>Message Client Parameters</strong>, such as IP address, username and password.</p>
   </li>
   <li>
-    <p>Select <strong>Proceed</strong> and appliance_console will apply the configuration that you have
-requested then restart evmserverd to pick up the changes.</p>
+    <p>Select <strong>Proceed</strong>. <code class="language-plaintext highlighter-rouge">appliance_console</code> applies the configuration that you requested.</p>
+  </li>
+  <li>
+    <p>Restart <code class="language-plaintext highlighter-rouge">evmserverd</code> to pick up the changes.</p>
   </li>
 </ol>
 
-<p><strong>Note:</strong> It is recommended to use your Fully Qualified Domain Name (FQDN) as the messaging hostname rather than <code class="language-plaintext highlighter-rouge">localhost</code>, ensure that a resolvable and reachable non-localhost name entry is present in <code class="language-plaintext highlighter-rouge">/etc/hosts</code></p>
+<p><strong>Note:</strong> Use your Fully Qualified Domain Name (FQDN) as the messaging hostname rather than <code class="language-plaintext highlighter-rouge">localhost</code>, ensure that a resolvable and reachable non-localhost name entry is present in <code class="language-plaintext highlighter-rouge">/etc/hosts</code>.</p>
 
 <h3 id="configuring-a-worker-appliance">
 <a class="anchor" href="#configuring-a-worker-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring a Worker Appliance</h3>
@@ -1673,10 +1663,7 @@ not the first ManageIQ appliance, choose <strong>2) Fetch key from
 remote machine</strong>. For worker and multi-region setups, use this
 option to copy the security key from another appliance.</p>
 
-    <p><strong>Note:</strong></p>
-
-    <p>All ManageIQ appliances in a multi-region deployment
-must use the same key.</p>
+    <p><strong>Note</strong>: All ManageIQ appliances in a multi-region deployment must use the same key.</p>
   </li>
   <li>
     <p>Choose <strong>Join Region in External Database</strong> for the database location.</p>
@@ -1719,20 +1706,21 @@ must use the same key.</p>
 <p>Once ManageIQ is installed, you can log in and perform
 administration tasks.</p>
 
-<p>Log in to ManageIQ for the first time after installing by:</p>
-
 <ol>
   <li>
-    <p>Browse to the URL for the login screen. (<a href="https://xx.xx.xx.xx">https://xx.xx.xx.xx</a> on
-the virtual machine instance)</p>
+    <p>Browse to the URL for the login screen. For example, URL should be <code class="language-plaintext highlighter-rouge">https://xx.xx.xx.xx</code></p>
   </li>
-  <li>
-    <p>Enter the default credentials (Username: <strong>admin</strong> | Password:
-<strong>smartvm</strong>) for the initial login.</p>
+  <li>Enter the default credentials as listed for the initial login.
+    <ul>
+      <li>
+<strong>Username</strong>: <strong>admin</strong>
+</li>
+      <li>
+<strong>Password</strong>: <strong>smartvm</strong>
+</li>
+    </ul>
   </li>
-  <li>
-    <p>Click <strong>Login</strong>.</p>
-  </li>
+  <li>Click <strong>Login</strong>.</li>
 </ol>
 
 <h3 id="changing-the-default-login-password">
@@ -1743,8 +1731,7 @@ ManageIQ.</p>
 
 <ol>
   <li>
-    <p>Browse to the URL for the login screen. (<a href="https://xx.xx.xx.xx">https://xx.xx.xx.xx</a> on
-the virtual machine instance)</p>
+    <p>Browse to the URL for the login screen. For example, URL should be <code class="language-plaintext highlighter-rouge">https://xx.xx.xx.xx</code>.</p>
   </li>
   <li>
     <p>Click <strong>Update Password</strong> beneath the <strong>Username</strong> and <strong>Password</strong>
