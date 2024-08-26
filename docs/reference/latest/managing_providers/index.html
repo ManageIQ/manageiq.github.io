@@ -1908,6 +1908,8 @@ If any workflows are found, click the corresponding number to view the list of w
     <p>Within the workflow code, you need to specify the states that your workflow requires, including any next steps. For <code class="language-plaintext highlighter-rouge">Task</code> type steps in the workflow, a docker container is called. The container defines what happens for that Task state. For example, a docker container can run to clone a template. If your states require parameters or credentials, you can specify them in your state definitions.</p>
 
     <p>The workflow code must be in the Amazon States Language (ASL) format and follow its supported specifications. For more information about Amazon States Language and its specification, see <a href="https://states-language.net/">Amazon States Language Guide</a>.</p>
+
+    <p>Amazon States Language does not support <strong>Map</strong> and <strong>Parallel</strong> states.</p>
   </li>
   <li>
     <p>Build the docker containers that are required for the workflow.</p>
