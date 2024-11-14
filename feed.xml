@@ -5,9 +5,25 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Nov 2024 03:12:55 +0000</pubDate>
-    <lastBuildDate>Thu, 14 Nov 2024 03:12:55 +0000</lastBuildDate>
+    <pubDate>Thu, 14 Nov 2024 21:50:43 +0000</pubDate>
+    <lastBuildDate>Thu, 14 Nov 2024 21:50:43 +0000</lastBuildDate>
     <generator>Jekyll v3.10.0</generator>
+    
+      <item>
+        <title>Quinteros-2, CVE-2024-43191, CVE-2023-46175</title>
+        <description>&lt;p&gt;ManageIQ Quinteros-2 is now available. This release includes security fixes, which will also be included in upcoming Radjabov-1 GA release.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 14 Nov 2024 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2024/11/quinteros-2-cve-2024-43191-cve-2023-46715/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2024/11/quinteros-2-cve-2024-43191-cve-2023-46715/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>ManageIQ Quinteros GA Announcement</title>
@@ -145,22 +161,6 @@
         <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2021/07/manageiq-lasker-ga-annoucement/</link>
         <guid isPermaLink="true">http://manageiq.org/blog/2021/07/manageiq-lasker-ga-annoucement/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>CVE-2021-32756, Kasparov-2, Jansa-4</title>
-        <description>&lt;p&gt;ManageIQ Kasparov-2 and Jansa-4 are now available. These releases include a security fix, which is also included in the new Lasker-1 GA release. Many thanks goes to Jason Frey (&lt;a href=&quot;https://github.com/Fryguy&quot;&gt;@Fryguy&lt;/a&gt;) and Gregg Tanzillo (&lt;a href=&quot;https://github.com/gtanzillo&quot;&gt;@gtanzillo&lt;/a&gt;) for finding and fixing these vulnerabilities.  Also, many thanks go to all of the contributors for all of their enhancements and bug fixes.&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
-        <link>http://manageiq.org/blog/2021/07/cve-2021-32756-kasparov-2-jansa-4/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2021/07/cve-2021-32756-kasparov-2-jansa-4/</guid>
         
         <category>releases</category>
         

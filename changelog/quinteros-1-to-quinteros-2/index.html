@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - Changelog from Quinteros-1 to Quinteros-2</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link type="text/css" rel="stylesheet" href="/assets/main-c62d712a15a5ba4c8ba8ce3af6a80e7ae432d1bd2c83c7d2973c3d72a7371e97.css">
+  <link rel="canonical" href="http://manageiq.org/changelog/quinteros-1-to-quinteros-2/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/changelog/quinteros-1-to-quinteros-2/">
+      <article class="page">
+  <div class="container">
+    <header class="page-header">
+      <h1 class="page-title">Changelog from Quinteros-1 to Quinteros-2</h1>
+    </header>
+
+    <div class="page-content">
+      <h2 id="-manageiqmanageiq"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq</a></h2>
+
+<h3 id="bug-security">Bug (Security)</h3>
+
+<ul>
+  <li>Encrypt verify_credentials params before MiqQueue <a href="https://github.com/ManageIQ/manageiq/security/advisories/GHSA-pfh3-vj6p-89h9">[CVE-2023-46175]</a></li>
+  <li>Extend wrapped_logger formatter if one is present <a href="https://github.com/ManageIQ/manageiq/security/advisories/GHSA-pfh3-vj6p-89h9">[CVE-2023-46175]</a></li>
+  <li>Filter out Basic Authorization tokens <a href="https://github.com/ManageIQ/manageiq/security/advisories/GHSA-pfh3-vj6p-89h9">[CVE-2023-46175]</a></li>
+  <li>Fix YAML imports to only accept specific types. <a href="https://github.com/ManageIQ/manageiq/security/advisories/GHSA-pgw4-pqv6-rfvx">[CVE-2024-43191]</a></li>
+</ul>
+
+<h3 id="enhancement">Enhancement</h3>
+
+<ul>
+  <li>Add workflow_dispatch to allow manually triggering monolithic builds <a href="https://github.com/ManageIQ/manageiq/pull/22997">[#22997]</a></li>
+</ul>
+
+<h3 id="other">Other</h3>
+
+<ul>
+  <li>[QUINTEROS] Update Gemfile.lock.release for various security issues <a href="https://github.com/ManageIQ/manageiq/pull/23223">[#23223]</a></li>
+  <li>Remove CVE-2024-26143 as rails 6.1 is not vulnerable <a href="https://github.com/ManageIQ/manageiq/pull/22913">[#22913]</a></li>
+  <li>Force rails 6.1.7.7 minimum version <a href="https://github.com/ManageIQ/manageiq/pull/22910">[#22910]</a></li>
+  <li>Temporarily ignore non-critical CVE as we upgrade to rails 7 <a href="https://github.com/ManageIQ/manageiq/pull/22909">[#22909]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-api"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-api/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-api</a></h2>
+
+<h3 id="bug">Bug</h3>
+
+<ul>
+  <li>[QUINTEROS] Fix Host verify_credentials_task password expectation <a href="https://github.com/ManageIQ/manageiq-api/pull/1272">[#1272]</a></li>
+  <li>Fix Host verify_credentials_task password expectation <a href="https://github.com/ManageIQ/manageiq-api/pull/1271">[#1271]</a></li>
+  <li>Fix CloudNetworks spec with empty including() <a href="https://github.com/ManageIQ/manageiq-api/pull/1267">[#1267]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-appliance-build"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-appliance-build/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-appliance-build</a></h2>
+
+<h3 id="bug-1">Bug</h3>
+
+<ul>
+  <li>[quinteros] Lock down to ruby 3.0.4 from Appstream <a href="https://github.com/ManageIQ/manageiq-appliance-build/pull/579">[#579]</a></li>
+  <li>[quinteros] Update CentOS Stream 8 repos <a href="https://github.com/ManageIQ/manageiq-appliance-build/pull/575">[#575]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-documentation"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-documentation/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-documentation</a></h2>
+
+<h3 id="bug-2">Bug</h3>
+
+<ul>
+  <li>QA Updated KubeVirt references <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1797">[#1797]</a></li>
+  <li>QA Updated images. <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1785">[#1785]</a></li>
+</ul>
+
+<h3 id="enhancement-1">Enhancement</h3>
+
+<ul>
+  <li>LVM guidelines for ISCSI/FC SmartState Analysis <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1782">[#1782]</a></li>
+</ul>
+
+<h3 id="other-1">Other</h3>
+
+<ul>
+  <li>QA Removed SCVMM provider <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1816">[#1816]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-gems-pending"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-gems-pending/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-gems-pending</a></h2>
+
+<h3 id="bug-3">Bug</h3>
+
+<ul>
+  <li>Fix MiqXml handling of BOM + handle CVE-2024-39908 <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/581">[#581]</a></li>
+</ul>
+
+<h3 id="other-2">Other</h3>
+
+<ul>
+  <li>[QUINTEROS] Fix rspec version used to match core’s version <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/594">[#594]</a></li>
+  <li>Bump rexml to 3.3.6 for CVE-2024-43398 <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/589">[#589]</a></li>
+  <li>Upgrade rexml to 3.3.3+ for CVE-2024-41123 and CVE-2024-41946 <a href="https://github.com/ManageIQ/manageiq-gems-pending/pull/582">[#582]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-pods"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-pods/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-pods</a></h2>
+
+<h3 id="bug-4">Bug</h3>
+
+<ul>
+  <li>[quinteros] Lock down to ruby 3.0.4 from Appstream <a href="https://github.com/ManageIQ/manageiq-pods/pull/1186">[#1186]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-providers-ansible_tower"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-providers-ansible_tower/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-providers-ansible_tower</a></h2>
+
+<h3 id="bug-security-1">Bug (Security)</h3>
+
+<ul>
+  <li>Use ProviderSdkLogger as the class for ansible_tower_log <a href="https://github.com/ManageIQ/manageiq/security/advisories/GHSA-pfh3-vj6p-89h9">[CVE-2023-46175]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-providers-autosde"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-providers-autosde/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-providers-autosde</a></h2>
+
+<h3 id="bug-security-2">Bug (Security)</h3>
+
+<ul>
+  <li>Don’t log the token during re-auth <a href="https://github.com/ManageIQ/manageiq/security/advisories/GHSA-pfh3-vj6p-89h9">[CVE-2023-46175]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-providers-awx"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-providers-awx/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-providers-awx</a></h2>
+
+<h3 id="bug-security-3">Bug (Security)</h3>
+
+<ul>
+  <li>Use ProviderSdkLogger as the class for awx_log <a href="https://github.com/ManageIQ/manageiq/security/advisories/GHSA-pfh3-vj6p-89h9">[CVE-2023-46175]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-providers-kubernetes"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-providers-kubernetes</a></h2>
+
+<h3 id="bug-5">Bug</h3>
+
+<ul>
+  <li>[QUINTEROS] JSON parse prometheus_alert client responses <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/541">[#541]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-providers-lenovo"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-providers-lenovo/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-providers-lenovo</a></h2>
+
+<h3 id="bug-security-4">Bug (Security)</h3>
+
+<ul>
+  <li>Use ProviderSdkLogger as the class for xclarity_log <a href="https://github.com/ManageIQ/manageiq/security/advisories/GHSA-pfh3-vj6p-89h9">[CVE-2023-46175]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-rpm_build"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-rpm_build/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-rpm_build</a></h2>
+
+<h3 id="bug-6">Bug</h3>
+
+<ul>
+  <li>[quinteros] Allow timestamped release builds <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/482">[#482]</a></li>
+  <li>[quinteros] Lock down to ruby 3.0.4 from Appstream <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/521">[#521]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-ui-classic"><i class="fa fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-ui-classic/compare/quinteros-1...quinteros-2.2">ManageIQ/manageiq-ui-classic</a></h2>
+
+<h3 id="bug-7">Bug</h3>
+
+<ul>
+  <li>Fix automate specs <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9226">[#9226]</a></li>
+  <li>Fix the VM Infra button checking EmsCloud providers <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9249">[#9249]</a></li>
+</ul>
+
+    </div>
+  </div>
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa theme-toggle" data-toggle-theme></i>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa fa-gitter">
+            <svg viewBox="45 47 78 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(45.000000, 47.000000)">
+        <g id="icon-gitter" transform="translate(10.000000, 0.000000)">
+            <rect id="Rectangle-path" x="0" y="0.5" width="8.25" height="61"></rect>
+            <rect id="Rectangle-path" x="49.75" y="14.5" width="8.25" height="47"></rect>
+            <rect id="Rectangle-path" x="16.5" y="14.5" width="8.25" height="80.25"></rect>
+            <rect id="Rectangle-path" x="33.25" y="14.5" width="8.25" height="80.25"></rect>
+        </g>
+    </g>
+</svg>
+
+          </i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/orgs/ManageIQ/discussions">
+          <i class="fa fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/changelog/quinteros-1-to-quinteros-2.md">
+          <i class="fa fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2024 ManageIQ.
+      </span>
+      <span>
+        <a href="https://www.ibm.com/opensource/" target="_blank">
+          Sponsored by IBM, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://twitter.com/ManageIQ" class="social_link social_link-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" class="social_link social_link-facebook">
+            <span class="social_link-icon">
+              <i class="fa fa-facebook"></i>
+            </span>
+          </a>
+        </li>
+
+        <!--  -->
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" class="social_link social_link-linkedin">
+            <span class="social_link-icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" class="social_link social_link-youtube">
+            <span class="social_link-icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>
