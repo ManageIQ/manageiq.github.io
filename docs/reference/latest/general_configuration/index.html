@@ -1482,6 +1482,7 @@
 <li class="toc-entry toc-h4"><a href="#creating-a-database-dump">Creating a Database Dump</a></li>
 <li class="toc-entry toc-h4"><a href="#enabling-events-syndication">Enabling Events Syndication</a></li>
 <li class="toc-entry toc-h4"><a href="#enabling-inventory-syndication">Enabling Inventory Syndication</a></li>
+<li class="toc-entry toc-h4"><a href="#enabling-metrics-syndication">Enabling Metrics Syndication</a></li>
 </ul>
 </li>
 </ul>
@@ -8053,6 +8054,45 @@ the operation.</p>
   </li>
   <li>
     <p>Set the value for <code class="language-plaintext highlighter-rouge">syndicate_inventory</code> to <code class="language-plaintext highlighter-rouge">true</code>.</p>
+  </li>
+</ol>
+
+<h4 id="enabling-metrics-syndication">
+<a class="anchor" href="#enabling-metrics-syndication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling Metrics Syndication</h4>
+
+<p>You can enable metrics syndication in the <code class="language-plaintext highlighter-rouge">Advanced</code> settings:</p>
+
+<ol>
+  <li>
+    <p>From the menu, go to <strong>Settings</strong> &gt; <strong>Application Settings</strong>.</p>
+  </li>
+  <li>
+    <p>Expand the <strong>Settings</strong> accordion. When you select the <strong>Settings</strong> accordion, you are automatically taken to the server list under <strong>Zones</strong>.</p>
+  </li>
+  <li>
+    <p>Select the zone where the EVM server is located and select the EVM server.</p>
+  </li>
+  <li>
+    <p>Click the <strong>Advanced</strong> tab.</p>
+
+    <p>You can click the <strong>Advanced</strong> tab at the zone level to set advanced configuration settings for the entire zone. Or, you can click on the server, and then click the <strong>Advanced</strong> tab to set advanced configuration settings at the server (appliance) level, which overrides zone-level settings.</p>
+  </li>
+  <li>
+    <p>Find the following configuration:</p>
+
+    <div class="language-yaml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="na">:performance</span><span class="pi">:</span>
+  <span class="na">:host_overhead</span><span class="pi">:</span>
+    <span class="na">:memory</span><span class="pi">:</span> <span class="s">2.01.percent</span>
+    <span class="na">:cpu</span><span class="pi">:</span> <span class="s">0.15.percent</span>
+  <span class="na">:syndicate_metrics</span><span class="pi">:</span> <span class="kc">false</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Set the value for <strong>:syndicate_metrics:</strong> to <code class="language-plaintext highlighter-rouge">true</code>.</p>
+  </li>
+  <li>
+    <p>Use <strong>C &amp; U Collection Settings</strong> to select the clusters and datastores that you want to collect usage data for.</p>
   </li>
 </ol>
 
