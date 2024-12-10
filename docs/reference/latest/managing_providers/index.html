@@ -3444,7 +3444,7 @@ environment.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>runuser <span class="nt">--login</span> manageiq <span class="nt">--command</span> <span class="s1">'podman --root=/var/www/miq/vmdb/data/containers/storage image load --input /tmp/&lt;OpenTofu_image&gt;'</span>
 </code></pre></div></div>
 
-<p>Where <code class="language-plaintext highlighter-rouge">OpenTofu_image</code> is the name of your OpenTofu image.</p>
+<p>Where <code class="language-plaintext highlighter-rouge">&lt;OpenTofu_image&gt;</code> is the name of your OpenTofu image.</p>
 
 <p>You also need to set the docker image name in advanced settings before enabling the server role. Navigate to the <strong>Settings</strong> &gt; <strong>Application Settings</strong> in ManageIQ UI and set the value for <code class="language-plaintext highlighter-rouge">workers/worker_base/opentofu_worker/container_image</code> field.</p>
 

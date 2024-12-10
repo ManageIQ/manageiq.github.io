@@ -1199,6 +1199,11 @@
 <li class="toc-entry toc-h3"><a href="#podified-logging">Podified Logging</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#providers">Providers</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#vmware-vcenter-provider">VMware vCenter Provider</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul><h1 id="troubleshooting">
@@ -1311,6 +1316,61 @@
 <span class="o">[</span><span class="nt">----</span><span class="o">]</span> I, <span class="o">[</span>2022-06-16T15:40:21.100999 <span class="c">#7:b4e4c]  INFO -- production: Processing by EmsInfraController#show as HTML</span>
 <span class="o">[</span><span class="nt">----</span><span class="o">]</span> I, <span class="o">[</span>2022-06-16T15:40:21.101242 <span class="c">#7:b4e4c]  INFO -- production:   Parameters: {"display"=&gt;"vms", "id"=&gt;"56"}</span>
 </code></pre></div></div>
+
+<h2 id="providers">
+<a class="anchor" href="#providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Providers</h2>
+
+<h3 id="vmware-vcenter-provider">
+<a class="anchor" href="#vmware-vcenter-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>VMware vCenter Provider</h3>
+
+<p>If you are having issues with a VMware provider you can enable extensive debug
+logging which will log the raw XML payloads for all requests and responses between
+the vCenter and ManageIQ.</p>
+
+<p>There are two settings that you have to enable in Advanced Settings</p>
+<ol>
+  <li>log.level_vim must be set to debug</li>
+  <li>ems.ems_vmware.debug_vim_requests must be set to true</li>
+</ol>
+
+<p>With these two settings enabled you will see the full XML payloads in the vim log,
+here is a sample Login action:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[----] D, [2024-12-04T12:31:51.307304#554036:97f4] DEBUG -- vim: &lt;?xml version='1.0' ?&gt;
+&lt;env:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+  &lt;env:Header /&gt;
+  &lt;env:Body&gt;
+    &lt;n1:Login xmlns:n1="urn:vim25"&gt;
+      &lt;n1:_this type="SessionManager"&gt;SessionManager&lt;/n1:_this&gt;
+      &lt;n1:userName&gt;user&lt;/n1:userName&gt;
+      &lt;n1:password&gt;pass&lt;/n1:password&gt;
+    &lt;/n1:Login&gt;
+  &lt;/env:Body&gt;
+&lt;/env:Envelope&gt;
+[----] D, [2024-12-04T12:31:51.308114#554036:97f4] DEBUG -- vim: &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;soapenv:Envelope xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns: xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;soapenv:Body&gt;
+    &lt;LoginResponse xmlns="urn:vim25"&gt;
+      &lt;returnval&gt;
+        &lt;key&gt;53e7183f-4db3-4e02-b62d-840b9a47fc31&lt;/key&gt;
+        &lt;userName&gt;user&lt;/userName&gt;
+        &lt;fullName&gt;user&lt;/fullName&gt;
+        &lt;loginTime&gt;2024-12-04T17:31:51.307621525Z&lt;/loginTime&gt;
+        &lt;lastActiveTime&gt;2024-12-04T12:31:51.307628585-05:00&lt;/lastActiveTime&gt;
+        &lt;locale&gt;en_US&lt;/locale&gt;
+        &lt;messageLocale&gt;en_US&lt;/messageLocale&gt;
+        &lt;extensionSession&gt;false&lt;/extensionSession&gt;
+        &lt;ipAddress&gt;127.0.0.1&lt;/ipAddress&gt;
+        &lt;userAgent&gt;HTTPClient/1.0 (2.8.3, ruby 3.3.5 (2024-09-03))&lt;/userAgent&gt;
+        &lt;callCount&gt;1&lt;/callCount&gt;
+      &lt;/returnval&gt;
+    &lt;/LoginResponse&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+
+</code></pre></div></div>
+
+<p>Depending on the payloads you are working with, they might overflow the journald <code class="language-plaintext highlighter-rouge">LineMax</code> and be cut off.
+If this is the case you can edit the <code class="language-plaintext highlighter-rouge">/etc/systemd/journald.conf</code> file and adjust the <code class="language-plaintext highlighter-rouge">LineMax</code> setting appropriately.</p>
 
 
 
