@@ -1319,6 +1319,7 @@
 <li class="toc-entry toc-h4"><a href="#create-a-catalog">Create a catalog</a></li>
 <li class="toc-entry toc-h4"><a href="#create-a-terraform-service-catalog-item">Create a Terraform Service Catalog item</a></li>
 <li class="toc-entry toc-h4"><a href="#run-the-terraform-template">Run the Terraform Template:</a></li>
+<li class="toc-entry toc-h4"><a href="#retire-the-terraform-services">Retire the Terraform services</a></li>
 </ul>
 </li>
 </ul>
@@ -3847,6 +3848,47 @@ environment.</p>
 <p>ManageIQ takes you to the <em>Requests queue</em> page and displays the status of the job.</p>
 
 <p>The service item details can be viewed when you navigate to <strong>Services</strong> &gt; <strong>My Services in ManageIQ</strong>.</p>
+
+<h4 id="retire-the-terraform-services">
+<a class="anchor" href="#retire-the-terraform-services" aria-hidden="true"><span class="octicon octicon-link"></span></a>Retire the Terraform services</h4>
+
+<p>When Terraform provisioned service resources are no longer required, the resources can be retired. The retirement action initiates the Terraform backend to run the <code class="language-plaintext highlighter-rouge">destroy</code> command. This action destroys all the remote resources that are managed by the Terraform configuration.</p>
+
+<p>Use the following steps to retire the service instance immediately:</p>
+
+<ol>
+  <li>In the navigation bar, click <strong>Services</strong>.</li>
+  <li>Click <strong>My Services</strong>.</li>
+  <li>Select the service instance that you want to retire.</li>
+  <li>Click <strong>Lifecycle</strong> &gt; <strong>Retire the Service</strong>.</li>
+</ol>
+
+<p>Use the following steps to set a retirement day and time for a service instance:</p>
+
+<ol>
+  <li>In the navigation bar, click <strong>Services</strong>.</li>
+  <li>Click <strong>My Services</strong>.</li>
+  <li>Click <strong>Lifecycle</strong> &gt; <strong>Set Retirement Dates for this Service</strong>.</li>
+  <li>
+    <p>In <strong>Enter Retirement Date as</strong> field, select <strong>Specific Date and Time</strong> or <strong>Time Delay from Now</strong> to schedule the retirement.</p>
+
+    <ul>
+      <li>To choose a <strong>Specific Date and Time</strong> for Retirement, click the <strong>Retirement Date</strong> to open the calendar:
+        <ol>
+          <li>Select a <strong>Retirement Date</strong> by using the calendar control.</li>
+          <li>Select a <strong>Retirement Time</strong> (in UTC) by using the arrows.</li>
+        </ol>
+      </li>
+      <li>To retire by using a relative time, select <strong>Time Delay from Now</strong>:
+        <ol>
+          <li>From <strong>Time Delay</strong>, specify a retirement time in the form of the number of months, weeks, days, or hours in the using the arrows.</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>Select a <strong>Retirement Warning</strong> if needed.</li>
+  <li>Click <strong>Save</strong>.</li>
+</ol>
 
 <h1 id="cloud-providers">
 <a class="anchor" href="#cloud-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cloud Providers</h1>
