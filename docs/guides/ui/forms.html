@@ -24,7 +24,7 @@
     }
   </script>
 
-  <link type="text/css" rel="stylesheet" href="/assets/main-c62d712a15a5ba4c8ba8ce3af6a80e7ae432d1bd2c83c7d2973c3d72a7371e97.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="canonical" href="http://manageiq.org/docs/guides/ui/forms">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
@@ -514,12 +514,12 @@ are a set of constants provided by DDF for creating a schema.</p>
     <span class="p">{</span>
       <span class="na">component</span><span class="p">:</span> <span class="nx">componentTypes</span><span class="p">.</span><span class="nx">TEXT_FIELD</span><span class="p">,</span>
       <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">label</span><span class="p">:</span> <span class="nx">__</span><span class="p">(</span><span class="dl">'</span><span class="s1">Name</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">label</span><span class="p">:</span> <span class="nf">__</span><span class="p">(</span><span class="dl">'</span><span class="s1">Name</span><span class="dl">'</span><span class="p">),</span>
 
       <span class="na">isRequired</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
       <span class="na">validate</span><span class="p">:</span> <span class="p">[{</span>
         <span class="na">type</span><span class="p">:</span> <span class="nx">validatorTypes</span><span class="p">.</span><span class="nx">REQUIRED</span><span class="p">,</span>
-        <span class="na">message</span><span class="p">:</span> <span class="nx">__</span><span class="p">(</span><span class="dl">'</span><span class="s1">Required</span><span class="dl">'</span><span class="p">),</span>
+        <span class="na">message</span><span class="p">:</span> <span class="nf">__</span><span class="p">(</span><span class="dl">'</span><span class="s1">Required</span><span class="dl">'</span><span class="p">),</span>
       <span class="p">}],</span>
     <span class="p">},</span>
 
@@ -527,7 +527,7 @@ are a set of constants provided by DDF for creating a schema.</p>
     <span class="nx">showDescription</span> <span class="o">&amp;&amp;</span> <span class="p">{</span>
       <span class="na">component</span><span class="p">:</span> <span class="nx">componentTypes</span><span class="p">.</span><span class="nx">TEXTAREA_FIELD</span><span class="p">,</span>
       <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">description</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">label</span><span class="p">:</span> <span class="nx">__</span><span class="p">(</span><span class="dl">'</span><span class="s1">Description</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">label</span><span class="p">:</span> <span class="nf">__</span><span class="p">(</span><span class="dl">'</span><span class="s1">Description</span><span class="dl">'</span><span class="p">),</span>
     <span class="p">},</span>
   <span class="p">],</span>
 <span class="p">});</span>
@@ -535,14 +535,14 @@ are a set of constants provided by DDF for creating a schema.</p>
 <span class="k">export</span> <span class="kd">const</span> <span class="nx">MyForm</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">initialValues</span><span class="p">,</span> <span class="nx">onSubmit</span><span class="p">,</span> <span class="nx">onCancel</span><span class="p">,</span> <span class="nx">showDescription</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="nx">MiqFormRenderer</span>
     <span class="nx">initialValues</span><span class="o">=</span><span class="p">{</span> <span class="nx">initialValues</span> <span class="p">}</span>
-    <span class="nx">schema</span><span class="o">=</span><span class="p">{</span> <span class="nx">createSchema</span><span class="p">({</span> <span class="nx">showDescription</span> <span class="p">})</span> <span class="p">}</span>
-    <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span> <span class="p">(</span><span class="nx">values</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">onSubmit</span><span class="p">(</span><span class="nx">values</span><span class="p">)</span> <span class="p">}</span>
-    <span class="nx">onCancel</span><span class="o">=</span><span class="p">{</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">onCancel</span><span class="p">()</span> <span class="p">}</span>
+    <span class="nx">schema</span><span class="o">=</span><span class="p">{</span> <span class="nf">createSchema</span><span class="p">({</span> <span class="nx">showDescription</span> <span class="p">})</span> <span class="p">}</span>
+    <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span> <span class="p">(</span><span class="nx">values</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nf">onSubmit</span><span class="p">(</span><span class="nx">values</span><span class="p">)</span> <span class="p">}</span>
+    <span class="nx">onCancel</span><span class="o">=</span><span class="p">{</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nf">onCancel</span><span class="p">()</span> <span class="p">}</span>
   <span class="sr">/</span><span class="err">&gt;
 </span><span class="p">);</span>
 
 <span class="nx">MyForm</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">initialValues</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">shape</span><span class="p">({</span>
+  <span class="na">initialValues</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nf">shape</span><span class="p">({</span>
     <span class="na">name</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
     <span class="na">description</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
   <span class="p">}),</span>

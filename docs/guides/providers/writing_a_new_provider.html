@@ -24,7 +24,7 @@
     }
   </script>
 
-  <link type="text/css" rel="stylesheet" href="/assets/main-c62d712a15a5ba4c8ba8ce3af6a80e7ae432d1bd2c83c7d2973c3d72a7371e97.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="canonical" href="http://manageiq.org/docs/guides/providers/writing_a_new_provider">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
@@ -819,9 +819,9 @@ index 6c228c2..91e8e71 100644
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
 <span class="na">us-east-1</span><span class="pi">:</span>
-  <span class="s">:name: us-east-1</span>
-  <span class="s">:hostname: us-east-1.awesome.cloud</span>
-  <span class="s">:description: US East </span><span class="m">1</span>
+  <span class="na">:name</span><span class="pi">:</span> <span class="s">us-east-1</span>
+  <span class="na">:hostname</span><span class="pi">:</span> <span class="s">us-east-1.awesome.cloud</span>
+  <span class="na">:description</span><span class="pi">:</span> <span class="s">US East </span><span class="m">1</span>
 </code></pre></div></div>
 
 <p>With that added you should be able to go to the UI, add a cloud provider, and see your new cloud type.  For development typically the best way to test code in the UI is to run a rails server and a simulated generic worker via the terminal.</p>

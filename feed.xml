@@ -5,14 +5,13 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 13 Dec 2024 03:23:38 +0000</pubDate>
-    <lastBuildDate>Fri, 13 Dec 2024 03:23:38 +0000</lastBuildDate>
-    <generator>Jekyll v3.10.0</generator>
+    <pubDate>Fri, 13 Dec 2024 16:45:36 +0000</pubDate>
+    <lastBuildDate>Fri, 13 Dec 2024 16:45:36 +0000</lastBuildDate>
+    <generator>Jekyll v4.3.4</generator>
     
       <item>
         <title>Quinteros-2, CVE-2024-43191, CVE-2023-46175</title>
         <description>&lt;p&gt;ManageIQ Quinteros-2 is now available. This release includes security fixes, which will also be included in upcoming Radjabov-1 GA release.&lt;/p&gt;
-
 </description>
         <pubDate>Thu, 14 Nov 2024 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2024/11/quinteros-2-cve-2024-43191-cve-2023-46715/</link>
@@ -28,7 +27,6 @@
       <item>
         <title>ManageIQ Quinteros GA Announcement</title>
         <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Quinteros&lt;/strong&gt;! This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Miguel_Quinteros&quot;&gt;Miguel Quinteros&lt;/a&gt;. You can download the Quinteros-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
-
 </description>
         <pubDate>Wed, 29 May 2024 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2024/05/manageiq-quinteros-ga-announcement/</link>
@@ -44,7 +42,6 @@
       <item>
         <title>ManageIQ Petrosian GA Announcement</title>
         <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Petrosian&lt;/strong&gt;! This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Tigran_Petrosian&quot;&gt;Tigran Petrosian&lt;/a&gt;. You can download the Petrosian-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
-
 </description>
         <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2023/09/manageiq-petrosian-ga-announcement/</link>
@@ -60,7 +57,6 @@
       <item>
         <title>ManageIQ Oparin GA Announcement</title>
         <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Oparin&lt;/strong&gt;! This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Grigoriy_Oparin&quot;&gt;Grigoriy Oparin&lt;/a&gt;. You can download the Oparin-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
-
 </description>
         <pubDate>Fri, 06 Jan 2023 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2023/01/manageiq-oparin-ga-announcement/</link>
@@ -76,7 +72,6 @@
       <item>
         <title>ManageIQ Najdorf GA Announcement</title>
         <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Najdorf&lt;/strong&gt;!  This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Miguel_Najdorf&quot;&gt;Miguel Najdorf&lt;/a&gt;.  You can download the Najdorf-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
-
 </description>
         <pubDate>Mon, 18 Jul 2022 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2022/07/manageiq-najdorf-ga-announcement/</link>
@@ -92,7 +87,6 @@
       <item>
         <title>ManageIQ Morphy GA Announcement</title>
         <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Morphy&lt;/strong&gt;!  This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Paul_Morphy&quot;&gt;Paul Morphy&lt;/a&gt;.  You can download the Morphy-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
-
 </description>
         <pubDate>Mon, 14 Feb 2022 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2022/02/manageiq-morphy-ga-announcement/</link>
@@ -108,7 +102,6 @@
       <item>
         <title>RbVmomi Maintenance</title>
         <description>&lt;p&gt;I have the pleasure of announcing that the &lt;a href=&quot;https://www.manageiq.org/community/&quot;&gt;ManageIQ community&lt;/a&gt; has forked and will be maintaining the RbVmomi gem as rbvmomi2.  RbVmomi is a Ruby SDK for the &lt;a href=&quot;https://code.vmware.com/apis/1131/vsphere&quot;&gt;VMware vSphere Web Services API&lt;/a&gt; which allows users to manage their virtual infrastructure.&lt;/p&gt;
-
 </description>
         <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2021/12/rbvmomi-maintenance/</link>
@@ -124,7 +117,6 @@
       <item>
         <title>Announcing Morphy Beta</title>
         <description>&lt;p&gt;The first beta release of ManageIQ Morphy is here!  We’ve been working hard and have a lot of new features you can see in the &lt;a href=&quot;https://github.com/orgs/ManageIQ/projects/13#column-15656536&quot;&gt;roadmap&lt;/a&gt;. Here are the major highlights for this new release:&lt;/p&gt;
-
 </description>
         <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2021/12/Announcing-Morphy-Beta/</link>
@@ -140,7 +132,6 @@
       <item>
         <title>Morphy Release Approach</title>
         <description>&lt;p&gt;We have been working on a number of interesting features.  Typically, the way these get released is that we cut a release branch from the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch and work on stabilizing it to get to a release.  However, at this time we feel the master branch is a bit too fluid to stabilize just yet.  At the same time, there are a number of new features that are less risky and would provide a benefit to the community via an official release.  So, what we have decided to do is to release them in a different way.&lt;/p&gt;
-
 </description>
         <pubDate>Mon, 23 Aug 2021 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2021/08/announcing_morphy_approach/</link>
@@ -156,7 +147,6 @@
       <item>
         <title>ManageIQ Lasker GA Announcement</title>
         <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Lasker&lt;/strong&gt;!  This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Emanuel_Lasker&quot;&gt;Emanuel Lasker&lt;/a&gt;.  You can download the Lasker-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
-
 </description>
         <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2021/07/manageiq-lasker-ga-annoucement/</link>

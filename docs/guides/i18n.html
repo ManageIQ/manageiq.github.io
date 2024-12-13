@@ -24,7 +24,7 @@
     }
   </script>
 
-  <link type="text/css" rel="stylesheet" href="/assets/main-c62d712a15a5ba4c8ba8ce3af6a80e7ae432d1bd2c83c7d2973c3d72a7371e97.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="canonical" href="http://manageiq.org/docs/guides/i18n">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
@@ -635,12 +635,12 @@ then substituted with the context of the <code class="language-plaintext highlig
   <li><strong>Don’t use dynamic content inside <code class="language-plaintext highlighter-rouge">__()</code></strong>. For example, the following javascript code won’t be collected correctly by <code class="language-plaintext highlighter-rouge">yarn run gettext:extract</code>.</li>
 </ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">s</span> <span class="o">=</span> <span class="nx">__</span><span class="p">(</span><span class="nx">sprintf</span><span class="p">(</span><span class="dl">"</span><span class="s2">My name is %s.</span><span class="dl">"</span><span class="p">,</span> <span class="nx">me</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">s</span> <span class="o">=</span> <span class="nf">__</span><span class="p">(</span><span class="nf">sprintf</span><span class="p">(</span><span class="dl">"</span><span class="s2">My name is %s.</span><span class="dl">"</span><span class="p">,</span> <span class="nx">me</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
 </code></pre></div></div>
 
 <p>The above should correctly be:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">s</span> <span class="o">=</span> <span class="nx">sprintf</span><span class="p">(</span><span class="nx">__</span><span class="p">(</span><span class="dl">"</span><span class="s2">My name is %s.</span><span class="dl">"</span><span class="p">),</span> <span class="nx">me</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">s</span> <span class="o">=</span> <span class="nf">sprintf</span><span class="p">(</span><span class="nf">__</span><span class="p">(</span><span class="dl">"</span><span class="s2">My name is %s.</span><span class="dl">"</span><span class="p">),</span> <span class="nx">me</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 </code></pre></div></div>
 
 <ul>
@@ -664,22 +664,22 @@ then substituted with the context of the <code class="language-plaintext highlig
   <li><strong>Avoid concatenating English strings.</strong> For example, a javascript code like:</li>
 </ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">create</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">create</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">verb</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">created</span><span class="dl">"</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">verb</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">updated</span><span class="dl">"</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">message</span> <span class="o">=</span> <span class="nx">sprintf</span><span class="p">(</span><span class="nx">__</span><span class="p">(</span><span class="dl">"</span><span class="s2">Item was %s</span><span class="dl">"</span><span class="p">),</span> <span class="nx">verb</span><span class="p">);</span>
+<span class="nx">message</span> <span class="o">=</span> <span class="nf">sprintf</span><span class="p">(</span><span class="nf">__</span><span class="p">(</span><span class="dl">"</span><span class="s2">Item was %s</span><span class="dl">"</span><span class="p">),</span> <span class="nx">verb</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>would contain mixed languages when shown in non-English locale.</p>
 
 <p>Correctly, the code should read:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">create</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">message</span> <span class="o">=</span> <span class="nx">__</span><span class="p">(</span><span class="dl">"</span><span class="s2">Item was created</span><span class="dl">"</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">create</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">message</span> <span class="o">=</span> <span class="nf">__</span><span class="p">(</span><span class="dl">"</span><span class="s2">Item was created</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="nx">message</span> <span class="o">=</span> <span class="nx">__</span><span class="p">(</span><span class="dl">"</span><span class="s2">Item was updated</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">message</span> <span class="o">=</span> <span class="nf">__</span><span class="p">(</span><span class="dl">"</span><span class="s2">Item was updated</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span>
 
 </code></pre></div></div>
@@ -746,7 +746,7 @@ Then you do the translation when needed <em>(e.g. when generating the HTML or JS
 <p>To be able to see strings which pass through gettext <em>(i.e. are translatable)</em>, you have to add the following to the servers advanced settings:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">ui</span><span class="pi">:</span>
-  <span class="na">mark_translated_strings</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">mark_translated_strings</span><span class="pi">:</span> <span class="kc">true</span>
 </code></pre></div></div>
 
 <p>and <strong>restart</strong> the ManageIQ application. With these settings on, all strings passing through gettext will be marked with <code class="language-plaintext highlighter-rouge">»</code> and <code class="language-plaintext highlighter-rouge">«</code> markers:</p>

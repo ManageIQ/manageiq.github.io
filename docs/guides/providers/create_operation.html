@@ -24,7 +24,7 @@
     }
   </script>
 
-  <link type="text/css" rel="stylesheet" href="/assets/main-c62d712a15a5ba4c8ba8ce3af6a80e7ae432d1bd2c83c7d2973c3d72a7371e97.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="canonical" href="http://manageiq.org/docs/guides/providers/create_operation">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
@@ -573,14 +573,14 @@ Make sure to point at your JS Form which you defined above <code class="language
 <h2 id="product-feature">Product Feature</h2>
 <p>Find your item’s product feature list in <code class="language-plaintext highlighter-rouge">manageiq/db/fixtures/miq_product_features.yml</code>. 
 Make sure that it has a section for ‘add’, as below</p>
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="s">:name: Your Item</span>   
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">:name</span><span class="pi">:</span> <span class="s">Your Item</span>   
   <span class="s">...</span>
-  <span class="s">- :name: Modify</span>
-    <span class="s">:children:</span>    
-    <span class="s">- :name: Add</span>
-      <span class="s">:description: Add A Your Item</span>
-      <span class="s">:feature_type: admin</span>
-      <span class="s">:identifier: your_item_new</span>
+  <span class="pi">-</span> <span class="na">:name</span><span class="pi">:</span> <span class="s">Modify</span>
+    <span class="na">:children</span><span class="pi">:</span>    
+    <span class="pi">-</span> <span class="na">:name</span><span class="pi">:</span> <span class="s">Add</span>
+      <span class="na">:description</span><span class="pi">:</span> <span class="s">Add A Your Item</span>
+      <span class="na">:feature_type</span><span class="pi">:</span> <span class="s">admin</span>
+      <span class="na">:identifier</span><span class="pi">:</span> <span class="s">your_item_new</span>
 </code></pre></div></div>
 
 <h2 id="api-controller">API Controller</h2>
@@ -599,10 +599,10 @@ An API controller with a good example of <code class="language-plaintext highlig
 <ul>
   <li>The <code class="language-plaintext highlighter-rouge">verbs</code> section needs to contains both <code class="language-plaintext highlighter-rouge">Get</code> and <code class="language-plaintext highlighter-rouge">Post</code>. For example, you could write <code class="language-plaintext highlighter-rouge">:verbs: *gp</code>\</li>
   <li>Under the <code class="language-plaintext highlighter-rouge">collection_actions</code> section, make sure you have
-    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s">:collection_actions:</span>
-    <span class="s">:post:</span>
-    <span class="s">- :name: create</span>
-      <span class="s">:identifier: your_item_new</span>
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="na">:collection_actions</span><span class="pi">:</span>
+    <span class="na">:post</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">:name</span><span class="pi">:</span> <span class="s">create</span>
+      <span class="na">:identifier</span><span class="pi">:</span> <span class="s">your_item_new</span>
 </code></pre></div>    </div>
   </li>
 </ul>

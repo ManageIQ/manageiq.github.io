@@ -24,7 +24,7 @@
     }
   </script>
 
-  <link type="text/css" rel="stylesheet" href="/assets/main-c62d712a15a5ba4c8ba8ce3af6a80e7ae432d1bd2c83c7d2973c3d72a7371e97.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="canonical" href="http://manageiq.org/docs/guides/providers/events">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
@@ -507,17 +507,17 @@
 <p>First we need to set up the worker scaffolding so that we can run our event catcher worker.</p>
 
 <p><code class="language-plaintext highlighter-rouge">config/settings.yml</code></p>
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">:ems:</span>
-  <span class="s">:ems_awesome_cloud:</span>
-    <span class="s">:blacklisted_event_names: []</span>
-    <span class="s">:event_handling:</span>
-      <span class="s">:event_groups: {}</span> <span class="c1"># Add your event names under the appropriate groups here</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">:ems</span><span class="pi">:</span>
+  <span class="na">:ems_awesome_cloud</span><span class="pi">:</span>
+    <span class="na">:blacklisted_event_names</span><span class="pi">:</span> <span class="pi">[]</span>
+    <span class="na">:event_handling</span><span class="pi">:</span>
+      <span class="na">:event_groups</span><span class="pi">:</span> <span class="pi">{}</span> <span class="c1"># Add your event names under the appropriate groups here</span>
 
-<span class="s">:workers:</span>
-  <span class="s">:worker_base:</span>
-    <span class="s">:event_catcher:</span>
-      <span class="s">:event_catcher_awesome_cloud:</span>
-        <span class="s">:poll: 15.seconds</span>
+<span class="na">:workers</span><span class="pi">:</span>
+  <span class="na">:worker_base</span><span class="pi">:</span>
+    <span class="na">:event_catcher</span><span class="pi">:</span>
+      <span class="na">:event_catcher_awesome_cloud</span><span class="pi">:</span>
+        <span class="na">:poll</span><span class="pi">:</span> <span class="s">15.seconds</span>
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/cloud_manager/event_catcher.rb</code></p>
@@ -717,9 +717,9 @@
 <p>With that you can now bump your refresh interval from 15 minutes up to 1 day.</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="s">:ems_refres:</span>
-  <span class="s">:awesome_cloud:</span>
-    <span class="s">:refresh_interval: 24.hours</span>
+<span class="na">:ems_refres</span><span class="pi">:</span>
+  <span class="na">:awesome_cloud</span><span class="pi">:</span>
+    <span class="na">:refresh_interval</span><span class="pi">:</span> <span class="s">24.hours</span>
 </code></pre></div></div>
 
 <p>This ensures that the provider inventory doesn’t get too far out of sync while freeing up the refresh worker to process way more targeted refreshes without having to do a full every 15 minutes.</p>
