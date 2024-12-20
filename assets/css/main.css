@@ -13771,6 +13771,11 @@ hr {
   border-top-color: var(--color-border-primary);
 }
 
+.community-social {
+  text-indent: 1em;
+  font-size: 1.5em;
+}
+
 table.gsc-input {
   background-color: transparent;
   font-size: 9px !important;
