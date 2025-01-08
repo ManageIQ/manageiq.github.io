@@ -1211,11 +1211,12 @@
 
 <p>ManageIQ supports Microsoft Azure providers. Before
 ManageIQ can be authenticated to Microsoft Azure, you must
-complete a series of prerequisite steps using the Azure portal; see
+complete a series of prerequisite steps using the Azure portal. For more information, see
 <a href="https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/">Create Active Directory application and service principal account using
 the Azure
-portal</a>.
-Follow the steps to set up an Azure Active Directory (Azure AD) and
+portal</a>.</p>
+
+<p>Follow the steps to set up an Azure Active Directory (Azure AD) and
 assign the required permissions to it, then create an Azure Active
 Directory application, and obtain the <strong>Application ID</strong> (Client ID),
 <strong>Directory ID</strong> (Tenant ID), <strong>Subscription ID</strong>, and <strong>Key Value</strong>
@@ -1231,80 +1232,72 @@ Manager (Classic) mode.</p>
 <ul>
   <li>
     <p>The <strong>Application ID</strong> obtained during <em>Get Application ID and
-Authentication Key</em> is your <strong>Client ID</strong>. In the same section,
-after providing a description and a duration for the key, the
-<strong>VALUE</strong> displayed after clicking <strong>Save</strong> is your <strong>Client Key</strong>.
-If you choose an expiring key, make sure to note the expiration
-date, as you will need to generate a new key before that day in
-order to avoid an interruption.</p>
+  Authentication Key</em> is your <strong>Client ID</strong>. In the same section,
+  after providing a description and a duration for the key, the
+  <strong>VALUE</strong> displayed after clicking <strong>Save</strong> is your <strong>Client Key</strong>.
+  If you choose an expiring key, make sure to note the expiration
+  date, as you need to generate a new key before that day in
+  order to avoid an interruption.</p>
   </li>
   <li>
     <p>The <strong>Directory ID</strong> obtained during <em>Get Tenant ID</em> is your
-<strong>Tenant ID</strong>. In Azure Active Directory (Azure AD), a tenant is a
-dedicated instance of the Azure AD service and is representative of
-an organization. It houses the users in a company and the
-information about them - their user profile data, permissions,
-groups, applications, and other information related to an
-organization and its security. To allow Azure AD users to sign in to
-your application, you must register your application in a tenant of
-your own which is assigned a Tenant ID (Directory ID).</p>
+  <strong>Tenant ID</strong>. In Azure Active Directory (Azure AD), a tenant is a
+  dedicated instance of the Azure AD service and is representative of
+  an organization. It houses the users in a company and the
+  information about them - their user profile data, permissions,
+  groups, applications, and other information related to an
+  organization and its security. To allow Azure AD users to sign in to
+  your application, you must register your application in a tenant of
+  your own which is assigned a Tenant ID (Directory ID).</p>
   </li>
   <li>
     <p>During <em>Assign Application to Role</em>, select the <strong>Contributor</strong> role
-and not the <strong>Reader</strong> role.</p>
+  and not the <strong>Reader</strong> role.</p>
   </li>
   <li>
     <p>To obtain your <strong>Subscription ID</strong>, log in to the Azure portal and
-click <strong>Subscriptions</strong> on the slide-out menu on the left. Find the
-appropriate subscription and see your Azure <strong>Subscription ID</strong>
-associated with it. Note that if the <strong>Subscriptions</strong> tab is not
-visible, then click on <strong>More services &gt;</strong> to find it. The Azure
-<strong>Subscription ID</strong> is like a billing unit for all of the services
-consumed in your Azure account, including virtual machines and
-storage. The <strong>Subscription ID</strong> is in the form of a Globally Unique
-Identifier (GUID).</p>
+  click <strong>Subscriptions</strong> on the slide-out menu. Find the
+  appropriate subscription and see your Azure <strong>Subscription ID</strong>
+  associated with it. Note that if the <strong>Subscriptions</strong> tab is not
+  visible, then click on <strong>More services</strong> to find it. The Azure
+  <strong>Subscription ID</strong> is like a billing unit for all of the services
+  consumed in your Azure account, including virtual machines and
+  storage. The <strong>Subscription ID</strong> is in the form of a Globally Unique
+  Identifier (GUID).</p>
   </li>
 </ul>
 
-<p>So, after a service principal account (instance of an application in a directory) has been created using the Azure portal, the following four pieces of information will be available within the Azure AD module.</p>
+<p>When the service principal account (instance of an application in a directory) is created using the Azure portal, the following four pieces of information becomes available within the Azure AD module.</p>
 
 <ul>
-  <li>
-    <p>Directory ID (Tenant ID)</p>
-  </li>
-  <li>
-    <p>Subscription ID</p>
-  </li>
-  <li>
-    <p>Application ID (Client ID)</p>
-  </li>
-  <li>
-    <p>Client Key</p>
-  </li>
+  <li>Directory ID (Tenant ID)</li>
+  <li>Subscription ID</li>
+  <li>Application ID (Client ID)</li>
+  <li>Client Key</li>
 </ul>
 
 <p>You can now use these values in the procedure below to add an Azure cloud instance as a provider to ManageIQ.</p>
 
-<p>In order to be able to capture Events or Capacity &amp; Utilization metrics from your Azure account
-you first have to register the Microsoft Insights resource provider.</p>
+<p>To capture Events or Capacity and Utilization metrics from your Azure account
+you need to register the Microsoft Insights resource provider.</p>
 
 <ol>
-  <li>Select your subscription, and click on “Resource providers”</li>
-  <li>Enter “microsoft.insights” in the search box</li>
-  <li>If the Provider isn’t registered, then hit the checkbox and select the Register option</li>
+  <li>Select your subscription, and click <strong>Resource providers</strong>.</li>
+  <li>Enter <strong>microsoft.insights</strong> in the search box.</li>
+  <li>If the provider isn’t registered, then select the checkbox, and click <strong>Register</strong>.</li>
 </ol>
 
-<p><a href="../../images/azure-microsoft-insights.png">Microsoft Insights Resource Provider</a></p>
+<p><img src="../../../images/azure-microsoft-insights.png" alt="Microsoft Insights Resource Provider"></p>
 
-<p><strong>To Add an Azure Cloud Provider</strong>:</p>
+<p><strong>Add an Azure Cloud Provider</strong>:</p>
 
 <ol>
   <li>
-    <p>Browse to menu: <strong>Compute &gt; Clouds &gt; Providers</strong>.</p>
+    <p>Browse to the menu and click <strong>Compute</strong> &gt; <strong>Clouds</strong> &gt; <strong>Providers</strong>.</p>
   </li>
   <li>
     <p>Click <strong>Configuration</strong>, then click
-<img src="../../images/1862.png" alt="1862"> (<strong>Add a New Cloud Provider</strong>).</p>
+<img src="../../../images/1862.png" alt="1862"> (<strong>Add a New Cloud Provider</strong>).</p>
   </li>
   <li>
     <p>Enter a <strong>Name</strong> for the provider.</p>
