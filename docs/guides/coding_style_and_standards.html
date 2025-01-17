@@ -512,21 +512,21 @@ to comment or submit pull requests for changes, additions, or removals.</li>
 <ul>
   <li>We follow, with some exceptions, the <a href="https://github.com/bbatsov/ruby-style-guide">original Ruby style guide</a>.
 Any changes we have that deviate from the default style guide are enumerated
-in the <a href=".rubocop_base.yml">.rubocop_base.yml</a> file, which is inherited by most
-projects in the ManageIQ organization.</li>
+in the <a href="https://github.com/ManageIQ/manageiq-style/blob/master/styles/base.yml">manageiq-style base.yml</a> file,
+which is inherited by most projects in the ManageIQ organization.</li>
 </ul>
 
 <h2 id="documentation">Documentation</h2>
 
 <p>We use <a href="https://yardoc.org/">yardoc</a> to create inline code documentation. For now documentation is scarce but
-we encourage contributors to add it whenever possible. Until more of the codebase is documented, we limit the created 
-documentation to those files that are well documented. 
+we encourage contributors to add it whenever possible. Until more of the codebase is documented, we limit the created
+documentation to those files that are well documented.
 Please try to document methods that are used by external teams, like providers.
 These are the integration API for them and should be documented best.</p>
 
 <p>To view the documentation online visit <a href="http://www.rubydoc.info/github/manageiq/manageiq">rubydoc.info</a>. For a local
 version you can run <code class="language-plaintext highlighter-rouge">bundle exec yard</code> and view the html docs in <code class="language-plaintext highlighter-rouge">/doc/index.html</code>. When writing documentation you
-should add your source files to <code class="language-plaintext highlighter-rouge">/.yardopts</code> and run <code class="language-plaintext highlighter-rouge">bundle exec yard server -r</code>. This will create a local 
+should add your source files to <code class="language-plaintext highlighter-rouge">/.yardopts</code> and run <code class="language-plaintext highlighter-rouge">bundle exec yard server -r</code>. This will create a local
 documentation server which regenerates the docs on each request.</p>
 
 <h2 id="logging">Logging</h2>
@@ -574,7 +574,6 @@ corollary, avoid using words that would not make sense on both ends, such as
 
 <ul>
   <li>Write a good commit message.  The format for a commit message is as follows.
-Also <a href="http://goo.gl/w11us">read more</a> on writing good commit messages.
     <ul>
       <li>A short summary of the commit under 72 characters.  Do not use a ticket
 number as the subject alone.</li>
@@ -587,24 +586,29 @@ to search the code history for changes.  Feel free to include URLs, Git
 SHA references to other commits, and even raw data to make the purpose
 of the commit clearer (e.g. “Was broken by commit 0f3a459b”).</li>
       <li>A blank line if you’ve written a body.</li>
-      <li>References to any Bugzilla tickets or Github Issues, one per line if
+      <li>References to any GitHub Issues or other ticketing systems, one per line if
 there are multiple.
         <ul>
-          <li>Bugzilla tickets should be in the form of a full URL to the ticket.</li>
-          <li>Github issues should be of the form “Issue #n”, where n is the
-issue number.</li>
+          <li>GitHub issues should be of the form “Issue #n”, where n is the issue number.</li>
+          <li>Other tickets should be in the form of a full URL to the ticket or the form
+appropriate for that system.</li>
         </ul>
       </li>
     </ul>
   </li>
   <li>Each commit should have its own unique subject.  Do not use the same
 subject for a series of commits in a branch of work.</li>
+  <li>Avoid using <a href="https://github.com/blog/821">@-mentions</a> in the body of the commit
+message as GitHub will notify the user every time the commit is pushed. As a
+corollary, code that uses <code class="language-plaintext highlighter-rouge">@</code> could accidentally be interpreted as an @-mention,
+so all code snippets in commit messages should be marked within code block
+formatting.</li>
   <li>Keep commits small by committing often and only include related changes
 and tests together.</li>
   <li>You may be doing too much in a commit if…
     <ul>
       <li>You can’t get the subject of the commit message under 72 characters</li>
-      <li>You are using a lot of “ands” or “ors” in the commit message</li>
+      <li>You are using a lot of “and”s or “or”s in the commit message</li>
       <li>You find yourself using lots of bullet points to enumerate all the work
 the commit does.</li>
     </ul>
@@ -635,7 +639,7 @@ remove_test_duplication_for_performance
 change_ems_amazon_to_be_region_specific
 </code></pre></div>    </div>
   </li>
-  <li>Write a good pull request message.  By default, Github will use your
+  <li>Write a good pull request message.  By default, GitHub will use your
 branch name as the title.  Adjust the title if this is not appropriate for
 the pull request.
     <ul>
@@ -656,7 +660,7 @@ code smells.</li>
   </li>
   <li>Try to avoid having a commit with, for example, a spelling mistake, that
 is fixed in a subsequent commit in the same pull request.  Use <code class="language-plaintext highlighter-rouge">git rebase -i</code>
-to clean up those commits to keep the history clean.</li>
+to squash those commits to keep the history clean.</li>
   <li>If a pull request involves UI changes, consider adding a before/after
 set of screenshots to show what has changed visually.</li>
   <li>Use <a href="https://github.com/blog/821">@-mentions</a> to request reviews from
@@ -669,7 +673,7 @@ so they know you are ready for a new review.</li>
 
 <ul>
   <li>Under no circumstances should customer names or customer related information
-be referenced in Github issues, error reports, commits, or pull requests.</li>
+be referenced in GitHub issues, error reports, commits, or pull requests.</li>
   <li>
     <p>For UI errors, the error message and stack trace are usually in
 production.log.  A snippet from there with the entire UI transaction is
@@ -744,31 +748,31 @@ changes or additions to the guides can be put here.</li>
 
 <h2 id="git-how-to">Git how-to</h2>
 
-<p>Note after the changes in this section, you will need <code class="language-plaintext highlighter-rouge">git push -f </code>if you have 
+<p>Note after the changes in this section, you will need <code class="language-plaintext highlighter-rouge">git push -f </code>if you have
 already pushed them before.</p>
 
 <ul>
   <li>
     <p>Reword/squashing/reordering a commit</p>
 
-    <p>To modify with recent commit in current branch, first do 
+    <p>To modify with recent commit in current branch, first do
 <code class="language-plaintext highlighter-rouge">git rebase -i origin branch-name</code>.
 To modify a specific commit, use <code class="language-plaintext highlighter-rouge">git rebase -i SOME_COMMIT_ID^</code> instead.
-git will popup a vi window to let you do modification on commits, press 
+git will popup a vi window to let you do modification on commits, press
 <code class="language-plaintext highlighter-rouge">:wq</code> after done.</p>
 
     <ul>
       <li>
         <p>Reword a commit</p>
 
-        <p>Change the <code class="language-plaintext highlighter-rouge">pick</code> before the commit you want to reword to <code class="language-plaintext highlighter-rouge">edit</code> and edit 
+        <p>Change the <code class="language-plaintext highlighter-rouge">pick</code> before the commit you want to reword to <code class="language-plaintext highlighter-rouge">edit</code> and edit
 its message in popup vi window.</p>
       </li>
       <li>
         <p>Squashing commits</p>
 
-        <p>Change the <code class="language-plaintext highlighter-rouge">pick</code> before the commit you want to squach to <code class="language-plaintext highlighter-rouge">squash</code> and edit 
-the commit message after squash in a following popup vi window. A commit 
+        <p>Change the <code class="language-plaintext highlighter-rouge">pick</code> before the commit you want to squach to <code class="language-plaintext highlighter-rouge">squash</code> and edit
+the commit message after squash in a following popup vi window. A commit
 will be squashed with its previous commit.</p>
       </li>
       <li>
@@ -805,11 +809,6 @@ git commit --amend
 
 <ul>
   <li>Rails style guide see https://github.com/bbatsov/rails-style-guide</li>
-  <li>Bugzilla how-to
-    <ul>
-      <li>how to copy commit details / clone a ticket</li>
-    </ul>
-  </li>
 </ul>
 
 <h1 id="license">License</h1>
