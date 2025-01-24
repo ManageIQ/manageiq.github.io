@@ -3827,7 +3827,21 @@ environment.</p>
         <p>In Provisioning, select the <strong>Cloud Type</strong> and then select the <strong>credential</strong> to connect to the cloud.</p>
       </li>
       <li>
-        <p>In Provisioning, select the <strong>Service Dialog</strong> that you created previously. If you want to enter additional information when you run the task, <strong>Service Dialog</strong> must be selected. A dialog is required if <strong>Display in Catalog</strong> is chosen.</p>
+        <p>In Provisioning, if you want to enter additional information when you run the task, <strong>Service Catalog</strong> must be selected. A dialog is required if <strong>Display in Catalog</strong> is chosen.</p>
+      </li>
+      <li>
+        <p>In Provisioning, you have two options to create a Service Dialog:</p>
+
+        <ul>
+          <li>
+<strong>Use Existing</strong>: When you select <strong>Use Existing</strong> option, you can select the Service Dialog that you previously created.</li>
+          <li>
+<strong>Create new</strong>: When you select <strong>Create new</strong> option, you can create a new Service Dialog by providing a name. When the catalog item is saved, the new Service Dialog is created with section for <strong>Terraform Template Variables</strong>. The <strong>Terraform Template Variables</strong> section contains the text box inputs for each of the input variables from the Terraform Template. To modify the dialog, navigate to <strong>Automation</strong> &gt; <strong>Automate</strong> &gt; <strong>Customization</strong> &gt; <strong>Service Dialogs</strong>, select <strong>Service Dialog</strong>, and from the Configuration menu, select <strong>Edit this dialog</strong> to make the required changes.</li>
+          <li>
+<strong>Create new</strong>: When you select <strong>Create new</strong> option, you can create a new Service Dialog by providing a name. When the catalog item is saved, the new Service Dialog is created with section for <strong>Terraform Template Variables</strong>. The <strong>Terraform Template Variables</strong> section contains input fields for each of the input variables from the Terraform Template. Under the <strong>Terraform Template Variables</strong> section, the boolean field displays as a checkbox. Number field displays as a textbox with regex validation for the number value. JSON fields display as multi-line text area field, with JSON value prettified. String fields display as single line textbox fields.</li>
+        </ul>
+
+        <p>To modify the dialog, navigate to <strong>Automation</strong> &gt; <strong>Automate</strong> &gt; <strong>Customization</strong> &gt; <strong>Service Dialogs</strong>, select <strong>Service Dialog</strong>, and from the Configuration menu, select <strong>Edit this dialog</strong> to make the required changes.</p>
       </li>
     </ul>
   </li>
