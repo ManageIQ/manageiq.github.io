@@ -590,7 +590,8 @@
       </tbody>
     </table>
 
-    <p>On the mac, <code class="language-plaintext highlighter-rouge">iproute2mac</code> provides the <code class="language-plaintext highlighter-rouge">ip</code> command for <code class="language-plaintext highlighter-rouge">appliance_console</code>.</p>
+    <p>On Fedora 41+  you have to also run <code class="language-plaintext highlighter-rouge">sudo dnf install -y openssl-devel-engine</code>
+On the mac, <code class="language-plaintext highlighter-rouge">iproute2mac</code> provides the <code class="language-plaintext highlighter-rouge">ip</code> command for <code class="language-plaintext highlighter-rouge">appliance_console</code>.</p>
 
     <p><strong>Note</strong>: Users with MacOS running on Apple M1 CPU might need to specify location of the <code class="language-plaintext highlighter-rouge">Homebrew</code> libraries explicitly.
 If build steps below fail for you then run <code class="language-plaintext highlighter-rouge">export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"</code>and retry the failing build step.
