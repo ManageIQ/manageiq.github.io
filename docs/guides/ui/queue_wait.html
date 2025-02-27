@@ -527,8 +527,8 @@ end
 <p>When the task is finished, the <code class="language-plaintext highlighter-rouge">:action</code> passed in is called with the original parameters passed to the <code class="language-plaintext highlighter-rouge">create</code> call plus the task_id.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  def create_finished
-    task_id = session[:async][:params][:task_id]
-    tenant_name = session[:async][:params][:name]
+    task_id = params[:task_id]
+    tenant_name = params[:name]
     task = MiqTask.find(task_id)
     if MiqTask.status_ok?(task.status)
       add_flash(_("%{model} \"%{name}\" created") % {
