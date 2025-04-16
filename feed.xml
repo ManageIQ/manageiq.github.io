@@ -5,9 +5,24 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 16 Apr 2025 03:22:55 +0000</pubDate>
-    <lastBuildDate>Wed, 16 Apr 2025 03:22:55 +0000</lastBuildDate>
+    <pubDate>Wed, 16 Apr 2025 22:33:51 +0000</pubDate>
+    <lastBuildDate>Wed, 16 Apr 2025 22:33:51 +0000</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
+    
+      <item>
+        <title>ManageIQ Radjabov GA Announcement</title>
+        <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Radjabov&lt;/strong&gt;! This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Teimour_Radjabov&quot;&gt;Teimour Radjabov&lt;/a&gt;. You can download the Radjabov-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2025/04/manageiq-radjabov-ga-announcement/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2025/04/manageiq-radjabov-ga-announcement/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>Quinteros-2, CVE-2024-43191, CVE-2023-46175</title>
@@ -136,21 +151,6 @@
         <pubDate>Mon, 23 Aug 2021 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2021/08/announcing_morphy_approach/</link>
         <guid isPermaLink="true">http://manageiq.org/blog/2021/08/announcing_morphy_approach/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>ManageIQ Lasker GA Announcement</title>
-        <description>&lt;p&gt;On behalf of the ManageIQ team, I’m happy to announce the release of &lt;strong&gt;ManageIQ Lasker&lt;/strong&gt;!  This release is named after the chess grandmaster &lt;a href=&quot;https://en.wikipedia.org/wiki/Emanuel_Lasker&quot;&gt;Emanuel Lasker&lt;/a&gt;.  You can download the Lasker-1 release on our &lt;a href=&quot;/download&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
-        <link>http://manageiq.org/blog/2021/07/manageiq-lasker-ga-annoucement/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2021/07/manageiq-lasker-ga-annoucement/</guid>
         
         <category>releases</category>
         
