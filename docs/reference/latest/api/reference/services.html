@@ -1566,7 +1566,7 @@
 <li class="toc-entry toc-h4"><a href="#creating-service-catalogs">Creating Service Catalogs</a></li>
 <li class="toc-entry toc-h4"><a href="#editing-service-catalogs">Editing Service Catalogs</a></li>
 <li class="toc-entry toc-h4"><a href="#assigning-service-templates">Assigning Service Templates</a></li>
-<li class="toc-entry toc-h4"><a href="#ordering-services-service-templates">Ordering Services Service Templates</a></li>
+<li class="toc-entry toc-h4"><a href="#ordering-services">Ordering Services</a></li>
 <li class="toc-entry toc-h4"><a href="#refresh-service-dialog-fields">Refresh Service Dialog Fields</a>
 <ul>
 <li class="toc-entry toc-h5"><a href="#refresh-dialog-fields-of-service-templates-service-dialogs">Refresh Dialog Fields of Service Templates Service Dialogs</a></li>
@@ -1583,10 +1583,10 @@
 <li class="toc-entry toc-h4"><a href="#deleting-service-templates">Deleting Service Templates</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h3"><a href="#services-">Services ===</a>
+<li class="toc-entry toc-h3"><a href="#services">Services</a>
 <ul>
-<li class="toc-entry toc-h4"><a href="#creating-services-">Creating Services ====</a></li>
-<li class="toc-entry toc-h4"><a href="#service-actions-">Service Actions ====</a></li>
+<li class="toc-entry toc-h4"><a href="#creating-services">Creating Services</a></li>
+<li class="toc-entry toc-h4"><a href="#service-actions">Service Actions</a></li>
 <li class="toc-entry toc-h4"><a href="#service-editing">Service Editing</a></li>
 <li class="toc-entry toc-h4"><a href="#adding-and-removing-resources-from-services">Adding and Removing Resources from Services</a></li>
 <li class="toc-entry toc-h4"><a href="#adding-provider-vms-to-services">Adding Provider VMs to Services</a></li>
@@ -1600,7 +1600,7 @@
 <li class="toc-entry toc-h4"><a href="#deleting-services">Deleting Services</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h3"><a href="#service-requests-">Service Requests ===</a>
+<li class="toc-entry toc-h3"><a href="#service-requests">Service Requests</a>
 <ul>
 <li class="toc-entry toc-h4"><a href="#querying-service-requests">Querying Service Requests</a></li>
 <li class="toc-entry toc-h4"><a href="#approving-or-denying-service-requests">Approving or Denying Service Requests</a>
@@ -1661,8 +1661,7 @@
     <p><a href="#editing-service-catalogs">Editing Service Catalogs</a></p>
   </li>
   <li>
-    <p><a href="#assigning-service-template">Assigning/Unassigning Service Templates from Service
-Catalogs</a></p>
+    <p><a href="#assigning-service-templates">Assigning Service Templates</a></p>
   </li>
   <li>
     <p><a href="#ordering-services">Ordering Services</a></p>
@@ -1786,8 +1785,8 @@ the <em>assign</em> and <em>unassign</em> actions as follows:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h4 id="ordering-services-service-templates">
-<a class="anchor" href="#ordering-services-service-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ordering Services Service Templates</h4>
+<h4 id="ordering-services">
+<a class="anchor" href="#ordering-services" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ordering Services</h4>
 
 <p>Ordering services is done by triggering an <em>order</em> action on service
 templates in a service catalog as follows:</p>
@@ -2002,8 +2001,8 @@ collection:</p>
 }
 </code></pre>
 
-<h3 id="services-">
-<a class="anchor" href="#services-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Services ===</h3>
+<h3 id="services">
+<a class="anchor" href="#services" aria-hidden="true"><span class="octicon octicon-link"></span></a>Services</h3>
 
 <p>Accessing services is via the <strong>services</strong> collection as follows:</p>
 
@@ -2015,8 +2014,8 @@ collection:</p>
 <pre><code class="language-data">/api/services/:id
 </code></pre>
 
-<h4 id="creating-services-">
-<a class="anchor" href="#creating-services-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating Services ====</h4>
+<h4 id="creating-services">
+<a class="anchor" href="#creating-services" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating Services</h4>
 
 <p>In general, services are created once ordered from service catalogs.</p>
 
@@ -2043,8 +2042,8 @@ an existing service.</p>
 <p>Please refer to the <a href="../appendices/resource_attributes.html#services">Resource Attributes</a> page for a
 list of available attributes when creating Services.</p>
 
-<h4 id="service-actions-">
-<a class="anchor" href="#service-actions-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service Actions ====</h4>
+<h4 id="service-actions">
+<a class="anchor" href="#service-actions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service Actions</h4>
 
 <p>Once services are ordered from a catalog, they can be:</p>
 
@@ -2062,16 +2061,16 @@ list of available attributes when creating Services.</p>
     <p><a href="#service-reconfiguring">Reconfigured</a></p>
   </li>
   <li>
-    <p><a href="#service-started">Started</a></p>
+    <p><a href="#starting-services">Started</a></p>
   </li>
   <li>
-    <p><a href="#service-stopped">Stopped</a></p>
+    <p><a href="#stopping-services">Stopped</a></p>
   </li>
   <li>
-    <p><a href="#service-suspended">Suspended</a></p>
+    <p><a href="#suspending-services">Suspended</a></p>
   </li>
   <li>
-    <p><a href="#service-deleting">Deleted</a></p>
+    <p><a href="#deleting-services">Deleted</a></p>
   </li>
 </ul>
 
@@ -2079,15 +2078,13 @@ list of available attributes when creating Services.</p>
 
 <ul>
   <li>
-    <p><a href="#service-add-remove-resources">Adding and Removing Resources from
-Services</a></p>
+    <p><a href="#adding-and-removing-resources-from-services">Adding and Removing Resources from Services</a></p>
   </li>
   <li>
-    <p><a href="#service-add-provider-vms">Adding Provider VMs to Services</a></p>
+    <p><a href="#adding-provider-vms-to-services">Adding Provider VMs to Services</a></p>
   </li>
   <li>
-    <p><a href="#service-queue-chargeback-report">Requesting a Chargeback Report for a
-Service</a></p>
+    <p><a href="#requesting-a-chargeback-report-for-a-service">Requesting a Chargeback Report for a Service</a></p>
   </li>
 </ul>
 
@@ -2412,24 +2409,21 @@ reconfiguration.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h3 id="service-requests-">
-<a class="anchor" href="#service-requests-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service Requests ===</h3>
+<h3 id="service-requests">
+<a class="anchor" href="#service-requests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service Requests</h3>
 
 <ul>
   <li>
     <p><a href="#querying-service-requests">Querying Service Requests</a></p>
   </li>
   <li>
-    <p><a href="#approving-denying-service-requests">Approving or Denying Service
-Requests</a></p>
+    <p><a href="#approving-or-denying-service-requests">Approving or Denying ServiceRequests</a></p>
   </li>
   <li>
-    <p><a href="#adding-approvers-service-requests">Adding Approvers to Service
-Requests</a></p>
+    <p><a href="#adding-approvers-to-service-requests">Adding Approvers to Service Requests</a></p>
   </li>
   <li>
-    <p><a href="#removing-approvers-service-requests">Removing Approvers to Service
-Requests</a></p>
+    <p><a href="#removing-approvers-to-service-requests">Removing Approvers to Service Requests</a></p>
   </li>
   <li>
     <p><a href="#editing-request-tasks">Editing Request Tasks</a></p>
