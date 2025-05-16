@@ -1241,6 +1241,7 @@
 <li class="toc-entry toc-h2"><a href="#using-your-own-images">Using your own images</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#installing-vmware-vddk-on-containers">Installing VMware VDDK on containers</a></li>
+<li class="toc-entry toc-h3"><a href="#installing-vmware-webmks-on-containers">Installing VMware WebMKS on containers</a></li>
 </ul>
 </li>
 </ul>
@@ -1697,6 +1698,68 @@ concerning backward and forward compatibility for VDDK.</p>
 
     <div class="language-yaml highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code><span class="na">baseWorkerImage</span><span class="pi">:</span> <span class="s">your_registry.example.com/namespace/manageiq-base-worker:latest_vddk</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>The operator will now update the orchestrator and worker deployments to reflect this change.</p>
+
+<h3 id="installing-vmware-webmks-on-containers">
+<a class="anchor" href="#installing-vmware-webmks-on-containers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing VMware WebMKS on containers</h3>
+
+<p>VMware vSphere Virtual Machine Remote console access requires the installation of the VMware WebMKS SDK.
+Due to license restrictions this SDK cannot be built in to ManageIQ</p>
+
+<p>To install the WebMKS SDK on containers we can take an existing container and create another layer on top of it.  Once built, this image will need to be pushed to a registry and the CR updated to reflect that.</p>
+
+<ol>
+  <li>
+    <p>Download the latest WebMKS version (e.g. <code class="language-plaintext highlighter-rouge">WebMKS_SDK_{version}.zip</code>) from the VMware website.</p>
+  </li>
+  <li>
+    <p>Set up a temporary directory where we will build the image</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> /tmp/webmks_container/container-assets
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Copy the tar file into the container-assets directory.  For example,</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>unzip ~/Downloads/WebMKS_SDK_<span class="k">*</span>.zip <span class="nt">-d</span> /tmp/webmks_container/container-assets
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add the following Dockerfile as <code class="language-plaintext highlighter-rouge">/tmp/webmks_container/Dockerfile</code> and substitute the second <code class="language-plaintext highlighter-rouge">FROM</code> based on the image and version that you’re running.</p>
+
+    <div class="language-dockerfile highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="w"> </span><span class="s">registry.access.redhat.com/ubi8/ubi</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">webmks</span>
+
+<span class="k">COPY</span><span class="s"> container-assets/ /webmks/</span>
+
+<span class="c">################################################################################</span>
+
+<span class="c">### IMPORTANT: Modify the following image and tag as necessary to reflect the version that you're running</span>
+<span class="k">FROM</span><span class="s"> your_registry.example.com/namespace/manageiq-ui-worker:latest</span>
+
+<span class="k">COPY</span><span class="s"> --from=webmks /webmks/ /var/www/miq/vmdb/public/webmks</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Build the image and tag it appropriately for your registry, then push it to the registry.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /tmp/webmks_container/
+<span class="nv">$ </span>docker build <span class="nb">.</span> <span class="nt">-t</span> your_registry.example.com/namespace/manageiq-ui-worker:latest_webmks
+<span class="nv">$ </span>docker push your_registry.example.com/namespace/manageiq-ui-worker:latest_webmks
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Update the CR to use the UI worker image you just pushed to the registry.</p>
+
+    <div class="language-yaml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="na">uiWorkerImage</span><span class="pi">:</span> <span class="s">your_registry.example.com/namespace/manageiq-ui-worker:latest_webmks</span>
 </code></pre></div>    </div>
   </li>
 </ol>
