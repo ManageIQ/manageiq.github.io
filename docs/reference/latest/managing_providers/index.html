@@ -1343,6 +1343,14 @@
 </li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#terraform-enterprise">Terraform Enterprise</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#adding-a-terraform-enterprise-provider">Adding a Terraform Enterprise Provider</a></li>
+<li class="toc-entry toc-h3"><a href="#viewing-terraform-enterprise-workspaces">Viewing Terraform Enterprise Workspaces</a></li>
+<li class="toc-entry toc-h3"><a href="#viewing-terraform-enterprise-runs">Viewing Terraform Enterprise Runs</a></li>
+<li class="toc-entry toc-h3"><a href="#execute-a-terraform-enterprise-workspace-from-a-service-catalog">Execute a Terraform Enterprise Workspace from a Service Catalog</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#cloud-providers">Cloud Providers</a></li>
@@ -1799,6 +1807,8 @@ ManageIQ.</p>
 <p><strong>Ansible</strong> integration delivers out-of-the-box support for backing service, alert, and policy actions by using Ansible playbooks. Sync your existing playbook repositories with ManageIQ, add credentials to access providers, and create service catalog items for actions ranging from creating and retiring VMs, updating security software, or adding more disks when space runs low.</p>
 
 <p><strong>Ansible Tower</strong> is a management tool that is integrated with ManageIQ, designed to help automate infrastructure operations utlizizing existing Ansible Tower providers in your inventory. ManageIQ allows you to execute Ansible Tower jobs by using service catalogs and Automate. Using Ansible Tower, you can schedule Ansible playbook runs and monitor current and historical results, allowing for troubleshooting or identification of issues before they occur.</p>
+
+<p><strong>Terraform Enterprise</strong> is an application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment.</p>
 
 <h2 id="embedded-workflows">
 <a class="anchor" href="#embedded-workflows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Embedded Workflows</h2>
@@ -3209,7 +3219,7 @@ environment.</p>
 
 <ol>
   <li>
-    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and click <strong>Catalog Items</strong>.</p>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and click <strong>Catalogs</strong>.</p>
   </li>
   <li>
     <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Add a New Catalog"> (<strong>Add a New Catalog</strong>)</p>
@@ -3921,6 +3931,159 @@ environment.</p>
   <li>Select a <strong>Retirement Warning</strong> if needed.</li>
   <li>Click <strong>Save</strong>.</li>
 </ol>
+
+<h2 id="terraform-enterprise">
+<a class="anchor" href="#terraform-enterprise" aria-hidden="true"><span class="octicon octicon-link"></span></a>Terraform Enterprise</h2>
+
+<p>Terraform Enterprise (also known as HCP Terraform) is an application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes easy access to shared state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations, and more.</p>
+
+<p>HCP Terraform can be added to ManageIQ and Workspaces can be collected and used in the ManageIQ Service Catalog.</p>
+
+<h3 id="adding-a-terraform-enterprise-provider">
+<a class="anchor" href="#adding-a-terraform-enterprise-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a Terraform Enterprise Provider</h3>
+
+<p>In order to integrate with Terraform Enterprise you must first add it as a provider.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Providers</strong> and under <strong>Configuration</strong>, click <img src="../images/1862.png" alt="Add a new Provider"> <strong>Add a new Provider</strong>.</p>
+  </li>
+  <li>
+    <p>Select <strong>Terraform Enterprise</strong> as the <strong>Type</strong></p>
+  </li>
+  <li>
+    <p>Enter a <strong>Name</strong> for the new provider.</p>
+  </li>
+  <li>
+    <p>Add a <strong>Zone</strong> for the provider.</p>
+  </li>
+  <li>
+    <p>If you are using Terraform Enterprise enter the URL of your Terraform Enterprise self-hosted instance.  If you are using HCP Terraform then leave the URL as <code class="language-plaintext highlighter-rouge">https://app.terraform.io</code></p>
+  </li>
+  <li>
+    <p>Select the appropriate <strong>SSL Verification</strong> option</p>
+  </li>
+  <li>
+    <p>Add the API Token that you would like to use in the <strong>API Token</strong> section.</p>
+  </li>
+  <li>
+    <p>Click <strong>Validate</strong> to verify credentials.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<h3 id="viewing-terraform-enterprise-workspaces">
+<a class="anchor" href="#viewing-terraform-enterprise-workspaces" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Terraform Enterprise Workspaces</h3>
+
+<p>Workspaces represent infrastructure managed by Terraform.  They are collected in inventory as Automation Templates (Configuration Scripts) in ManageIQ</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Templates</strong> to display a list of Terraform Enterprise Workspaces.</p>
+  </li>
+  <li>
+    <p>Select a specific Terraform Enterprise Workspace to view additional details.</p>
+  </li>
+</ol>
+
+<h3 id="viewing-terraform-enterprise-runs">
+<a class="anchor" href="#viewing-terraform-enterprise-runs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Terraform Enterprise Runs</h3>
+
+<p>A run performs a plan and apply, using a configuration version and the workspace’s current variables.  To view runs in ManageIQ:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Jobs</strong> to display a list of Terraform Enterprise runs.</p>
+  </li>
+  <li>
+    <p>Select a specific Terraform Enterprise Run to view additional details.</p>
+  </li>
+</ol>
+
+<h3 id="execute-a-terraform-enterprise-workspace-from-a-service-catalog">
+<a class="anchor" href="#execute-a-terraform-enterprise-workspace-from-a-service-catalog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Execute a Terraform Enterprise Workspace from a Service Catalog</h3>
+
+<p>You can plan and apply a Terraform Enterprise Workspace from ManageIQ by creating a service catalog item.</p>
+
+<p>First, create a catalog:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and click <strong>Catalogs</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Add a New Catalog"> (<strong>Add a New Catalog</strong>)</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Name</strong> and <strong>Description</strong> for the catalog.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<p>Next create a Terraform Enterprise Service Catalog Item:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and click <strong>Catalog Items</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Add a New Catalog Item"> (<strong>Add a New Catalog Item</strong>) to create a new catalog item with the following details, at minimum:</p>
+
+    <ul>
+      <li>
+        <p>For <strong>Catalog Item type</strong>, select <strong>Terraform Enterprise</strong>.</p>
+      </li>
+      <li>
+        <p>Enter a <strong>Name</strong> for the service catalog item.</p>
+      </li>
+      <li>
+        <p>Select <strong>Display in Catalog</strong>.</p>
+      </li>
+      <li>
+        <p>In <strong>Catalog</strong>, select the catalog you created previously.</p>
+      </li>
+      <li>
+        <p>In <strong>Dialog</strong>, select a service dialog you created previously.  To ask the user to enter extra information when running the task, <strong>Service Dialog</strong> must be selected. A dialog is required if <strong>Display in Catalog</strong> is chosen.</p>
+      </li>
+      <li>
+        <p>In <strong>Provider</strong>, select your Terraform Enterprise provider. This brings up the <strong>Terraform Template</strong> option where you can select which Terraform Workspace you want to use.</p>
+      </li>
+      <li>
+        <p>Add configuration information for <strong>Reconfigure Entry Point</strong> and <strong>Retirement Entry Point</strong> as applicable.</p>
+      </li>
+      <li>
+        <p>Select your desired <strong>Terraform Template</strong> from the list.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>. The catalog item you created will appear in the <strong>All Service Catalog Items</strong> list.</p>
+  </li>
+</ol>
+
+<p>To execute the Terraform Enterprise job:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Service &gt; Catalogs</strong> and click on <strong>Service Catalogs</strong> then click <strong>Terraform Enterprise catalog</strong>.</p>
+
+    <p><img src="../images/order_at_catalog_item.png" alt="order at catalog item"></p>
+  </li>
+  <li>
+    <p>Click <strong>Order</strong> for the catalog item.</p>
+  </li>
+  <li>
+    <p>Enter any variables requested and click <strong>Submit</strong>.</p>
+  </li>
+</ol>
+
+<p>ManageIQ takes you to the <strong>Requests</strong> queue page and show the status of the job.</p>
+
+<p>The service item’s details can be viewed in menu: <strong>Services &gt; My Services</strong> in ManageIQ.</p>
 
 <h1 id="cloud-providers">
 <a class="anchor" href="#cloud-providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cloud Providers</h1>
