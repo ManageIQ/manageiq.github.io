@@ -53,16 +53,16 @@
     </header>
 
     <ul class="site_nav">
-  <li >
+  <li>
     <a href="/download/">Download</a>
   </li>
-  <li >
+  <li>
     <a href="/docs/">Documentation</a>
   </li>
-  <li >
+  <li>
     <a href="/community/">Community</a>
   </li>
-  <li >
+  <li>
     <a href="/blog/">Blog</a>
   </li>
   <li>
@@ -120,7 +120,7 @@
   Latest
 </div>
 
-<ul class="menu menu-toplevel" id=ref_menu_latest>
+<ul class="menu menu-toplevel" id="ref_menu_latest">
 
 
   <li class="menu-parent">
@@ -1069,7 +1069,7 @@
         <div class="doc-versions">
           <span class="label">Versions: </span>
           
-            <span class="active" >
+            <span class="active">
               <a href="/docs/reference/latest/installing_on_kubernetes/index.html">
                 Latest
               </a>
@@ -1205,16 +1205,19 @@
         </div>
         
         <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h1"><a href="#installing-on-kubernetes--openshift">Installing on Kubernetes / Openshift</a>
+<li class="toc-entry toc-h1">
+<a href="#installing-on-kubernetes--openshift">Installing on Kubernetes / Openshift</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#preparing-the-kubernetes-namespace">Preparing the Kubernetes namespace</a></li>
-<li class="toc-entry toc-h2"><a href="#new-installation">New Installation</a>
+<li class="toc-entry toc-h2">
+<a href="#new-installation">New Installation</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#create-the-custom-resource">Create the Custom Resource</a></li>
 <li class="toc-entry toc-h3"><a href="#logging-in">Logging In</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#migrating-from-appliances">Migrating from Appliances</a>
+<li class="toc-entry toc-h2">
+<a href="#migrating-from-appliances">Migrating from Appliances</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#notes">Notes</a></li>
 <li class="toc-entry toc-h3"><a href="#collect-data-from-the-appliance">Collect data from the appliance</a></li>
@@ -1223,11 +1226,13 @@
 </li>
 </ul>
 </li>
-<li class="toc-entry toc-h1"><a href="#customizing-the-installation">Customizing the Installation</a>
+<li class="toc-entry toc-h1">
+<a href="#customizing-the-installation">Customizing the Installation</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#configuring-the-application-domain-name">Configuring the application domain name</a></li>
 <li class="toc-entry toc-h2"><a href="#external-postgresql">External postgresql</a></li>
-<li class="toc-entry toc-h2"><a href="#using-tls-to-encrypt-connections-between-pods-inside-the-cluster">Using TLS to encrypt connections between pods inside the cluster:</a>
+<li class="toc-entry toc-h2">
+<a href="#using-tls-to-encrypt-connections-between-pods-inside-the-cluster">Using TLS to encrypt connections between pods inside the cluster:</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#create-a-secret-containing-all-of-the-certificates">Create a secret containing all of the certificates</a></li>
 <li class="toc-entry toc-h3"><a href="#generating-certificates">Generating certificates:</a></li>
@@ -1238,7 +1243,8 @@
 <li class="toc-entry toc-h2"><a href="#configuring-an-image-pull-secret">Configuring an image pull secret</a></li>
 <li class="toc-entry toc-h2"><a href="#configuring-openid-connect-authentication">Configuring OpenID-Connect Authentication</a></li>
 <li class="toc-entry toc-h2"><a href="#configuring-openid-connect-with-a-ca-certificate">Configuring OpenID-Connect with a CA Certificate</a></li>
-<li class="toc-entry toc-h2"><a href="#using-your-own-images">Using your own images</a>
+<li class="toc-entry toc-h2">
+<a href="#using-your-own-images">Using your own images</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#installing-vmware-vddk-on-containers">Installing VMware VDDK on containers</a></li>
 <li class="toc-entry toc-h3"><a href="#installing-vmware-webmks-on-containers">Installing VMware WebMKS on containers</a></li>
@@ -1247,18 +1253,30 @@
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#uninstalling">Uninstalling</a></li>
-<li class="toc-entry toc-h1"><a href="#troubleshooting">Troubleshooting</a>
+<li class="toc-entry toc-h1">
+<a href="#troubleshooting">Troubleshooting</a>
 <ul>
-<li class="toc-entry toc-h2"><a href="#check-readiness-of-the-pods">Check readiness of the pods</a>
+<li class="toc-entry toc-h2">
+<a href="#check-readiness-of-the-pods">Check readiness of the pods</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#obtain-host-information-from-ingressroute">Obtain host information from ingress/route</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#get-a-shell-on-the-miq-pod">Get a shell on the MIQ pod</a></li>
 <li class="toc-entry toc-h2"><a href="#allow-dockeriomanageiq-images-in-kubernetes">Allow docker.io/manageiq images in kubernetes</a></li>
+<li class="toc-entry toc-h2">
+<a href="#migrating-from-kubernetes-to-appliances">Migrating from Kubernetes to Appliances</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#prerequisites">Prerequisites</a></li>
+<li class="toc-entry toc-h3"><a href="#collect-data-from-the-kubernetes-environment">Collect data from the Kubernetes environment</a></li>
+<li class="toc-entry toc-h3"><a href="#configure-the-appliance">Configure the appliance</a></li>
+<li class="toc-entry toc-h3"><a href="#followup">Followup</a></li>
 </ul>
 </li>
-</ul><h1 id="installing-on-kubernetes--openshift">
+</ul>
+</li>
+</ul>
+<h1 id="installing-on-kubernetes--openshift">
 <a class="anchor" href="#installing-on-kubernetes--openshift" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing on Kubernetes / Openshift</h1>
 
 <h2 id="preparing-the-kubernetes-namespace">
@@ -1910,6 +1928,126 @@ Deny "docker.io/manageiq/manageiq-operator:latest", no matching repositories in 
 
 <p>After saving this change, <code class="language-plaintext highlighter-rouge">docker.io/manageiq</code> image deployment should now be allowed.</p>
 
+<h2 id="migrating-from-kubernetes-to-appliances">
+<a class="anchor" href="#migrating-from-kubernetes-to-appliances" aria-hidden="true"><span class="octicon octicon-link"></span></a>Migrating from Kubernetes to Appliances</h2>
+
+<h3 id="prerequisites">
+<a class="anchor" href="#prerequisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prerequisites</h3>
+<ol>
+  <li>
+    <p>Deploy an appliance with a database disk.  It is recommended that the appliance being deployed is the same code version as the kubernetes environment.</p>
+  </li>
+  <li>
+    <p>Configure the hostname and ip address on the appliance.</p>
+  </li>
+</ol>
+
+<h3 id="collect-data-from-the-kubernetes-environment">
+<a class="anchor" href="#collect-data-from-the-kubernetes-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collect data from the Kubernetes environment</h3>
+<ol>
+  <li>Disable the running environment to prepare for migration
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc patch deployment orchestrator <span class="nt">-p</span> <span class="s1">'{"spec":{"template":{"spec":{"containers":[{"name":"orchestrator","args": ["-c", "sleep 1d"], "command":["/bin/sh"]}]}}}}'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Take a backup of the database
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># Check for enough free disk space</span>
+<span class="nv">$ </span>psql <span class="nt">-d</span> vmdb_production <span class="nt">-c</span> <span class="s2">"SELECT pg_size_pretty(pg_database_size('vmdb_production'));"</span>
+<span class="nv">$ </span>pg_dump <span class="nt">-Fc</span> <span class="nt">-d</span> vmdb_production <span class="o">&gt;</span> /var/lib/pgsql/data/postgres.dump
+<span class="c"># Copy the database backup to the appliance (usually under /tmp/ or somewhere that has enough space)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Extract the database password, encryption key, server GUID and region number
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc rsh deploy/orchestrator
+sh-5.1<span class="nv">$ </span><span class="nb">cd</span> /var/www/miq/vmdb/
+sh-5.1<span class="nv">$ </span><span class="nb">source</span> ./container_env
+
+<span class="c"># Extract the database password from the database config file</span>
+sh-5.1<span class="nv">$ </span><span class="nb">cat </span>config/database.yml
+<span class="nt">---</span>
+production:
+  adapter: postgresql
+  username: root
+  password: xxxxxxxxxxxxxxxx
+  host: postgresql
+...
+
+<span class="c"># Extract the encryption key</span>
+sh-5.1<span class="nv">$ </span><span class="nb">cat </span>certs/v2_key
+<span class="nt">---</span>
+:algorithm: aes-256-cbc
+:key: xxxxxxxxxlKmYTe4FijZ6TNrvZq/vg+0BUasCWTSf08<span class="o">=</span>
+
+<span class="c"># Extract the server GUID</span>
+sh-5.1<span class="nv">$ </span><span class="nb">cat </span>GUID
+xxxxxxxx-xxxx-4f37-b1d3-03c3231689ed
+
+<span class="c"># sh-5.1$ echo $DATABASE_REGION</span>
+0
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="configure-the-appliance">
+<a class="anchor" href="#configure-the-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure the appliance</h3>
+<ol>
+  <li>Create the encryption key
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># Use vi or nano to create the v2_key file with the content extracted from the orchestrator pod above</span>
+vi /var/www/miq/vmdb/certs/v2_key
+<span class="nb">chmod </span>400 /var/www/miq/vmdb/certs/v2_key
+<span class="nb">chown </span>manageiq:manageiq /var/www/miq/vmdb/certs/v2_key
+</code></pre></div>    </div>
+  </li>
+  <li>Create the GUID file
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># Use vi or nano to create the GUID file with the content extracted from the orchestrator pod above</span>
+vi /var/www/miq/vmdb/GUID
+<span class="nb">chmod </span>644 /var/www/miq/vmdb/GUID
+<span class="nb">chown </span>root:root /var/www/miq/vmdb/GUID
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the <code class="language-plaintext highlighter-rouge">appliance_console</code> to configure the appliance
+a. Select “Configure Application”
+b. Select “1) Create Internal Database” to create a new database.
+c. Select “3) Make No messaging changes” to skip messaging configuration for now.
+d. Choose the database disk
+e. Choose whether this will be a standalone database server
+f. Enter the region number
+g. Enter the database password from the kubernetes environment</p>
+  </li>
+  <li>
+    <p>Restore the database from the backup from the <code class="language-plaintext highlighter-rouge">appliance_console</code>
+a. Select “Restore Database From Backup”
+b. Enter the full path to the database backup file.  i.e. /tmp/postgres.dump
+c. Choose whether you would like to delete the dump file after the database is restored
+d. Confirm that you would like to restore the database.</p>
+  </li>
+  <li>Configure messaging through the <code class="language-plaintext highlighter-rouge">appliance_console</code>
+a. Select “Configure Application”
+b. Select “5) Make No Database Changes”
+c. Select “1) Configure this appliance as a messaging server”
+d. When prompted, Yes, you want to unconfigure messaging first.
+e. Enter the hostname, username, password and whether you would like to configure another disk for the messaging service</li>
+</ol>
+
+<h3 id="followup">
+<a class="anchor" href="#followup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Followup</h3>
+<ol>
+  <li>Depending on the authentication configuration on the kubernetes environment, you may need to clear out authentication settings
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /var/www/miq/vmdb/
+bin/rails console
+<span class="c"># In the rails console:</span>
+SettingsChange.all.select <span class="o">{</span>|s| s.key.start_with?<span class="o">(</span><span class="s2">"/authentication"</span><span class="o">)}</span>.each <span class="o">{</span>|s| s.destroy<span class="o">}</span><span class="s1">'
+# When complete, `exit`
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
 
 
       </div>
@@ -1924,16 +2062,16 @@ Deny "docker.io/manageiq/manageiq-operator:latest", no matching repositories in 
     <div class="footer-group">
       <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
       <ul class="site_nav">
-  <li >
+  <li>
     <a href="/download/">Download</a>
   </li>
-  <li >
+  <li>
     <a href="/docs/">Documentation</a>
   </li>
-  <li >
+  <li>
     <a href="/community/">Community</a>
   </li>
-  <li >
+  <li>
     <a href="/blog/">Blog</a>
   </li>
   <li>
@@ -1970,7 +2108,7 @@ Deny "docker.io/manageiq/manageiq-operator:latest", no matching repositories in 
   <div class="footer-row" id="footer_bottom">
     <div class="footer-legal">
       <span class="copyright">
-        &copy; 2025 ManageIQ.
+        © 2025 ManageIQ.
       </span>
       <span>
         <a href="https://www.ibm.com/opensource/" class="footer-link" target="_blank">
