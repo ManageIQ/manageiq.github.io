@@ -490,6 +490,8 @@
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">VCR</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
   <span class="n">config</span><span class="p">.</span><span class="nf">ignore_hosts</span> <span class="s1">'codeclimate.com'</span> <span class="k">if</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'CI'</span><span class="p">]</span>
   <span class="n">config</span><span class="p">.</span><span class="nf">cassette_library_dir</span> <span class="o">=</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">AwesomeCloud</span><span class="o">::</span><span class="no">Engine</span><span class="p">.</span><span class="nf">root</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">'spec/vcr_cassettes'</span><span class="p">)</span>
+
+  <span class="no">VcrSecrets</span><span class="p">.</span><span class="nf">define_all_cassette_placeholders</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="ss">:awesome_cloud</span><span class="p">)</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
@@ -497,28 +499,32 @@
 
 <p>VCR handles this with the <code class="language-plaintext highlighter-rouge">config.define_cassette_placeholder</code> option.  You provide VCR with a string that you want to be replaced, and then what you want it to be replaced with.  This allows for hostnames / passwords / etc… to be used when recording the cassette but the values will not be written to the resulting YAML files.</p>
 
-<p>ManageIQ has a pattern to help you with this, simply create a <code class="language-plaintext highlighter-rouge">config/secrets.defaults.yml</code> file:</p>
+<p>ManageIQ has a pattern to help you with this. By default, the generator created a file named <code class="language-plaintext highlighter-rouge">spec/config/secrets.defaults.yml</code> with a username and password.</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">test</span><span class="pi">:</span>
-  <span class="na">awesome_cloud_defaults</span><span class="pi">:</span> <span class="nl">&amp;awesome_cloud_defaults</span>
-    <span class="na">access_key</span><span class="pi">:</span> <span class="s">AWESOME_CLOUD_ACCESS_KEY</span>
-    <span class="na">secret_key</span><span class="pi">:</span> <span class="s">AWESOME_CLOUD_SECRET_KEY</span>
-  <span class="na">awesome_cloud</span><span class="pi">:</span>
-    <span class="na">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*awesome_cloud_defaults</span>
+<span class="na">awesome_cloud</span><span class="pi">:</span>
+  <span class="na">username</span><span class="pi">:</span> <span class="s">AWESOME_CLOUD_USERNAME</span>
+  <span class="na">password</span><span class="pi">:</span> <span class="s">AWESOME_CLOUD_PASSWORD</span>
 </code></pre></div></div>
 
-<p>Then create a <code class="language-plaintext highlighter-rouge">config/secrets.yml</code> file (this file will not be committed and should be in your .gitignore):</p>
+<p>If your provider uses a different set of secrets, such as access_key and secret_key, you can change the file accordingly as follows:</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">test</span><span class="pi">:</span>
-  <span class="na">awesome_cloud</span><span class="pi">:</span>
-    <span class="na">access_key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">YOUR_REAL_ACCESS_KEY"</span>
-    <span class="na">secret_key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">YOUR_REAL_SECRET_KEY"</span>
+<span class="na">awesome_cloud</span><span class="pi">:</span>
+  <span class="na">access_key</span><span class="pi">:</span> <span class="s">AWESOME_CLOUD_ACCESS_KEY</span>
+  <span class="na">secret_key</span><span class="pi">:</span> <span class="s">AWESOME_CLOUD_SECRET_KEY</span>
 </code></pre></div></div>
 
-<p>Then add the following to your <code class="language-plaintext highlighter-rouge">VCR.configure</code> block in <code class="language-plaintext highlighter-rouge">spec/spec_helper.rb</code> after setting the <code class="language-plaintext highlighter-rouge">config.cassette_library_dir</code>:</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">secrets</span> <span class="o">=</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">secrets</span>
-  <span class="n">secrets</span><span class="p">.</span><span class="nf">awesome_cloud</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="o">|</span>
-    <span class="n">config</span><span class="p">.</span><span class="nf">define_cassette_placeholder</span><span class="p">(</span><span class="n">secrets</span><span class="p">.</span><span class="nf">awesome_cloud_defaults</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="p">{</span> <span class="n">val</span> <span class="p">}</span>
+<p>Finally, create a <code class="language-plaintext highlighter-rouge">spec/config/secrets.yml</code> file with your real provider secrets. <strong>NOTE</strong>: This file must not be committed and should be in your .gitignore.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">awesome_cloud</span><span class="pi">:</span>
+  <span class="na">access_key</span><span class="pi">:</span> <span class="s">YOUR_REAL_ACCESS_KEY</span>
+  <span class="na">secret_key</span><span class="pi">:</span> <span class="s">YOUR_REAL_SECRET_KEY</span>
+</code></pre></div></div>
+
+<p>And that’s all! The <code class="language-plaintext highlighter-rouge">VcrSecrets.define_all_cassette_placeholders</code> line in <code class="language-plaintext highlighter-rouge">spec/spec_helper.rb</code> automatically marks everything under the awesome_cloud key as sensitive data.</p>
+
+<p>If you need to manually mark something as sensitive data, then you will need to call <code class="language-plaintext highlighter-rouge">config.define_cassette_placeholder</code>. To do so, you can add the following to your <code class="language-plaintext highlighter-rouge">VCR.configure</code> block in <code class="language-plaintext highlighter-rouge">spec/spec_helper.rb</code> after setting the <code class="language-plaintext highlighter-rouge">config.cassette_library_dir</code>. For example, if your provider Base64 encodes the access_key and secret_key into a header, you will want to include something like the following:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">config</span><span class="p">.</span><span class="nf">define_cassette_placeholder</span><span class="p">(</span><span class="s2">"AWESOME_CLOUD_AUTHORIZATION"</span><span class="p">)</span> <span class="k">do</span>
+    <span class="no">Base64</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="no">VcrSecrets</span><span class="p">.</span><span class="nf">awesome_cloud</span><span class="p">.</span><span class="nf">access_key</span><span class="si">}</span><span class="s2">:</span><span class="si">#{</span><span class="no">VcrSecrets</span><span class="p">.</span><span class="nf">awesome_cloud</span><span class="p">.</span><span class="nf">secret_key</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">chomp</span>
   <span class="k">end</span>
 </code></pre></div></div>
 
@@ -533,7 +539,8 @@
   <span class="n">let</span><span class="p">(</span><span class="ss">:zone</span><span class="p">)</span> <span class="p">{</span> <span class="no">EvmSpecHelper</span><span class="p">.</span><span class="nf">create_guid_miq_server_zone</span><span class="p">.</span><span class="nf">last</span> <span class="p">}</span>
   <span class="n">let!</span><span class="p">(</span><span class="ss">:ems</span><span class="p">)</span> <span class="k">do</span>
     <span class="no">FactoryBot</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">:ems_awesome_cloud</span><span class="p">,</span> <span class="ss">:zone</span> <span class="o">=&gt;</span> <span class="n">zone</span><span class="p">).</span><span class="nf">tap</span> <span class="k">do</span> <span class="o">|</span><span class="n">ems</span><span class="o">|</span>
-      <span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span> <span class="o">=</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">secrets</span><span class="p">.</span><span class="nf">awesome_cloud</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="ss">:access_key</span><span class="p">,</span> <span class="ss">:secret_key</span><span class="p">)</span>
+      <span class="n">access_key</span> <span class="o">=</span> <span class="no">VcrSecrets</span><span class="p">.</span><span class="nf">awesome_cloud</span><span class="p">.</span><span class="nf">access_key</span>
+      <span class="n">secret_key</span> <span class="o">=</span> <span class="no">VcrSecrets</span><span class="p">.</span><span class="nf">awesome_cloud</span><span class="p">.</span><span class="nf">secret_key</span>
 
       <span class="n">ems</span><span class="p">.</span><span class="nf">update_authentication</span><span class="p">(</span><span class="ss">:default</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:userid</span> <span class="o">=&gt;</span> <span class="n">access_key</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">secret_key</span><span class="p">})</span>
     <span class="k">end</span>
@@ -587,14 +594,14 @@
 
 <h3 id="updating-the-vcr-cassettes">Updating the VCR cassettes</h3>
 
-<p>Now that you have your specs recorded, what happens if you want to collect something new?  Like you now want to start fetching floating IPs or Cloud Volumes?</p>
+<p>Now that you have your specs recorded, what happens if you want to collect something new? For example, if you now want to start fetching floating IPs or Cloud Volumes?</p>
 
 <p>It is simple to re-record your VCR cassette, simply remove the file then rerun the specs against the same environment:</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm </span>spec/vcr_cassettes/manageiq/providers/awesome_cloud/cloud_manager/refresher.yml
 bundle <span class="nb">exec </span>rspec spec/models/manageiq/awesome_cloud/cloud_manager/refresher_spec.rb
 </code></pre></div></div>
 
-<p>Make sure that you have your <code class="language-plaintext highlighter-rouge">config/secrets.yml</code> file still present, you might have to update the expected counts as things in your environment have likely changed but you now should have an updated VCR cassette.</p>
+<p>Make sure that you have your <code class="language-plaintext highlighter-rouge">config/secrets.yml</code> file still present. Note that you might have to update the expected counts, as things in your environment have likely changed, but you now should have an updated VCR cassette.</p>
 
       </div>
     </article>
