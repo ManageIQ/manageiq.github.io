@@ -857,10 +857,6 @@ index 6c228c2..91e8e71 100644
 <p>First let’s declare the collections that we intend to use.  The full set of possible collections can be found in core’s <code class="language-plaintext highlighter-rouge">Inventory::Persister::Builder</code> sub-classes.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::Inventory::Persister</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Inventory</span><span class="o">::</span><span class="no">Persister</span>
-  <span class="c1"># This should already be here from the generator, you just need one empty subclass</span>
-  <span class="c1"># for each child-manager type that your provider has (e.g. NetworkManager and/or StorageManager).</span>
-  <span class="n">require_nested</span> <span class="ss">:CloudManager</span>
-
   <span class="c1"># Add the list of inventory collections that you want to use here</span>
   <span class="c1"># In the future if you want to add more inventory like disks or networks you would</span>
   <span class="c1"># add them to the list here.</span>
@@ -879,8 +875,6 @@ index 6c228c2..91e8e71 100644
 <p>The collector provides an interface for the parser, so each method should fetch and return the relevant inventory.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::Inventory::Collector</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Inventory</span><span class="o">::</span><span class="no">Collector</span>
-  <span class="n">require_nested</span> <span class="ss">:CloudManager</span>
-
   <span class="k">def</span> <span class="nf">images</span>
     <span class="n">compute_client</span><span class="p">.</span><span class="nf">get_images</span>
   <span class="k">end</span>
@@ -906,8 +900,6 @@ index 6c228c2..91e8e71 100644
 <p>Now we can get started on the parser.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomeCloud::Inventory::Parser</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Inventory</span><span class="o">::</span><span class="no">Parser</span>
-  <span class="n">require_nested</span> <span class="ss">:CloudManager</span>
-
   <span class="k">def</span> <span class="nf">parse</span>
     <span class="n">instance_types</span>
     <span class="n">images</span>

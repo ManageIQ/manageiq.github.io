@@ -547,8 +547,6 @@ Initialized empty Git repository <span class="k">in</span> /home/grare/adam/src/
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Openstack</span><span class="o">::</span><span class="no">CloudManager</span><span class="p">.</span><span class="nf">include</span><span class="p">(</span><span class="no">ActsAsStiLeafClass</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomePrivateCloud::CloudManager</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Openstack</span><span class="o">::</span><span class="no">CloudManager</span>
-  <span class="n">require_nested</span> <span class="ss">:RefreshWorker</span>
-
   <span class="n">supports</span> <span class="ss">:create</span>
 
   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">vm_vendor</span>
@@ -619,26 +617,12 @@ Initialized empty Git repository <span class="k">in</span> /home/grare/adam/src/
 <span class="k">class</span> <span class="nc">ManageIQ::Providers::AwesomePrivateCloud::CloudManager::AuthKeyPair</span> <span class="o">&lt;</span> <span class="no">ManageIQ</span><span class="o">::</span><span class="no">Providers</span><span class="o">::</span><span class="no">Openstack</span><span class="o">::</span><span class="no">CloudManager</span><span class="o">::</span><span class="no">AuthKeyPair</span>
 <span class="k">end</span>
 </code></pre></div></div>
-<p>Followed by a <code class="language-plaintext highlighter-rouge">require_nested :AuthKeyPair</code> in <code class="language-plaintext highlighter-rouge">ManageIQ::Providers::AwesomePrivateCloud::CloudManager</code>.</p>
 
 <p>Rinse and repeat until, in this example, you have:</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ManageIQ::Providers::Openstack::CloudManager.include(ActsAsStiLeafClass)
 
 class ManageIQ::Providers::AwesomePrivateCloud::CloudManager &lt; ManageIQ::Providers::Openstack::CloudManager
-  require_nested :AuthKeyPair
-  require_nested :AvailabilityZone
-  require_nested :AvailabilityZoneNull
-  require_nested :CloudResourceQuota
-  require_nested :CloudTenant
-  require_nested :EventCatcher
-  require_nested :Flavor
-  require_nested :HostAggregate
-  require_nested :MetricsCapture
-  require_nested :MetricsCollectorWorker
-  require_nested :OrchestrationStack
-  require_nested :RefreshWorker
-  require_nested :Template
-  require_nested :Vm
+end
 </code></pre></div></div>
 
 <p>Now repeat the process for the <code class="language-plaintext highlighter-rouge">NetworkManager</code> and <code class="language-plaintext highlighter-rouge">StorageManager::CinderManager</code></p>

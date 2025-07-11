@@ -519,8 +519,6 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>And don’t forget to add <code class="language-plaintext highlighter-rouge">require_nested :TargetCollection</code> to <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/inventory/collector.rb</code>, <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/inventory/parser.rb</code>, and <code class="language-plaintext highlighter-rouge">app/models/manageiq/providers/awesome_cloud/inventory/persister.rb</code></p>
-
 <p>We also have to add a configuration setting to enable/disable targeted refresh in your provider’s <code class="language-plaintext highlighter-rouge">config/settings.yml</code>:</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:ems_refresh:
   :awesome_cloud:

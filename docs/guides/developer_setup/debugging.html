@@ -476,7 +476,7 @@
         
         <h2 id="debugging-manageiq-with-remote-pry">Debugging ManageIQ with Remote Pry</h2>
 
-<p>Interactive debugging using pry or byebug is normally difficult with ManageIQ, as <code class="language-plaintext highlighter-rouge">rake evm:start</code> launches the server and worker processes in the background. Therefore the only way to do interactive debugging is with <code class="language-plaintext highlighter-rouge">pry-remote</code> or <code class="language-plaintext highlighter-rouge">byebug</code> running in remote mode.</p>
+<p>Interactive debugging using pry or byebug is normally difficult with ManageIQ, as worker processes are generally run in the background. Therefore the only way to do interactive debugging is with <code class="language-plaintext highlighter-rouge">pry-remote</code> or <code class="language-plaintext highlighter-rouge">byebug</code> running in remote mode.</p>
 
 <p>Running ManageIQ with <code class="language-plaintext highlighter-rouge">byebug</code> was exceedingly slow, so this guide will focus on remote debugging using <code class="language-plaintext highlighter-rouge">pry</code>.</p>
 
