@@ -542,12 +542,12 @@ In particular, the project uses the following gems to make internationalization 
       <li><a href="http://www.rubydoc.info/gems/gettext/GetText#ngettext-instance_method">rubydoc</a></li>
     </ul>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">s_(msgid, seperator = "|")</code> – translates <code class="language-plaintext highlighter-rouge">msgid</code>, but if there are no localized text, it returns a last part of <code class="language-plaintext highlighter-rouge">msgid</code> separated by <code class="language-plaintext highlighter-rouge">separator</code> (<code class="language-plaintext highlighter-rouge">|</code> by default)
+  <li><code class="language-plaintext highlighter-rouge">s_(msgid, separator = "|")</code> – translates <code class="language-plaintext highlighter-rouge">msgid</code>, but if there is no localized text, it returns a last part of <code class="language-plaintext highlighter-rouge">msgid</code> separated by <code class="language-plaintext highlighter-rouge">separator</code> (<code class="language-plaintext highlighter-rouge">|</code> by default)
     <ul>
       <li><a href="http://www.rubydoc.info/gems/gettext/GetText#sgettext-instance_method">rubydoc</a></li>
     </ul>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">ns_(msgid, msgid_plural, n, seperator = "|")</code> – similar to the <code class="language-plaintext highlighter-rouge">n_()</code>, but if there is no localized text, it returns a last part of <code class="language-plaintext highlighter-rouge">msgid</code> separated by <code class="language-plaintext highlighter-rouge">separator</code>.
+  <li><code class="language-plaintext highlighter-rouge">ns_(msgid, msgid_plural, n, separator = "|")</code> – similar to the <code class="language-plaintext highlighter-rouge">n_()</code>, but if there is no localized text, it returns a last part of <code class="language-plaintext highlighter-rouge">msgid</code> separated by <code class="language-plaintext highlighter-rouge">separator</code>.
     <ul>
       <li><a href="http://www.rubydoc.info/gems/gettext/GetText#ngettext-instance_method">rubydoc</a></li>
     </ul>
@@ -655,8 +655,8 @@ then substituted with the context of the <code class="language-plaintext highlig
 <p>The above should correctly be:</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">ng=</span><span class="s">if="magicVaiable"</span> <span class="na">translate</span><span class="nt">&gt;</span>It's there<span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">ng=</span><span class="s">if="!magicVariable"</span> <span class="na">translate</span><span class="nt">&gt;</span>It's not there<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">ng-if=</span><span class="s">"magicVariable"</span> <span class="na">translate</span><span class="nt">&gt;</span>It's there<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">ng-if=</span><span class="s">"!magicVariable"</span> <span class="na">translate</span><span class="nt">&gt;</span>It's not there<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/span&gt;</span>
 </code></pre></div></div>
 

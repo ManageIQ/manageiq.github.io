@@ -479,7 +479,7 @@
 <h2 id="introduction">Introduction</h2>
 
 <p>ManageIQ uses logical replication to provide central administrative functions over objects in other
-database regions.  In order to do this, postgresql’s logical replication is used to setup
+database regions.  In order to do this, PostgreSQL’s logical replication is used to set up
 publications for specific tables in remote regions and subscriptions for each in the central or
 global region.</p>
 
@@ -497,7 +497,7 @@ should be mostly automatic.</p>
 
 <h2 id="pre-requisites">Pre-requisites</h2>
 
-<p>This was tested with 3 nightly appliances.  They were setup to be at the Jansa codebase with
+<p>This was tested with 3 nightly appliances.  They were set up to be at the Jansa codebase with
 replication. The appliances were then migrated to kasparov.  This document could be used for
 different branches or tags.</p>
 
@@ -609,7 +609,7 @@ bin/rails r "MiqRegion.replication_type= :remote"
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/rails c
 </code></pre></div>    </div>
 
-    <p>Subsitute the proper values below:</p>
+    <p>Substitute the proper values below:</p>
 
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ require 'miq_pglogical'
 host1 = 'x.x.x.x'
@@ -624,7 +624,7 @@ MiqPglogical.save_global_region([sub1, sub2], [])
   </li>
 </ul>
 
-<p>Now, replication can verified before moving on.</p>
+<p>Now, replication can be verified before moving on.</p>
 
 <p>On the global:</p>
 

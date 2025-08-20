@@ -477,7 +477,7 @@
         <h1 id="reviewers-guidelines">Reviewer’s guidelines</h1>
 
 <p>We have some technical debt that is continuously being refactored.
-However, it’s possible that someone is getting inspired by wrong pattern that still lays in the codebase.
+However, it’s possible that someone is getting inspired by wrong patterns that still lie in the codebase.
 In such case the reviewer might not be aware of <em>The Right Way</em> and approves the changes.</p>
 
 <p>This can cause a significant growth in technical debt. As it is complicated to track all the ongoing refactoring approaches,
@@ -493,7 +493,7 @@ this document is intended to summarize common pitfalls and also good examples.</
 
 <h3 id="testing-rbac-on-checked-items">Testing RBAC on checked items</h3>
 
-<p>Make sure, the introduced code is checking the permissions on items checked in UI.
+<p>Make sure the introduced code is checking the permissions on items checked in UI.
 There is a list of classes, that support RBAC check in <a href="https://github.com/ManageIQ/manageiq/blob/master/lib/rbac/filterer.rb#L8"><code class="language-plaintext highlighter-rouge">CLASSES_THAT_PARTICIPATE_IN_RBAC</code></a></p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># =====</span>
@@ -544,7 +544,7 @@ http://manageiq.org/docs/guides/ui/rbac_features</p>
 
 <p>In case that no records are found, the method raises an <code class="language-plaintext highlighter-rouge">ActiveRecord::RecordNotFound</code> exception.</p>
 
-<p>That means the double checking the variable with loaded records is not necessary, and therefore can be removed.</p>
+<p>That means double checking the variable with loaded records is not necessary, and therefore can be removed.</p>
 
 <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     scheds = find_records_with_rbac(MiqSchedule, checked_or_params)
 <span class="gd">-    if scheds.empty?
