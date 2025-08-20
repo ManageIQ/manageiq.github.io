@@ -5,9 +5,24 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 20 Aug 2025 03:25:14 +0000</pubDate>
-    <lastBuildDate>Wed, 20 Aug 2025 03:25:14 +0000</lastBuildDate>
+    <pubDate>Wed, 20 Aug 2025 14:47:58 +0000</pubDate>
+    <lastBuildDate>Wed, 20 Aug 2025 14:47:58 +0000</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
+    
+      <item>
+        <title>Terraform Enterprise</title>
+        <description>&lt;p&gt;Expanding on our support for external automation providers, we are excited to announce support for HCP Terraform (https://app.terraform.io/app) and Terraform Enterprise in the upcoming Spassky release.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2025/08/terraform-enterprise/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2025/08/terraform-enterprise/</guid>
+        
+        <category>automation</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>ManageIQ Radjabov GA Announcement</title>
@@ -136,21 +151,6 @@
         <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
         <link>http://manageiq.org/blog/2021/12/Announcing-Morphy-Beta/</link>
         <guid isPermaLink="true">http://manageiq.org/blog/2021/12/Announcing-Morphy-Beta/</guid>
-        
-        <category>releases</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Morphy Release Approach</title>
-        <description>&lt;p&gt;We have been working on a number of interesting features.  Typically, the way these get released is that we cut a release branch from the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch and work on stabilizing it to get to a release.  However, at this time we feel the master branch is a bit too fluid to stabilize just yet.  At the same time, there are a number of new features that are less risky and would provide a benefit to the community via an official release.  So, what we have decided to do is to release them in a different way.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 23 Aug 2021 00:00:00 +0000</pubDate>
-        <link>http://manageiq.org/blog/2021/08/announcing_morphy_approach/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2021/08/announcing_morphy_approach/</guid>
         
         <category>releases</category>
         
