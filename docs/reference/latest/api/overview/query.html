@@ -1690,7 +1690,7 @@ filter[]=name=’myservice%’.</li>
 <a class="anchor" href="#expanding-collection" aria-hidden="true"><span class="octicon octicon-link"></span></a>Expanding Collection</h3>
 
 <p>While in the JSON serialization example the description says that the
-resource might be a list of references to these resource, using the
+resources might be a list of references to these resources, using the
 <strong>expand</strong> parameter they can be expanded to return a full JSON
 serialization of the resource instead:</p>
 
@@ -1820,8 +1820,8 @@ vms</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/hosts/8?attributes=custom_attributes,ext_management_system,resource_pools,storages,vms,hardware
 </code></pre></div></div>
 
-<p>of course, one needs to be careful with queries like these as list of
-vms for a host could be quite large.</p>
+<p>Of course, one needs to be careful with queries like these as the list of
+VMs for a host could be quite large.</p>
 
 <p>Virtual attributes can also be queried from one-to-one relationships via
 the dot notation as follows:</p>

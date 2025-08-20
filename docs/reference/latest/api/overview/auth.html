@@ -1617,7 +1617,7 @@ API call.</p>
     <p>Are associated with the user credentials</p>
   </li>
   <li>
-    <p>Provide the necessary identify for RBAC in subsequent REST API calls</p>
+    <p>Provide the necessary identity for RBAC in subsequent REST API calls</p>
   </li>
   <li>
     <p>Expire after a certain amount of time with no REST API activity - 10
@@ -1673,10 +1673,10 @@ that time-out much later.</p>
 
 <p>For such environments, it is possible to request a REST API token to
 leverage the administrative UI session timeout. This is requested with
-the <strong>requester_type</strong> parameter witih the value <strong>ui</strong> as follows:</p>
+the <strong>requester_type</strong> parameter with the value <strong>ui</strong> as follows:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">--user</span> username:password
-        <span class="nt">-i</span> X GET <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span>
+        <span class="nt">-i</span> <span class="nt">-X</span> GET <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span>
         http://localhost:3000/api/auth?requester_type<span class="o">=</span>ui
 </code></pre></div></div>
 
