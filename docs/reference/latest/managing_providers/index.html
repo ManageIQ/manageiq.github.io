@@ -1234,7 +1234,6 @@
 </li>
 <li class="toc-entry toc-h3"><a href="#authoring-a-workflow">Authoring a workflow</a>
 <ul>
-<li class="toc-entry toc-h4"><a href="#unsupported-amazon-states-language-features">Unsupported Amazon States Language features</a></li>
 <li class="toc-entry toc-h4"><a href="#running-an-embedded-workflow-on-appliances">Running an Embedded Workflow on Appliances</a></li>
 <li class="toc-entry toc-h4"><a href="#running-an-embedded-workflow-on-the-openshift-container-platform-ocp">Running an Embedded Workflow on the OpenShift Container Platform (OCP)</a></li>
 <li class="toc-entry toc-h4"><a href="#example-provisioning-workflow">Example: Provisioning Workflow</a></li>
@@ -1246,6 +1245,7 @@
 <li class="toc-entry toc-h3"><a href="#creating-service-catalog-items-using-an-embedded-workflow">Creating Service Catalog Items using an Embedded Workflow</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#upgrading">Upgrading</a></li>
 <li class="toc-entry toc-h2"><a href="#ansible">Ansible</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#enabling-the-embedded-ansible-server-role">Enabling the Embedded Ansible Server Role</a></li>
@@ -2041,7 +2041,7 @@ If any workflows are found, click the corresponding number to view the list of w
 
 <p>Workflows must be authored in Amazon State Languages (ASL) format. As part of authoring a workflow, you (or your users) can build container images that are able to perform any tasks that are required in any language that you like. You can use these images during Task states in your workflows.</p>
 
-<ol>
+<ul>
   <li>
     <p>Define the code for the workflow. If your workflow requires the use of any credentials or parameters to be specified, ensure that they are passed in the code.</p>
 
@@ -2051,8 +2051,7 @@ If any workflows are found, click the corresponding number to view the list of w
 
     <p><strong>Note</strong>: The current implementation of the Amazon States Language does not support certain <strong>Map</strong> states. For more information, see <a href="#unsupported-states-language-features">Unsupported Amazon States Language features</a>.</p>
 
-    <h4 id="unsupported-amazon-states-language-features">
-<a class="anchor" href="#unsupported-amazon-states-language-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unsupported Amazon States Language features</h4>
+    <p>#### Unsupported Amazon States Language features</p>
 
     <p>The following features of Amazon States Language are not supported by Floe:</p>
     <ul>
@@ -2068,10 +2067,160 @@ If any workflows are found, click the corresponding number to view the list of w
     <p>Build the docker containers that are required for the workflow.</p>
 
     <p>When you have the code for your task resource written, you need to bundle it into a docker image. You can bundle the code by creating a standard <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> and building the image (https://docs.docker.com/engine/reference/commandline/build/). Then, you can push the image to a <a href="https://docs.docker.com/engine/reference/commandline/push/">registry</a>, which makes the image available to be used by ManageIQ. When you have pushed your images to an image registry, you can add the registry to ManageIQ.</p>
-  </li>
-</ol>
 
-<p>Pull secrets for containers are used differently between appliances and the OpenShift Container Platform (OCP). These differences are outlined in the following sections.</p>
+    <p>Pull secrets for containers are used differently between appliances and the OpenShift Container Platform (OCP). These differences are outlined in the following sections.</p>
+  </li>
+  <li>
+    <p>Use “builtin” runner methods from the ManageIQ Task Runner</p>
+
+    <p>In addition to the <code class="language-plaintext highlighter-rouge">docker://</code> runner which can run any container you want, there are also builtin runner methods for some common tasks like executing an http call or sending an email.</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">manageiq://http</code> - Execute any HTTP action</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">Method</code> (required) - HTTP method name. Permitted values: <code class="language-plaintext highlighter-rouge">GET</code>, <code class="language-plaintext highlighter-rouge">POST</code>, <code class="language-plaintext highlighter-rouge">PUT</code>, <code class="language-plaintext highlighter-rouge">DELETE</code>, <code class="language-plaintext highlighter-rouge">HEAD</code>, <code class="language-plaintext highlighter-rouge">PATCH</code>, <code class="language-plaintext highlighter-rouge">OPTIONS</code>, or <code class="language-plaintext highlighter-rouge">TRACE</code>
+</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Url</code> (required) - URL to execute the HTTP call to</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Headers</code> - Hash of unencoded HTTP request header key/value pairs.</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">QueryParameters</code> - URI query unencoded key/value pairs.</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Body</code> - HTTP request body.  Depending on Encoding this can be a String or a Hash of key/value pairs.</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Ssl</code> - SSL options
+            <ul>
+              <li>
+<code class="language-plaintext highlighter-rouge">Verify</code> - Boolean - Verify SSL certificate.  Defaults to <code class="language-plaintext highlighter-rouge">true</code>
+</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">VerifyHostname</code> - Boolean - Verify SSL certificate hostname.  Defaults to <code class="language-plaintext highlighter-rouge">true</code>
+</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">Hostname</code> - String - Server hostname for SNI.</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">CaFile</code> - String - Path to a CA file in PEM format.</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">CaPath</code> - String - Path to a CA directory.</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">VerifyMode</code> - Integer - OpenSSL constant.  <code class="language-plaintext highlighter-rouge">VERIFY_NONE</code> =&gt; 0, <code class="language-plaintext highlighter-rouge">VERIFY_PEER</code> =&gt; 1, <code class="language-plaintext highlighter-rouge">VERIFY_FAIL_IF_NO_PEER_CERT</code> =&gt; 2, <code class="language-plaintext highlighter-rouge">VERIFY_CLIENT_ONCE</code> =&gt; 4,</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">VerifyDepth</code> - Integer - Maximum depth for the certificate chain validation.</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">Version</code> - Integer - SSL Version.</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">MinVersion</code> - Integer - Minimum SSL Version.</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">MaxVersion</code> - Integer - Maximum SSL Version.</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">Ciphers</code> - String - Ciphers supported.</li>
+            </ul>
+          </li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Proxy</code>
+            <ul>
+              <li>
+<code class="language-plaintext highlighter-rouge">Uri</code> - String - URI of the proxy.</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">User</code> - String - User for the proxy.</li>
+              <li>
+<code class="language-plaintext highlighter-rouge">Password</code> - String - Password for the proxy</li>
+            </ul>
+          </li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Options</code>
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">Timeout</code></li>
+              <li><code class="language-plaintext highlighter-rouge">ReadTimeout</code></li>
+              <li><code class="language-plaintext highlighter-rouge">OpenTimeout</code></li>
+              <li><code class="language-plaintext highlighter-rouge">WriteTimeout</code></li>
+              <li>
+<code class="language-plaintext highlighter-rouge">Encoding</code> - String
+                <ul>
+                  <li>
+<code class="language-plaintext highlighter-rouge">JSON</code> - JSON encodes the request and decodes the response</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">manageiq://email</code> - Send an email using the configured SMTP server</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">To</code> - Array of recipient email addresses, defaults to service requester email</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">From</code> - Sender email address, defaults to smtp.from Setting</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Subject</code> - Email Subject string</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Cc</code> - Array of recipients to carbon-copy</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Bcc</code> - Array of recipients to blind-carbon-copy</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Body</code> - The body of the email</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Attachment</code> - A hash with the filename as the key and the content as the value</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">manageiq://embedded_ansible</code> - Execute an ansible playbook with EmbeddedAnsible</p>
+
+        <p>Identifying a playbook: You must identity a playbook by either:</p>
+
+        <p><code class="language-plaintext highlighter-rouge">PlaybookId</code> - This is the database identifier of the <code class="language-plaintext highlighter-rouge">ConfigurationScript</code></p>
+
+        <p>or</p>
+
+        <p><code class="language-plaintext highlighter-rouge">RepositoryUrl</code>, <code class="language-plaintext highlighter-rouge">RepositoryBranch</code>, and <code class="language-plaintext highlighter-rouge">PlaybookName</code></p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">RepositoryUrl</code> - URL of the configuration script source identifying the repository where the playbook resides</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">RepositoryBranch</code> - Branch of the configuration script source where the playbook resides</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">PlaybookName</code> - Name of the playbook</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">PlaybookId</code> - Integer - Database ID of the <code class="language-plaintext highlighter-rouge">ConfigurationScript</code>
+</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Hosts</code> - Array - hostnames to target with the playbook</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">ExtraVars</code> - Hash - key/value pairs that will be passed as extra_vars</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">BecomeEnabled</code> - Boolean - If playbook should activate privilege escalation, defaults to false</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Timeout</code> - Integer - Minutes for how long to allow the playbook to run for</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Verbosity</code> - Integer - Ansible verbosity level 0-5</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">CredentialId</code> - Integer - Database ID of an ansible credential</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">CloudCredentialId</code> - Integer - Database ID of an ansible cloud credential</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">NetworkCredentialId</code> - Integer - Database ID of an ansible network credential</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">VaultCredentialId</code> - Integer - Database ID of an ansible vault credential</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">manageiq://provision_execute</code> - Execute an MiqProvision task</p>
+
+        <p>This can be used for a VM Provision Service Catalog item in place of automate.  No explicit parameters are required, as state input is used as the provision options.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="running-an-embedded-workflow-on-appliances">
 <a class="anchor" href="#running-an-embedded-workflow-on-appliances" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running an Embedded Workflow on Appliances</h4>
@@ -2228,7 +2377,7 @@ Login Succeeded!
 
 <p>Long lived credentials like usernames and passwords should be defined as Mapped Credentials as described in <code class="language-plaintext highlighter-rouge">Adding Credentials</code>.</p>
 
-<p>Short lived credentials such as bearer tokens which are obtained while the workflow is running can be set as state output and stored securely in the Credentials field for further states.  This can be accomplished by using <code class="language-plaintext highlighter-rouge">ResultPath</code> with a path starting with <code class="language-plaintext highlighter-rouge">$.Credentials</code>.  This will set the output of the state in the <code class="language-plaintext highlighter-rouge">Credentials</code> payload.</p>
+<p>Short lived credentials such as bearer tokens which are obtained while the workflow is running can be set as state output and stored securely in the Credentials field for further states.  This can be accomplished by using <code class="language-plaintext highlighter-rouge">ResultPath</code> with a path starting with <code class="language-plaintext highlighter-rouge">$$.Credentials</code>.  This will set the output of the state in the <code class="language-plaintext highlighter-rouge">Credentials</code> payload.</p>
 
 <p>For an example lets say we have a State which takes a username and password and outputs a bearer token to be used later on:</p>
 
@@ -2236,10 +2385,10 @@ Login Succeeded!
   "Type": "Task",
   "Resource": "docker://login:latest",
   "Credentials": {
-    "username.$": "$.username",
-    "password.$": "$.password"
+    "username.$": "$$.Credentials.username",
+    "password.$": "$$.Credentials.password"
   },
-  "ResultPath": "$.Credentials",
+  "ResultPath": "$$.Credentials",
   "Next": "NextState"
 }
 </code></pre>
@@ -2250,7 +2399,7 @@ Login Succeeded!
   "Type": "Task",
   "Resource": "docker://do-something:latest",
   "Credentials": {
-    "token.$": "$.bearer_token"
+    "token.$": "$$.Credentials.bearer_token"
   }
 }
 </code></pre>
@@ -2261,13 +2410,13 @@ Login Succeeded!
   "Type": "Task",
   "Resource": "docker://login:latest",
   "Credentials": {
-    "username.$": "$.username",
-    "password.$": "$.password"
+    "username.$": "$$.Credentials.username",
+    "password.$": "$$.Credentials.password"
   },
   "ResultSelector": {
     "bearer_token.$": "$.result"
   },
-  "ResultPath": "$.Credentials",
+  "ResultPath": "$$.Credentials",
   "Next": "NextState"
 }
 </code></pre>
@@ -2278,10 +2427,10 @@ Login Succeeded!
   "Type": "Task",
   "Resource": "docker://login:latest",
   "Credentials": {
-    "username.$": "$.username",
-    "password.$": "$.password"
+    "username.$": "$$.Credentials.username",
+    "password.$": "$$.Credentials.password"
   },
-  "ResultPath": "$.Credentials.VMware",
+  "ResultPath": "$$.Credentials.VMware",
   "Next": "NextState"
 }
 </code></pre>
@@ -2292,7 +2441,7 @@ Login Succeeded!
   "Type": "Task",
   "Resource": "docker://do-something:latest",
   "Credentials": {
-    "token.$": "$.VMware.bearer_token"
+    "token.$": "$$.VMware.bearer_token"
   }
 }
 </code></pre>
@@ -2397,6 +2546,53 @@ Login Succeeded!
     <p><img src="../images/embedworkflow_runstatus.png" alt="Workflow Status"></p>
   </li>
 </ol>
+
+<h2 id="upgrading">
+<a class="anchor" href="#upgrading" aria-hidden="true"><span class="octicon octicon-link"></span></a>Upgrading</h2>
+
+<p>If you wrote a workflow with floe prior to <code class="language-plaintext highlighter-rouge">v0.17.0</code> you might have to update your workflow content.  You can check your floe version by using <code class="language-plaintext highlighter-rouge">bundle info floe</code></p>
+
+<ol>
+  <li>The Credentials Task property has changed to use <code class="language-plaintext highlighter-rouge">$$.Credentials</code> to access the credentials payload, <code class="language-plaintext highlighter-rouge">$.</code> will use state input which is consistent with the rest of Input/Output processing.  <code class="language-plaintext highlighter-rouge">ResultPath</code> also has to be updated to set credentials to <code class="language-plaintext highlighter-rouge">$$.Credentials</code>.</li>
+</ol>
+
+<p>Example:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Credentials"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"password.$"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.Password"</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"ResultPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.Credentials"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Becomes:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Credentials"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"password.$"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$$.Credentials.password"</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"ResultPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$$.Credentials"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ol>
+  <li>Nested hashes no longer require the key to have a <code class="language-plaintext highlighter-rouge">.$</code> suffix to perform interpolation</li>
+</ol>
+
+<p>Example:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pass"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Body.$"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"foo.$"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.bar"</span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Becomes:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pass"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"foo.$"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.bar"</span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
 <h2 id="ansible">
 <a class="anchor" href="#ansible" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ansible</h2>
