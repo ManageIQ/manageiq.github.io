@@ -14612,7 +14612,6 @@ code {
   padding-left: 0;
   margin-right: auto;
   margin-left: auto;
-  z-index: 5;
 }
 .banner-content:before, .banner-content:after {
   display: table;
@@ -14620,6 +14619,9 @@ code {
 }
 .banner-content:after {
   clear: both;
+}
+.banner-content {
+  z-index: 5;
 }
 
 #home_banner {
@@ -14924,10 +14926,6 @@ code {
   padding-left: 0;
   margin-right: auto;
   margin-left: auto;
-  display: flex;
-  max-width: 100%;
-  justify-content: space-between;
-  align-items: flex-start;
 }
 .solution-container:before, .solution-container:after {
   display: table;
@@ -14935,6 +14933,12 @@ code {
 }
 .solution-container:after {
   clear: both;
+}
+.solution-container {
+  display: flex;
+  max-width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .solution {
