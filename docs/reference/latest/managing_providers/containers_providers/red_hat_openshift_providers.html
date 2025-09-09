@@ -1259,27 +1259,26 @@ for a list of the default roles.</p>
 <p>Run the following to obtain the token needed to add a Red Hat OpenShift provider:</p>
 
 <ol>
-  <li>
-    <p>Obtain the <code class="language-plaintext highlighter-rouge">management</code> service account token name:</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># oc describe sa -n $project_name $service_account_name
-...
-Tokens:  management-admin-token-0f3fh
-         management-admin-token-q7a87
-</code></pre></div>    </div>
+  <li>Create the service account token
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> oc apply <span class="nt">-f</span> - <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh">
+ apiVersion: v1
+ kind: Secret
+ metadata:
+  name: </span><span class="nv">$service_account_name</span><span class="sh">-secret
+  namespace: </span><span class="nv">$project_name</span><span class="sh">
+  annotations:
+    kubernetes.io/service-account.name: </span><span class="nv">$service_account_name</span><span class="sh">
+ type: kubernetes.io/service-account-token
+</span><span class="no"> EOF
+</span></code></pre></div>    </div>
   </li>
   <li>
-    <p>Select and describe one of the tokens to retrieve the full token
-output, replacing <code class="language-plaintext highlighter-rouge">management-admin-token-0f3fh</code> with the name of
-your token:</p>
+    <p>Describe the secret to retrieve the full token value:</p>
 
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># oc describe secret -n $project_name management-admin-token-0f3fh
-...
-Data
-====
-token:  eyJhbGciOiJSUzI1NiI...
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>oc get secret <span class="nt">-o</span> template <span class="nt">--template</span>  <span class="nt">-n</span> <span class="nv">$project_name</span> <span class="nv">$service_account_name</span><span class="nt">-secret</span>
+eyJhbGciOiJSUzI1N...
 </code></pre></div>    </div>
   </li>
 </ol>
