@@ -1564,6 +1564,7 @@
 <li class="toc-entry toc-h3"><a href="#defining-new-vlans-adapters">Defining new vLans adapters</a></li>
 <li class="toc-entry toc-h3"><a href="#defining-new-scsi-controller">Defining new SCSI Controller</a></li>
 <li class="toc-entry toc-h3"><a href="#defining-new-disks">Defining new Disks</a></li>
+<li class="toc-entry toc-h3"><a href="#increasing-the-template-disk-size">Increasing the template disk size</a></li>
 <li class="toc-entry toc-h3"><a href="#cloning-type">Cloning Type</a></li>
 <li class="toc-entry toc-h3"><a href="#limit-template-selection">Limit Template Selection</a></li>
 </ul>
@@ -1583,6 +1584,9 @@ provisioning via /api/provision_requests.</p>
   </li>
   <li>
     <p><a href="#defining-new-disks">Defining new Disks</a></p>
+  </li>
+  <li>
+    <p><a href="#increasing-the-template-disk-size">Increasing the template disk size</a></p>
   </li>
   <li>
     <p><a href="#cloning-type">Cloning Type</a></p>
@@ -1801,6 +1805,18 @@ request.</p>
 </span><span class="nl">"diskscsi1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0:0:8"</span><span class="w">
 </span><span class="nl">"diskscsi1.datastore"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"storage1"</span><span class="w">
 </span><span class="nl">"diskscsi1.backing.diskmode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"independent_persistent"</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="increasing-the-template-disk-size">
+<a class="anchor" href="#increasing-the-template-disk-size" aria-hidden="true"><span class="octicon octicon-link"></span></a>Increasing the template disk size</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">allocated_disk_storage</code> attribute allows for the first disk on a VM to be increased in size
+after the clone operation is complete.  This is only supported for templates with 1 disk.
+The attribute’s unit is gigabytes.</p>
+
+<p>This is supported by the VMware vSphere provider.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">allocated_disk_storage:</span><span class="w"> </span><span class="mi">10</span><span class="w">
 </span></code></pre></div></div>
 
 <h3 id="cloning-type">
