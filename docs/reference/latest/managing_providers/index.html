@@ -2240,10 +2240,10 @@ Password:
 Login Succeeded!
 </code></pre></div>    </div>
 
-    <p>If you use the –root flag in the podman pull, images are pulled to a local directory ‘/var/www/miq/vmdb/data/containers/storage’ as in the example</p>
+    <p>If you use the –root flag in the podman pull, images are pulled to a local directory ‘/var/lib/manageiq/containers/storage’ as in the example</p>
 
     <div class="language-text highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>   podman pull &lt;repository&gt;/&lt;image&gt;:&lt;tag&gt;  --root /var/www/miq/vmdb/data/containers/storage
+<div class="highlight"><pre class="highlight"><code>   podman pull &lt;repository&gt;/&lt;image&gt;:&lt;tag&gt;  --root /var/lib/manageiq/containers/storage
 </code></pre></div>    </div>
 
     <p>It is worth noting that the default /home/manageiq partition has insufficient space to store large images.</p>
@@ -3669,7 +3669,7 @@ environment.</p>
 
 <p>Use the following command to import the OpenTofu image on your appliance server.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>runuser <span class="nt">--login</span> manageiq <span class="nt">--command</span> <span class="s1">'podman --root=/var/www/miq/vmdb/data/containers/storage image load --input /tmp/&lt;OpenTofu_image&gt;'</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>runuser <span class="nt">--login</span> manageiq <span class="nt">--command</span> <span class="s1">'podman --root=/var/lib/manageiq/containers/storage image load --input /tmp/&lt;OpenTofu_image&gt;'</span>
 </code></pre></div></div>
 
 <p>Where <code class="language-plaintext highlighter-rouge">&lt;OpenTofu_image&gt;</code> is the name of your OpenTofu image.</p>
