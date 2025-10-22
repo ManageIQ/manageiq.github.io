@@ -916,19 +916,6 @@ git fetch upstream
     <p>macOS requires platform specific Gems. Run <code class="language-plaintext highlighter-rouge">bundle config specific_platform true</code> before running <code class="language-plaintext highlighter-rouge">bin/setup</code>.</p>
   </li>
   <li>
-    <p>The ovirt-engine-sdk gem contains C code that generated warnings with older Clang versions.  These warnings are marked as errors in newer Clang 15 and 16 depending on the Clang version, architecture, and possibly OS.  If this is the case, you can mark these as warnings and not errors to allow installation:</p>
-
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install ovirt-engine-sdk -- --with-cflags="-Wno-error=incompatible-function-pointer-types -Wno-error=implicit-function-declaration"
-</code></pre></div>    </div>
-
-    <p>This can also be configured within bundler:</p>
-
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle config build.ovirt-engine-sdk "--with-cflags=-Wno-error=incompatible-function-pointer-types\\ -Wno-error=implicit-function-declaration"
-</code></pre></div>    </div>
-
-    <p>See https://github.com/oVirt/ovirt-engine-sdk-ruby/issues/14 and https://github.com/oVirt/ovirt-engine-sdk-ruby/issues/11.  Hopefully, the code in the gem can be resolved to avoid these warnings in the future.</p>
-  </li>
-  <li>
     <p>If you’ve run PostgreSQL in a container, be sure to export the <code class="language-plaintext highlighter-rouge">DATABASE_URL</code> variable to connect to the container over TCP instead of a UNIX file socket.</p>
 
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">DATABASE_URL</span><span class="o">=</span><span class="s1">'postgresql://localhost:5432'</span> <span class="c"># optional, only necessary if PostgreSQL is running in a container</span>
