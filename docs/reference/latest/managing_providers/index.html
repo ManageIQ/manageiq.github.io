@@ -2154,6 +2154,32 @@ If any workflows are found, click the corresponding number to view the list of w
         </ul>
       </li>
       <li>
+        <p><code class="language-plaintext highlighter-rouge">manageiq://api</code> - Execute HTTP actions against the ManageIQ API</p>
+
+        <p>This has the same parameters as <code class="language-plaintext highlighter-rouge">manageiq://http</code> with the following defaults:</p>
+
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">Url</code> - Defaults to the ManageIQ Web Services URL</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Headers</code>
+            <ul>
+              <li>
+<code class="language-plaintext highlighter-rouge">ContentType</code> - Defaults to <code class="language-plaintext highlighter-rouge">application/json</code>
+</li>
+            </ul>
+          </li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Options</code>
+            <ul>
+              <li>
+<code class="language-plaintext highlighter-rouge">Encoding</code> - Defaults to <code class="language-plaintext highlighter-rouge">JSON</code>
+</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
         <p><code class="language-plaintext highlighter-rouge">manageiq://email</code> - Send an email using the configured SMTP server</p>
 
         <p>Parameters:</p>
