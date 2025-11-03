@@ -515,14 +515,22 @@ You can run the entire vmdb suite or select spec files within it.</p>
 
 <p>To set up these databases, simply execute the following command:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ PARALLEL=true bin/rake test:vmdb:setup
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bin/rake parallel:rake[test:vmdb:setup]
 </code></pre></div></div>
+
+<p>Depending on how many cores you have you might hit</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Caused by:
+PG::OutOfMemory: ERROR:  out of shared memory (PG::OutOfMemory)
+HINT:  You might need to increase "max_locks_per_transaction".
+</code></pre></div></div>
+
+<p>If this is the case simply edit your <code class="language-plaintext highlighter-rouge">main/postgresql.conf</code> conf file to increase the <code class="language-plaintext highlighter-rouge">max_locks_per_transaction</code> value and restart postgresql.</p>
 
 <h4 id="run-the-entire-suite-in-parallel">Run the entire suite in parallel</h4>
 
 <p>You can run the entire suite in parallel using the following command:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ PARALLEL=true bin/rake test:vmdb
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bin/rake parallel:spec
 </code></pre></div></div>
 
 <h4 id="passing-rspec-options-to-the-rake-tasks">Passing RSpec options to the rake tasks</h4>
@@ -534,7 +542,7 @@ built-in rake commands to run the tests.</p>
 <p>For example, I may wish to set a particular seed and stop running the tests
 immediately on a failure:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ PARALLEL=true SPEC_OPTS="--seed 1234 --fail-fast" bin/rake test:vmdb:setup
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ SPEC_OPTS="--seed 1234 --fail-fast" rake parallel:spec
 </code></pre></div></div>
 
 <p>Note that <code class="language-plaintext highlighter-rouge">--fail-fast</code> will stop whichever core encountered the error, not
