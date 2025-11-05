@@ -4275,13 +4275,14 @@ environment.</p>
         <p>In <strong>Dialog</strong>, select a service dialog you created previously.  To ask the user to enter extra information when running the task, <strong>Service Dialog</strong> must be selected. A dialog is required if <strong>Display in Catalog</strong> is chosen.</p>
       </li>
       <li>
-        <p>In <strong>Provider</strong>, select your Terraform Enterprise provider. This brings up the <strong>Terraform Template</strong> option where you can select which Terraform Workspace you want to use.</p>
+        <p>Add configuration information for <strong>Provisioning Entry Point</strong>, <strong>Reconfigure Entry Point</strong> and <strong>Retirement Entry Point</strong> as applicable.
+You can select either an <strong>Embedded Automate</strong> method or an <strong>Embedded Workflow</strong>.</p>
+
+        <p>If you select an Embedded Workflow, the workflow you use must call the builtin <code class="language-plaintext highlighter-rouge">manageiq://provision_execute</code> in order to run provision request.</p>
       </li>
       <li>
-        <p>Add configuration information for <strong>Reconfigure Entry Point</strong> and <strong>Retirement Entry Point</strong> as applicable.</p>
-      </li>
-      <li>
-        <p>Select your desired <strong>Terraform Template</strong> from the list.</p>
+        <p>In the <strong>Request Info</strong> subtab, enter the owner information in the <strong>Requester</strong> section and select a <code class="language-plaintext highlighter-rouge">Configuration Script</code> from the <strong>Catalog</strong> tab.
+<img src="../images/automation_management_request_info.png" alt="request info configuration script"></p>
       </li>
     </ul>
   </li>
