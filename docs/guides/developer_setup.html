@@ -727,7 +727,18 @@ See here for additional information: https://github.com/Homebrew/brew/issues/134
       <li>
         <p>macOS</p>
 
-        <p><code class="language-plaintext highlighter-rouge">brew</code> will configure the cluster automatically, but you will need to create the user.</p>
+        <p><code class="language-plaintext highlighter-rouge">brew</code> will configure the cluster automatically, but you need to make a few tweaks
+including granting access to the root user.</p>
+
+        <div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ${HOMEBREW_PREFIX}/var/postgresql@13/postgresql.conf
+# right after authentication_timeout = 1min
+# More secure and closer to production. (standard on pg 14+)
+</span><span class="n">password_encryption</span> = <span class="n">scram</span>-<span class="n">sha</span>-<span class="m">256</span>
+<span class="c"># needed for multi-region replication
+</span><span class="n">wal_level</span> = <span class="n">logical</span>
+<span class="c"># parallel testing requires more locks per transactions
+</span><span class="n">max_locks_per_transaction</span> = <span class="m">128</span>
+</code></pre></div>        </div>
 
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew services start postgresql@13
 psql <span class="nt">-c</span> <span class="s2">"CREATE USER root SUPERUSER PASSWORD 'smartvm';"</span> <span class="nt">-U</span> <span class="nv">$USER</span> <span class="nt">-d</span> template1
