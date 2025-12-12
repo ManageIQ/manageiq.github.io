@@ -489,17 +489,17 @@
   <tbody>
     <tr>
       <td>Ruby</td>
-      <td>3.1.3</td>
+      <td>3.3.x</td>
       <td>3.4.x</td>
     </tr>
     <tr>
       <td>Bundler</td>
-      <td>2.2.15</td>
-      <td>2.x</td>
+      <td>2.5.20</td>
+      <td>4.x</td>
     </tr>
     <tr>
       <td>NodeJS</td>
-      <td>20.19.1</td>
+      <td>20.19.5</td>
       <td>20.x.x</td>
     </tr>
     <tr>
@@ -871,20 +871,19 @@ kafka-storage format <span class="nt">-t</span> <span class="si">$(</span>kafka-
   </li>
 </ol>
 
-<h3 id="nvm-and-javascript-build-utilities">nvm and JavaScript build utilities</h3>
+<h3 id="nodejs">NodeJS</h3>
 
-<p><a href="https://github.com/nvm-sh/nvm">nvm</a> is <em>strongly</em> recommended for NodeJS version management.</p>
+<p>A NodeJS version manager is <em>strongly</em> recommended. Use any one of the following:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvm <span class="nb">install </span>20
-nvm use 20
+<ul>
+  <li><a href="https://github.com/nvm-sh/nvm">nvm</a></li>
+  <li><a href="https://github.com/Schniz/fnm">fnm</a></li>
+  <li><a href="https://github.com/tj/n">n</a></li>
+</ul>
 
-<span class="c"># Set version 20 as the default for all scripts</span>
-nvm <span class="nb">alias </span>default 20
-</code></pre></div></div>
+<p>Using the NodeJS version manager, install NodeJS (See <a href="#requirements-summary">Requirements Summary</a> above).</p>
 
-<p>You may need to restart your shell in order to source the nvm initialization environment.</p>
-
-<p>Then install <code class="language-plaintext highlighter-rouge">yarn</code> - you can find the recommended way for your platform at https://classic.yarnpkg.com/en/docs/install, or, if that fails, via npm.</p>
+<p>Additionally, install yarn globally. You can find the recommended way for your platform at https://classic.yarnpkg.com/en/docs/install, or, if that fails, via npm.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--global</span> yarn
 </code></pre></div></div>
@@ -899,7 +898,7 @@ nvm <span class="nb">alias </span>default 20
   <li><a href="http://rvm.io/">rvm</a></li>
 </ul>
 
-<p>Using the Ruby version manager, install Ruby and the latest <code class="language-plaintext highlighter-rouge">bundler</code> (as listed in the <a href="#requirements-summary">Requirements Summary</a> above).</p>
+<p>Using the Ruby version manager, install Ruby and the latest <code class="language-plaintext highlighter-rouge">bundler</code> (See <a href="#requirements-summary">Requirements Summary</a> above).</p>
 
 <hr />
 
