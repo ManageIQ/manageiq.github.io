@@ -2080,6 +2080,17 @@ If any workflows are found, click the corresponding number to view the list of w
 
     <ul>
       <li>
+        <p><code class="language-plaintext highlighter-rouge">manageiq://log</code> - Write a message to the logger.</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">Level</code> (required) - Log level. Permitted values: <code class="language-plaintext highlighter-rouge">DEBUG</code>, <code class="language-plaintext highlighter-rouge">INFO</code>, <code class="language-plaintext highlighter-rouge">WARN</code>, <code class="language-plaintext highlighter-rouge">ERROR</code>, <code class="language-plaintext highlighter-rouge">FATAL</code>, or <code class="language-plaintext highlighter-rouge">UNKNOWN</code>.  Defaults to <code class="language-plaintext highlighter-rouge">INFO</code>.</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">Message</code> (required) - The message to log.</li>
+        </ul>
+      </li>
+      <li>
         <p><code class="language-plaintext highlighter-rouge">manageiq://http</code> - Execute any HTTP action</p>
 
         <p>Parameters:</p>
