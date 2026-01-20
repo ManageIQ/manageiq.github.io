@@ -1,0 +1,2209 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/installing_on_kubernetes/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li>
+    <a href="/download/">Download</a>
+  </li>
+  <li>
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li>
+    <a href="/community/">Community</a>
+  </li>
+  <li>
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa-solid theme-toggle" data-toggle-theme></button>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/spassky/installing_on_kubernetes/index">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li class="active">
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<div class="doc_menu-heading">
+  Spassky
+</div>
+
+<ul class="menu menu-toplevel" id="ref_menu_spassky">
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Installing
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Containerized (podified)
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item active">
+    <a href="/docs/reference/spassky/installing_on_kubernetes/index.html">
+      Kubernetes
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Appliance
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_aws/index.html">
+      Amazon Web Services (AWS)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_ibm_cloud/index.html">
+      IBM Cloud
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_microsoft_azure/index.html">
+      Microsoft Azure
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_google_compute_engine/index.html">
+      Google Compute Engine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_vmware_vsphere/index.html">
+      VMware vSphere
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_red_hat_enterprise_linux_openstack_platform/index.html">
+      Red Hat Enterprise OpenStack Platform
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_red_hat_virtualization/index.html">
+      Red Hat Enterprise Virtualization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_scvmm/index.html">
+      Microsoft System Center Virtual Machine Manager (SCVMM)
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Upgrading
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/appliances/upgrading.html">
+      Upgrading
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Using
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/general_configuration/index.html">
+      General Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_infrastructure_and_inventory/index.html">
+      Managing Infrastructure and Inventory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/index.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Infrastructure Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/red_hat_virtualization_providers.html">
+      Red Hat Virtualization Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/openstack_infrastructure_providers.html">
+      OpenStack Infrastructure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/vmware_vcenter_providers.html">
+      VMware vCenter Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/ibm_power_hmc_providers.html">
+      IBM Power HMC Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Configuration Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/configuration_management_providers/ibm_terraform_provider.html">
+      IBM Terraform Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/configuration_management_providers/red_hat_satellite_6.html">
+      Red Hat Satellite 6 Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/index.html#automation-management-providers">
+      Automation Management Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Cloud Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/amazon_ec2_providers.html">
+      Amazon EC2 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/azure_providers.html">
+      Azure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/google_compute_engine_providers.html">
+      Google Compute Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_cic_providers.html">
+      IBM CIC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_cloud_vpc_providers.html">
+      IBM Cloud VPC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_power_vc_providers.html">
+      IBM PowerVC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_power_systems_virtual_servers_providers.html">
+      IBM Power Systems Virtual Servers Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/openstack_providers.html">
+      OpenStack Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Container Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/azure_kubernetes_providers.html">
+      Azure Kubernetes Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/red_hat_openshift_providers.html">
+      Red Hat OpenShift Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/ibm_cloud_kubernetes_service_providers.html">
+      IBM Cloud Kubernetes Service Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/oracle_kubernetes_engine_providers.html">
+      Oracle Kubernetes Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/vmware_tanzu_providers.html">
+      VMware Tanzu Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Storage Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/amazon_ebs_managers.html">
+      Amazon Elastic Block Store Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/openstack_block_storage_managers.html">
+      OpenStack Block Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/openstack_object_storage_managers.html">
+      OpenStack Object Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/ibm_cloud_object_storage_managers.html">
+      IBM Cloud Object Storage Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/provisioning_virtual_machines_and_hosts/index.html">
+      Provisioning Virtual Machines and Hosts
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/creating_a_service_for_vm_provisioning/index.html">
+      Creating a Service for Virtual Machine Provisioning
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/service_provisioning_using_an_orchestration_template/index.html">
+      Service Provisioning Using an Orchestration Template
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing controls
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/monitoring_alerts_and_reporting/index.html">
+      Monitoring, Alerts, and Reporting
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/policies_and_profiles_guide/index.html">
+      Policies and Profiles Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/monitoring_alerts_and_reporting/index.html#chargeback">
+      Chargeback
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/assigning_custom_analysis_profile_to_vm/index.html">
+      Assigning a Custom Analysis Profile to a Virtual Machine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/scripting_actions/index.html">
+      Scripting Actions in ManageIQ
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Administering
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Authentication
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/active_directory.html">
+      Active Directory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/ipa_2fa.html">
+      2-Factor-Authentication with IPA
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/ipa_ad_trust.html">
+      IPA/AD Trust
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/ldap.html">
+      LDAP
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/saml.html">
+      SAML
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/openid_connect.html">
+      OpenID-Connect
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/appliances/backup_and_restore.html">
+      Backup and Restore (appliances)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/deployment_planning_guide/index.html">
+      Deployment Planning Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/high_availability_guide/index.html">
+      High Availability Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/appliance_hardening_guide/index.html">
+      Appliance Hardening Guide
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Managing Integrations
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+      AWS CloudFormation and OpenStack Heat
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/integration_with_servicenow/index.html">
+      ServiceNow
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      APIs
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/api">
+      ManageIQ REST API
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Reference
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/capabilities_matrix/index.html">
+      Capabilities Matrix
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/methods_available_for_automation/index.html">
+      Methods Available for Automation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Troubleshooting
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/troubleshooting/index.html">
+      Troubleshooting
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc user_doc">
+      
+
+      <div class="doc-content">
+        
+        <div class="doc-versions">
+          <span class="label">Versions: </span>
+          
+            <span>
+              <a href="/docs/reference/latest/installing_on_kubernetes/index.html">
+                Latest
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span class="active">
+              <a href="/docs/reference/spassky/installing_on_kubernetes/index.html">
+                Spassky
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/radjabov/installing_on_kubernetes/index.html">
+                Radjabov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/quinteros/installing_on_kubernetes/index.html">
+                Quinteros
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/petrosian/installing_on_kubernetes/index.html">
+                Petrosian
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/oparin/installing_on_kubernetes/index.html">
+                Oparin
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/najdorf/installing_on_kubernetes/index.html">
+                Najdorf
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/morphy/installing_on_kubernetes/index.html">
+                Morphy
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/lasker/installing_on_kubernetes/index.html">
+                Lasker
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/kasparov/installing_on_kubernetes/index.html">
+                Kasparov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Jansa
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Ivanchuk
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Hammer
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Gaprindashvili
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Fine
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Euwe
+              </a>
+            </span>
+            
+          
+        </div>
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1">
+<a href="#installing-on-kubernetes--openshift">Installing on Kubernetes / Openshift</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#preparing-the-kubernetes-namespace">Preparing the Kubernetes namespace</a></li>
+<li class="toc-entry toc-h2">
+<a href="#new-installation">New Installation</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#create-the-custom-resource">Create the Custom Resource</a></li>
+<li class="toc-entry toc-h3"><a href="#logging-in">Logging In</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2">
+<a href="#migrating-from-appliances">Migrating from Appliances</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#notes">Notes</a></li>
+<li class="toc-entry toc-h3"><a href="#collect-data-from-the-appliance">Collect data from the appliance</a></li>
+<li class="toc-entry toc-h3"><a href="#restore-the-backup-into-the-kubernetes-environment">Restore the backup into the kubernetes environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1">
+<a href="#customizing-the-installation">Customizing the Installation</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#configuring-the-application-domain-name">Configuring the application domain name</a></li>
+<li class="toc-entry toc-h2"><a href="#external-postgresql">External postgresql</a></li>
+<li class="toc-entry toc-h2">
+<a href="#using-tls-to-encrypt-connections-between-pods-inside-the-cluster">Using TLS to encrypt connections between pods inside the cluster:</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#create-a-secret-containing-all-of-the-certificates">Create a secret containing all of the certificates</a></li>
+<li class="toc-entry toc-h3"><a href="#generating-certificates">Generating certificates:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#configuring-external-messaging">Configuring external messaging</a></li>
+<li class="toc-entry toc-h2"><a href="#creating-a-custom-tls-secret">Creating a custom TLS secret</a></li>
+<li class="toc-entry toc-h2"><a href="#configuring-an-image-pull-secret">Configuring an image pull secret</a></li>
+<li class="toc-entry toc-h2"><a href="#configuring-openid-connect-authentication">Configuring OpenID-Connect Authentication</a></li>
+<li class="toc-entry toc-h2"><a href="#configuring-openid-connect-with-a-ca-certificate">Configuring OpenID-Connect with a CA Certificate</a></li>
+<li class="toc-entry toc-h2">
+<a href="#using-your-own-images">Using your own images</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#installing-vmware-vddk-on-containers">Installing VMware VDDK on containers</a></li>
+<li class="toc-entry toc-h3"><a href="#installing-vmware-webmks-on-containers">Installing VMware WebMKS on containers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#uninstalling">Uninstalling</a></li>
+<li class="toc-entry toc-h1">
+<a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li class="toc-entry toc-h2">
+<a href="#check-readiness-of-the-pods">Check readiness of the pods</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#obtain-host-information-from-ingressroute">Obtain host information from ingress/route</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#get-a-shell-on-the-miq-pod">Get a shell on the MIQ pod</a></li>
+<li class="toc-entry toc-h2"><a href="#allow-dockeriomanageiq-images-in-kubernetes">Allow docker.io/manageiq images in kubernetes</a></li>
+<li class="toc-entry toc-h2">
+<a href="#migrating-from-kubernetes-to-appliances">Migrating from Kubernetes to Appliances</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#prerequisites">Prerequisites</a></li>
+<li class="toc-entry toc-h3"><a href="#collect-data-from-the-kubernetes-environment">Collect data from the Kubernetes environment</a></li>
+<li class="toc-entry toc-h3"><a href="#configure-the-appliance">Configure the appliance</a></li>
+<li class="toc-entry toc-h3"><a href="#followup">Followup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="installing-on-kubernetes--openshift">
+<a class="anchor" href="#installing-on-kubernetes--openshift" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing on Kubernetes / Openshift</h1>
+
+<h2 id="preparing-the-kubernetes-namespace">
+<a class="anchor" href="#preparing-the-kubernetes-namespace" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparing the Kubernetes namespace</h2>
+<p>Prerequisite:
+If you are using OpenShift, our operator will leverage the OpenShift catalog to install Strimzi for you automatically.
+If not running on OpenShift, manual installation of Strimzi Kafka is required. <a href="https://strimzi.io/">Strimzi</a> installation steps can be found <a href="https://strimzi.io/docs/operators/latest/deploying#deploy-tasks_str">here</a>. Only the Strimzi cluster operator needs to be deployed, our operator will then make the necessary requests for the resources needed from Strimzi.</p>
+
+<p>The operator directory referenced below can be found <a href="https://github.com/ManageIQ/manageiq-pods/tree/master/manageiq-operator">here</a></p>
+
+<ol>
+  <li>
+    <p>Search for the Custom Resource Definition (CRD) and create it if it doesn’t already exist.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc get crds | <span class="nb">grep </span>manageiqs.manageiq.org
+<span class="nv">$ </span>oc create <span class="nt">-f</span> config/crd/bases/manageiq.org_manageiqs.yaml
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create your namespace</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># Openshift:</span>
+<span class="nv">$ </span>oc new-project your-project
+<span class="c"># --- OR ---</span>
+<span class="c"># Kubernetes:</span>
+<span class="nv">$ </span>kubectl create namespace your-project
+<span class="nv">$ </span>kubectl config set-context <span class="nt">--current</span> <span class="nt">--namespace</span><span class="o">=</span>&lt;your project&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Set up RBAC.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create <span class="nt">-f</span> config/rbac/role.yaml
+<span class="nv">$ </span>oc create <span class="nt">-f</span> config/rbac/role_binding.yaml
+<span class="nv">$ </span>oc create <span class="nt">-f</span> config/rbac/service_account.yaml
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Deploy the operator in your namespace.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create <span class="nt">-f</span> config/manager/manager.yaml
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="new-installation">
+<a class="anchor" href="#new-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>New Installation</h2>
+
+<h3 id="create-the-custom-resource">
+<a class="anchor" href="#create-the-custom-resource" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create the Custom Resource</h3>
+
+<p>Make any necessary changes (i.e applicationDomain) that apply to your environment then create the CR (Custom Resource).
+The operator will take action to deploy the application based on the information in the CR.
+It may take several minutes for the database to be initialized and the workers to enter a ready state.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create <span class="nt">-f</span> config/samples/_v1alpha1_manageiq.yaml
+</code></pre></div></div>
+
+<h3 id="logging-in">
+<a class="anchor" href="#logging-in" aria-hidden="true"><span class="octicon octicon-link"></span></a>Logging In</h3>
+
+<p>If using internal authentication, you can now login to the MIQ web interface using the default username and password (<code class="language-plaintext highlighter-rouge">admin</code>/<code class="language-plaintext highlighter-rouge">smartvm</code>).
+If using external authentication, you can now login as a user that is a member of the <code class="language-plaintext highlighter-rouge">initialAdminGroupName</code> specified in the CR.</p>
+
+<h2 id="migrating-from-appliances">
+<a class="anchor" href="#migrating-from-appliances" aria-hidden="true"><span class="octicon octicon-link"></span></a>Migrating from Appliances</h2>
+
+<h3 id="notes">
+<a class="anchor" href="#notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes</h3>
+
+<ul>
+  <li>
+    <p>Multi-server / multi-zone:
+Current architecture in podified limits us to running a single server and zone in a Kubernetes namespace.
+Therefore, when migrating from a multi-appliance and/or multi-zone appliance architecture, you will need to choose a single server to assume the identity of.
+This server should have the UI and web service roles enabled before taking the database backup to ensure that those workers will start when deployed in the podified environment.
+All desired roles and settings will need to be configured on this server.</p>
+  </li>
+  <li>
+    <p>Multi-region:
+Multi-region deployments are slightly more complicated in a podified environment since postgres isn’t as easily exposed outside the project / cluster.
+If all of the region databases are running outside of the cluster or all of the remote region databases are running outside of the cluster and the global database is in the cluster, everything is configured in the same way as appliances.
+If the global region database is migrated from an appliance to a pod, the replication subscriptions will need to be recreated.
+If any of the remote region databases are running in the cluster, the <code class="language-plaintext highlighter-rouge">postgresql</code> service for those databases will need to be exposed using a <a href="https://kubernetes.io/docs/concepts/services-networking/service/#nodeport">node port</a>.
+To publish the postgresql service on a node port, patch the service using <code class="language-plaintext highlighter-rouge">$ kubectl patch service/postgresql --patch '{"spec": {"type": "NodePort"}}'</code>.
+Now you will see the node port listed (31871 in this example) as well as the internal service port (5432).  This node port can be used along with the IP address of any node in the cluster to access the postgresql service.</p>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc get service/postgresql
+NAME         TYPE       CLUSTER-IP   EXTERNAL-IP   PORT<span class="o">(</span>S<span class="o">)</span>          AGE
+postgresql   NodePort   192.0.2.1    &lt;none&gt;        5432:31871/TCP   2m
+</code></pre></div></div>
+
+<h3 id="collect-data-from-the-appliance">
+<a class="anchor" href="#collect-data-from-the-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collect data from the appliance</h3>
+<ol>
+  <li>
+    <p>Take a backup of the database</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pg_dump <span class="nt">-Fc</span> <span class="nt">-d</span> vmdb_production <span class="o">&gt;</span> /root/pg_dump
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Export the encryption key and Base64 encode it for the Kubernetes Secret.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vmdb <span class="o">&amp;&amp;</span> rails r <span class="s2">"puts Base64.encode64(ManageIQ::Password.key.to_s)"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Get the region number</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vmdb <span class="o">&amp;&amp;</span> rails r <span class="s2">"puts MiqRegion.my_region.region"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Get the GUID of the server that you want to run as.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vmdb <span class="o">&amp;&amp;</span> <span class="nb">cat </span>GUID
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="restore-the-backup-into-the-kubernetes-environment">
+<a class="anchor" href="#restore-the-backup-into-the-kubernetes-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Restore the backup into the kubernetes environment</h3>
+<ol>
+  <li>
+    <p>Create a YAML file defining the Custom Resource (CR). Minimally you’ll need the following:</p>
+
+    <div class="language-yaml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">manageiq.org/v1alpha1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">ManageIQ</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">&lt;friendly name for you CR instance&gt;</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">applicationDomain</span><span class="pi">:</span> <span class="s">&lt;your application domain name&gt;</span>
+  <span class="na">databaseRegion</span><span class="pi">:</span> <span class="s">&lt;region number from the appliance above&gt;</span>
+  <span class="na">serverGuid</span><span class="pi">:</span> <span class="s">&lt;GUID value from appliance above&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create the CR in your namespace. Once created, the operator will create several additional resources and start deploying the app.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create <span class="nt">-f</span> &lt;file name from above&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Edit the app secret inserting the encryption key from the appliance. Replace the “encryption-key” value with the value we exported from the appliance above.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc edit secret app-secrets
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Temporarily hijack the orchestrator by adding the following to the deployment:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl patch deployment orchestrator <span class="nt">-p</span> <span class="s1">'{"spec":{"template":{"spec":{"containers":[{"name":"orchestrator","command":["sleep", "1d"]}]}}}}'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Shell into the orchestrator container:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc rsh deploy/orchestrator
+
+<span class="nv">$ </span><span class="nb">cd</span> /var/www/miq/vmdb
+<span class="nv">$ </span><span class="nb">source</span> ./container_env
+<span class="nv">$ DISABLE_DATABASE_ENVIRONMENT_CHECK</span><span class="o">=</span>1 rake db:drop db:create
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">oc rsh</code> into the database pod and restore the database backup</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /var/lib/pgsql
+<span class="c"># --- download your backup here ---</span>
+<span class="nv">$ </span>pg_restore <span class="nt">-v</span> <span class="nt">-d</span> vmdb_production &lt;your_backup_file&gt;
+<span class="nv">$ </span><span class="nb">rm</span> <span class="nt">-f</span> &lt;your_backup_file&gt;
+<span class="nv">$ </span><span class="nb">exit</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Back in orchestrator pod from step 5:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rake db:migrate
+<span class="nv">$ </span><span class="nb">exit</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Delete the orchestrator deployment to remove the command override that we added above:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl delete deployment orchestrator
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Done! The orchestrator will start deploying the rest of the pods required to run the application.</p>
+
+<h1 id="customizing-the-installation">
+<a class="anchor" href="#customizing-the-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customizing the Installation</h1>
+
+<h2 id="configuring-the-application-domain-name">
+<a class="anchor" href="#configuring-the-application-domain-name" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring the application domain name</h2>
+
+<p>It is necessary to set the <code class="language-plaintext highlighter-rouge">applicationDomain</code> in the CR if you are running in a production cluster.  For a Code Ready Containers cluster it should be something like <code class="language-plaintext highlighter-rouge">miqproject.apps-crc.testing</code></p>
+
+<h2 id="external-postgresql">
+<a class="anchor" href="#external-postgresql" aria-hidden="true"><span class="octicon octicon-link"></span></a>External postgresql</h2>
+
+<p>Running with an external Postgres server is an option, if you want the default internal Postgres you can skip this step. Additionally, if you want to secure the connection, you need to include the optional parameters <code class="language-plaintext highlighter-rouge">sslmode=verify-full</code> and <code class="language-plaintext highlighter-rouge">rootcertificate</code> when you create the secret. To do this, manually create the secret and substitute your values before you create the CR.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create secret generic postgresql-secrets <span class="se">\</span>
+  <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">dbname</span><span class="o">=</span>vmdb_production <span class="se">\</span>
+  <span class="nt">--from-literal</span><span class="o">=</span><span class="nb">hostname</span><span class="o">=</span>&lt;your <span class="nb">hostname</span><span class="o">&gt;</span> <span class="se">\</span>
+  <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">port</span><span class="o">=</span>5432 <span class="se">\</span>
+  <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">password</span><span class="o">=</span>&lt;your password&gt; <span class="se">\</span>
+  <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">username</span><span class="o">=</span>&lt;your username&gt; <span class="se">\</span>
+  <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">sslmode</span><span class="o">=</span>verify-full <span class="se">\ </span><span class="c"># optional</span>
+  <span class="nt">--from-file</span><span class="o">=</span><span class="nv">rootcertificate</span><span class="o">=</span>path/to/optional/certificate.pem <span class="c"># optional</span>
+</code></pre></div></div>
+
+<p>Note: If wanted, the secret name is also customizable by setting <code class="language-plaintext highlighter-rouge">databaseSecret</code> in the CR.</p>
+
+<h2 id="using-tls-to-encrypt-connections-between-pods-inside-the-cluster">
+<a class="anchor" href="#using-tls-to-encrypt-connections-between-pods-inside-the-cluster" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using TLS to encrypt connections between pods inside the cluster:</h2>
+
+<h3 id="create-a-secret-containing-all-of-the-certificates">
+<a class="anchor" href="#create-a-secret-containing-all-of-the-certificates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a secret containing all of the certificates</h3>
+<p>The certificates should all be signed by a CA and that CA certificate should be in uploaded as <code class="language-plaintext highlighter-rouge">root_crt</code> so that it can be used to verify connection validity.  If the secret is named <code class="language-plaintext highlighter-rouge">internal-certificates-secret</code>, no changes are needed in the CR, if you choose a different name, that should be set in the <code class="language-plaintext highlighter-rouge">internalCertificatesSecret</code> field of the CR.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    oc create secret generic internal-certificates-secret <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">root_crt</span><span class="o">=</span>./certs/root.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">root_key</span><span class="o">=</span>./certs/root.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">httpd_crt</span><span class="o">=</span>./certs/httpd.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">httpd_key</span><span class="o">=</span>./certs/httpd.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">kafka_crt</span><span class="o">=</span>./certs/kafka.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">kafka_key</span><span class="o">=</span>./certs/kafka.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">memcached_crt</span><span class="o">=</span>./certs/memcached.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">memcached_key</span><span class="o">=</span>./certs/memcached.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">postgresql_crt</span><span class="o">=</span>./certs/postgresql.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">postgresql_key</span><span class="o">=</span>./certs/postgresql.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">api_crt</span><span class="o">=</span>./certs/api.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">api_key</span><span class="o">=</span>./certs/api.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">remote_console_crt</span><span class="o">=</span>./certs/remote-console.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">remote_console_key</span><span class="o">=</span>./certs/remote-console.key <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">ui_crt</span><span class="o">=</span>./certs/ui.crt <span class="se">\</span>
+      <span class="nt">--from-file</span><span class="o">=</span><span class="nv">ui_key</span><span class="o">=</span>./certs/ui.key
+</code></pre></div></div>
+
+<h3 id="generating-certificates">
+<a class="anchor" href="#generating-certificates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generating certificates:</h3>
+<p>We need a CA and certificates for each service.  The certificates need to be valid for the internal kubernetes service name (i.e. httpd, postgres, etc.) and the services that are backing the route (ui &amp; api) also need the certificate to include a SAN with the application domain name.  For example, the certificate for the UI needs to be valid for the hostname <code class="language-plaintext highlighter-rouge">ui</code> and also <code class="language-plaintext highlighter-rouge">your_application.apps.example.com</code>.
+If you want a script that will generate these certificates for you, see: https://github.com/ManageIQ/manageiq-pods/blob/master/tools/cert_generator.rb</p>
+
+<h2 id="configuring-external-messaging">
+<a class="anchor" href="#configuring-external-messaging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring external messaging</h2>
+
+<p>It is possible to run with an external Kafka messaging server. To do this, create the required secret with the correct parameters using the folowing example and provide that secret name as <code class="language-plaintext highlighter-rouge">kafkaSecret</code> in the CR.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl create secret generic kafka-secrets <span class="nt">--from-literal</span><span class="o">=</span><span class="nb">hostname</span><span class="o">=</span>&lt;your fqdn&gt; <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">username</span><span class="o">=</span>&lt;your username&gt; <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">password</span><span class="o">=</span>&lt;your password&gt;
+</code></pre></div></div>
+
+<p>If you decide to use a secret name other than <code class="language-plaintext highlighter-rouge">kafka-secrets</code>, you need to specify that in the CR.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kafkaSecret</span><span class="pi">:</span> <span class="s">&lt;name of your secret&gt;</span>
+</code></pre></div></div>
+
+<h2 id="creating-a-custom-tls-secret">
+<a class="anchor" href="#creating-a-custom-tls-secret" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a custom TLS secret</h2>
+
+<p>It is possible to run with a custom TLS certificate. To do this, create the required secret with the correct parameters using the folowing example and provide that secret name as <code class="language-plaintext highlighter-rouge">tlsSecret</code> in the CR.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create secret tls tls-secret <span class="nt">--cert</span><span class="o">=</span>tls.crt <span class="nt">--key</span><span class="o">=</span>tls.key<span class="sb">`</span>
+</code></pre></div></div>
+
+<p>If you decide to use a secret name other than <code class="language-plaintext highlighter-rouge">tls-secret</code>, you need to specify that in the CR.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">tlsSecret</span><span class="pi">:</span> <span class="s">&lt;name of your tls secret&gt;</span>
+</code></pre></div></div>
+
+<h2 id="configuring-an-image-pull-secret">
+<a class="anchor" href="#configuring-an-image-pull-secret" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring an image pull secret</h2>
+
+<p>If authentication is required in order to pull the images, a secret containing the credentials needs to be created.  The following is an example of creating the secret.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl create secret docker-registry image-pull-secret <span class="nt">--docker-username</span><span class="o">=</span>&lt;your registry username&gt; <span class="nt">--docker-password</span><span class="o">=</span>&lt;your registry password&gt; <span class="nt">--docker-server</span><span class="o">=</span>&lt;your registry server&gt;
+</code></pre></div></div>
+
+<p>If you decide to use a secret name other than <code class="language-plaintext highlighter-rouge">image-pull-secret</code>, you need to specify that in the CR.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">imagePullSecret</span><span class="pi">:</span> <span class="s">&lt;name of your pull secret&gt;</span>
+</code></pre></div></div>
+
+<h2 id="configuring-openid-connect-authentication">
+<a class="anchor" href="#configuring-openid-connect-authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring OpenID-Connect Authentication</h2>
+
+<p>To run with OpenID-Connect Authentication, customize the following example as required to fit your environment.
+For this example we tested with Keycloak version 11.0</p>
+
+<p>Create a secret containing the OpenID-Connect’s <code class="language-plaintext highlighter-rouge">Client ID</code> and <code class="language-plaintext highlighter-rouge">Client Secret</code>.
+The values for <code class="language-plaintext highlighter-rouge">CLIENT_ID</code> and <code class="language-plaintext highlighter-rouge">CLIENT_SECRET</code> come from your authentication provider’s client definition.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create secret generic &lt;name of your kubernetes secret&gt; <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">CLIENT_ID</span><span class="o">=</span>&lt;your auth provider client ID&gt; <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">CLIENT_SECRET</span><span class="o">=</span>&lt;your auth provider client secret&gt;
+</code></pre></div></div>
+
+<p>Modify the CR with the following values:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">httpdAuthenticationType</span><span class="pi">:</span> <span class="s">openid-connect</span>
+<span class="na">oidcProviderURL</span><span class="pi">:</span> <span class="s">https://&lt;your keycloak FQDN&gt;/auth/realms/&lt;your realm&gt;/.well-known/openid-configuration</span>
+<span class="na">oidcClientSecret</span><span class="pi">:</span> <span class="s">&lt;name of your kubernetes secret&gt;</span>
+</code></pre></div></div>
+
+<h2 id="configuring-openid-connect-with-a-ca-certificate">
+<a class="anchor" href="#configuring-openid-connect-with-a-ca-certificate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring OpenID-Connect with a CA Certificate</h2>
+
+<p>To configure OpenID-Connect with a CA certificate follow these steps:</p>
+
+<p>Acquire the CA certificate (precisely how to obtain the CA certificate is beyond the scope of this document) and store it in a secret using the following example.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc create secret generic &lt;name of your kubernetes OIDC CA cert&gt; <span class="nt">--from-file</span><span class="o">=</span>&lt;path to your OIDC CA cert file&gt;
+</code></pre></div></div>
+
+<p>Modify the CR to identify the secret just created.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">oidcCaCertSecret</span><span class="pi">:</span> <span class="s">&lt;name of your kubernetes OIDC CA cert&gt;</span>
+</code></pre></div></div>
+
+<h2 id="using-your-own-images">
+<a class="anchor" href="#using-your-own-images" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using your own images</h2>
+
+<p>If you built your own custom application images and want to deploy those you can specify the image names in the CR using the following example.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">applicationDomain</span><span class="pi">:</span> <span class="s">miqproject.apps-crc.testing</span>
+<span class="na">baseWorkerImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-base-worker:latest</span>
+<span class="na">httpdImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-httpd:latest</span>
+<span class="na">memcachedImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-memcached:latest</span>
+<span class="na">opentofuRunnerImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-opentofurunner:latest</span>
+<span class="na">orchestratorImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-orchestrator:latest</span>
+<span class="na">postgresqlImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-postgresql:latest</span>
+<span class="na">uiWorkerImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-ui-worker:latest</span>
+<span class="na">webserverWorkerImage</span><span class="pi">:</span> <span class="s">docker.io/&lt;your_username_or_organization&gt;/&lt;your_prefix&gt;-webserver-worker:latest</span>
+</code></pre></div></div>
+
+<p>If you built your own operator image, you’ll need to edit the operator deployment to specify that.</p>
+
+<h3 id="installing-vmware-vddk-on-containers">
+<a class="anchor" href="#installing-vmware-vddk-on-containers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing VMware VDDK on containers</h3>
+
+<p>Execution of SmartState Analysis on virtual machines within a VMware environment requires the Virtual Disk Development Kit (VDDK) to be installed.</p>
+
+<p>To install the VDDK on containers we can take an existing container and create another layer on top of it.  Once built, this image will need to be pushed to a registry and the CR updated to reflect that.</p>
+
+<ol>
+  <li>
+    <p>Download the required VDDK version (<code class="language-plaintext highlighter-rouge">VMware-vix-disklib-[version].x86_64.tar.gz</code>) from the VMware website.</p>
+
+    <p><strong>Note:</strong></p>
+
+    <ul>
+      <li>
+        <p>If you do not already have a login ID to VMware, then you will
+need to create one. At the time of this writing, the file can be
+found by navigating to <strong>Downloads &gt; vSphere</strong>. Select the
+version from the drop-down list, then click the <strong>Drivers &amp;
+Tools</strong> tab. Expand <strong>Automation Tools and SDKs</strong>, and click
+<strong>Go to Downloads</strong> next to the <strong>VMware vSphere Virtual Disk
+Development Kit</strong> version. Alternatively, find the file by
+searching for it using the <strong>Search</strong> on the VMware site.</p>
+      </li>
+      <li>
+        <p>See VMware documentation for information about their policy
+concerning backward and forward compatibility for VDDK.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Set up a temporary directory where we will build the image</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> /tmp/vddk_container/container-assets
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Copy the tar file into the container-assets directory.  For example,</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> ~/Downloads/VMware-vix-disklib-<span class="k">*</span>.tar.gz /tmp/vddk_container/container-assets
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add the following Dockerfile as <code class="language-plaintext highlighter-rouge">/tmp/vddk_container/Dockerfile</code> and substitute the second <code class="language-plaintext highlighter-rouge">FROM</code> based on the image and version that you’re running.</p>
+
+    <div class="language-dockerfile highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="w"> </span><span class="s">registry.access.redhat.com/ubi8/ubi</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">vddk</span>
+
+<span class="k">COPY</span><span class="s"> container-assets/ /vddk/</span>
+
+<span class="k">RUN </span><span class="nb">cd</span> /vddk <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    <span class="nv">filename</span><span class="o">=</span><span class="si">$(</span>find <span class="nb">.</span> <span class="nt">-name</span> VMware-<span class="k">*</span><span class="si">)</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    <span class="k">if</span> <span class="o">[[</span> <span class="nt">-f</span> <span class="nv">$filename</span> <span class="o">]]</span> <span class="p">;</span> <span class="k">then </span><span class="nb">tar</span> <span class="nt">-zxvf</span> VMware-<span class="k">*</span> <span class="p">;</span> <span class="k">fi</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    <span class="nb">mkdir</span> <span class="nt">-p</span> vmware-vix-disklib-distrib <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    <span class="nb">touch</span> /vddk/vmware-vix-disklib-distrib/.keep
+
+<span class="c">################################################################################</span>
+
+<span class="c">### IMPORTANT: Modify the following image and tag as necessary to reflect the version that you're running</span>
+<span class="k">FROM</span><span class="s"> your_registry.example.com/namespace/manageiq-base-worker:latest</span>
+
+<span class="k">COPY</span><span class="s"> --from=vddk /vddk/vmware-vix-disklib-distrib/ /usr/lib/vmware-vix-disklib/</span>
+
+<span class="k">RUN </span>/tmp/install-vmware-vddk
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Build the image and tag it appropriately for your registry, then push it to the registry.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /tmp/vddk_container/
+<span class="nv">$ </span>docker build <span class="nb">.</span> <span class="nt">-t</span> your_registry.example.com/namespace/manageiq-base-worker:latest_vddk
+<span class="nv">$ </span>docker push your_registry.example.com/namespace/manageiq-base-worker:latest_vddk
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Update the CR to use the base worker image you just pushed to the registry.</p>
+
+    <div class="language-yaml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="na">baseWorkerImage</span><span class="pi">:</span> <span class="s">your_registry.example.com/namespace/manageiq-base-worker:latest_vddk</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>The operator will now update the orchestrator and worker deployments to reflect this change.</p>
+
+<h3 id="installing-vmware-webmks-on-containers">
+<a class="anchor" href="#installing-vmware-webmks-on-containers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing VMware WebMKS on containers</h3>
+
+<p>VMware vSphere Virtual Machine Remote console access requires the installation of the VMware WebMKS SDK.
+Due to license restrictions this SDK cannot be built in to ManageIQ</p>
+
+<p>To install the WebMKS SDK on containers we can take an existing container and create another layer on top of it.  Once built, this image will need to be pushed to a registry and the CR updated to reflect that.</p>
+
+<ol>
+  <li>
+    <p>Download the latest WebMKS version (e.g. <code class="language-plaintext highlighter-rouge">WebMKS_SDK_{version}.zip</code>) from the VMware website.</p>
+  </li>
+  <li>
+    <p>Set up a temporary directory where we will build the image</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> /tmp/webmks_container/container-assets
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Copy the tar file into the container-assets directory.  For example,</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>unzip ~/Downloads/WebMKS_SDK_<span class="k">*</span>.zip <span class="nt">-d</span> /tmp/webmks_container/container-assets
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add the following Dockerfile as <code class="language-plaintext highlighter-rouge">/tmp/webmks_container/Dockerfile</code> and substitute the second <code class="language-plaintext highlighter-rouge">FROM</code> based on the image and version that you’re running.</p>
+
+    <div class="language-dockerfile highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="w"> </span><span class="s">registry.access.redhat.com/ubi8/ubi</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">webmks</span>
+
+<span class="k">COPY</span><span class="s"> container-assets/ /webmks/</span>
+
+<span class="c">################################################################################</span>
+
+<span class="c">### IMPORTANT: Modify the following image and tag as necessary to reflect the version that you're running</span>
+<span class="k">FROM</span><span class="s"> your_registry.example.com/namespace/manageiq-ui-worker:latest</span>
+
+<span class="k">COPY</span><span class="s"> --from=webmks /webmks/ /var/www/miq/vmdb/public/webmks</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Build the image and tag it appropriately for your registry, then push it to the registry.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /tmp/webmks_container/
+<span class="nv">$ </span>docker build <span class="nb">.</span> <span class="nt">-t</span> your_registry.example.com/namespace/manageiq-ui-worker:latest_webmks
+<span class="nv">$ </span>docker push your_registry.example.com/namespace/manageiq-ui-worker:latest_webmks
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Update the CR to use the UI worker image you just pushed to the registry.</p>
+
+    <div class="language-yaml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="na">uiWorkerImage</span><span class="pi">:</span> <span class="s">your_registry.example.com/namespace/manageiq-ui-worker:latest_webmks</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>The operator will now update the orchestrator and worker deployments to reflect this change.</p>
+
+<h1 id="uninstalling">
+<a class="anchor" href="#uninstalling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uninstalling</h1>
+
+<ol>
+  <li>
+    <p>Remove the CR that was created in Step 6</p>
+
+    <p>WARNING: This includes Persistent Volume Claims and secrets, so all data stored by the application will be removed.
+The following command removes everything except for the operator:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc delete <span class="nt">-f</span> config/samples/_v1alpha1_manageiq.yaml
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Remove the Operator deployment</p>
+
+    <p>If you deployed the operator using Step 4 option 1 or 2, run the following to remove it:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc delete <span class="nt">-f</span> config/manager/manager.yaml
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Remove the RBAC that was added in Step 3</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc delete <span class="nt">-f</span> config/rbac/role.yaml
+<span class="nv">$ </span>oc delete <span class="nt">-f</span> config/rbac/role_binding.yaml
+<span class="nv">$ </span>oc delete <span class="nt">-f</span> config/rbac/service_account.yaml
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Remove the Namespace created in Step 2 if it is no longer needed (optional)</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc delete project your-project
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Remove the CRD (optional)</p>
+
+    <p>WARNING: Ensure that there are no other application instances in any other namespace in the cluster since this is a cluster-wide change.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc delete <span class="nt">-f</span> config/crd/bases/manageiq.org_manageiqs.yaml
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="troubleshooting">
+<a class="anchor" href="#troubleshooting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Troubleshooting</h1>
+
+<h2 id="check-readiness-of-the-pods">
+<a class="anchor" href="#check-readiness-of-the-pods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Check readiness of the pods</h2>
+
+<p><strong>Note:</strong> Please allow a few minutes for the application to start.  Initial install and upgrades take extra time due to database initialization.  HTTPS traffic will not be served until pods are running and ready.  The READY column denotes the number of replicas and their readiness state.  The operator deploys the following pods:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc get pods
+NAME                                     READY     STATUS    RESTARTS   AGE
+httpd-754985464b-4dzzx                   1/1       Running   0          37s
+orchestrator-5997776478-vx4v9            1/1       Running   0          37s
+memcached-696479b955-67fs6               1/1       Running   0          37s
+postgresql-5f954fdbd5-tnlmf              1/1       Running   0          37s
+</code></pre></div></div>
+
+<p>The orchestrator waits for memcached and postgresql to be ready, migrates and seeds the database, then it will begin to start worker pods.
+After a few minutes you can see the initial set of worker pods has been deployed and the user interface should be accessible.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc get pods
+NAME                                     READY     STATUS    RESTARTS   AGE
+event-handler-747574c54c-xpcvf           1/1       Running   0          32m
+generic-55cc84f79d-gwf5v                 1/1       Running   0          32m
+generic-55cc84f79d-w4vzs                 1/1       Running   0          32m
+httpd-754985464b-4dzzx                   1/1       Running   0          37m
+orchestrator-5997776478-vx4v9            1/1       Running   0          37m
+memcached-696479b955-67fs6               1/1       Running   0          37m
+postgresql-5f954fdbd5-tnlmf              1/1       Running   0          37m
+priority-7b6666cdcd-5hkkm                1/1       Running   0          32m
+priority-7b6666cdcd-rcf7l                1/1       Running   0          32m
+remote-console-6958c4cc7b-5kmmj          1/1       Running   0          32m
+reporting-85c8488848-p5fb6               1/1       Running   0          32m
+reporting-85c8488848-z7kjp               1/1       Running   0          32m
+schedule-6fd7bc5688-ptsxp                1/1       Running   0          32m
+ui-5b8c86f6f9-jhd9w                      1/1       Running   0          32m
+web-service-858f55f55d-5tmcr             1/1       Running   0          32m
+</code></pre></div></div>
+
+<p>Under normal circumstances the entire first time deployment process should take around ~10 minutes.  Any issues can be seen by examining the deployment events and pod logs.  The time can vary significantly based on performance of the environment, however, subsequent boots should be much faster.  Version upgrades can also be time consuming depending on the size of the database and the number and difficulty of migrations that need to be applied.  Progress can be monitored in the orchestrator logs.</p>
+
+<h3 id="obtain-host-information-from-ingressroute">
+<a class="anchor" href="#obtain-host-information-from-ingressroute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Obtain host information from ingress/route</h3>
+
+<p>An ingress should have been deployed.  If enabling internal SSL and running in OpenShift, a route is created.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc get ingress
+NAME      HOSTS                              ADDRESS   PORTS     AGE
+httpd     my-app.apps.example.com                     80, 443   56s
+<span class="nv">$ </span>oc get routes
+NAME          HOST/PORT                          PATH      SERVICES   PORT      TERMINATION     WILDCARD
+httpd-qlvmj   my-app.apps.example.com           /         httpd      80        edge/Redirect   None
+</code></pre></div></div>
+
+<p>Examine output and point your web browser to the reported URL/HOST.</p>
+
+<h2 id="get-a-shell-on-the-miq-pod">
+<a class="anchor" href="#get-a-shell-on-the-miq-pod" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get a shell on the MIQ pod</h2>
+
+<p>On the application pods, source the <code class="language-plaintext highlighter-rouge">container_env</code> before attempting any <code class="language-plaintext highlighter-rouge">rails</code> or <code class="language-plaintext highlighter-rouge">rake</code> commands.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc rsh orchestrator-78786d6b44-gcqdq
+sh-4.4<span class="nv">$ </span><span class="nb">cd</span> /var/www/miq/vmdb/
+sh-4.4<span class="nv">$ </span><span class="nb">source</span> ./container_env
+</code></pre></div></div>
+
+<h2 id="allow-dockeriomanageiq-images-in-kubernetes">
+<a class="anchor" href="#allow-dockeriomanageiq-images-in-kubernetes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Allow docker.io/manageiq images in kubernetes</h2>
+
+<p>Depending on your cluster’s configuration, kubernetes may not allow deployment of images from <code class="language-plaintext highlighter-rouge">docker.io/manageiq</code>.  If so, deploying the operator may raise an error:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error from server: error when creating "deploy/operator.yaml": admission webhook "trust.hooks.securityenforcement.admission.xxx" denied the request:
+Deny "docker.io/manageiq/manageiq-operator:latest", no matching repositories in ClusterImagePolicy and no ImagePolicies in the "YYY" namespace
+</code></pre></div></div>
+
+<p>To allow images from <code class="language-plaintext highlighter-rouge">docker.io/manageiq</code>, edit the clusterimagepolicies and add <code class="language-plaintext highlighter-rouge">docker.io/manageiq/*</code> to the list of allowed repositories:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl edit clusterimagepolicies <span class="si">$(</span>kubectl get clusterimagepolicies <span class="nt">--no-headers</span> | <span class="nb">awk</span> ‘<span class="o">{</span>print <span class="nv">$1</span><span class="o">}</span>’<span class="si">)</span>
+</code></pre></div></div>
+
+<p>For example:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">...</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">repositories</span><span class="pi">:</span>
+  <span class="s">...</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">docker.io/icpdashdb/*</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">docker.io/istio/proxyv2:*</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">docker.io/library/busybox:*</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">docker.io/manageiq/*</span>
+  <span class="s">...</span>
+</code></pre></div></div>
+
+<p>After saving this change, <code class="language-plaintext highlighter-rouge">docker.io/manageiq</code> image deployment should now be allowed.</p>
+
+<h2 id="migrating-from-kubernetes-to-appliances">
+<a class="anchor" href="#migrating-from-kubernetes-to-appliances" aria-hidden="true"><span class="octicon octicon-link"></span></a>Migrating from Kubernetes to Appliances</h2>
+
+<h3 id="prerequisites">
+<a class="anchor" href="#prerequisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prerequisites</h3>
+<ol>
+  <li>
+    <p>Deploy an appliance with a database disk.  It is recommended that the appliance being deployed is the same code version as the kubernetes environment.</p>
+  </li>
+  <li>
+    <p>Configure the hostname and ip address on the appliance.</p>
+  </li>
+</ol>
+
+<h3 id="collect-data-from-the-kubernetes-environment">
+<a class="anchor" href="#collect-data-from-the-kubernetes-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collect data from the Kubernetes environment</h3>
+<ol>
+  <li>Disable the running environment to prepare for migration
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc patch deployment orchestrator <span class="nt">-p</span> <span class="s1">'{"spec":{"template":{"spec":{"containers":[{"name":"orchestrator","args": ["-c", "sleep 1d"], "command":["/bin/sh"]}]}}}}'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Take a backup of the database
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># Check for enough free disk space</span>
+<span class="nv">$ </span>psql <span class="nt">-d</span> vmdb_production <span class="nt">-c</span> <span class="s2">"SELECT pg_size_pretty(pg_database_size('vmdb_production'));"</span>
+<span class="nv">$ </span>pg_dump <span class="nt">-Fc</span> <span class="nt">-d</span> vmdb_production <span class="o">&gt;</span> /var/lib/pgsql/data/postgres.dump
+<span class="c"># Copy the database backup to the appliance (usually under /tmp/ or somewhere that has enough space)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Extract the database password, encryption key, server GUID and region number
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc rsh deploy/orchestrator
+sh-5.1<span class="nv">$ </span><span class="nb">cd</span> /var/www/miq/vmdb/
+sh-5.1<span class="nv">$ </span><span class="nb">source</span> ./container_env
+
+<span class="c"># Extract the database password from the database config file</span>
+sh-5.1<span class="nv">$ </span><span class="nb">cat </span>config/database.yml
+<span class="nt">---</span>
+production:
+  adapter: postgresql
+  username: root
+  password: xxxxxxxxxxxxxxxx
+  host: postgresql
+...
+
+<span class="c"># Extract the encryption key</span>
+sh-5.1<span class="nv">$ </span><span class="nb">cat </span>certs/v2_key
+<span class="nt">---</span>
+:algorithm: aes-256-cbc
+:key: xxxxxxxxxlKmYTe4FijZ6TNrvZq/vg+0BUasCWTSf08<span class="o">=</span>
+
+<span class="c"># Extract the server GUID</span>
+sh-5.1<span class="nv">$ </span><span class="nb">cat </span>GUID
+xxxxxxxx-xxxx-4f37-b1d3-03c3231689ed
+
+<span class="c"># sh-5.1$ echo $DATABASE_REGION</span>
+0
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="configure-the-appliance">
+<a class="anchor" href="#configure-the-appliance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure the appliance</h3>
+<ol>
+  <li>Create the encryption key
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># Use vi or nano to create the v2_key file with the content extracted from the orchestrator pod above</span>
+vi /var/www/miq/vmdb/certs/v2_key
+<span class="nb">chmod </span>400 /var/www/miq/vmdb/certs/v2_key
+<span class="nb">chown </span>manageiq:manageiq /var/www/miq/vmdb/certs/v2_key
+</code></pre></div>    </div>
+  </li>
+  <li>Create the GUID file
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># Use vi or nano to create the GUID file with the content extracted from the orchestrator pod above</span>
+vi /var/www/miq/vmdb/GUID
+<span class="nb">chmod </span>644 /var/www/miq/vmdb/GUID
+<span class="nb">chown </span>root:root /var/www/miq/vmdb/GUID
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the <code class="language-plaintext highlighter-rouge">appliance_console</code> to configure the appliance
+a. Select “Configure Application”
+b. Select “1) Create Internal Database” to create a new database.
+c. Select “3) Make No messaging changes” to skip messaging configuration for now.
+d. Choose the database disk
+e. Choose whether this will be a standalone database server
+f. Enter the region number
+g. Enter the database password from the kubernetes environment</p>
+  </li>
+  <li>
+    <p>Restore the database from the backup from the <code class="language-plaintext highlighter-rouge">appliance_console</code>
+a. Select “Restore Database From Backup”
+b. Enter the full path to the database backup file.  i.e. /tmp/postgres.dump
+c. Choose whether you would like to delete the dump file after the database is restored
+d. Confirm that you would like to restore the database.</p>
+  </li>
+  <li>Configure messaging through the <code class="language-plaintext highlighter-rouge">appliance_console</code>
+a. Select “Configure Application”
+b. Select “5) Make No Database Changes”
+c. Select “1) Configure this appliance as a messaging server”
+d. When prompted, Yes, you want to unconfigure messaging first.
+e. Enter the hostname, username, password and whether you would like to configure another disk for the messaging service</li>
+</ol>
+
+<h3 id="followup">
+<a class="anchor" href="#followup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Followup</h3>
+<ol>
+  <li>Depending on the authentication configuration on the kubernetes environment, you may need to clear out authentication settings
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /var/www/miq/vmdb/
+bin/rails console
+<span class="c"># In the rails console:</span>
+SettingsChange.all.select <span class="o">{</span>|s| s.key.start_with?<span class="o">(</span><span class="s2">"/authentication"</span><span class="o">)}</span>.each <span class="o">{</span>|s| s.destroy<span class="o">}</span><span class="s1">'
+# When complete, `exit`
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li>
+    <a href="/download/">Download</a>
+  </li>
+  <li>
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li>
+    <a href="/community/">Community</a>
+  </li>
+  <li>
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa-solid theme-toggle" data-toggle-theme></button>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa-brands fa-github"></i>
+          GitHub
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa-brands fa-gitter"></i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/orgs/ManageIQ/discussions">
+          <i class="fa-solid fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        © 2026 ManageIQ.
+      </span>
+      <span>
+        <a href="https://www.ibm.com/opensource/" class="footer-link" target="_blank">
+          Sponsored by IBM, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://x.com/ManageIQ" title="X / Twitter" class="social_link">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://bsky.app/profile/manageiq.bsky.social" title="Bluesky" class="social_link">
+            <i class="fa-brands fa-bluesky"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://fosstodon.org/@manageiq" title="Mastodon" class="social_link">
+            <i class="fa-brands fa-mastodon"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" title="Facebook" class="social_link">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" title="LinkedIn" class="social_link">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" title="YouTube" class="social_link">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa-solid fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

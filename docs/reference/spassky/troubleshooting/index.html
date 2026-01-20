@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/troubleshooting/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa-solid theme-toggle" data-toggle-theme></button>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/spassky/troubleshooting/index">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li class="active">
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<div class="doc_menu-heading">
+  Spassky
+</div>
+
+<ul class="menu menu-toplevel" id=ref_menu_spassky>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Installing
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Containerized (podified)
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_kubernetes/index.html">
+      Kubernetes
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Appliance
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_aws/index.html">
+      Amazon Web Services (AWS)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_ibm_cloud/index.html">
+      IBM Cloud
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_microsoft_azure/index.html">
+      Microsoft Azure
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_google_compute_engine/index.html">
+      Google Compute Engine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_vmware_vsphere/index.html">
+      VMware vSphere
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_red_hat_enterprise_linux_openstack_platform/index.html">
+      Red Hat Enterprise OpenStack Platform
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_red_hat_virtualization/index.html">
+      Red Hat Enterprise Virtualization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_scvmm/index.html">
+      Microsoft System Center Virtual Machine Manager (SCVMM)
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Upgrading
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/appliances/upgrading.html">
+      Upgrading
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Using
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/general_configuration/index.html">
+      General Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_infrastructure_and_inventory/index.html">
+      Managing Infrastructure and Inventory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/index.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Infrastructure Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/red_hat_virtualization_providers.html">
+      Red Hat Virtualization Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/openstack_infrastructure_providers.html">
+      OpenStack Infrastructure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/vmware_vcenter_providers.html">
+      VMware vCenter Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/ibm_power_hmc_providers.html">
+      IBM Power HMC Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Configuration Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/configuration_management_providers/ibm_terraform_provider.html">
+      IBM Terraform Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/configuration_management_providers/red_hat_satellite_6.html">
+      Red Hat Satellite 6 Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/index.html#automation-management-providers">
+      Automation Management Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Cloud Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/amazon_ec2_providers.html">
+      Amazon EC2 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/azure_providers.html">
+      Azure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/google_compute_engine_providers.html">
+      Google Compute Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_cic_providers.html">
+      IBM CIC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_cloud_vpc_providers.html">
+      IBM Cloud VPC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_power_vc_providers.html">
+      IBM PowerVC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_power_systems_virtual_servers_providers.html">
+      IBM Power Systems Virtual Servers Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/openstack_providers.html">
+      OpenStack Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Container Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/azure_kubernetes_providers.html">
+      Azure Kubernetes Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/red_hat_openshift_providers.html">
+      Red Hat OpenShift Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/ibm_cloud_kubernetes_service_providers.html">
+      IBM Cloud Kubernetes Service Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/oracle_kubernetes_engine_providers.html">
+      Oracle Kubernetes Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/vmware_tanzu_providers.html">
+      VMware Tanzu Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Storage Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/amazon_ebs_managers.html">
+      Amazon Elastic Block Store Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/openstack_block_storage_managers.html">
+      OpenStack Block Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/openstack_object_storage_managers.html">
+      OpenStack Object Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/ibm_cloud_object_storage_managers.html">
+      IBM Cloud Object Storage Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/provisioning_virtual_machines_and_hosts/index.html">
+      Provisioning Virtual Machines and Hosts
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/creating_a_service_for_vm_provisioning/index.html">
+      Creating a Service for Virtual Machine Provisioning
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/service_provisioning_using_an_orchestration_template/index.html">
+      Service Provisioning Using an Orchestration Template
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing controls
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/monitoring_alerts_and_reporting/index.html">
+      Monitoring, Alerts, and Reporting
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/policies_and_profiles_guide/index.html">
+      Policies and Profiles Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/monitoring_alerts_and_reporting/index.html#chargeback">
+      Chargeback
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/assigning_custom_analysis_profile_to_vm/index.html">
+      Assigning a Custom Analysis Profile to a Virtual Machine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/scripting_actions/index.html">
+      Scripting Actions in ManageIQ
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Administering
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Authentication
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/active_directory.html">
+      Active Directory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/ipa_2fa.html">
+      2-Factor-Authentication with IPA
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/ipa_ad_trust.html">
+      IPA/AD Trust
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/ldap.html">
+      LDAP
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/saml.html">
+      SAML
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/openid_connect.html">
+      OpenID-Connect
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/appliances/backup_and_restore.html">
+      Backup and Restore (appliances)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/deployment_planning_guide/index.html">
+      Deployment Planning Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/high_availability_guide/index.html">
+      High Availability Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/appliance_hardening_guide/index.html">
+      Appliance Hardening Guide
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Managing Integrations
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+      AWS CloudFormation and OpenStack Heat
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/integration_with_servicenow/index.html">
+      ServiceNow
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      APIs
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/api">
+      ManageIQ REST API
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Reference
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/capabilities_matrix/index.html">
+      Capabilities Matrix
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/methods_available_for_automation/index.html">
+      Methods Available for Automation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Troubleshooting
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item active">
+    <a href="/docs/reference/spassky/troubleshooting/index.html">
+      Troubleshooting
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc user_doc">
+      
+
+      <div class="doc-content">
+        
+        <div class="doc-versions">
+          <span class="label">Versions: </span>
+          
+            <span>
+              <a href="/docs/reference/latest/troubleshooting/index.html">
+                Latest
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span class="active" >
+              <a href="/docs/reference/spassky/troubleshooting/index.html">
+                Spassky
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/radjabov/troubleshooting/index.html">
+                Radjabov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/quinteros/troubleshooting/index.html">
+                Quinteros
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/petrosian/troubleshooting/index.html">
+                Petrosian
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/oparin/troubleshooting/index.html">
+                Oparin
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Najdorf
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Morphy
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Lasker
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Kasparov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Jansa
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Ivanchuk
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Hammer
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Gaprindashvili
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Fine
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="">
+                Euwe
+              </a>
+            </span>
+            
+          
+        </div>
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#logging">Logging</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#appliance-logging">Appliance Logging</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#viewing-logs">Viewing Logs</a></li>
+<li class="toc-entry toc-h4"><a href="#collecting-logs">Collecting Logs</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#podified-logging">Podified Logging</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#providers">Providers</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#vmware-vcenter-provider">VMware vCenter Provider</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h1 id="troubleshooting">
+<a class="anchor" href="#troubleshooting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Troubleshooting</h1>
+
+<h2 id="logging">
+<a class="anchor" href="#logging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Logging</h2>
+
+<p>ManageIQ has extensive logging to assist in troubleshooting issues or just seeing what is being worked on.</p>
+
+<h3 id="appliance-logging">
+<a class="anchor" href="#appliance-logging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appliance Logging</h3>
+
+<h4 id="viewing-logs">
+<a class="anchor" href="#viewing-logs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Logs</h4>
+
+<p>On appliances logging is managed using the built-in systemd-journal system.  Journald uses database-like binary files to store log lines along with extensive metadata.</p>
+
+<p>There is a <code class="language-plaintext highlighter-rouge">journalctl</code> command-line utility which can be used to query the journal.  Documentation for journalctl can be found at https://man7.org/linux/man-pages/man1/journalctl.1.html</p>
+
+<p>If you want to tail the main <code class="language-plaintext highlighter-rouge">evm</code> logs then you can use <code class="language-plaintext highlighter-rouge">journalctl -f -t evm</code>.  Other logs (e.g.: <code class="language-plaintext highlighter-rouge">automation</code> or <code class="language-plaintext highlighter-rouge">api</code>) can be viewed by using their syslog_identifier e.g. <code class="language-plaintext highlighter-rouge">journalctl -f -t automation</code>.  You can also view multiple logs by using <code class="language-plaintext highlighter-rouge">journalctl -f -t evm -t automation -t api</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">journalctl</code> allows you to do much more like view logs for a specific unit (aka worker), for a time range, and for a group of workers (e.g. every generic worker).</p>
+
+<p>Here are some helpful examples:</p>
+
+<p>Viewing:</p>
+<ul>
+  <li>View all logs: <code class="language-plaintext highlighter-rouge">journalctl</code>
+</li>
+  <li>View all logs, most recent first: <code class="language-plaintext highlighter-rouge">journalctl -r</code>
+</li>
+  <li>View all logs since the last boot: <code class="language-plaintext highlighter-rouge">journalctl -b</code>
+</li>
+  <li>View all logs from the previous boot: <code class="language-plaintext highlighter-rouge">journalctl -b -1</code>
+</li>
+  <li>View all logs from a time range: <code class="language-plaintext highlighter-rouge">journalctl --since "1 hour ago"</code>
+</li>
+  <li>View all logs with extra metadata: <code class="language-plaintext highlighter-rouge">journalctl --output verbose</code>
+</li>
+  <li>Tail all logs: <code class="language-plaintext highlighter-rouge">journalctl -f</code>
+</li>
+</ul>
+
+<p>Filtering:</p>
+<ul>
+  <li>Filter warnings: <code class="language-plaintext highlighter-rouge">journalctl -f -p warning</code>
+</li>
+  <li>Filter errors: <code class="language-plaintext highlighter-rouge">journalctl -f -p err</code>
+</li>
+  <li>Filter warnings and errors: <code class="language-plaintext highlighter-rouge">journalctl -f -p err -p warning</code>
+</li>
+  <li>Logs for a specific unit: <code class="language-plaintext highlighter-rouge">journalctl -f -u manageiq-generic@51113329-8942-4a4c-98d6-1e532656c569.service</code>
+</li>
+  <li>Logs for a group of workers: <code class="language-plaintext highlighter-rouge">journalctl -f -u manageiq-generic.slice</code>
+</li>
+  <li>Logs matching a pattern: <code class="language-plaintext highlighter-rouge">journalctl -g '(Started|Stopping) EVM server''</code> (accepts perl compatible regular expressions)</li>
+  <li>Logs for a specific identifier: <code class="language-plaintext highlighter-rouge">journalctl -f -t evm</code>
+</li>
+</ul>
+
+<p>Other:</p>
+<ul>
+  <li>Export to a file: <code class="language-plaintext highlighter-rouge">journalctl --output export &gt; export.log</code>
+</li>
+  <li>Rotate the current journal to an archive: <code class="language-plaintext highlighter-rouge">journalctl --rotate</code>
+</li>
+  <li>Clear out all archived journals: <code class="language-plaintext highlighter-rouge">journalctl --vacuum-time=1s</code>
+</li>
+  <li>Clear out journal archives over a day old: <code class="language-plaintext highlighter-rouge">journalctl --vacuum-time=1d</code>
+</li>
+</ul>
+
+<p>Almost all of these can be combined together where they don’t conflict (e.g. <code class="language-plaintext highlighter-rouge">-f</code> can’t be used with <code class="language-plaintext highlighter-rouge">-r</code>)</p>
+
+<h4 id="collecting-logs">
+<a class="anchor" href="#collecting-logs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collecting Logs</h4>
+
+<p>If you have to collect logs from appliances for diagnostic purposes there are a couple utilities that are provided for this purpose.</p>
+
+<p>To collect logs from only a single appliance you can use <code class="language-plaintext highlighter-rouge">collect_current_logs.sh</code> or <code class="language-plaintext highlighter-rouge">collect_archive_logs.sh</code>.  To use these utilities you should ssh to the appliance and <code class="language-plaintext highlighter-rouge">cd /var/www/miq/vmdb/tools/collect_logs</code> directory.</p>
+
+<p>Now run <code class="language-plaintext highlighter-rouge">./collect_current_logs.sh</code> or <code class="language-plaintext highlighter-rouge">./collect_archive_logs.sh</code> depending on if you want the latest or all logs.</p>
+
+<p>The output will be in <code class="language-plaintext highlighter-rouge">/var/www/miq/vmdb/log/evm_current_HOSTNAME_TIMESTAMP.tar.xz</code> or <code class="language-plaintext highlighter-rouge">/var/www/miq/vmdb/log/evm_archive_HOSTNAME_TIMESTAMP.tar.xz</code></p>
+
+<p>To collect logs from all appliances in the region over ssh we provide a <code class="language-plaintext highlighter-rouge">collect_all_logs</code> utility.  This iterates over all <code class="language-plaintext highlighter-rouge">MiqServer</code> records in the region and collects the output of <code class="language-plaintext highlighter-rouge">collect_current_logs.sh</code> rolled up into a single <code class="language-plaintext highlighter-rouge">.tar.xz</code> file.</p>
+
+<h3 id="podified-logging">
+<a class="anchor" href="#podified-logging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Podified Logging</h3>
+
+<p>When running in podified all logs are output to the container’s stdout which is picked up by Kubernetes/OpenShift and made available via <code class="language-plaintext highlighter-rouge">kubectl logs</code>/<code class="language-plaintext highlighter-rouge">oc logs</code>.</p>
+
+<p>The log output format is in JSON and includes extra metadata like the log-level, timestamp:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"@timestamp"</span><span class="p">:</span><span class="s2">"2020-01-01T12:34:56.789012"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pid"</span><span class="p">:</span><span class="mi">12345</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tid"</span><span class="p">:</span><span class="s2">"6789abcdef01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"level"</span><span class="p">:</span><span class="s2">"info"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"MIQ(Class#method) Example message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You can also pass a label selector to <code class="language-plaintext highlighter-rouge">oc logs</code> with <code class="language-plaintext highlighter-rouge">-l</code> so for example to tail all generic pods: <code class="language-plaintext highlighter-rouge">oc logs -f -l name=1-generic</code></p>
+
+<p>If you prefer to view the container JSON logs in the standard MIQ format you can use the <code class="language-plaintext highlighter-rouge">unjson_logs</code> utility.  This utility is in <code class="language-plaintext highlighter-rouge">/var/www/miq/vmdb/tools/unjson_logs</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc logs <span class="nt">-l</span> <span class="nv">name</span><span class="o">=</span>1-ui | tools/unjson_logs
+<span class="o">[</span><span class="nt">----</span><span class="o">]</span> I, <span class="o">[</span>2022-06-16T15:40:21.095098 <span class="c">#7:b4e4c]  INFO -- production: Started GET "/ems_infra/56?display=vms" for 127.0.0.1 at 2022-06-16 15:40:21 +0000</span>
+<span class="o">[</span><span class="nt">----</span><span class="o">]</span> I, <span class="o">[</span>2022-06-16T15:40:21.100999 <span class="c">#7:b4e4c]  INFO -- production: Processing by EmsInfraController#show as HTML</span>
+<span class="o">[</span><span class="nt">----</span><span class="o">]</span> I, <span class="o">[</span>2022-06-16T15:40:21.101242 <span class="c">#7:b4e4c]  INFO -- production:   Parameters: {"display"=&gt;"vms", "id"=&gt;"56"}</span>
+</code></pre></div></div>
+
+<h2 id="providers">
+<a class="anchor" href="#providers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Providers</h2>
+
+<h3 id="vmware-vcenter-provider">
+<a class="anchor" href="#vmware-vcenter-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>VMware vCenter Provider</h3>
+
+<p>If you are having issues with a VMware provider you can enable extensive debug
+logging which will log the raw XML payloads for all requests and responses between
+the vCenter and ManageIQ.</p>
+
+<p>There are two settings that you have to enable in Advanced Settings</p>
+<ol>
+  <li>log.level_vim must be set to debug</li>
+  <li>ems.ems_vmware.debug_vim_requests must be set to true</li>
+</ol>
+
+<p>With these two settings enabled you will see the full XML payloads in the vim log,
+here is a sample Login action:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[----] D, [2024-12-04T12:31:51.307304#554036:97f4] DEBUG -- vim: &lt;?xml version='1.0' ?&gt;
+&lt;env:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+  &lt;env:Header /&gt;
+  &lt;env:Body&gt;
+    &lt;n1:Login xmlns:n1="urn:vim25"&gt;
+      &lt;n1:_this type="SessionManager"&gt;SessionManager&lt;/n1:_this&gt;
+      &lt;n1:userName&gt;user&lt;/n1:userName&gt;
+      &lt;n1:password&gt;pass&lt;/n1:password&gt;
+    &lt;/n1:Login&gt;
+  &lt;/env:Body&gt;
+&lt;/env:Envelope&gt;
+[----] D, [2024-12-04T12:31:51.308114#554036:97f4] DEBUG -- vim: &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;soapenv:Envelope xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns: xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;soapenv:Body&gt;
+    &lt;LoginResponse xmlns="urn:vim25"&gt;
+      &lt;returnval&gt;
+        &lt;key&gt;53e7183f-4db3-4e02-b62d-840b9a47fc31&lt;/key&gt;
+        &lt;userName&gt;user&lt;/userName&gt;
+        &lt;fullName&gt;user&lt;/fullName&gt;
+        &lt;loginTime&gt;2024-12-04T17:31:51.307621525Z&lt;/loginTime&gt;
+        &lt;lastActiveTime&gt;2024-12-04T12:31:51.307628585-05:00&lt;/lastActiveTime&gt;
+        &lt;locale&gt;en_US&lt;/locale&gt;
+        &lt;messageLocale&gt;en_US&lt;/messageLocale&gt;
+        &lt;extensionSession&gt;false&lt;/extensionSession&gt;
+        &lt;ipAddress&gt;127.0.0.1&lt;/ipAddress&gt;
+        &lt;userAgent&gt;HTTPClient/1.0 (2.8.3, ruby 3.3.5 (2024-09-03))&lt;/userAgent&gt;
+        &lt;callCount&gt;1&lt;/callCount&gt;
+      &lt;/returnval&gt;
+    &lt;/LoginResponse&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+
+</code></pre></div></div>
+
+<p>Depending on the payloads you are working with, they might overflow the journald <code class="language-plaintext highlighter-rouge">LineMax</code> and be cut off.
+If this is the case you can edit the <code class="language-plaintext highlighter-rouge">/etc/systemd/journald.conf</code> file and adjust the <code class="language-plaintext highlighter-rouge">LineMax</code> setting appropriately.</p>
+
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa-solid theme-toggle" data-toggle-theme></button>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa-brands fa-github"></i>
+          GitHub
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa-brands fa-gitter"></i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/orgs/ManageIQ/discussions">
+          <i class="fa-solid fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2026 ManageIQ.
+      </span>
+      <span>
+        <a href="https://www.ibm.com/opensource/" class="footer-link" target="_blank">
+          Sponsored by IBM, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://x.com/ManageIQ" title="X / Twitter" class="social_link">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://bsky.app/profile/manageiq.bsky.social" title="Bluesky" class="social_link">
+            <i class="fa-brands fa-bluesky"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://fosstodon.org/@manageiq" title="Mastodon" class="social_link">
+            <i class="fa-brands fa-mastodon"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" title="Facebook" class="social_link">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" title="LinkedIn" class="social_link">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" title="YouTube" class="social_link">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa-solid fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

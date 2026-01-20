@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - Changelog from Radjabov-1 to Radjabov-2</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="http://manageiq.org/changelog/radjabov-1-to-radjabov-2/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa-solid theme-toggle" data-toggle-theme></button>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/changelog/radjabov-1-to-radjabov-2/">
+      <article class="page">
+  <div class="container">
+    <header class="page-header">
+      <h1 class="page-title">Changelog from Radjabov-1 to Radjabov-2</h1>
+    </header>
+
+    <div class="page-content">
+      <h2 id="-manageiqmanageiq"><i class="fa-brands fa-github"></i> <a href="https://github.com/ManageIQ/manageiq/compare/radjabov-1...radjabov-2">ManageIQ/manageiq</a></h2>
+
+<h3 id="bug-security">Bug (Security)</h3>
+
+<ul>
+  <li>Fix issue where TimeProfile#profile was not validated <a href="https://github.com/ManageIQ/manageiq/security/advisories/GHSA-m832-x3g8-63j3">[CVE-2026-22598]</a></li>
+</ul>
+
+<h3 id="bug">Bug</h3>
+
+<ul>
+  <li>Fix metric/ci_mixin_spec using kubevirt vm <a href="https://github.com/ManageIQ/manageiq/pull/23293">[#23293]</a></li>
+  <li>ConnectionPool v3.0 introduces breaking changes <a href="https://github.com/ManageIQ/manageiq/pull/23669">[#23669]</a></li>
+  <li>Call sync_from_system before_sync_workers at startup <a href="https://github.com/ManageIQ/manageiq/pull/23309">[#23309]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-automation_engine"><i class="fa-brands fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-automation_engine/compare/radjabov-1...radjabov-2">ManageIQ/manageiq-automation_engine</a></h2>
+
+<h3 id="bug-1">Bug</h3>
+
+<ul>
+  <li>Fix YAML.load error with serialized StateVarHash <a href="https://github.com/ManageIQ/manageiq-automation_engine/pull/572">[#572]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-documentation"><i class="fa-brands fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-documentation/compare/radjabov-1...radjabov-2">ManageIQ/manageiq-documentation</a></h2>
+
+<h3 id="bug-2">Bug</h3>
+
+<ul>
+  <li>Fix broken link to azure docs for adding an App <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1841">[#1841]</a></li>
+  <li>Mark Events as supported on IBM Cloud PowerVS <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1852">[#1852]</a></li>
+  <li>Fix menu link for Automation Management Providers <a href="https://github.com/ManageIQ/manageiq-documentation/pull/1856">[#1856]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-pods"><i class="fa-brands fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-pods/compare/radjabov-1...radjabov-2">ManageIQ/manageiq-pods</a></h2>
+
+<h3 id="bug-3">Bug</h3>
+
+<ul>
+  <li>Removing subscription-manager also removes config-manager now <a href="https://github.com/ManageIQ/manageiq-pods/pull/1246">[#1246]</a></li>
+</ul>
+
+<h3 id="other">Other</h3>
+
+<ul>
+  <li>Bump packages as 9.0-24 packages are no longer on the mirrors <a href="https://github.com/ManageIQ/manageiq-pods/pull/1328">[#1328]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-providers-amazon"><i class="fa-brands fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-providers-amazon/compare/radjabov-1...radjabov-2">ManageIQ/manageiq-providers-amazon</a></h2>
+
+<h3 id="other-1">Other</h3>
+
+<ul>
+  <li>Fix missing required params in AWS auth stubs <a href="https://github.com/ManageIQ/manageiq-providers-amazon/pull/888">[#888]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-providers-google"><i class="fa-brands fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-providers-google/compare/radjabov-1...radjabov-2">ManageIQ/manageiq-providers-google</a></h2>
+
+<h3 id="bug-4">Bug</h3>
+
+<ul>
+  <li>Update to fog-google v1.25.0 <a href="https://github.com/ManageIQ/manageiq-providers-google/pull/276">[#276]</a></li>
+  <li>Add checks for instances without a disk during refresh <a href="https://github.com/ManageIQ/manageiq-providers-google/pull/274">[#274]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-providers-kubernetes"><i class="fa-brands fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/compare/radjabov-1...radjabov-2">ManageIQ/manageiq-providers-kubernetes</a></h2>
+
+<h3 id="bug-5">Bug</h3>
+
+<ul>
+  <li>Fix Scanning Job spec failure private method <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/550">[#550]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-rpm_build"><i class="fa-brands fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-rpm_build/compare/radjabov-1...radjabov-2">ManageIQ/manageiq-rpm_build</a></h2>
+
+<h3 id="bug-6">Bug</h3>
+
+<ul>
+  <li>[spassky] lockdown bundler <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/607">[#607]</a></li>
+</ul>
+
+<h3 id="other-2">Other</h3>
+
+<ul>
+  <li>Bump packages as 9.0-24 packages are no longer on the mirrors <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/606">[#606]</a></li>
+</ul>
+
+<h2 id="-manageiqmanageiq-ui-classic"><i class="fa-brands fa-github"></i> <a href="https://github.com/ManageIQ/manageiq-ui-classic/compare/radjabov-1...radjabov-2">ManageIQ/manageiq-ui-classic</a></h2>
+
+<h3 id="bug-7">Bug</h3>
+
+<ul>
+  <li>Fix the missing service vms table <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9463">[#9463]</a></li>
+  <li>Fix settings authentication form provider type ids <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9392">[#9392]</a></li>
+</ul>
+
+    </div>
+  </div>
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa-solid theme-toggle" data-toggle-theme></button>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa-brands fa-github"></i>
+          GitHub
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa-brands fa-gitter"></i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/orgs/ManageIQ/discussions">
+          <i class="fa-solid fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/changelog/radjabov-1-to-radjabov-2.md">
+          <i class="fa-solid fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2026 ManageIQ.
+      </span>
+      <span>
+        <a href="https://www.ibm.com/opensource/" class="footer-link" target="_blank">
+          Sponsored by IBM, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://x.com/ManageIQ" title="X / Twitter" class="social_link">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://bsky.app/profile/manageiq.bsky.social" title="Bluesky" class="social_link">
+            <i class="fa-brands fa-bluesky"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://fosstodon.org/@manageiq" title="Mastodon" class="social_link">
+            <i class="fa-brands fa-mastodon"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" title="Facebook" class="social_link">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" title="LinkedIn" class="social_link">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" title="YouTube" class="social_link">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa-solid fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

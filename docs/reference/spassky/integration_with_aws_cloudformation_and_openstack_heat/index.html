@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="http://manageiq.org/docs/reference/latest/integration_with_aws_cloudformation_and_openstack_heat/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa-solid theme-toggle" data-toggle-theme></button>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/docs/reference/spassky/integration_with_aws_cloudformation_and_openstack_heat/index">
+      <nav class="doc_tabs">
+  <ul>
+  <li>
+    <a href="/docs/get-started/">Get Started</a>
+  </li>
+  <li class="active">
+    <a href="/docs/reference/">User Reference</a>
+  </li>
+  <li>
+    <a href="/docs/automation">
+      Automation Book
+    </a>
+  </li>
+  <li>
+    <a href="/docs/api">
+      API Docs
+    </a>
+  </li>
+  <li>
+    <a href="/docs/guides/README">Developer Guides</a>
+  </li>
+</ul>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 pull-right" style="margin-top: 10px">
+        <script async src="https://cse.google.com/cse.js?cx=006042792541147862616:dfkijfebdts"></script>
+         <div class="gcse-search"></div>
+    </div>
+</nav>
+
+<script>
+  window.onload = demo;
+	function demo() {
+	    document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search Documentation")
+	}
+</script>
+
+<div class="doc_container">
+  <div class="doc_menu">
+    
+    
+
+<div class="doc_menu-heading">
+  Spassky
+</div>
+
+<ul class="menu menu-toplevel" id=ref_menu_spassky>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Installing
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Containerized (podified)
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_kubernetes/index.html">
+      Kubernetes
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Appliance
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_aws/index.html">
+      Amazon Web Services (AWS)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_ibm_cloud/index.html">
+      IBM Cloud
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_microsoft_azure/index.html">
+      Microsoft Azure
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_google_compute_engine/index.html">
+      Google Compute Engine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_vmware_vsphere/index.html">
+      VMware vSphere
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_red_hat_enterprise_linux_openstack_platform/index.html">
+      Red Hat Enterprise OpenStack Platform
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_red_hat_virtualization/index.html">
+      Red Hat Enterprise Virtualization
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/installing_on_scvmm/index.html">
+      Microsoft System Center Virtual Machine Manager (SCVMM)
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Upgrading
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/appliances/upgrading.html">
+      Upgrading
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Using
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/general_configuration/index.html">
+      General Configuration
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_infrastructure_and_inventory/index.html">
+      Managing Infrastructure and Inventory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/index.html">
+      Overview
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Infrastructure Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/red_hat_virtualization_providers.html">
+      Red Hat Virtualization Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/openstack_infrastructure_providers.html">
+      OpenStack Infrastructure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/vmware_vcenter_providers.html">
+      VMware vCenter Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/infrastructure_providers/ibm_power_hmc_providers.html">
+      IBM Power HMC Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Configuration Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/configuration_management_providers/ibm_terraform_provider.html">
+      IBM Terraform Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/configuration_management_providers/red_hat_satellite_6.html">
+      Red Hat Satellite 6 Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/latest/managing_providers/index.html#automation-management-providers">
+      Automation Management Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Cloud Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/amazon_ec2_providers.html">
+      Amazon EC2 Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/azure_providers.html">
+      Azure Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/google_compute_engine_providers.html">
+      Google Compute Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_cic_providers.html">
+      IBM CIC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_cloud_vpc_providers.html">
+      IBM Cloud VPC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_power_vc_providers.html">
+      IBM PowerVC Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/ibm_power_systems_virtual_servers_providers.html">
+      IBM Power Systems Virtual Servers Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/cloud_providers/openstack_providers.html">
+      OpenStack Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Container Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/azure_kubernetes_providers.html">
+      Azure Kubernetes Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/red_hat_openshift_providers.html">
+      Red Hat OpenShift Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/ibm_cloud_kubernetes_service_providers.html">
+      IBM Cloud Kubernetes Service Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/oracle_kubernetes_engine_providers.html">
+      Oracle Kubernetes Engine Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/containers_providers/vmware_tanzu_providers.html">
+      VMware Tanzu Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Storage Providers
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/amazon_ebs_managers.html">
+      Amazon Elastic Block Store Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/openstack_block_storage_managers.html">
+      OpenStack Block Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/openstack_object_storage_managers.html">
+      OpenStack Object Storage Providers
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/managing_providers/storage_providers/ibm_cloud_object_storage_managers.html">
+      IBM Cloud Object Storage Providers
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/provisioning_virtual_machines_and_hosts/index.html">
+      Provisioning Virtual Machines and Hosts
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/creating_a_service_for_vm_provisioning/index.html">
+      Creating a Service for Virtual Machine Provisioning
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/service_provisioning_using_an_orchestration_template/index.html">
+      Service Provisioning Using an Orchestration Template
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing controls
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/monitoring_alerts_and_reporting/index.html">
+      Monitoring, Alerts, and Reporting
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/policies_and_profiles_guide/index.html">
+      Policies and Profiles Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/monitoring_alerts_and_reporting/index.html#chargeback">
+      Chargeback
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/assigning_custom_analysis_profile_to_vm/index.html">
+      Assigning a Custom Analysis Profile to a Virtual Machine
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/scripting_actions/index.html">
+      Scripting Actions in ManageIQ
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Administering
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item menu-parent">
+    <a href="#">
+      Managing Authentication
+    </a>
+    
+    <ul>
+      
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/active_directory.html">
+      Active Directory
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/ipa_2fa.html">
+      2-Factor-Authentication with IPA
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/ipa_ad_trust.html">
+      IPA/AD Trust
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/ldap.html">
+      LDAP
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/saml.html">
+      SAML
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/auth/openid_connect.html">
+      OpenID-Connect
+    </a>
+    
+  </li>
+
+
+    </ul>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/appliances/backup_and_restore.html">
+      Backup and Restore (appliances)
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/deployment_planning_guide/index.html">
+      Deployment Planning Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/high_availability_guide/index.html">
+      High Availability Guide
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/appliance_hardening_guide/index.html">
+      Appliance Hardening Guide
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Managing Integrations
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item active">
+    <a href="/docs/reference/spassky/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+      AWS CloudFormation and OpenStack Heat
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/integration_with_servicenow/index.html">
+      ServiceNow
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      APIs
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/api">
+      ManageIQ REST API
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Reference
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/capabilities_matrix/index.html">
+      Capabilities Matrix
+    </a>
+    
+  </li>
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/methods_available_for_automation/index.html">
+      Methods Available for Automation
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+
+  <li class="menu-parent">
+    
+    <a href="#">
+      Troubleshooting
+    </a>
+    
+    
+      <ul>
+        
+
+
+
+  
+  
+  
+  <li class="doc_menu-item">
+    <a href="/docs/reference/spassky/troubleshooting/index.html">
+      Troubleshooting
+    </a>
+    
+  </li>
+
+
+      </ul>
+    
+  </li>
+
+</ul>
+
+    
+  </div>
+  <div class="doc_main">
+    <article class="doc user_doc">
+      
+
+      <div class="doc-content">
+        
+        <div class="doc-versions">
+          <span class="label">Versions: </span>
+          
+            <span>
+              <a href="/docs/reference/latest/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+                Latest
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span class="active" >
+              <a href="/docs/reference/spassky/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+                Spassky
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/radjabov/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+                Radjabov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/quinteros/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+                Quinteros
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/petrosian/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+                Petrosian
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/oparin/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+                Oparin
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/najdorf/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+                Najdorf
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/morphy/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+                Morphy
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/lasker/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+                Lasker
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/kasparov/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+                Kasparov
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/jansa/integration_with_aws_cloudformation_and_openstack_heat/index.html">
+                Jansa
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/ivanchuk/doc-Integration_with_AWS_CloudFormation_and_OpenStack_Heat/miq/index.html">
+                Ivanchuk
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/hammer/doc-Integration_with_AWS_CloudFormation_and_OpenStack_Heat/miq/index.html">
+                Hammer
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/gaprindashvili/doc-Integration_with_AWS_CloudFormation_and_OpenStack_Heat/miq/index.html">
+                Gaprindashvili
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/fine/doc-Integration_with_AWS_CloudFormation_and_OpenStack_Heat/miq/index.html">
+                Fine
+              </a>
+            </span>
+            
+              <span class="separator">/</span>
+            
+          
+            <span>
+              <a href="/docs/reference/euwe/doc-Integration_with_AWS_CloudFormation_and_OpenStack_Heat/miq/index.html">
+                Euwe
+              </a>
+            </span>
+            
+          
+        </div>
+        
+        <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry toc-h2"><a href="#integration-with-aws-cloudformation-and-openstack-heat">Integration with AWS CloudFormation and OpenStack Heat</a></li>
+<li class="toc-entry toc-h2"><a href="#cloud-orchestration">Cloud Orchestration</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#adding-a-new-orchestration-template">Adding a New Orchestration Template</a></li>
+<li class="toc-entry toc-h3"><a href="#editing-orchestration-templates">Editing Orchestration Templates</a></li>
+<li class="toc-entry toc-h3"><a href="#copying-orchestration-templates">Copying Orchestration Templates</a></li>
+<li class="toc-entry toc-h3"><a href="#deleting-orchestration-templates">Deleting Orchestration Templates</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#cloudformation-provisioning-via-services">CloudFormation Provisioning via Services</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#adding-a-new-catalog">Adding a New Catalog</a></li>
+<li class="toc-entry toc-h3"><a href="#adding-a-new-service-dialog">Adding a New Service Dialog</a></li>
+<li class="toc-entry toc-h3"><a href="#adding-a-new-catalog-item">Adding a New Catalog Item</a></li>
+<li class="toc-entry toc-h3"><a href="#ordering-service">Ordering Service</a></li>
+<li class="toc-entry toc-h3"><a href="#orchestration-stacks">Orchestration Stacks</a></li>
+</ul>
+</li>
+</ul><h2 id="introduction">
+<a class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>AWS CloudFormation enables users to orchestrate the instantiation of
+multi-instance services via templates. You can use CloudFormation’s
+sample templates or create your own templates to describe the AWS
+resources, and any associated dependencies or runtime parameters,
+required to run your applications. Similarly, you can configure and
+monitor cloud resources in Red Hat Enterprise Linux OpenStack Platform
+using the Orchestration service. The Orchestration service provides a
+framework through which you can define an instance’s resource parameters
+(for example, floating IPs, volumes, or security groups) and properties
+(for example, key pairs, image to be used, or flavor) using OpenStack
+Heat templates.</p>
+
+<p>Instances deployed using templates through the orchestration service are
+known as stacks. A user can author the stack templates, or can upload
+them from other sources. ManageIQ has enabled CloudFormation and
+Heat integration, and now allows you to launch, delete, and update
+stacks using the dashboard.</p>
+
+<h2 id="integration-with-aws-cloudformation-and-openstack-heat">
+<a class="anchor" href="#integration-with-aws-cloudformation-and-openstack-heat" aria-hidden="true"><span class="octicon octicon-link"></span></a>Integration with AWS CloudFormation and OpenStack Heat</h2>
+
+<p>ManageIQ integration with AWS CloudFormation and OpenStack Heat
+provides an ability to:</p>
+
+<ul>
+  <li>
+    <p>Inventory all <strong>AWS CloudFormation</strong> and <strong>OpenStack Heat</strong> stacks
+and elements into <strong>CFME’s VMDB</strong>.</p>
+  </li>
+  <li>
+    <p>Model the relationships of instances to their stacks, inclusive of
+the UI. Example, selecting an instance within a region that is
+within a stack, the UI shows this on the standard instance view.</p>
+  </li>
+  <li>
+    <p>Model the stack and its elements in the UI.</p>
+  </li>
+</ul>
+
+<p><strong>Note:</strong></p>
+
+<p>When importing a template into ManageIQ, the selected elements are converted according to their type. For example, lists convert to list boxes, and single items convert to text boxes.</p>
+
+<h2 id="cloud-orchestration">
+<a class="anchor" href="#cloud-orchestration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cloud Orchestration</h2>
+
+<p>Cloud Orchestration is a service that allows you to create, update and
+manage cloud resources and their software components as a single unit
+and then deploy them in an automated, repeatable way through a template.
+Templates use a human-readable syntax and can be defined in text files
+(thereby allowing users to check them into version control). Templates
+allow you to easily deploy and re-configure infrastructure for
+applications within your cloud. A user can author the stack templates,
+or can upload them from other sources.</p>
+
+<h3 id="adding-a-new-orchestration-template">
+<a class="anchor" href="#adding-a-new-orchestration-template" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a New Orchestration Template</h3>
+
+<p>Use this procedure to add new orchestration templates using the
+dashboard UI.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and select <strong>Orchestration Templates</strong> in the accordion menu.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+click <img src="../images/1848.png" alt="Green_Plus_Sign"> <strong>Create a new
+Orchestration Template</strong>. The <strong>Adding a new Orchestration
+Template</strong> window is displayed.
+<img src="../images/7148.png" alt="Adding_a_new_Orchestration_Template"></p>
+  </li>
+  <li>
+    <p>In <strong>Name</strong>, enter a name for the new template.</p>
+  </li>
+  <li>
+    <p>In <strong>Description</strong>, enter a description for the template. Select
+Amazon CloudFormation or OpenStack Heat from the <strong>Template Type</strong>
+list. The default is Amazon CloudFormation.</p>
+  </li>
+  <li>
+    <p>You can select the <strong>Draft box</strong> to create a draft template.</p>
+  </li>
+  <li>
+    <p>Define your new template following the specification structure of
+the selected <strong>Template Type</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<h3 id="editing-orchestration-templates">
+<a class="anchor" href="#editing-orchestration-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editing Orchestration Templates</h3>
+
+<p>Use this procedure to edit orchestration templates using the dashboard
+UI.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and select <strong>Orchestration Templates</strong> in the accordion menu.</p>
+  </li>
+  <li>
+    <p>Select the orchestration template you want to edit from the <strong>All Orchestration Templates</strong> list.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+click <img src="../images/1851.png" alt="Edit_Sign"> <strong>Edit selected Orchestration
+Template</strong>. The <strong>Edit selected Orchestration Template</strong> window is
+displayed.</p>
+  </li>
+  <li>
+    <p>You can only edit the <strong>Name</strong> and <strong>Description</strong> of a read-only
+template as there can be stacks associated with the selected
+template. For templates that are not read-only, you can edit all
+content in the template as required.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h3 id="copying-orchestration-templates">
+<a class="anchor" href="#copying-orchestration-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Copying Orchestration Templates</h3>
+
+<p>Use this procedure to copy an orchestration template to create a new
+template.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and select <strong>Orchestration Templates</strong> in the accordion menu.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+click <img src="../images/1859.png" alt="Copy"> <strong>Copy selected Orchestration
+Template</strong>. The <strong>Copy selected Orchestration Template</strong> window is
+displayed.</p>
+  </li>
+  <li>
+    <p>You can copy the selected template to create a new template, and include the changes as required.</p>
+
+    <p><strong>Note:</strong></p>
+
+    <p>In order to create the new template its content must be unique.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h3 id="deleting-orchestration-templates">
+<a class="anchor" href="#deleting-orchestration-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deleting Orchestration Templates</h3>
+
+<p>Use this procedure to delete orchestration templates using the dashboard
+UI.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and select <strong>Orchestration
+Templates</strong> in the accordion menu.</p>
+  </li>
+  <li>
+    <p>Select the orchestration template you want to delete from the <strong>All
+Orchestration Templates</strong> list.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+click <img src="../images/1861.png" alt="Delete"> <strong>Remove selected Orchestration
+Template from Inventory</strong>.</p>
+  </li>
+  <li>
+    <p>A warning window to confirm the permanent removal of the selected
+item from the VMDB appears.</p>
+  </li>
+  <li>
+    <p>Click <strong>OK</strong>.</p>
+  </li>
+</ol>
+
+<p>This instantly deletes the selected orchestration template. Note that
+only non read-only templates can be removed.</p>
+
+<h2 id="cloudformation-provisioning-via-services">
+<a class="anchor" href="#cloudformation-provisioning-via-services" aria-hidden="true"><span class="octicon octicon-link"></span></a>CloudFormation Provisioning via Services</h2>
+
+<p>After creating your template, you can add it as a catalog item to the
+<strong>Service Catalog</strong>. <strong>Stacks</strong> can then be created from templates and
+launched from the <strong>Service Catalog</strong>.</p>
+
+<h3 id="adding-a-new-catalog">
+<a class="anchor" href="#adding-a-new-catalog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a New Catalog</h3>
+
+<p>Use this procedure to add a new catalog using the dashboard UI.</p>
+
+<p><img src="../images/7149.png" alt="Adding_a_New_Catalog"></p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and select <strong>Catalogs</strong> in the
+accordion menu.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+click <img src="../images/1848.png" alt="Green_Plus_Sign"> <strong>Add a New Catalog</strong>.
+The <strong>Adding a new Catalog</strong> window is displayed.</p>
+  </li>
+  <li>
+    <p>In <strong>Basic Info</strong>, add <strong>Name</strong> and <strong>Description</strong> for the new
+catalog.</p>
+  </li>
+  <li>
+    <p>You can assign catalog items in <strong>Assign Catalog Item</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<h3 id="adding-a-new-service-dialog">
+<a class="anchor" href="#adding-a-new-service-dialog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a New Service Dialog</h3>
+
+<p>Use this procedure to add a new service dialog based on the input
+parameters defined in the orchestration template.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and click <strong>Orchestration
+Templates</strong> in the accordion menu.</p>
+  </li>
+  <li>
+    <p>From <strong>All Orchestration Templates</strong>, select the orchestration
+template you want to create a service dialog from.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+click <img src="../images/1848.png" alt="Green_Plus_Sign"> <strong>Create Service
+Dialog</strong> from <strong>Orchestration Template</strong>. The <strong>Adding a new Service
+Dialog from Orchestration Template</strong> window is displayed.
+<img src="../images/7156.png" alt="Adding_a_new_Service_Dialog_from_Orchestration_Template"></p>
+  </li>
+  <li>
+    <p>In <strong>Service Dialog Information</strong>, add a <strong>Service Dialog Name</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<h3 id="adding-a-new-catalog-item">
+<a class="anchor" href="#adding-a-new-catalog-item" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a New Catalog Item</h3>
+
+<p>Use this procedure to add a new service catalog item using the dashboard
+UI.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and select <strong>Catalog Items</strong>
+in the accordion menu.</p>
+  </li>
+  <li>
+    <p>Click <strong>Configuration</strong>, then
+click <img src="../images/1848.png" alt="Green_Plus_Sign"> <strong>Add a New Catalog
+Item</strong>. The <strong>Adding a new Service Catalog Item</strong> window is
+displayed.
+<img src="../images/7146.png" alt="Adding_a_new_Service_Catalog_Item"></p>
+  </li>
+  <li>
+    <p>Choose <strong>Orchestration</strong> from <strong>Catalog Item Type</strong>.</p>
+  </li>
+  <li>
+    <p>In <strong>Basic Info</strong>, add <strong>Name</strong> and <strong>Description</strong>. Select the
+<strong>Display</strong> in <strong>Catalog box</strong>. <img src="../images/7147.png" alt="Basic_Info"></p>
+  </li>
+  <li>
+    <p>Select the <strong>Catalog</strong>, <strong>Dialog</strong>, and <strong>Orchestration Template</strong>
+from their respective list.</p>
+  </li>
+  <li>
+    <p>Select <strong>Provisioning Entry Point</strong>. The default is</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>/Cloud/Orchestration/Provisioning/StateMachines/Provision/default.
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<h3 id="ordering-service">
+<a class="anchor" href="#ordering-service" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ordering Service</h3>
+
+<p>Use this procedure to order a service catalog item using the dashboard
+UI.</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Services &gt; Catalogs</strong> and select <strong>Service
+Catalogs</strong> in the accordion menu. From <strong>All Services</strong> catalogs,
+select the <strong>catalog item</strong> that you want to order. The <strong>Service</strong>
+window with the name and description of the service to be ordered is
+displayed. <img src="../images/7172.png" alt="Service_Catalog"></p>
+  </li>
+  <li>
+    <p>Click <strong>Order</strong>. The <strong>Order Service</strong> window with <strong>Options</strong> and
+<strong>Parameter</strong> is displayed. <img src="../images/7173.png" alt="Order_Service"></p>
+  </li>
+  <li>
+    <p>Enter stack name in <strong>Stack Name</strong>.</p>
+  </li>
+  <li>
+    <p>The <strong>On Failure</strong> value is Rollback by default.</p>
+  </li>
+  <li>
+    <p><strong>Timeout</strong> is optional. You can type the number of seconds to
+timeout the provision at the provider side.</p>
+
+    <p><strong>Note:</strong></p>
+
+    <p>The number of seconds get converted (rounded) to minutes when
+ordering the provision through Red Hat Enterprise Linus OpenStack
+Platform. For example, 100 seconds rounds to two minutes.</p>
+  </li>
+  <li>
+    <p>You can use the default parameter values from the template, or enter new values as appropriate.</p>
+
+    <p><strong>Note:</strong></p>
+
+    <p>The Parameters vary per dialog; therefore, the parameters shown in
+the <strong>Order Service</strong> window may or may not exist depending on the
+dialog.</p>
+  </li>
+  <li>
+    <p>Click <strong>Submit</strong>.</p>
+  </li>
+</ol>
+
+<p>The order request is submitted. After a request has been approved, the
+various stages of fulfillment are executed. You can see the progress
+status of the provisioning process in <strong>Services &gt; Requests</strong>.</p>
+
+<h3 id="orchestration-stacks">
+<a class="anchor" href="#orchestration-stacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Orchestration Stacks</h3>
+
+<p>After ordering a service, you can see the progress state of the
+provisioning process in <strong>Services &gt; Requests</strong>.</p>
+
+<ol>
+  <li>
+    <p>Initially, the <strong>Request State</strong> shows <strong>Pending</strong> with its
+<strong>Approval State</strong> as <strong>Pending Approval</strong>.
+<img src="../images/7177.png" alt="Requests"></p>
+  </li>
+  <li>
+    <p>After the request is <strong>Approved</strong>, the various stages of fulfillment
+are executed, and reflect accordingly under <strong>Request State</strong>.
+<img src="../images/7178.png" alt="Request_State">
+<img src="../images/7179.png" alt="Request_State"></p>
+  </li>
+  <li>
+    <p>After the <strong>Request State</strong> is <strong>Finished</strong>, you can see the stack
+entry created in <strong>Compute &gt; Clouds &gt; Stacks</strong>. In the screen
+capture below, you can see the heat-stack we created from the
+catalog item ordered from the <strong>Service Catalog</strong> as shown in the
+previous section. <img src="../images/7180.png" alt="Catalog_Item_State"></p>
+  </li>
+  <li>
+    <p>You can click on the stack to see a summary of its properties and
+relationships, and the instance(s) included in the stack. You can
+click on the instance(s) to see all instance details.
+<img src="../images/7181.png" alt="Stack_Summary"></p>
+  </li>
+</ol>
+
+<p>You have now deployed instances and its associated collection of
+resources (called a stack) using an orchestration template.</p>
+
+
+
+      </div>
+    </article>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li >
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa-solid theme-toggle" data-toggle-theme></button>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa-brands fa-github"></i>
+          GitHub
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa-brands fa-gitter"></i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/orgs/ManageIQ/discussions">
+          <i class="fa-solid fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2026 ManageIQ.
+      </span>
+      <span>
+        <a href="https://www.ibm.com/opensource/" class="footer-link" target="_blank">
+          Sponsored by IBM, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://x.com/ManageIQ" title="X / Twitter" class="social_link">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://bsky.app/profile/manageiq.bsky.social" title="Bluesky" class="social_link">
+            <i class="fa-brands fa-bluesky"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://fosstodon.org/@manageiq" title="Mastodon" class="social_link">
+            <i class="fa-brands fa-mastodon"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" title="Facebook" class="social_link">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" title="LinkedIn" class="social_link">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" title="YouTube" class="social_link">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa-solid fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>

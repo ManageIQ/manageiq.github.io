@@ -5,9 +5,24 @@
     <description></description>
     <link>http://manageiq.org/</link>
     <atom:link href="http://manageiq.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 20 Jan 2026 03:38:28 +0000</pubDate>
-    <lastBuildDate>Tue, 20 Jan 2026 03:38:28 +0000</lastBuildDate>
+    <pubDate>Tue, 20 Jan 2026 16:25:56 +0000</pubDate>
+    <lastBuildDate>Tue, 20 Jan 2026 16:25:56 +0000</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
+    
+      <item>
+        <title>ManageIQ Spassky GA and Radjabov-2 Announcement</title>
+        <description>&lt;h2 id=&quot;manageiq-spassky-1&quot;&gt;ManageIQ Spassky-1&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
+        <link>http://manageiq.org/blog/2026/01/manageiq-spassky-ga-and-radjabov-2-announcement/</link>
+        <guid isPermaLink="true">http://manageiq.org/blog/2026/01/manageiq-spassky-ga-and-radjabov-2-announcement/</guid>
+        
+        <category>releases</category>
+        
+        <category>announcements</category>
+        
+        
+      </item>
     
       <item>
         <title>Terraform Enterprise</title>
@@ -138,21 +153,6 @@
         <guid isPermaLink="true">http://manageiq.org/blog/2021/12/rbvmomi-maintenance/</guid>
         
         <category>collaboration</category>
-        
-        <category>announcements</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Announcing Morphy Beta</title>
-        <description>&lt;p&gt;The first beta release of ManageIQ Morphy is here!  We’ve been working hard and have a lot of new features you can see in the &lt;a href=&quot;https://github.com/orgs/ManageIQ/projects/13#column-15656536&quot;&gt;roadmap&lt;/a&gt;. Here are the major highlights for this new release:&lt;/p&gt;
-</description>
-        <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
-        <link>http://manageiq.org/blog/2021/12/Announcing-Morphy-Beta/</link>
-        <guid isPermaLink="true">http://manageiq.org/blog/2021/12/Announcing-Morphy-Beta/</guid>
-        
-        <category>releases</category>
         
         <category>announcements</category>
         

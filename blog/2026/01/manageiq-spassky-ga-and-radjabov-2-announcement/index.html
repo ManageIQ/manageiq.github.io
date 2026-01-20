@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ManageIQ - ManageIQ Spassky GA and Radjabov-2 Announcement</title>
+  <meta name="description" content="ManageIQ Spassky-1">
+  <meta property="og:image" content="http://manageiq.org/assets/images/logo/manageiq-logo-blue.png" />
+
+  <script>
+    stored_theme = localStorage.getItem('miq-theme');
+    theme        = stored_theme && JSON.parse(localStorage.getItem('miq-theme'));
+
+    if (theme === "light-theme") {
+      document.querySelector('html').classList.add("light-theme");
+    }
+
+    if (theme === "dark-theme") {
+      document.querySelector('html').classList.add("dark-theme");
+    }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="http://manageiq.org/blog/2026/01/2026-01-20-manageiq-spassky-ga-and-radjabov-2-announcement/">
+  <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
+
+  <link href="/assets/images/favicon.ico" rel="shortcut icon">
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-name">ManageIQ</span>
+    <img class="brand-logo" src="/assets/images/manageiq-logo-inverse.svg" alt="ManageIQ Logo">
+  </a>
+
+  <div id="site_header-nav_toggle">
+    <a href="#" class="off_canvas-show" data-behavior="off_canvas-toggle">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="off_canvas">
+    <header class="off_canvas-header">
+      <a href="#" class="off_canvas-hide" data-behavior="off_canvas-toggle">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </header>
+
+    <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa-solid theme-toggle" data-toggle-theme></button>
+  </li>
+</ul>
+
+  </div>
+</header>
+
+
+    <main data-url="/blog/2026/01/manageiq-spassky-ga-and-radjabov-2-announcement/">
+      <div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10">
+        <header class="blog_header">
+          <h1>
+            ManageIQ Blog
+          </h1>
+        </header>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-10 blog_main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="page-title" itemprop="name headline">ManageIQ Spassky GA and Radjabov-2 Announcement</h1>
+
+            <div class="post-meta">
+              <time datetime="2026-01-20T00:00:00+00:00" itemprop="datePublished">
+                Jan 20, 2026
+              </time>
+
+              
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                by
+                <i itemprop="name">
+                  Fryguy
+                </i>
+              </span>
+              
+
+              <ul class="post-tags">
+                
+                <li>
+                  <a href="/blog/tags/releases">releases</a>
+                </li>
+                
+                <li>
+                  <a href="/blog/tags/announcements">announcements</a>
+                </li>
+                
+              </ul>
+            </div>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <h2 id="manageiq-spassky-1">ManageIQ Spassky-1</h2>
+
+<p>On behalf of the ManageIQ team, I’m happy to announce the release of <strong>ManageIQ Spassky</strong>! This release is named after the chess grandmaster <a href="https://en.wikipedia.org/wiki/Boris_Spassky">Boris Spassky</a>. You can download the Spassky-1 release on our <a href="/download">downloads page</a>.</p>
+
+<p>Here are the highlights of the <a href="https://github.com/orgs/ManageIQ/projects/19/views/1?filterQuery=status%3ASpassky">Spassky release</a>:</p>
+
+<h4 id="security-issues">Security Issues</h4>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/ManageIQ/manageiq/security/advisories/GHSA-m832-x3g8-63j3">CVE-2026-22598 - Denial of Service when creating malformed TimeProfiles</a></p>
+
+    <p>Thanks to Arpitha S for finding and reporting this issue.</p>
+  </li>
+</ul>
+
+<h4 id="new-providers">New Providers</h4>
+<ul>
+  <li><a href="https://github.com/ManageIQ/manageiq-providers-nutanix">Nutanix</a> <a href="https://github.com/ManageIQ/manageiq/pull/23586">[#23586]</a></li>
+  <li><a href="https://github.com/ManageIQ/manageiq-providers-terraform_enterprise">Terraform Enterprise</a> <a href="https://github.com/ManageIQ/manageiq/pull/23440">[#23440]</a></li>
+</ul>
+
+<h4 id="providers">Providers</h4>
+<ul>
+  <li>[Ansible Automation Platform] Rename ‘Ansible Tower’ to ‘Ansible Automation Platform’ <a href="https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/318">[#318]</a></li>
+  <li>[Embedded Terraform] Support Terraform provisioning via Workflows <a href="https://github.com/ManageIQ/manageiq/issues/23276">[#23276]</a></li>
+  <li>[Embedded Terraform] Support reconfigure action for ServiceTerraformTemplate <a href="https://github.com/ManageIQ/manageiq-providers-embedded_terraform/pull/94">[#94]</a></li>
+  <li>[Embedded Terraform] Generate dialog fields based on terraform type constraints <a href="https://github.com/ManageIQ/manageiq-providers-embedded_terraform/pull/89">[#89]</a></li>
+  <li>[IBM Cloud VPC] Add schedule tab with “Time until Retirement” during provisioning <a href="https://github.com/ManageIQ/manageiq-providers-ibm_cloud/pull/520">[#520]</a></li>
+  <li>[Kubernetes] Add create, update, and delete of container projects <a href="https://github.com/ManageIQ/manageiq-providers-kubernetes/pull/554">[#554]</a></li>
+  <li>[KubeVirt / OpenShift Virtualization] Add VM Reconfigure <a href="https://github.com/ManageIQ/manageiq-providers-kubevirt/pull/285">[#285]</a></li>
+  <li>[KubeVirt / OpenShift Virtualization] Collect KubeVirt / OSV instance types <a href="https://github.com/ManageIQ/manageiq-providers-kubevirt/pull/288">[#288]</a>, <a href="https://github.com/ManageIQ/manageiq-providers-openshift/pull/284">[#284]</a></li>
+  <li>[KubeVirt / OpenShift Virtualization] Parse VM sockets and threads <a href="https://github.com/ManageIQ/manageiq-providers-kubevirt/pull/287">[#287]</a></li>
+  <li>[KubeVirt / OpenShift Virtualization] Parse Host memory and cpu <a href="https://github.com/ManageIQ/manageiq-providers-kubevirt/pull/283">[#283]</a></li>
+  <li>[OpenStack] Fix missing OpenStack VM CPU Usage Metrics <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/923">[#923]</a></li>
+  <li>[OpenStack] Support nested JSON parsing for Oslo.messaging v2.0 notifications <a href="https://github.com/ManageIQ/manageiq-providers-openstack/pull/927">[#927]</a></li>
+  <li>[VMware] Add v8.0.3 support <a href="https://github.com/ManageIQ/manageiq-providers-vmware/pull/924">[#924]</a></li>
+</ul>
+
+<h4 id="core">Core</h4>
+<ul>
+  <li>Upgrade to Rails 7.2 <a href="https://github.com/ManageIQ/manageiq/pull/23424">[#23201]</a>, <a href="https://github.com/ManageIQ/manageiq/pull/23200">[#23200]</a></li>
+  <li>Upgrade ansible/ansible-core to latest and python to 3.12 <a href="https://github.com/ManageIQ/manageiq-rpm_build/pull/573">[#573]</a></li>
+  <li>Improve purging of numerous tables <a href="https://github.com/ManageIQ/manageiq/pull/23394">[#23394]</a></li>
+  <li>Support /mnt/log_collection mount point on appliances for log collection scripts <a href="https://github.com/ManageIQ/manageiq/pull/23644">[#23644]</a></li>
+</ul>
+
+<h4 id="embedded-workflows">Embedded Workflows</h4>
+<ul>
+  <li>Add a manageiq://api builtin method for API calls to the ManageIQ API <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/144">[#144]</a></li>
+  <li>Add a manageiq://http builtin method for arbitrary REST API calls <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/143">[#143]</a>, <a href="https://github.com/ManageIQ/floe/pull/306">[#294]</a></li>
+  <li>Check if a workflow payload is valid during sync <a href="https://github.com/ManageIQ/manageiq-providers-workflows/pull/59">[#59]</a></li>
+  <li>[Amazon States Language] **<strong>BREAKING</strong>** Fix nested PayloadTemplate interpolation <a href="https://github.com/ManageIQ/floe/pull/311">[#311]</a>
+    <ul>
+      <li>UPGRADE NOTE: Using <code class="language-plaintext highlighter-rouge">.$</code> at the end of Hash keys is no longer required and will result in an error</li>
+    </ul>
+  </li>
+  <li>[Amazon States Language] **<strong>BREAKING</strong>** Allow credentials to be referenced from parameters <a href="https://github.com/ManageIQ/floe/pull/308">[#308]</a>
+    <ul>
+      <li>UPGRADE NOTE: Setting credentials via ResultPath now must use <code class="language-plaintext highlighter-rouge">$$.Credentials</code> instead of <code class="language-plaintext highlighter-rouge">$.Credentials</code></li>
+    </ul>
+  </li>
+  <li>[Amazon States Language] Add Choice rule payload validation <a href="https://github.com/ManageIQ/floe/pull/189">[#189]</a></li>
+  <li>[Amazon States Language] Add Map state ItemBatcher/ItemSelector support <a href="https://github.com/ManageIQ/floe/pull/294">[#294]</a></li>
+</ul>
+
+<h4 id="ui">UI</h4>
+<ul>
+  <li>Add columns for payload valid and error for workflows <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9632">[#9632]</a></li>
+  <li>Add embedded automate and workflow entry point UI components <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9404">[#9404]</a></li>
+  <li>Table conversions to React <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/9704">[#9704]</a></li>
+  <li>Form conversions to React <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/9495">[#9495]</a></li>
+  <li>Tabs conversions to React <a href="https://github.com/ManageIQ/manageiq-ui-classic/issues/9490">[#9490]</a></li>
+  <li>**<strong>BREAKING</strong>** Remove Diagnostics &gt; Collect Logs <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9704">[#9704]</a>, <a href="https://github.com/ManageIQ/manageiq/pull/23647">[#23647]</a></li>
+  <li>Remove Diagnostics &gt; Orphaned Data <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9442">[#9442]</a></li>
+</ul>
+
+<h4 id="api">API</h4>
+<ul>
+  <li>Add <code class="language-plaintext highlighter-rouge">/api/container_projects</code> create, edit, and delete <a href="https://github.com/ManageIQ/manageiq-api/pull/1291">[#1291]</a></li>
+  <li>Expose attribute aliases in list of attributes <a href="https://github.com/ManageIQ/manageiq-api/pull/1278">[#1278]</a></li>
+</ul>
+
+<h4 id="build">Build</h4>
+<ul>
+  <li>[RPMs] Reduce the size of the azure gems <a href="https://github.com/ManageIQ/manageiq-pods/pull/737">[#737]</a></li>
+  <li>[Appliances] Add bundler aware shell alias <code class="language-plaintext highlighter-rouge">appliance_console_cli</code> <a href="https://github.com/ManageIQ/manageiq-appliance/pull/394">[#394]</a></li>
+  <li>[Appliances] Check for pending migrations before starting server <a href="https://github.com/ManageIQ/manageiq-appliance/pull/395">[#395]</a></li>
+  <li>[Appliances] Fix installing RPMs overwriting the permissions of podman container filesystems by moving the containers storage to <code class="language-plaintext highlighter-rouge">/var/lib/manageiq/containers/storages</code>, allowing <code class="language-plaintext highlighter-rouge">/var/lib/manageiq/containers</code> to live on another logical volume. <a href="https://github.com/ManageIQ/manageiq/issues/23470">[#23470]</a>
+    <ul>
+      <li>UPGRADE NOTE: If you have container registries with authentication, you will need to login again.</li>
+    </ul>
+  </li>
+  <li>[Appliances / Containerized] Set OIDCCacheShmMax value to avoid using changed package defaults <a href="https://github.com/ManageIQ/manageiq-appliance/pull/400">[#400]</a>, <a href="https://github.com/ManageIQ/manageiq-pods/pull/1320">[#1320]</a></li>
+  <li>[Containerized] Add health monitoring for liveness and readiness of httpd pod <a href="https://github.com/ManageIQ/container-httpd/pull/97">[#97]</a>, <a href="https://github.com/ManageIQ/manageiq-pods/pull/1310">[#1310]</a></li>
+  <li>[Operator] Upgrade to go 1.25.0 and operator-sdk v1.41.0 <a href="https://github.com/ManageIQ/manageiq-pods/pull/1279">[#1279]</a></li>
+</ul>
+
+<h4 id="developer">Developer</h4>
+<ul>
+  <li>Upgrade from Node v18 to v20 <a href="https://github.com/ManageIQ/manageiq/issues/23425">[#23425]</a></li>
+  <li>Update Yarn to v4.10.3 <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9627">[#9627]</a></li>
+  <li>Improve cypress automated testing via cypress-on-rails <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9633">[#9633]</a></li>
+</ul>
+
+<p>**<strong>IMPORTANT</strong>**: The following are potentially **<strong>BREAKING</strong>** changes</p>
+
+<ul>
+  <li>[Amazon States Language] Fix nested PayloadTemplate interpolation <a href="https://github.com/ManageIQ/floe/pull/311">[#311]</a>
+    <ul>
+      <li>UPGRADE NOTE: Using <code class="language-plaintext highlighter-rouge">.$</code> at the end of Hash keys is no longer required and will result in an error</li>
+    </ul>
+  </li>
+  <li>[Amazon States Language] Allow credentials to be referenced from parameters <a href="https://github.com/ManageIQ/floe/pull/308">[#308]</a>
+    <ul>
+      <li>UPGRADE NOTE: Setting credentials via ResultPath now must use <code class="language-plaintext highlighter-rouge">$$.Credentials</code> instead of <code class="language-plaintext highlighter-rouge">$.Credentials</code></li>
+    </ul>
+  </li>
+  <li>Remove Diagnostics &gt; Collect Logs <a href="https://github.com/ManageIQ/manageiq-ui-classic/pull/9704">[#9704]</a>, <a href="https://github.com/ManageIQ/manageiq/pull/23647">[#23647]</a>
+    <ul>
+      <li>Log collection is no longer accessible from the UI as we continue to separate the application concerns from the appliance concerns, where those differences affect and/or do not work on the containerized deployments. The log collection scripts under <code class="language-plaintext highlighter-rouge">tools/collect_logs</code> have been enhanced to support a mount point at <code class="language-plaintext highlighter-rouge">/mnt/log_collection</code> (<a href="https://github.com/ManageIQ/manageiq/pull/23644">[#23644]</a>) if you want to collect logs from the appliance in a scriptable or schedulable way.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>There are many more changes and bug fixes that would be impossible to detail in a single blog post, but you can read through them all in the <a href="/changelog/radjabov-2-to-spassky-1">full changelog</a>. Many thanks goes to all of the community members for their contributions!</p>
+
+<h2 id="manageiq-radjabov-2">ManageIQ Radjabov-2</h2>
+
+<p>In addition to the Spassky release, we are also releasing Radjabov-2 which includes the following security fix:</p>
+
+<h4 id="security-issues-1">Security Issues</h4>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/ManageIQ/manageiq/security/advisories/GHSA-m832-x3g8-63j3">CVE-2026-22598 - Denial of Service when creating malformed TimeProfiles</a></p>
+
+    <p>Thanks to Arpitha S for finding and reporting this issue.</p>
+  </li>
+</ul>
+
+<p>You can see the rest of the Radjabov-2 changes in the <a href="/changelog/radjabov-1-to-radjabov-2">full changelog</a>.</p>
+
+<hr />
+
+<p>We are already well underway on the next release of ManageIQ: Tal. If you’re interested in getting involved, check out our <a href="https://manageiq.org/roadmap">roadmap</a>, check out our <a href="https://manageiq.org/community">community page</a>, ask questions in our <a href="https://github.com/ManageIQ/manageiq/discussions">discussions forum</a>, and chat with us in <a href="https://gitter.im/ManageIQ/manageiq">Gitter</a>. We look forward to hearing from you!</p>
+
+          </div>
+        </article>
+      </div>
+
+      <div class="col-xs-12 col-sm-2 blog_side">
+          <div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Categories
+  </h3>
+
+  <ul id="blog_tag_menu" class="blog_menu">
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/announcements">announcements</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible">ansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ansible-tower">ansible-tower</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/api">api</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/appliance">appliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/architecture">architecture</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automate">automate</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/automation">automation</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/aws">aws</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/azure">azure</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/best-practices">best-practices</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudformation">cloudformation</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cloudforms">cloudforms</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/cmdb">cmdb</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/collaboration">collaboration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/compliance">compliance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/configuration">configuration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/containers">containers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/control">control</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/custom-buttons">custom-buttons</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/deployment">deployment</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/developers">developers</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/embedded-ansible">embedded-ansible</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/events">events</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/github">github</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/HA">HA</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/heat">heat</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/integration">integration</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/kubernetes">kubernetes</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ldap">ldap</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/LWIMIQ">LWIMIQ</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/management">management</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/methods">methods</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/microsoft">microsoft</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openscap">openscap</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openshift">openshift</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/openstack">openstack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/operations">operations</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/performance">performance</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/policy">policy</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/provisioning">provisioning</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/pull-request">pull-request</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rdp">rdp</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/releases">releases</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rest">rest</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/rhev">rhev</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ruby">ruby</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/scale">scale</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/security">security</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/self-service">self-service</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/servicenow">servicenow</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/services">services</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/slack">slack</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/sprints">sprints</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/ssh">ssh</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/tutorials">tutorials</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/uxd">uxd</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/vmware">vmware</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/workflows">workflows</a>
+    </li>
+    
+    <li class="blog_menu-tag">
+      <a href="/blog/tags/XML">XML</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="blog_side-group">
+  <h3 class="blog_side-heading">
+    Archive
+  </h3>
+
+  <ul id="blog_archive_menu" class="blog_menu">
+    
+    
+    
+
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2026/index.html">
+        2026
+      </a>
+      
+        <ul class="blog_menu blog_months">
+  
+  
+  <li class="blog_menu-month">
+    <a href="/blog/2026/01/index.html">
+      January
+    </a>
+    
+  </li>
+  
+</ul>
+
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2025/index.html">
+        2025
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2024/index.html">
+        2024
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2023/index.html">
+        2023
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2022/index.html">
+        2022
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2021/index.html">
+        2021
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2020/index.html">
+        2020
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2019/index.html">
+        2019
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2018/index.html">
+        2018
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2017/index.html">
+        2017
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2016/index.html">
+        2016
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2015/index.html">
+        2015
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2014/index.html">
+        2014
+      </a>
+      
+    </li>
+    
+    <li class="blog_menu-year">
+      <a href="/blog/2013/index.html">
+        2013
+      </a>
+      
+    </li>
+    
+  </ul>
+</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-row" id="footer_top">
+    <div class="footer-group">
+      <img class="footer-logo" src="/assets/images/manageiq-glyph-inverse.svg" alt="ManageIQ">
+      <ul class="site_nav">
+  <li >
+    <a href="/download/">Download</a>
+  </li>
+  <li >
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li >
+    <a href="/community/">Community</a>
+  </li>
+  <li class="active">
+    <a href="/blog/">Blog</a>
+  </li>
+  <li>
+    <button class="fa-solid theme-toggle" data-toggle-theme></button>
+  </li>
+</ul>
+
+    </div>
+
+
+    <ul class="contact_menu">
+      <li>
+        <a href="https://github.com/ManageIQ/">
+          <i class="fa-brands fa-github"></i>
+          GitHub
+        </a>
+      </li>
+      <li>
+        <a href="https://gitter.im/ManageIQ/manageiq">
+          <i class="fa-brands fa-gitter"></i>
+          Gitter
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/orgs/ManageIQ/discussions">
+          <i class="fa-solid fa-comments"></i>
+          Forum
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/ManageIQ/manageiq.org/edit/master/site/_posts/2026-01-20-manageiq-spassky-ga-and-radjabov-2-announcement.md">
+          <i class="fa-solid fa-pencil"></i>
+          Edit this page
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="footer-row" id="footer_bottom">
+    <div class="footer-legal">
+      <span class="copyright">
+        &copy; 2026 ManageIQ.
+      </span>
+      <span>
+        <a href="https://www.ibm.com/opensource/" class="footer-link" target="_blank">
+          Sponsored by IBM, Inc.
+        </a>
+      </span>
+      <span>
+        <a href="/logo/" class="footer-link">Logo</a>
+      </span>
+      <span>
+        <a href="/security/" class="footer-link">Security</a>
+      </span>
+      <span>
+        <a href="/legal/" class="footer-link">Legal &amp; Privacy</a>
+      </span>
+    </div>
+
+    <div class="footer-social">
+      <ul class="social_menu">
+        <li>
+          <a href="https://x.com/ManageIQ" title="X / Twitter" class="social_link">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://bsky.app/profile/manageiq.bsky.social" title="Bluesky" class="social_link">
+            <i class="fa-brands fa-bluesky"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://fosstodon.org/@manageiq" title="Mastodon" class="social_link">
+            <i class="fa-brands fa-mastodon"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/manageiq/" title="Facebook" class="social_link">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.linkedin.com/company/manageiq" title="LinkedIn" class="social_link">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.youtube.com/user/ManageIQVideo" title="YouTube" class="social_link">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <div id="lightbox">
+  <header class="lightbox-header">
+    <div class="lightbox-title"></div>
+    <div class="lightbox-close">
+      <span class="fa-solid fa-times"></span>
+    </div>
+  </header>
+
+  <div class="lightbox-image">
+    <img src="" alt="">
+  </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/js/main.js" charset="utf-8"></script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58883457-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </body>
+</html>
