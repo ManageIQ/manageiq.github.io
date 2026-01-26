@@ -1365,7 +1365,7 @@
 <li class="toc-entry toc-h4"><a href="#copying-a-catalog-item">Copying a Catalog Item</a></li>
 <li class="toc-entry toc-h4"><a href="#creating-a-generic-catalog-item">Creating a Generic Catalog Item</a></li>
 <li class="toc-entry toc-h4"><a href="#creating-an-ansible-playbook-service-catalog-item">Creating an Ansible Playbook Service Catalog Item</a></li>
-<li class="toc-entry toc-h4"><a href="#creating-an-ansible-tower-service-catalog-item">Creating an Ansible Tower Service Catalog Item</a></li>
+<li class="toc-entry toc-h4"><a href="#creating-an-ansible-automation-platform-service-catalog-item">Creating an Ansible Automation Platform Service Catalog Item</a></li>
 <li class="toc-entry toc-h4"><a href="#creating-an-amazon-service-catalog-item">Creating an Amazon Service Catalog Item</a></li>
 <li class="toc-entry toc-h4"><a href="#creating-an-azure-service-catalog-item">Creating an Azure Service Catalog Item</a></li>
 <li class="toc-entry toc-h4"><a href="#creating-an-openshift-template-catalog-item">Creating an OpenShift Template Catalog Item</a></li>
@@ -5548,17 +5548,17 @@ a new dialog.</p>
   </li>
 </ol>
 
-<h4 id="creating-an-ansible-tower-service-catalog-item">
-<a class="anchor" href="#creating-an-ansible-tower-service-catalog-item" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating an Ansible Tower Service Catalog Item</h4>
+<h4 id="creating-an-ansible-automation-platform-service-catalog-item">
+<a class="anchor" href="#creating-an-ansible-automation-platform-service-catalog-item" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating an Ansible Automation Platform Service Catalog Item</h4>
 
-<p>Create a service catalog item from an Ansible Tower template you can use
-to execute an Ansible Tower playbook in ManageIQ.</p>
+<p>Create a service catalog item from an Ansible Automation Platform template you can use
+to execute an Ansible Automation Platform playbook in ManageIQ.</p>
 
 <div class="important">
 
-You must first create the job or workflow template in Ansible Tower. The
+You must first create the job or workflow template in Ansible Automation Platform. The
 job or workflow templates are automatically discovered by
-ManageIQ when refreshing your Ansible Tower provider’s inventory.
+ManageIQ when refreshing your Ansible Automation Platform provider’s inventory.
 
 </div>
 
@@ -5580,15 +5580,15 @@ ManageIQ when refreshing your Ansible Tower provider’s inventory.
   </li>
 </ol>
 
-<p>Then, create an Ansible Tower service catalog item:</p>
+<p>Then, create an Ansible Automation Platform service catalog item:</p>
 
 <ol>
   <li>
-    <p>Browse to menu: <strong>Automation &lt; Ansible Tower &lt; Explorer</strong>, then click
+    <p>Browse to menu: <strong>Automation &lt; Ansible Automation Platform &lt; Explorer</strong>, then click
 on the <strong>Templates</strong> accordion menu.</p>
   </li>
   <li>
-    <p>Click <strong>Ansible Tower Templates</strong> and select an Ansible Tower job or
+    <p>Click <strong>Ansible Automation Platform Templates</strong> and select an Ansible Automation Platform job or
 workflow template.</p>
   </li>
   <li>
@@ -5611,7 +5611,7 @@ minimum:</p>
 
     <ul>
       <li>
-        <p>For <strong>Catalog Item type</strong>, select <strong>Ansible Tower</strong>.</p>
+        <p>For <strong>Catalog Item type</strong>, select <strong>Ansible Automation Platform</strong>.</p>
       </li>
       <li>
         <p>Enter a <strong>Name</strong> for the service catalog item.</p>
@@ -5630,8 +5630,8 @@ Dialog</strong> must be selected. A dialog is required if <strong>Display in
 Catalog</strong> is chosen.</p>
       </li>
       <li>
-        <p>In <strong>Provider</strong>, select your Ansible Tower provider. This brings
-up the <strong>Ansible Tower Template</strong> option and configures the
+        <p>In <strong>Provider</strong>, select your Ansible Automation Platform provider. This brings
+up the <strong>Ansible Automation Platform Template</strong> option and configures the
 <strong>Provisioning Entry Point State Machine</strong> automatically.</p>
       </li>
       <li>
@@ -5639,8 +5639,8 @@ up the <strong>Ansible Tower Template</strong> option and configures the
 and <strong>Retirement Entry Point</strong> as applicable.</p>
       </li>
       <li>
-        <p>Select your desired <strong>Ansible Tower Template</strong> from the list.
-Generally, this is the Ansible Tower job or workflow template
+        <p>Select your desired <strong>Ansible Automation Platform Template</strong> from the list.
+Generally, this is the Ansible Automation Platform job or workflow template
 previously used to create the service dialog.</p>
       </li>
     </ul>

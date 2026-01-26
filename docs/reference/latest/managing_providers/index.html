@@ -1305,15 +1305,15 @@
 </li>
 <li class="toc-entry toc-h2"><a href="#callbacks-in-multiple-appliance-environments">Callbacks in Multiple Appliance Environments</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#ansible-tower">Ansible Tower</a>
+<li class="toc-entry toc-h3"><a href="#ansible-automation-platform">Ansible Automation Platform</a>
 <ul>
-<li class="toc-entry toc-h4"><a href="#working-with-an-ansible-tower-provider">Working with an Ansible Tower Provider</a></li>
-<li class="toc-entry toc-h4"><a href="#adding-an-ansible-tower-provider">Adding an Ansible Tower Provider</a></li>
-<li class="toc-entry toc-h4"><a href="#refreshing-an-ansible-tower-provider">Refreshing an Ansible Tower Provider</a></li>
-<li class="toc-entry toc-h4"><a href="#viewing-ansible-tower-providers-and-inventory">Viewing Ansible Tower Providers and Inventory</a></li>
-<li class="toc-entry toc-h4"><a href="#viewing-ansible-tower-configured-systems">Viewing Ansible Tower Configured Systems</a></li>
-<li class="toc-entry toc-h4"><a href="#executing-an-ansible-tower-job-or-workflow-template-from-a-service-catalog">Executing an Ansible Tower Job or Workflow Template from a Service Catalog</a></li>
-<li class="toc-entry toc-h4"><a href="#executing-an-ansible-tower-job-using-a-custom-automate-button">Executing an Ansible Tower Job Using a Custom Automate Button</a></li>
+<li class="toc-entry toc-h4"><a href="#working-with-an-ansible-automation-platform-provider">Working with an Ansible Automation Platform Provider</a></li>
+<li class="toc-entry toc-h4"><a href="#adding-an-ansible-automation-platform-provider">Adding an Ansible Automation Platform Provider</a></li>
+<li class="toc-entry toc-h4"><a href="#refreshing-an-ansible-automation-platform-provider">Refreshing an Ansible Automation Platform Provider</a></li>
+<li class="toc-entry toc-h4"><a href="#viewing-ansible-automation-platform-providers-and-inventory">Viewing Ansible Automation Platform Providers and Inventory</a></li>
+<li class="toc-entry toc-h4"><a href="#viewing-ansible-automation-platform-configured-systems">Viewing Ansible Automation Platform Configured Systems</a></li>
+<li class="toc-entry toc-h4"><a href="#executing-an-ansible-automation-platform-job-or-workflow-template-from-a-service-catalog">Executing an Ansible Automation Platform Job or Workflow Template from a Service Catalog</a></li>
+<li class="toc-entry toc-h4"><a href="#executing-an-ansible-automation-platform-job-using-a-custom-automate-button">Executing an Ansible Automation Platform Job Using a Custom Automate Button</a></li>
 </ul>
 </li>
 </ul>
@@ -1818,7 +1818,7 @@ ManageIQ.</p>
 
 <p><strong>Ansible</strong> integration delivers out-of-the-box support for backing service, alert, and policy actions by using Ansible playbooks. Sync your existing playbook repositories with ManageIQ, add credentials to access providers, and create service catalog items for actions ranging from creating and retiring VMs, updating security software, or adding more disks when space runs low.</p>
 
-<p><strong>Ansible Tower</strong> is a management tool that is integrated with ManageIQ, designed to help automate infrastructure operations utlizizing existing Ansible Tower providers in your inventory. ManageIQ allows you to execute Ansible Tower jobs by using service catalogs and Automate. Using Ansible Tower, you can schedule Ansible playbook runs and monitor current and historical results, allowing for troubleshooting or identification of issues before they occur.</p>
+<p><strong>Ansible Automation Platform</strong> is a management tool that is integrated with ManageIQ, designed to help automate infrastructure operations utlizizing existing Ansible Automation Platform providers in your inventory. ManageIQ allows you to execute Ansible Automation Platform jobs by using service catalogs and Automate. Using Ansible Automation Platform, you can schedule Ansible playbook runs and monitor current and historical results, allowing for troubleshooting or identification of issues before they occur.</p>
 
 <p><strong>Terraform Enterprise</strong> is an application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment.</p>
 
@@ -3304,31 +3304,31 @@ Ansible server role on a dedicated ManageIQ appliance. Add
 to ManageIQ appliances in a multiple appliance
 environment.</p>
 
-<h3 id="ansible-tower">
-<a class="anchor" href="#ansible-tower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ansible Tower</h3>
+<h3 id="ansible-automation-platform">
+<a class="anchor" href="#ansible-automation-platform" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ansible Automation Platform</h3>
 
-<p>Ansible Tower is a management tool integrated with ManageIQ, designed to help automate infrastructure operations. ManageIQ allows you to execute Ansible Tower jobs or workflows using service catalogs and Automate. No custom configuration or Ruby scripting is needed in ManageIQ, as configuration is done in Ansible Tower using playbooks.</p>
+<p>Ansible Automation Platform is a management tool integrated with ManageIQ, designed to help automate infrastructure operations. ManageIQ allows you to execute Ansible Automation Platform jobs or workflows using service catalogs and Automate. No custom configuration or Ruby scripting is needed in ManageIQ, as configuration is done in Ansible Automation Platform using playbooks.</p>
 
 <p>You can use the large library of existing Ansible playbooks as ManageIQ state machines to automate tasks such as deployments, backups, package updates, and maintenance in your ManageIQ environment. This can be particularly useful for quickly applying changes across large environments with many virtual machines or instances.</p>
 
-<p>Using Ansible Tower, you can schedule Ansible playbook runs and monitor current and historical results, allowing for troubleshooting or identification of issues before they occur.</p>
+<p>Using Ansible Automation Platform, you can schedule Ansible playbook runs and monitor current and historical results, allowing for troubleshooting or identification of issues before they occur.</p>
 
-<p>ManageIQ supports Ansible Tower API v2 provider integration.</p>
+<p>ManageIQ supports Ansible Automation Platform API v2 provider integration.</p>
 
-<h4 id="working-with-an-ansible-tower-provider">
-<a class="anchor" href="#working-with-an-ansible-tower-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Working with an Ansible Tower Provider</h4>
+<h4 id="working-with-an-ansible-automation-platform-provider">
+<a class="anchor" href="#working-with-an-ansible-automation-platform-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Working with an Ansible Automation Platform Provider</h4>
 
-<p>The basic workflow when using ManageIQ with an Ansible Tower provider is as follows:</p>
+<p>The basic workflow when using ManageIQ with an Ansible Automation Platform provider is as follows:</p>
 
 <ol>
   <li>
     <p>Create an Ansible playbook which performs a specific task.</p>
   </li>
   <li>
-    <p>A new Ansible Tower job template is created from the playbook (or workflow template created from disparate jobs), which is then retrieved by ManageIQ.</p>
+    <p>A new Ansible Automation Platform job template is created from the playbook (or workflow template created from disparate jobs), which is then retrieved by ManageIQ.</p>
   </li>
   <li>
-    <p>From the Ansible Tower job or workflow template, create a new catalog item in ManageIQ, optionally with a service dialog that allows the user to enter parameters if needed.</p>
+    <p>From the Ansible Automation Platform job or workflow template, create a new catalog item in ManageIQ, optionally with a service dialog that allows the user to enter parameters if needed.</p>
   </li>
   <li>
     <p>The user orders the service from the ManageIQ user interface, and fills out any additional arguments (for example, limiting the task to run on a specific set of virtual machines).</p>
@@ -3345,29 +3345,29 @@ environment.</p>
     <p>For more information about Ansible playbooks, see the <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks.html">Ansible playbook documentation</a>.</p>
   </li>
   <li>
-    <p>For more information about worklows, see <a href="https://docs.ansible.com/ansible-tower/latest/html/userguide/workflows.html">Workflows</a> in the Ansible Tower <em>User Guide</em>.</p>
+    <p>For more information about worklows, see <a href="https://docs.ansible.com/ansible-tower/latest/html/userguide/workflows.html">Workflows</a> in the Ansible Automation Platform <em>User Guide</em>.</p>
   </li>
 </ul>
 
-<h4 id="adding-an-ansible-tower-provider">
-<a class="anchor" href="#adding-an-ansible-tower-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding an Ansible Tower Provider</h4>
+<h4 id="adding-an-ansible-automation-platform-provider">
+<a class="anchor" href="#adding-an-ansible-automation-platform-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding an Ansible Automation Platform Provider</h4>
 
-<p>To access your Ansible Tower inventory from ManageIQ, you must add Ansible Tower as a provider.</p>
+<p>To access your Ansible Automation Platform inventory from ManageIQ, you must add Ansible Automation Platform as a provider.</p>
 
 <p><strong>Notes:</strong></p>
 
 <ul>
   <li>
-    <p>Ensure <strong>ENABLE HTTP BASIC AUTH</strong> is set to <strong>On</strong> in the Ansible Tower configuration settings before adding the provider. See <a href="https://docs.ansible.com/ansible-tower/latest/html/administration/configure_tower_in_tower.html">Tower Configuration</a> in the Ansible Tower <em>Administration Guide</em>.</p>
+    <p>Ensure <strong>ENABLE HTTP BASIC AUTH</strong> is set to <strong>On</strong> in the Ansible Automation Platform configuration settings before adding the provider. See <a href="https://docs.ansible.com/ansible-tower/latest/html/administration/configure_tower_in_tower.html">Tower Configuration</a> in the Ansible Automation Platform <em>Administration Guide</em>.</p>
   </li>
   <li>
-    <p>A trailing slash is <strong>not</strong> required at the end of the Ansible Tower provider URL. Adding the trailing slash to the provider URL may result in a validation error.</p>
+    <p>A trailing slash is <strong>not</strong> required at the end of the Ansible Automation Platform provider URL. Adding the trailing slash to the provider URL may result in a validation error.</p>
   </li>
 </ul>
 
 <ol>
   <li>
-    <p>Browse to menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong> and click on the <strong>Providers</strong> accordion tab.</p>
+    <p>Browse to menu: <strong>Automation &gt; Ansible Automation Platform &gt; Explorer</strong> and click on the <strong>Providers</strong> accordion tab.</p>
   </li>
   <li>
     <p>Under <strong>Configuration</strong>, click <img src="../images/1862.png" alt="Add a new Provider"> <strong>Add a new Provider</strong>.</p>
@@ -3385,7 +3385,7 @@ environment.</p>
         <p>Add a <strong>Zone</strong> for the provider.</p>
       </li>
       <li>
-        <p>Enter the <strong>URL</strong> location or IP address to the Ansible Tower server. Add a trailing slash to the end of the Ansible Tower provider URL.</p>
+        <p>Enter the <strong>URL</strong> location or IP address to the Ansible Automation Platform server. Add a trailing slash to the end of the Ansible Automation Platform provider URL.</p>
       </li>
     </ol>
   </li>
@@ -3403,25 +3403,25 @@ environment.</p>
   </li>
 </ol>
 
-<p>After adding the Ansible Tower provider, refresh its relationships and power states in order to view the current inventory.</p>
+<p>After adding the Ansible Automation Platform provider, refresh its relationships and power states in order to view the current inventory.</p>
 
-<h4 id="refreshing-an-ansible-tower-provider">
-<a class="anchor" href="#refreshing-an-ansible-tower-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing an Ansible Tower Provider</h4>
+<h4 id="refreshing-an-ansible-automation-platform-provider">
+<a class="anchor" href="#refreshing-an-ansible-automation-platform-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refreshing an Ansible Automation Platform Provider</h4>
 
-<p>Refresh relationships of all items related to an existing Ansible Tower configuration management provider including inventory, hosts, virtual machines, and clusters.</p>
+<p>Refresh relationships of all items related to an existing Ansible Automation Platform configuration management provider including inventory, hosts, virtual machines, and clusters.</p>
 
-<p>You can refresh inventory from ManageIQ, or by enabling the <strong>Update on Launch</strong> option for inventory groups in Ansible Tower. The <strong>Update on Launch</strong> option allows Ansible Tower to automatically update inventory using a dynamic inventory script before launching an Ansible Tower job from a playbook. For more information, see the <a href="http://docs.ansible.com/ansible-tower/index.html">Ansible Tower documentation</a>.</p>
+<p>You can refresh inventory from ManageIQ, or by enabling the <strong>Update on Launch</strong> option for inventory groups in Ansible Automation Platform. The <strong>Update on Launch</strong> option allows Ansible Automation Platform to automatically update inventory using a dynamic inventory script before launching an Ansible Automation Platform job from a playbook. For more information, see the <a href="http://docs.ansible.com/ansible-tower/index.html">Ansible Automation Platform documentation</a>.</p>
 
-<p><strong>Important:</strong> It can take a long time to retrieve information from providers containing many virtual machines or instances. The Ansible Tower dynamic inventory script can be modified to limit updates to specific items and reduce refresh time.</p>
+<p><strong>Important:</strong> It can take a long time to retrieve information from providers containing many virtual machines or instances. The Ansible Automation Platform dynamic inventory script can be modified to limit updates to specific items and reduce refresh time.</p>
 
-<p>To refresh an Ansible Tower provider’s inventory in ManageIQ:</p>
+<p>To refresh an Ansible Automation Platform provider’s inventory in ManageIQ:</p>
 
 <ol>
   <li>
-    <p>Browse to menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong> and click the <strong>Providers</strong> accordion tab.</p>
+    <p>Browse to menu: <strong>Automation &gt; Ansible Automation Platform &gt; Explorer</strong> and click the <strong>Providers</strong> accordion tab.</p>
   </li>
   <li>
-    <p>Select the checkboxes for the Ansible Tower providers to refresh under <strong>All Ansible Tower Providers</strong>.</p>
+    <p>Select the checkboxes for the Ansible Automation Platform providers to refresh under <strong>All Ansible Automation Platform Providers</strong>.</p>
   </li>
   <li>
     <p>Click <strong>Configuration</strong>, and then <img src="../images/2003.png" alt="Refresh Relationships and Power States"> (<strong>Refresh Relationships and Power States</strong>).</p>
@@ -3431,51 +3431,51 @@ environment.</p>
   </li>
 </ol>
 
-<p>ManageIQ then queries the Ansible Tower API and obtains an inventory of all available hosts, job, and workflow templates.</p>
+<p>ManageIQ then queries the Ansible Automation Platform API and obtains an inventory of all available hosts, job, and workflow templates.</p>
 
-<h4 id="viewing-ansible-tower-providers-and-inventory">
-<a class="anchor" href="#viewing-ansible-tower-providers-and-inventory" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Ansible Tower Providers and Inventory</h4>
+<h4 id="viewing-ansible-automation-platform-providers-and-inventory">
+<a class="anchor" href="#viewing-ansible-automation-platform-providers-and-inventory" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Ansible Automation Platform Providers and Inventory</h4>
 
-<p>ManageIQ automatically updates its inventory from Ansible Tower. This includes system groups (known as Inventories in Ansible Tower), basic information about individual systems, and available Ansible Tower job or workflow templates to be executed from the service catalog or Automate.</p>
+<p>ManageIQ automatically updates its inventory from Ansible Automation Platform. This includes system groups (known as Inventories in Ansible Automation Platform), basic information about individual systems, and available Ansible Automation Platform job or workflow templates to be executed from the service catalog or Automate.</p>
 
-<p><strong>Note:</strong> To view and access Ansible Tower inventories and job or workflow templates in ManageIQ, you must first create them in Ansible Tower.</p>
+<p><strong>Note:</strong> To view and access Ansible Automation Platform inventories and job or workflow templates in ManageIQ, you must first create them in Ansible Automation Platform.</p>
 
-<p>To view a list of Ansible Tower providers and inventory:</p>
-
-<ol>
-  <li>
-    <p>Browse to menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong>.</p>
-  </li>
-  <li>
-    <p>select the <strong>Providers</strong> accordion menu to display a list of <strong>All Ansible Tower Providers</strong>.</p>
-  </li>
-  <li>
-    <p>Select your Ansible Tower provider to expand and list the inventory groups on that Ansible Tower system. The inventory groups can be expanded to view the systems contained within each group, as well as configuration details for these systems.</p>
-  </li>
-</ol>
-
-<p>Similarly, all discovered job and workflow templates are accessed under the provider by expanding the menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong> and click the <strong>Templates</strong> accordion menu.</p>
-
-<h4 id="viewing-ansible-tower-configured-systems">
-<a class="anchor" href="#viewing-ansible-tower-configured-systems" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Ansible Tower Configured Systems</h4>
-
-<p>To view the systems in your Ansible Tower inventory:</p>
+<p>To view a list of Ansible Automation Platform providers and inventory:</p>
 
 <ol>
   <li>
-    <p>Browse to menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong> and click <strong>Configured Systems</strong>.</p>
+    <p>Browse to menu: <strong>Automation &gt; Ansible Automation Platform &gt; Explorer</strong>.</p>
   </li>
   <li>
-    <p>Under <strong>All Ansible Tower Configured Systems</strong>, select <strong>Ansible Tower Configured Systems</strong> to display a list.</p>
+    <p>select the <strong>Providers</strong> accordion menu to display a list of <strong>All Ansible Automation Platform Providers</strong>.</p>
+  </li>
+  <li>
+    <p>Select your Ansible Automation Platform provider to expand and list the inventory groups on that Ansible Automation Platform system. The inventory groups can be expanded to view the systems contained within each group, as well as configuration details for these systems.</p>
   </li>
 </ol>
 
-<h4 id="executing-an-ansible-tower-job-or-workflow-template-from-a-service-catalog">
-<a class="anchor" href="#executing-an-ansible-tower-job-or-workflow-template-from-a-service-catalog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Executing an Ansible Tower Job or Workflow Template from a Service Catalog</h4>
+<p>Similarly, all discovered job and workflow templates are accessed under the provider by expanding the menu: <strong>Automation &gt; Ansible Automation Platform &gt; Explorer</strong> and click the <strong>Templates</strong> accordion menu.</p>
 
-<p>You can execute an Ansible Tower playbook from ManageIQ by creating a service catalog item from an Ansible Tower job or workflow template.</p>
+<h4 id="viewing-ansible-automation-platform-configured-systems">
+<a class="anchor" href="#viewing-ansible-automation-platform-configured-systems" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Ansible Automation Platform Configured Systems</h4>
 
-<p><strong>Important:</strong> You must first create the job or workflow template in Ansible Tower. The job or workflow templates are automatically discovered by ManageIQ when refreshing your Ansible Tower provider’s inventory.</p>
+<p>To view the systems in your Ansible Automation Platform inventory:</p>
+
+<ol>
+  <li>
+    <p>Browse to menu: <strong>Automation &gt; Ansible Automation Platform &gt; Explorer</strong> and click <strong>Configured Systems</strong>.</p>
+  </li>
+  <li>
+    <p>Under <strong>All Ansible Automation Platform Configured Systems</strong>, select <strong>Ansible Automation Platform Configured Systems</strong> to display a list.</p>
+  </li>
+</ol>
+
+<h4 id="executing-an-ansible-automation-platform-job-or-workflow-template-from-a-service-catalog">
+<a class="anchor" href="#executing-an-ansible-automation-platform-job-or-workflow-template-from-a-service-catalog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Executing an Ansible Automation Platform Job or Workflow Template from a Service Catalog</h4>
+
+<p>You can execute an Ansible Automation Platform playbook from ManageIQ by creating a service catalog item from an Ansible Automation Platform job or workflow template.</p>
+
+<p><strong>Important:</strong> You must first create the job or workflow template in Ansible Automation Platform. The job or workflow templates are automatically discovered by ManageIQ when refreshing your Ansible Automation Platform provider’s inventory.</p>
 
 <p>First, create a catalog:</p>
 
@@ -3494,14 +3494,14 @@ environment.</p>
   </li>
 </ol>
 
-<p>Then, create an Ansible Tower service catalog item:</p>
+<p>Then, create an Ansible Automation Platform service catalog item:</p>
 
 <ol>
   <li>
-    <p>Browse to menu: <strong>Automation &gt; Ansible Tower &gt; Explorer</strong>, then click the <strong>Templates</strong> according menu.</p>
+    <p>Browse to menu: <strong>Automation &gt; Ansible Automation Platform &gt; Explorer</strong>, then click the <strong>Templates</strong> according menu.</p>
   </li>
   <li>
-    <p>Click <strong>Ansible Tower Templates</strong> and select an Ansible Tower job or workflow template.</p>
+    <p>Click <strong>Ansible Automation Platform Templates</strong> and select an Ansible Automation Platform job or workflow template.</p>
   </li>
   <li>
     <p>Click <strong>Configuration</strong>, then <img src="../images/1862.png" alt="Create Service Dialog from Template"> (<strong>Create Service Dialog from this Template</strong>).</p>
@@ -3517,7 +3517,7 @@ environment.</p>
 
     <ul>
       <li>
-        <p>For <strong>Catalog Item type</strong>, select <strong>Ansible Tower</strong>.</p>
+        <p>For <strong>Catalog Item type</strong>, select <strong>Ansible Automation Platform</strong>.</p>
       </li>
       <li>
         <p>Enter a <strong>Name</strong> for the service catalog item.</p>
@@ -3532,13 +3532,13 @@ environment.</p>
         <p>In <strong>Dialog</strong>, select the service dialog you created previously (in this example, <em>ansible_tower_job</em>). To ask the user to enter extra information when running the task, <strong>Service Dialog</strong> must be selected. A dialog is required if <strong>Display in Catalog</strong> is chosen.</p>
       </li>
       <li>
-        <p>In <strong>Provider</strong>, select your Ansible Tower provider. This brings up the <strong>Ansible Tower Template</strong> option and configures the <strong>Provisioning Entry Point State Machine</strong> automatically.</p>
+        <p>In <strong>Provider</strong>, select your Ansible Automation Platform provider. This brings up the <strong>Ansible Automation Platform Template</strong> option and configures the <strong>Provisioning Entry Point State Machine</strong> automatically.</p>
       </li>
       <li>
         <p>Add configuration information for <strong>Reconfigure Entry Point</strong> and <strong>Retirement Entry Point</strong> as applicable.</p>
       </li>
       <li>
-        <p>Select your desired <strong>Ansible Tower Template</strong> from the list. Generally, this is the Ansible Tower job or workflow template previously used to create the service dialog.</p>
+        <p>Select your desired <strong>Ansible Automation Platform Template</strong> from the list. Generally, this is the Ansible Automation Platform job or workflow template previously used to create the service dialog.</p>
       </li>
     </ul>
   </li>
@@ -3547,11 +3547,11 @@ environment.</p>
   </li>
 </ol>
 
-<p>To execute the Ansible Tower job:</p>
+<p>To execute the Ansible Automation Platform job:</p>
 
 <ol>
   <li>
-    <p>Browse to menu: <strong>Service &gt; Catalogs</strong> and click on <strong>Service Catalogs</strong> then click <strong>Ansible Tower catalog</strong>.</p>
+    <p>Browse to menu: <strong>Service &gt; Catalogs</strong> and click on <strong>Service Catalogs</strong> then click <strong>Ansible Automation Platform catalog</strong>.</p>
 
     <p><img src="../images/order_at_catalog_item.png" alt="order at catalog item"></p>
   </li>
@@ -3569,35 +3569,35 @@ environment.</p>
 
 <p><strong>Note:</strong> Instead of running a single job at a time, multiple service catalog items can also be grouped together as a catalog bundle to create one deployment with multiple job templates. For more information, see <a href="../provisioning_virtual_machines_and_hosts/index.html#catalogs-and-services">Catalogs and Services</a>.</p>
 
-<h4 id="executing-an-ansible-tower-job-using-a-custom-automate-button">
-<a class="anchor" href="#executing-an-ansible-tower-job-using-a-custom-automate-button" aria-hidden="true"><span class="octicon octicon-link"></span></a>Executing an Ansible Tower Job Using a Custom Automate Button</h4>
+<h4 id="executing-an-ansible-automation-platform-job-using-a-custom-automate-button">
+<a class="anchor" href="#executing-an-ansible-automation-platform-job-using-a-custom-automate-button" aria-hidden="true"><span class="octicon octicon-link"></span></a>Executing an Ansible Automation Platform Job Using a Custom Automate Button</h4>
 
-<p>ManageIQ can execute Ansible Tower jobs on virtual machines or instances using custom buttons in Automate.</p>
+<p>ManageIQ can execute Ansible Automation Platform jobs on virtual machines or instances using custom buttons in Automate.</p>
 
-<p>Ansible Tower jobs can either be noncustomizable, which do not require any extra configuration from the user, or alternatively, they can allow the user to specify a parameter (for example, a package name to install). In Ansible Tower jobs containing a dialog, ManageIQ accepts additional information from the user and adds it to the appropriate API call in Automate, and then sends it into Ansible Tower.</p>
+<p>Ansible Automation Platform jobs can either be noncustomizable, which do not require any extra configuration from the user, or alternatively, they can allow the user to specify a parameter (for example, a package name to install). In Ansible Automation Platform jobs containing a dialog, ManageIQ accepts additional information from the user and adds it to the appropriate API call in Automate, and then sends it into Ansible Automation Platform.</p>
 
 <p><strong>Prerequisites.</strong></p>
 
-<p>Before creating an Automate button to execute an Ansible Tower job, the following must be configured:</p>
+<p>Before creating an Automate button to execute an Ansible Automation Platform job, the following must be configured:</p>
 
 <ul>
   <li>
-    <p>An Ansible playbook in Ansible Tower. See the <a href="https://docs.ansible.com/">Ansible Tower documentation</a> for instructions.</p>
+    <p>An Ansible playbook in Ansible Automation Platform. See the <a href="https://docs.ansible.com/">Ansible Automation Platform documentation</a> for instructions.</p>
   </li>
   <li>
-    <p>Ansible Tower must be able to reach virtual machines or instances deployed by ManageIQ at the IP level.</p>
+    <p>Ansible Automation Platform must be able to reach virtual machines or instances deployed by ManageIQ at the IP level.</p>
   </li>
   <li>
-    <p>The virtual machine template must have the Ansible Tower environment’s public SSH key injected. For cloud instances, <code class="language-plaintext highlighter-rouge">cloud-init</code> can be used and the public SSH key can be passed without rebuilding the image.</p>
+    <p>The virtual machine template must have the Ansible Automation Platform environment’s public SSH key injected. For cloud instances, <code class="language-plaintext highlighter-rouge">cloud-init</code> can be used and the public SSH key can be passed without rebuilding the image.</p>
   </li>
   <li>
     <p>Any dynamic inventory scripts used must be configured to return the virtual machine names exactly as they are stored in ManageIQ, without the UUID appended.</p>
   </li>
 </ul>
 
-<p><strong>Executing an Ansible Tower Job using a Custom Automate Button.</strong></p>
+<p><strong>Executing an Ansible Automation Platform Job using a Custom Automate Button.</strong></p>
 
-<p>To configure a custom button to execute an Ansible Tower job on a virtual machine or instance, first create the button:</p>
+<p>To configure a custom button to execute an Ansible Automation Platform job on a virtual machine or instance, first create the button:</p>
 
 <ol>
   <li>
@@ -3639,7 +3639,7 @@ environment.</p>
 
     <ul>
       <li>
-        <p><strong>job_template_name</strong> is the Ansible Tower job template name to associate with the button. The <strong>job_template_name</strong> field is mandatory; other parameters are provided by the Tower job dialog.</p>
+        <p><strong>job_template_name</strong> is the Ansible Automation Platform job template name to associate with the button. The <strong>job_template_name</strong> field is mandatory; other parameters are provided by the Tower job dialog.</p>
       </li>
       <li>
         <p>Configure <strong>Visibility</strong> to all users, or limit visibility by role as desired.</p>
@@ -3691,14 +3691,14 @@ environment.</p>
   </li>
 </ol>
 
-<p>To use the button to run an Ansible Tower job on a virtual machine:</p>
+<p>To use the button to run an Ansible Automation Platform job on a virtual machine:</p>
 
 <ol>
   <li>
     <p>Browse to menu: <strong>Compute &gt; Infrastructure &gt; Virtual Machines</strong>.</p>
   </li>
   <li>
-    <p>Select the virtual machine to run the Ansible Tower job template on.</p>
+    <p>Select the virtual machine to run the Ansible Automation Platform job template on.</p>
   </li>
   <li>
     <p>Click the <strong>VM Actions</strong> button to show the button you created, and click the button from the list to run the Ansible Tower job template.</p>
