@@ -926,6 +926,17 @@ git fetch upstream
     <p>macOS requires platform specific Gems. Run <code class="language-plaintext highlighter-rouge">bundle config specific_platform true</code> before running <code class="language-plaintext highlighter-rouge">bin/setup</code>.</p>
   </li>
   <li>
+    <p>The <code class="language-plaintext highlighter-rouge">surro-gate</code> gem contains C code which generates errors on some compilers.</p>
+
+    <p>You can add build flags to your bundler config:</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle config set build.surro-gate --with-cflags=\"-Wno-error=incompatible-pointer-types\"
+</code></pre></div>    </div>
+
+    <p>Or use <code class="language-plaintext highlighter-rouge">gem install</code>:</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install surro-gate -- --with-cflags="-Wno-error=incompatible-pointer-types"
+</code></pre></div>    </div>
+  </li>
+  <li>
     <p>If you’ve run PostgreSQL in a container, be sure to export the <code class="language-plaintext highlighter-rouge">DATABASE_URL</code> variable to connect to the container over TCP instead of a UNIX file socket.</p>
 
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">DATABASE_URL</span><span class="o">=</span><span class="s1">'postgresql://localhost:5432'</span> <span class="c"># optional, only necessary if PostgreSQL is running in a container</span>
