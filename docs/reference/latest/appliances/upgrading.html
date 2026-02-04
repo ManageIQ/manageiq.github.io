@@ -1214,15 +1214,14 @@
         </div>
         
         <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h1"><a href="#upgrading-appliances">Upgrading Appliances</a></li>
-<li class="toc-entry toc-h1"><a href="#appendix">Appendix</a>
+<li class="toc-entry toc-h1"><a href="#upgrading-appliances">Upgrading Appliances</a>
 <ul>
-<li class="toc-entry toc-h2"><a href="#rpm-urls-for-manageiq-release">RPM URLs for manageiq-release</a></li>
 <li class="toc-entry toc-h2"><a href="#update-automation-engine">Update automation engine</a></li>
 </ul>
 </li>
 </ul><h1 id="upgrading-appliances">
 <a class="anchor" href="#upgrading-appliances" aria-hidden="true"><span class="octicon octicon-link"></span></a>Upgrading Appliances</h1>
+
 <p>In this example, we will update from jansa to kasparov.</p>
 
 <ol>
@@ -1234,7 +1233,7 @@
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Install the new manageiq-release RPM for the version that you want to upgrade to. Refer to (<a href="#rpm-urls-for-manageiq-release">RPM URLs for manageiq-release</a>) for the list of RPM URLs</p>
+    <p>Install the new manageiq-release RPM for the version that you want to upgrade to. Refer to the <a href="https://rpm.manageiq.org/?prefix=release">release directory</a> in our RPM repository to find the latest manageiq-release rpm. Navigate to the non-nightly directory, el, then noarch directory for the version that you want to upgrade to, and get the URL for the manageiq-release rpm.</p>
 
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> # dnf install https://rpm.manageiq.org/release/11-kasparov/el8/noarch/manageiq-release-11.0-1.el8.noarch.rpm
@@ -1271,24 +1270,6 @@
 </code></pre></div>    </div>
   </li>
 </ol>
-
-<h1 id="appendix">
-<a class="anchor" href="#appendix" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appendix</h1>
-
-<h2 id="rpm-urls-for-manageiq-release">
-<a class="anchor" href="#rpm-urls-for-manageiq-release" aria-hidden="true"><span class="octicon octicon-link"></span></a>RPM URLs for manageiq-release</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    https://rpm.manageiq.org/release/19-spassky/el9/noarch/manageiq-release-19.0-1.el9.noarch.rpm
-    https://rpm.manageiq.org/release/18-radjabov/el9/noarch/manageiq-release-18.0-1.el9.noarch.rpm
-    https://rpm.manageiq.org/release/17-quinteros/el8/noarch/manageiq-release-17.0-1.el8.noarch.rpm
-    https://rpm.manageiq.org/release/16-petrosian/el8/noarch/manageiq-release-16.0-1.el8.noarch.rpm
-    https://rpm.manageiq.org/release/15-oparin/el8/noarch/manageiq-release-15.0-1.el8.noarch.rpm
-    https://rpm.manageiq.org/release/14-najdorf/el8/noarch/manageiq-release-14.0-1.el8.noarch.rpm
-    https://rpm.manageiq.org/release/13-morphy/el8/noarch/manageiq-release-13.0-1.el8.noarch.rpm
-    https://rpm.manageiq.org/release/12-lasker/el8/noarch/manageiq-release-12.0-1.el8.noarch.rpm
-    https://rpm.manageiq.org/release/11-kasparov/el8/noarch/manageiq-release-11.0-1.el8.noarch.rpm
-    https://rpm.manageiq.org/release/10-jansa/el8/noarch/manageiq-release-10.0-1.el8.noarch.rpm
-</code></pre></div></div>
 
 <h2 id="update-automation-engine">
 <a class="anchor" href="#update-automation-engine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Update automation engine</h2>
