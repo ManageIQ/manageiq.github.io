@@ -531,20 +531,17 @@ and <code class="language-plaintext highlighter-rouge">spec/factories/ext_manage
 <p>Each provider can have slight variances in the names of their VCR cassettes so it is
 best to review the spec tests in the provider you are trying to replicate.</p>
 
-<p>Now you should have inventory in your database for this provider:
-```ruby</p>
-<blockquote>
-  <blockquote>
-    <p>ems.vms.count
-=&gt; 9
-ems.miq_templates.count
-=&gt; 243
-ems.orchestration_templates.count
-=&gt; 0
-ems.cloud_networks.count                      <br />
-=&gt; 5</p>
-  </blockquote>
-</blockquote>
+<p>Now you should have inventory in your database for this provider:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">vms</span><span class="p">.</span><span class="nf">count</span>
+<span class="o">=&gt;</span> <span class="mi">9</span>
+<span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">miq_templates</span><span class="p">.</span><span class="nf">count</span>
+<span class="o">=&gt;</span> <span class="mi">243</span>
+<span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">orchestration_templates</span><span class="p">.</span><span class="nf">count</span>
+<span class="o">=&gt;</span> <span class="mi">0</span>
+<span class="o">&gt;&gt;</span> <span class="n">ems</span><span class="p">.</span><span class="nf">cloud_networks</span><span class="p">.</span><span class="nf">count</span>                        
+<span class="o">=&gt;</span> <span class="mi">5</span>
+</code></pre></div></div>
 
       </div>
     </article>
