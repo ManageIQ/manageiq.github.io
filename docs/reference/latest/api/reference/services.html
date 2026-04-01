@@ -2261,7 +2261,9 @@ services:</p>
 
 <p>For cases where VMs are created externally, i.e. via Ansible Playbooks,
 this action allows the system to identify the VMs created and link those
-VMs back to the service.</p>
+VMs back to the service.  This accepts an optional “timeout” parameter which
+dictates in seconds how long the task should wait for the VM to be added
+to the database.  If not specified the default is 300 seconds.</p>
 
 <pre><code class="language-data">POST /api/services/:id
 </code></pre>
@@ -2274,7 +2276,8 @@ VMs back to the service.</p>
       </span><span class="s2">"provider_vm_id1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"provider_vm_id2"</span><span class="p">,</span><span class="w">
       </span><span class="err">...</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"timeout"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
