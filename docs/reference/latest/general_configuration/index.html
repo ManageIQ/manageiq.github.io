@@ -7390,12 +7390,14 @@ spec:
   </li>
   <li>Create a backup by running the command:
     <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>velero backup create &lt;your backup name&gt; --include-namespaces &lt;your namespace&gt; -l &lt;your label name&gt;=t
+<div class="highlight"><pre class="highlight"><code>velero backup create &lt;your backup name&gt;-database --include-namespaces &lt;your namespace&gt; -l &lt;your label name&gt;=db
+velero backup create &lt;your backup name&gt; --include-namespaces &lt;your namespace&gt; -l &lt;your label name&gt;=t
 </code></pre></div>    </div>
   </li>
   <li>In order to restore a backup, first ensure the ManageIQ CRD exists. Then, restore the backup by running the commands:
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>oc new-project &lt;your namespace&gt;
+velero restore create --from-backup &lt;your backup name&gt;-database # Wait for restore to finish before continuing
 velero restore create --from-backup &lt;your backup name&gt;
 </code></pre></div>    </div>
   </li>
