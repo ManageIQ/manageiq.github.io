@@ -632,15 +632,19 @@ then substituted with the context of the <code class="language-plaintext highlig
 <p>block being collected during string extraction by <code class="language-plaintext highlighter-rouge">yarn run gettext:extract</code>. Correctly, the <code class="language-plaintext highlighter-rouge">translate</code> directive should be placed inside the <code class="language-plaintext highlighter-rouge">span</code> element.</p>
 
 <ul>
-  <li><strong>Don’t use dynamic content inside <code class="language-plaintext highlighter-rouge">__()</code></strong>. For example, the following javascript code won’t be collected correctly by <code class="language-plaintext highlighter-rouge">yarn run gettext:extract</code>.</li>
+  <li><strong>Don’t use dynamic content inside <code class="language-plaintext highlighter-rouge">__()</code></strong>. The argument to <code class="language-plaintext highlighter-rouge">__()</code> should be a string literal. GNU gettext and libraries built on top of it, such as the Ruby and JavaScript gettext extractors, perform string extraction statically, so expressions, concatenation, interpolation, and other dynamically built values will not be collected correctly by <code class="language-plaintext highlighter-rouge">yarn run gettext:extract</code>.</li>
 </ul>
 
+<p>For example, the following javascript code won’t be collected correctly:</p>
+
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">s</span> <span class="o">=</span> <span class="nf">__</span><span class="p">(</span><span class="nf">sprintf</span><span class="p">(</span><span class="dl">"</span><span class="s2">My name is %s.</span><span class="dl">"</span><span class="p">,</span> <span class="nx">me</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
+<span class="nx">message</span> <span class="o">=</span> <span class="nf">__</span><span class="p">(</span><span class="dl">'</span><span class="s1">xyz</span><span class="dl">'</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">abc</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>The above should correctly be:</p>
+<p>These examples should correctly be:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">s</span> <span class="o">=</span> <span class="nf">sprintf</span><span class="p">(</span><span class="nf">__</span><span class="p">(</span><span class="dl">"</span><span class="s2">My name is %s.</span><span class="dl">"</span><span class="p">),</span> <span class="nx">me</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="nx">message</span> <span class="o">=</span> <span class="nf">__</span><span class="p">(</span><span class="dl">"</span><span class="s2">xyzabc</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div></div>
 
 <ul>
