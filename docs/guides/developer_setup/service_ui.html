@@ -25,7 +25,7 @@
   </script>
 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="http://manageiq.org/docs/guides/developer_setup/index">
+  <link rel="canonical" href="http://manageiq.org/docs/guides/developer_setup/service_ui">
   <link rel="alternate" type="application/rss+xml" title="ManageIQ" href="http://manageiq.org/feed.xml">
 
   <link href="/assets/images/favicon.ico" rel="shortcut icon">
@@ -74,7 +74,7 @@
 </header>
 
 
-    <main data-url="/docs/guides/developer_setup/index">
+    <main data-url="/docs/guides/developer_setup/service_ui">
       <nav class="doc_tabs">
   <ul>
   <li>
@@ -474,40 +474,80 @@
 
       <div class="doc-content">
         
-        <ul>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/debugging">Debugging</a>
+        <h2 id="service-ui-development">Service UI Development</h2>
+
+<p>The ManageIQ Service UI is a separate Angular-based application that provides a self-service portal interface for ManageIQ. This guide covers setting up the Service UI for local development.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>Before setting up the Service UI, ensure you have:</p>
+
+<ul>
+  <li>ManageIQ API running locally (typically on <code class="language-plaintext highlighter-rouge">http://localhost:3000</code>)</li>
+  <li>NodeJS and yarn installed (see <a href="../developer_setup#requirements-summary">Requirements Summary</a>)</li>
+  <li>The ManageIQ repository cloned and configured</li>
+</ul>
+
+<h3 id="clone-the-service-ui-repository">Clone the Service UI Repository</h3>
+
+<p>Clone the Service UI repository into a sibling directory to your ManageIQ installation:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ..  <span class="c"># Navigate to the parent directory of manageiq</span>
+git clone https://github.com/ManageIQ/manageiq-ui-service.git
+<span class="nb">cd </span>manageiq-ui-service
+</code></pre></div></div>
+
+<p>Your directory structure should look like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parent-directory/
+├── manageiq/
+└── manageiq-ui-service/
+</code></pre></div></div>
+
+<h3 id="install-dependencies">Install Dependencies</h3>
+
+<p>Install the required Node packages using yarn:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yarn <span class="nb">install</span>
+</code></pre></div></div>
+
+<h3 id="start-the-development-server">Start the Development Server</h3>
+
+<p>Start the Service UI development server:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run start
+</code></pre></div></div>
+
+<p>The Service UI will be available at <code class="language-plaintext highlighter-rouge">http://localhost:3001</code>.</p>
+
+<h3 id="verify-the-setup">Verify the Setup</h3>
+
+<ol>
+  <li>Ensure the ManageIQ API is running on <code class="language-plaintext highlighter-rouge">http://localhost:3000</code></li>
+  <li>Open your browser to <code class="language-plaintext highlighter-rouge">http://localhost:3001</code></li>
+  <li>Log in using the default credentials:
+    <ul>
+      <li>Username: <code class="language-plaintext highlighter-rouge">admin</code></li>
+      <li>Password: <code class="language-plaintext highlighter-rouge">smartvm</code></li>
+    </ul>
   </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/foreman">Foreman</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/git_workflow">Git Workflow</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/plugins">Plugins</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/ruby_mine_setup">Ruby Mine Setup</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/running_test_suites">Running Test Suites</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/seeding_test_inventory">Seeding Test Inventory</a>
-  </li>
-  
-  <li>
-    <a href="/docs/guides/developer_setup/service_ui">Service Ui</a>
-  </li>
-  
+</ol>
+
+<p>If you can successfully log in and see the Service UI interface, your setup is complete!</p>
+
+<h3 id="development-workflow">Development Workflow</h3>
+
+<ul>
+  <li>The Service UI development server supports hot reloading, so changes to the code will automatically refresh in the browser</li>
+  <li>The Service UI communicates with the ManageIQ API running on port 3000</li>
+  <li>Both the ManageIQ API server and the Service UI development server need to be running simultaneously for development</li>
+</ul>
+
+<h3 id="further-reading">Further Reading</h3>
+
+<ul>
+  <li><a href="../service_ui/skinning">Service UI Skinning Guide</a></li>
+  <li><a href="https://github.com/ManageIQ/manageiq-ui-service">ManageIQ Service UI Repository</a></li>
 </ul>
 
       </div>
