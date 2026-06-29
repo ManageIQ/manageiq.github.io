@@ -481,21 +481,24 @@ running an OIDC server and Apache on a local development setup.</p>
 
 <ol>
   <li>
-    <p>Ensure you have the <a href="https://github.com/ManageIQ/guides">guides</a> repo cloned locally, then <code class="language-plaintext highlighter-rouge">cd guides/external_auth</code></p>
+    <p>Ensure you have the <a href="https://github.com/ManageIQ/guides">guides</a> repo cloned locally</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">cd guides/external_auth</code></p>
   </li>
   <li>
     <p>Launch KeyCloak</p>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">--name</span> keycloak <span class="se">\</span>
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>podman run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">--name</span> keycloak <span class="se">\</span>
   <span class="nt">-p</span> 8443:8443 <span class="se">\</span>
-  <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/certs:/etc/x509/https <span class="se">\</span>
-  <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/realms:/tmp/realms <span class="se">\</span>
-  <span class="nt">-e</span> <span class="nv">JAVA_OPTS</span><span class="o">=</span><span class="s2">"-Dkeycloak.profile.feature.scripts=enabled -Dkeycloak.profile.feature.upload_scripts=enabled"</span> <span class="se">\</span>
-  <span class="nt">-e</span> <span class="nv">KEYCLOAK_IMPORT</span><span class="o">=</span>/tmp/realms/ManageIQ-realm.json <span class="se">\</span>
-  <span class="nt">-e</span> <span class="nv">KEYCLOAK_USER</span><span class="o">=</span>admin <span class="se">\</span>
-  <span class="nt">-e</span> <span class="nv">KEYCLOAK_PASSWORD</span><span class="o">=</span>smartvm <span class="se">\</span>
-  <span class="nt">-e</span> <span class="nv">DB_VENDOR</span><span class="o">=</span>h2 <span class="se">\</span>
-  quay.io/keycloak/keycloak:12.0.4
+  <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/certs:/opt/keycloak/conf/certs <span class="se">\</span>
+  <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/realms:/opt/keycloak/data/import <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">KC_BOOTSTRAP_ADMIN_USERNAME</span><span class="o">=</span>admin <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">KC_BOOTSTRAP_ADMIN_PASSWORD</span><span class="o">=</span>smartvm <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">KC_HTTPS_CERTIFICATE_FILE</span><span class="o">=</span>/opt/keycloak/conf/certs/tls.crt <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">KC_HTTPS_CERTIFICATE_KEY_FILE</span><span class="o">=</span>/opt/keycloak/conf/certs/tls.key <span class="se">\</span>
+  quay.io/keycloak/keycloak:26.6.3 <span class="se">\</span>
+  start-dev <span class="nt">--import-realm</span>
 </code></pre></div>    </div>
 
     <p>When it completes startup, go to <code class="language-plaintext highlighter-rouge">https://127.0.0.1.nip.io:8443</code> and login with <code class="language-plaintext highlighter-rouge">admin</code> / <code class="language-plaintext highlighter-rouge">smartvm</code> to verify it’s working. You should see a realm for <code class="language-plaintext highlighter-rouge">ManageIQ</code>.</p>
@@ -503,20 +506,22 @@ running an OIDC server and Apache on a local development setup.</p>
   <li>
     <p>Launch the httpd container</p>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">--name</span> httpd <span class="se">\</span>
-  <span class="nt">-p</span> 80:80 <span class="se">\</span>
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>podman run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">--name</span> httpd <span class="se">\</span>
+  <span class="nt">-p</span> 8080:8080 <span class="se">\</span>
   <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/oidc-httpd-configs:/etc/httpd/conf.d <span class="se">\</span>
   <span class="nt">-e</span> <span class="nv">HTTPD_AUTH_OIDC_CLIENT_ID</span><span class="o">=</span>manageiq-oidc-client <span class="se">\</span>
   <span class="nt">-e</span> <span class="nv">HTTPD_AUTH_OIDC_CLIENT_SECRET</span><span class="o">=</span>3167ae6f-762d-49cd-b246-ef8856315957 <span class="se">\</span>
   <span class="nt">-e</span> <span class="nv">HTTPD_AUTH_HOST</span><span class="o">=</span>127.0.0.1.nip.io <span class="se">\</span>
-  <span class="nt">--add-host</span><span class="o">=</span>127.0.0.1.nip.io:192.168.65.2 <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">HTTPD_AUTH_PORT</span><span class="o">=</span>8080 <span class="se">\</span>
+  <span class="nt">--add-host</span><span class="o">=</span>127.0.0.1.nip.io:192.168.127.254 <span class="se">\</span>
   manageiq/httpd:latest
 </code></pre></div>    </div>
+    <p>Note: 192.168.65.2 / 192.168.127.254 is a hardcoded proxy for host.docker.internal / host.containers.internal on docker / podman</p>
   </li>
   <li>
     <p>Launch ManageIQ</p>
 
-    <p>Run your Rails server as you normally would for development, however, instead of accessing via the browser at <code class="language-plaintext highlighter-rouge">https://localhost:3000</code>, use <code class="language-plaintext highlighter-rouge">http://127.0.0.1.nip.io</code> (notice <code class="language-plaintext highlighter-rouge">http</code> as opposed to <code class="language-plaintext highlighter-rouge">https</code>).</p>
+    <p>Run your Rails server as you normally would for development, however, instead of accessing via the browser at <code class="language-plaintext highlighter-rouge">https://localhost:3000</code>, use <code class="language-plaintext highlighter-rouge">http://127.0.0.1.nip.io:8080</code> (notice <code class="language-plaintext highlighter-rouge">http</code> as opposed to <code class="language-plaintext highlighter-rouge">https</code> and port <code class="language-plaintext highlighter-rouge">8080</code>).</p>
 
     <p>If ManageIQ is not yet configured for OIDC, do the following:</p>
 
@@ -553,6 +558,7 @@ running an OIDC server and Apache on a local development setup.</p>
           </tbody>
         </table>
       </li>
+      <li>Save the changes</li>
       <li>Logout</li>
       <li>Click <code class="language-plaintext highlighter-rouge">Log In to Corporate System</code></li>
     </ol>
@@ -565,16 +571,13 @@ running an OIDC server and Apache on a local development setup.</p>
 
 <p>If you’ve made changes in KeyCloak that you’d like to save, leave KeyCloak running and in another terminal run:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-it</span> keycloak /opt/jboss/keycloak/bin/standalone.sh <span class="se">\</span>
-  <span class="nt">-Djboss</span>.socket.binding.port-offset<span class="o">=</span>100 <span class="se">\</span>
-  <span class="nt">-Dkeycloak</span>.migration.action<span class="o">=</span><span class="nb">export</span> <span class="se">\</span>
-  <span class="nt">-Dkeycloak</span>.migration.provider<span class="o">=</span>singleFile <span class="se">\</span>
-  <span class="nt">-Dkeycloak</span>.migration.realmName<span class="o">=</span>ManageIQ <span class="se">\</span>
-  <span class="nt">-Dkeycloak</span>.migration.usersExportStrategy<span class="o">=</span>REALM_FILE <span class="se">\</span>
-  <span class="nt">-Dkeycloak</span>.migration.file<span class="o">=</span>/tmp/realms/ManageIQ-realm.json
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>podman <span class="nb">exec</span> <span class="nt">-it</span> keycloak /opt/keycloak/bin/kc.sh <span class="nb">export</span> <span class="se">\</span>
+  <span class="nt">--file</span> /opt/keycloak/data/import/ManageIQ-realm.json <span class="se">\</span>
+  <span class="nt">--realm</span> ManageIQ <span class="se">\</span>
+  <span class="nt">--users</span> realm_file
 </code></pre></div></div>
 
-<p>When it completes, <code class="language-plaintext highlighter-rouge">Ctrl-C</code> to end the process and the <code class="language-plaintext highlighter-rouge">realms/ManageIQ-realm.json</code> file will be updated.</p>
+<p>When it completes, <code class="language-plaintext highlighter-rouge">realms/ManageIQ-realm.json</code> will be updated on the host.</p>
 
 <h3 id="recreating-keycloak-setup-from-scratch">Recreating KeyCloak setup from scratch</h3>
 
@@ -595,14 +598,16 @@ running an OIDC server and Apache on a local development setup.</p>
   <li>
     <p>Launch KeyCloak</p>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">--name</span> keycloak <span class="se">\</span>
-  <span class="nt">-p</span> 8443:8443 <span class="se">\</span>
-  <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/certs:/etc/x509/https <span class="se">\</span>
-  <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/realms:/tmp/realms <span class="se">\</span>
-  <span class="nt">-e</span> <span class="nv">KEYCLOAK_USER</span><span class="o">=</span>admin <span class="se">\</span>
-  <span class="nt">-e</span> <span class="nv">KEYCLOAK_PASSWORD</span><span class="o">=</span>smartvm <span class="se">\</span>
-  <span class="nt">-e</span> <span class="nv">DB_VENDOR</span><span class="o">=</span>h2 <span class="se">\</span>
-  quay.io/keycloak/keycloak:12.0.4
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>podman run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">--name</span> keycloak <span class="se">\</span>
+   <span class="nt">-p</span> 8443:8443 <span class="se">\</span>
+   <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/certs:/opt/keycloak/conf/certs <span class="se">\</span>
+   <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/realms:/opt/keycloak/data/import <span class="se">\</span>
+   <span class="nt">-e</span> <span class="nv">KC_BOOTSTRAP_ADMIN_USERNAME</span><span class="o">=</span>admin <span class="se">\</span>
+   <span class="nt">-e</span> <span class="nv">KC_BOOTSTRAP_ADMIN_PASSWORD</span><span class="o">=</span>smartvm <span class="se">\</span>
+   <span class="nt">-e</span> <span class="nv">KC_HTTPS_CERTIFICATE_FILE</span><span class="o">=</span>/opt/keycloak/conf/certs/tls.crt <span class="se">\</span>
+   <span class="nt">-e</span> <span class="nv">KC_HTTPS_CERTIFICATE_KEY_FILE</span><span class="o">=</span>/opt/keycloak/conf/certs/tls.key <span class="se">\</span>
+   quay.io/keycloak/keycloak:26.6.3 <span class="se">\</span>
+   start-dev
 </code></pre></div>    </div>
   </li>
   <li>
@@ -681,7 +686,7 @@ running an OIDC server and Apache on a local development setup.</p>
             </tr>
             <tr>
               <td>Valid Redirect URIs</td>
-              <td><code class="language-plaintext highlighter-rouge">http://127.0.0.1.nip.io/*</code></td>
+              <td><code class="language-plaintext highlighter-rouge">http://127.0.0.1.nip.io:8080/*</code></td>
             </tr>
           </tbody>
         </table>
@@ -810,19 +815,21 @@ running an OIDC server and Apache on a local development setup.</p>
   <li>
     <p>Verify the setup</p>
 
-    <p>Be sure you have your OIDC client secret from step 6. <code class="language-plaintext highlighter-rouge">${client_secret}</code> below is a reference to that value. The client secret value from the current ManageIQ Realm export is <code class="language-plaintext highlighter-rouge">3167ae6f-762d-49cd-b246-ef8856315957</code>.</p>
-
     <ol>
+      <li>
+        <p>Set the OIDC client secret:
+Be sure you have your OIDC client secret from step 6. <code class="language-plaintext highlighter-rouge">${client_secret}</code> below is a reference to that value. The client secret value from the current ManageIQ Realm export is <code class="language-plaintext highlighter-rouge">3167ae6f-762d-49cd-b246-ef8856315957</code></p>
+      </li>
       <li>
         <p>Fetch the configuration</p>
 
-        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> <span class="nt">-k</span> https://127.0.0.1.nip.io:8443/auth/realms/ManageIQ/.well-known/openid-configuration | jq
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> <span class="nt">-k</span> https://127.0.0.1.nip.io:8443/realms/ManageIQ/.well-known/openid-configuration | jq
 </code></pre></div>        </div>
       </li>
       <li>
         <p>Get an access token</p>
 
-        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">token</span><span class="o">=</span><span class="si">$(</span>curl <span class="nt">-s</span> <span class="nt">-k</span> <span class="nt">-X</span> POST https://127.0.0.1.nip.io:8443/auth/realms/ManageIQ/protocol/openid-connect/token <span class="se">\</span>
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">token</span><span class="o">=</span><span class="si">$(</span>curl <span class="nt">-s</span> <span class="nt">-k</span> <span class="nt">-X</span> POST https://127.0.0.1.nip.io:8443/realms/ManageIQ/protocol/openid-connect/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="se">\</span>
   <span class="nt">-u</span> manageiq-oidc-client:<span class="k">${</span><span class="nv">client_secret</span><span class="k">}</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">username</span><span class="o">=</span>user1 <span class="se">\</span>
@@ -833,7 +840,7 @@ running an OIDC server and Apache on a local development setup.</p>
       <li>
         <p>Introspect the access token</p>
 
-        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> <span class="nt">-k</span> <span class="nt">-X</span> POST https://127.0.0.1.nip.io:8443/auth/realms/ManageIQ/protocol/openid-connect/token/introspect <span class="se">\</span>
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> <span class="nt">-k</span> <span class="nt">-X</span> POST https://127.0.0.1.nip.io:8443/realms/ManageIQ/protocol/openid-connect/token/introspect <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="se">\</span>
   <span class="nt">-u</span> manageiq-oidc-client:<span class="k">${</span><span class="nv">client_secret</span><span class="k">}</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"token=</span><span class="k">${</span><span class="nv">token</span><span class="k">}</span><span class="s2">"</span> | jq
@@ -842,7 +849,7 @@ running an OIDC server and Apache on a local development setup.</p>
     </ol>
   </li>
   <li>
-    <p>Export the realm file. If you plan to commit this, be sure to also update the client secret values in this documentation.</p>
+    <p>Export the realm file. If you plan to commit this, also update the client secret values in this documentation.</p>
   </li>
 </ol>
 
