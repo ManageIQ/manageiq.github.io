@@ -2201,6 +2201,14 @@ If any workflows are found, click the corresponding number to view the list of w
             </ul>
           </li>
         </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - If these are both present then a Basic Authorization header will be added</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">bearer_token</code> - If this is present then a Bearer Authorization header will be added.  The <code class="language-plaintext highlighter-rouge">bearer_token</code> Credential takes priority over <code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code>.</li>
+        </ul>
       </li>
       <li>
         <p><code class="language-plaintext highlighter-rouge">manageiq://email</code> - Send an email using the configured SMTP server</p>
