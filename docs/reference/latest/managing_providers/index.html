@@ -4093,48 +4093,160 @@ These Catalog Item types cannot be used with Embedded Workflows and are being ph
     <p>In the navigation bar, click <strong>Services</strong> &gt; <strong>Catalogs</strong> &gt; <strong>Catalog Items</strong>.</p>
   </li>
   <li>
-    <p>Click <strong>Configuration</strong> &gt; <strong>Add a New Catalog Item</strong> to create a new catalog item with the following details at minimum:</p>
+    <p>Click <strong>Configuration</strong> &gt; <strong>Add a New Catalog Item</strong>, and select one of the two catalog item types available for Terraform Template:</p>
 
     <ul>
       <li>
-        <p>For <strong>Catalog Item type</strong>, select <strong>Terraform Template</strong>.</p>
+        <p><strong>Terraform Template (deprecated)</strong>: Supports the Automate engine.</p>
       </li>
       <li>
-        <p>Enter a <strong>Name</strong> for the service catalog item.</p>
-      </li>
-      <li>
-        <p>Select <strong>Display</strong> in <strong>Catalog</strong>.</p>
-      </li>
-      <li>
-        <p>In Catalog, select the catalog that you created previously.</p>
-      </li>
-      <li>
-        <p>In Provisioning, select the repository that you previously added and select the Terraform template that you want to deploy.</p>
-      </li>
-      <li>
-        <p>In Provisioning, select the <strong>Cloud Type</strong> and then select the <strong>credential</strong> to connect to the cloud.</p>
-      </li>
-      <li>
-        <p>In Provisioning, if you want to enter additional information when you run the task, <strong>Service Catalog</strong> must be selected. A dialog is required if <strong>Display in Catalog</strong> is chosen.</p>
-      </li>
-      <li>
-        <p>In Provisioning, you have two options to create a Service Dialog:</p>
-
-        <ul>
-          <li>
-<strong>Use Existing</strong>: When you select <strong>Use Existing</strong> option, you can select the Service Dialog that you previously created.</li>
-          <li>
-<strong>Create new</strong>: When you select <strong>Create new</strong> option, you can create a new Service Dialog by providing a name. When the catalog item is saved, the new Service Dialog is created with section for <strong>Terraform Template Variables</strong>. The <strong>Terraform Template Variables</strong> section contains the text box inputs for each of the input variables from the Terraform Template. To modify the dialog, navigate to <strong>Automation</strong> &gt; <strong>Automate</strong> &gt; <strong>Customization</strong> &gt; <strong>Service Dialogs</strong>, select <strong>Service Dialog</strong>, and from the Configuration menu, select <strong>Edit this dialog</strong> to make the required changes.</li>
-          <li>
-<strong>Create new</strong>: When you select <strong>Create new</strong> option, you can create a new Service Dialog by providing a name. When the catalog item is saved, the new Service Dialog is created with section for <strong>Terraform Template Variables</strong>. The <strong>Terraform Template Variables</strong> section contains input fields for each of the input variables from the Terraform Template. Under the <strong>Terraform Template Variables</strong> section, the boolean field displays as a checkbox. Number field displays as a textbox with regex validation for the number value. JSON fields display as multi-line text area field, with JSON value prettified. String fields display as single line textbox fields.</li>
-        </ul>
-
-        <p>To modify the dialog, navigate to <strong>Automation</strong> &gt; <strong>Automate</strong> &gt; <strong>Customization</strong> &gt; <strong>Service Dialogs</strong>, select <strong>Service Dialog</strong>, and from the Configuration menu, select <strong>Edit this dialog</strong> to make the required changes.</p>
+        <p><strong>Terraform Template</strong>: Supports both the Workflow and Automate engines.</p>
       </li>
     </ul>
   </li>
   <li>
-    <p>Click <strong>Save</strong>.</p>
+    <p>Create a new catalog item with at least the following details:</p>
+
+    <ul>
+      <li>
+        <p><strong>Terraform Template (deprecated)</strong> selected for <strong>Catalog Item Type</strong>:</p>
+
+        <ul>
+          <li>
+            <p>Enter a <strong>Name</strong> for the service catalog item.</p>
+          </li>
+          <li>
+            <p>Select <strong>Display in Catalog</strong>.</p>
+          </li>
+          <li>
+            <p>In <strong>Catalog</strong>, select the catalog that you created previously.</p>
+          </li>
+          <li>
+            <p>In <strong>Provisioning</strong>, select the repository that you previously added, and then select the Terraform template that you want to deploy.</p>
+          </li>
+          <li>
+            <p>In <strong>Provisioning</strong>, select the <strong>Cloud Type</strong>, and then select the <strong>Credential</strong> to connect to the cloud.</p>
+          </li>
+          <li>
+            <p>In <strong>Provisioning</strong>, if you want to enter additional information when you run the task, select <strong>Service Catalog</strong>. A dialog is required when <strong>Display in Catalog</strong> is selected.</p>
+          </li>
+          <li>
+            <p>In <strong>Provisioning</strong>, select one of the following options to create a service dialog:</p>
+
+            <ul>
+              <li>
+<strong>Use Existing</strong>: Select the service dialog that you created previously.</li>
+              <li>
+<strong>Create New</strong>: Provide a name to create a new service dialog. When the catalog item is saved, the service dialog is created with a <strong>Terraform Template Variables</strong> section, which contains a text box input for each input variable in the Terraform template. To modify the dialog, navigate to <strong>Automation</strong> &gt; <strong>Automate</strong> &gt; <strong>Customization</strong> &gt; <strong>Service Dialogs</strong>, select the service dialog, and then select <strong>Edit this dialog</strong> from the <strong>Configuration</strong> menu.</li>
+            </ul>
+          </li>
+          <li>
+            <p>Click <strong>Save</strong>.</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Terraform Template</strong> selected for <strong>Catalog Item Type</strong>:</p>
+
+        <ul>
+          <li>
+            <p>Enter a <strong>Name</strong> for the service catalog item.</p>
+          </li>
+          <li>
+            <p>(Optional) Select <strong>Display in Catalog</strong>.</p>
+          </li>
+          <li>
+            <p>For <strong>Catalog</strong>, select the catalog that you created previously.</p>
+          </li>
+          <li>
+            <p>For <strong>Dialog</strong>, select the service dialog that you created previously.</p>
+          </li>
+          <li>
+            <p>For <strong>Provisioning Entry Point</strong>:</p>
+
+            <ul>
+              <li>
+                <p>Click the entry point type field to reveal the <strong>Embedded Automate</strong> and <strong>Embedded Workflow</strong> options.</p>
+              </li>
+              <li>
+                <p>Select <strong>Embedded Workflow</strong>.</p>
+              </li>
+              <li>
+                <p>Click the browse icon to view the available workflow entry points.</p>
+              </li>
+              <li>
+                <p>Select <strong>provision.asl</strong> or a custom ASL workflow.</p>
+
+                <blockquote>
+                  <p><strong>Note:</strong> Your custom ASL workflow must call <code class="language-plaintext highlighter-rouge">manageiq://provision_execute</code> at some point in the state machine.</p>
+                </blockquote>
+              </li>
+              <li>
+                <p>Click <strong>Apply</strong> to confirm the selection.</p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>For <strong>Retirement Entry Point</strong>:</p>
+            <ul>
+              <li>
+                <p>Click the entry point type field to reveal the <strong>Embedded Automate</strong> and <strong>Embedded Workflow</strong> options.</p>
+              </li>
+              <li>
+                <p>Select <strong>Embedded Workflow</strong>.</p>
+              </li>
+              <li>
+                <p>Click the browse icon to view the available workflow entry points.</p>
+              </li>
+              <li>
+                <p>Select <strong>retire.asl</strong> or a custom ASL workflow.</p>
+
+                <blockquote>
+                  <p><strong>Note:</strong> Your custom ASL workflow must call <code class="language-plaintext highlighter-rouge">manageiq://retire_execute</code> at some point in the state machine.</p>
+                </blockquote>
+              </li>
+              <li>
+                <p>Click <strong>Apply</strong> to confirm the selection.</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <blockquote>
+          <p><strong>Note:</strong> A built-in Embedded Workflow entry point for <strong>Reconfigure Entry Point</strong> is not yet available. This option will be available in a future release.</p>
+        </blockquote>
+
+        <ul>
+          <li>
+            <p>In <strong>Request Info</strong>:</p>
+
+            <ul>
+              <li>
+                <p>In <strong>Requester</strong>, enter the requester email address.</p>
+              </li>
+              <li>
+                <p>In <strong>Catalog</strong>, select a configuration script.</p>
+              </li>
+              <li>
+                <p>In <strong>Customize</strong>, select the credentials to connect to the cloud:</p>
+
+                <ul>
+                  <li>
+                    <p>Select the <strong>Credential Type</strong>.</p>
+                  </li>
+                  <li>
+                    <p>Select the <strong>Cloud Credential</strong>.</p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>Click <strong>Add</strong>.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </li>
 </ol>
 
