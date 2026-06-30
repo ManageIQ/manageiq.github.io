@@ -1232,6 +1232,22 @@
 <li class="toc-entry toc-h3"><a href="#vmware-vcenter-provider">VMware vCenter Provider</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#disabling-a-feature-across-all-user-interfaces">Disabling a Feature Across All User Interfaces</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h3"><a href="#background">Background</a></li>
+<li class="toc-entry toc-h3"><a href="#example-service-retirement-feature">Example: Service Retirement Feature</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#api-configuration">API Configuration</a></li>
+<li class="toc-entry toc-h4"><a href="#feature-identifier-definitions">Feature Identifier Definitions</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#implications-for-disabling-features">Implications for Disabling Features</a></li>
+<li class="toc-entry toc-h3"><a href="#how-to-disable-a-feature-across-all-user-interfaces">How to Disable a Feature Across All User Interfaces</a></li>
+<li class="toc-entry toc-h3"><a href="#visual-reference">Visual Reference</a></li>
+<li class="toc-entry toc-h3"><a href="#features-with-multiple-identifiers">Features with Multiple Identifiers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul><h1 id="troubleshooting">
@@ -1400,6 +1416,91 @@ here is a sample Login action:</p>
 <p>Depending on the payloads you are working with, they might overflow the journald <code class="language-plaintext highlighter-rouge">LineMax</code> and be cut off.
 If this is the case you can edit the <code class="language-plaintext highlighter-rouge">/etc/systemd/journald.conf</code> file and adjust the <code class="language-plaintext highlighter-rouge">LineMax</code> setting appropriately.</p>
 
+<h2 id="disabling-a-feature-across-all-user-interfaces">
+<a class="anchor" href="#disabling-a-feature-across-all-user-interfaces" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disabling a Feature Across All User Interfaces</h2>
+
+<h3 id="overview">
+<a class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h3>
+
+<p>A feature in ManageIQ (such as retiring a service) may have separate feature identifiers for each user interface: the standard UI, Service UI, and API. Disabling a feature identifier in one user interface does not disable the feature in other user interfaces. To fully disable a feature, all of its feature identifiers must be disabled.</p>
+
+<h3 id="background">
+<a class="anchor" href="#background" aria-hidden="true"><span class="octicon octicon-link"></span></a>Background</h3>
+
+<p>When you edit a user role in <strong>Access Control</strong> → <strong>Roles</strong>, you see a tree of feature identifiers. However, this tree doesn’t show which identifiers belong to the same feature across different user interfaces. The API configuration in <code class="language-plaintext highlighter-rouge">api.yml</code> maps each feature to its related identifiers. If a user has <strong>any</strong> of the identifiers listed for a feature, the API request succeeds.</p>
+
+<h3 id="example-service-retirement-feature">
+<a class="anchor" href="#example-service-retirement-feature" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example: Service Retirement Feature</h3>
+
+<p>Consider the service retirement feature, which has two distinct feature identifiers:</p>
+
+<h4 id="api-configuration">
+<a class="anchor" href="#api-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>API Configuration</h4>
+<p>From <code class="language-plaintext highlighter-rouge">config/api.yml</code>:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">:name</span><span class="pi">:</span> <span class="s">retire</span>
+  <span class="na">:identifier</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">service_retire_now</span>
+  <span class="pi">-</span> <span class="s">sui_services_retire</span>
+</code></pre></div></div>
+
+<h4 id="feature-identifier-definitions">
+<a class="anchor" href="#feature-identifier-definitions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feature Identifier Definitions</h4>
+
+<p><strong>Standard UI Feature Identifier</strong> - <code class="language-plaintext highlighter-rouge">miq_product_features.yml</code>:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">:name</span><span class="pi">:</span> <span class="s">Retire Services</span>
+  <span class="na">:description</span><span class="pi">:</span> <span class="s">Retire Services</span>
+  <span class="na">:feature_type</span><span class="pi">:</span> <span class="s">control</span>
+  <span class="na">:identifier</span><span class="pi">:</span> <span class="s">service_retire_now</span>
+</code></pre></div></div>
+
+<p><strong>Service UI Feature Identifier</strong> - <code class="language-plaintext highlighter-rouge">miq_product_features.yml</code>:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">:name</span><span class="pi">:</span> <span class="s">Retire Service</span>
+  <span class="na">:description</span><span class="pi">:</span> <span class="s">Retire Service</span>
+  <span class="na">:feature_type</span><span class="pi">:</span> <span class="s">control</span>
+  <span class="na">:identifier</span><span class="pi">:</span> <span class="s">sui_services_retire</span>
+</code></pre></div></div>
+
+<h3 id="implications-for-disabling-features">
+<a class="anchor" href="#implications-for-disabling-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implications for Disabling Features</h3>
+
+<p>Disabling a feature identifier restricts access in its corresponding user interface (standard UI or Service UI), but does not disable the feature in other user interfaces. Since the API accepts <strong>any</strong> of the listed feature identifiers, all identifiers must be disabled to fully disable the feature across all user interfaces.</p>
+
+<h3 id="how-to-disable-a-feature-across-all-user-interfaces">
+<a class="anchor" href="#how-to-disable-a-feature-across-all-user-interfaces" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Disable a Feature Across All User Interfaces</h3>
+
+<p>To fully disable a feature:</p>
+
+<ol>
+  <li>
+<strong>Check the main features section</strong> - Navigate to <strong>Access Control</strong> → <strong>Roles</strong> → Your custom role and locate the relevant feature permissions in the features tree. For example, <strong>Everything</strong> → <strong>Services</strong> → <strong>My Services</strong> → <strong>Operate</strong> → <strong>Retire Services</strong>.</li>
+  <li>
+<strong>Check the Service UI section</strong> - Also review the <strong>Service UI</strong> section of the features tree, as some features have additional permissions for other user interfaces that must be disabled. For example, <strong>Everything</strong> → <strong>Service UI</strong> → <strong>My Services</strong> → <strong>Operate</strong> → <strong>Retire Service</strong>.</li>
+  <li>
+<strong>Disable all related permissions</strong> - Disable permissions in both sections (e.g., for service retirement, disable both the main service retirement permission and the Service UI retirement permission)</li>
+  <li>
+<strong>Verify</strong> - Test requests across all interfaces (standard UI, Service UI, and API) and confirm access is denied</li>
+</ol>
+
+<h3 id="visual-reference">
+<a class="anchor" href="#visual-reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visual Reference</h3>
+
+<p><img src="../images/retire_service.png" alt="Dual Feature Identifier Checkboxes"></p>
+
+<p>The screenshot shows two separate “Retire Service” feature identifiers—one under <strong>Services</strong> and one under <strong>Service UI</strong>. Both must be disabled to disable the feature across all user interfaces.</p>
+
+<h3 id="features-with-multiple-identifiers">
+<a class="anchor" href="#features-with-multiple-identifiers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features with Multiple Identifiers</h3>
+
+<p>Features with multiple feature identifiers include:</p>
+
+<ul>
+  <li>Service retirement</li>
+  <li>Service creation</li>
+  <li>Service modification</li>
+  <li>Custom button actions</li>
+  <li>Other operations with both standard and Service UI identifiers</li>
+</ul>
 
 
       </div>
