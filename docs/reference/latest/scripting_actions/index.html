@@ -1233,6 +1233,12 @@
 <li class="toc-entry toc-h3"><a href="#creating-a-namespace">Creating a Namespace</a></li>
 <li class="toc-entry toc-h3"><a href="#creating-a-class">Creating a Class</a></li>
 <li class="toc-entry toc-h3"><a href="#creating-a-schema-for-a-class">Creating a Schema for a Class</a></li>
+<li class="toc-entry toc-h3"><a href="#assertions">Assertions</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#allowed-expression-syntax">Allowed expression syntax</a></li>
+<li class="toc-entry toc-h4"><a href="#disallowed-constructs">Disallowed constructs</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h3"><a href="#editing-a-field-in-a-schema">Editing a Field in a Schema</a></li>
 <li class="toc-entry toc-h3"><a href="#editing-schema-sequence">Editing Schema Sequence</a></li>
 <li class="toc-entry toc-h3"><a href="#adding-an-instance-to-a-class">Adding an Instance to a Class</a></li>
@@ -1741,6 +1747,113 @@ fields values.</p>
 <p><strong>Note:</strong></p>
 
 <p>You may need to edit a class schema to reorder, add, edit, or remove a field. Classes define the order in which fields are processed and you may need to process some items before others.</p>
+
+<h3 id="assertions">
+<a class="anchor" href="#assertions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assertions</h3>
+
+<p>An <strong>Assertion</strong> is a schema field type that evaluates a Ruby expression
+after all <code class="language-plaintext highlighter-rouge">${}</code> substitutions have been resolved. If the expression evaluates
+to a falsy value (<code class="language-plaintext highlighter-rouge">false</code> or <code class="language-plaintext highlighter-rouge">nil</code>), the engine raises an
+<code class="language-plaintext highlighter-rouge">AssertionFailure</code> and stops processing that path. Assertions are
+typically used as guard conditions to prevent further execution when a
+prerequisite is not met.</p>
+
+<h4 id="allowed-expression-syntax">
+<a class="anchor" href="#allowed-expression-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>Allowed expression syntax</h4>
+
+<p>Assertion expressions are validated against a strict allowlist before
+evaluation. Only the following constructs are permitted:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Construct</th>
+      <th>Examples</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Boolean literals</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">nil</code></td>
+      <td><code class="language-plaintext highlighter-rouge">nil</code></td>
+    </tr>
+    <tr>
+      <td>Integer and float literals</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">42</code>, <code class="language-plaintext highlighter-rouge">3.14</code>
+</td>
+    </tr>
+    <tr>
+      <td>String literals (no interpolation)</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">'vmware'</code>, <code class="language-plaintext highlighter-rouge">"vmware"</code>
+</td>
+    </tr>
+    <tr>
+      <td>Symbol literals</td>
+      <td><code class="language-plaintext highlighter-rouge">:ok</code></td>
+    </tr>
+    <tr>
+      <td>Comparison operators</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">==</code>, <code class="language-plaintext highlighter-rouge">!=</code>, <code class="language-plaintext highlighter-rouge">&lt;</code>, <code class="language-plaintext highlighter-rouge">&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;=</code>, <code class="language-plaintext highlighter-rouge">&gt;=</code>, <code class="language-plaintext highlighter-rouge">&lt;=&gt;</code>, <code class="language-plaintext highlighter-rouge">===</code>
+</td>
+    </tr>
+    <tr>
+      <td>Arithmetic operators</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">%</code>
+</td>
+    </tr>
+    <tr>
+      <td>Logical operators and grouping</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&amp;&amp;</code>, <code class="language-plaintext highlighter-rouge">\|\|</code>, <code class="language-plaintext highlighter-rouge">!</code>, <code class="language-plaintext highlighter-rouge">(...)</code>
+</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">Array#include?</code> with a literal receiver and literal argument</td>
+      <td><code class="language-plaintext highlighter-rouge">%w(vmware kvm).include? 'vmware'</code></td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">String#include?</code> with a literal receiver and literal argument</td>
+      <td><code class="language-plaintext highlighter-rouge">'foobar'.include?('foo')</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The substitution mechanism resolves all <code class="language-plaintext highlighter-rouge">${}</code> tokens to literal values
+before the expression reaches the validator, so a typical assertion
+compares those resolved literals:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># After substitution, the expression seen by the validator might be:</span>
+<span class="s1">'vmware'</span> <span class="o">==</span> <span class="s1">'vmware'</span>
+</code></pre></div></div>
+
+<h4 id="disallowed-constructs">
+<a class="anchor" href="#disallowed-constructs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disallowed constructs</h4>
+
+<p>The following constructs are rejected and cause an <code class="language-plaintext highlighter-rouge">AssertionFailure</code>
+before any evaluation takes place:</p>
+
+<ul>
+  <li>Bare method calls with no receiver — for example <code class="language-plaintext highlighter-rouge">system('ls')</code>, <code class="language-plaintext highlighter-rouge">exit!</code>
+</li>
+  <li>Constant-qualified calls — for example <code class="language-plaintext highlighter-rouge">File.read('/path/to/file')</code>
+</li>
+  <li>Backtick strings — for example <code class="language-plaintext highlighter-rouge">`id`</code>
+</li>
+  <li>String interpolation — for example <code class="language-plaintext highlighter-rouge">"value is #{some_var}"</code>
+</li>
+  <li>Assignments of any kind</li>
+</ul>
 
 <h3 id="editing-a-field-in-a-schema">
 <a class="anchor" href="#editing-a-field-in-a-schema" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editing a Field in a Schema</h3>
