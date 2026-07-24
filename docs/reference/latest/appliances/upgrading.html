@@ -1217,6 +1217,7 @@
 <li class="toc-entry toc-h1"><a href="#upgrading-appliances">Upgrading Appliances</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#update-automation-engine">Update automation engine</a></li>
+<li class="toc-entry toc-h2"><a href="#upgrading-podified-to-tal-with-postgresql-16">Upgrading podified to tal with postgresql 16</a></li>
 </ul>
 </li>
 </ul><h1 id="upgrading-appliances">
@@ -1276,6 +1277,103 @@
 
 <p>In the UI navigate to <strong> Automation &gt; Embedded Automate &gt; Import/Export</strong> and click the Reset option <strong>(<img width="21" height="19" alt="image" src="https://github.com/user-attachments/assets/0b81f390-9ed0-4996-aad8-3a3db8a5b809"> Reset all components in the built-in domains)</strong>.
 Always be sure to export the current datastore before importing or resetting.</p>
+
+<h2 id="upgrading-podified-to-tal-with-postgresql-16">
+<a class="anchor" href="#upgrading-podified-to-tal-with-postgresql-16" aria-hidden="true"><span class="octicon octicon-link"></span></a>Upgrading podified to tal with postgresql 16</h2>
+
+<p>In this section we will upgrade an existing podified installation and upgrade the database server from PostgreSQL 13 to 16.</p>
+<ol>
+  <li>Switch to the namespace where the application is installed.</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc project &lt;your_namespace&gt;</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Upgrade the operator changing .spec.template.spec.containers[0].image to the new image</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc edit deployment -operator</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Update httpd, memcached, base-worker, orchestrator, ui-worker and webserver-worker image references</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc edit manageiqs</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Stop all of the worker pods by putting the orchestrator to sleep</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc patch deployment orchestrator -p '{"spec":{"template":{"spec":{"containers":[{"name":"orchestrator","command":["sleep", "1d"]}]}}}}'</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Back up the postgresql 13 database to a file on the PV</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc rsh deploy/postgresql</span>
+<span class="c">#   sh-5.2$ pg_dumpall -c --if-exists | gzip &gt; /var/lib/pgsql/data/vmdb.pg.gz</span>
+<span class="c">#   sh-5.2$ exit</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Copy the database backup locally</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc get pod -l name=postgresql</span>
+<span class="c"># oc cp &lt;name of postgresql-xxx pod&gt;:/var/lib/pgsql/data/vmdb.pg.gz vmdb.pg.gz</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Upgrade the postgresql deployment from 13 to 16 by switching the image tag from “13-el9” to “16-el10”</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc edit manageiqs</span>
+</code></pre></div></div>
+
+<ol>
+  <li>The new postgresql pod will get deployed, but stuck in CrashLoopBackOff because of incompatible data directory</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc delete pvc/postgresql deployment/postgresql</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Copy the database backup to the new pvc</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc get pod -l name=postgresql</span>
+<span class="c"># oc cp vmdb.pg.gz &lt;name of new postgresql-xxx pod&gt;:/var/lib/pgsql/data/vmdb.pg.gz</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Restore the database backup to the postgresql 16 formatted userdata directory</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc rsh deploy/postgresql</span>
+  <span class="c"># gunzip &lt; /var/lib/pgsql/data/vmdb.pg.gz | psql postgres</span>
+  <span class="c"># rm -rf /var/lib/pgsql/data/vmdb.pg.gz</span>
+  <span class="c"># exit</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Restart the orchestrator</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc delete deployment orchestrator</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Delete the old network policies</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># oc delete networkpolicy -l app=ibm-infra-management-application</span>
+</code></pre></div></div>
+
+<p>The new orchestrator and network policies will get created and after a few minutes the worker pods will be deployed.  Once the UI pods are up, log into the web-UI and verify that the restore was successful.</p>
 
 
       </div>
