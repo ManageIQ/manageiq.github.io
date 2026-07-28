@@ -1230,7 +1230,7 @@
   </li>
   <li>For convenience, create a TGZ containing all files required to restore the database
     <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  <span class="nb">tar</span> <span class="nt">-czvf</span> /root/backup.tgz /tmp/evm_db.backup /var/www/miq/vmdb/GUID /var/www/miq/vmdb/certs/v2_key
+<div class="highlight"><pre class="highlight"><code>  <span class="nb">tar</span> <span class="nt">-czvPf</span> /root/backup.tgz /tmp/evm_db.backup /var/www/miq/vmdb/GUID /var/www/miq/vmdb/certs/v2_key
 </code></pre></div>    </div>
   </li>
   <li>Save and/or rename <code class="language-plaintext highlighter-rouge">/root/backup.tgz</code>
@@ -1273,13 +1273,13 @@ Before adding the cron job it would be best practice to mount an external storag
   <span class="nb">echo</span> <span class="s2">"your.ip.address your-new-hostname.example.com your-new-hostname"</span> <span class="o">&gt;&gt;</span> /etc/hosts
 </code></pre></div>    </div>
   </li>
-  <li>Download a backup TGZ and place it in <code class="language-plaintext highlighter-rouge">/</code>
-</li>
+  <li>Download a backup TGZ and place it in <code class="language-plaintext highlighter-rouge">/root/</code>.</li>
   <li>On the command line:
     <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  <span class="nb">cd</span> /
-  <span class="nb">tar</span> <span class="nt">-zxf</span> /backup.tgz
-  <span class="nb">rm</span> <span class="nt">-f</span> /backup.tgz <span class="c"># if desired to save space</span>
+<div class="highlight"><pre class="highlight"><code>  <span class="nb">cd</span> /root/
+  <span class="nb">tar</span> <span class="nt">-zxvPf</span> backup.tgz
+  <span class="nb">chown </span>manageiq /var/www/miq/vmdb/certs/v2_key
+  <span class="nb">rm</span> <span class="nt">-f</span> backup.tgz <span class="c"># if desired to save space</span>
 </code></pre></div>    </div>
   </li>
   <li>Launch <code class="language-plaintext highlighter-rouge">appliance_console</code>

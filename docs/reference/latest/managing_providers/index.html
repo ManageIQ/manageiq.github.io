@@ -2064,19 +2064,23 @@ If any workflows are found, click the corresponding number to view the list of w
 
     <p>The workflow code must be in the Amazon States Language (ASL) format and follow its supported specifications. For more information about Amazon States Language and its specification, see <a href="https://states-language.net/">Amazon States Language Guide</a>.</p>
 
-    <p><strong>Note</strong>: The current implementation of the Amazon States Language does not support certain <strong>Map</strong> states. For more information, see <a href="#unsupported-states-language-features">Unsupported Amazon States Language features</a>.</p>
-
-    <p>#### Unsupported Amazon States Language features</p>
-
-    <p>The following features of Amazon States Language are not supported by Floe:</p>
     <ul>
-      <li>Map State Fields:
+      <li>
+        <p>Unsupported Amazon States Language features</p>
+
+        <p>The current implementation of the Amazon States Language does not support certain features.</p>
         <ul>
-          <li>ItemReader</li>
-          <li>ResultWriter</li>
+          <li>Map State Fields:
+            <ul>
+              <li>ItemReader</li>
+              <li>ResultWriter</li>
+            </ul>
+          </li>
+          <li>JSONata expressions</li>
         </ul>
+
+        <p>For more information, see <a href="#unsupported-states-language-features">Unsupported Amazon States Language features</a>.</p>
       </li>
-      <li>JSONata expressions</li>
     </ul>
   </li>
   <li>
@@ -2294,6 +2298,830 @@ If any workflows are found, click the corresponding number to view the list of w
 </li>
           <li>
 <code class="language-plaintext highlighter-rouge">RemoveFromInventory</code> - Boolean - After retirement should the object being retired be removed from the ManageIQ inventory database.  Defaults to <code class="language-plaintext highlighter-rouge">false</code>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Service Now builtin methods</p>
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://cmdb/get_ci</code> - Get a Configuration Item by sys_id</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the CI to retrieve</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">table</code> (optional) - CMDB table name, defaults to “cmdb_ci”</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://cmdb/query_cis</code> - Query Configuration Items with optional filters</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">table</code> (optional) - CMDB table name, defaults to “cmdb_ci”</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">query</code> (optional) - ServiceNow query string</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">limit</code> (optional) - Maximum number of records to return</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">offset</code> (optional) - Number of records to skip</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">fields</code> (optional) - Comma-separated list of fields to return</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://cmdb/create_ci</code> - Create a new Configuration Item</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">table</code> (optional) - CMDB table name, defaults to “cmdb_ci”</li>
+          <li>Additional parameters are passed as the CI data</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://cmdb/update_ci</code> - Update an existing Configuration Item</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the CI to update</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">table</code> (optional) - CMDB table name, defaults to “cmdb_ci”</li>
+          <li>Additional parameters are passed as the update data</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://cmdb/delete_ci</code> - Delete a Configuration Item</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the CI to delete</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">table</code> (optional) - CMDB table name, defaults to “cmdb_ci”</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://cmdb/get_ci_relationships</code> - Get CI relationships</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the CI</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://cmdb/create_ci_relationship</code> - Create a relationship between two Configuration Items</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">parent_sys_id</code> (required) - System ID of the parent CI</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">child_sys_id</code> (required) - System ID of the child CI</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">relationship_type</code> (required) - Type of relationship</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">connection_strength</code> (optional) - Connection strength, defaults to “1”</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://cmdb/get_ci_classes</code> - Get available CI classes (types)</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">limit</code> (optional) - Maximum number of records to return</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://incident/create_incident</code> - Create a new incident</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">short_description</code> (required) - Brief description of the incident</li>
+          <li>Additional parameters are passed as incident data (e.g., description, urgency, impact, assignment_group)</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://incident/get_incident</code> - Get an incident by sys_id</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the incident</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://incident/update_incident</code> - Update an existing incident</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the incident to update</li>
+          <li>Additional parameters are passed as the update data</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://incident/resolve_incident</code> - Resolve an incident</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the incident to resolve</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">close_code</code> (optional) - Resolution code</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">close_notes</code> (optional) - Resolution notes</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">attributes</code> (optional) - Additional attributes to update</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://incident/close_incident</code> - Close an incident</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the incident to close</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">close_code</code> (optional) - Close code</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">close_notes</code> (optional) - Close notes</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">attributes</code> (optional) - Additional attributes to update</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://incident/query_incidents</code> - Query incidents with optional filters</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">query</code> (optional) - ServiceNow query string</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">limit</code> (optional) - Maximum number of records to return</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">offset</code> (optional) - Number of records to skip</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">fields</code> (optional) - Comma-separated list of fields to return</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://table/list_tables</code> - List available tables</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">query</code> (optional) - ServiceNow query string to filter tables</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">limit</code> (optional) - Maximum number of records to return</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">offset</code> (optional) - Number of records to skip</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">fields</code> (optional) - Comma-separated list of fields to return</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://table/query_records</code> - Query records from a table</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">table_name</code> (required) - Name of the table to query</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">query</code> (optional) - ServiceNow query string</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">limit</code> (optional) - Maximum number of records to return</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">offset</code> (optional) - Number of records to skip</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">fields</code> (optional) - Comma-separated list of fields to return</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">display_value</code> (optional) - Return display values instead of actual values</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">exclude_reference_link</code> (optional) - Exclude reference links from response</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://table/get_record</code> - Get a single record by sys_id</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">table_name</code> (required) - Name of the table</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the record</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">fields</code> (optional) - Comma-separated list of fields to return</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">display_value</code> (optional) - Return display values instead of actual values</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">exclude_reference_link</code> (optional) - Exclude reference links from response</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://table/create_record</code> - Create a new record</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">table_name</code> (required) - Name of the table</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">data</code> (required) - Hash of field names and values for the new record</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">display_value</code> (optional) - Return display values in response</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">exclude_reference_link</code> (optional) - Exclude reference links from response</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">input_display_value</code> (optional) - Treat input values as display values</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://table/update_record</code> - Update a record (replace all fields)</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">table_name</code> (required) - Name of the table</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the record to update</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">data</code> (required) - Hash of field names and values</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">display_value</code> (optional) - Return display values in response</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">exclude_reference_link</code> (optional) - Exclude reference links from response</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">input_display_value</code> (optional) - Treat input values as display values</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://table/patch_record</code> - Patch a record (update specific fields)</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">table_name</code> (required) - Name of the table</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the record to update</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">data</code> (required) - Hash of field names and values to update</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">display_value</code> (optional) - Return display values in response</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">exclude_reference_link</code> (optional) - Exclude reference links from response</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">input_display_value</code> (optional) - Treat input values as display values</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://table/delete_record</code> - Delete a record</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">table_name</code> (required) - Name of the table</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">sys_id</code> (required) - System ID of the record to delete</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://oauth/token</code> - Get OAuth access token</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">grant_type</code> (optional) - OAuth grant type</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">client_id</code> (optional) - OAuth client ID</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">scope</code> (optional) - OAuth scope</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - For password grant type</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">client_secret</code> - OAuth client secret</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">refresh_token</code> - For refresh token grant type</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/submit_catalog_item</code> - Submit a catalog item order</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">item_sys_id</code> (required) - System ID of the catalog item</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">variables</code> (optional) - Hash of variable names and values for the order</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/get_request</code> - Get a service catalog request</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">request_id</code> (required) - ID of the request</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/get_requested_item</code> - Get a requested catalog item</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">requested_item_id</code> (required) - ID of the requested item</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/get_catalogs</code> - Get all service catalogs</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/get_catalog</code> - Get a specific service catalog</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">catalog_id</code> (required) - ID of the catalog</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/get_categories</code> - Get all service catalog categories</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/get_category</code> - Get a specific service catalog category</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">category_id</code> (required) - ID of the category</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/get_items</code> - Get all catalog items</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/get_item</code> - Get a specific catalog item</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">item_id</code> (required) - ID of the catalog item</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/search_items</code> - Search for catalog items</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">search_term</code> (required) - Search term</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/get_cart</code> - Get the shopping cart</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/add_to_cart</code> - Add a catalog item to the cart</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">item_id</code> (required) - ID of the catalog item to add</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">cart_id</code> (optional) - ID of the cart, defaults to “default”</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">quantity</code> (optional) - Quantity to add</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">variables</code> (optional) - Hash of variable names and values</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/update_cart_item</code> - Update an item in the cart</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">cart_item_id</code> (required) - ID of the cart item to update</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">cart_id</code> (optional) - ID of the cart, defaults to “default”</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">quantity</code> (optional) - New quantity</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">variables</code> (optional) - Hash of variable names and values</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/remove_from_cart</code> - Remove an item from the cart</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">cart_item_id</code> (required) - ID of the cart item to remove</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">cart_id</code> (optional) - ID of the cart, defaults to “default”</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/empty_cart</code> - Empty the shopping cart</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">cart_id</code> (optional) - ID of the cart, defaults to “default”</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/checkout_cart</code> - Checkout the shopping cart</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">cart_id</code> (optional) - ID of the cart</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">special_instructions</code> (optional) - Special instructions for the order</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">servicenow://service_catalog/submit_order</code> - Submit an order from the cart</p>
+
+        <p>Parameters:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">instance_id</code> (required) - ServiceNow instance identifier</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">cart_id</code> (optional) - ID of the cart</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">requested_for</code> (optional) - User for whom the order is requested</li>
+        </ul>
+
+        <p>Credentials:</p>
+        <ul>
+          <li>
+<code class="language-plaintext highlighter-rouge">username</code>/<code class="language-plaintext highlighter-rouge">password</code> - Basic authentication credentials</li>
+          <li>OR <code class="language-plaintext highlighter-rouge">access_token</code> - OAuth access token for Bearer authentication</li>
         </ul>
       </li>
     </ul>
