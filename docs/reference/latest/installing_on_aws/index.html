@@ -1769,12 +1769,12 @@ necessary to alter the <code class="language-plaintext highlighter-rouge">max_co
 
 <p>Configuring messaging is required for the appliance setup. It is recommended to configure the broker on the same appliance where your database is configured</p>
 
-<p><strong>Note:</strong> You can only have one Kafka broker per region.</p>
+<p><strong>Note:</strong> You can only have one Kafka cluster per region. You can configure a Kafka high-availability cluster with multiple brokers for improved reliability and fault tolerance.</p>
 
 <ol>
   <li>
     <p>You can either configure the current appliance as a Kafka broker, or point the
-appliance to an existing external Kafka broker.</p>
+appliance to an existing external Kafka cluster.</p>
 
     <p>Select the appropriate option either
 <strong>Configure this appliance as a messaging server</strong> or
@@ -1848,9 +1848,9 @@ option to copy the security key from another appliance.</p>
     <p>Confirm the configuration if prompted.</p>
   </li>
   <li>
-    <p>Choose <strong>Connect to an external messaging system</strong> to connect to the external kafka broker located on the appliance with the external database</p>
+    <p>Choose <strong>Connect to an external messaging system</strong> to connect to the external kafka cluster located on the appliance with the external database</p>
 
-    <p><strong>Note:</strong> You can only have one kafka broker per region</p>
+    <p><strong>Note:</strong> All worker appliances in a region must use the same kafka cluster.</p>
   </li>
   <li>
     <p>Enter the necessary <strong>Message Client Parameters</strong> such as the hostname/IP and username/password</p>
