@@ -1568,7 +1568,7 @@ requirements.</p>
 <p>DirectLUN Hook installed on each host and registered to Red Hat Virtualization Managers.</p>
 <p>Must have ManageIQ appliance in each Cluster with this storage type.</p>
 <p>ManageIQ appliance virtual machine container must have DirectLUN attribute set.</p>
-<p>Local storage - Not yet supported (Red Hat does not recommend due to single point of failure).</p>
+<p>Local storage - Not yet supported (This is not recommended due to being a single point of failure).</p>
 </td>
 </tr>
 </tbody>
@@ -3284,7 +3284,7 @@ Provisioning Profiles class so that it can be used for groups of users.</p>
 <img src="../images/6278.png" alt="6278"></p>
   </li>
   <li>
-    <p>In the dialog name field, enter the name of the customized dialog file. This file must reside on the ManageIQ appliance in the <code class="language-plaintext highlighter-rouge">/var/www/miq/vmdb/db/fixtures</code> directory. Red Hat recommends naming
+    <p>In the dialog name field, enter the name of the customized dialog file. This file must reside on the ManageIQ appliance in the <code class="language-plaintext highlighter-rouge">/var/www/miq/vmdb/db/fixtures</code> directory. It is recommended to name
 the file in the format <code class="language-plaintext highlighter-rouge">miq_provision_dialogs-groupname.rb</code> and copying this file to all ManageIQ appliances. For instructions on creating a custom dialog file, see <a href="#provisioning-dialogs-customizing">Customizing Provisioning Dialogs</a>.</p>
 
     <p><strong>Note:</strong></p>
