@@ -1224,6 +1224,7 @@
 </li>
 <li class="toc-entry toc-h2"><a href="#configuring-manageiq">Configuring ManageIQ</a>
 <ul>
+<li class="toc-entry toc-h3"><a href="#configure-networking">Configure Networking</a></li>
 <li class="toc-entry toc-h3"><a href="#accessing-the-appliance-console">Accessing the Appliance Console</a></li>
 <li class="toc-entry toc-h3"><a href="#configuring-a-database">Configuring a Database</a>
 <ul>
@@ -1425,12 +1426,33 @@ time, you must perform some basic configuration. You must complete these steps:<
     <p>Add a disk to the infrastructure that is hosting your appliance.</p>
   </li>
   <li>
+    <p>Configure networking</p>
+  </li>
+  <li>
     <p>Configure the database.</p>
   </li>
   <li>
     <p>Configure messaging</p>
   </li>
 </ol>
+
+<h3 id="configure-networking">
+<a class="anchor" href="#configure-networking" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure Networking</h3>
+
+<p>Configuring ManageIQ appliance networking can be
+accomplished via standard system tools such as <code class="language-plaintext highlighter-rouge">nmcli</code> and <code class="language-plaintext highlighter-rouge">nmtui</code> or <code class="language-plaintext highlighter-rouge">Cockpit</code>
+in your web browser.</p>
+
+<p>Ensure that you have proper name resolution configured, either with an external
+nameserver or by adding a fully-qualified hostname to <code class="language-plaintext highlighter-rouge">/etc/hosts</code>.</p>
+
+<p>It is also possible to configure networking using <code class="language-plaintext highlighter-rouge">cloud-init</code>.  If you are
+going to manually configure networking it is important to disable cloud-init 
+otherwise your changes can be overwritten.</p>
+
+<p>Cloud-init can be disabled by running the following as the root user:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch</span> /etc/cloud/cloud-init.disabled
+</code></pre></div></div>
 
 <p>Configure the appliance by using the internal appliance console.</p>
 
