@@ -1260,7 +1260,7 @@ cloud provider in ManageIQ.</p>
     <p>Select the appropriate <strong>Zone</strong>.</p>
   </li>
   <li>
-    <p>Under <strong>Endpoints</strong>, in the <strong>Default</strong> tab.</p>
+    <p>Under <strong>Endpoints</strong>, in the <strong>Default</strong> tab:</p>
 
     <ol>
       <li>
@@ -1268,7 +1268,7 @@ cloud provider in ManageIQ.</p>
 
         <p>For more information on managing IBM Cloud API keys, including how to
 create one, refer to IBM Cloud Docs:
-<a href="https://cloud.ibm.com/docs/account?topic=account-userapikey">Managing user API keys</a></p>
+<a href="https://cloud.ibm.com/docs/account?topic=account-userapikey">Managing user API keys</a>.</p>
       </li>
       <li>
         <p>Enter the <strong>PowerVS Service GUID</strong> of the IBM Power Systems Virtual
@@ -1282,6 +1282,24 @@ Servers service instance you want to add.</p>
       </li>
       <li>
         <p>Click <strong>Validate</strong> to validate the credentials.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Under <strong>Endpoints</strong>, in the <strong>Metrics</strong> tab (Optional):</p>
+
+    <ol>
+      <li>
+        <p>From the <strong>Type</strong> list, select <strong>Enabled</strong> to enable metrics collection.</p>
+      </li>
+      <li>
+        <p>Enter the <strong>IBM Cloud Monitoring Instance GUID</strong> for the IBM Cloud Monitoring instance in the same region configured to receive IBM Power Virtual Server metrics.</p>
+
+        <p>You can find the instance GUID under <strong>Observability &gt; Monitoring</strong> in the IBM Cloud console or by using the IBM Cloud CLI:</p>
+
+        <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">ibmcloud resource service-instance &lt;INSTANCE_NAME&gt;</span><span class="w"> </span><span class="nt">--output</span> json | jq <span class="nt">-r</span> <span class="s1">'.[].guid'</span>
+</code></pre></div>        </div>
       </li>
     </ol>
   </li>
